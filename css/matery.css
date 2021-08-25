@@ -35,7 +35,7 @@
 
 body {
     background: linear-gradient(60deg,rgba(255,165,150,0.5) 5%, rgba(1,228,255,0.3));
-    /* background-color: #eaeaea; */
+    background-color: #0e0d0d;
     margin: 0;
     background-attachment: fixed;
     color: #34495e;
