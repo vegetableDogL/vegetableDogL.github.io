@@ -498,13 +498,13 @@
         分布式和集中式的最大区别也就是分布式可以【本地提交代码】；
         分布式的提交代码方式：先将代码提交到本地，然后再将代码从本地推送到远程服务器；
 </code></pre>
-<h1 id="2、git操作入门"><a href="#2、git操作入门" class="headerlink" title="2、git操作入门"></a>2、git操作入门</h1><h3 id="1、理解-工作目录、暂存区和本地仓库"><a href="#1、理解-工作目录、暂存区和本地仓库" class="headerlink" title="1、理解**工作目录、暂存区和本地仓库**"></a>1、理解**<font color='red'>工作目录、暂存区和本地仓库</font>**</h3><p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825205304574.png" alt="image-20210825205304574"></p>
+<h1 id="2、git操作入门"><a href="#2、git操作入门" class="headerlink" title="2、git操作入门"></a>2、git操作入门</h1><h2 id="1、理解-工作目录、暂存区和本地仓库"><a href="#1、理解-工作目录、暂存区和本地仓库" class="headerlink" title="1、理解**工作目录、暂存区和本地仓库**"></a>1、理解**<font color='red'>工作目录、暂存区和本地仓库</font>**</h2><p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825205304574.png" alt="image-20210825205304574"></p>
 <pre><code class="java">1.工作区：就是我们的工程代码所存放的磁盘目录（程序员敲代码的磁盘目录位置）；
 2.本地仓库：在工作区内有个隐藏的目录.git,它就是git的本地版本库（本地仓库维护了从工作区提交的所有的代码的操作流水）；
 3.暂存区：存放在本地版本仓库.git目录的index文件中（.git/index）（保存临时提交代码的区域，此时提交的代码时可以撤销的）；
 </code></pre>
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825205644607.png" alt="image-20210825205644607"></p>
-<h3 id="2、git常用命令"><a href="#2、git常用命令" class="headerlink" title="2、git常用命令"></a>2、git常用命令</h3><table>
+<h2 id="2、git常用命令"><a href="#2、git常用命令" class="headerlink" title="2、git常用命令"></a>2、git常用命令</h2><table>
 <thead>
 <tr>
 <th>命令</th>
@@ -588,7 +588,7 @@
 <td></td>
 </tr>
 </tbody></table>
-<h3 id="3、配置用户名和邮箱"><a href="#3、配置用户名和邮箱" class="headerlink" title="3、配置用户名和邮箱"></a>3、配置用户名和邮箱</h3><h4 id="1、config的三个作用域"><a href="#1、config的三个作用域" class="headerlink" title="1、config的三个作用域"></a>1、config的三个作用域</h4><pre><code class="bash">git config --local # 只对某个仓库有效；缺省时，等于local
+<h2 id="3、配置用户名和邮箱"><a href="#3、配置用户名和邮箱" class="headerlink" title="3、配置用户名和邮箱"></a>3、配置用户名和邮箱</h2><h3 id="1、config的三个作用域"><a href="#1、config的三个作用域" class="headerlink" title="1、config的三个作用域"></a>1、config的三个作用域</h3><pre><code class="bash">git config --local # 只对某个仓库有效；缺省时，等于local
 
 git config --global # 对当前用户所有仓库有效❤❤❤
 git config --system # 对系统所有登录的用户有效
@@ -599,7 +599,7 @@ git config --global user.email &quot;your email&quot;
 # 查看git全局配置
 git config --list --global
 </code></pre>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="4、历史版本的切换"><a href="#4、历史版本的切换" class="headerlink" title="4、历史版本的切换"></a>4、历史版本的切换</h3><pre><code class="bash">git reflog    可以查看所有分支的所有操作记录
+<h2 id="4、历史版本的切换"><a href="#4、历史版本的切换" class="headerlink" title="4、历史版本的切换"></a>4、历史版本的切换</h2><pre><code class="bash">git reflog    可以查看所有分支的所有操作记录
 git reset --hard 版本唯一索引值     回滚到之前的版本
 </code></pre>
 <p><strong>git reflog与git log的区别：回滚之后log命令查不到回滚后面的版本</strong></p>
@@ -956,43 +956,6 @@ git pull origin master
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/08/24/day01/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title"></span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-24
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            John Doe
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
                 <a href="/2019/10/03/%E6%B5%8B%E8%AF%95/">
                     <div class="card-image">
                         
@@ -1009,9 +972,9 @@ git pull origin master
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-03
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-03
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1029,6 +992,56 @@ git pull origin master
                     
                     <a href="/tags/test/">
                         <span class="chip bg-color">test</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/10/03/day01Git/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Git的命令和结构">
+                        
+                        <span class="card-title">Git的命令和结构</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Git的应用
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-03
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Git/" class="post-category">
+                                    Git
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Git/">
+                        <span class="chip bg-color">Git</span>
                     </a>
                     
                 </div>
