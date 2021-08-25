@@ -482,7 +482,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1、常用版本管理工具介绍"><a href="#1、常用版本管理工具介绍" class="headerlink" title="1、常用版本管理工具介绍"></a>1、常用版本管理工具介绍</h1><h2 id="1、SVN-集中式版本管理控制"><a href="#1、SVN-集中式版本管理控制" class="headerlink" title="1、SVN 集中式版本管理控制"></a>1、SVN 集中式版本管理控制</h2><p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825204620076.png" alt="image-20210825204620076"></p>
+                <h1 id="1、Git"><a href="#1、Git" class="headerlink" title="1、Git"></a>1、Git</h1><h2 id="1、常用版本管理工具介绍"><a href="#1、常用版本管理工具介绍" class="headerlink" title="1、常用版本管理工具介绍"></a>1、常用版本管理工具介绍</h2><h3 id="1、SVN-集中式版本管理控制"><a href="#1、SVN-集中式版本管理控制" class="headerlink" title="1、SVN 集中式版本管理控制"></a>1、SVN 集中式版本管理控制</h3><p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825204620076.png" alt="image-20210825204620076"></p>
 <pre><code class="java">数据都存储在中心服务器上，一旦宕机，后果很严重
 
 弊端：
@@ -490,7 +490,7 @@
     2.使用svn无法随时随意提交代码；
     一般使用svn开发时都是开发好一个完成的功能后，才可以提交，也就是说，提高到远程中心仓库的代码都是可使用，可交付状态的代码；
 </code></pre>
-<h2 id="2、Git分布式版本管理控制"><a href="#2、Git分布式版本管理控制" class="headerlink" title="2、Git分布式版本管理控制"></a>2、Git分布式版本管理控制</h2><pre><code class="java">优点：
+<h3 id="2、Git分布式版本管理控制"><a href="#2、Git分布式版本管理控制" class="headerlink" title="2、Git分布式版本管理控制"></a>2、Git分布式版本管理控制</h3><pre><code class="java">优点：
     1.每一个客户端都保存了完整的历史记录;服务器的故障，都可以通过客户端的记录得以恢复;
 
     2.代码提交时机
@@ -498,13 +498,13 @@
         分布式和集中式的最大区别也就是分布式可以【本地提交代码】；
         分布式的提交代码方式：先将代码提交到本地，然后再将代码从本地推送到远程服务器；
 </code></pre>
-<h1 id="2、git操作入门"><a href="#2、git操作入门" class="headerlink" title="2、git操作入门"></a>2、git操作入门</h1><h2 id="1、理解-工作目录、暂存区和本地仓库"><a href="#1、理解-工作目录、暂存区和本地仓库" class="headerlink" title="1、理解**工作目录、暂存区和本地仓库**"></a>1、理解**<font color='red'>工作目录、暂存区和本地仓库</font>**</h2><p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825205304574.png" alt="image-20210825205304574"></p>
+<h2 id="2、git操作入门"><a href="#2、git操作入门" class="headerlink" title="2、git操作入门"></a>2、git操作入门</h2><h3 id="1、理解-工作目录、暂存区和本地仓库"><a href="#1、理解-工作目录、暂存区和本地仓库" class="headerlink" title="1、理解**工作目录、暂存区和本地仓库**"></a>1、理解**<font color='red'>工作目录、暂存区和本地仓库</font>**</h3><p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825205304574.png" alt="image-20210825205304574"></p>
 <pre><code class="java">1.工作区：就是我们的工程代码所存放的磁盘目录（程序员敲代码的磁盘目录位置）；
 2.本地仓库：在工作区内有个隐藏的目录.git,它就是git的本地版本库（本地仓库维护了从工作区提交的所有的代码的操作流水）；
 3.暂存区：存放在本地版本仓库.git目录的index文件中（.git/index）（保存临时提交代码的区域，此时提交的代码时可以撤销的）；
 </code></pre>
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825205644607.png" alt="image-20210825205644607"></p>
-<h2 id="2、git常用命令"><a href="#2、git常用命令" class="headerlink" title="2、git常用命令"></a>2、git常用命令</h2><table>
+<h3 id="2、git常用命令"><a href="#2、git常用命令" class="headerlink" title="2、git常用命令"></a>2、git常用命令</h3><table>
 <thead>
 <tr>
 <th>命令</th>
@@ -588,7 +588,7 @@
 <td></td>
 </tr>
 </tbody></table>
-<h2 id="3、配置用户名和邮箱"><a href="#3、配置用户名和邮箱" class="headerlink" title="3、配置用户名和邮箱"></a>3、配置用户名和邮箱</h2><h3 id="1、config的三个作用域"><a href="#1、config的三个作用域" class="headerlink" title="1、config的三个作用域"></a>1、config的三个作用域</h3><pre><code class="bash">git config --local # 只对某个仓库有效；缺省时，等于local
+<h3 id="3、配置用户名和邮箱"><a href="#3、配置用户名和邮箱" class="headerlink" title="3、配置用户名和邮箱"></a>3、配置用户名和邮箱</h3><h4 id="1、config的三个作用域"><a href="#1、config的三个作用域" class="headerlink" title="1、config的三个作用域"></a>1、config的三个作用域</h4><pre><code class="bash">git config --local # 只对某个仓库有效；缺省时，等于local
 
 git config --global # 对当前用户所有仓库有效❤❤❤
 git config --system # 对系统所有登录的用户有效
@@ -599,13 +599,13 @@ git config --global user.email &quot;your email&quot;
 # 查看git全局配置
 git config --list --global
 </code></pre>
-<h2 id="4、历史版本的切换"><a href="#4、历史版本的切换" class="headerlink" title="4、历史版本的切换"></a>4、历史版本的切换</h2><pre><code class="bash">git reflog    可以查看所有分支的所有操作记录
+<h3 id="4、历史版本的切换"><a href="#4、历史版本的切换" class="headerlink" title="4、历史版本的切换"></a>4、历史版本的切换</h3><pre><code class="bash">git reflog    可以查看所有分支的所有操作记录
 git reset --hard 版本唯一索引值     回滚到之前的版本
 </code></pre>
 <p><strong>git reflog与git log的区别：回滚之后log命令查不到回滚后面的版本</strong></p>
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825211029730.png" alt="image-20210825211029730"></p>
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825211051519.png" alt="image-20210825211051519"></p>
-<h1 id="3、分支介绍"><a href="#3、分支介绍" class="headerlink" title="3、分支介绍"></a>3、分支介绍</h1><p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825211549665.png" alt="image-20210825211549665"></p>
+<h2 id="3、分支介绍"><a href="#3、分支介绍" class="headerlink" title="3、分支介绍"></a>3、分支介绍</h2><p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825211549665.png" alt="image-20210825211549665"></p>
 <pre><code class="bash"> Master: git主分支，代码最终合并到该分支下；
 
 dev：开发分支
@@ -648,8 +648,8 @@ dev：开发分支
     git checkout 分支1
     git merge 分支2
 </code></pre>
-<h1 id="4、远程仓库"><a href="#4、远程仓库" class="headerlink" title="4、远程仓库"></a>4、远程仓库</h1><p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825213807549.png" alt="image-20210825213807549"></p>
-<h2 id="1、ssh公钥配置"><a href="#1、ssh公钥配置" class="headerlink" title="1、ssh公钥配置"></a>1、ssh公钥配置</h2><pre><code class="bash"># 在本地配置开发者用户名和邮箱地址(理论将我们可以随便定义，实际应该配置个人真实姓名和开发中个人邮箱地址)
+<h2 id="4、远程仓库"><a href="#4、远程仓库" class="headerlink" title="4、远程仓库"></a>4、远程仓库</h2><p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825213807549.png" alt="image-20210825213807549"></p>
+<h3 id="1、ssh公钥配置"><a href="#1、ssh公钥配置" class="headerlink" title="1、ssh公钥配置"></a>1、ssh公钥配置</h3><pre><code class="bash"># 在本地配置开发者用户名和邮箱地址(理论将我们可以随便定义，实际应该配置个人真实姓名和开发中个人邮箱地址)
 git config user.name（查看git账户）
 git config user.email（查看git邮箱）
 git config --global user.name “账户名”（设置全局账户名）
@@ -672,14 +672,14 @@ cat ~/.ssh/id-rsa.pub
 <pre><code class="bash">命令配置情况: 
 ssh -T git@gitee.com
 </code></pre>
-<h2 id="2、推送到远程仓库"><a href="#2、推送到远程仓库" class="headerlink" title="2、推送到远程仓库"></a>2、推送到远程仓库</h2><pre><code class="bash"># 为远程仓库地址取别名，简化书写，其中original变量名称理论上讲可随便定义；
+<h3 id="2、推送到远程仓库"><a href="#2、推送到远程仓库" class="headerlink" title="2、推送到远程仓库"></a>2、推送到远程仓库</h3><pre><code class="bash"># 为远程仓库地址取别名，简化书写，其中original变量名称理论上讲可随便定义；
 git remote add original 远程仓库地址
 # 推送本地仓库master分支代码到远程仓库
 git push -u original master
 # 说明：push指令后加了参数-u后，以后再推送代码，即可直接使用git push即可
 </code></pre>
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825214341575.png" alt="image-20210825214341575"></p>
-<h2 id="3、拉取远程仓库中代码"><a href="#3、拉取远程仓库中代码" class="headerlink" title="3、拉取远程仓库中代码"></a>3、拉取远程仓库中代码</h2><pre><code class="bash">1. 将远程仓库的代码，克隆到本地仓库
+<h3 id="3、拉取远程仓库中代码"><a href="#3、拉取远程仓库中代码" class="headerlink" title="3、拉取远程仓库中代码"></a>3、拉取远程仓库中代码</h3><pre><code class="bash">1. 将远程仓库的代码，克隆到本地仓库
    克隆命令：
       git clone 仓库地址
 2. 创建新文件，添加并提交到本地仓库
@@ -688,7 +688,7 @@ git push -u original master
    拉取命令：
        git pull 远程仓库名 分支名
 </code></pre>
-<h2 id="4、代码冲突问题"><a href="#4、代码冲突问题" class="headerlink" title="4、代码冲突问题"></a>4、代码冲突问题</h2><pre><code class="bash">1.两个程序员操作同一个文件,其中一个程序员在修改文件后,push到远程仓库,此时远程仓库提交记录发生改变;
+<h3 id="4、代码冲突问题"><a href="#4、代码冲突问题" class="headerlink" title="4、代码冲突问题"></a>4、代码冲突问题</h3><pre><code class="bash">1.两个程序员操作同一个文件,其中一个程序员在修改文件后,push到远程仓库,此时远程仓库提交记录发生改变;
 此时，另一个程序员也修改了相同文件的代码，然后也push到远程仓库中，这样因为修改了相同行的代码，冲突也就出现了；
 2.如何解决呢？
   实际开发中应该先通过pull命令拉去远程仓库中最新的代码到本地仓库，然后再开发新业务代码,之后再push到远程仓库；
@@ -706,16 +706,16 @@ git pull origin master
 1. 修改冲突行，保存，即可解决冲突。
 2. 重新add冲突文件并commit到本地仓库，重新push到远程
 </code></pre>
-<h1 id="5、IDEA继承Git"><a href="#5、IDEA继承Git" class="headerlink" title="5、IDEA继承Git"></a>5、IDEA继承Git</h1><h2 id="1、设置idea"><a href="#1、设置idea" class="headerlink" title="1、设置idea"></a>1、设置idea</h2><p>file–》setting–》version Control–》Git</p>
+<h2 id="5、IDEA继承Git"><a href="#5、IDEA继承Git" class="headerlink" title="5、IDEA继承Git"></a>5、IDEA继承Git</h2><h3 id="1、设置idea"><a href="#1、设置idea" class="headerlink" title="1、设置idea"></a>1、设置idea</h3><p>file–》setting–》version Control–》Git</p>
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825215344791.png" alt="image-20210825215344791"></p>
 <p>找到git.exe路径点击Test  点apply 点OK</p>
-<h2 id="2、创建本地库"><a href="#2、创建本地库" class="headerlink" title="2、创建本地库"></a>2、创建本地库</h2><h3 id="1-VCS-gt-Import-into-Version-Control-gt-Create-Git-Repository"><a href="#1-VCS-gt-Import-into-Version-Control-gt-Create-Git-Repository" class="headerlink" title="1.VCS-&gt;Import into Version Control-&gt;Create Git Repository"></a><strong>1.VCS-&gt;Import into Version Control-&gt;Create Git Repository</strong></h3><p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825215608739.png" alt="image-20210825215608739"></p>
+<h3 id="2、创建本地库"><a href="#2、创建本地库" class="headerlink" title="2、创建本地库"></a>2、创建本地库</h3><h4 id="1-VCS-gt-Import-into-Version-Control-gt-Create-Git-Repository"><a href="#1-VCS-gt-Import-into-Version-Control-gt-Create-Git-Repository" class="headerlink" title="1.VCS-&gt;Import into Version Control-&gt;Create Git Repository"></a><strong>1.VCS-&gt;Import into Version Control-&gt;Create Git Repository</strong></h4><p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825215608739.png" alt="image-20210825215608739"></p>
 <p>如果没有VCS只有Git则：点git点第一个选项可以创建git仓库</p>
-<h3 id="2、-gitignore忽略文件设置"><a href="#2、-gitignore忽略文件设置" class="headerlink" title="2、.gitignore忽略文件设置"></a>2、.gitignore忽略文件设置</h3><p>.gitignore文件在  .idea的目录下，拉出  .gitignore 到项目根目录下</p>
+<h4 id="2、-gitignore忽略文件设置"><a href="#2、-gitignore忽略文件设置" class="headerlink" title="2、.gitignore忽略文件设置"></a>2、.gitignore忽略文件设置</h4><p>.gitignore文件在  .idea的目录下，拉出  .gitignore 到项目根目录下</p>
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825220052466.png" alt="image-20210825220052466"></p>
 <p>或者直接用下列方式：</p>
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825220142715.png" alt="image-20210825220142715"></p>
-<h3 id="3、代码提交到本地仓库"><a href="#3、代码提交到本地仓库" class="headerlink" title="3、代码提交到本地仓库"></a>3、代码提交到本地仓库</h3>
+<h4 id="3、代码提交到本地仓库"><a href="#3、代码提交到本地仓库" class="headerlink" title="3、代码提交到本地仓库"></a>3、代码提交到本地仓库</h4>
                 
             </div>
             <hr/>
@@ -956,6 +956,43 @@ git pull origin master
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
+                <a href="/2021/08/24/day01/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        
+                        <span class="card-title"></span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-24
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            John Doe
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
                 <a href="/2019/10/03/%E6%B5%8B%E8%AF%95/">
                     <div class="card-image">
                         
@@ -972,9 +1009,9 @@ git pull origin master
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-03
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-03
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -992,56 +1029,6 @@ git pull origin master
                     
                     <a href="/tags/test/">
                         <span class="chip bg-color">test</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/10/03/day01Git/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Git的命令和结构">
-                        
-                        <span class="card-title">Git的命令和结构</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            Git的应用
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-03
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Git/" class="post-category">
-                                    Git
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Git/">
-                        <span class="chip bg-color">Git</span>
                     </a>
                     
                 </div>
