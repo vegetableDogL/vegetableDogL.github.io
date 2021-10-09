@@ -1,0 +1,2113 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Redis, 龙哥专用笔记">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Redis | 龙哥专用笔记</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">龙哥专用笔记</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">龙哥专用笔记</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Redis</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Redis/">
+                                <span class="chip bg-color">Redis</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Redis/" class="post-category">
+                                Redis
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-04-28
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="1、Redis"><a href="#1、Redis" class="headerlink" title="1、Redis"></a>1、Redis</h1><h2 id="1、NoSql"><a href="#1、NoSql" class="headerlink" title="1、NoSql"></a>1、NoSql</h2><blockquote>
+<p>Not Only SQL (不仅仅是SQL), 泛指非关系型数据库，通常用于提升数据查询的速度，有时也叫缓存。Redis是非关系型数据库的一种。非关系型数据库不能代替关系型数据库，只是关系型数据库的补充。</p>
+</blockquote>
+<h3 id="1、非关系和关系型数据库的区别"><a href="#1、非关系和关系型数据库的区别" class="headerlink" title="1、非关系和关系型数据库的区别"></a>1、非关系和关系型数据库的区别</h3><pre><code class="markdown"> #非关系和关系型数据库
+1. 关系型数据库 (正面战场)
+        mysql,oracle,sqlserver,access,db2...
+        最典型的数据结构是表，由二维表及其之间的联系所组成的一个数据组织
+    a. 优点：
+        1、易于维护：都是使用表结构，格式一致；
+        2、使用方便：SQL语言通用，可用于复杂查询；
+        3、学习成本低：有统一的操作规范(支持SQL),学习成本低。
+    b. 缺点：
+        1、存储在硬盘上, 所以读写性能比较差，尤其是海量数据的高效率读写；
+        2、固定的表结构，灵活度稍欠；
+
+2. 非关系型数据库(游击队)
+        非关系型数据库严格上不是一种数据库，应该是一种数据结构化存储方法的集合,可以是文档或者键值对等。
+    a. 优点：
+        1、格式灵活：存储数据的格式可以是key,value形式、文档形式、图片形式等等，文档形式、图片形式等等，使用灵活，应用场景广泛，而关系型数据库则只支持基础类型。
+        2、速度快：nosql可以使用硬盘或者内存作为载体，而关系型数据库只能使用硬盘；
+        3、高扩展性；
+        4、成本低：nosql数据库部署简单，基本都是开源软件。
+    b. 缺点：
+        1、不提供sql支持，学习和使用成本较高；
+        2、一般没有事务处理；
+        3、数据结构相对复杂，复杂查询方面稍欠。
+</code></pre>
+<h3 id="2、NoSQL数据库的四大分类"><a href="#2、NoSQL数据库的四大分类" class="headerlink" title="2、NoSQL数据库的四大分类"></a>2、NoSQL数据库的四大分类</h3><pre><code class="markdown">#NoSQL数据库的四大分类
+按存储的格式分成：
+1. 键值(Key-Value)存储数据库
+        这一类数据库主要会使用到一个哈希表，这个表中有一个特定的键和一个指针指向特定的数据。今天学习的Redis就是这种类型。Redis是使用C语言编写的(键值的类型很熟悉,但跟java不一样)，免费开源的。
+2. 列存储数据库
+        通常是用来应对分布式存储的海量数据。键仍然存在，但是它们的特点是指向了多个列。如：Cassandra, HBase, Riak.            
+3. 文档型数据库
+        文档型数据库可以看作是键值数据库的升级版，允许嵌套键值对。而且文档型数据库比键值数据库的查询效率更高。如：CouchDB, MongoDb。国内也有文档型数据库SequoiaDB，已经开源。
+4. 图形(Graph)数据库
+        图形结构的数据库同其他行列以及刚性结构的SQL数据库不同，它是使用灵活的图形模型，并且能够扩展到多个服务器上。
+</code></pre>
+<h3 id="3、使用NOSQL解决的问题"><a href="#3、使用NOSQL解决的问题" class="headerlink" title="3、使用NOSQL解决的问题"></a>3、使用NOSQL解决的问题</h3><pre><code class="markdown">具体表现为对如下三高问题的解决：
+    **High Performance - 数据库高并发访问** 
+    **Huge Storage - 海量数据的存储** 
+    **High Scalability &amp;&amp; High Availability- 高可扩展性和高可用性的需求** 
+</code></pre>
+<h2 id="2、redis的的五大值类型"><a href="#2、redis的的五大值类型" class="headerlink" title="2、redis的的五大值类型"></a>2、redis的的五大值类型</h2><blockquote>
+<p>​    redis是一种高级的key-value的存储系统，<strong>键是string类型</strong>，其中value支持五种数据类型</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>值的数据类型</th>
+<th>值的格式说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>string</td>
+<td>字符串类型，类似于Java中String</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>由键值对组成，类似于Java中Map</td>
+</tr>
+<tr>
+<td>list</td>
+<td>列表类型，类似于Java中List，元素是有序，可以重复。</td>
+</tr>
+<tr>
+<td>set</td>
+<td>集合类型，类似于Java中Set，元素是无序，不可重复</td>
+</tr>
+<tr>
+<td>zset</td>
+<td>sortedset有序的集合类型，每个元素有一个分数用来决定它的顺序。</td>
+</tr>
+</tbody></table>
+<h3 id="1、string"><a href="#1、string" class="headerlink" title="1、string"></a>1、string</h3><p><img src="https://i.loli.net/2021/09/13/KDALn84HrumlSvX.png" alt="image-20210913184057939"></p>
+<pre><code class="markdown">#特点
+1. 字符串类型是Redis中最为基础的数据存储类型
+2. 二进制安全, 存储不涉及编解码操作(数据底层是二进制 0101,直接存储0101)
+3. 最多可以容纳的数据长度是512M
+
+
+#常用命令
+1. 增
+        1. 存一个值：set key value
+        2. 存多个值：mset key1 value1 key2 value2 (multi)
+2. 查
+        1. 获取指定key的值：get key
+        2. 获取多个指定key的值：mget key1 key2
+3. 删
+        删除指定key的值：del key[key2...] 
+4. 改:
+        set 已存在的key 新value(覆盖)
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>set 键 值</td>
+<td>添加或修改一个键和值，键不存在就是添加，存在就是修改</td>
+</tr>
+<tr>
+<td>mset 键1 值1 键2 值2  ….</td>
+<td>存多个值</td>
+</tr>
+<tr>
+<td>get 键</td>
+<td>获取值，如果存在就返回值，不存在返回nil(就是C语言中NULL)</td>
+</tr>
+<tr>
+<td>mget 键1 键2  ….</td>
+<td>获取多个指定key的值</td>
+</tr>
+<tr>
+<td>del 键</td>
+<td>删除指定的键和值，返回删除的个数</td>
+</tr>
+<tr>
+<td>strlen 键</td>
+<td>获取key对应的value的长度</td>
+</tr>
+</tbody></table>
+<h3 id="2、hash"><a href="#2、hash" class="headerlink" title="2、hash"></a>2、hash</h3><p><img src="https://i.loli.net/2021/09/13/9YdLDN7k18B3bS6.png" alt="image-20210913184620924"></p>
+<pre><code class="markdown">#特点
+    1. Redis中的Hash类型可以看成是键和值都是String类型的Map容器
+    2. 每一个Hash可以存储4G个键值对。
+    3. 该类型非常适合于存储对象的信息。如一个用户有姓名，密码，年龄等信息，则可以有username、password和age等键。
+    4. redis没有null的概念，如果把value都删除了，key也会自动移除。
+
+#常用命令
+1. 增
+        1. hset key field value
+        2. hmset key field1 value1 field2 value2 ...
+2. 查
+        1. hget key field  (单个)
+        2. hmget key field1 field2 (多个)
+        3. hgetall key (获取此hash所有信息)
+3. 删
+        1. hdel key    [filed1 filed2...]  (删除一个或多个字段)
+        2. del key 可以删除整个键值对 (通用的)
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>hset 键 字段 值</td>
+<td>添加键，字段，值</td>
+</tr>
+<tr>
+<td>hget 键 字段</td>
+<td>通过键，字段得到值</td>
+</tr>
+<tr>
+<td>hmset 键 字段 值 字段 值</td>
+<td>multiply多个，一次添加多个字段和值</td>
+</tr>
+<tr>
+<td>hmget 键 字段 字段</td>
+<td>通过键，获取多个字段和值</td>
+</tr>
+<tr>
+<td>hdel 键 字段 字段</td>
+<td>删除一个或多个字段的值</td>
+</tr>
+<tr>
+<td>hgetall 键</td>
+<td>得到这个键下所有的字段和值</td>
+</tr>
+<tr>
+<td>hlen 键</td>
+<td>获取键的长度</td>
+</tr>
+<tr>
+<td>hexists key key里的某个值</td>
+<td>判断key里的某个值知否存在（1为true，0为false）</td>
+</tr>
+<tr>
+<td>hkeys/hvals  key</td>
+<td>获取key中所有的key/值</td>
+</tr>
+</tbody></table>
+<h3 id="3、list"><a href="#3、list" class="headerlink" title="3、list"></a>3、list</h3><p><img src="https://i.loli.net/2021/09/13/lSxmPtqgjvXVwH7.png" alt="image-20210913185237622"></p>
+<pre><code class="markdown">#特点
+    1. 在Redis中，List类型是按照插入顺序排序的字符串链表。(可以左右操作)
+    2. 有序(插入顺序),有索引,可重复
+    3. 如果该键并不存在，Redis将为该键创建一个新的链表。与此相反，如果链表中所有的元素均被移除，那么该键也将会被从数据库中删除
+    4. List中可以包含的最大元素数量是4G个
+
+# 常用命令
+1. 增
+        1. lpush key value1[value2...] (left : addFirst)
+        2. rpush key value1[value2...] (right : addLast)
+2. 查
+        1. lrange key start end (闭区间 : 两边都包括)
+        2. lrange key 0 -1  (查询所有)
+        3. lindex key index  (索引 : 0基  左边第一个0, 右边第一个索引-1)
+3. 删
+        1. lpop key 从左边删除一个
+        2. rpop key 从右边删除一个
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>行为</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>lpush 键 元素 元素</td>
+<td>left 从左边向指定的键中添加1个或多个元素，返回列表中元素的个数</td>
+</tr>
+<tr>
+<td>rpush 键 元素 元素</td>
+<td>right 从右边向指定的键中添加1个或多个元素</td>
+</tr>
+<tr>
+<td>lpop 键</td>
+<td>从左边删除一个元素，返回被删除的元素</td>
+</tr>
+<tr>
+<td>rpop 键</td>
+<td>从右边删除一个元素，返回被删除的元素</td>
+</tr>
+<tr>
+<td>lrange 键 开始 结束</td>
+<td>得到键中指定范围的元素的数据<br />每个元素都有一个索引号，从左向右0<del>n<br />从右向左索引号：-1</del>-(n+1)，每个元素有2个索引号<br />如果要取出整个列表中所有的元素，索引号应该是：0~-1</td>
+</tr>
+<tr>
+<td>llen 键</td>
+<td>获取列表的长度</td>
+</tr>
+<tr>
+<td>lindex key index</td>
+<td>获取指定索引位置的值</td>
+</tr>
+<tr>
+<td>lrem key n value</td>
+<td>删除key对应的value中n个值<br/>（lrem list03 2 3        删除list03中的2个值为3的元素。）</td>
+</tr>
+</tbody></table>
+<h3 id="4、set"><a href="#4、set" class="headerlink" title="4、set"></a>4、set</h3><p><img src="https://i.loli.net/2021/09/13/olH7nmYhMT49jzP.png" alt="image-20210913185853208"></p>
+<pre><code class="markdown">#特点
+       1. 无序,无索引, 不可重复
+    2. Set可包含的最大元素数量是4G
+
+# 常用命令
+1. 增
+        1. sadd key value[value2...]
+2. 查
+        1. smembers key(查询所有value)
+        2. scard key(查询value的数量)
+        3. sismember key value (判断指定的元素是否存在，存在返回1，否则返回0)
+3. 删
+        1. spop key : 随机删除
+        2. srem key members[member1,member2...] : 删除指定元素
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>行为</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>sadd 键 元素 元素</td>
+<td>向一个键中添加1个或多个元素</td>
+</tr>
+<tr>
+<td>smembers 键</td>
+<td>得到这个集合中所有的元素</td>
+</tr>
+<tr>
+<td>sismember 键 元素</td>
+<td>判断指定的元素在集合中是否存在，存在返回1，不存在返回0</td>
+</tr>
+<tr>
+<td>srem 键 元素 元素</td>
+<td>通过键删除一个或多个元素</td>
+</tr>
+<tr>
+<td>srandmember key 整数n</td>
+<td>从key集合中随机获取出n个元素</td>
+</tr>
+<tr>
+<td>scard 键</td>
+<td>获取集合中的元素个数</td>
+</tr>
+</tbody></table>
+<h3 id="5、zset"><a href="#5、zset" class="headerlink" title="5、zset"></a>5、zset</h3><p><img src="https://i.loli.net/2021/09/13/lByFZQU5AjmwJis.png" alt="image-20210913190325458"></p>
+<pre><code class="markdown">#特点
+    1. 每个元素都会关联一个分数
+    2. 排序(按score大小排序) , 支持左右索引
+    2. 一个元素(score,value) 其中score可重复,value不可重复
+    3. 应用 : 排行版
+#常用命令
+1. 增
+        1. zadd key score1 member1[score2 member2...]
+2. 查
+        1. zcard key (统计数量)
+        2. zrange key start stop [withscores]    -&gt; 范围查询
+        3. zrevrange key start stop[withscores]  (reverse 反转)
+
+3. 删
+        1. zrem key member[member2...]    
+</code></pre>
+<table>
+<thead>
+<tr>
+<th><strong>命令</strong></th>
+<th><strong>行为</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>zadd</strong> <strong>键</strong> <strong>分数</strong> <strong>值</strong> <strong>分数</strong> <strong>值</strong></td>
+<td>添加1个或多个元素，每个元素都有一个分数</td>
+</tr>
+<tr>
+<td><strong>zrange</strong> <strong>键</strong> <strong>开始索引</strong> <strong>结束索引</strong></td>
+<td>获取指定范围的元素，得到所有的元素，索引是0到-1</td>
+</tr>
+<tr>
+<td><strong>zrem 键 值 值</strong></td>
+<td>删除一个或多个值</td>
+</tr>
+<tr>
+<td><strong>zcard</strong> <strong>键</strong></td>
+<td>得到元素个数</td>
+</tr>
+<tr>
+<td><strong>zrank</strong> <strong>键</strong> <strong>值</strong></td>
+<td>得到元素的索引号</td>
+</tr>
+<tr>
+<td><strong>zscore 键 值</strong></td>
+<td>得到元素的分数</td>
+</tr>
+<tr>
+<td>zrangebyscore key 开始score 结束score</td>
+<td>查找分数从开始score到结束score的value</td>
+</tr>
+</tbody></table>
+<pre><code class="markdown">    zcard/zcount key score区间/zrank key values值/zscore key 对应值
+    
+    zcard zet01            获取zet01键的值的数量
+    zcount zet01 60 80        统计60分到80分的值的数量
+    zrank zet01 v4            获取值为v4的下标
+    zscore zet01 v4            获取值为v4的分数
+</code></pre>
+<h3 id="6、key的命令（通用命令）"><a href="#6、key的命令（通用命令）" class="headerlink" title="6、key的命令（通用命令）"></a>6、key的命令（通用命令）</h3><table>
+<thead>
+<tr>
+<th>keys *</th>
+<th>查看当前库所有key   (匹配：keys *1)，可以用？或者 * 模糊匹配</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>exists key</td>
+<td>判断某个key是否存在</td>
+</tr>
+<tr>
+<td>type key</td>
+<td>查看你的key是什么类型</td>
+</tr>
+<tr>
+<td>del key</td>
+<td>删除指定的key数据</td>
+</tr>
+<tr>
+<td>expire key 10</td>
+<td>10秒钟：为给定的key设置过期时间</td>
+</tr>
+<tr>
+<td>ttl key</td>
+<td>查看还有多少秒过期，-1表示永不过期，-2表示已过期</td>
+</tr>
+<tr>
+<td>select</td>
+<td>命令切换数据库</td>
+</tr>
+<tr>
+<td>dbsize</td>
+<td>查看当前数据库的key的数量</td>
+</tr>
+<tr>
+<td>flushdb</td>
+<td>清空当前库</td>
+</tr>
+<tr>
+<td>flushall</td>
+<td>通杀全部库</td>
+</tr>
+</tbody></table>
+<h2 id="3、Redis的持久化"><a href="#3、Redis的持久化" class="headerlink" title="3、Redis的持久化"></a>3、Redis的持久化</h2><h3 id="1、持久化简要"><a href="#1、持久化简要" class="headerlink" title="1、持久化简要"></a>1、持久化简要</h3><blockquote>
+<p>mysql运行时数据在内存中,但是事务一旦提交,就会保存到硬盘上</p>
+<p>redis数据库运行时数据主要在内存中,也会保存到硬盘上</p>
+</blockquote>
+<p><strong>问：把客户端和服务端都关闭了，再重新开启服务器和客户端，数据会不会丢失？</strong></p>
+<pre><code>如果redis不能持久化, 数据都在内存中,断电数据就销毁.
+如果redis能够持久化, 数据在硬盘中,重启数据就会恢复.
+</code></pre>
+<p><strong>什么是持久化：</strong></p>
+<blockquote>
+<p>概念：将内存中数据，写在硬盘文件上。服务器关闭，电脑重启数据也不会丢失。</p>
+</blockquote>
+<p><strong>Redis持久化的方式：</strong></p>
+<blockquote>
+<ol>
+<li>RDB：Redis DataBase 默认的持久化方式，以二进制的方式将数据写入文件中。每隔一段时间写入一次。</li>
+<li>AOF：Append Only File 以文本文件的方式记录用户的每次操作，数据还原时候，读取AOF文件，模拟用户的操作，将数据还原。</li>
+</ol>
+</blockquote>
+<p><strong>RDB持久化机制</strong></p>
+<pre><code class="markdown"># 优点
+1. 方便备份与恢复
+        整个Redis数据库将只包含一个文件，默认是dump.rdb，这对于文件备份和恢复而言是非常完美的。因为我们可以非常轻松的将一个单独的文件压缩后再转移到其它存储介质上。一旦系统出现灾难性故障，我们可以非常容易的进行恢复。
+2. 性能最大化
+        对于Redis的服务进程而言，在开始持久化时，它唯一需要做的只是分叉出子进程，由子进程完成这些持久化的工作，这样就可以极大的避免服务进程执行IO操作了。
+3. 启动效率更高
+        相比于AOF机制，如果数据集很大，RDB的启动效率会更高
+
+#缺点
+1. 不能完全避免数据丢失
+        因为RDB是每隔一段时间写入数据，所以系统一旦在定时持久化之前出现宕机现象，此前没有来得及写入磁盘的数据都将丢失。
+2. 会导致服务器暂停的现象
+        由于RDB是通过子进程来协助完成数据持久化工作的，因此当数据集较大时，可能会导致整个服务器停止服务几百毫秒，甚至是1秒钟。
+</code></pre>
+<h3 id="2、RDB持久化"><a href="#2、RDB持久化" class="headerlink" title="2、RDB持久化"></a>2、RDB持久化</h3><p>在redis.windows.conf配置文件中的SNAPSHOTTING中有如下说明：</p>
+<table>
+<thead>
+<tr>
+<th><strong>语法</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>save &lt;时间间隔&gt; &lt;修改键数&gt;</strong></td>
+<td>过多久(单位是秒)，修改了多少个键(增删改)</td>
+</tr>
+</tbody></table>
+<pre><code> 如下面配置的是RDB方式数据持久化时机，必须两个条件都满足的情况下才进行持久化的操作：
+</code></pre>
+<table>
+<thead>
+<tr>
+<th><strong>关键字</strong></th>
+<th><strong>时间(秒)</strong></th>
+<th><strong>修改键数</strong></th>
+<th><strong>解释</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>save</strong></td>
+<td><strong>900</strong></td>
+<td><strong>1</strong></td>
+<td>到了15分钟修改了1个键</td>
+</tr>
+<tr>
+<td><strong>save</strong></td>
+<td><strong>300</strong></td>
+<td><strong>10</strong></td>
+<td>到了5分钟修改了10个键</td>
+</tr>
+<tr>
+<td><strong>save</strong></td>
+<td><strong>60</strong></td>
+<td><strong>10000</strong></td>
+<td>到了1分钟，修改了1万个键</td>
+</tr>
+</tbody></table>
+<p><img src="https://i.loli.net/2021/09/13/hXpJBNblqAiC2Vf.png" alt="image-20210913193731531"></p>
+<h4 id="1、原理"><a href="#1、原理" class="headerlink" title="1、原理"></a>1、原理</h4><pre><code class="markdown">1. 默认的持久化方式（自动开启）
+2. 以二级制方式将数据写入文件中（dump.rdb）
+3. 每隔一段时间写入一次
+4. 每次会将数据库中的数据全部重新写入（从内存中使用fork出的线程直接读取数据，在保存到文件中）。
+</code></pre>
+<h4 id="2、修改conf文件，改变快照（snapshot）配置。"><a href="#2、修改conf文件，改变快照（snapshot）配置。" class="headerlink" title="2、修改conf文件，改变快照（snapshot）配置。"></a>2、修改conf文件，改变快照（snapshot）配置。</h4><blockquote>
+<p>即改变dump.rdb文件生成时机</p>
+</blockquote>
+<p>redis.window.conf中snapshot中的配置</p>
+<pre><code class="markdown">######### SNAPSHOTTING  #########
+#
+# Save the DB on disk:
+#
+# save &lt;seconds&gt; &lt;changes&gt;
+
+
+save 900 1
+save 300 10
+save 60 10000
+
+# 如果保存出现错误，则停止数据库继续写入
+stop-writes-on-bgsave-error yes
+
+# 是否压缩
+rdbcompression yes
+
+# 是否检验错误
+rdbchecksum yes
+
+# 保存的文件的文件名
+dbfilename dump.rdb
+
+# 工作路径
+dir ./
+</code></pre>
+<h3 id="3、AOF持久化"><a href="#3、AOF持久化" class="headerlink" title="3、AOF持久化"></a>3、AOF持久化</h3><p><img src="https://i.loli.net/2021/09/13/rG7m94wqFQbEJlW.png" alt="image-20210913193745290"></p>
+<h4 id="1、原理-1"><a href="#1、原理-1" class="headerlink" title="1、原理"></a>1、原理</h4><pre><code class="markdown">1. 以文本的方式记录用户的每次操作（流水账）（和rdb有所不同，rdb每次保存全部数据，aof是基于原来的文件继续追加）
+2. 还原的时候，redis服务器读取aof文件，执行文件里的命令，将数据还原。
+</code></pre>
+<h4 id="2、修改配置"><a href="#2、修改配置" class="headerlink" title="2、修改配置"></a>2、修改配置</h4><pre><code class="markdown">############################## APPEND ONLY MODE ###############################
+
+
+# 开启aof 默认是no
+appendonly yes
+
+
+# 每执行一次就同步一次
+appendfsync always
+# appendfsync everysec   每秒同步一次
+# appendfsync no        写入aof文件，不等待磁盘同步
+
+# 在aof重写的过程中进行磁盘同步（磁盘同步会被阻塞）
+no-appendfsync-on-rewrite no
+
+# aof重写配置
+auto-aof-rewrite-percentage 100
+auto-aof-rewrite-min-size 64mb
+</code></pre>
+<pre><code class="markdown"># AOF持久化机制优点
+        AOF包含一个格式清晰、易于理解的日志文件用于记录所有的修改操作。也可以通过该文件完成数据的重建。该机制可以带来更高的数据安全性，所有的操作都是异步完成的。
+
+# AOF持久化机制缺点
+    1. 文件比RDB更大：对于相同数量的数据集而言，AOF文件通常要大于RDB文件。
+    2. 运行效率比RDB更慢：根据同步策略的不同，AOF在运行效率上往往会慢于RDB。
+</code></pre>
+<table>
+<thead>
+<tr>
+<th><strong>Redis中提供了3种AOF同步策略</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>每秒同步</strong></td>
+<td>每过一秒中记录一次</td>
+</tr>
+<tr>
+<td><strong>每修改同步</strong></td>
+<td>每次修改(增删改)都会记录一次</td>
+</tr>
+<tr>
+<td><strong>不同步</strong></td>
+<td>不记录任何操作</td>
+</tr>
+</tbody></table>
+<p>AOF持久化机制配置</p>
+<p><strong>AOF默认是关闭的，首先需要开启AOF模式</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>参数配置</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>appendonly   no/yes</strong></td>
+<td>默认是no，关闭。如果要打开，设置成yes。<br />如果打开的AOF，RDB中存储的数据读取不出来。</td>
+</tr>
+</tbody></table>
+<p><strong>AOF持久化时机</strong></p>
+<p>这三种策略只能选择其中一种</p>
+<table>
+<thead>
+<tr>
+<th><strong>关键字</strong></th>
+<th><strong>持久化时机</strong></th>
+<th><strong>解释</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>appendfsync</strong></td>
+<td><strong>everysec</strong></td>
+<td>每秒记录</td>
+</tr>
+<tr>
+<td><strong>appendfsync</strong></td>
+<td><strong>always</strong></td>
+<td>每修改记录</td>
+</tr>
+<tr>
+<td><strong>appendfsync</strong></td>
+<td><strong>no</strong></td>
+<td>不记录</td>
+</tr>
+</tbody></table>
+<p><img src="https://i.loli.net/2021/09/13/sl9nabqMXv7QdYw.png" alt="image-20210913200020634"></p>
+<h3 id="4、AOF和RDB的区别"><a href="#4、AOF和RDB的区别" class="headerlink" title="4、AOF和RDB的区别"></a>4、AOF和RDB的区别</h3><p><img src="https://i.loli.net/2021/09/13/aLPmniR47WBbvhj.png" alt="image-20210913195925217"></p>
+<pre><code class="markdown"># 从写的效率上看
+    1. redis数据量小，rdb效率高（rdb直接保存二进制数据）
+    2. rides数据量大的时候，aof效率高（aof是增量更新）
+    
+# 从读的效率上看
+    1. Rdb效率高，直接读取二进制
+    aof是读取命令，执行命令，相对较慢。
+    
+# 数据安全
+    1. aof 相对安全
+</code></pre>
+<h2 id="4、Jedis的使用"><a href="#4、Jedis的使用" class="headerlink" title="4、Jedis的使用"></a>4、Jedis的使用</h2><h3 id="1、导包"><a href="#1、导包" class="headerlink" title="1、导包"></a>1、导包</h3><pre><code class="xml">&lt;dependency&gt;
+    &lt;groupId&gt;redis.clients&lt;/groupId&gt;
+    &lt;artifactId&gt;jedis&lt;/artifactId&gt;
+    &lt;version&gt;2.8.1&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3 id="2-Jedis类常用方法"><a href="#2-Jedis类常用方法" class="headerlink" title="2 Jedis类常用方法"></a>2 Jedis类常用方法</h3><p>注：每个方法就是redis中的命令名，方法的参数就是命令的参数。</p>
+<p>在每次访问Redis数据库的时候，都需要创建一个Jedis对象。每个Jedis对象似于JDBC中Connection对象，类似于mybatis中session对象。</p>
+<table>
+<thead>
+<tr>
+<th><strong>连接和关闭</strong></th>
+<th><strong>功能</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>new Jedis(host,   port)</strong></td>
+<td>创建Jedis连接对象，参数：<br />host: 服务器地址<br />port：端口号6379</td>
+</tr>
+<tr>
+<td><strong>void close()</strong></td>
+<td>关闭连接</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><strong>对string操作的方法</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>set(String key,String value)</strong></td>
+<td>添加字符串类型的键和值</td>
+</tr>
+<tr>
+<td><strong>String get(String key)</strong></td>
+<td>通过键得到字符串的值</td>
+</tr>
+<tr>
+<td><strong>del(String … keys)</strong></td>
+<td>删除一个或多个键</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><strong>对hash操作的方法</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>hset(String key,String field,String value)</strong></td>
+<td>添加一个hash类型的键，字段和值</td>
+</tr>
+<tr>
+<td><strong>Map&lt;String,String&gt; hgetall(String key)</strong></td>
+<td>通过一个键得到所有的字段和值，返回Map</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><strong>对list操作的方法</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>lpush(String key,String…values)</strong></td>
+<td>从左边添加多个值到list中</td>
+</tr>
+<tr>
+<td><strong>List&lt;String&gt; lrange(String key,long start,long end)</strong></td>
+<td>通过键得到指定范围的元素</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><strong>对set操作的方法</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>sadd(String key,String…values)</strong></td>
+<td>添加一个或多个元素</td>
+</tr>
+<tr>
+<td><strong>Set&lt;String&gt; smembers(String key)</strong></td>
+<td>通过键得到集合所有的元素</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>对zset操作的方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>zadd(String key, double score, String member)</strong></td>
+<td>添加一个键，分数和值</td>
+</tr>
+<tr>
+<td><strong>Set&lt;String&gt; zrange(String key, long start, long end)</strong></td>
+<td>查询一个指定范围的元素</td>
+</tr>
+</tbody></table>
+<h3 id="3、小案例"><a href="#3、小案例" class="headerlink" title="3、小案例"></a>3、小案例</h3><p><strong>操作步骤：</strong></p>
+<ol>
+<li>创建Jedis对象，指定服务器地址和端口号</li>
+<li>向服务器写入</li>
+<li>从服务器中读取上面的数据打印输出</li>
+<li>关闭Jedis对象，释放资源</li>
+<li>通过客户端查看数据库中是否有数据</li>
+</ol>
+<pre><code class="java"> @Test
+    public void method01()&#123;
+        //1. 创建连接
+        String host = &quot;127.0.0.1&quot;;
+        int port = 6379;
+        Jedis jedis = new Jedis(host, port);
+        //2. 访问redis数据库
+       jedis.lpush(&quot;list&quot;, &quot;a&quot;,&quot;b&quot;,&quot;c&quot;);
+       jedis.set(&quot;book&quot;, &quot;thinking in java&quot;);
+       jedis.set(&quot;gf&quot;, &quot;高圆圆&quot;);
+        HashMap&lt;String, Double&gt; exam = new HashMap&lt;&gt;();
+        exam.put(&quot;zs&quot;, 15.0);
+        exam.put(&quot;ls&quot;, 7.0);
+        exam.put(&quot;ww&quot;, 22.0);
+        jedis.zadd(&quot;exam&quot;, exam);
+       //3. 关闭连接
+        jedis.close();
+    &#125;
+
+    @Test
+    public void method02()&#123;
+        //1. 创建连接
+        String host = &quot;127.0.0.1&quot;;
+        int port = 6379;
+        Jedis jedis = new Jedis(host, port);
+        //2. 访问redis数据库
+        String gf = jedis.get(&quot;gf&quot;);
+        System.out.println(gf);
+        List&lt;String&gt; list = jedis.lrange(&quot;list&quot;, 0, -1);
+        System.out.println(list);
+        //3. 关闭连接
+        jedis.close();
+    &#125;
+</code></pre>
+<h2 id="5、Jedis连接池的使用"><a href="#5、Jedis连接池的使用" class="headerlink" title="5、Jedis连接池的使用"></a>5、Jedis连接池的使用</h2><pre><code class="markdown"># 连接池的作用
+1. 问题: 在服务端,如果频繁的创建和销毁连接, 非常消耗性能
+2. 解决: 连接池
+    1). 将多个连接放在一个容器进行统一管理
+    2). 用的时候取
+    3). 用完的时候还回去
+</code></pre>
+<h3 id="1、-Jedis连接池API"><a href="#1、-Jedis连接池API" class="headerlink" title="1、 Jedis连接池API"></a>1、 Jedis连接池API</h3><table>
+<thead>
+<tr>
+<th><strong>JedisPoolConfig配置类</strong></th>
+<th><strong>功能说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>JedisPoolConfig()</strong></td>
+<td>创建一个配置对象</td>
+</tr>
+<tr>
+<td><strong>void setMaxTotal()</strong></td>
+<td>设置连接池的最大连接数</td>
+</tr>
+<tr>
+<td><strong>void setMaxWaitMillis()</strong></td>
+<td>设置最长等待时间</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><strong>JedisPool连接池类</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>JedisPool(配置对象,服务器名,端口号)</strong></td>
+<td>创建一个连接池，参数：<br />1. 上面的配置对象<br />2. 服务器名<br />3. 端口号</td>
+</tr>
+<tr>
+<td><strong>Jedis getResource()</strong></td>
+<td>从连接池中得到一个连接对象Jedis</td>
+</tr>
+</tbody></table>
+<pre><code class="java"> public void method01()&#123;
+        //1. 创建连接池
+        JedisPoolConfig config = new JedisPoolConfig();
+        config.setMaxTotal(5);// 最大连接数: 5
+        config.setMaxWaitMillis(2000); // 最长等待时间: 2000ms
+        String host = &quot;127.0.0.1&quot;;
+        int port = 6379;
+        JedisPool pool = new JedisPool(config, host, port);
+        //2. 获取连接
+        Jedis jedis = pool.getResource();
+        //3. 访问redis数据库
+        String gf = jedis.get(&quot;gf&quot;);
+        System.out.println(gf);
+
+        //4. 将连接还给连接池(释放连接)
+        jedis.close();
+</code></pre>
+<h3 id="2、jedis连接池工具类"><a href="#2、jedis连接池工具类" class="headerlink" title="2、jedis连接池工具类"></a>2、jedis连接池工具类</h3><p><strong>redis.properties配置文件</strong></p>
+<pre><code class="properties"># 主机名
+host=localhost
+# 端口号
+port=6379
+# 最大连接数
+maxTotal=20
+# 最长等待时间
+maxWaitMillis=3000
+</code></pre>
+<p><strong>JedisUtil.java</strong></p>
+<pre><code class="java">package com.itheima.jedis;
+
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.JedisPoolConfig;
+
+import java.util.ResourceBundle;
+
+public class JedisUtil &#123;
+
+    private static JedisPool pool;
+
+
+    static&#123;
+        ResourceBundle bundle = ResourceBundle.getBundle(&quot;redis&quot;);
+        int maxTotal = Integer.parseInt(bundle.getString(&quot;maxTotal&quot;));
+        int maxWaitMillis = Integer.parseInt(bundle.getString(&quot;maxWaitMillis&quot;));
+        int port = Integer.parseInt(bundle.getString(&quot;port&quot;));
+        String host = bundle.getString(&quot;host&quot;);
+        //1. 创建连接池
+        JedisPoolConfig config = new JedisPoolConfig();
+        config.setMaxTotal(maxTotal);// 最大连接数: 5
+        config.setMaxWaitMillis(maxWaitMillis); // 最长等待时间: 2000ms
+        pool = new JedisPool(config, host, port);
+    &#125;
+
+    public static Jedis getResource()&#123;
+        return pool.getResource();
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java"> @Test
+    public void method03()&#123;
+        Jedis jedis = JedisUtil.getResource();
+        String s = jedis.get(&quot;gf&quot;);
+        System.out.println(s);
+        jedis.close();
+
+    &#125;
+</code></pre>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Long</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://vegetableDogL.github.io/2020/04/28/Redis/">http://vegetableDogL.github.io/2020/04/28/Redis/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Long</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Redis/">
+                                    <span class="chip bg-color">Redis</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/04/28/Http%E8%AF%B7%E6%B1%82&Request/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Http请求&amp;Request">
+                        
+                        <span class="card-title">Http请求&amp;Request</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Http请求&Request&中文乱码
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-28
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/JavaWeb/" class="post-category">
+                                    JavaWeb
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JavaWeb/">
+                        <span class="chip bg-color">JavaWeb</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/04/28/Response&ServletContext/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Response&amp;ServletContext">
+                        
+                        <span class="card-title">Response&amp;ServletContext</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Http响应报文+respones设置请求行，请求头，请求体+回应中文乱码+定时刷新+重定向+ServletContext+文件上传
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/JavaWeb/" class="post-category">
+                                    JavaWeb
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JavaWeb/">
+                        <span class="chip bg-color">JavaWeb</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">John Doe</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/vegetableDogL" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1694162702@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1694162702" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1694162702" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

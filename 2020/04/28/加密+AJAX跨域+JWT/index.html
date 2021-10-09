@@ -1,0 +1,1935 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="加密+AJAX跨域+JWT, 龙哥专用笔记">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>加密+AJAX跨域+JWT | 龙哥专用笔记</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">龙哥专用笔记</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">龙哥专用笔记</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">加密+AJAX跨域+JWT</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/JavaWeb/">
+                                <span class="chip bg-color">JavaWeb</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/JavaWeb/" class="post-category">
+                                JavaWeb
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-04-28
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="1、加密-AJAX跨域-JWT"><a href="#1、加密-AJAX跨域-JWT" class="headerlink" title="1、加密+AJAX跨域+JWT"></a>1、加密+AJAX跨域+JWT</h1><h2 id="1、加密算法"><a href="#1、加密算法" class="headerlink" title="1、加密算法"></a>1、加密算法</h2><h3 id="1、加密算法分类"><a href="#1、加密算法分类" class="headerlink" title="1、加密算法分类"></a>1、加密算法分类</h3><h4 id="1、对称加密算法"><a href="#1、对称加密算法" class="headerlink" title="1、对称加密算法"></a>1、对称加密算法</h4><blockquote>
+<ol>
+<li><p><strong>对称加密算法</strong> 又称为 <strong>共享密钥加密算法</strong>。在 <strong>对称加密算法</strong> 中，使用的密钥只有一个，<strong>发送</strong> 和 <strong>接收</strong> 双方都使用这个密钥对数据进行 <strong>加密</strong> 和 <strong>解密</strong>。这就要求加密和解密方事先都必须知道加密的密钥。</p>
+</li>
+<li><p><strong>对称加密</strong> 算法主要有 <code>DES</code>、<code>3DES</code>、<code>AES</code> 等</p>
+</li>
+</ol>
+</blockquote>
+<p><img src="https://i.loli.net/2021/09/19/dTzngQuL2mEhZvR.png" alt="image-20210919173839797"></p>
+<pre><code class="markdown">1. 数据加密过程：在对称加密算法中，数据发送方 将 明文 (原始数据) 和 加密密钥 一起经过特殊 加密处理，生成复杂的 加密密文 进行发送。
+
+2. 数据解密过程：数据接收方 收到密文后，若想读取原数据，则需要使用 加密使用的密钥 及相同算法的 逆算法 对加密的密文进行解密，才能使其恢复成 可读明文。
+</code></pre>
+<pre><code class="markdown"># 例子
+1. 甲方生成一个密钥K
+2. 甲方用这个密钥K将明文A进行加密为密文B
+3. 那么这个密文B,只有使用这个密钥K(甲方提供)才能解密
+</code></pre>
+<h4 id="2、非对称加密算法"><a href="#2、非对称加密算法" class="headerlink" title="2、非对称加密算法"></a>2、非对称加密算法</h4><blockquote>
+<ol>
+<li><p><strong>非对称加密算法</strong>，又称为 <strong>公开密钥加密算法</strong>。它需要两个密钥，一个称为 <strong>公开密钥</strong> (<code>public key</code>)，即 <strong>公钥</strong>，另一个称为 <strong>私有密钥</strong> (<code>private key</code>)，即 <strong>私钥</strong>。</p>
+</li>
+<li><p>因为 <strong>加密</strong> 和 <strong>解密</strong> 使用的是两个不同的密钥，所以这种算法称为 <strong>非对称加密算法</strong>。</p>
+</li>
+<li><p><strong>非对称算法</strong> 主要有 <code>RSA</code>、<code>DSA</code> 等.</p>
+</li>
+</ol>
+</blockquote>
+<p><img src="https://i.loli.net/2021/09/19/sbgUQkhZo7OuE84.png" alt="image-20210919174431952"></p>
+<pre><code class="markdown">1. 如果使用公钥对数据进行加密，只有用对应的私钥才能进行解密。
+2. 如果使用私钥对数据进行加密，只有用对应的公钥才能进行解密。
+</code></pre>
+<p> <strong>对称和非对称算法比较:</strong></p>
+<pre><code class="markdown"># 对称算法
+1. 密钥管理：比较难，不适合互联网，一般用于内部系统(因为加解密用的密钥都是同一把,一旦泄露就完蛋了)
+2. 安全性：中
+3. 加密速度：快,适合大数据量的加解密处理
+# 非对称算法
+1. 密钥管理：密钥容易管理(私钥只要保存好就没事了)
+2. 安全性：高
+3. 加密速度：比较慢，适合 小数据量 加解密或数据签名
+</code></pre>
+<h4 id="3、消息摘要"><a href="#3、消息摘要" class="headerlink" title="3、消息摘要"></a>3、消息摘要</h4><blockquote>
+<ol>
+<li><p><strong>消息摘要算法</strong>的主要特征是<strong>加密</strong>过程不需要密钥，并且经过加密的数据无法被解密，只有输入相同的明文数据经过相同的消息摘要算法才能得到相同的密文.</p>
+</li>
+<li><p>不需要密钥,且不可逆</p>
+</li>
+<li><p>消息摘要算法有<strong>MD5</strong>和SHA等…</p>
+</li>
+</ol>
+</blockquote>
+<pre><code class="markdown"># 例子: md5算法
+1. 明文: 123 
+2. 密文: 202cb962ac59075b964b07152d234b70
+3. 用户注册的时候: 将用户输入的明文密码经过md5算法之后变成密文,然后保存到数据库
+4. 用户登录的时候: 将用户输入的明文密码经过md5算法之后变成密文,跟数据库中的密码进行比较
+5. 好处: 由于md5算法的不可逆性,除了用户本人, 别人就算知道密文,也无法得知明文,这样提高了密码的安全性
+</code></pre>
+<h2 id="2、ajax跨域请求"><a href="#2、ajax跨域请求" class="headerlink" title="2、ajax跨域请求"></a>2、ajax跨域请求</h2><h3 id="1、前后端分离-集群"><a href="#1、前后端分离-集群" class="headerlink" title="1、前后端分离/集群"></a>1、前后端分离/集群</h3><p>在目前Web 开发中, 前端后端有两种协作模式，分别是: </p>
+<ol>
+<li>服务端渲染</li>
+<li><strong>前后端分离(目前主流)</strong></li>
+</ol>
+<h4 id="1、服务端渲染"><a href="#1、服务端渲染" class="headerlink" title="1、服务端渲染"></a>1、服务端渲染</h4><pre><code class="markdown"># 特点
+    1. 所有的web资源都放在一起, 由同一个服务器进行统一管理（前后端代码必须放到一起）
+    2. 页面和页面中使用的数据，由服务器组装，最后将完整的HTML页面响应给客户端
+    
+# 优点
+    1. 前端耗时少。因为服务器端负责动态生成 HTML 内容，浏览器只需要直接渲染页面即可。
+    2. 有利于SEO（搜索引擎优化）。因为服务器端响应的是完整的 HTML 页面内容，所以爬虫更容易爬取获得信息，更有利于 SEO。
+    
+# 缺点
+    1. 占用服务器端资源。即服务器端完成 HTML 页面内容的拼接，如果请求较多，会对服务器造成一定的访问压力。
+    2. 不利于分工合作，开发效率低。使用服务器端渲染，则不容易进行分工合作，尤其对于前端复杂度高的项目，不利于项目高效开发。
+</code></pre>
+<h4 id="2、前后端分离"><a href="#2、前后端分离" class="headerlink" title="2、前后端分离"></a>2、前后端分离</h4><pre><code class="markdown"># 特点
+    - 依赖于Ajax技术。
+    - 后端不提供完整的 HTML 页面内容，而 是提供一些 API 接口
+    - 前端通过 Ajax 调用后端提供的 API 接口，拿到 json 数据 之后再在前端进行 HTML 页面的拼接，最终展示在浏览器上。
+    - 前端和后端是两个项目, 一般会分别部署
+    
+# 优点：
+    - 开发体验好。前端专注于 UI 页面的开发，后端专注于api 的开发，且前端有更多的选择性。
+    - 用户体验好。Ajax 技术的广泛应用，极大的提高了用户的体验，可以轻松实现页面的局部刷新。
+    - 减轻了服务器端的渲染压力。因为页面最终是在每个用户的浏览器中生成的。
+    
+# 缺点
+    不利于SEO。因为完整的 HTML 页面需要在客户端动态拼接完成，所以爬虫对无法爬取页面的有效信息。(解决方案:利用 Vue、React 等前端框架的 **SSR** (server side render)技术能够很好的解决 SEO 问题!)
+</code></pre>
+<h3 id="2、ajax跨域请求受限"><a href="#2、ajax跨域请求受限" class="headerlink" title="2、ajax跨域请求受限"></a>2、ajax跨域请求受限</h3><h4 id="1、-跨域请求"><a href="#1、-跨域请求" class="headerlink" title="1、 跨域请求"></a>1、 跨域请求</h4><p>​    <strong>跨域请求</strong>： 当前发起请求的域与该请求指向的资源所在的域不一样。</p>
+<p>​    <strong>同域</strong>：  协议+域名+端口号都相同才是同域    </p>
+<pre><code class="markdown"> 1. 前端和后端项目分别部署到服务器A和服务器B， 浏览器或客户端首先获取到服务器A的网页，然后从网页上再发起一个请求到服务器B， 因为服务器A和服务器B的域不相同，那么这个请求就是跨域请求了。
+</code></pre>
+<h4 id="2、同源策略"><a href="#2、同源策略" class="headerlink" title="2、同源策略"></a>2、同源策略</h4><blockquote>
+<ol>
+<li><p>出于安全方面的考虑（比如CSRF攻击），通常浏览器会对上面提到的跨域请求作出限制</p>
+</li>
+<li><p>同源策略(Same-origin Policy) 是浏览器对跨域请求进行控制的一种基本的安全策略。</p>
+</li>
+</ol>
+</blockquote>
+<pre><code class="markdown"># 同源策略的限制
+1. 限制来自不同源的document或脚本，对当前document读取或设置某些属性
+2. 禁止ajax直接发起跨域HTTP请求（其实可以发送请求，但是返回的结果被浏览器拦截了，造成请求失败）
+3. 禁止cookie跨域
+4. &lt;a&gt;&lt;form&gt;&lt;script&gt;&lt;img&gt;&lt;link&gt;等带有src属性的标签可以从不同的域加载和执行资源(允许跨域)
+</code></pre>
+<h4 id="3、ajax跨域实现方案—CORS"><a href="#3、ajax跨域实现方案—CORS" class="headerlink" title="3、ajax跨域实现方案—CORS"></a>3、ajax跨域实现方案—CORS</h4><pre><code class="markdown"># 常见的AJAX跨域请求的实现方式:
+1. JSONP
+2. nginx代理跨域
+3. 跨域资源共享（CORS）
+</code></pre>
+<blockquote>
+<ol>
+<li><p><strong>CORS</strong>是一个W3C标准，全称是”跨域资源共享”（Cross-origin resource sharing）。它允许浏览器向跨源服务器，发出ajax请求，从而克服了AJAX只能同源使用的限制。</p>
+</li>
+<li><p>整个CORS通信过程，都是浏览器自动完成，不需要用户参与。对于开发者来说，CORS通信与同源的AJAX通信没有差别，代码完全一样。浏览器一旦发现AJAX请求跨源，就会自动添加一些附加的头信息，有时还会多出一次附加的请求，但用户不会有感觉。</p>
+</li>
+</ol>
+<p>​    3. 实现CORS通信的关键是服务器。只要服务器实现了CORS接口，就可以跨源通信。    </p>
+</blockquote>
+<h5 id="1、两种请求"><a href="#1、两种请求" class="headerlink" title="1、两种请求"></a>1、两种请求</h5><blockquote>
+<p>浏览器将CORS请求分成两类：<strong>简单请求</strong>（simple request）和<strong>非简单请求</strong>（not-so-simple request）。</p>
+</blockquote>
+<p>只要同时满足以下两大条件，就属于简单请求。</p>
+<pre><code class="markdown">1. 请求方法是以下三种方法之一：
+    1). HEAD
+    2). GET
+    3). POST
+2. HTTP的请求头（Header）：
+    1). 无自定义头 
+    2). Content-Type为以下几种：
+          text/plain    (纯文本 txt)
+          multipart/form-data  (上传文件用的)
+          application/x-www-form-urlencoded (参数name=value&amp;name=value)  -&gt; 表单提交
+</code></pre>
+<p>​    只要不同时满足以上两个条件，那么就属于非简单请求。</p>
+<pre><code class="markdown"># 开发中常见的【非简单请求】出现场景：
+1. 请求方式为put，delete的ajax请求
+            Restful风格 (springMVC)
+2. 发送json格式参数的ajax请求
+        Content-Type: application/json;charset=UTF-8
+3. 带自定义请求头的ajax请求
+            token信息放在请求头中
+</code></pre>
+<p>​    之所以区分简单请求和非简单请求， 是因为浏览器对这两种请求的处理，是不一样的。</p>
+<h5 id="2、简单请求"><a href="#2、简单请求" class="headerlink" title="2、简单请求"></a>2、简单请求</h5><p><strong>对于简单请求，浏览器直接发出CORS请求。</strong></p>
+<p>​    浏览器发现这次跨源AJAX请求是简单请求，就自动在头信息之中，添加一个<code>Origin</code>字段。（浏览器会检测请求的响应头，如果没有特定的响应头就会报错，实际是访问了，但浏览器将信息给抛弃了）。</p>
+<p>下面是一个简单请求的请求报文 ：</p>
+<pre><code class="markdown"># 请求报文
+POST /cors01/MyServlet HTTP/1.1
+Host: localhost:8080
+Content-Type: application/x-www-form-urlencoded
+Origin: http://localhost:63342
+...
+</code></pre>
+<p>​    上面的头信息中，<code>Origin</code>字段用来说明，本次请求来自哪个源（协议 + 域名 + 端口）。服务器根据这个值，决定是否同意这次请求。</p>
+<p>​    如果<code>Origin</code>指定的源，不在许可范围内，服务器会返回一个正常的HTTP响应。浏览器发现，这个响应的头信息没有包含<code>Access-Control-Allow-Origin</code>字段（详见下文），就知道出错了，从而抛出一个错误。注意，这种错误无法通过状态码识别，因为HTTP回应的状态码有可能是200。</p>
+<p>​    如果<code>Origin</code>指定的域名在许可范围内，服务器返回的响应，响应报文中至少多出一个头信息字段。</p>
+<pre><code class="markdown"># 响应报文
+Access-Control-Allow-Origin: http://localhost:63342
+</code></pre>
+<p>Access-Control-Allow-Origin(访问控制允许源)的值要么是请求时<code>Origin</code>字段的值，要么是一个<code>*</code>，表示接受任意域名的请求。</p>
+<h6 id="1、解决方案"><a href="#1、解决方案" class="headerlink" title="1、解决方案"></a>1、解决方案</h6><pre><code class="markdown"># 解决方案（在servlet或filtter中修改响应头信息）
+
+        // 设置允许跨域
+         //表示允许请求时的origin值(发出请求的网址)
+        response.setHeader(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);  //`*`，表示接受任意域名的请求
+</code></pre>
+<h5 id="3、非简单请求"><a href="#3、非简单请求" class="headerlink" title="3、非简单请求"></a>3、非简单请求</h5><blockquote>
+<p>非简单请求的CORS请求，浏览器会在正式通信之前，增加一次HTTP查询请求，称为”预检”请求（preflight request）。</p>
+<p>浏览器先询问服务器，当前网页所在的域名是否在服务器的许可名单之中，以及可以使用哪些HTTP请求方式和请求头字段。只有得到肯定答复，浏览器才会发出正式的ajax请求，否则就报错。</p>
+</blockquote>
+<h6 id="1、预检请求"><a href="#1、预检请求" class="headerlink" title="1、预检请求"></a>1、预检请求</h6><pre><code class="markdown"># 请求报文(预检请求中描述ajax正式请求的信息)
+
+POST /cors01/MyServlet HTTP/1.1
+Host: localhost:8080
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: content-type
+Origin: http://localhost:63342
+...
+</code></pre>
+<p>“预检”请求用的请求方法是<code>OPTIONS</code>，表示这个请求是用来询问的。头信息里面，关键字段是<code>Origin</code>，表示请求来自哪个源。</p>
+<p>除了<code>Origin</code>字段，”预检”请求的头信息包括两个特殊字段。</p>
+<p><strong>（1）Access-Control-Request-Method</strong></p>
+<p>该字段是必须的，用来列出浏览器的CORS请求会用到哪些HTTP方法，上例是<code>POST</code>。</p>
+<p><strong>（2）Access-Control-Request-Headers</strong></p>
+<p>该字段是一个逗号分隔的字符串，指定浏览器CORS请求会额外发送的头信息字段，上例是<code>content-type</code>。</p>
+<p>服务器收到”预检”请求以后，检查了<code>Origin</code>、<code>Access-Control-Request-Method</code>和<code>Access-Control-Request-Headers</code>字段以后，根据已有的设置， 判断是否允许跨源请求，最后做出响应。</p>
+<p>​    下面是预检请求对应的一个响应报文片段</p>
+<pre><code class="markdown"># 响应报文
+Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE
+Access-Control-Allow-Headers:content-type
+Access-Control-Allow-Origin: *
+Access-Control-Max-Age: 3600
+***
+</code></pre>
+<p><strong>（1）Access-Control-Allow-Methods</strong></p>
+<p>​    该字段必需，它的值是逗号分隔的一个字符串，表明服务器支持的所有跨域请求的方法。注意，返回的是所有支持的方法，而不单是浏览器请求的那个方法。这是为了避免多次”预检”请求。</p>
+<p><strong>（2）Access-Control-Allow-Headers</strong></p>
+<p>​    如果浏览器请求包括<code>Access-Control-Request-Headers</code>字段，则<code>Access-Control-Allow-Headers</code>字段是必需的。它也是一个逗号分隔的字符串，表明服务器支持的所有头信息字段，不限于浏览器在”预检”中请求的字段。</p>
+<p><strong>（3）Access-Control-Max-Age</strong></p>
+<p>​    该字段可选，用来指定本次预检请求的有效期，单位为秒。上面结果中，有效期是1个小时（3600秒），即允许缓存该条回应1个小时，在此期间，不用发出另一条预检请求。</p>
+<h6 id="2、正式请求"><a href="#2、正式请求" class="headerlink" title="2、正式请求"></a>2、正式请求</h6><p>一旦服务器通过了”预检”请求，以后每次浏览器正常的CORS请求，就都跟简单请求一样，会有一个<code>Origin</code>头信息字段。服务器的回应，也都会有一个<code>Access-Control-Allow-Origin</code>头信息字段。</p>
+<pre><code class="markdown"># 正式请求的响应报文
+HTTP/1.1 200
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE
+Access-Control-Max-Age: 3600
+Access-Control-Allow-Headers: content-type
+Access-Control-Allow-Credentials: true
+Content-Type: application/json;charset=utf-8
+Content-Length: 7
+Date: Fri, 19 Mar 2021 10:03:49 GMT
+</code></pre>
+<p>​    如果预检请求没有通过，那么在浏览器控制台会看到报错信息。</p>
+<h6 id="3、解决方法"><a href="#3、解决方法" class="headerlink" title="3、解决方法"></a>3、解决方法</h6><blockquote>
+<p>在过滤器中修改response响应头，或者在servlet中的dooptions()方法中修改，因为预检请求的请求方法是options。</p>
+</blockquote>
+<pre><code class="java">    @Override
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException &#123;
+
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+        HttpServletResponse response = (HttpServletResponse) servletResponse;
+
+        response.setStatus(200); // 设置状态码
+        response.setContentType(&quot;application/json;charset=utf-8&quot;);// 设置返回类型
+        // 设置允许跨域
+            //表示允许请求时的origin值(发出请求的网址)
+        response.setHeader(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);
+        //该字段必需，它的值是逗号分隔的一个字符串，表明服务器支持的所有跨域请求的方法。
+        response.setHeader(&quot;Access-Control-Allow-Methods&quot;, &quot;POST, GET, OPTIONS, DELETE&quot;);
+//        如果浏览器请求包括Access-Control-Request-Headers字段，
+                //  则Access-Control-Allow-Headers字段是必需的。
+        response.setHeader(&quot;Access-Control-Allow-Headers&quot;, &quot;content-type&quot;);
+                //如果需要多个,可以加
+        //        response.setHeader(&quot;Access-Control-Allow-Headers&quot;, &quot;content-type,authorization&quot;);
+        //该字段可选，用来指定本次预检请求的有效期，单位为秒。上面结果中，有效期是1分钟（60秒），
+        // 即允许缓存该条回应1个小时，在此期间，不用发出另一条预检请求。
+        response.setHeader(&quot;Access-Control-Max-Age&quot;, &quot;60&quot;);
+        
+        //测试code
+        filterChain.doFilter(servletRequest,servletResponse);
+    &#125;
+</code></pre>
+<h2 id="3、跨域身份认证-JWT"><a href="#3、跨域身份认证-JWT" class="headerlink" title="3、跨域身份认证_JWT"></a>3、跨域身份认证_JWT</h2><blockquote>
+<p>JSON WEB Token（JWT），是一种基于JSON的、用于在网络上声明某种主张的令牌（token）， 也是目前最流行的跨域身份认证解决方案之一。</p>
+</blockquote>
+<h3 id="1、Token介绍"><a href="#1、Token介绍" class="headerlink" title="1、Token介绍"></a>1、Token介绍</h3><pre><code class="markdown">1. Token的引入：Token是在客户端频繁向服务端请求数据，服务端频繁的去数据库查询用户名和密码并进行对比，判断用户名和密码正确与否，并作出相应提示，在这样的背景下，Token便应运而生。
+
+2. Token的定义：Token是服务端生成的一串字符串(服务器可以鉴别token的有效期和完整性)，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个Token便将此Token返回给客户端，以后客户端只需带上这个Token前来请求数据即可，无需再次带上用户名和密码。
+
+3. 使用Token的目的：Token的目的是为了减轻服务器的压力，减少频繁的查询数据库，使服务器更加健壮。
+</code></pre>
+<h3 id="2、JWT认证流程"><a href="#2、JWT认证流程" class="headerlink" title="2、JWT认证流程"></a>2、JWT认证流程</h3><p><img src="https://i.loli.net/2021/09/19/SjebHN9X5DFfok4.png" alt="image-20210919194018126"></p>
+<pre><code class="markdown">1. 前端提交用户名和密码，服务端验证
+2. 服务端验证通过后，生成token，返回给前端
+3. 前端自行保存token（cookie或localstorage）
+4. 前端登陆成功后，每次请求要在请求头带上Authorization ，值是token
+5. 服务端会校验token有效期和完整性,校验通过就知道用户身份,然后获得授权允许访问,否则需要前端重新登录
+</code></pre>
+<h3 id="3、JWT-令牌结构"><a href="#3、JWT-令牌结构" class="headerlink" title="3、JWT 令牌结构"></a>3、JWT 令牌结构</h3><p>Token真正样子如下所示</p>
+<p><img src="https://i.loli.net/2021/09/19/IAtHGjwiWDoXChg.png" alt="1615879393106">         </p>
+<p>​    它是一个很长的字符串，中间用点（<code>.</code>）分隔成三个部分。注意，JWT 内部是没有换行的，这里只是为了便于展示，将它写成了几行。</p>
+<p>JWT 的三个部分依次如下: </p>
+<pre><code class="markdown">1. Header（头部）: 用于描述 JWT 的元数据（json字符串）
+2. Payload（负载）: 用来存放实际需要传递的数据（json字符串）
+3. Signature（签名）: 对前两部分的签名，防止数据篡改（由前两块信息加密后的密文）
+</code></pre>
+<p>写成一行，就是下面的样子:</p>
+<pre><code class="markdown">Header.Payload.Signature
+</code></pre>
+<h4 id="1、Header"><a href="#1、Header" class="headerlink" title="1、Header"></a>1、Header</h4><p>Header 部分是一个 JSON 对象，描述 JWT 的元数据，通常是下面的样子。</p>
+<blockquote>
+<pre><code class="javascript">&#123;
+&quot;alg&quot;: &quot;HS256&quot;,
+&quot;typ&quot;: &quot;JWT&quot;
+&#125;
+</code></pre>
+</blockquote>
+<p>​    上面代码中，<code>alg</code>属性表示签名的算法（algorithm），默认是 HMAC SHA256（写成 HS256,这是一种对称加密算法）；<code>typ</code>属性表示这个令牌（token）的类型（type），JWT 令牌统一写为<code>JWT</code>。</p>
+<p>最后，将上面的 JSON 对象使用 Base64URL 算法转成字符串。</p>
+<blockquote>
+<p>备注: Base64URL编码基本跟 Base64 算法基本类似，但有一些小的不同。</p>
+<p>JWT 作为一个令牌（token），有些场合可能会放到 URL（比如 api.example.com/?token=xxx）。Base64 有三个字符<code>+</code>、<code>/</code>和<code>=</code>，在 URL 里面有特殊含义，所以要被替换掉：<code>=</code>被省略、<code>+</code>替换成<code>-</code>，<code>/</code>替换成<code>_</code> 。这就是 Base64URL 算法。</p>
+</blockquote>
+<h4 id="2-Payload"><a href="#2-Payload" class="headerlink" title="2 Payload"></a>2 Payload</h4><p>Payload 部分也是一个 JSON 对象，用来存放实际需要传递的数据。JWT 规定了7个官方字段，可选非必须。</p>
+<blockquote>
+<ul>
+<li>iss (issuer)：签发人</li>
+<li>exp (expiration time)：过期时间</li>
+<li>sub (subject)：主题</li>
+<li>aud (audience)：受众</li>
+<li>nbf (Not Before)：生效时间</li>
+<li>iat (Issued At)：签发时间</li>
+<li>jti (JWT ID)：编号</li>
+</ul>
+</blockquote>
+<p>除了官方字段，你还可以在这个部分定义私有字段，下面就是一个例子。</p>
+<pre><code class="json">&#123;
+  &quot;jti&quot;: &quot;657478e3-c1ba-4b93-bdfa-ad59583712d1&quot;,    
+  &quot;iss&quot;: &quot;heima&quot;,
+  &quot;iat&quot;: &quot;1615885608000&quot;,
+  &quot;exp&quot;: &quot;1615885609000&quot;,
+  &quot;userId&quot;: &quot;9527&quot;    
+&#125;
+</code></pre>
+<p>前几个是官方字段,最后一个id是自定义的字段, 这个 JSON 对象也要使用 Base64URL 算法转成字符串。</p>
+<p>注意：对于已签名的令牌，此信息尽管可以防止篡改，但任何人都可以读取。除非将其加密，否则请勿将机密信息放入JWT的Header和Payload中。</p>
+<h4 id="3-Signature"><a href="#3-Signature" class="headerlink" title="3 Signature"></a>3 Signature</h4><p>​    Signature 部分是对前两部分的签名，防止数据篡改。</p>
+<p>​    首先，需要指定一个密钥（secret）。这个密钥只有服务器才知道，不能泄露给用户。然后，使用 Header 里面指定的签名算法（默认是 HMAC SHA256,这是一种对称加密算法），按照下面的公式产生签名。</p>
+<pre><code class="markdown">HMACSHA256(
+  base64UrlEncode(header) + &quot;.&quot; +
+  base64UrlEncode(payload),
+  secret)
+</code></pre>
+<p>​    算出签名以后，把 Header、Payload、Signature 三个部分拼成一个字符串，每个部分之间用”点”（<code>.</code>）分隔，就可以返回给用户。</p>
+<h2 id="4、JWT代码实现"><a href="#4、JWT代码实现" class="headerlink" title="4、JWT代码实现"></a>4、JWT代码实现</h2><h3 id="4-1-服务器生成token"><a href="#4-1-服务器生成token" class="headerlink" title="4.1 服务器生成token"></a>4.1 服务器生成token</h3><blockquote>
+<p>第一步: pom文件中导入jar包依赖</p>
+<p>第二步: 编写AppJwtUtil的工具类</p>
+<p>第三步: 在用户第一次登录成功时,创建token并响应给浏览器</p>
+</blockquote>
+<p>第一步: pom文件中导入jar包依赖</p>
+<pre><code class="xml">    &lt;!--JWT--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;
+            &lt;artifactId&gt;jjwt&lt;/artifactId&gt;
+            &lt;version&gt;0.9.1&lt;/version&gt;
+        &lt;/dependency&gt;
+</code></pre>
+<p>第二步: 编写工具类</p>
+<pre><code class="java">package com.itheima.case2.utils;
+
+import io.jsonwebtoken.*;
+import sun.misc.BASE64Encoder;
+
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
+import java.util.*;
+
+public class AppJwtUtil &#123;
+
+    // TOKEN的有效期一小时（S）
+    private static final int TOKEN_TIME_OUT = 3_600;
+    // 密钥,不能泄露
+    private static final String TOKEN_ENCRY_KEY = &quot;MDk4ZjZiY2Q0NjIxZDM3M2NhZGU0ZTgzMjYyN2I0ZjY&quot;;
+
+    /*
+        获取token方法 :
+            userId 是要存到token的用户信息， 如有需要可以添加更多
+      */
+    public static String getToken(Integer userId)&#123;
+        Map&lt;String, Object&gt; claimMaps = new HashMap&lt;&gt;();
+        claimMaps.put(&quot;userId&quot;,userId);
+        long currentTime = System.currentTimeMillis();
+        return Jwts.builder()
+                .setId(UUID.randomUUID().toString()) //jwt编号:随机产生
+                .setIssuedAt(new Date(currentTime))  //签发时间
+                .setIssuer(&quot;heima&quot;) //签发者信息
+                .setExpiration(new Date(currentTime + TOKEN_TIME_OUT * 1000))  //过期时间戳
+                .addClaims(claimMaps) //自定义
+                .signWith(SignatureAlgorithm.HS256, generalKey()) //加密方式
+                .compact();
+    &#125;
+    /**
+     * 获取token中的claims信息
+     *
+     * @param token
+     * @return
+     */
+    private static Jws&lt;Claims&gt; getJws(String token) &#123;
+            return Jwts.parser()
+                    .setSigningKey(generalKey())
+                    .parseClaimsJws(token);
+    &#125;
+    /**
+     * 获取payload body信息(指的是tocken中Payload部分)
+     * @param token
+     * @return Claims 是Map
+     */
+    public static Claims getClaimsBody(String token) &#123;
+        try &#123;
+            return getJws(token).getBody();
+        &#125;catch (ExpiredJwtException e)&#123;
+            return null;
+        &#125;
+    &#125;
+    public static JwsHeader getClaimsHeader(String token) &#123;
+        try &#123;
+            return getJws(token).getHeader();
+        &#125;catch (ExpiredJwtException e)&#123;
+            return null;
+        &#125;
+    &#125;
+
+    public static String getClaimsSignature(String token) &#123;
+        try &#123;
+            return getJws(token).getSignature();
+        &#125;catch (ExpiredJwtException e)&#123;
+            return null;
+        &#125;
+    &#125;
+
+
+    /**
+     *
+     * 检查token
+     *      1. 检查tocken的完整性和有效期
+     *      2. 检查失败会报错
+     *      3. 检查成功返回tocken的playload内容
+     */
+    public static Claims checkToken(String token) &#123;
+        try &#123;
+            Claims claims = getClaimsBody(token);
+            if(claims==null)&#123;
+               throw new RuntimeException(&quot;token解析失败&quot;);
+            &#125;
+            return claims;
+        &#125; catch (ExpiredJwtException ex) &#123;
+            throw new RuntimeException(&quot;token已经失效&quot;);
+        &#125;catch (Exception e)&#123;
+            throw new RuntimeException(&quot;token解析失败&quot;);
+        &#125;
+    &#125;
+
+    /**
+     * 由字符串生成加密key
+     *
+     * @return
+     */
+    public static SecretKey generalKey() &#123;
+        byte[] encodedKey = Base64.getEncoder().encode(TOKEN_ENCRY_KEY.getBytes());
+        /*
+        使用len的第一个len字节构造来自给定字节数组的key ，从offset开始。
+        构成密钥的字节是key[offset]和key[offset+len-1]之间的字节。
+
+        参数
+            key - 密钥的密钥材料。 将复制以offset开头的数组的第一个len字节，以防止后续修改。
+            offset - 密钥材料开始的 key中的偏移量。
+            len - 密钥材料的长度。
+            algorithm - 与给定密钥材料关联的密钥算法的名称。 AES是一种对称加密算法
+         */
+        SecretKey key = new SecretKeySpec(encodedKey, 0, encodedKey.length, &quot;AES&quot;);
+        return key;
+    &#125;
+
+    //测试
+    public static void main(String[] args) &#123;
+        String token = getToken(1);
+        System.out.println(token);
+        Claims claims = checkToken(token);
+
+        byte[] xx = Base64.getUrlDecoder().decode(&quot;eyJqdGkiOiIxZjQwYmVkOC03YjQ5LTRkYmQtYjAyNS02YTM4M2U5ZjM5ZTkiLCJpYXQiOjE2MTgxNTU2MTAsImlzcyI6ImhlaW1hIiwiZXhwIjoxNjE4MTU5MjEwLCJpZCI6MX0&quot;);
+        //&#123;&quot;jti&quot;:&quot;1f40bed8-7b49-4dbd-b025-6a383e9f39e9&quot;,&quot;iat&quot;:1618155610,&quot;iss&quot;:&quot;heima&quot;,&quot;exp&quot;:1618159210,&quot;id&quot;:1&#125;
+        String s = new String(xx);
+        System.out.println(s);
+
+        byte[] yy = Base64.getUrlDecoder().decode(&quot;eyJhbGciOiJIUzI1NiJ9&quot;);
+
+        //&#123;&quot;jti&quot;:&quot;1f40bed8-7b49-4dbd-b025-6a383e9f39e9&quot;,&quot;iat&quot;:1618155610,&quot;iss&quot;:&quot;heima&quot;,&quot;exp&quot;:1618159210,&quot;id&quot;:1&#125;
+        String s2 = new String(yy);
+        //&#123;&quot;alg&quot;:&quot;HS256&quot;&#125;
+        System.out.println(s2);
+
+
+        Object userId = claims.get(&quot;userId&quot;);
+        Object iat = claims.get(&quot;iat&quot;);
+        Object exp  = claims.get(&quot;exp&quot;);
+        Object jti  = claims.get(&quot;jti&quot;);
+        Object sub   = claims.get(&quot;sub&quot;); //没有定义的信息是获取不到的
+        System.out.println(jti);
+        System.out.println(userId);
+        System.out.println(iat);
+        System.out.println(exp);
+        System.out.println(sub);
+
+        JwsHeader header = getClaimsHeader(token);
+        String algorithm = header.getAlgorithm();
+        System.out.println(algorithm);  // HS256
+
+        String claimsSignature = getClaimsSignature(token);
+        System.out.println(claimsSignature);
+
+    &#125;
+&#125;
+</code></pre>
+<p>第三步: 在用户第一次登录成功时,创建tocken并响应给浏览器</p>
+<pre><code class="java">int userId = Integer.parseInt(user.getId());
+ String token = AppJwtUtil.getToken(userId);
+ BaseController.printResult(resp,new Result(true,&quot;登录成功！&quot;, token));
+</code></pre>
+<h3 id="4-2-浏览器保存token"><a href="#4-2-浏览器保存token" class="headerlink" title="4.2 浏览器保存token"></a>4.2 浏览器保存token</h3><p>浏览器保存token可以用cookie或LocalStorage进行保存,我们这里用的是cookie</p>
+<p>第一步: 导入工具cookie.js </p>
+<pre><code class="js">//保存cookie
+function saveCookie (name, value) &#123;
+    if (value) &#123;
+        var exp = new Date()
+        //设置到期时间（一个小时）
+        exp.setTime(exp.getTime() + 60 * 60 * 1000)
+        document.cookie = name + &#39;=&#39; + encodeURI(value) + &#39;;expires=&#39; + exp.toGMTString()
+    &#125;
+&#125;
+//删除cookie
+function delCookie (name) &#123;
+    var exp = new Date()
+    exp.setTime(exp.getTime() - 1)
+    var cval = setCookie(name)
+    if (cval &amp;&amp; cval != null) &#123;
+        document.cookie = name + &#39;=&#39; + cval + &#39;;expires=&#39; + exp.toGMTString()
+    &#125;
+&#125;
+</code></pre>
+<p>第二步: 在登录成功接收到响应时,保存cookie</p>
+<pre><code class="javascript">saveCookie(&quot;auth_token&quot;,resp.data.result)
+</code></pre>
+<h3 id="4-3-浏览器请求头中携带token"><a href="#4-3-浏览器请求头中携带token" class="headerlink" title="4.3 浏览器请求头中携带token"></a>4.3 浏览器请求头中携带token</h3><p>​    登录成功之后,后续ajax请求需要携带token.</p>
+<p>第一步: 设置axios拦截器 (auth_interceptor.js)</p>
+<pre><code class="js">//每次axios请求都会进行拦截
+axios.interceptors.request.use(function (req) &#123;
+    // 在发送请求之前,获取浏览器cookie中的token,加入到请求头中
+    let token=getCookie(&quot;auth_token&quot;);
+    console.log(&quot;auth&quot;);
+    if(token)&#123;
+        req.headers.Authorization=token;
+    &#125;
+    // alert(&#39;token不存在，请重新登录！&#39;);
+    // window.top.location.href = &quot;login.html&quot;;
+    return req;
+&#125;, function (error) &#123;
+    // 在请求错误时要做的事儿
+    // 该返回的数据则是axios.catch(err)中接收的数据
+    return Promise.reject(error);
+&#125;);
+//响应拦截
+axios.interceptors.response.use((response) =&gt; &#123;
+    // 请求成功对响应数据做处理
+    // 该返回的数据则是axios.then(res)中接收的数据
+    if (response &amp;&amp; response.data) &#123;
+        if (!response.data.flag) &#123;
+            alert(response.data.message);
+            window.top.location = &quot;login.html&quot;
+        &#125; else &#123;
+            return response;
+        &#125;
+    &#125; else &#123;
+        return response;
+    &#125;
+&#125;, function (error) &#123;
+    // 在请求错误时要做的事儿
+    // 该返回的数据则是axios.catch(err)中接收的数据
+    console.log(error)
+    return Promise.reject(error)
+&#125;);
+
+function getCookie(name) &#123;
+    var prefix = name + &quot;=&quot;
+    var start = document.cookie.indexOf(prefix)
+    if (start == -1) &#123;
+        return null;
+    &#125;
+    var end = document.cookie.indexOf(&quot;;&quot;, start + prefix.length)
+    if (end == -1) &#123;
+        end = document.cookie.length;
+    &#125;
+    var value = document.cookie.substring(start + prefix.length, end)
+    return decodeURI(value);
+&#125;
+</code></pre>
+<p>第二步: 在需要登录权限验证的页面中引入拦截器</p>
+<pre><code class="html">&lt;script src=&quot;js/auth_interceptor.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h3 id="4-4-服务器验证token"><a href="#4-4-服务器验证token" class="headerlink" title="4.4 服务器验证token"></a>4.4 服务器验证token</h3><pre><code class="java">package com.itheima.case2.filter;
+
+
+import com.itheima.case2.pojo.vo.Result;
+import com.itheima.case2.utils.AppJwtUtil;
+import com.itheima.case2.utils.BaseController;
+import io.jsonwebtoken.Claims;
+
+import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+
+
+@WebFilter(urlPatterns = &quot;/*&quot;)
+public class LoginFilter implements Filter &#123;
+
+    // 白名单  在名单上的路径不需要拦截
+    List&lt;String&gt; urlList = Arrays.asList(
+            &quot;/&quot;,
+            &quot;/loginServlet&quot;,
+            &quot;*.html&quot;,
+            &quot;*.js&quot;,
+            &quot;*.css&quot;,
+            &quot;*.png&quot;,
+            &quot;*.jpg&quot;,
+            &quot;/element-ui/*&quot;
+    );
+
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException &#123;
+        System.out.println(&quot;登录过滤器 已经启动啦&quot;);
+    &#125;
+    @Override
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException &#123;
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+        HttpServletResponse response = (HttpServletResponse) servletResponse;
+
+        // 设置允许跨域
+        setCros(response);
+
+        // 查看是否是需要放行的路径,如果是,则放行,如果不是检查用户tocken
+        boolean isExclude = isFilterExcludeRequest(request);
+        if (isExclude)&#123;
+            filterChain.doFilter(servletRequest,servletResponse);
+            return;
+        &#125;
+        // 检查用户token
+        String token = request.getHeader(&quot;Authorization&quot;);
+        if(token == null || &quot;&quot;.equals(token))&#123;
+            BaseController.printResult(response,new Result(false,&quot;token不存在！&quot;));
+            return;
+        &#125;
+        // 解析token
+        try &#123;
+            Claims claims = AppJwtUtil.checkToken(token);
+            Integer id = (Integer)claims.get(&quot;userId&quot;);
+            System.out.println(&quot;用户id:&quot; + id);
+            filterChain.doFilter(servletRequest,servletResponse);
+            return;
+        &#125; catch (Exception e) &#123;
+            BaseController.printResult(response,new Result(false,&quot;token过期或无效！&quot;));
+        &#125;
+    &#125;
+
+    private void setCros(HttpServletResponse response) &#123;
+        response.setHeader(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);
+        response.setHeader(&quot;Access-Control-Allow-Methods&quot;, &quot;POST, GET, OPTIONS, DELETE&quot;);
+        response.setHeader(&quot;Access-Control-Max-Age&quot;, &quot;3600&quot;);
+        //自定义Authorization请求头用于发送token
+        response.setHeader(&quot;Access-Control-Allow-Headers&quot;, &quot;content-type,Authorization&quot;);
+    &#125;
+
+    /**
+     * 判断是否是 过滤器直接放行的请求
+     * &lt;br/&gt;主要用于静态资源的放行
+     * @return
+     */
+    private boolean isFilterExcludeRequest(HttpServletRequest request) &#123;
+        if(null != urlList &amp;&amp; urlList.size() &gt; 0) &#123;
+            String url = request.getRequestURI();
+            for (String ecludedUrl : urlList) &#123;
+                if (ecludedUrl.startsWith(&quot;*.&quot;)) &#123;
+                    // 如果配置的是后缀匹配, 则把前面的*号干掉，然后用endWith来判断
+                    if(url.endsWith(ecludedUrl.substring(1)))&#123;
+                        return true;
+                    &#125;
+                &#125; else if (ecludedUrl.endsWith(&quot;/*&quot;)) &#123;
+                    if(!ecludedUrl.startsWith(&quot;/&quot;)) &#123;
+                        // 前缀匹配，必须要是/开头
+                        ecludedUrl = &quot;/&quot; + ecludedUrl;
+                    &#125;
+                    // 如果配置是前缀匹配, 则把最后的*号干掉，然后startWith来判断
+                    String prffixStr = request.getContextPath() + ecludedUrl.substring(0, ecludedUrl.length() - 1);
+                    if(url.startsWith(prffixStr)) &#123;
+                        return true;
+                    &#125;
+                &#125; else &#123;
+                    // 如果不是前缀匹配也不是后缀匹配,那就是全路径匹配
+                    if(!ecludedUrl.startsWith(&quot;/&quot;)) &#123;
+                        // 全路径匹配，也必须要是/开头
+                        ecludedUrl = &quot;/&quot; + ecludedUrl;
+                    &#125;
+                    String targetUrl = request.getContextPath() + ecludedUrl;
+                    if(url.equals(targetUrl)) &#123;
+                        return true;
+                    &#125;
+                &#125;
+            &#125;
+        &#125;
+        return false;
+    &#125;
+
+    @Override
+    public void destroy() &#123;
+
+    &#125;
+&#125;
+</code></pre>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Long</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://vegetableDogL.github.io/2020/04/28/%E5%8A%A0%E5%AF%86+AJAX%E8%B7%A8%E5%9F%9F+JWT/">http://vegetableDogL.github.io/2020/04/28/%E5%8A%A0%E5%AF%86+AJAX%E8%B7%A8%E5%9F%9F+JWT/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Long</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/JavaWeb/">
+                                    <span class="chip bg-color">JavaWeb</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/04/28/Spring02%20/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Spring02">
+                        
+                        <span class="card-title">Spring02</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            注解开发，JdbcTemplate，Spring整合Junit
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-28
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Spring/" class="post-category">
+                                    Spring
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Spring/">
+                        <span class="chip bg-color">Spring</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/03/27/jQuery+CSS3/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="文字背景粒子特效">
+                        
+                        <span class="card-title">文字背景粒子特效</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            一款jQuery+CSS3的文字背景粒子动画特效，一共6种粒子效果，每种文字背景的粒子效果都不同，有漂浮的有坠落的等等。 
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-27
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF%E7%AF%87/" class="post-category">
+                                    前端篇
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/jQuery-CSS3/">
+                        <span class="chip bg-color">jQuery+CSS3</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%B2%92%E5%AD%90%E7%89%B9%E6%95%88/">
+                        <span class="chip bg-color">粒子特效</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">John Doe</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/vegetableDogL" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1694162702@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1694162702" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1694162702" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
