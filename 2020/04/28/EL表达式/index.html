@@ -477,9 +477,6 @@
         <hr class="clearfix">
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.css">
-        
 
         
 
@@ -487,262 +484,34 @@
             <div id="articleContent">
                 <h1 id="1、EL表达式"><a href="#1、EL表达式" class="headerlink" title="1、EL表达式"></a>1、EL表达式</h1><h2 id="1-2-1-获取域中的值-重要"><a href="#1-2-1-获取域中的值-重要" class="headerlink" title="1.2.1 获取域中的值  (重要!!)"></a>1.2.1 获取域中的值  (重要!!)</h2><p>EL表达式主要简化从域对象（4个域）中获取数据</p>
 <p><strong>语法</strong></p>
-<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token list punctuation">*</span> 标准（了解）
-	<span class="token list punctuation">1.</span> $&#123;pageScope.键名&#125; 
-			从page域中获取指定键名对应的值
-
-<span class="token code keyword">	2. $&#123;requestScope.键名&#125; 
-			从request域中获取指定键名对应的值</span>
-
-<span class="token code keyword">	3. $&#123;sessionScope.键名&#125; 
-			从session域中获取指定键名对应的值</span>
-
-<span class="token code keyword">	4. $&#123;applicationScope.键名&#125; 
-			从servletContext域中获取指定键名对应的值
-		</span>
-<span class="token list punctuation">*</span> 简化（掌握）
-	$&#123;键名&#125;
-		特点：默认从最小域开始找，找到后直接显示，不在继续寻找
-		小结：要求四个域键名唯一
-	<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span> 标准（了解）</span><br><span class="line"><span class="bullet">	1.</span> $&#123;pageScope.键名&#125; </span><br><span class="line"><span class="code">			从page域中获取指定键名对应的值</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="bullet">	2.</span> $&#123;requestScope.键名&#125; </span><br><span class="line"><span class="code">			从request域中获取指定键名对应的值</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="bullet">	3.</span> $&#123;sessionScope.键名&#125; </span><br><span class="line"><span class="code">			从session域中获取指定键名对应的值</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="bullet">	4.</span> $&#123;applicationScope.键名&#125; </span><br><span class="line"><span class="code">			从servletContext域中获取指定键名对应的值</span></span><br><span class="line"><span class="code">		</span></span><br><span class="line"><span class="code">* 简化（掌握）</span></span><br><span class="line"><span class="code">	$&#123;键名&#125;</span></span><br><span class="line"><span class="code">		特点：默认从最小域开始找，找到后直接显示，不在继续寻找</span></span><br><span class="line"><span class="code">		小结：要求四个域键名唯一</span></span><br><span class="line"><span class="code">	</span></span><br></pre></td></tr></table></figure>
 
 
 
-<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;%@ page contentType&#x3D;&quot;text&#x2F;html;charset&#x3D;UTF-8&quot; language&#x3D;&quot;java&quot; %&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Title&lt;&#x2F;title&gt;
-&lt;&#x2F;head&gt;
-&lt;body&gt;
-        &lt;div&gt;
-            &lt;%
-                &#x2F;&#x2F;存值
-                pageContext.setAttribute(&quot;name1&quot;, &quot;value1&quot;);
-                request.setAttribute(&quot;name2&quot;, &quot;value2&quot;);
-                session.setAttribute(&quot;name3&quot;, &quot;value3&quot;);
-                application.setAttribute(&quot;name4&quot;, &quot;value4&quot;);
-
-&#x2F;&#x2F;                pageContext.setAttribute(&quot;name5&quot;, &quot;value11&quot;);
-                request.setAttribute(&quot;name5&quot;, &quot;value22&quot;);
-                session.setAttribute(&quot;name5&quot;, &quot;value33&quot;);
-                application.setAttribute(&quot;name5&quot;, &quot;value44&quot;);
-            %&gt;
-            &lt;%
-                &#x2F;&#x2F;取值
-                Object name2 &#x3D; request.getAttribute(&quot;name2&quot;);
-                out.print(name2);
-            %&gt;
-            $&#123;name2&#125;
-            &lt;hr&gt;
-            &lt;%--
-                EL : 简化java代码书写
-                0. 语法  $&#123;表达式&#125;
-                1. 简化从域对象中取值操作
-                2. 标准语法
-                    requestScope.name2 等价于 request.getAttribute(&quot;name2&quot;)
-                3. 简略语法 (!!!!!!!!!!!!!)
-                    $&#123;域对象的name属性&#125;
-
-                    如果多个域对象的name属性相同,优先级 : 范围越小,优先级越高
-                        pageContext &lt; request &lt; session &lt; servletContext
-                        当前jsp页面    一次请求    一次会话      应用全局
-                                 
-            --%&gt;
-            $&#123;pageScope.name1&#125;
-            $&#123;requestScope.name2&#125;
-            $&#123;sessionScope.name3&#125;
-            $&#123;applicationScope.name4&#125;
-            &lt;hr&gt;
-            $&#123;name1&#125;
-            $&#123;name2&#125;
-            $&#123;name3&#125;
-            $&#123;name4&#125;
-            &lt;hr&gt;
-            $&#123;name5&#125;
-        &lt;&#x2F;div&gt;
-
-&lt;&#x2F;body&gt;
-&lt;&#x2F;html&gt;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="string">&quot;java&quot;</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;%</span><br><span class="line">                <span class="comment">//存值</span></span><br><span class="line">                pageContext.setAttribute(<span class="string">&quot;name1&quot;</span>, <span class="string">&quot;value1&quot;</span>);</span><br><span class="line">                request.setAttribute(<span class="string">&quot;name2&quot;</span>, <span class="string">&quot;value2&quot;</span>);</span><br><span class="line">                session.setAttribute(<span class="string">&quot;name3&quot;</span>, <span class="string">&quot;value3&quot;</span>);</span><br><span class="line">                application.setAttribute(<span class="string">&quot;name4&quot;</span>, <span class="string">&quot;value4&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//                pageContext.setAttribute(&quot;name5&quot;, &quot;value11&quot;);</span></span><br><span class="line">                request.setAttribute(<span class="string">&quot;name5&quot;</span>, <span class="string">&quot;value22&quot;</span>);</span><br><span class="line">                session.setAttribute(<span class="string">&quot;name5&quot;</span>, <span class="string">&quot;value33&quot;</span>);</span><br><span class="line">                application.setAttribute(<span class="string">&quot;name5&quot;</span>, <span class="string">&quot;value44&quot;</span>);</span><br><span class="line">            %&gt;</span><br><span class="line">            &lt;%</span><br><span class="line">                <span class="comment">//取值</span></span><br><span class="line">                Object name2 = request.getAttribute(<span class="string">&quot;name2&quot;</span>);</span><br><span class="line">                out.print(name2);</span><br><span class="line">            %&gt;</span><br><span class="line">            $&#123;name2&#125;</span><br><span class="line">            &lt;hr&gt;</span><br><span class="line">            &lt;%--</span><br><span class="line">                EL : 简化java代码书写</span><br><span class="line">                <span class="number">0.</span> 语法  $&#123;表达式&#125;</span><br><span class="line">                <span class="number">1.</span> 简化从域对象中取值操作</span><br><span class="line">                <span class="number">2.</span> 标准语法</span><br><span class="line">                    requestScope.name2 等价于 request.getAttribute(<span class="string">&quot;name2&quot;</span>)</span><br><span class="line">                <span class="number">3.</span> 简略语法 (!!!!!!!!!!!!!)</span><br><span class="line">                    $&#123;域对象的name属性&#125;</span><br><span class="line"></span><br><span class="line">                    如果多个域对象的name属性相同,优先级 : 范围越小,优先级越高</span><br><span class="line">                        pageContext &lt; request &lt; session &lt; servletContext</span><br><span class="line">                        当前jsp页面    一次请求    一次会话      应用全局</span><br><span class="line">                                 </span><br><span class="line">            --%&gt;</span><br><span class="line">            $&#123;pageScope.name1&#125;</span><br><span class="line">            $&#123;requestScope.name2&#125;</span><br><span class="line">            $&#123;sessionScope.name3&#125;</span><br><span class="line">            $&#123;applicationScope.name4&#125;</span><br><span class="line">            &lt;hr&gt;</span><br><span class="line">            $&#123;name1&#125;</span><br><span class="line">            $&#123;name2&#125;</span><br><span class="line">            $&#123;name3&#125;</span><br><span class="line">            $&#123;name4&#125;</span><br><span class="line">            &lt;hr&gt;</span><br><span class="line">            $&#123;name5&#125;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
 
 
 <p><strong>练习【作业】</strong></p>
-<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token list punctuation">1.</span> 获取字符串
-		$&#123;键名&#125;
-		
-<span class="token list punctuation">2.</span> 获取对象（User）
-		$&#123;键名.属性名&#125;
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> 获取字符串</span><br><span class="line"><span class="code">		$&#123;键名&#125;</span></span><br><span class="line"><span class="code">		</span></span><br><span class="line"><span class="code">2. 获取对象（User）</span></span><br><span class="line"><span class="code">		$&#123;键名.属性名&#125;</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="bullet">3.</span> 获取List（Array）集合</span><br><span class="line"><span class="code">		$&#123;键名[索引]&#125;</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="bullet">4.</span> 获取Map集合</span><br><span class="line"><span class="code">		$&#123;键名.key&#125;</span></span><br><span class="line"><span class="code">		$&#123;键名[&quot;key&quot;]&#125;</span></span><br><span class="line"><span class="code">		</span></span><br><span class="line"><span class="code">5. 补充</span></span><br><span class="line"><span class="code">	el不会出现null和索引角标越界问题</span></span><br></pre></td></tr></table></figure>
 
-<span class="token list punctuation">3.</span> 获取List（Array）集合
-		$&#123;键名[索引]&#125;
-
-<span class="token list punctuation">4.</span> 获取Map集合
-		$&#123;键名.key&#125;
-		$&#123;键名["key"]&#125;
-		
-<span class="token list punctuation">5.</span> 补充
-	el不会出现null和索引角标越界问题<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;%@ page import&#x3D;&quot;java.util.ArrayList&quot; %&gt;
-&lt;%@ page import&#x3D;&quot;java.util.Collections&quot; %&gt;
-&lt;%@ page import&#x3D;&quot;java.util.HashMap&quot; %&gt;
-&lt;%@ page import&#x3D;&quot;com.itheima.pojo.User&quot; %&gt;
-&lt;%@ page contentType&#x3D;&quot;text&#x2F;html;charset&#x3D;UTF-8&quot; language&#x3D;&quot;java&quot; %&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Title&lt;&#x2F;title&gt;
-&lt;&#x2F;head&gt;
-&lt;body&gt;
-        &lt;div&gt;
-            &lt;%
-               &#x2F;&#x2F;当value&#x3D;string
-                String str &#x3D; &quot;abc&quot;;
-                request.setAttribute(&quot;str&quot;, str);
-                &#x2F;&#x2F;当value&#x3D;javaBean
-                User aa &#x3D; new User(&quot;张三&quot;, 18);
-                request.setAttribute(&quot;user&quot;, aa);
-                &#x2F;&#x2F;当value&#x3D;list
-                ArrayList&lt;String&gt; list &#x3D; new ArrayList&lt;&gt;();
-                Collections.addAll(list, &quot;a&quot;,&quot;b&quot;,&quot;c&quot;);
-                request.setAttribute(&quot;list&quot;, list);
-                &#x2F;&#x2F;当value&#x3D;map
-                HashMap&lt;String, String&gt; map &#x3D; new HashMap&lt;&gt;();
-                map.put(&quot;name&quot;, &quot;高圆圆&quot;);
-                map.put(&quot;age&quot;, &quot;18&quot;);
-                map.put(&quot;xx.yy&quot;, &quot;呵呵&quot;);
-                request.setAttribute(&quot;map&quot;, map);
-            %&gt;
-        &lt;&#x2F;div&gt;
-        &lt;div&gt;
-            $&#123;str&#125; &lt;br&gt;
-            $&#123;user.name&#125; ,$&#123;user.age&#125; &lt;br&gt;
-            $&#123;list[2]&#125; &lt;br&gt;
-            $&#123;map.name&#125; , $&#123;map.age&#125;,$&#123;map[&quot;xx.yy&quot;]&#125;
-        &lt;&#x2F;div&gt;
-&lt;&#x2F;body&gt;
-&lt;&#x2F;html&gt;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">&quot;java.util.ArrayList&quot;</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">&quot;java.util.Collections&quot;</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">&quot;java.util.HashMap&quot;</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">&quot;com.itheima.pojo.User&quot;</span> %&gt;</span><br><span class="line">&lt;%@ page contentType=<span class="string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="string">&quot;java&quot;</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;%</span><br><span class="line">               <span class="comment">//当value=string</span></span><br><span class="line">                String str = <span class="string">&quot;abc&quot;</span>;</span><br><span class="line">                request.setAttribute(<span class="string">&quot;str&quot;</span>, str);</span><br><span class="line">                <span class="comment">//当value=javaBean</span></span><br><span class="line">                User aa = <span class="keyword">new</span> User(<span class="string">&quot;张三&quot;</span>, <span class="number">18</span>);</span><br><span class="line">                request.setAttribute(<span class="string">&quot;user&quot;</span>, aa);</span><br><span class="line">                <span class="comment">//当value=list</span></span><br><span class="line">                ArrayList&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">                Collections.addAll(list, <span class="string">&quot;a&quot;</span>,<span class="string">&quot;b&quot;</span>,<span class="string">&quot;c&quot;</span>);</span><br><span class="line">                request.setAttribute(<span class="string">&quot;list&quot;</span>, list);</span><br><span class="line">                <span class="comment">//当value=map</span></span><br><span class="line">                HashMap&lt;String, String&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">                map.put(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;高圆圆&quot;</span>);</span><br><span class="line">                map.put(<span class="string">&quot;age&quot;</span>, <span class="string">&quot;18&quot;</span>);</span><br><span class="line">                map.put(<span class="string">&quot;xx.yy&quot;</span>, <span class="string">&quot;呵呵&quot;</span>);</span><br><span class="line">                request.setAttribute(<span class="string">&quot;map&quot;</span>, map);</span><br><span class="line">            %&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            $&#123;str&#125; &lt;br&gt;</span><br><span class="line">            $&#123;user.name&#125; ,$&#123;user.age&#125; &lt;br&gt;</span><br><span class="line">            $&#123;list[<span class="number">2</span>]&#125; &lt;br&gt;</span><br><span class="line">            $&#123;map.name&#125; , $&#123;map.age&#125;,$&#123;map[<span class="string">&quot;xx.yy&quot;</span>]&#125;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="1-2-2-执行运算-重要"><a href="#1-2-2-执行运算-重要" class="headerlink" title="1.2.2 执行运算(重要)"></a>1.2.2 执行运算(重要)</h2><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token list punctuation">*</span> 算数运算符
-		语法： + 	- 	<span class="token italic"><span class="token punctuation">*</span><span class="token content"> 	/(div) 		%(mod)
-		
-</span><span class="token punctuation">*</span></span> 比较运算符
-		语法：> 	&lt; 	>= 	&lt;= 	==(eq) 		!=(ne)
-		
-<span class="token list punctuation">*</span> 逻辑运算符
-		语法：&amp;&amp;(and) ||(or) !(not)
-		
-<span class="token list punctuation">*</span> 三元运算符
-		语法：$&#123;条件表达式？为真:为假&#125;
-
-<span class="token hr punctuation">------------------------------</span>
-
-<span class="token list punctuation">*</span> 空运算符
- 		语法：$&#123;not empty 对象&#125;
- 		功能：
- 			a. 可以判断对象是否为null
- 			b. 可以判断字符串是否空串 ""
- 			c. 可以判断一个集合的长度是否为0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="1-2-2-执行运算-重要"><a href="#1-2-2-执行运算-重要" class="headerlink" title="1.2.2 执行运算(重要)"></a>1.2.2 执行运算(重要)</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span> 算数运算符</span><br><span class="line"><span class="code">		语法： + 	- 	* 	/(div) 		%(mod)</span></span><br><span class="line"><span class="code">		</span></span><br><span class="line"><span class="code">* 比较运算符</span></span><br><span class="line"><span class="code">		语法：&gt; 	&lt; 	&gt;= 	&lt;= 	==(eq) 		!=(ne)</span></span><br><span class="line"><span class="code">		</span></span><br><span class="line"><span class="code">* 逻辑运算符</span></span><br><span class="line"><span class="code">		语法：&amp;&amp;(and) ||(or) !(not)</span></span><br><span class="line"><span class="code">		</span></span><br><span class="line"><span class="code">* 三元运算符</span></span><br><span class="line"><span class="code">		语法：$&#123;条件表达式？为真:为假&#125;</span></span><br><span class="line"><span class="code"></span></span><br><span class="line">------------------------------</span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> 空运算符</span><br><span class="line"> 		语法：$&#123;not empty 对象&#125;</span><br><span class="line"> 		功能：</span><br><span class="line"> 			a. 可以判断对象是否为null</span><br><span class="line"> 			b. 可以判断字符串是否空串 &quot;&quot;</span><br><span class="line"> 			c. 可以判断一个集合的长度是否为0</span><br></pre></td></tr></table></figure>
 
 
 
-<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;%@ page import&#x3D;&quot;java.util.List&quot; %&gt;
-&lt;%@ page import&#x3D;&quot;java.util.ArrayList&quot; %&gt;
-&lt;%@ page contentType&#x3D;&quot;text&#x2F;html;charset&#x3D;UTF-8&quot; language&#x3D;&quot;java&quot; %&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Title&lt;&#x2F;title&gt;
-&lt;&#x2F;head&gt;
-&lt;body&gt;
-        &lt;div&gt;
-            &lt;%
-                request.setAttribute(&quot;n1&quot;, 10);
-                request.setAttribute(&quot;n2&quot;, 4);
-            %&gt;
-            $&#123;n1&#125; &#x2F; $&#123;n2&#125; &#x3D; $&#123;n1&#x2F;n2&#125; &lt;br&gt;
-            $&#123;n1%n2&#125; , $&#123;n1 mod n2&#125; &lt;br&gt;
-
-        &lt;&#x2F;div&gt;
-
-        &lt;div&gt;
-            &lt;%
-                request.setAttribute(&quot;sex&quot;, &quot;女&quot;);
-            %&gt;
-
-            姓名 : 张三 &lt;br&gt;
-            性别 :
-            &lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;sex&quot; $&#123;sex&#x3D;&#x3D;&#39;男&#39;?&#39;checked&#39; : &#39;&#39;&#125;&gt; 男
-            &lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;sex&quot; $&#123;sex&#x3D;&#x3D;&#39;女&#39;?&#39;checked&#39; : &#39;&#39;&#125;&gt; 女
-        &lt;&#x2F;div&gt;
-
-        &lt;div&gt;
-            &lt;%--
-          * 空运算符
-           语法：$&#123;not empty 对象&#125;
-                   如果对象是empty,返回false
-           功能：
-               a. 可以判断对象是否为null
-               b. 可以判断字符串是否空串 &quot;&quot;
-               c. 可以判断一个集合的长度是否为0
-          --%&gt;
-            &lt;%
-                Object obj &#x3D; null;
-                String str &#x3D; &quot;&quot;;
-                List&lt;String&gt; list &#x3D; new ArrayList&lt;&gt;();
-
-                request.setAttribute(&quot;obj&quot;, obj);
-                request.setAttribute(&quot;str&quot;, str);
-                request.setAttribute(&quot;list&quot;, list);
-            %&gt;
-            $&#123;not empty obj&#125;
-            $&#123;not empty str&#125;
-            $&#123;not empty list&#125;
-        &lt;&#x2F;div&gt;
-&lt;&#x2F;body&gt;
-&lt;&#x2F;html&gt;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">&quot;java.util.List&quot;</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">&quot;java.util.ArrayList&quot;</span> %&gt;</span><br><span class="line">&lt;%@ page contentType=<span class="string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="string">&quot;java&quot;</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;%</span><br><span class="line">                request.setAttribute(<span class="string">&quot;n1&quot;</span>, <span class="number">10</span>);</span><br><span class="line">                request.setAttribute(<span class="string">&quot;n2&quot;</span>, <span class="number">4</span>);</span><br><span class="line">            %&gt;</span><br><span class="line">            $&#123;n1&#125; / $&#123;n2&#125; = $&#123;n1/n2&#125; &lt;br&gt;</span><br><span class="line">            $&#123;n1%n2&#125; , $&#123;n1 mod n2&#125; &lt;br&gt;</span><br><span class="line"></span><br><span class="line">        &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;%</span><br><span class="line">                request.setAttribute(<span class="string">&quot;sex&quot;</span>, <span class="string">&quot;女&quot;</span>);</span><br><span class="line">            %&gt;</span><br><span class="line"></span><br><span class="line">            姓名 : 张三 &lt;br&gt;</span><br><span class="line">            性别 :</span><br><span class="line">            &lt;input type=<span class="string">&quot;radio&quot;</span> name=<span class="string">&quot;sex&quot;</span> $&#123;sex==<span class="string">&#x27;男&#x27;</span>?<span class="string">&#x27;checked&#x27;</span> : <span class="string">&#x27;&#x27;</span>&#125;&gt; 男</span><br><span class="line">            &lt;input type=<span class="string">&quot;radio&quot;</span> name=<span class="string">&quot;sex&quot;</span> $&#123;sex==<span class="string">&#x27;女&#x27;</span>?<span class="string">&#x27;checked&#x27;</span> : <span class="string">&#x27;&#x27;</span>&#125;&gt; 女</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;%--</span><br><span class="line">          * 空运算符</span><br><span class="line">           语法：$&#123;not empty 对象&#125;</span><br><span class="line">                   如果对象是empty,返回<span class="keyword">false</span></span><br><span class="line">           功能：</span><br><span class="line">               a. 可以判断对象是否为<span class="keyword">null</span></span><br><span class="line">               b. 可以判断字符串是否空串 <span class="string">&quot;&quot;</span></span><br><span class="line">               c. 可以判断一个集合的长度是否为<span class="number">0</span></span><br><span class="line">          --%&gt;</span><br><span class="line">            &lt;%</span><br><span class="line">                Object obj = <span class="keyword">null</span>;</span><br><span class="line">                String str = <span class="string">&quot;&quot;</span>;</span><br><span class="line">                List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">                request.setAttribute(<span class="string">&quot;obj&quot;</span>, obj);</span><br><span class="line">                request.setAttribute(<span class="string">&quot;str&quot;</span>, str);</span><br><span class="line">                request.setAttribute(<span class="string">&quot;list&quot;</span>, list);</span><br><span class="line">            %&gt;</span><br><span class="line">            $&#123;not empty obj&#125;</span><br><span class="line">            $&#123;not empty str&#125;</span><br><span class="line">            $&#123;not empty list&#125;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="1-2-3-隐式对象-了解"><a href="#1-2-3-隐式对象-了解" class="headerlink" title="1.2.3 隐式对象(了解)"></a>1.2.3 隐式对象(了解)</h2><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token list punctuation">*</span> el表达式中有11个隐式对象
-	掌握:		 	cookie
-			可以获取浏览器指定cookie名称的值			
-			  $&#123;cookie.name属性名.value&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="1-2-3-隐式对象-了解"><a href="#1-2-3-隐式对象-了解" class="headerlink" title="1.2.3 隐式对象(了解)"></a>1.2.3 隐式对象(了解)</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span> el表达式中有11个隐式对象</span><br><span class="line"><span class="code">	掌握:		 	cookie</span></span><br><span class="line"><span class="code">			可以获取浏览器指定cookie名称的值			</span></span><br><span class="line"><span class="code">			  $&#123;cookie.name属性名.value&#125;</span></span><br></pre></td></tr></table></figure>
 
-<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;%@ page contentType&#x3D;&quot;text&#x2F;html;charset&#x3D;UTF-8&quot; language&#x3D;&quot;java&quot; %&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Title&lt;&#x2F;title&gt;
-&lt;&#x2F;head&gt;
-&lt;body&gt;
-    &lt;div&gt;
-        &lt;%
-            Cookie[] cookies &#x3D; request.getCookies();
-            for (Cookie cookie : cookies) &#123;
-                String name &#x3D; cookie.getName();
-                String value &#x3D; cookie.getValue();
-                out.println(name);
-                out.print(&quot;&lt;br&gt;&quot;);
-                out.println(value);
-            &#125;
-        %&gt;
-        &lt;br&gt;
-        &lt;%--
-            el表达式可以写在任意地方,but脚本除外
-
-            el的隐式对象: cookie
-        --%&gt;
-        $&#123;cookie.JSESSIONID.name&#125; &lt;br&gt;
-        $&#123;cookie.JSESSIONID.value&#125;
-    &lt;&#x2F;div&gt;
-&lt;&#x2F;body&gt;
-&lt;&#x2F;html&gt;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="string">&quot;java&quot;</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;%</span><br><span class="line">            Cookie[] cookies = request.getCookies();</span><br><span class="line">            <span class="keyword">for</span> (Cookie cookie : cookies) &#123;</span><br><span class="line">                String name = cookie.getName();</span><br><span class="line">                String value = cookie.getValue();</span><br><span class="line">                out.println(name);</span><br><span class="line">                out.print(<span class="string">&quot;&lt;br&gt;&quot;</span>);</span><br><span class="line">                out.println(value);</span><br><span class="line">            &#125;</span><br><span class="line">        %&gt;</span><br><span class="line">        &lt;br&gt;</span><br><span class="line">        &lt;%--</span><br><span class="line">            el表达式可以写在任意地方,but脚本除外</span><br><span class="line"></span><br><span class="line">            el的隐式对象: cookie</span><br><span class="line">        --%&gt;</span><br><span class="line">        $&#123;cookie.JSESSIONID.name&#125; &lt;br&gt;</span><br><span class="line">        $&#123;cookie.JSESSIONID.value&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
                 
@@ -1038,19 +807,19 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/04/28/Filter&Listener/">
+                <a href="/2020/04/28/Hexo-xr/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Filter&amp;Listener">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Hexo之渲染绕过">
                         
-                        <span class="card-title">Filter&amp;Listener</span>
+                        <span class="card-title">Hexo之渲染绕过</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Filter&Listener&拦截路径&三个组件的运行顺序
+                            在Hexo部署时会默认渲染source下的所有html页面，但有时候想在Hexo博客上单独自定义html页面或README.md时，却不希望被Hexo渲染。
                         
                     </div>
                     <div class="publish-info">
@@ -1061,8 +830,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JavaWeb/" class="post-category">
-                                    JavaWeb
+                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E7%AF%87/" class="post-category">
+                                    博客篇
                                 </a>
                             
                             
@@ -1072,8 +841,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JavaWeb/">
-                        <span class="chip bg-color">JavaWeb</span>
+                    <a href="/tags/Hexo/">
+                        <span class="chip bg-color">Hexo</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%B8%B2%E6%9F%93%E7%BB%95%E8%BF%87/">
+                        <span class="chip bg-color">渲染绕过</span>
                     </a>
                     
                 </div>

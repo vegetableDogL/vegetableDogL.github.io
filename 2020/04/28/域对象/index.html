@@ -477,9 +477,6 @@
         <hr class="clearfix">
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.css">
-        
 
         
 
@@ -491,38 +488,17 @@
 <p>如果别人说, web四大域对象</p>
 <p>​     jspContext(JSP) &lt;  request &lt; session &lt; ServletContext</p>
 </blockquote>
-<h2 id="2-1-域对象方法"><a href="#2-1-域对象方法" class="headerlink" title="2.1 域对象方法"></a>2.1 域对象方法</h2><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span> 域对象方法都一致</span>
-<span class="token list punctuation">1.</span> 设置数据
-		void setAttribute(String name, Object o)	
-<span class="token list punctuation">2.</span> 获取数据
-		Object getAttribute(String name)	
-<span class="token list punctuation">3.</span> 删除数据
-		void removeAttribute(String name)
-		
-<span class="token title important"><span class="token punctuation">#</span> 小域对象可以获取大域对象</span>
-
-<span class="token title important"><span class="token punctuation">#</span> 不同域对象: 生命周期不一样 (作用范围)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="2-1-域对象方法"><a href="#2-1-域对象方法" class="headerlink" title="2.1 域对象方法"></a>2.1 域对象方法</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 域对象方法都一致</span></span><br><span class="line"><span class="bullet">1.</span> 设置数据</span><br><span class="line"><span class="code">		void setAttribute(String name, Object o)	</span></span><br><span class="line"><span class="code">2. 获取数据</span></span><br><span class="line"><span class="code">		Object getAttribute(String name)	</span></span><br><span class="line"><span class="code">3. 删除数据</span></span><br><span class="line"><span class="code">		void removeAttribute(String name)</span></span><br><span class="line"><span class="code">		</span></span><br><span class="line"><span class="code"># 小域对象可以获取大域对象</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="section"># 不同域对象: 生命周期不一样 (作用范围)</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="2-2-生命周期"><a href="#2-2-生命周期" class="headerlink" title="2.2 生命周期"></a>2.2 生命周期</h2><h3 id="2-2-1-ServletContext域对象"><a href="#2-2-1-ServletContext域对象" class="headerlink" title="2.2.1 ServletContext域对象"></a>2.2.1 ServletContext域对象</h3><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token list punctuation">*</span> 跟当前应用(项目)同生共死
-<span class="token title important"><span class="token punctuation">#</span> tomcat上可以部署多个项目（每个项目都有一个servletContext对象），一个项目可以有多个jsp</span>
+<h2 id="2-2-生命周期"><a href="#2-2-生命周期" class="headerlink" title="2.2 生命周期"></a>2.2 生命周期</h2><h3 id="2-2-1-ServletContext域对象"><a href="#2-2-1-ServletContext域对象" class="headerlink" title="2.2.1 ServletContext域对象"></a>2.2.1 ServletContext域对象</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span> 跟当前应用(项目)同生共死</span><br><span class="line"><span class="section"># tomcat上可以部署多个项目（每个项目都有一个servletContext对象），一个项目可以有多个jsp</span></span><br><span class="line"></span><br><span class="line">tomcat加载项目,servletContext创建</span><br><span class="line">项目停止运行,servletContext销毁</span><br></pre></td></tr></table></figure>
 
-tomcat加载项目,servletContext创建
-项目停止运行,servletContext销毁<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="2-2-2-HttpSession域对象"><a href="#2-2-2-HttpSession域对象" class="headerlink" title="2.2.2 HttpSession域对象"></a>2.2.2 HttpSession域对象</h3><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token list punctuation">*</span> 一次会话中，多次请求间（共享数据）
-	浏览器第一次访问服务器时创建(没有jsessionid)
-	直到浏览器丢失cookie,或服务器销毁session时,session就找不到了
-
-<span class="token title important"><span class="token punctuation">#</span> 会话的定义: 双方建立连接,连接期间的多次请求响应,直到一方断开连接为止</span>
-	<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-2-2-HttpSession域对象"><a href="#2-2-2-HttpSession域对象" class="headerlink" title="2.2.2 HttpSession域对象"></a>2.2.2 HttpSession域对象</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span> 一次会话中，多次请求间（共享数据）</span><br><span class="line"><span class="code">	浏览器第一次访问服务器时创建(没有jsessionid)</span></span><br><span class="line"><span class="code">	直到浏览器丢失cookie,或服务器销毁session时,session就找不到了</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="section"># 会话的定义: 双方建立连接,连接期间的多次请求响应,直到一方断开连接为止</span></span><br><span class="line"><span class="code">	</span></span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="2-2-3-HttpServletRequest域对象"><a href="#2-2-3-HttpServletRequest域对象" class="headerlink" title="2.2.3 HttpServletRequest域对象"></a>2.2.3 HttpServletRequest域对象</h3><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token list punctuation">*</span> 一次请求中，多次请求转发间（共享数据）
-	请求到达服务器时创建,服务器响应时销毁<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="2-2-3-HttpServletRequest域对象"><a href="#2-2-3-HttpServletRequest域对象" class="headerlink" title="2.2.3 HttpServletRequest域对象"></a>2.2.3 HttpServletRequest域对象</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span> 一次请求中，多次请求转发间（共享数据）</span><br><span class="line"><span class="code">	请求到达服务器时创建,服务器响应时销毁</span></span><br></pre></td></tr></table></figure>
 
 
 

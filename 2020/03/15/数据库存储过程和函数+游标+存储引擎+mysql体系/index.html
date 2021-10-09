@@ -477,9 +477,6 @@
         <hr class="clearfix">
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.css">
-        
 
         
 
@@ -488,48 +485,23 @@
                 <h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="1、存储过程"><a href="#1、存储过程" class="headerlink" title="1、存储过程"></a>1、存储过程</h2><blockquote>
 <p><strong>【概念】</strong>：mysql中的存储过程和函数是 <strong>一组预先编译并存储在数据库中的SQL 语句的集合</strong>，我们可以通过调用存储过程和函数来执行一组SQL语句的集合。</p>
 </blockquote>
-<h3 id="1、创建存储过程"><a href="#1、创建存储过程" class="headerlink" title="1、创建存储过程"></a>1、创建存储过程</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 查询过程赋值</span>
-<span class="token keyword">delimiter</span> $
-<span class="token keyword">create</span> <span class="token keyword">procedure</span> pro_test3<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">begin</span>
-	<span class="token comment"># 声明变量num</span>
-	<span class="token keyword">declare</span> num <span class="token keyword">int</span><span class="token punctuation">;</span>
-	<span class="token comment"># 查询城市表行记录数并赋值num</span>
-	<span class="token keyword">select</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">into</span> num <span class="token keyword">from</span> city<span class="token punctuation">;</span>
-	<span class="token comment"># 查询</span>
-	<span class="token keyword">select</span> num<span class="token punctuation">;</span>
-<span class="token keyword">end</span>$
-
-<span class="token comment"># 调用</span>
-<span class="token keyword">call</span> pro_test3<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="1、创建存储过程"><a href="#1、创建存储过程" class="headerlink" title="1、创建存储过程"></a>1、创建存储过程</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 查询过程赋值</span><br><span class="line">delimiter $</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> pro_test3()</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">	# 声明变量num</span><br><span class="line">	<span class="keyword">declare</span> num <span class="type">int</span>;</span><br><span class="line">	# 查询城市表行记录数并赋值num</span><br><span class="line">	<span class="keyword">select</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">into</span> num <span class="keyword">from</span> city;</span><br><span class="line">	# 查询</span><br><span class="line">	<span class="keyword">select</span> num;</span><br><span class="line"><span class="keyword">end</span>$</span><br><span class="line"></span><br><span class="line"># 调用</span><br><span class="line"><span class="keyword">call</span> pro_test3();</span><br></pre></td></tr></table></figure>
 
 <p>【说明】</p>
 <p>​    1.参数列表包含三部分：</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">		参数模式    参数名        参数类型
-举例：   <span class="token operator">IN</span>		 stuname      <span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">		参数模式    参数名        参数类型</span><br><span class="line">举例：   <span class="keyword">IN</span>		 stuname      (<span class="number">20</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>​        参数模式：</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">IN</span>:该参数可以作为输入，也就是该参数需要调用者传入值
-<span class="token keyword">OUT</span>:该参数可以作为输出，也就是该参数可以作为返回值
-<span class="token keyword">INOUT</span>:该参数既可以作为输入又可以作为输出，也就是该参数既需要传入值，又可以返回值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">IN</span>:该参数可以作为输入，也就是该参数需要调用者传入值</span><br><span class="line"><span class="keyword">OUT</span>:该参数可以作为输出，也就是该参数可以作为返回值</span><br><span class="line"><span class="keyword">INOUT</span>:该参数既可以作为输入又可以作为输出，也就是该参数既需要传入值，又可以返回值</span><br></pre></td></tr></table></figure>
 
 <p>​    如果存储过程体仅仅只有一句话，begin  end可以省略。</p>
-<h3 id="2、查看存储过程"><a href="#2、查看存储过程" class="headerlink" title="2、查看存储过程"></a>2、查看存储过程</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">--  查询指定数据库中的所有的存储过程</span>
-<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> mysql<span class="token punctuation">.</span><span class="token keyword">proc</span> <span class="token keyword">where</span> db<span class="token operator">=</span><span class="token string">'数据库名'</span> \G<span class="token punctuation">;</span>
-举例：
-<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> mysql<span class="token punctuation">.</span><span class="token keyword">proc</span> <span class="token keyword">where</span> db<span class="token operator">=</span><span class="token string">'day0401'</span> \G<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2、查看存储过程"><a href="#2、查看存储过程" class="headerlink" title="2、查看存储过程"></a>2、查看存储过程</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--  查询指定数据库中的所有的存储过程</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> mysql.proc <span class="keyword">where</span> db<span class="operator">=</span><span class="string">&#x27;数据库名&#x27;</span> \G;</span><br><span class="line">举例：</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> mysql.proc <span class="keyword">where</span> db<span class="operator">=</span><span class="string">&#x27;day0401&#x27;</span> \G;</span><br></pre></td></tr></table></figure>
 
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 查看创建某个存储过程的语句信息</span>
-<span class="token keyword">show</span> <span class="token keyword">create</span> <span class="token keyword">procedure</span> 存储过程名<span class="token punctuation">;</span>
-<span class="token comment">-- 举例：</span>
-<span class="token keyword">show</span> <span class="token keyword">create</span> <span class="token keyword">procedure</span> pro_test1 \G<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看创建某个存储过程的语句信息</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">procedure</span> 存储过程名;</span><br><span class="line"><span class="comment">-- 举例：</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">procedure</span> pro_test1 \G;</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="3、删除存储过程"><a href="#3、删除存储过程" class="headerlink" title="3、删除存储过程"></a>3、删除存储过程</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">drop</span> <span class="token keyword">procedure</span> 存储过程名<span class="token punctuation">;</span>
-<span class="token comment">-- 举例：</span>
-<span class="token keyword">drop</span> <span class="token keyword">procedure</span> pro_test1<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="3、删除存储过程"><a href="#3、删除存储过程" class="headerlink" title="3、删除存储过程"></a>3、删除存储过程</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">procedure</span> 存储过程名;</span><br><span class="line"><span class="comment">-- 举例：</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">procedure</span> pro_test1;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -538,18 +510,9 @@
 <p>​    通过 declare 可以定义一个局部变量，该变量的作用范围只能在 BEGIN…END 块中。</p>
 </li>
 </ul>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">declare</span> 变量名<span class="token number">1</span><span class="token punctuation">,</span>变量名<span class="token number">2</span><span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>  变量的数据类型 <span class="token punctuation">[</span><span class="token keyword">default</span> 默认值<span class="token punctuation">]</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> 变量名<span class="number">1</span>,变量名<span class="number">2</span>,...  变量的数据类型 [<span class="keyword">default</span> 默认值] </span><br></pre></td></tr></table></figure>
 
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 1.创建存储过程</span>
-  <span class="token keyword">delimiter</span> $
-  <span class="token keyword">create</span> <span class="token keyword">procedure</span> pro_test2<span class="token punctuation">(</span><span class="token punctuation">)</span>
-  <span class="token keyword">begin</span>
-      <span class="token keyword">declare</span> num <span class="token keyword">int</span> <span class="token keyword">default</span> <span class="token number">5</span><span class="token punctuation">;</span>
-      <span class="token keyword">select</span> concat<span class="token punctuation">(</span><span class="token string">'num的值是:'</span><span class="token punctuation">,</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">end</span> $
-  
-  <span class="token comment">-- 2.调用存储过程</span>
-  <span class="token keyword">call</span> pro_test2<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 1.创建存储过程</span></span><br><span class="line">  delimiter $</span><br><span class="line">  <span class="keyword">create</span> <span class="keyword">procedure</span> pro_test2()</span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">      <span class="keyword">declare</span> num <span class="type">int</span> <span class="keyword">default</span> <span class="number">5</span>;</span><br><span class="line">      <span class="keyword">select</span> concat(<span class="string">&#x27;num的值是:&#x27;</span>,num);</span><br><span class="line">  <span class="keyword">end</span> $</span><br><span class="line">  </span><br><span class="line">  <span class="comment">-- 2.调用存储过程</span></span><br><span class="line">  <span class="keyword">call</span> pro_test2();</span><br></pre></td></tr></table></figure>
 
 
 
@@ -558,104 +521,43 @@
 <p>直接赋值使用 SET，可以赋常量或者赋表达式</p>
 </li>
 </ul>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SET</span> 变量名<span class="token number">1</span> <span class="token operator">=</span> 表达式<span class="token number">1</span><span class="token punctuation">,</span>变量名<span class="token number">2</span><span class="token operator">=</span>表达式<span class="token number">2</span><span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> 变量名<span class="number">1</span> <span class="operator">=</span> 表达式<span class="number">1</span>,变量名<span class="number">2</span><span class="operator">=</span>表达式<span class="number">2</span>,... </span><br></pre></td></tr></table></figure>
 
 <div style='background-color:#42C0A3;'>示例:定义变量num默认值是0，设置num值+10 ，并查询</div>
 
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 1.创建存储过程</span>
-  <span class="token keyword">create</span> <span class="token keyword">procedure</span> pro_test3<span class="token punctuation">(</span><span class="token punctuation">)</span>
-  <span class="token keyword">begin</span>
-  	<span class="token keyword">declare</span> num <span class="token keyword">int</span> <span class="token keyword">default</span> <span class="token number">0</span><span class="token punctuation">;</span>
-  	<span class="token keyword">set</span> num <span class="token operator">=</span> num <span class="token operator">+</span> <span class="token number">10</span><span class="token punctuation">;</span>
-  	<span class="token keyword">select</span> num<span class="token punctuation">;</span>
-  <span class="token keyword">end</span>$
-  <span class="token comment">-- 2.调用存储过程</span>
-  <span class="token keyword">call</span> pro_test3<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 1.创建存储过程</span></span><br><span class="line">  <span class="keyword">create</span> <span class="keyword">procedure</span> pro_test3()</span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">  	<span class="keyword">declare</span> num <span class="type">int</span> <span class="keyword">default</span> <span class="number">0</span>;</span><br><span class="line">  	<span class="keyword">set</span> num <span class="operator">=</span> num <span class="operator">+</span> <span class="number">10</span>;</span><br><span class="line">  	<span class="keyword">select</span> num;</span><br><span class="line">  <span class="keyword">end</span>$</span><br><span class="line">  <span class="comment">-- 2.调用存储过程</span></span><br><span class="line">  <span class="keyword">call</span> pro_test3();</span><br></pre></td></tr></table></figure>
 
 
 
 <p>也可以通过select … into 方式进行赋值操作 :</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">  <span class="token comment">-- 1.创建存储过程</span>
-<span class="token keyword">create</span> <span class="token keyword">procedure</span> pro_test4<span class="token punctuation">(</span><span class="token punctuation">)</span>
-  <span class="token keyword">begin</span>
-  	<span class="token keyword">declare</span> num <span class="token keyword">int</span><span class="token punctuation">;</span>
-  	<span class="token keyword">select</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">into</span> num <span class="token keyword">from</span> city<span class="token punctuation">;</span>
-  	<span class="token keyword">select</span> concat<span class="token punctuation">(</span><span class="token string">'city表中的记录数为:'</span><span class="token punctuation">,</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">end</span>$
-  <span class="token comment">-- 2.调用存储过程</span>
-  <span class="token keyword">call</span> pro_test4<span class="token punctuation">(</span><span class="token punctuation">)</span>$<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">-- 1.创建存储过程</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> pro_test4()</span><br><span class="line">  <span class="keyword">begin</span></span><br><span class="line">  	<span class="keyword">declare</span> num <span class="type">int</span>;</span><br><span class="line">  	<span class="keyword">select</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">into</span> num <span class="keyword">from</span> city;</span><br><span class="line">  	<span class="keyword">select</span> concat(<span class="string">&#x27;city表中的记录数为:&#x27;</span>,num);</span><br><span class="line">  <span class="keyword">end</span>$</span><br><span class="line">  <span class="comment">-- 2.调用存储过程</span></span><br><span class="line">  <span class="keyword">call</span> pro_test4()$</span><br></pre></td></tr></table></figure>
 
 
 
-<h4 id="2、if条件判断"><a href="#2、if条件判断" class="headerlink" title="2、if条件判断"></a>2、if条件判断</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- if条件后面为真执行对应then后面的语句，不满足就执行后面的elseif，如果elseif条件也不满足则继续向下执行判断，如果都不满足条件就执行else后面的语句</span>
-<span class="token keyword">if</span> 条件<span class="token number">1</span> <span class="token keyword">then</span> 语句<span class="token number">1</span><span class="token punctuation">;</span>
-<span class="token punctuation">[</span><span class="token keyword">elseif</span> 条件<span class="token number">2</span> <span class="token keyword">then</span> 语句<span class="token number">2</span><span class="token punctuation">;</span><span class="token punctuation">]</span>
-<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token punctuation">[</span><span class="token keyword">else</span> 语句n<span class="token punctuation">;</span><span class="token punctuation">]</span>
-<span class="token keyword">end</span> <span class="token keyword">if</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="2、if条件判断"><a href="#2、if条件判断" class="headerlink" title="2、if条件判断"></a>2、if条件判断</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- if条件后面为真执行对应then后面的语句，不满足就执行后面的elseif，如果elseif条件也不满足则继续向下执行判断，如果都不满足条件就执行else后面的语句</span></span><br><span class="line">if 条件<span class="number">1</span> <span class="keyword">then</span> 语句<span class="number">1</span>;</span><br><span class="line">[elseif 条件<span class="number">2</span> <span class="keyword">then</span> 语句<span class="number">2</span>;]</span><br><span class="line">...</span><br><span class="line">[<span class="keyword">else</span> 语句n;]</span><br><span class="line"><span class="keyword">end</span> if;</span><br></pre></td></tr></table></figure>
 
 <p><strong>注意：1）上述if只能用在begin end中.2）elseif不能分开写，必须在一起，否则报错</strong></p>
 <p>需求：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">根据定义的体重变量，判定当前体重的所属的身材类型
-    <span class="token number">170</span> 及以上 <span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">></span> 身材肥胖
-    <span class="token number">150</span> <span class="token operator">-</span> <span class="token number">170</span> <span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-></span> 标准身材
-    <span class="token number">150</span> 以下 <span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">></span> 身材偏瘦<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">根据定义的体重变量，判定当前体重的所属的身材类型</span><br><span class="line">    <span class="number">170</span> 及以上 ----------&gt; 身材肥胖</span><br><span class="line">    <span class="number">150</span> - <span class="number">170</span> ---------&gt; 标准身材</span><br><span class="line">    <span class="number">150</span> 以下 ----------&gt; 身材偏瘦</span><br></pre></td></tr></table></figure>
 
 <div style='background-color:#42C0A3;'>示例: </div>
 
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 创建存储过程</span>
-<span class="token keyword">delimiter</span> $
-<span class="token keyword">create</span> <span class="token keyword">procedure</span> pro_test5<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">begin</span>
-    <span class="token keyword">declare</span> weight <span class="token keyword">int</span> <span class="token keyword">default</span> <span class="token number">175</span><span class="token punctuation">;</span>
-    <span class="token keyword">declare</span> description <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token string">''</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> weight <span class="token operator">>=</span> <span class="token number">170</span> <span class="token keyword">then</span>
-      <span class="token keyword">set</span> description <span class="token operator">=</span> <span class="token string">'身材肥胖'</span><span class="token punctuation">;</span>
-    <span class="token keyword">elseif</span> weight <span class="token operator">>=</span> <span class="token number">150</span> <span class="token operator">and</span> weight <span class="token operator">&lt;</span> <span class="token number">170</span> <span class="token keyword">then</span>
-      <span class="token keyword">set</span> description <span class="token operator">=</span> <span class="token string">'标准身材'</span><span class="token punctuation">;</span>
-    <span class="token keyword">else</span>
-      <span class="token keyword">set</span> description <span class="token operator">=</span> <span class="token string">'身材偏瘦'</span><span class="token punctuation">;</span>
-    <span class="token keyword">end</span> <span class="token keyword">if</span><span class="token punctuation">;</span>
-    <span class="token keyword">select</span> concat<span class="token punctuation">(</span><span class="token string">'体重:'</span><span class="token punctuation">,</span>weight<span class="token punctuation">,</span><span class="token string">'对应的身材类型为:'</span><span class="token punctuation">,</span>description<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">end</span>$
-
-<span class="token comment">-- 调用存储过程</span>
-<span class="token keyword">call</span> pro_test5<span class="token punctuation">(</span><span class="token punctuation">)</span>$<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建存储过程</span></span><br><span class="line">delimiter $</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> pro_test5()</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">declare</span> weight <span class="type">int</span> <span class="keyword">default</span> <span class="number">175</span>;</span><br><span class="line">    <span class="keyword">declare</span> description <span class="type">varchar</span>(<span class="number">50</span>) <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    if weight <span class="operator">&gt;=</span> <span class="number">170</span> <span class="keyword">then</span></span><br><span class="line">      <span class="keyword">set</span> description <span class="operator">=</span> <span class="string">&#x27;身材肥胖&#x27;</span>;</span><br><span class="line">    elseif weight <span class="operator">&gt;=</span> <span class="number">150</span> <span class="keyword">and</span> weight <span class="operator">&lt;</span> <span class="number">170</span> <span class="keyword">then</span></span><br><span class="line">      <span class="keyword">set</span> description <span class="operator">=</span> <span class="string">&#x27;标准身材&#x27;</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      <span class="keyword">set</span> description <span class="operator">=</span> <span class="string">&#x27;身材偏瘦&#x27;</span>;</span><br><span class="line">    <span class="keyword">end</span> if;</span><br><span class="line">    <span class="keyword">select</span> concat(<span class="string">&#x27;体重:&#x27;</span>,weight,<span class="string">&#x27;对应的身材类型为:&#x27;</span>,description);</span><br><span class="line"><span class="keyword">end</span>$</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 调用存储过程</span></span><br><span class="line"><span class="keyword">call</span> pro_test5()$</span><br></pre></td></tr></table></figure>
 
 
 
-<h4 id="3、-传递参数"><a href="#3、-传递参数" class="headerlink" title="3、 传递参数"></a>3、 传递参数</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">procedure</span> procedure_name<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">in</span><span class="token operator">/</span><span class="token keyword">out</span><span class="token operator">/</span><span class="token keyword">inout</span><span class="token punctuation">]</span>  参数名  参数类型<span class="token punctuation">)</span>
-<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-
-<span class="token operator">IN</span> :  该参数可以作为输入，也就是需要调用方传入值 <span class="token punctuation">,</span> 默认
-<span class="token keyword">OUT</span>:  该参数作为输出，也就是该参数可以作为返回值
-<span class="token keyword">INOUT</span>: 既可以作为输入参数，也可以作为输出参数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="3、-传递参数"><a href="#3、-传递参数" class="headerlink" title="3、 传递参数"></a>3、 传递参数</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> procedure_name([<span class="keyword">in</span><span class="operator">/</span><span class="keyword">out</span><span class="operator">/</span><span class="keyword">inout</span>]  参数名  参数类型)</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="keyword">IN</span> :  该参数可以作为输入，也就是需要调用方传入值 , 默认</span><br><span class="line"><span class="keyword">OUT</span>:  该参数作为输出，也就是该参数可以作为返回值</span><br><span class="line"><span class="keyword">INOUT</span>: 既可以作为输入参数，也可以作为输出参数</span><br></pre></td></tr></table></figure>
 
 <h5 id="IN-输入"><a href="#IN-输入" class="headerlink" title="IN 输入"></a>IN 输入</h5><p>IN :  该参数可以作为输入，也就是需要调用方传入值 , 默认。</p>
 <p>调用格式：</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">call</span> 存储过程名<span class="token punctuation">(</span>数据<span class="token punctuation">)</span>$<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">call</span> 存储过程名(数据)$</span><br></pre></td></tr></table></figure>
 
 <p>需求:</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">根据传入的体重变量，判定当前体重的所属的身材类型 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">根据传入的体重变量，判定当前体重的所属的身材类型 </span><br></pre></td></tr></table></figure>
 
 <div style='background-color:#42C0A3;'>示例: </div>
 
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 创建存储过程，不用声明weight变量了，已经在小括号中定义了</span>
-<span class="token keyword">delimiter</span> $
-<span class="token keyword">create</span> <span class="token keyword">procedure</span> pro_test6<span class="token punctuation">(</span><span class="token operator">in</span> weight <span class="token keyword">int</span><span class="token punctuation">)</span>
-<span class="token keyword">begin</span>
-    <span class="token keyword">declare</span> description <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token string">''</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> weight <span class="token operator">>=</span> <span class="token number">170</span> <span class="token keyword">then</span>
-      <span class="token keyword">set</span> description <span class="token operator">=</span> <span class="token string">'身材肥胖'</span><span class="token punctuation">;</span>
-    <span class="token keyword">elseif</span> weight <span class="token operator">>=</span> <span class="token number">150</span> <span class="token operator">and</span> weight <span class="token operator">&lt;</span> <span class="token number">170</span> <span class="token keyword">then</span>
-      <span class="token keyword">set</span> description <span class="token operator">=</span> <span class="token string">'标准身材'</span><span class="token punctuation">;</span>
-    <span class="token keyword">else</span>
-      <span class="token keyword">set</span> description <span class="token operator">=</span> <span class="token string">'身材偏瘦'</span><span class="token punctuation">;</span>
-    <span class="token keyword">end</span> <span class="token keyword">if</span><span class="token punctuation">;</span>
-    <span class="token keyword">select</span> concat<span class="token punctuation">(</span><span class="token string">'体重:'</span><span class="token punctuation">,</span>weight<span class="token punctuation">,</span><span class="token string">'对应的身材类型为:'</span><span class="token punctuation">,</span>description<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">end</span>$
-<span class="token comment">-- 调用存储过程</span>
-<span class="token keyword">call</span> pro_test6<span class="token punctuation">(</span><span class="token number">160</span><span class="token punctuation">)</span>$<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建存储过程，不用声明weight变量了，已经在小括号中定义了</span></span><br><span class="line">delimiter $</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> pro_test6(<span class="keyword">in</span> weight <span class="type">int</span>)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">declare</span> description <span class="type">varchar</span>(<span class="number">50</span>) <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    if weight <span class="operator">&gt;=</span> <span class="number">170</span> <span class="keyword">then</span></span><br><span class="line">      <span class="keyword">set</span> description <span class="operator">=</span> <span class="string">&#x27;身材肥胖&#x27;</span>;</span><br><span class="line">    elseif weight <span class="operator">&gt;=</span> <span class="number">150</span> <span class="keyword">and</span> weight <span class="operator">&lt;</span> <span class="number">170</span> <span class="keyword">then</span></span><br><span class="line">      <span class="keyword">set</span> description <span class="operator">=</span> <span class="string">&#x27;标准身材&#x27;</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      <span class="keyword">set</span> description <span class="operator">=</span> <span class="string">&#x27;身材偏瘦&#x27;</span>;</span><br><span class="line">    <span class="keyword">end</span> if;</span><br><span class="line">    <span class="keyword">select</span> concat(<span class="string">&#x27;体重:&#x27;</span>,weight,<span class="string">&#x27;对应的身材类型为:&#x27;</span>,description);</span><br><span class="line"><span class="keyword">end</span>$</span><br><span class="line"><span class="comment">-- 调用存储过程</span></span><br><span class="line"><span class="keyword">call</span> pro_test6(<span class="number">160</span>)$</span><br></pre></td></tr></table></figure>
 
 
 
@@ -663,34 +565,21 @@
 <div style='background-color:#42C0A3;'>示例: </div>
 
 <p>需求:</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">根据传入的体重变量，获取当前体重的所属的身材类型<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">根据传入的体重变量，获取当前体重的所属的身材类型</span><br></pre></td></tr></table></figure>
 
 <p>【创建存储过程的sql语句】</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 创建存储过程</span>
-<span class="token keyword">delimiter</span> $
-<span class="token comment">-- 不用声明weight和description变量了，已经在小括号中定义了,description表示返回，我们在调用存储过程的时候需要使用变量接收</span>
-<span class="token keyword">create</span> <span class="token keyword">procedure</span> pro_test7<span class="token punctuation">(</span><span class="token operator">in</span> weight <span class="token keyword">int</span><span class="token punctuation">,</span><span class="token keyword">out</span> description <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token keyword">begin</span>
-    <span class="token keyword">if</span> weight <span class="token operator">>=</span> <span class="token number">170</span> <span class="token keyword">then</span>
-      <span class="token keyword">set</span> description <span class="token operator">=</span> <span class="token string">'身材肥胖'</span><span class="token punctuation">;</span>
-    <span class="token keyword">elseif</span> weight <span class="token operator">>=</span> <span class="token number">150</span> <span class="token operator">and</span> weight <span class="token operator">&lt;</span> <span class="token number">170</span> <span class="token keyword">then</span>
-      <span class="token keyword">set</span> description <span class="token operator">=</span> <span class="token string">'标准身材'</span><span class="token punctuation">;</span>
-    <span class="token keyword">else</span>
-      <span class="token keyword">set</span> description <span class="token operator">=</span> <span class="token string">'身材偏瘦'</span><span class="token punctuation">;</span>
-    <span class="token keyword">end</span> <span class="token keyword">if</span><span class="token punctuation">;</span>
-<span class="token keyword">end</span>$<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建存储过程</span></span><br><span class="line">delimiter $</span><br><span class="line"><span class="comment">-- 不用声明weight和description变量了，已经在小括号中定义了,description表示返回，我们在调用存储过程的时候需要使用变量接收</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> pro_test7(<span class="keyword">in</span> weight <span class="type">int</span>,<span class="keyword">out</span> description <span class="type">varchar</span>(<span class="number">100</span>))</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    if weight <span class="operator">&gt;=</span> <span class="number">170</span> <span class="keyword">then</span></span><br><span class="line">      <span class="keyword">set</span> description <span class="operator">=</span> <span class="string">&#x27;身材肥胖&#x27;</span>;</span><br><span class="line">    elseif weight <span class="operator">&gt;=</span> <span class="number">150</span> <span class="keyword">and</span> weight <span class="operator">&lt;</span> <span class="number">170</span> <span class="keyword">then</span></span><br><span class="line">      <span class="keyword">set</span> description <span class="operator">=</span> <span class="string">&#x27;标准身材&#x27;</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      <span class="keyword">set</span> description <span class="operator">=</span> <span class="string">&#x27;身材偏瘦&#x27;</span>;</span><br><span class="line">    <span class="keyword">end</span> if;</span><br><span class="line"><span class="keyword">end</span>$</span><br></pre></td></tr></table></figure>
 
 <p>说明：由于我们需要在调用存储过程中接收返回的description的值，所以我们不用在存储过程中使用select查看description的值了。</p>
 <p>上述我们只是创建了有返回值的存储过程，那么接下来我们需要调用存储过程，调用有返回值的存储过程需要使用变量接收返回值。</p>
 <p>那么这里我们可以按照如下方式接收返回值：</p>
 <p>【调用存储过程】</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 调用存储过程</span>
-<span class="token keyword">call</span> pro_test7<span class="token punctuation">(</span><span class="token number">168</span><span class="token punctuation">,</span><span class="token variable">@desc</span><span class="token punctuation">)</span>$<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 调用存储过程</span></span><br><span class="line"><span class="keyword">call</span> pro_test7(<span class="number">168</span>,<span class="variable">@desc</span>)$</span><br></pre></td></tr></table></figure>
 
 <p><b><font color='red'>知识小贴士</font></b><br>@desc : 这种变量要在变量名称前面加上“@”符号，叫做用户会话变量，代表整个会话过程他都是有作用的。@后面属于标识符，随便定义。</p>
 <p>作用域：针对当前会话(连接)有效，同于会话变量的作用域。</p>
 <p>【查看返回值变量接收的结果】</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token variable">@desc$</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="variable">@desc</span>$</span><br></pre></td></tr></table></figure>
 
 <p>说明：本身存储过程是没有返回值的函数，是一个过程，没有结果。上述所说的返回值其实不是真正返回值，只是我们传递一个变量到存储过程中，在存储过程中修改了该变量值，然后在调用存储过程的位置在获取修改后的变量值。</p>
 <p>举例：类似于java中在方法外部定义变量，在方法中修改变量，然后在方法外部获取修改后的变量是一个意思。</p>
@@ -698,316 +587,93 @@
 <p>需求：创建带inout模式参数的存储过程。</p>
 <p>传入a和b两个值，最终将a和b都乘以2并返回。</p>
 <p>【创建存储过程】</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">procedure</span> pro_test8<span class="token punctuation">(</span><span class="token keyword">inout</span> a <span class="token keyword">int</span><span class="token punctuation">,</span><span class="token keyword">inout</span> b <span class="token keyword">int</span><span class="token punctuation">)</span>
-<span class="token keyword">begin</span>
-    <span class="token keyword">set</span> a <span class="token operator">=</span> a <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
-    <span class="token keyword">set</span> b <span class="token operator">=</span> b <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
-<span class="token keyword">end</span>$<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> pro_test8(<span class="keyword">inout</span> a <span class="type">int</span>,<span class="keyword">inout</span> b <span class="type">int</span>)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">set</span> a <span class="operator">=</span> a <span class="operator">*</span> <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">set</span> b <span class="operator">=</span> b <span class="operator">*</span> <span class="number">2</span>;</span><br><span class="line"><span class="keyword">end</span>$</span><br></pre></td></tr></table></figure>
 
 <p>【调用存储过程】</p>
 <p>说明：我们在调用存储过程的时候需要给a和b传入两个数据，首先我们不能直接传递常量，因为我们还要使用select进行对结果的查询。所以这里我们先使用set命令定义两个变量。</p>
 <p>自定义用户变量，声明并初始化：</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">set</span> @变量名<span class="token operator">=</span>值$
-举例：
-<span class="token keyword">set</span> <span class="token variable">@m</span><span class="token operator">=</span><span class="token number">10</span>$<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> @变量名<span class="operator">=</span>值$</span><br><span class="line">举例：</span><br><span class="line"><span class="keyword">set</span> <span class="variable">@m</span><span class="operator">=</span><span class="number">10</span>$</span><br></pre></td></tr></table></figure>
 
 <p>代码：</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 定义用户变量并初始化</span>
-<span class="token keyword">set</span> <span class="token variable">@m</span><span class="token operator">=</span><span class="token number">10</span>$
-<span class="token keyword">set</span> <span class="token variable">@n</span><span class="token operator">=</span><span class="token number">20</span>$
-<span class="token comment">-- 调用存储过程并将变量值传递给存储过程中的a和b</span>
-<span class="token keyword">call</span> pro_test8<span class="token punctuation">(</span><span class="token variable">@m</span><span class="token punctuation">,</span><span class="token variable">@n</span><span class="token punctuation">)</span>$<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 定义用户变量并初始化</span></span><br><span class="line"><span class="keyword">set</span> <span class="variable">@m</span><span class="operator">=</span><span class="number">10</span>$</span><br><span class="line"><span class="keyword">set</span> <span class="variable">@n</span><span class="operator">=</span><span class="number">20</span>$</span><br><span class="line"><span class="comment">-- 调用存储过程并将变量值传递给存储过程中的a和b</span></span><br><span class="line"><span class="keyword">call</span> pro_test8(<span class="variable">@m</span>,<span class="variable">@n</span>)$</span><br></pre></td></tr></table></figure>
 
 <p>【查看存储过程返回的值】</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token variable">@m</span><span class="token punctuation">,</span><span class="token variable">@n$</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="variable">@m</span>,<span class="variable">@n</span>$</span><br></pre></td></tr></table></figure>
 
 
 
-<h4 id="4、case结构"><a href="#4、case结构" class="headerlink" title="4、case结构"></a>4、case结构</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">方式一 :
-<span class="token comment">-- 拿case后面的值和when后面的值依次比较，相等就执行then后面的语句，如果都不相等，就执行else后面的语句</span>
-<span class="token keyword">CASE</span> 值
-    <span class="token keyword">WHEN</span> 值<span class="token number">1</span> <span class="token keyword">THEN</span> 语句<span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token punctuation">[</span><span class="token keyword">WHEN</span> 值<span class="token number">2</span> <span class="token keyword">THEN</span> 语句<span class="token number">2</span><span class="token punctuation">]</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    <span class="token punctuation">[</span><span class="token keyword">ELSE</span> 语句<span class="token number">3</span><span class="token punctuation">]</span>
-<span class="token keyword">END</span> <span class="token keyword">CASE</span><span class="token punctuation">;</span>
-
-方式二 :
-<span class="token comment">-- 说明：WHEN后面的任意一个 条件表达式 是true，就执行then后面的语句，如果都是false，那么执行else后面的语句，多个when只会执行一个</span>
-<span class="token keyword">CASE</span>
-    <span class="token keyword">WHEN</span> 条件表达式<span class="token number">1</span> <span class="token keyword">THEN</span> 语句<span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token punctuation">[</span><span class="token keyword">WHEN</span> 条件表达式<span class="token number">2</span> <span class="token keyword">THEN</span> 语句<span class="token number">2</span><span class="token punctuation">;</span><span class="token punctuation">]</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    <span class="token punctuation">[</span><span class="token keyword">ELSE</span> 语句<span class="token number">3</span><span class="token punctuation">]</span>
-<span class="token keyword">END</span> <span class="token keyword">CASE</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="4、case结构"><a href="#4、case结构" class="headerlink" title="4、case结构"></a>4、case结构</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">方式一 :</span><br><span class="line"><span class="comment">-- 拿case后面的值和when后面的值依次比较，相等就执行then后面的语句，如果都不相等，就执行else后面的语句</span></span><br><span class="line"><span class="keyword">CASE</span> 值</span><br><span class="line">    <span class="keyword">WHEN</span> 值<span class="number">1</span> <span class="keyword">THEN</span> 语句<span class="number">1</span>;</span><br><span class="line">    [<span class="keyword">WHEN</span> 值<span class="number">2</span> <span class="keyword">THEN</span> 语句<span class="number">2</span>] ...</span><br><span class="line">    [<span class="keyword">ELSE</span> 语句<span class="number">3</span>]</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">CASE</span>;</span><br><span class="line"></span><br><span class="line">方式二 :</span><br><span class="line"><span class="comment">-- 说明：WHEN后面的任意一个 条件表达式 是true，就执行then后面的语句，如果都是false，那么执行else后面的语句，多个when只会执行一个</span></span><br><span class="line"><span class="keyword">CASE</span></span><br><span class="line">    <span class="keyword">WHEN</span> 条件表达式<span class="number">1</span> <span class="keyword">THEN</span> 语句<span class="number">1</span>;</span><br><span class="line">    [<span class="keyword">WHEN</span> 条件表达式<span class="number">2</span> <span class="keyword">THEN</span> 语句<span class="number">2</span>;] ...</span><br><span class="line">    [<span class="keyword">ELSE</span> 语句<span class="number">3</span>]</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">CASE</span>;</span><br></pre></td></tr></table></figure>
 
 
 
 <p>需求:</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">给定一个月份 <span class="token punctuation">,</span> 然后计算出所在的季度<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">给定一个月份 , 然后计算出所在的季度</span><br></pre></td></tr></table></figure>
 
 <p>sql</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 创建存储过程</span>
-<span class="token keyword">delimiter</span> $
-<span class="token keyword">create</span> <span class="token keyword">procedure</span> pro_test9<span class="token punctuation">(</span><span class="token operator">in</span> <span class="token keyword">month</span> <span class="token keyword">int</span><span class="token punctuation">)</span>
-<span class="token keyword">begin</span>
-    <span class="token keyword">declare</span> result <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    
-    <span class="token keyword">case</span>
-     <span class="token keyword">when</span> <span class="token keyword">month</span> <span class="token operator">>=</span> <span class="token number">1</span> <span class="token operator">and</span> <span class="token keyword">month</span> <span class="token operator">&lt;=</span><span class="token number">3</span> <span class="token keyword">then</span>
-       <span class="token keyword">set</span> result <span class="token operator">=</span> <span class="token string">'第一季度'</span><span class="token punctuation">;</span>
-     <span class="token keyword">when</span> <span class="token keyword">month</span> <span class="token operator">>=</span> <span class="token number">4</span> <span class="token operator">and</span> <span class="token keyword">month</span> <span class="token operator">&lt;=</span><span class="token number">6</span> <span class="token keyword">then</span>
-       <span class="token keyword">set</span> result <span class="token operator">=</span> <span class="token string">'第二季度'</span><span class="token punctuation">;</span>
-     <span class="token keyword">when</span> <span class="token keyword">month</span> <span class="token operator">>=</span> <span class="token number">7</span> <span class="token operator">and</span> <span class="token keyword">month</span> <span class="token operator">&lt;=</span><span class="token number">9</span> <span class="token keyword">then</span>
-       <span class="token keyword">set</span> result <span class="token operator">=</span> <span class="token string">'第三季度'</span><span class="token punctuation">;</span>
-     <span class="token keyword">else</span>
-       <span class="token keyword">set</span> result <span class="token operator">=</span> <span class="token string">'第四季度'</span><span class="token punctuation">;</span>
-    <span class="token keyword">end</span> <span class="token keyword">case</span><span class="token punctuation">;</span>
-    
-    <span class="token keyword">select</span> concat<span class="token punctuation">(</span><span class="token string">'您输入的月份为 :'</span><span class="token punctuation">,</span> <span class="token keyword">month</span> <span class="token punctuation">,</span> <span class="token string">',该月份为 : '</span> <span class="token punctuation">,</span> result<span class="token punctuation">)</span> <span class="token keyword">as</span> content <span class="token punctuation">;</span>
-<span class="token keyword">end</span>$
-<span class="token comment">-- 调用存储过程</span>
-<span class="token keyword">call</span> pro_test9<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>$<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建存储过程</span></span><br><span class="line">delimiter $</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> pro_test9(<span class="keyword">in</span> <span class="keyword">month</span> <span class="type">int</span>)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">declare</span> <span class="keyword">result</span> <span class="type">varchar</span>(<span class="number">20</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">case</span></span><br><span class="line">     <span class="keyword">when</span> <span class="keyword">month</span> <span class="operator">&gt;=</span> <span class="number">1</span> <span class="keyword">and</span> <span class="keyword">month</span> <span class="operator">&lt;=</span><span class="number">3</span> <span class="keyword">then</span></span><br><span class="line">       <span class="keyword">set</span> <span class="keyword">result</span> <span class="operator">=</span> <span class="string">&#x27;第一季度&#x27;</span>;</span><br><span class="line">     <span class="keyword">when</span> <span class="keyword">month</span> <span class="operator">&gt;=</span> <span class="number">4</span> <span class="keyword">and</span> <span class="keyword">month</span> <span class="operator">&lt;=</span><span class="number">6</span> <span class="keyword">then</span></span><br><span class="line">       <span class="keyword">set</span> <span class="keyword">result</span> <span class="operator">=</span> <span class="string">&#x27;第二季度&#x27;</span>;</span><br><span class="line">     <span class="keyword">when</span> <span class="keyword">month</span> <span class="operator">&gt;=</span> <span class="number">7</span> <span class="keyword">and</span> <span class="keyword">month</span> <span class="operator">&lt;=</span><span class="number">9</span> <span class="keyword">then</span></span><br><span class="line">       <span class="keyword">set</span> <span class="keyword">result</span> <span class="operator">=</span> <span class="string">&#x27;第三季度&#x27;</span>;</span><br><span class="line">     <span class="keyword">else</span></span><br><span class="line">       <span class="keyword">set</span> <span class="keyword">result</span> <span class="operator">=</span> <span class="string">&#x27;第四季度&#x27;</span>;</span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">case</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">select</span> concat(<span class="string">&#x27;您输入的月份为 :&#x27;</span>, <span class="keyword">month</span> , <span class="string">&#x27;,该月份为 : &#x27;</span> , <span class="keyword">result</span>) <span class="keyword">as</span> content ;</span><br><span class="line"><span class="keyword">end</span>$</span><br><span class="line"><span class="comment">-- 调用存储过程</span></span><br><span class="line"><span class="keyword">call</span> pro_test9(<span class="number">2</span>)$</span><br></pre></td></tr></table></figure>
 
 
 
-<h4 id="5、mysql存储过程中的三种循环"><a href="#5、mysql存储过程中的三种循环" class="headerlink" title="5、mysql存储过程中的三种循环"></a>5、mysql存储过程中的三种循环</h4><h6 id="1、while循环"><a href="#1、while循环" class="headerlink" title="1、while循环"></a>1、while循环</h6><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 如果循环条件为true，则一直执行do后面的sql语句，如果循环条件为false，则结束while循环</span>
-<span class="token keyword">while</span> 循环条件 <span class="token keyword">do</span>
-
-	<span class="token keyword">sql</span>语句
-
-<span class="token keyword">end</span> <span class="token keyword">while</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="5、mysql存储过程中的三种循环"><a href="#5、mysql存储过程中的三种循环" class="headerlink" title="5、mysql存储过程中的三种循环"></a>5、mysql存储过程中的三种循环</h4><h6 id="1、while循环"><a href="#1、while循环" class="headerlink" title="1、while循环"></a>1、while循环</h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 如果循环条件为true，则一直执行do后面的sql语句，如果循环条件为false，则结束while循环</span></span><br><span class="line">while 循环条件 do</span><br><span class="line"></span><br><span class="line">	<span class="keyword">sql</span>语句</span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span> while;</span><br></pre></td></tr></table></figure>
 
 <p>需求:</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">计算从 <span class="token number">1</span>加到n的值<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">计算从 <span class="number">1</span>加到n的值</span><br></pre></td></tr></table></figure>
 
 <p>sql</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">delimiter</span> $	
-<span class="token comment">-- 创建存储过程，使用变量n接收传入的参数</span>
-<span class="token keyword">create</span> <span class="token keyword">procedure</span> pro_test10<span class="token punctuation">(</span><span class="token operator">in</span> n <span class="token keyword">int</span><span class="token punctuation">)</span>
-<span class="token keyword">begin</span>
-	<span class="token comment">-- 声明变量total保存最后的和值，默认值是0</span>
-    <span class="token keyword">declare</span> total <span class="token keyword">int</span> <span class="token keyword">default</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token comment">-- 声明变量num初始化值是1作为循环的初始化</span>
-    <span class="token keyword">declare</span> num <span class="token keyword">int</span> <span class="token keyword">default</span> <span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token comment">-- num&lt;=n 表示循环条件，如果为true，满足循环条件执行do后面的sql语句即循环体</span>
-    <span class="token keyword">while</span> num<span class="token operator">&lt;=</span>n <span class="token keyword">do</span>
-    	<span class="token comment">-- 每次循环设置total的值为total + num</span>
-      	<span class="token keyword">set</span> total <span class="token operator">=</span> total <span class="token operator">+</span> num<span class="token punctuation">;</span>
-      	<span class="token comment">-- 每次循环让num进行+1</span>
-    	<span class="token keyword">set</span> num <span class="token operator">=</span> num <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token keyword">end</span> <span class="token keyword">while</span><span class="token punctuation">;</span>
-    <span class="token comment">-- 查看和值total</span>
-    <span class="token keyword">select</span> total<span class="token punctuation">;</span>
-<span class="token keyword">end</span>$
-
-<span class="token comment">-- 调用存储过程</span>
-<span class="token keyword">call</span> pro_test10<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>$<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">delimiter $	</span><br><span class="line"><span class="comment">-- 创建存储过程，使用变量n接收传入的参数</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> pro_test10(<span class="keyword">in</span> n <span class="type">int</span>)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">	<span class="comment">-- 声明变量total保存最后的和值，默认值是0</span></span><br><span class="line">    <span class="keyword">declare</span> total <span class="type">int</span> <span class="keyword">default</span> <span class="number">0</span>;</span><br><span class="line">    <span class="comment">-- 声明变量num初始化值是1作为循环的初始化</span></span><br><span class="line">    <span class="keyword">declare</span> num <span class="type">int</span> <span class="keyword">default</span> <span class="number">1</span>;</span><br><span class="line">    <span class="comment">-- num&lt;=n 表示循环条件，如果为true，满足循环条件执行do后面的sql语句即循环体</span></span><br><span class="line">    while num<span class="operator">&lt;=</span>n do</span><br><span class="line">    	<span class="comment">-- 每次循环设置total的值为total + num</span></span><br><span class="line">      	<span class="keyword">set</span> total <span class="operator">=</span> total <span class="operator">+</span> num;</span><br><span class="line">      	<span class="comment">-- 每次循环让num进行+1</span></span><br><span class="line">    	<span class="keyword">set</span> num <span class="operator">=</span> num <span class="operator">+</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">end</span> while;</span><br><span class="line">    <span class="comment">-- 查看和值total</span></span><br><span class="line">    <span class="keyword">select</span> total;</span><br><span class="line"><span class="keyword">end</span>$</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 调用存储过程</span></span><br><span class="line"><span class="keyword">call</span> pro_test10(<span class="number">3</span>)$</span><br></pre></td></tr></table></figure>
 
 
 
-<h6 id="2、repeat结构"><a href="#2、repeat结构" class="headerlink" title="2、repeat结构"></a>2、repeat结构</h6><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 如果不满足until后面的循环条件则执行循环体代码，直到满足循环条件就结束循环体代码</span>
-<span class="token keyword">repeat</span>
-	<span class="token comment">-- 循环体</span>
-    <span class="token keyword">sql</span>语句
-    until  循环条件 <span class="token comment">-- 注意：循环条件后面不能加分号，不满足语法规则</span>
-<span class="token keyword">end</span> <span class="token keyword">repeat</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h6 id="2、repeat结构"><a href="#2、repeat结构" class="headerlink" title="2、repeat结构"></a>2、repeat结构</h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 如果不满足until后面的循环条件则执行循环体代码，直到满足循环条件就结束循环体代码</span></span><br><span class="line">repeat</span><br><span class="line">	<span class="comment">-- 循环体</span></span><br><span class="line">    <span class="keyword">sql</span>语句</span><br><span class="line">    until  循环条件 <span class="comment">-- 注意：循环条件后面不能加分号，不满足语法规则</span></span><br><span class="line"><span class="keyword">end</span> repeat;</span><br></pre></td></tr></table></figure>
 
 <p>需求:</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">计算从 <span class="token number">1</span>加到n的值<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">计算从 <span class="number">1</span>加到n的值</span><br></pre></td></tr></table></figure>
 
 <p>sql</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">delimiter</span> $
-<span class="token comment">-- 创建存储过程</span>
-<span class="token comment">-- 使用参数n接收调用存储过程传入的数据</span>
-<span class="token keyword">create</span> <span class="token keyword">procedure</span> pro_test11<span class="token punctuation">(</span><span class="token operator">in</span> n <span class="token keyword">int</span><span class="token punctuation">)</span>
-<span class="token keyword">begin</span>
-	<span class="token comment">-- 声明变量total保存和值，初始化值是0</span>
-    <span class="token keyword">declare</span> total <span class="token keyword">int</span> <span class="token keyword">default</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token comment">-- 使用repeat循环</span>
-    <span class="token keyword">repeat</span>
-    	<span class="token comment">-- 每次循环设置total等于total + n 就是求n+(n-1)....+1</span>
-      	<span class="token keyword">set</span> total <span class="token operator">=</span> total <span class="token operator">+</span> n<span class="token punctuation">;</span>
-      	<span class="token comment">-- 每次循环将n进行减1</span>
-      	<span class="token keyword">set</span> n <span class="token operator">=</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
-      	<span class="token comment">-- 当n等于0时停止repeat循环，这里不能加分号否则报错</span>
-    	until n<span class="token operator">=</span><span class="token number">0</span> 
-    <span class="token keyword">end</span> <span class="token keyword">repeat</span><span class="token punctuation">;</span>
-    <span class="token comment">-- 查看总和值total</span>
-    <span class="token keyword">select</span> total <span class="token punctuation">;</span>
-<span class="token keyword">end</span>$
-
-<span class="token comment">-- 调用存储过程</span>
-<span class="token keyword">call</span> pro_test11<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>$<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">delimiter $</span><br><span class="line"><span class="comment">-- 创建存储过程</span></span><br><span class="line"><span class="comment">-- 使用参数n接收调用存储过程传入的数据</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> pro_test11(<span class="keyword">in</span> n <span class="type">int</span>)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">	<span class="comment">-- 声明变量total保存和值，初始化值是0</span></span><br><span class="line">    <span class="keyword">declare</span> total <span class="type">int</span> <span class="keyword">default</span> <span class="number">0</span>;</span><br><span class="line">    <span class="comment">-- 使用repeat循环</span></span><br><span class="line">    repeat</span><br><span class="line">    	<span class="comment">-- 每次循环设置total等于total + n 就是求n+(n-1)....+1</span></span><br><span class="line">      	<span class="keyword">set</span> total <span class="operator">=</span> total <span class="operator">+</span> n;</span><br><span class="line">      	<span class="comment">-- 每次循环将n进行减1</span></span><br><span class="line">      	<span class="keyword">set</span> n <span class="operator">=</span> n <span class="operator">-</span> <span class="number">1</span>;</span><br><span class="line">      	<span class="comment">-- 当n等于0时停止repeat循环，这里不能加分号否则报错</span></span><br><span class="line">    	until n<span class="operator">=</span><span class="number">0</span> </span><br><span class="line">    <span class="keyword">end</span> repeat;</span><br><span class="line">    <span class="comment">-- 查看总和值total</span></span><br><span class="line">    <span class="keyword">select</span> total ;</span><br><span class="line"><span class="keyword">end</span>$</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 调用存储过程</span></span><br><span class="line"><span class="keyword">call</span> pro_test11(<span class="number">3</span>)$</span><br></pre></td></tr></table></figure>
 
 
 
 <h6 id="3、loop-leave语句"><a href="#3、loop-leave语句" class="headerlink" title="3、loop leave语句"></a>3、loop leave语句</h6><p>loop 实现简单的循环，退出循环的条件需要使用其他的语句定义，通常可以使用 leave 语句实现</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 死循环，需要用leave才能跳出</span>
-
-循环标记:<span class="token keyword">loop</span>
-    <span class="token comment">-- 循环体</span>
-    <span class="token keyword">sql</span>语句
-    <span class="token keyword">if</span> 条件 <span class="token keyword">then</span>
-    	<span class="token keyword">leave</span> 循环标记<span class="token punctuation">;</span>
-<span class="token keyword">end</span> <span class="token keyword">loop</span> 循环标记<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 死循环，需要用leave才能跳出</span><br><span class="line"></span><br><span class="line">循环标记:loop</span><br><span class="line">    <span class="comment">-- 循环体</span></span><br><span class="line">    <span class="keyword">sql</span>语句</span><br><span class="line">    if 条件 <span class="keyword">then</span></span><br><span class="line">    	leave 循环标记;</span><br><span class="line"><span class="keyword">end</span> loop 循环标记;</span><br></pre></td></tr></table></figure>
 
 <p>需求: 使用loop和leave实现数字累加</p>
 <p>sql:</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">delimiter</span> $
-<span class="token comment">-- 创建存储过程</span>
-<span class="token comment">-- 使用参数n接收调用存储过程传入的数据</span>
-<span class="token keyword">create</span> <span class="token keyword">procedure</span> pro_test12<span class="token punctuation">(</span><span class="token operator">in</span> n <span class="token keyword">int</span><span class="token punctuation">)</span>
-<span class="token keyword">begin</span>
-	<span class="token comment">-- 声明变量total保存和值，初始化值是0</span>
-    <span class="token keyword">declare</span> total <span class="token keyword">int</span> <span class="token keyword">default</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token comment">-- 使用loop循环,c表示循环别名</span>
-    c:<span class="token keyword">loop</span>
-    	<span class="token comment">-- 每次循环设置total等于total + n 就是求n+(n-1)....+1</span>
-      	<span class="token keyword">set</span> total <span class="token operator">=</span> total <span class="token operator">+</span> n<span class="token punctuation">;</span>
-      	<span class="token comment">-- 每次循环将n进行减1</span>
-      	<span class="token keyword">set</span> n <span class="token operator">=</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
-      	<span class="token comment">-- 判断n是否小于等于0，如果是结束loop循环</span>
-      	<span class="token keyword">if</span> n<span class="token operator">&lt;=</span> <span class="token number">0</span> <span class="token keyword">then</span>
-      		<span class="token comment">-- 说明n小于等于0了，使用leave结束loop循环</span>
-      		<span class="token keyword">leave</span> c<span class="token punctuation">;</span>
-      	<span class="token keyword">end</span> <span class="token keyword">if</span><span class="token punctuation">;</span>
-    <span class="token comment">-- 结束loop循环后面加一个loop循环的别名</span>
-    <span class="token keyword">end</span> <span class="token keyword">loop</span> c<span class="token punctuation">;</span>
-    <span class="token comment">-- 查看总和值total</span>
-    <span class="token keyword">select</span> total <span class="token punctuation">;</span>
-<span class="token keyword">end</span>$
-
-<span class="token comment">-- 调用存储过程</span>
-<span class="token keyword">call</span> pro_test12<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>$<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">delimiter $</span><br><span class="line"><span class="comment">-- 创建存储过程</span></span><br><span class="line"><span class="comment">-- 使用参数n接收调用存储过程传入的数据</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> pro_test12(<span class="keyword">in</span> n <span class="type">int</span>)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">	<span class="comment">-- 声明变量total保存和值，初始化值是0</span></span><br><span class="line">    <span class="keyword">declare</span> total <span class="type">int</span> <span class="keyword">default</span> <span class="number">0</span>;</span><br><span class="line">    <span class="comment">-- 使用loop循环,c表示循环别名</span></span><br><span class="line">    c:loop</span><br><span class="line">    	<span class="comment">-- 每次循环设置total等于total + n 就是求n+(n-1)....+1</span></span><br><span class="line">      	<span class="keyword">set</span> total <span class="operator">=</span> total <span class="operator">+</span> n;</span><br><span class="line">      	<span class="comment">-- 每次循环将n进行减1</span></span><br><span class="line">      	<span class="keyword">set</span> n <span class="operator">=</span> n <span class="operator">-</span> <span class="number">1</span>;</span><br><span class="line">      	<span class="comment">-- 判断n是否小于等于0，如果是结束loop循环</span></span><br><span class="line">      	if n<span class="operator">&lt;=</span> <span class="number">0</span> <span class="keyword">then</span></span><br><span class="line">      		<span class="comment">-- 说明n小于等于0了，使用leave结束loop循环</span></span><br><span class="line">      		leave c;</span><br><span class="line">      	<span class="keyword">end</span> if;</span><br><span class="line">    <span class="comment">-- 结束loop循环后面加一个loop循环的别名</span></span><br><span class="line">    <span class="keyword">end</span> loop c;</span><br><span class="line">    <span class="comment">-- 查看总和值total</span></span><br><span class="line">    <span class="keyword">select</span> total ;</span><br><span class="line"><span class="keyword">end</span>$</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 调用存储过程</span></span><br><span class="line"><span class="keyword">call</span> pro_test12(<span class="number">3</span>)$</span><br></pre></td></tr></table></figure>
 
 
 
 <h3 id="5、游标-光标-了解"><a href="#5、游标-光标-了解" class="headerlink" title="5、游标/光标(了解)"></a>5、游标/光标(了解)</h3><blockquote>
 <p>游标是用来存储<strong>查询结果集</strong>的 , 在存储过程和函数中可以使用光标对结果集进行循环的处理。光标的使用包括光标的declare(声明)、open(打开)、fetch(获取游标中的数据)和 close(关闭)</p>
 </blockquote>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">declare</span> 游标名 <span class="token keyword">cursor</span> <span class="token keyword">for</span> 查询数据的结果集的<span class="token keyword">sql</span>语句 <span class="token punctuation">;</span>  <span class="token comment">-- 声明游标，执行完查询的sql语句之后将结果集放到游标中了</span>
-<span class="token keyword">open</span> 游标名 <span class="token punctuation">;</span> <span class="token comment">-- 打开游标</span>
-<span class="token keyword">fetch</span> 游标名  <span class="token keyword">INTO</span> 变量名<span class="token punctuation">,</span>变量名 <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">;</span> <span class="token comment">-- 获取游标中的数据并赋给指定变量，执行一次fetch获取游标中的一行数据，然后游标中的指针就会向下移动一次</span>
-<span class="token keyword">close</span> 游标名<span class="token punctuation">;</span> <span class="token comment">-- 关闭游标</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> 游标名 <span class="keyword">cursor</span> <span class="keyword">for</span> 查询数据的结果集的<span class="keyword">sql</span>语句 ;  <span class="comment">-- 声明游标，执行完查询的sql语句之后将结果集放到游标中了</span></span><br><span class="line"><span class="keyword">open</span> 游标名 ; <span class="comment">-- 打开游标</span></span><br><span class="line"><span class="keyword">fetch</span> 游标名  <span class="keyword">INTO</span> 变量名,变量名 ... ; <span class="comment">-- 获取游标中的数据并赋给指定变量，执行一次fetch获取游标中的一行数据，然后游标中的指针就会向下移动一次</span></span><br><span class="line"><span class="keyword">close</span> 游标名; <span class="comment">-- 关闭游标</span></span><br></pre></td></tr></table></figure>
 
 <p><b>方式1-实例sql:查询emp中所有的数据存储到游标中，并取出游标中的数据</b></p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">delimiter</span> $
-<span class="token comment">-- 创建存储过程</span>
-<span class="token keyword">create</span> <span class="token keyword">procedure</span> pro_test13<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">begin</span>
-	<span class="token comment">-- 声明和数据表列对应的列来存储列值</span>
-	<span class="token keyword">declare</span> e_id <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">declare</span> e_name <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">declare</span> e_age <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">declare</span> e_salary <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token comment">-- 创建游标</span>
-    <span class="token comment">-- emp_result 表示游标名  cursor for 固定的关键字</span>
-    <span class="token comment">-- 整体表示将从emp表中查询所有的数据存储到游标emp_result中</span>
-    <span class="token keyword">declare</span> emp_result <span class="token keyword">cursor</span> <span class="token keyword">for</span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> emp<span class="token punctuation">;</span>
-  
-    <span class="token keyword">open</span> emp_result<span class="token punctuation">;</span> <span class="token comment">-- 打开游标</span>
-    <span class="token comment">-- 取出游标中的第一行数据放到对应的变量中</span>
-    <span class="token keyword">fetch</span> emp_result <span class="token keyword">into</span> e_id<span class="token punctuation">,</span>e_name<span class="token punctuation">,</span>e_age<span class="token punctuation">,</span>e_salary<span class="token punctuation">;</span>
-    <span class="token comment">-- 查询变量的结果</span>
-     <span class="token keyword">select</span> concat<span class="token punctuation">(</span><span class="token string">'id='</span><span class="token punctuation">,</span>e_id <span class="token punctuation">,</span> <span class="token string">', name='</span><span class="token punctuation">,</span>e_name<span class="token punctuation">,</span> <span class="token string">', age='</span><span class="token punctuation">,</span> e_age<span class="token punctuation">,</span> <span class="token string">', 薪资为:
-    '</span><span class="token punctuation">,</span>e_salary<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token comment">--  取出游标中的第2行数据放到对应的变量中</span>
-    <span class="token keyword">fetch</span> emp_result <span class="token keyword">into</span> e_id<span class="token punctuation">,</span>e_name<span class="token punctuation">,</span>e_age<span class="token punctuation">,</span>e_salary<span class="token punctuation">;</span>
-     <span class="token keyword">select</span> concat<span class="token punctuation">(</span><span class="token string">'id='</span><span class="token punctuation">,</span>e_id <span class="token punctuation">,</span> <span class="token string">', name='</span><span class="token punctuation">,</span>e_name<span class="token punctuation">,</span> <span class="token string">', age='</span><span class="token punctuation">,</span> e_age<span class="token punctuation">,</span> <span class="token string">', 薪资为:
-    '</span><span class="token punctuation">,</span>e_salary<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token comment">-- 取出游标中的第3行数据放到对应的变量中</span>
-    <span class="token keyword">fetch</span> emp_result <span class="token keyword">into</span> e_id<span class="token punctuation">,</span>e_name<span class="token punctuation">,</span>e_age<span class="token punctuation">,</span>e_salary<span class="token punctuation">;</span>
-     <span class="token keyword">select</span> concat<span class="token punctuation">(</span><span class="token string">'id='</span><span class="token punctuation">,</span>e_id <span class="token punctuation">,</span> <span class="token string">', name='</span><span class="token punctuation">,</span>e_name<span class="token punctuation">,</span> <span class="token string">', age='</span><span class="token punctuation">,</span> e_age<span class="token punctuation">,</span> <span class="token string">', 薪资为:
-    '</span><span class="token punctuation">,</span>e_salary<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token comment">-- 取出游标中的第4行数据放到对应的变量中</span>
-    <span class="token keyword">fetch</span> emp_result <span class="token keyword">into</span> e_id<span class="token punctuation">,</span>e_name<span class="token punctuation">,</span>e_age<span class="token punctuation">,</span>e_salary<span class="token punctuation">;</span>
-     <span class="token keyword">select</span> concat<span class="token punctuation">(</span><span class="token string">'id='</span><span class="token punctuation">,</span>e_id <span class="token punctuation">,</span> <span class="token string">', name='</span><span class="token punctuation">,</span>e_name<span class="token punctuation">,</span> <span class="token string">', age='</span><span class="token punctuation">,</span> e_age<span class="token punctuation">,</span> <span class="token string">', 薪资为:
-    '</span><span class="token punctuation">,</span>e_salary<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    
-    <span class="token keyword">close</span> emp_result<span class="token punctuation">;</span> <span class="token comment">-- 关闭游标</span>
-<span class="token keyword">end</span>$
-
-<span class="token comment">-- 调用存储过程</span>
-<span class="token keyword">call</span> pro_test13<span class="token punctuation">(</span><span class="token punctuation">)</span>$<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">delimiter $</span><br><span class="line"><span class="comment">-- 创建存储过程</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> pro_test13()</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">	<span class="comment">-- 声明和数据表列对应的列来存储列值</span></span><br><span class="line">	<span class="keyword">declare</span> e_id <span class="type">int</span>(<span class="number">11</span>);</span><br><span class="line">    <span class="keyword">declare</span> e_name <span class="type">varchar</span>(<span class="number">50</span>);</span><br><span class="line">    <span class="keyword">declare</span> e_age <span class="type">int</span>(<span class="number">11</span>);</span><br><span class="line">    <span class="keyword">declare</span> e_salary <span class="type">int</span>(<span class="number">11</span>);</span><br><span class="line">    <span class="comment">-- 创建游标</span></span><br><span class="line">    <span class="comment">-- emp_result 表示游标名  cursor for 固定的关键字</span></span><br><span class="line">    <span class="comment">-- 整体表示将从emp表中查询所有的数据存储到游标emp_result中</span></span><br><span class="line">    <span class="keyword">declare</span> emp_result <span class="keyword">cursor</span> <span class="keyword">for</span> <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> emp;</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">open</span> emp_result; <span class="comment">-- 打开游标</span></span><br><span class="line">    <span class="comment">-- 取出游标中的第一行数据放到对应的变量中</span></span><br><span class="line">    <span class="keyword">fetch</span> emp_result <span class="keyword">into</span> e_id,e_name,e_age,e_salary;</span><br><span class="line">    <span class="comment">-- 查询变量的结果</span></span><br><span class="line">     <span class="keyword">select</span> concat(<span class="string">&#x27;id=&#x27;</span>,e_id , <span class="string">&#x27;, name=&#x27;</span>,e_name, <span class="string">&#x27;, age=&#x27;</span>, e_age, <span class="string">&#x27;, 薪资为:</span></span><br><span class="line"><span class="string">    &#x27;</span>,e_salary);</span><br><span class="line">    <span class="comment">--  取出游标中的第2行数据放到对应的变量中</span></span><br><span class="line">    <span class="keyword">fetch</span> emp_result <span class="keyword">into</span> e_id,e_name,e_age,e_salary;</span><br><span class="line">     <span class="keyword">select</span> concat(<span class="string">&#x27;id=&#x27;</span>,e_id , <span class="string">&#x27;, name=&#x27;</span>,e_name, <span class="string">&#x27;, age=&#x27;</span>, e_age, <span class="string">&#x27;, 薪资为:</span></span><br><span class="line"><span class="string">    &#x27;</span>,e_salary);</span><br><span class="line">    <span class="comment">-- 取出游标中的第3行数据放到对应的变量中</span></span><br><span class="line">    <span class="keyword">fetch</span> emp_result <span class="keyword">into</span> e_id,e_name,e_age,e_salary;</span><br><span class="line">     <span class="keyword">select</span> concat(<span class="string">&#x27;id=&#x27;</span>,e_id , <span class="string">&#x27;, name=&#x27;</span>,e_name, <span class="string">&#x27;, age=&#x27;</span>, e_age, <span class="string">&#x27;, 薪资为:</span></span><br><span class="line"><span class="string">    &#x27;</span>,e_salary);</span><br><span class="line">    <span class="comment">-- 取出游标中的第4行数据放到对应的变量中</span></span><br><span class="line">    <span class="keyword">fetch</span> emp_result <span class="keyword">into</span> e_id,e_name,e_age,e_salary;</span><br><span class="line">     <span class="keyword">select</span> concat(<span class="string">&#x27;id=&#x27;</span>,e_id , <span class="string">&#x27;, name=&#x27;</span>,e_name, <span class="string">&#x27;, age=&#x27;</span>, e_age, <span class="string">&#x27;, 薪资为:</span></span><br><span class="line"><span class="string">    &#x27;</span>,e_salary);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">close</span> emp_result; <span class="comment">-- 关闭游标</span></span><br><span class="line"><span class="keyword">end</span>$</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 调用存储过程</span></span><br><span class="line"><span class="keyword">call</span> pro_test13()$</span><br></pre></td></tr></table></figure>
 
 <p><strong>方式2-实例sql:</strong></p>
 <p>说明：使用循环实现上述过程，但是循环需要结束条件，那么我们在这里怎样书写结束条件呢？</p>
 <p>有两种方式：</p>
 <p>​    1）查询数据表的所有数据 select count(*)…..将行记录数赋值给变量num,每次循环num都减1，当变量变为0停止循环。</p>
 <p>​    2）我们希望当游标的指针移动到最后找不到数据就不找了，对于这种情况mysql提供一种思想就是句柄(出错处理器)，当找不到使用句柄(出错处理器)方式可以实现，<strong>要求声明句柄(出错处理器)和声明游标必须放在一起，并且声明句柄(出错处理器)放在声明游标下面</strong>：</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 创建游标</span>
-<span class="token keyword">declare</span> emp_result <span class="token keyword">cursor</span> <span class="token keyword">for</span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> emp<span class="token punctuation">;</span>
-<span class="token comment">-- 声明句柄</span>
-<span class="token comment">-- declare 表示声明  exit 退出 handler 处理器 set 变量 = 初始化值 设置值</span>
-<span class="token keyword">declare</span> <span class="token keyword">exit</span> <span class="token keyword">handler</span> <span class="token keyword">for</span> <span class="token operator">not</span> found <span class="token keyword">set</span> 变量 <span class="token operator">=</span> 初始化值<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建游标</span></span><br><span class="line"><span class="keyword">declare</span> emp_result <span class="keyword">cursor</span> <span class="keyword">for</span> <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> emp;</span><br><span class="line"><span class="comment">-- 声明句柄</span></span><br><span class="line"><span class="comment">-- declare 表示声明  exit 退出 handler 处理器 set 变量 = 初始化值 设置值</span></span><br><span class="line"><span class="keyword">declare</span> exit handler <span class="keyword">for</span> <span class="keyword">not</span> found <span class="keyword">set</span> 变量 <span class="operator">=</span> 初始化值;</span><br></pre></td></tr></table></figure>
 
 <p>sql语句演示：</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">delimiter</span> $
-<span class="token comment">-- 创建存储过程</span>
-<span class="token keyword">create</span> <span class="token keyword">procedure</span> pro_test14<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">begin</span>
-	<span class="token comment">-- 声明和数据表列对应的列来存储列值</span>
-	<span class="token keyword">declare</span> e_id <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">declare</span> e_name <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">declare</span> e_age <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">declare</span> e_salary <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token comment">-- 声明变量has_data作为游标中的指针是否还可以找到数据，默认值是1表示有数据，0表示没有数据</span>
-    <span class="token keyword">declare</span> has_data <span class="token keyword">int</span> <span class="token keyword">default</span> <span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token comment">-- 创建游标</span>
-    <span class="token comment">-- emp_result 表示游标名  cursor for 固定的关键字</span>
-    <span class="token comment">-- 整体表示将从emp表中查询所有的数据存储到游标emp_result中</span>
-    <span class="token keyword">declare</span> emp_result <span class="token keyword">cursor</span> <span class="token keyword">for</span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> emp<span class="token punctuation">;</span>
-  	<span class="token keyword">declare</span> <span class="token keyword">exit</span> <span class="token keyword">handler</span> <span class="token keyword">for</span> <span class="token operator">not</span> found <span class="token keyword">set</span> has_data <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">open</span> emp_result<span class="token punctuation">;</span> <span class="token comment">-- 打开游标</span>
-   
-    <span class="token comment">-- 循环</span>
-    <span class="token keyword">repeat</span>
-     <span class="token comment">-- 取出游标中的第一行数据放到对应的变量中</span>
-    <span class="token keyword">fetch</span> emp_result <span class="token keyword">into</span> e_id<span class="token punctuation">,</span>e_name<span class="token punctuation">,</span>e_age<span class="token punctuation">,</span>e_salary<span class="token punctuation">;</span>
-     <span class="token comment">-- 查询变量的结果</span>
-     <span class="token keyword">select</span> concat<span class="token punctuation">(</span><span class="token string">'id='</span><span class="token punctuation">,</span>e_id <span class="token punctuation">,</span> <span class="token string">', name='</span><span class="token punctuation">,</span>e_name<span class="token punctuation">,</span> <span class="token string">', age='</span><span class="token punctuation">,</span> e_age<span class="token punctuation">,</span> <span class="token string">', 薪资为:
-    '</span><span class="token punctuation">,</span>e_salary<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    until has_data <span class="token operator">=</span> <span class="token number">0</span>
-    <span class="token keyword">end</span> <span class="token keyword">repeat</span><span class="token punctuation">;</span>
-    <span class="token keyword">close</span> emp_result<span class="token punctuation">;</span> <span class="token comment">-- 关闭游标</span>
-<span class="token keyword">end</span>$
-
-<span class="token comment">-- 调用存储过程</span>
-<span class="token keyword">call</span> pro_test13<span class="token punctuation">(</span><span class="token punctuation">)</span>$<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">delimiter $</span><br><span class="line"><span class="comment">-- 创建存储过程</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> pro_test14()</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">	<span class="comment">-- 声明和数据表列对应的列来存储列值</span></span><br><span class="line">	<span class="keyword">declare</span> e_id <span class="type">int</span>(<span class="number">11</span>);</span><br><span class="line">    <span class="keyword">declare</span> e_name <span class="type">varchar</span>(<span class="number">50</span>);</span><br><span class="line">    <span class="keyword">declare</span> e_age <span class="type">int</span>(<span class="number">11</span>);</span><br><span class="line">    <span class="keyword">declare</span> e_salary <span class="type">int</span>(<span class="number">11</span>);</span><br><span class="line">    <span class="comment">-- 声明变量has_data作为游标中的指针是否还可以找到数据，默认值是1表示有数据，0表示没有数据</span></span><br><span class="line">    <span class="keyword">declare</span> has_data <span class="type">int</span> <span class="keyword">default</span> <span class="number">1</span>;</span><br><span class="line">    <span class="comment">-- 创建游标</span></span><br><span class="line">    <span class="comment">-- emp_result 表示游标名  cursor for 固定的关键字</span></span><br><span class="line">    <span class="comment">-- 整体表示将从emp表中查询所有的数据存储到游标emp_result中</span></span><br><span class="line">    <span class="keyword">declare</span> emp_result <span class="keyword">cursor</span> <span class="keyword">for</span> <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> emp;</span><br><span class="line">  	<span class="keyword">declare</span> exit handler <span class="keyword">for</span> <span class="keyword">not</span> found <span class="keyword">set</span> has_data <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">open</span> emp_result; <span class="comment">-- 打开游标</span></span><br><span class="line">   </span><br><span class="line">    <span class="comment">-- 循环</span></span><br><span class="line">    repeat</span><br><span class="line">     <span class="comment">-- 取出游标中的第一行数据放到对应的变量中</span></span><br><span class="line">    <span class="keyword">fetch</span> emp_result <span class="keyword">into</span> e_id,e_name,e_age,e_salary;</span><br><span class="line">     <span class="comment">-- 查询变量的结果</span></span><br><span class="line">     <span class="keyword">select</span> concat(<span class="string">&#x27;id=&#x27;</span>,e_id , <span class="string">&#x27;, name=&#x27;</span>,e_name, <span class="string">&#x27;, age=&#x27;</span>, e_age, <span class="string">&#x27;, 薪资为:</span></span><br><span class="line"><span class="string">    &#x27;</span>,e_salary);</span><br><span class="line">    until has_data <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">end</span> repeat;</span><br><span class="line">    <span class="keyword">close</span> emp_result; <span class="comment">-- 关闭游标</span></span><br><span class="line"><span class="keyword">end</span>$</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 调用存储过程</span></span><br><span class="line"><span class="keyword">call</span> pro_test13()$</span><br></pre></td></tr></table></figure>
 
 
 
 <h2 id="2、存储函数"><a href="#2、存储函数" class="headerlink" title="2、存储函数"></a>2、存储函数</h2><p>函数 ： 是一个有返回值的过程 ；<br>过程 ： 是一个没有返回值的函数 ；</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 创建存储函数</span>
-<span class="token keyword">delimiter</span> $
-<span class="token keyword">create</span> <span class="token keyword">function</span> 存储函数名<span class="token punctuation">(</span>参数名 参数类型<span class="token punctuation">)</span>
-<span class="token keyword">returns</span> 返回值的数据类型
-<span class="token keyword">begin</span>
-<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-  <span class="token keyword">return</span> 值<span class="token punctuation">;</span>
-<span class="token keyword">end</span> $
-
-<span class="token comment">-- 调用存储函数</span>
-<span class="token keyword">select</span> 存储函数名<span class="token punctuation">(</span>实参<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建存储函数</span></span><br><span class="line">delimiter $</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">function</span> 存储函数名(参数名 参数类型)</span><br><span class="line"><span class="keyword">returns</span> 返回值的数据类型</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">...</span><br><span class="line">  <span class="keyword">return</span> 值;</span><br><span class="line"><span class="keyword">end</span> $</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 调用存储函数</span></span><br><span class="line"><span class="keyword">select</span> 存储函数名(实参);</span><br></pre></td></tr></table></figure>
 
 <p>需求: 定义一个存储函数,在city表中根据传入的国家id,计算满足条件的总记录数</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">delimiter</span> $
-<span class="token comment">-- 创建存储函数</span>
-<span class="token keyword">create</span> <span class="token keyword">function</span> fn1<span class="token punctuation">(</span>countryId <span class="token keyword">int</span><span class="token punctuation">)</span>
-<span class="token keyword">returns</span> <span class="token keyword">int</span>
-<span class="token keyword">begin</span>
-	<span class="token keyword">declare</span> cnum <span class="token keyword">int</span> <span class="token punctuation">;</span>
-	<span class="token keyword">select</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">into</span> cnum <span class="token keyword">from</span> city <span class="token keyword">where</span> country_id <span class="token operator">=</span> countryId<span class="token punctuation">;</span>
-	<span class="token keyword">return</span> cnum<span class="token punctuation">;</span>
-<span class="token keyword">end</span>$
-
-<span class="token comment">-- 调用存储函数</span>
-<span class="token keyword">select</span> fn1<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>$<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">delimiter $</span><br><span class="line"><span class="comment">-- 创建存储函数</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">function</span> fn1(countryId <span class="type">int</span>)</span><br><span class="line"><span class="keyword">returns</span> <span class="type">int</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">declare</span> cnum <span class="type">int</span> ;</span><br><span class="line">	<span class="keyword">select</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">into</span> cnum <span class="keyword">from</span> city <span class="keyword">where</span> country_id <span class="operator">=</span> countryId;</span><br><span class="line">	<span class="keyword">return</span> cnum;</span><br><span class="line"><span class="keyword">end</span>$</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 调用存储函数</span></span><br><span class="line"><span class="keyword">select</span> fn1(<span class="number">1</span>)$</span><br></pre></td></tr></table></figure>
 
 
 
 <p><strong>mysql的设置默认是不允许创建函数。</strong></p>
 <p>通过如下命令可以查看函数开启状态：</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">show</span> variables <span class="token operator">like</span> <span class="token string">'%func%'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> variables <span class="keyword">like</span> <span class="string">&#x27;%func%&#x27;</span>;</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://i.loli.net/2021/09/02/izS5EAhPdqM7tyQ.png" alt="image-20200731101140383"></p>
 <ul>
@@ -1015,7 +681,7 @@
 <p>在MySQL中创建函数时出现这种错误的解决方法：</p>
 </li>
 </ul>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">set</span> <span class="token keyword">global</span> log_bin_trust_function_creators<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> log_bin_trust_function_creators<span class="operator">=</span><span class="number">1</span>;</span><br></pre></td></tr></table></figure>
 
 <p>不过这种做法重启mysql服务， 就失效了，又会变为off.</p>
 <ul>
@@ -1023,7 +689,7 @@
 <p>在my.ini里面设置</p>
 </li>
 </ul>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">log<span class="token operator">-</span>bin<span class="token operator">-</span>trust<span class="token operator">-</span><span class="token keyword">function</span><span class="token operator">-</span>creators<span class="token operator">=</span><span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">log<span class="operator">-</span>bin<span class="operator">-</span>trust<span class="operator">-</span><span class="keyword">function</span><span class="operator">-</span>creators<span class="operator">=</span><span class="number">1</span></span><br></pre></td></tr></table></figure>
 
 <p>不过这个需要重启服务.</p>
 <h2 id="3、mysql体系"><a href="#3、mysql体系" class="headerlink" title="3、mysql体系"></a>3、mysql体系</h2><p><img src="https://i.loli.net/2021/09/02/mdj1RDnciuqvZCE.png" alt="image-20210902110712861"></p>
@@ -1038,29 +704,7 @@
 <li>File System :  文件系统。存储的文件系统不仅包含数据，还包括索引、错误日志和慢查询日志等</li>
 </ul>
 <p><strong>总结：</strong></p>
-<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">1.客户端连接器：
-	可以使用各种不同的语言与数据库服务进行交互；
-2.mysql服务
-	核心组件：
-		【1】连接池：用户认证（初步校验，校验用户名称或者密码是否正确）、线程复用、限制客户端的连接数，起到安全的作用等；
-		【2】SQL接口：专门接收客户端发送过来的sql语句（接收sql的门户）
-		【3】Parser:解析器，核心对sql语法进行解析，解析当前发送sql的用户是否对这个sql有执行的权限（access denied）；
-		【4】Optimizer:查询优化器，决定你的sql是否走索引，以及是否走什么索引，生成sql的执行计划；
-				select * from t where name like 'zhang%' and age > 38;
-                前提：name 和age 都创建了索引，应该走哪个索引呢？
-                    如果走name索引，查询出10w,如果走age，那么查询出1w;[索引查询小结果驱动]
-                数据库如何知道哪个索引查询结果多或者少呢？
-                    采样算法：从叶子节点随机采样几块，然后做大致判断；
-        【5】存储引擎：mysql与其他数据库不同，它才用插拔式的设计思想，将对数据的处理层抽取，叫做存储引擎； 说白了，存储引擎是存储数据，构建索引的技术，sql的增删改查操作都是由存储引擎层完成的；
-        【6】文件系统：存储引擎底层调用系统的文件系统完成数据的操作；         
-3.其他：
-	管理服务和工具：
-		数据库备份与还原；
-		管理mysql集群等；
-	缓存组件：
-    	作用：接口客户端的sql后，对sql进行hash运算得到换一个key，然后根据这个key从缓存中获取缓存数据，如果缓存的数据存在，直接响应客户端；
-    	弊端：如果数据库一旦发生增删改操作，那么缓存数据清空；缓存维护成本很高，但是清理成本很低；
-    	5.6 版本有缓存组件，但是到了8版本以上，这个模块剔除了；<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">1.客户端连接器：</span><br><span class="line"><span class="code">	可以使用各种不同的语言与数据库服务进行交互；</span></span><br><span class="line"><span class="code">2.mysql服务</span></span><br><span class="line"><span class="code">	核心组件：</span></span><br><span class="line"><span class="code">		【1】连接池：用户认证（初步校验，校验用户名称或者密码是否正确）、线程复用、限制客户端的连接数，起到安全的作用等；</span></span><br><span class="line"><span class="code">		【2】SQL接口：专门接收客户端发送过来的sql语句（接收sql的门户）</span></span><br><span class="line"><span class="code">		【3】Parser:解析器，核心对sql语法进行解析，解析当前发送sql的用户是否对这个sql有执行的权限（access denied）；</span></span><br><span class="line"><span class="code">		【4】Optimizer:查询优化器，决定你的sql是否走索引，以及是否走什么索引，生成sql的执行计划；</span></span><br><span class="line"><span class="code">				select * from t where name like &#x27;zhang%&#x27; and age &gt; 38;</span></span><br><span class="line"><span class="code">                前提：name 和age 都创建了索引，应该走哪个索引呢？</span></span><br><span class="line"><span class="code">                    如果走name索引，查询出10w,如果走age，那么查询出1w;[索引查询小结果驱动]</span></span><br><span class="line"><span class="code">                数据库如何知道哪个索引查询结果多或者少呢？</span></span><br><span class="line"><span class="code">                    采样算法：从叶子节点随机采样几块，然后做大致判断；</span></span><br><span class="line"><span class="code">        【5】存储引擎：mysql与其他数据库不同，它才用插拔式的设计思想，将对数据的处理层抽取，叫做存储引擎； 说白了，存储引擎是存储数据，构建索引的技术，sql的增删改查操作都是由存储引擎层完成的；</span></span><br><span class="line"><span class="code">        【6】文件系统：存储引擎底层调用系统的文件系统完成数据的操作；         </span></span><br><span class="line"><span class="code">3.其他：</span></span><br><span class="line"><span class="code">	管理服务和工具：</span></span><br><span class="line"><span class="code">		数据库备份与还原；</span></span><br><span class="line"><span class="code">		管理mysql集群等；</span></span><br><span class="line"><span class="code">	缓存组件：</span></span><br><span class="line"><span class="code">    	作用：接口客户端的sql后，对sql进行hash运算得到换一个key，然后根据这个key从缓存中获取缓存数据，如果缓存的数据存在，直接响应客户端；</span></span><br><span class="line"><span class="code">    	弊端：如果数据库一旦发生增删改操作，那么缓存数据清空；缓存维护成本很高，但是清理成本很低；</span></span><br><span class="line"><span class="code">    	5.6 版本有缓存组件，但是到了8版本以上，这个模块剔除了；</span></span><br></pre></td></tr></table></figure>
 
 
 
@@ -1073,7 +717,7 @@
 <li>MySQL5.5之前的默认存储引擎是MyISAM，5.5之后就改为了InnoDB。</li>
 </ul>
 <p><strong>查看Mysql数据库默认的存储引擎 ， 指令</strong></p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">show</span> variables <span class="token operator">like</span> <span class="token string">'%storage_engine%'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> variables <span class="keyword">like</span> <span class="string">&#x27;%storage_engine%&#x27;</span>;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -1205,32 +849,18 @@
 </tr>
 </tbody></table>
 <p>下面我们将重点介绍最长使用的两种存储引擎： InnoDB、MyISAM ， 另外几种 了解即可。</p>
-<h4 id="1、InnoDB（聚集索引）"><a href="#1、InnoDB（聚集索引）" class="headerlink" title="1、InnoDB（聚集索引）"></a>1、InnoDB（聚集索引）</h4><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">支持外键
-支持事务
-支持行锁(支持表锁)
-支持数据崩溃后的自动恢复<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="1、InnoDB（聚集索引）"><a href="#1、InnoDB（聚集索引）" class="headerlink" title="1、InnoDB（聚集索引）"></a>1、InnoDB（聚集索引）</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">支持外键</span><br><span class="line">支持事务</span><br><span class="line">支持行锁(支持表锁)</span><br><span class="line">支持数据崩溃后的自动恢复</span><br></pre></td></tr></table></figure>
 
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 创建 innodb存储引擎表</span>
-<span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> tab_innodb<span class="token punctuation">(</span>
- id <span class="token keyword">INT</span><span class="token punctuation">,</span>
- name <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">)</span>
-<span class="token punctuation">)</span><span class="token keyword">ENGINE</span> <span class="token operator">=</span> <span class="token keyword">INNODB</span><span class="token punctuation">;</span> <span class="token comment">-- 这里不指定ENGINE = INNODB默认也是INNODB</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建 innodb存储引擎表</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> tab_innodb(</span><br><span class="line"> id <span class="type">INT</span>,</span><br><span class="line"> name <span class="type">VARCHAR</span>(<span class="number">32</span>)</span><br><span class="line">)ENGINE <span class="operator">=</span> INNODB; <span class="comment">-- 这里不指定ENGINE = INNODB默认也是INNODB</span></span><br></pre></td></tr></table></figure>
 
 <p>上述创建好数据表之后，在对应的mysql安装目录的数据库下面会创建如下两个文件：</p>
 <p><img src="https://i.loli.net/2021/09/02/DwWAHceUtmdNCqB.png" alt="1588659606099"> </p>
 <p>说明：</p>
 <p>​    1.InnoDB存储引擎是将数据和索引都存储在一个文件中即.ibd中了。所以InnoDB存储引擎也称为聚集索引，因为将数据和索引放在一个文件中了。</p>
 <p>​    2.InnoDB存储引擎是Mysql的默认存储引擎。InnoDB存储引擎提供了具有提交、回滚、恢复能力的事务安全。但是对比MyISAM的存储引擎，InnoDB写的处理效率差一些。</p>
-<h4 id="2、MyISAM（非聚集索引）"><a href="#2、MyISAM（非聚集索引）" class="headerlink" title="2、MyISAM（非聚集索引）"></a>2、MyISAM（非聚集索引）</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">支持表锁<span class="token punctuation">(</span>不支持行锁<span class="token punctuation">)</span>
-不支持事务
-不支持外键
-不支持数据崩溃后自动恢复<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="2、MyISAM（非聚集索引）"><a href="#2、MyISAM（非聚集索引）" class="headerlink" title="2、MyISAM（非聚集索引）"></a>2、MyISAM（非聚集索引）</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">支持表锁(不支持行锁)</span><br><span class="line">不支持事务</span><br><span class="line">不支持外键</span><br><span class="line">不支持数据崩溃后自动恢复</span><br></pre></td></tr></table></figure>
 
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 创建 myisam存储引擎表</span>
-<span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> tab_myisam<span class="token punctuation">(</span>
- id <span class="token keyword">INT</span><span class="token punctuation">,</span>
- name <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">)</span>
-<span class="token punctuation">)</span><span class="token keyword">ENGINE</span><span class="token operator">=</span>MYISAM<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建 myisam存储引擎表</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> tab_myisam(</span><br><span class="line"> id <span class="type">INT</span>,</span><br><span class="line"> name <span class="type">VARCHAR</span>(<span class="number">32</span>)</span><br><span class="line">)ENGINE<span class="operator">=</span>MYISAM;</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://i.loli.net/2021/09/02/6bqEpOJB7NZStFo.png" alt="1588659151895"> </p>
 <p>说明：</p>
@@ -1243,11 +873,11 @@
 </ul>
 <p><strong>总结：</strong></p>
 <p>聚集索引</p>
-<pre class="line-numbers language-none"><code class="language-none">表中的索引和数据存储到一块	<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">表中的索引和数据存储到一块	</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://i.loli.net/2021/09/02/YADVMLyglaKWm4X.png" alt="image-20210902140515864"></p>
 <p>非聚集索引</p>
-<pre class="line-numbers language-none"><code class="language-none">表中的索引和数据分文件独立存储<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">表中的索引和数据分文件独立存储</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://i.loli.net/2021/09/02/2AZlYRE8exOVWBM.png" alt="image-20210902140559193"></p>
 <h2 id="5、锁"><a href="#5、锁" class="headerlink" title="5、锁"></a>5、锁</h2><h3 id="1、-锁分类"><a href="#1、-锁分类" class="headerlink" title="1、 锁分类"></a>1、 锁分类</h3><p>从对数据操作的粒度分 ：</p>
@@ -1291,96 +921,46 @@
 <p> LOCK    TABLE 命令给 MyISAM 表显式加锁。如果显示加表锁，那么就不会自动加表锁。</p>
 <div style='background-color:orange;'>加表锁语法: </div>
 
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">加读锁 : <span class="token keyword">lock</span> <span class="token keyword">table</span> 表名 <span class="token keyword">read</span><span class="token punctuation">;</span>
-加写锁 : <span class="token keyword">lock</span> <span class="token keyword">table</span> 表名 <span class="token keyword">write</span>；<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">加读锁 : lock <span class="keyword">table</span> 表名 read;</span><br><span class="line">加写锁 : lock <span class="keyword">table</span> 表名 write；</span><br></pre></td></tr></table></figure>
 
-<h4 id="1、MYISAM读锁"><a href="#1、MYISAM读锁" class="headerlink" title="1、MYISAM读锁"></a>1、MYISAM读锁</h4><pre class="line-numbers language-none"><code class="language-none">读锁是共享锁，允许其他会话读，阻塞其他会话写。
-当我这个会话拿到读锁时，我可以读但不能写，其他会话也是写操作会阻塞，读操作不会阻塞。
-当你要查询其他表时，需要将当前的锁释放，其他表才能得到锁。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="1、MYISAM读锁"><a href="#1、MYISAM读锁" class="headerlink" title="1、MYISAM读锁"></a>1、MYISAM读锁</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">读锁是共享锁，允许其他会话读，阻塞其他会话写。</span><br><span class="line">当我这个会话拿到读锁时，我可以读但不能写，其他会话也是写操作会阻塞，读操作不会阻塞。</span><br><span class="line">当你要查询其他表时，需要将当前的锁释放，其他表才能得到锁。</span><br></pre></td></tr></table></figure>
 
-<h4 id="2、MYISAM写锁"><a href="#2、MYISAM写锁" class="headerlink" title="2、MYISAM写锁"></a>2、MYISAM写锁</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">写锁是排他锁，不允许其他会话读写，自己可以读写。
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="2、MYISAM写锁"><a href="#2、MYISAM写锁" class="headerlink" title="2、MYISAM写锁"></a>2、MYISAM写锁</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">写锁是排他锁，不允许其他会话读写，自己可以读写。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
 
-<pre class="line-numbers language-none"><code class="language-none">1） 对MyISAM 表的读操作，不会阻塞其他用户对同一表的读请求，但会阻塞对同一表的写请求；
-
-2） 对MyISAM 表的写操作，则会阻塞其他用户对同一表的读和写操作；
-
-简而言之，就是读锁会阻塞写，但是不会阻塞读。而写锁，则既会阻塞读，又会阻塞写。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1） 对MyISAM 表的读操作，不会阻塞其他用户对同一表的读请求，但会阻塞对同一表的写请求；</span><br><span class="line"></span><br><span class="line">2） 对MyISAM 表的写操作，则会阻塞其他用户对同一表的读和写操作；</span><br><span class="line"></span><br><span class="line">简而言之，就是读锁会阻塞写，但是不会阻塞读。而写锁，则既会阻塞读，又会阻塞写。</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="4、innodb行锁"><a href="#4、innodb行锁" class="headerlink" title="4、innodb行锁"></a>4、innodb行锁</h3><h4 id="行锁介绍"><a href="#行锁介绍" class="headerlink" title="行锁介绍"></a>行锁介绍</h4><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">行锁特点 ：
-        ①InnoDB 存储引擎默认采用行级锁；
-        ②因为行锁粒度小，所以性能开销相对较大，加锁相对较慢；
-        ③行锁可能会出现死锁问题；
-        ④行锁的锁定粒度较小，发生锁冲突的概率最低,所以相对支持较高的写并发；
-        ⑤Innodb支持事务特性，底层行级锁也有参与(通过索引更新一行时，加行锁)；
+<h3 id="4、innodb行锁"><a href="#4、innodb行锁" class="headerlink" title="4、innodb行锁"></a>4、innodb行锁</h3><h4 id="行锁介绍"><a href="#行锁介绍" class="headerlink" title="行锁介绍"></a>行锁介绍</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">行锁特点 ：</span><br><span class="line"><span class="code">        ①InnoDB 存储引擎默认采用行级锁；</span></span><br><span class="line"><span class="code">        ②因为行锁粒度小，所以性能开销相对较大，加锁相对较慢；</span></span><br><span class="line"><span class="code">        ③行锁可能会出现死锁问题；</span></span><br><span class="line"><span class="code">        ④行锁的锁定粒度较小，发生锁冲突的概率最低,所以相对支持较高的写并发；</span></span><br><span class="line"><span class="code">        ⑤Innodb支持事务特性，底层行级锁也有参与(通过索引更新一行时，加行锁)；</span></span><br><span class="line"><span class="code"></span></span><br><span class="line">InnoDB 与 MyISAM 的最大不同有两点：一是InnoDB 支持事务；二是 InnoDB 采用了行级锁。行级锁也是和事务有关的。</span><br></pre></td></tr></table></figure>
 
-InnoDB 与 MyISAM 的最大不同有两点：一是InnoDB 支持事务；二是 InnoDB 采用了行级锁。行级锁也是和事务有关的。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="InnoDB的行锁模式"><a href="#InnoDB的行锁模式" class="headerlink" title="InnoDB的行锁模式"></a>InnoDB的行锁模式</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">InnoDB</span> 实现了以下两种类型的行锁:
-共享锁（S <span class="token operator">-</span><span class="token keyword">share</span>）：又称为读锁，简称S锁，共享锁就是多个事务对于同一数据可以共享一把锁，都能访问到数据，但是只能读不能修改。
-排他锁（X<span class="token operator">-</span>exclusion）：又称为写锁，简称X锁，排他锁就是不能与其他锁并存，如一个事务获取了一个数据行的排他锁，其他事务就不能再获取该行的其他锁，但是获取排他锁的当前的事务是可以对数据就行读取和修改。
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="InnoDB的行锁模式"><a href="#InnoDB的行锁模式" class="headerlink" title="InnoDB的行锁模式"></a>InnoDB的行锁模式</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">InnoDB 实现了以下两种类型的行锁:</span><br><span class="line">共享锁（S <span class="operator">-</span>share）：又称为读锁，简称S锁，共享锁就是多个事务对于同一数据可以共享一把锁，都能访问到数据，但是只能读不能修改。</span><br><span class="line">排他锁（X<span class="operator">-</span>exclusion）：又称为写锁，简称X锁，排他锁就是不能与其他锁并存，如一个事务获取了一个数据行的排他锁，其他事务就不能再获取该行的其他锁，但是获取排他锁的当前的事务是可以对数据就行读取和修改。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>对于UPDATE、DELETE和INSERT语句，InnoDB会自动给涉及数据集加排他锁（X)；</p>
 <p>对于普通SELECT语句，InnoDB不会加任何锁；</p>
 <p>可以通过以下语句显示给记录集加共享锁或排他锁 。</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">共享锁（ S）: <span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> table_name <span class="token keyword">WHERE</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token keyword">LOCK</span> <span class="token operator">IN</span> <span class="token keyword">SHARE</span> <span class="token keyword">MODE</span>
-排他锁（X<span class="token punctuation">)</span> : <span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> table_name <span class="token keyword">WHERE</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token keyword">FOR</span> <span class="token keyword">UPDATE</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">共享锁（ S）: <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> table_name <span class="keyword">WHERE</span> ... LOCK <span class="keyword">IN</span> SHARE MODE</span><br><span class="line">排他锁（X) : <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> table_name <span class="keyword">WHERE</span> ... <span class="keyword">FOR</span> UPDATE</span><br></pre></td></tr></table></figure>
 
 
 
-<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"> Innodb的行锁依赖于事务；
-一个事务获取了行锁后，在这个事务未提交之前，其他事务如果操作的时相同的行，那么需要阻塞等待获取锁的事务提交后释放行锁，才能解除阻塞；<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> Innodb的行锁依赖于事务；</span><br><span class="line">一个事务获取了行锁后，在这个事务未提交之前，其他事务如果操作的时相同的行，那么需要阻塞等待获取锁的事务提交后释放行锁，才能解除阻塞；</span><br></pre></td></tr></table></figure>
 
 
 
-<h4 id="InnoDB-行锁升级表锁"><a href="#InnoDB-行锁升级表锁" class="headerlink" title="InnoDB 行锁升级表锁"></a><strong>InnoDB 行锁升级表锁</strong></h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">原因：索引失效（在更新或者删除等写操作中，如果操作条件不走索引或者索引失效时，会导致写操作全表扫描查找要更改的数据，进而导致表锁
-
-
-<span class="token number">1</span>）在索引字段下<span class="token operator">*</span><span class="token operator">*</span>使用函数<span class="token operator">*</span><span class="token operator">*</span>，导致索引失效；
-<span class="token number">2</span>）在索引字段下进行<span class="token operator">*</span><span class="token operator">*</span>类型转换<span class="token operator">*</span><span class="token operator">*</span>；
-<span class="token number">3</span>）在索引字段下使用<span class="token operator">*</span><span class="token operator">*</span>数学运算<span class="token operator">*</span><span class="token operator">*</span>；
-<span class="token number">4</span>）在索引字段频繁进行写操作；<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="InnoDB-行锁升级表锁"><a href="#InnoDB-行锁升级表锁" class="headerlink" title="InnoDB 行锁升级表锁"></a><strong>InnoDB 行锁升级表锁</strong></h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">原因：索引失效（在更新或者删除等写操作中，如果操作条件不走索引或者索引失效时，会导致写操作全表扫描查找要更改的数据，进而导致表锁</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">1</span>）在索引字段下<span class="operator">*</span><span class="operator">*</span>使用函数<span class="operator">*</span><span class="operator">*</span>，导致索引失效；</span><br><span class="line"><span class="number">2</span>）在索引字段下进行<span class="operator">*</span><span class="operator">*</span>类型转换<span class="operator">*</span><span class="operator">*</span>；</span><br><span class="line"><span class="number">3</span>）在索引字段下使用<span class="operator">*</span><span class="operator">*</span>数学运算<span class="operator">*</span><span class="operator">*</span>；</span><br><span class="line"><span class="number">4</span>）在索引字段频繁进行写操作；</span><br></pre></td></tr></table></figure>
 
 
 
 <h4 id="间隙锁"><a href="#间隙锁" class="headerlink" title="间隙锁"></a>间隙锁</h4><p>当我们用范围条件，而不是使用相等条件检索数据，并请求共享或排他锁时，InnoDB会给符合条件的已有数据进行加锁； 对于键值在条件范围内但并不存在的记录，叫做 “间隙（GAP）” ， InnoDB也会对这个 “间隙” 加锁，这种锁机制就是所谓的 间隙锁（Next-Key锁） 。</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">数据库存在数据的主键是：
-<span class="token number">1</span>
-<span class="token number">3</span>
-<span class="token number">4</span>
-<span class="token number">6</span>
-<span class="token number">9</span>
-如果条件是：id <span class="token operator">&lt;</span> <span class="token number">10</span>
-这里id缺少的是<span class="token number">2</span> <span class="token number">5</span> <span class="token number">7</span> <span class="token number">8</span> 。他们就称为间隙，<span class="token keyword">InnoDB</span>也会对这些间隙进行加锁，这种锁机制就是所谓的 间隙锁<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">数据库存在数据的主键是：</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="number">9</span></span><br><span class="line">如果条件是：id <span class="operator">&lt;</span> <span class="number">10</span></span><br><span class="line">这里id缺少的是<span class="number">2</span> <span class="number">5</span> <span class="number">7</span> <span class="number">8</span> 。他们就称为间隙，InnoDB也会对这些间隙进行加锁，这种锁机制就是所谓的 间隙锁</span><br></pre></td></tr></table></figure>
 
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">一个事务中进行范围的写操作<span class="token punctuation">,</span>那么其他事务就不能再这个范围内写数据<span class="token punctuation">;</span>
-
-作用：用于避免在范围查询时的幻读现象，不能完全避免幻读。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">一个事务中进行范围的写操作,那么其他事务就不能再这个范围内写数据;</span><br><span class="line"></span><br><span class="line">作用：用于避免在范围查询时的幻读现象，不能完全避免幻读。</span><br></pre></td></tr></table></figure>
 
 
 
-<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><pre class="line-numbers language-none"><code class="language-none">innodb行锁的特点？
-	Innodb行锁是基于事务的,同时行锁对其它同一行的写操作阻塞;
-
-innodb表锁出现的原因？
-	1)更新或者删除的条件下的字段没有添加索引;
-	2)索引失效导致表锁
-
-索引失效原因有哪些?
-	1.字段类型装换
-	2.索引字段使用函数
-	3.索引字段进行数学运算 
-	4.索引字段进行高频的写操作等
-
-间隙锁特点是什么?
-	1.一个事务中进行范围的写操作,那么其他事务就不能再这个范围内写数据；
-	2.间隙锁在一定程度了避免了幻读的发生<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">innodb行锁的特点？</span><br><span class="line">	Innodb行锁是基于事务的,同时行锁对其它同一行的写操作阻塞;</span><br><span class="line"></span><br><span class="line">innodb表锁出现的原因？</span><br><span class="line">	1)更新或者删除的条件下的字段没有添加索引;</span><br><span class="line">	2)索引失效导致表锁</span><br><span class="line"></span><br><span class="line">索引失效原因有哪些?</span><br><span class="line">	1.字段类型装换</span><br><span class="line">	2.索引字段使用函数</span><br><span class="line">	3.索引字段进行数学运算 </span><br><span class="line">	4.索引字段进行高频的写操作等</span><br><span class="line"></span><br><span class="line">间隙锁特点是什么?</span><br><span class="line">	1.一个事务中进行范围的写操作,那么其他事务就不能再这个范围内写数据；</span><br><span class="line">	2.间隙锁在一定程度了避免了幻读的发生</span><br></pre></td></tr></table></figure>
 
 
                 
