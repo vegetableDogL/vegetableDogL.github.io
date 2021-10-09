@@ -482,48 +482,147 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1、cookie"><a href="#1、cookie" class="headerlink" title="1、cookie"></a>1、cookie</h1><h2 id="1、会话技术解决的问题"><a href="#1、会话技术解决的问题" class="headerlink" title="1、会话技术解决的问题"></a>1、会话技术解决的问题</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 由于Http是一个无状态协议，同一个会话的连续两个请求相互独立，彼此并不了解</span></span><br><span class="line"></span><br><span class="line"><span class="section"># 作用：</span></span><br><span class="line"><span class="code">	用于存储浏览器与服务器在请求和响应过程中产生的数据， 在一次会话中(多次请求响应), 共享数据</span></span><br><span class="line"><span class="code">	</span></span><br><span class="line"><span class="code">	</span></span><br><span class="line"><span class="code">	客户端会话技术：cookie</span></span><br><span class="line"><span class="code">	</span></span><br><span class="line"><span class="code">	服务器端会话技术：session</span></span><br></pre></td></tr></table></figure>
+                <h1 id="1、cookie"><a href="#1、cookie" class="headerlink" title="1、cookie"></a>1、cookie</h1><h2 id="1、会话技术解决的问题"><a href="#1、会话技术解决的问题" class="headerlink" title="1、会话技术解决的问题"></a>1、会话技术解决的问题</h2><pre><code class="markdown"># 由于Http是一个无状态协议，同一个会话的连续两个请求相互独立，彼此并不了解
 
+# 作用：
+    用于存储浏览器与服务器在请求和响应过程中产生的数据， 在一次会话中(多次请求响应), 共享数据
+    
+    
+    客户端会话技术：cookie
+    
+    服务器端会话技术：session
+</code></pre>
+<h2 id="2、Cookie的应用"><a href="#2、Cookie的应用" class="headerlink" title="2、Cookie的应用"></a>2、Cookie的应用</h2><h3 id="1、常用功能介绍（增删改查）"><a href="#1、常用功能介绍（增删改查）" class="headerlink" title="1、常用功能介绍（增删改查）"></a>1、常用功能介绍（增删改查）</h3><pre><code class="java">1. 设置数据到cookie中
+    // 1.创建cookie对象，设置数据
+        Cookie cookie = new Cookie(String name,String value);
+    // 2.通过response，响应（返回）cookie
+        response.addCookie(cookie);
 
+2. 从cookie中获取数据
+    // 1.通过request对象，接收cookie数组
+        Cookie[] cookies = request.getCookies();
+    // 2.遍历数组
+        获取name值：     String name = cookie.getName();
+        获取value值：     String value = cookie.getValue();
 
-<h2 id="2、Cookie的应用"><a href="#2、Cookie的应用" class="headerlink" title="2、Cookie的应用"></a>2、Cookie的应用</h2><h3 id="1、常用功能介绍（增删改查）"><a href="#1、常用功能介绍（增删改查）" class="headerlink" title="1、常用功能介绍（增删改查）"></a>1、常用功能介绍（增删改查）</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> 设置数据到cookie中</span><br><span class="line">	<span class="comment">// 1.创建cookie对象，设置数据</span></span><br><span class="line">		Cookie cookie = <span class="keyword">new</span> Cookie(String name,String value);</span><br><span class="line">	<span class="comment">// 2.通过response，响应（返回）cookie</span></span><br><span class="line">		response.addCookie(cookie);</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> 从cookie中获取数据</span><br><span class="line">	<span class="comment">// 1.通过request对象，接收cookie数组</span></span><br><span class="line">		Cookie[] cookies = request.getCookies();</span><br><span class="line">	<span class="comment">// 2.遍历数组</span></span><br><span class="line">		获取name值：	 String name = cookie.getName();</span><br><span class="line">		获取value值：	 String value = cookie.getValue();</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> 更新cookie</span><br><span class="line">    只需要再使用 respones.addcookie(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;新值&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="number">4.</span> 删除cookie</span><br><span class="line">    设置过期时间 cookie.setMaxAge(<span class="number">0</span>); 单位秒，立即失效</span><br></pre></td></tr></table></figure>
+3. 更新cookie
+    只需要再使用 respones.addcookie(&quot;name&quot;,&quot;新值&quot;);
 
+4. 删除cookie
+    设置过期时间 cookie.setMaxAge(0); 单位秒，立即失效
+</code></pre>
+<h3 id="2、发送多个Cookie给浏览器"><a href="#2、发送多个Cookie给浏览器" class="headerlink" title="2、发送多个Cookie给浏览器"></a>2、发送多个Cookie给浏览器</h3><pre><code class="java">// 1. 创建多个cookie对象
+    Cookie cookie1 = new Cookie(&quot;book&quot;,&quot;HighMath&quot;);
+    Cookie cookie2 = new Cookie(&quot;music&quot;,&quot;lifeyun&quot;);
+// 2. 通过response响应多个
+    response.addCookie(cookie1);
+    response.addCookie(cookie2);
+</code></pre>
+<h3 id="3、Cookie是否可以存储中文和非法字符？"><a href="#3、Cookie是否可以存储中文和非法字符？" class="headerlink" title="3、Cookie是否可以存储中文和非法字符？"></a>3、Cookie是否可以存储中文和非法字符？</h3><pre><code class="java">&gt; tomcat8之前的版本，不支持中文
+&gt; tomcat8以后的版本，支持中文...
+    但是按照 Rfc6265Cookie规范，在cookie值中不能使用分号（;）、逗号（,）、等号（=）以及空格
 
-
-<h3 id="2、发送多个Cookie给浏览器"><a href="#2、发送多个Cookie给浏览器" class="headerlink" title="2、发送多个Cookie给浏览器"></a>2、发送多个Cookie给浏览器</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 创建多个cookie对象</span></span><br><span class="line">	Cookie cookie1 = <span class="keyword">new</span> Cookie(<span class="string">&quot;book&quot;</span>,<span class="string">&quot;HighMath&quot;</span>);</span><br><span class="line">	Cookie cookie2 = <span class="keyword">new</span> Cookie(<span class="string">&quot;music&quot;</span>,<span class="string">&quot;lifeyun&quot;</span>);</span><br><span class="line"><span class="comment">// 2. 通过response响应多个</span></span><br><span class="line">	response.addCookie(cookie1);</span><br><span class="line">	response.addCookie(cookie2);</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="3、Cookie是否可以存储中文和非法字符？"><a href="#3、Cookie是否可以存储中文和非法字符？" class="headerlink" title="3、Cookie是否可以存储中文和非法字符？"></a>3、Cookie是否可以存储中文和非法字符？</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; tomcat8之前的版本，不支持中文</span><br><span class="line">&gt; tomcat8以后的版本，支持中文...</span><br><span class="line">	但是按照 Rfc6265Cookie规范，在cookie值中不能使用分号（;）、逗号（,）、等号（=）以及空格</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解决方法：我们可以存储,但是要使用url编码,来避开这个规范限制</span></span><br><span class="line">        java.net.URLEncoder.encode(字符串<span class="string">&quot;,&quot;</span>utf-<span class="number">8</span><span class="string">&quot;) 把字符串使用utf-8进行编码</span></span><br><span class="line"><span class="string">		java.net.URLDecoder.decode(字符串&quot;</span>,<span class="string">&quot;utf-8&quot;</span>)  把字符串使用utf-<span class="number">8</span>进行解码</span><br></pre></td></tr></table></figure>
-
+// 解决方法：我们可以存储,但是要使用url编码,来避开这个规范限制
+        java.net.URLEncoder.encode(字符串&quot;,&quot;utf-8&quot;) 把字符串使用utf-8进行编码
+        java.net.URLDecoder.decode(字符串&quot;,&quot;utf-8&quot;)  把字符串使用utf-8进行解码
+</code></pre>
 <p><strong>发送给客户端中文:</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String content = <span class="string">&quot;高圆 圆&quot;</span>;</span><br><span class="line">String encode = URLEncoder.encode(content, <span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">Cookie cookie = <span class="keyword">new</span> Cookie(<span class="string">&quot;beauty&quot;</span>, encode);</span><br><span class="line">response.addCookie(cookie);</span><br></pre></td></tr></table></figure>
-
+<pre><code class="java">        String content = &quot;高圆 圆&quot;;
+        String encode = URLEncoder.encode(content, &quot;utf-8&quot;);
+        Cookie cookie = new Cookie(&quot;beauty&quot;, encode);
+        response.addCookie(cookie);
+</code></pre>
 <p><strong>从客户端接收中文：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">String name = cookie.getName();</span><br><span class="line">String value = cookie.getValue();</span><br><span class="line"><span class="comment">//如果cookie的name为beauty,那么value就进行url解码</span></span><br><span class="line"><span class="keyword">if</span>(<span class="string">&quot;beauty&quot;</span>.equals(name))&#123;</span><br><span class="line">   value =  URLDecoder.decode(value, <span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(name + <span class="string">&quot;-&quot;</span> + value);</span><br></pre></td></tr></table></figure>
+<pre><code class="java">    String name = cookie.getName();
+    String value = cookie.getValue();
+    //如果cookie的name为beauty,那么value就进行url解码
+    if(&quot;beauty&quot;.equals(name))&#123;
+       value =  URLDecoder.decode(value, &quot;utf-8&quot;);
+    &#125;
+    System.out.println(name + &quot;-&quot; + value);
+</code></pre>
+<h3 id="4、Cookie的域名作用-domain"><a href="#4、Cookie的域名作用-domain" class="headerlink" title="4、Cookie的域名作用(domain)"></a>4、Cookie的域名作用(domain)</h3><pre><code class="markdown">1. cookie信息中的域名作用是标记这个cookie的归属
+        在我们的浏览器中,既保存了域名为localhost的cookie,又保存域名为baidu的cookie
+        那么访问的网站如果是 http://localhost:8080, 浏览器的请求只会携带域名为localhost的cookie
+        
+2. 默认情况下,cookie的域名 和 发送此cookie的服务器域名是一致的
+    url格式 -&gt;  协议://域名:端口/资源位置
+</code></pre>
+<h3 id="5、Cookie的路径作用-path"><a href="#5、Cookie的路径作用-path" class="headerlink" title="5、Cookie的路径作用(path)"></a>5、Cookie的路径作用(path)</h3><pre><code class="markdown"># url格式
+     协议://ip:port/资源位置?参数
+     1). 资源位置 -&gt;  /项目虚拟路径/项目中的资源路径
+     2). 参数 -&gt; name=value&amp;name=value...
+     http://localhost:3306/day07/demo.html
+0. 在我们的项目中,cookie的路径默认为项目的虚拟路径
+            项目虚拟路径为 /day07    
+1. 第一个作用: cookie信息中的path和name共同决定了cookie的唯一性
+        a. Servlet被浏览器每访问一次, cookie就会发送一次
+        b. 如果服务器再次发送一个同 path+name的cookie,会覆盖浏览器的那个cookie
+            (新覆盖旧)
+        c. 服务器再次发送一个同 path, 异name的cookie , 不会覆盖
+        d. 服务器再次发送一个异path, 同name的cookie, 不会覆盖
+        
+2. 第二个作用: cookie的path还决定了cookie允许被访问的范围(有效路径)
+    0). 浏览器访问的服务器资源路径跟cookie的路径相同,或者是cookie路径的子路径,才会携带这个cookie到服务器
+    1). 例子
+        I. 有两个cookie
+            name=music,path=/day07
+            name=book,path=/day07/abc
+        II. 浏览器访问X网址,携带Y cookie
+            当 X = http://localhost:8080/day07 
+                Y = music
+            当 X = http://localhost:8080/day07/abc/d
+                Y = music,book
+            当 X = http://localhost:8080/day07/aaa
+                Y = music        
+    2). 理解
+        当 cookie.path = Z的时候, 只有访问Z以及Z的子路径才允许携带cookie(cookie才允许被服务器访问)
+    3). 运用场景
+        https://www.baidu.com:443/map : 地图
+            cookie.path =  /map
+        https://www.baidu.com:443/wenku : 文库
+            /wenku
+         访问文库,不会携带地图模块的cookie,实际也没必要       
+#API : cookie.setPath(虚拟路径); 
+    路径要以 / 开头 
+</code></pre>
+<h3 id="6、Cookie的存活时间"><a href="#6、Cookie的存活时间" class="headerlink" title="6、Cookie的存活时间"></a>6、Cookie的存活时间</h3><pre><code class="java">// cookie.setMaxAge(int second); 单位为秒
 
+# 浏览器中cookie的信息
+1. 创建时间: 浏览器接收到此cookie的时间
+2. 到期时间: cookie销毁的时间
 
+# cookie的存活时间有两种
+1. 会话级别 (默认)
+        浏览器关闭 : 浏览会话结束时
+    
+2. 持久级别(需要手动设置)
+    cookie.setMaxAge(int second);
+        正数：指定存活时间,单位是秒
+        零：立即销毁
+</code></pre>
+<h2 id="3、Cookie特点"><a href="#3、Cookie特点" class="headerlink" title="3、Cookie特点"></a>3、Cookie特点</h2><pre><code class="markdown">1. cookie存储数据在客户端（浏览器）
+2. cookie的存储数据(name和value)只能是字符串
+3. cookie单个大小不能超过4KB
+4. 同一个域名下cookie数量一般不能超过50个
+5. 同一域名下, cookie的path和name决定了它的唯一性
+6. cookie存储的数据不太安全
+        信息保存在用户的电脑上,都相对不安全
+</code></pre>
+<h2 id="4、工作原理"><a href="#4、工作原理" class="headerlink" title="4、工作原理"></a>4、工作原理</h2><pre><code class="java">基于HTTP协议：
 
-<h3 id="4、Cookie的域名作用-domain"><a href="#4、Cookie的域名作用-domain" class="headerlink" title="4、Cookie的域名作用(domain)"></a>4、Cookie的域名作用(domain)</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> cookie信息中的域名作用是标记这个cookie的归属</span><br><span class="line"><span class="code">		在我们的浏览器中,既保存了域名为localhost的cookie,又保存域名为baidu的cookie</span></span><br><span class="line"><span class="code">		那么访问的网站如果是 http://localhost:8080, 浏览器的请求只会携带域名为localhost的cookie</span></span><br><span class="line"><span class="code">		</span></span><br><span class="line"><span class="code">2. 默认情况下,cookie的域名 和 发送此cookie的服务器域名是一致的</span></span><br><span class="line"><span class="code">	url格式 -&gt;  协议://域名:端口/资源位置</span></span><br></pre></td></tr></table></figure>
+​    1. 服务器发送Cookie给浏览器是通过 :  响应(响应头 set-cookie)
 
+​        Set-Cookie: phone=xiaomi
 
+​        Set-Cookie: computer=lenovo
 
-<h3 id="5、Cookie的路径作用-path"><a href="#5、Cookie的路径作用-path" class="headerlink" title="5、Cookie的路径作用(path)"></a>5、Cookie的路径作用(path)</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># url格式</span></span><br><span class="line"><span class="code">	 协议://ip:port/资源位置?参数</span></span><br><span class="line"><span class="code">	 1). 资源位置 -&gt;  /项目虚拟路径/项目中的资源路径</span></span><br><span class="line"><span class="code">	 2). 参数 -&gt; name=value&amp;name=value...</span></span><br><span class="line"><span class="code">	 http://localhost:3306/day07/demo.html</span></span><br><span class="line"><span class="code">0. 在我们的项目中,cookie的路径默认为项目的虚拟路径</span></span><br><span class="line"><span class="code">			项目虚拟路径为 /day07	</span></span><br><span class="line"><span class="code">1. 第一个作用: cookie信息中的path和name共同决定了cookie的唯一性</span></span><br><span class="line"><span class="code">		a. Servlet被浏览器每访问一次, cookie就会发送一次</span></span><br><span class="line"><span class="code">        b. 如果服务器再次发送一个同 path+name的cookie,会覆盖浏览器的那个cookie</span></span><br><span class="line"><span class="code">        	(新覆盖旧)</span></span><br><span class="line"><span class="code">        c. 服务器再次发送一个同 path, 异name的cookie , 不会覆盖</span></span><br><span class="line"><span class="code">        d. 服务器再次发送一个异path, 同name的cookie, 不会覆盖</span></span><br><span class="line"><span class="code">        </span></span><br><span class="line"><span class="code">2. 第二个作用: cookie的path还决定了cookie允许被访问的范围(有效路径)</span></span><br><span class="line"><span class="code">	0). 浏览器访问的服务器资源路径跟cookie的路径相同,或者是cookie路径的子路径,才会携带这个cookie到服务器</span></span><br><span class="line"><span class="code">	1). 例子</span></span><br><span class="line"><span class="code">		I. 有两个cookie</span></span><br><span class="line"><span class="code">			name=music,path=/day07</span></span><br><span class="line"><span class="code">			name=book,path=/day07/abc</span></span><br><span class="line"><span class="code">		II. 浏览器访问X网址,携带Y cookie</span></span><br><span class="line"><span class="code">			当 X = http://localhost:8080/day07 </span></span><br><span class="line"><span class="code">				Y = music</span></span><br><span class="line"><span class="code">			当 X = http://localhost:8080/day07/abc/d</span></span><br><span class="line"><span class="code">            	Y = music,book</span></span><br><span class="line"><span class="code">            当 X = http://localhost:8080/day07/aaa</span></span><br><span class="line"><span class="code">            	Y = music		</span></span><br><span class="line"><span class="code">	2). 理解</span></span><br><span class="line"><span class="code">    	当 cookie.path = Z的时候, 只有访问Z以及Z的子路径才允许携带cookie(cookie才允许被服务器访问)</span></span><br><span class="line"><span class="code">    3). 运用场景</span></span><br><span class="line"><span class="code">    	https://www.baidu.com:443/map : 地图</span></span><br><span class="line"><span class="code">    		cookie.path =  /map</span></span><br><span class="line"><span class="code">    	https://www.baidu.com:443/wenku : 文库</span></span><br><span class="line"><span class="code">    		/wenku</span></span><br><span class="line"><span class="code">    	 访问文库,不会携带地图模块的cookie,实际也没必要       </span></span><br><span class="line"><span class="code">#API : cookie.setPath(虚拟路径); </span></span><br><span class="line"><span class="code">	路径要以 / 开头 </span></span><br></pre></td></tr></table></figure>
+​    2. 浏览器发送Cookie给服务器是通过:  请求(请求头  cookie)
 
-
-
-<h3 id="6、Cookie的存活时间"><a href="#6、Cookie的存活时间" class="headerlink" title="6、Cookie的存活时间"></a>6、Cookie的存活时间</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// cookie.setMaxAge(int second); 单位为秒</span></span><br><span class="line"></span><br><span class="line"># 浏览器中cookie的信息</span><br><span class="line"><span class="number">1.</span> 创建时间: 浏览器接收到此cookie的时间</span><br><span class="line"><span class="number">2.</span> 到期时间: cookie销毁的时间</span><br><span class="line"></span><br><span class="line"># cookie的存活时间有两种</span><br><span class="line"><span class="number">1.</span> 会话级别 (默认)</span><br><span class="line">		浏览器关闭 : 浏览会话结束时</span><br><span class="line">	</span><br><span class="line"><span class="number">2.</span> 持久级别(需要手动设置)</span><br><span class="line">	cookie.setMaxAge(<span class="keyword">int</span> second);</span><br><span class="line">		正数：指定存活时间,单位是秒</span><br><span class="line">		零：立即销毁</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h2 id="3、Cookie特点"><a href="#3、Cookie特点" class="headerlink" title="3、Cookie特点"></a>3、Cookie特点</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> cookie存储数据在客户端（浏览器）</span><br><span class="line"><span class="bullet">2.</span> cookie的存储数据(name和value)只能是字符串</span><br><span class="line"><span class="bullet">3.</span> cookie单个大小不能超过4KB</span><br><span class="line"><span class="bullet">4.</span> 同一个域名下cookie数量一般不能超过50个</span><br><span class="line"><span class="bullet">5.</span> 同一域名下, cookie的path和name决定了它的唯一性</span><br><span class="line"><span class="bullet">6.</span> cookie存储的数据不太安全</span><br><span class="line"><span class="code">		信息保存在用户的电脑上,都相对不安全</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="4、工作原理"><a href="#4、工作原理" class="headerlink" title="4、工作原理"></a>4、工作原理</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">基于HTTP协议：</span><br><span class="line"></span><br><span class="line">​	<span class="number">1.</span> 服务器发送Cookie给浏览器是通过 :  响应(响应头 set-cookie)</span><br><span class="line"></span><br><span class="line">​		Set-Cookie: phone=xiaomi</span><br><span class="line"></span><br><span class="line">​		Set-Cookie: computer=lenovo</span><br><span class="line"></span><br><span class="line">​	<span class="number">2.</span> 浏览器发送Cookie给服务器是通过:  请求(请求头  cookie)</span><br><span class="line"></span><br><span class="line">​		Cookie: phone=xiaomi; computer=lenovo</span><br><span class="line">    </span><br><span class="line"><span class="comment">// cookie存储在浏览器的请求头和响应头中</span></span><br></pre></td></tr></table></figure>
-
+​        Cookie: phone=xiaomi; computer=lenovo
+    
+// cookie存储在浏览器的请求头和响应头中
+</code></pre>
 
                 
             </div>
@@ -765,19 +864,19 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/04/28/TomCat/">
+                <a href="/2020/04/28/Session/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="TomCat">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Session">
                         
-                        <span class="card-title">TomCat</span>
+                        <span class="card-title">Session</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            TomCat的使用
+                            Session
                         
                     </div>
                     <div class="publish-info">

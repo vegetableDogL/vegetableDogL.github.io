@@ -547,18 +547,18 @@
 <h4 id="2-安装node-js"><a href="#2-安装node-js" class="headerlink" title="2. 安装node.js"></a>2. 安装node.js</h4><p><code>Hexo</code>是基于<code>node.js</code>编写的，所以需要安装一下<code>node.js</code>和里面的<code>npm</code>工具。</p>
 <p><strong>windows：</strong> 到<a target="_blank" rel="noopener" href="http://nodejs.cn/download/">Node.js官网</a>下载<code>.exe</code>文件，安装选项全部默认。安装好之后，按<code>Win+R</code>打开cmd命令提示符，输入<code>node -v</code>和<code>npm -v</code>，若出现版本号，则说明安装成功。</p>
 <h4 id="3-添加npm国内源"><a href="#3-添加npm国内源" class="headerlink" title="3. 添加npm国内源"></a>3. 添加npm国内源</h4><p>使用阿里的国内镜像进行加速下载</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-
+<pre><code class="bash">npm config set registry https://registry.npm.taobao.org
+</code></pre>
 <h4 id="4-安装Hexo"><a href="#4-安装Hexo" class="headerlink" title="4. 安装Hexo"></a>4. 安装Hexo</h4><p>前面<code>git</code>和<code>nodejs</code>安装好后，就可以安装<code>hexo</code>了，你可以先创建一个文件夹<code>MyBlog</code>，用来存放自己的博客文件，然后<code>cd</code>到这个文件夹下（或者在这个文件夹下直接鼠标右键<code>git bash</code>打开）。</p>
 <p>比如我的博客文件都存放在<code>C:\MyBlog</code>目录下。</p>
 <p>在该目录下右键点击<code>Git Bash Here</code>，打开<code>git</code>的控制台窗口，以后我们所有的操作都在<code>git</code>控制台进行，就不用<code>Windows</code>自带的<code>cmd</code>了。</p>
 <p>定位到该目录下，输入<code>npm install -g hexo-cli</code>安装<code>Hexo</code>。可能会有几个报错，不用理会。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
+<pre><code class="bash">npm install -g hexo-cli
+</code></pre>
 <p>安装完后输入<code>hexo -v</code>验证是否安装成功。</p>
 <p>接下来初始化一下<code>hexo</code>,即初始化我们的博客网站。例如我的在<code>C:\MyBlog</code>文件夹下的命令行中，输入<code>hexo init</code>初始化文件夹</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
-
+<pre><code class="bash">hexo init
+</code></pre>
 <p>新建完成后，指定文件夹<code>MyBlog</code>目录下有：</p>
 <ul>
 <li><code>node_modules</code>: 依赖包</li>
@@ -570,8 +570,8 @@
 </ul>
 <p>到此为止，本地的Hexo基础环境搭建完成了。</p>
 <h4 id="5-安装LuckyBlog"><a href="#5-安装LuckyBlog" class="headerlink" title="5. 安装LuckyBlog"></a>5. 安装LuckyBlog</h4><p>下载源代码到本地文件下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/LuckyZmj/LuckyBlog.git</span><br></pre></td></tr></table></figure>
-
+<pre><code class="bash">git clone https://github.com/LuckyZmj/LuckyBlog.git
+</code></pre>
 <p>将下载好的<code>LuckyBlog</code>全部复制到<code>MyBlog</code>目录下，如果复制过程中出现重复文件，点击替换。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/posts/20210518202657.png"></p>
 <p>最后使用 <code>npm i</code> 或者 <code>npm install</code> 安装依赖环境包即可。</p>
@@ -585,52 +585,201 @@
 <p>注意！注意！注意！在阅读以下博客个性化之前，最好希望大家有Hexo博客配置主题的基础。如果是完全小白，建议去网上搜索学习相关Hexo搭建博客的过程，另外去B站上也有很多视频教程。博客个性化是需要大家有耐心的，因为每个人的操作不同，在配置过程中可能会遇到一些不可预期的问题，希望大家可以克服这些困难，如有需要帮助，也可以私信博主帮助大家解决问题。</p>
 </blockquote>
 <h4 id="1-修改部署平台"><a href="#1-修改部署平台" class="headerlink" title="1. 修改部署平台"></a>1. 修改部署平台</h4><p>编辑根目录下的配置文件<code>MyBlog/_config.yml</code>，找到如下内容并修改</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">- <span class="built_in">type</span>: git</span><br><span class="line">  repo: git@github.com:LuckyZmj/LuckyZmj.github.io.git <span class="comment"># 替换为你的部署平台地址</span></span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-
+<pre><code class="bash">deploy:
+- type: git
+  repo: git@github.com:LuckyZmj/LuckyZmj.github.io.git # 替换为你的部署平台地址
+  branch: master
+</code></pre>
 <h4 id="2-修改网站信息"><a href="#2-修改网站信息" class="headerlink" title="2. 修改网站信息"></a>2. 修改网站信息</h4><p>编辑根目录下的配置文件<code>MyBlog/_config.yml</code>，找到如下内容并修改</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line">title: Luckey</span><br><span class="line">subtitle: <span class="string">&#x27;Luckeyの博客&#x27;</span>  </span><br><span class="line">description: <span class="string">&#x27;本科 | 计算机科学与技术 | 网络安全&#x27;</span></span><br><span class="line">keywords: <span class="string">&#x27;luckyzmj 计算机 网络安全 渗透测试&#x27;</span>  <span class="comment"># 博客网站关键词</span></span><br><span class="line">author: Luckey   <span class="comment"># 博主名称</span></span><br><span class="line">language: zh-CN</span><br><span class="line">timezone: <span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="comment">## If your site is put in a subdirectory, set url as &#x27;http://example.com/child&#x27; and root as &#x27;/child/&#x27;</span></span><br><span class="line">url: http://www.luckyzmj.cn   <span class="comment"># 更改为你的博客地址</span></span><br><span class="line">root: /</span><br><span class="line"><span class="comment"># permalink: :year/:month/:day/:title/</span></span><br><span class="line">permalink: posts/:abbrlink.html  <span class="comment"># p 是自定义的前缀</span></span><br><span class="line">abbrlink:</span><br><span class="line">    alg: crc32   <span class="comment">#算法： crc16(default) and crc32</span></span><br><span class="line">    rep: hex     <span class="comment">#进制： dec(default) and hex</span></span><br><span class="line">permalink_defaults:</span><br><span class="line">pretty_urls:</span><br><span class="line">  trailing_index: <span class="literal">true</span> <span class="comment"># Set to false to remove trailing &#x27;index.html&#x27; from permalinks</span></span><br><span class="line">  trailing_html: <span class="literal">true</span> <span class="comment"># Set to false to remove trailing &#x27;.html&#x27; from permalinks</span></span><br></pre></td></tr></table></figure>
+<pre><code class="bash"># Site
+title: Luckey
+subtitle: &#39;Luckeyの博客&#39;  
+description: &#39;本科 | 计算机科学与技术 | 网络安全&#39;
+keywords: &#39;luckyzmj 计算机 网络安全 渗透测试&#39;  # 博客网站关键词
+author: Luckey   # 博主名称
+language: zh-CN
+timezone: &#39;&#39;
 
+# URL
+## If your site is put in a subdirectory, set url as &#39;http://example.com/child&#39; and root as &#39;/child/&#39;
+url: http://www.luckyzmj.cn   # 更改为你的博客地址
+root: /
+# permalink: :year/:month/:day/:title/
+permalink: posts/:abbrlink.html  # p 是自定义的前缀
+abbrlink:
+    alg: crc32   #算法： crc16(default) and crc32
+    rep: hex     #进制： dec(default) and hex
+permalink_defaults:
+pretty_urls:
+  trailing_index: true # Set to false to remove trailing &#39;index.html&#39; from permalinks
+  trailing_html: true # Set to false to remove trailing &#39;.html&#39; from permalinks
+</code></pre>
 <h4 id="3-修改博客头像"><a href="#3-修改博客头像" class="headerlink" title="3. 修改博客头像"></a>3. 修改博客头像</h4><p>编辑主题目录下的配置文件<code>MyBlog/themes/matery/_config.yml</code>，找到如下内容并修改</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Configure website favicon and LOGO</span></span><br><span class="line"><span class="comment"># 将以下改为自己的头像链接即可</span></span><br><span class="line">favicon: https://s1.ax1x.com/2020/05/17/YR20js.jpg</span><br><span class="line">logo: https://s1.ax1x.com/2020/05/17/YRWsYT.png</span><br></pre></td></tr></table></figure>
-
-
+<pre><code class="bash"># Configure website favicon and LOGO
+# 将以下改为自己的头像链接即可
+favicon: https://s1.ax1x.com/2020/05/17/YR20js.jpg
+logo: https://s1.ax1x.com/2020/05/17/YRWsYT.png
+</code></pre>
 <h4 id="4-修改留言板简介"><a href="#4-修改留言板简介" class="headerlink" title="4. 修改留言板简介"></a>4. 修改留言板简介</h4><p>演示效果如下：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/posts/20210518204949.png"></p>
 <p>编辑 <code>/MyBlog/contact/index.md</code>，修改你想要内容即可</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: contact</span><br><span class="line">date: 2019-10-25 00:00:00</span><br><span class="line"><span class="built_in">type</span>: <span class="string">&quot;contact&quot;</span></span><br><span class="line">layout: <span class="string">&quot;contact&quot;</span></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="comment">## 畅所欲言</span></span><br><span class="line">---</span><br><span class="line">在这里可以留下你的足迹，欢迎在下方留言，欢迎交换友链，一起交流学习！</span><br><span class="line"></span><br><span class="line"><span class="comment">## 友链</span></span><br><span class="line">---</span><br><span class="line">Lucky_Meの友链信息</span><br><span class="line"></span><br><span class="line">博客名称: Lucky_Meの博客</span><br><span class="line"></span><br><span class="line">博客网址: http://luckyzmj.cn</span><br><span class="line"></span><br><span class="line">博客头像: https://s1.ax1x.com/2020/05/17/YRWsYT.png</span><br><span class="line"></span><br><span class="line">博客介绍: 知识面决定攻击面，知识链决定攻击深度！</span><br></pre></td></tr></table></figure>
+<pre><code class="bash">---
+title: contact
+date: 2019-10-25 00:00:00
+type: &quot;contact&quot;
+layout: &quot;contact&quot;
+---
 
+## 畅所欲言
+---
+在这里可以留下你的足迹，欢迎在下方留言，欢迎交换友链，一起交流学习！
+
+## 友链
+---
+Lucky_Meの友链信息
+
+博客名称: Lucky_Meの博客
+
+博客网址: http://luckyzmj.cn
+
+博客头像: https://s1.ax1x.com/2020/05/17/YRWsYT.png
+
+博客介绍: 知识面决定攻击面，知识链决定攻击深度！
+</code></pre>
 <h4 id="5-修改音乐列表"><a href="#5-修改音乐列表" class="headerlink" title="5. 修改音乐列表"></a>5. 修改音乐列表</h4><p>想要修改自己喜欢的音乐之前，需要先获取音乐列表的id。</p>
 <p>以QQ音乐为例：先登录<a target="_blank" rel="noopener" href="https://y.qq.com/">QQ音乐网页版</a>，点击打开自己喜欢的音乐列表，在网页的URL处包含了音乐列表的id，如下图所示</p>
 <p><img src="https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/posts/20200916213029.png"></p>
 <p>编辑主题目录下的配置文件<code>MyBlog/themes/matery/_config.yml</code>，找到如下内容并修改</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 默认是博主的QQ音乐的id，大家可以改为自己音乐喜欢列表的id</span></span><br><span class="line"><span class="comment"># 更新完id，就可以同步加载自己喜欢的列表音乐了</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Whether to display the musics.</span></span><br><span class="line"><span class="comment"># 是否在首页显示音乐.</span></span><br><span class="line">music:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  title: <span class="comment">#非吸底模式有效</span></span><br><span class="line">    <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">    show: 听听音乐</span><br><span class="line">  autoHide: <span class="literal">true</span>    <span class="comment"># hide automaticaly</span></span><br><span class="line">  server: tencent   <span class="comment">#require  music platform: netease, tencent, kugou, xiami, baidu</span></span><br><span class="line">  <span class="built_in">type</span>: playlist    <span class="comment">#require song, playlist, album, search, artist</span></span><br><span class="line">  id: 1776127550     <span class="comment">#require song id / playlist id / album id / search keyword</span></span><br><span class="line">  fixed: <span class="literal">true</span>       <span class="comment"># 开启吸底模式</span></span><br><span class="line">  autoplay: <span class="literal">false</span>   <span class="comment"># 是否自动播放</span></span><br><span class="line">  theme: <span class="string">&#x27;#42b983&#x27;</span></span><br><span class="line">  loop: <span class="string">&#x27;all&#x27;</span>       <span class="comment"># 音频循环播放, 可选值: &#x27;all&#x27;, &#x27;one&#x27;, &#x27;none&#x27;</span></span><br><span class="line">  order: <span class="string">&#x27;random&#x27;</span>   <span class="comment"># 音频循环顺序, 可选值: &#x27;list&#x27;, &#x27;random&#x27;</span></span><br><span class="line">  preload: <span class="string">&#x27;auto&#x27;</span>   <span class="comment"># 预加载，可选值: &#x27;none&#x27;, &#x27;metadata&#x27;, &#x27;auto&#x27;</span></span><br><span class="line">  volume: 0.7       <span class="comment"># 默认音量，请注意播放器会记忆用户设置，用户手动设置音量后默认音量即失效</span></span><br><span class="line">  listFolded: <span class="literal">true</span>  <span class="comment"># 列表默认折叠</span></span><br><span class="line">  hideLrc: <span class="literal">true</span>     <span class="comment"># 隐藏歌词</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Whether to display the musics.</span></span><br><span class="line"><span class="comment"># 单独的音乐页面.</span></span><br><span class="line">musics:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  title:          <span class="comment">#非吸底模式有效</span></span><br><span class="line">    <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">    show: 听听音乐</span><br><span class="line">  server: tencent   <span class="comment">#require music platform: netease, tencent, kugou, xiami, baidu</span></span><br><span class="line">  <span class="built_in">type</span>: playlist    <span class="comment">#require song, playlist, album, search, artist</span></span><br><span class="line">  id: 1776127550     <span class="comment">#require song id / playlist id / album id / search keyword</span></span><br><span class="line">  fixed: <span class="literal">false</span>      <span class="comment"># 开启吸底模式</span></span><br><span class="line">  autoplay: <span class="literal">true</span>   <span class="comment"># 是否自动播放</span></span><br><span class="line">  theme: <span class="string">&#x27;#42b983&#x27;</span></span><br><span class="line">  loop: <span class="string">&#x27;all&#x27;</span>       <span class="comment"># 音频循环播放, 可选值: &#x27;all&#x27;, &#x27;one&#x27;, &#x27;none&#x27;</span></span><br><span class="line">  order: <span class="string">&#x27;random&#x27;</span>   <span class="comment"># 音频循环顺序, 可选值: &#x27;list&#x27;, &#x27;random&#x27;</span></span><br><span class="line">  preload: <span class="string">&#x27;auto&#x27;</span>   <span class="comment"># 预加载，可选值: &#x27;none&#x27;, &#x27;metadata&#x27;, &#x27;auto&#x27;</span></span><br><span class="line">  volume: 0.7       <span class="comment"># 默认音量，请注意播放器会记忆用户设置，用户手动设置音量后默认音量即失效</span></span><br><span class="line">  listFolded: <span class="literal">false</span>  <span class="comment"># 列表默认折叠</span></span><br><span class="line">  listMaxHeight: <span class="string">&quot;525px&quot;</span> <span class="comment">#列表最大高度</span></span><br></pre></td></tr></table></figure>
+<pre><code class="bash"># 默认是博主的QQ音乐的id，大家可以改为自己音乐喜欢列表的id
+# 更新完id，就可以同步加载自己喜欢的列表音乐了
 
+# Whether to display the musics.
+# 是否在首页显示音乐.
+music:
+  enable: true
+  title: #非吸底模式有效
+    enable: true
+    show: 听听音乐
+  autoHide: true    # hide automaticaly
+  server: tencent   #require  music platform: netease, tencent, kugou, xiami, baidu
+  type: playlist    #require song, playlist, album, search, artist
+  id: 1776127550     #require song id / playlist id / album id / search keyword
+  fixed: true       # 开启吸底模式
+  autoplay: false   # 是否自动播放
+  theme: &#39;#42b983&#39;
+  loop: &#39;all&#39;       # 音频循环播放, 可选值: &#39;all&#39;, &#39;one&#39;, &#39;none&#39;
+  order: &#39;random&#39;   # 音频循环顺序, 可选值: &#39;list&#39;, &#39;random&#39;
+  preload: &#39;auto&#39;   # 预加载，可选值: &#39;none&#39;, &#39;metadata&#39;, &#39;auto&#39;
+  volume: 0.7       # 默认音量，请注意播放器会记忆用户设置，用户手动设置音量后默认音量即失效
+  listFolded: true  # 列表默认折叠
+  hideLrc: true     # 隐藏歌词
+
+# Whether to display the musics.
+# 单独的音乐页面.
+musics:
+  enable: true
+  title:          #非吸底模式有效
+    enable: true
+    show: 听听音乐
+  server: tencent   #require music platform: netease, tencent, kugou, xiami, baidu
+  type: playlist    #require song, playlist, album, search, artist
+  id: 1776127550     #require song id / playlist id / album id / search keyword
+  fixed: false      # 开启吸底模式
+  autoplay: true   # 是否自动播放
+  theme: &#39;#42b983&#39;
+  loop: &#39;all&#39;       # 音频循环播放, 可选值: &#39;all&#39;, &#39;one&#39;, &#39;none&#39;
+  order: &#39;random&#39;   # 音频循环顺序, 可选值: &#39;list&#39;, &#39;random&#39;
+  preload: &#39;auto&#39;   # 预加载，可选值: &#39;none&#39;, &#39;metadata&#39;, &#39;auto&#39;
+  volume: 0.7       # 默认音量，请注意播放器会记忆用户设置，用户手动设置音量后默认音量即失效
+  listFolded: false  # 列表默认折叠
+  listMaxHeight: &quot;525px&quot; #列表最大高度
+</code></pre>
 <h4 id="6-绑定-Valine-评论"><a href="#6-绑定-Valine-评论" class="headerlink" title="6. 绑定 Valine 评论"></a>6. 绑定 Valine 评论</h4><p>编辑主题目录下的配置文件<code>MyBlog/themes/matery/_config.yml</code>，找到如下内容并修改</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Valine 评论模块的配置，默认为不激活，如要使用，就请激活该配置项，并设置 appId 和 appKey.</span></span><br><span class="line">valine:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  appId: Ucrxxxxxxxxxxxxxxxx-xxxxsz  <span class="comment"># 自行注册valine获取</span></span><br><span class="line">  appKey: zPsLxxxxxxxxxxxxxxerLmd    <span class="comment"># 自行注册valine获取</span></span><br><span class="line">  notify: <span class="literal">true</span></span><br><span class="line">  verify: <span class="literal">true</span></span><br><span class="line">  visitor: <span class="literal">true</span></span><br><span class="line">  avatar: <span class="string">&#x27;monsterid&#x27;</span> <span class="comment"># Gravatar style : mm/identicon/monsterid/wavatar/retro/hide</span></span><br><span class="line">  pageSize: 10</span><br><span class="line">  placeholder: <span class="string">&#x27;留下你的足迹..&#x27;</span> <span class="comment"># Comment Box placeholder</span></span><br><span class="line">  background: /medias/comment_bg.png</span><br><span class="line">  count: <span class="literal">true</span></span><br><span class="line">  enableQQ: 16463223  <span class="comment"># 改为自己的QQ号</span></span><br><span class="line">  recordIP: <span class="literal">true</span></span><br><span class="line">  requiredFields: </span><br><span class="line">    - nick</span><br><span class="line">    - mail</span><br><span class="line">  guest_info: </span><br><span class="line">    - nick</span><br><span class="line">    - mail</span><br><span class="line">    - link</span><br><span class="line">  master: </span><br><span class="line">    - 46606772953bed0812789d6dc955614e  <span class="comment"># md5加密后的博主邮箱</span></span><br><span class="line">  metaPlaceholder:  <span class="comment"># 输入框的背景文字</span></span><br><span class="line">    nick: 昵称/QQ号(必填)</span><br><span class="line">    mail: 邮箱(必填)</span><br><span class="line">    link: 网址(https://)</span><br><span class="line">  lang: zh-CN</span><br><span class="line">  tagMeta: <span class="comment"># The String Array of Words to show Flag.[Just Only xCss Style mode]</span></span><br><span class="line">    - 博主</span><br><span class="line">    - 小伙伴</span><br><span class="line">    - 访客</span><br><span class="line">  friends: <span class="comment"># The MD5 String Array of friends Email to show friends Flag.[Just Only xCss Style mode]</span></span><br><span class="line">    - cb3e577ff029d6073400d5557effd41f   </span><br><span class="line">    -</span><br></pre></td></tr></table></figure>
-
+<pre><code class="bash"># Valine 评论模块的配置，默认为不激活，如要使用，就请激活该配置项，并设置 appId 和 appKey.
+valine:
+  enable: true
+  appId: Ucrxxxxxxxxxxxxxxxx-xxxxsz  # 自行注册valine获取
+  appKey: zPsLxxxxxxxxxxxxxxerLmd    # 自行注册valine获取
+  notify: true
+  verify: true
+  visitor: true
+  avatar: &#39;monsterid&#39; # Gravatar style : mm/identicon/monsterid/wavatar/retro/hide
+  pageSize: 10
+  placeholder: &#39;留下你的足迹..&#39; # Comment Box placeholder
+  background: /medias/comment_bg.png
+  count: true
+  enableQQ: 16463223  # 改为自己的QQ号
+  recordIP: true
+  requiredFields: 
+    - nick
+    - mail
+  guest_info: 
+    - nick
+    - mail
+    - link
+  master: 
+    - 46606772953bed0812789d6dc955614e  # md5加密后的博主邮箱
+  metaPlaceholder:  # 输入框的背景文字
+    nick: 昵称/QQ号(必填)
+    mail: 邮箱(必填)
+    link: 网址(https://)
+  lang: zh-CN
+  tagMeta: # The String Array of Words to show Flag.[Just Only xCss Style mode]
+    - 博主
+    - 小伙伴
+    - 访客
+  friends: # The MD5 String Array of friends Email to show friends Flag.[Just Only xCss Style mode]
+    - cb3e577ff029d6073400d5557effd41f   
+    -
+</code></pre>
 <h4 id="7-绑定-DaoVoice-在线聊天"><a href="#7-绑定-DaoVoice-在线聊天" class="headerlink" title="7. 绑定 DaoVoice 在线聊天"></a>7. 绑定 DaoVoice 在线聊天</h4><p>编辑主题目录下的配置文件<code>MyBlog/themes/matery/_config.yml</code>，找到如下内容并修改</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">daovoice:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  app_id: 4xxxxxxxe   <span class="comment">#DaoVoice中的app_id</span></span><br></pre></td></tr></table></figure>
-
+<pre><code class="bash">daovoice:
+  enable: true
+  app_id: 4xxxxxxxe   #DaoVoice中的app_id
+</code></pre>
 <h4 id="8-快捷导航页面个性化"><a href="#8-快捷导航页面个性化" class="headerlink" title="8. 快捷导航页面个性化"></a>8. 快捷导航页面个性化</h4><p>编辑文件<code>MyBlog/source/tools/index.html</code>，以下简单标记出几处，还有其他涉及到博客信息的内容都需要改为你自己的博客信息即可。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/posts/20200916235833.png"></p>
 <h4 id="9-添加友情链接"><a href="#9-添加友情链接" class="headerlink" title="9. 添加友情链接"></a>9. 添加友情链接</h4><p>编辑文件<code>MyBlog/suorce/_data/friends.json</code>，按如下格式添加友情</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&quot;avatar&quot;</span>: <span class="string">&quot;https://s1.ax1x.com/2020/05/17/YRWsYT.png&quot;</span>,</span><br><span class="line">        <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Luckey&quot;</span>,</span><br><span class="line">        <span class="string">&quot;introduction&quot;</span>: <span class="string">&quot;越努力，越幸运&quot;</span>,</span><br><span class="line">        <span class="string">&quot;url&quot;</span>: <span class="string">&quot;http://www.luckyzmj.cn&quot;</span>,</span><br><span class="line">        <span class="string">&quot;title&quot;</span>: <span class="string">&quot;访问主页&quot;</span></span><br><span class="line">    &#125;,&#123;</span><br><span class="line">      <span class="string">&quot;avatar&quot;</span>: <span class="string">&quot;https://sunhwee.com/hwsun.jpg&quot;</span>,</span><br><span class="line">      <span class="string">&quot;name&quot;</span>: <span class="string">&quot;洪卫の博客&quot;</span>,</span><br><span class="line">      <span class="string">&quot;introduction&quot;</span>: <span class="string">&quot;UESTC CVer&quot;</span>,</span><br><span class="line">      <span class="string">&quot;url&quot;</span>: <span class="string">&quot;http://sunhwee.com&quot;</span>,</span><br><span class="line">      <span class="string">&quot;title&quot;</span>: <span class="string">&quot;访问主页&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
+<pre><code class="bash">[
+    &#123;
+        &quot;avatar&quot;: &quot;https://s1.ax1x.com/2020/05/17/YRWsYT.png&quot;,
+        &quot;name&quot;: &quot;Luckey&quot;,
+        &quot;introduction&quot;: &quot;越努力，越幸运&quot;,
+        &quot;url&quot;: &quot;http://www.luckyzmj.cn&quot;,
+        &quot;title&quot;: &quot;访问主页&quot;
+    &#125;,&#123;
+      &quot;avatar&quot;: &quot;https://sunhwee.com/hwsun.jpg&quot;,
+      &quot;name&quot;: &quot;洪卫の博客&quot;,
+      &quot;introduction&quot;: &quot;UESTC CVer&quot;,
+      &quot;url&quot;: &quot;http://sunhwee.com&quot;,
+      &quot;title&quot;: &quot;访问主页&quot;
+    &#125;
+]
+</code></pre>
 <h4 id="10-添加相册"><a href="#10-添加相册" class="headerlink" title="10. 添加相册"></a>10. 添加相册</h4><p>比如你的图片上传图床后，链接地址如下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/璀璨星空/01.jpg</span><br><span class="line">https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/璀璨星空/02.jpg</span><br><span class="line">https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/动漫风景/01.jpg</span><br><span class="line">https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/动漫风景/02.jpg</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
+<pre><code class="bash">https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/璀璨星空/01.jpg
+https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/璀璨星空/02.jpg
+https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/动漫风景/01.jpg
+https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/动漫风景/02.jpg
+...
+</code></pre>
 <p>首先提取出图片链接公共的部分，作为图床地址</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/</span><br></pre></td></tr></table></figure>
-
+<pre><code class="bash">https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/
+</code></pre>
 <p>然后再提取图片地址中不同的部分，作为图片地址</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">璀璨星空/01.jpg</span><br><span class="line">璀璨星空/02.jpg</span><br><span class="line">动漫风景/01.jpg</span><br><span class="line">动漫风景/03.jpg</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
+<pre><code class="bash">璀璨星空/01.jpg
+璀璨星空/02.jpg
+动漫风景/01.jpg
+动漫风景/03.jpg
+...
+</code></pre>
 <blockquote>
 <p>具体怎么分割根据你自己图床的链接格式而定，以上为我的github图床格式为例。</p>
 </blockquote>
 <p>将相册图床的地址改为你自己的图床地址，需要更改两处文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 例如我的图床地址为：</span></span><br><span class="line">https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/</span><br></pre></td></tr></table></figure>
-
+<pre><code class="bash"># 例如我的图床地址为：
+https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/
+</code></pre>
 <p>themes/matery/layout/galleries.ejs</p>
 <p><img src="https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/posts/20201008183019.png"></p>
 <p>themes/matery/layout/gallerie.ejs</p>
@@ -638,8 +787,55 @@
 <p>为每个相册添加链接地址，在根目录/source/List/galleries/下新建 相册名称 文件夹，并在该文件夹下新建 <code>index.md</code> </p>
 <p><img src="https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/posts/20201008183808.png"></p>
 <p>最后，在根目录/source/_data/galleries.json中添加图片链接，格式如下,</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;璀璨星空&quot;</span>,</span><br><span class="line">    <span class="string">&quot;cover&quot;</span>: <span class="string">&quot;璀璨星空/01.jpg&quot;</span>,</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;璀璨星空&quot;</span>,</span><br><span class="line">    <span class="string">&quot;photos&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;璀璨星空/01.jpg&quot;</span>,</span><br><span class="line">      <span class="string">&quot;璀璨星空/02.jpg&quot;</span>,</span><br><span class="line">      <span class="string">&quot;璀璨星空/03.jpg&quot;</span>,</span><br><span class="line">      <span class="string">&quot;璀璨星空/04.jpg&quot;</span>,</span><br><span class="line">      <span class="string">&quot;璀璨星空/05.jpg&quot;</span>,</span><br><span class="line">      <span class="string">&quot;璀璨星空/06.jpg&quot;</span>,</span><br><span class="line">      <span class="string">&quot;璀璨星空/07.jpg&quot;</span>,</span><br><span class="line">      <span class="string">&quot;璀璨星空/08.jpg&quot;</span>,</span><br><span class="line">      <span class="string">&quot;璀璨星空/09.jpg&quot;</span>,</span><br><span class="line">      <span class="string">&quot;璀璨星空/10.jpg&quot;</span>,</span><br><span class="line">      <span class="string">&quot;璀璨星空/11.jpg&quot;</span>,</span><br><span class="line">      <span class="string">&quot;璀璨星空/12.jpg&quot;</span>,</span><br><span class="line">      <span class="string">&quot;璀璨星空/13.jpg&quot;</span>,</span><br><span class="line">      <span class="string">&quot;璀璨星空/14.jpg&quot;</span>,</span><br><span class="line">      <span class="string">&quot;璀璨星空/15.jpg&quot;</span>,</span><br><span class="line">      <span class="string">&quot;璀璨星空/16.jpg&quot;</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;动漫风景&quot;</span>,</span><br><span class="line">    <span class="string">&quot;cover&quot;</span>: <span class="string">&quot;动漫风景/01.jpg&quot;</span>,</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;动漫风景&quot;</span>,</span><br><span class="line">    <span class="string">&quot;photos&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;动漫风景/01.jpg&quot;</span>,</span><br><span class="line">      <span class="string">&quot;动漫风景/02.jpg&quot;</span>,</span><br><span class="line">      <span class="string">&quot;动漫风景/03.jpg&quot;</span>,</span><br><span class="line">      <span class="string">&quot;动漫风景/04.jpg&quot;</span>,</span><br><span class="line">      <span class="string">&quot;动漫风景/05.jpg&quot;</span>,</span><br><span class="line">      <span class="string">&quot;动漫风景/06.jpg&quot;</span>,</span><br><span class="line">      <span class="string">&quot;动漫风景/07.jpg&quot;</span>,</span><br><span class="line">      <span class="string">&quot;动漫风景/08.jpg&quot;</span>,</span><br><span class="line">      <span class="string">&quot;动漫风景/09.jpg&quot;</span>,</span><br><span class="line">      <span class="string">&quot;动漫风景/10.jpg&quot;</span>,</span><br><span class="line">      <span class="string">&quot;动漫风景/11.jpg&quot;</span>,</span><br><span class="line">      <span class="string">&quot;动漫风景/12.jpg&quot;</span>,</span><br><span class="line">      <span class="string">&quot;动漫风景/13.jpg&quot;</span>,</span><br><span class="line">      <span class="string">&quot;动漫风景/14.jpg&quot;</span>,</span><br><span class="line">      <span class="string">&quot;动漫风景/15.jpg&quot;</span>,</span><br><span class="line">      <span class="string">&quot;动漫风景/16.jpg&quot;</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
+<pre><code class="bash">[
+  &#123;
+    &quot;name&quot;: &quot;璀璨星空&quot;,
+    &quot;cover&quot;: &quot;璀璨星空/01.jpg&quot;,
+    &quot;description&quot;: &quot;璀璨星空&quot;,
+    &quot;photos&quot;: [
+      &quot;璀璨星空/01.jpg&quot;,
+      &quot;璀璨星空/02.jpg&quot;,
+      &quot;璀璨星空/03.jpg&quot;,
+      &quot;璀璨星空/04.jpg&quot;,
+      &quot;璀璨星空/05.jpg&quot;,
+      &quot;璀璨星空/06.jpg&quot;,
+      &quot;璀璨星空/07.jpg&quot;,
+      &quot;璀璨星空/08.jpg&quot;,
+      &quot;璀璨星空/09.jpg&quot;,
+      &quot;璀璨星空/10.jpg&quot;,
+      &quot;璀璨星空/11.jpg&quot;,
+      &quot;璀璨星空/12.jpg&quot;,
+      &quot;璀璨星空/13.jpg&quot;,
+      &quot;璀璨星空/14.jpg&quot;,
+      &quot;璀璨星空/15.jpg&quot;,
+      &quot;璀璨星空/16.jpg&quot;
+    ]
+  &#125;,
+  &#123;
+    &quot;name&quot;: &quot;动漫风景&quot;,
+    &quot;cover&quot;: &quot;动漫风景/01.jpg&quot;,
+    &quot;description&quot;: &quot;动漫风景&quot;,
+    &quot;photos&quot;: [
+      &quot;动漫风景/01.jpg&quot;,
+      &quot;动漫风景/02.jpg&quot;,
+      &quot;动漫风景/03.jpg&quot;,
+      &quot;动漫风景/04.jpg&quot;,
+      &quot;动漫风景/05.jpg&quot;,
+      &quot;动漫风景/06.jpg&quot;,
+      &quot;动漫风景/07.jpg&quot;,
+      &quot;动漫风景/08.jpg&quot;,
+      &quot;动漫风景/09.jpg&quot;,
+      &quot;动漫风景/10.jpg&quot;,
+      &quot;动漫风景/11.jpg&quot;,
+      &quot;动漫风景/12.jpg&quot;,
+      &quot;动漫风景/13.jpg&quot;,
+      &quot;动漫风景/14.jpg&quot;,
+      &quot;动漫风景/15.jpg&quot;,
+      &quot;动漫风景/16.jpg&quot;
+    ]
+  &#125;
+]
+</code></pre>
 <h4 id="11-站点统计功能"><a href="#11-站点统计功能" class="headerlink" title="11. 站点统计功能"></a>11. 站点统计功能</h4><p>站点统计的数据来源于<a target="_blank" rel="noopener" href="https://tongji.baidu.com/web/welcome/login">百度统计</a>,当你的网站被百度收录后就会在百度统计中出现数据，具体效果如下：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/posts/20210518211242.png"></p>
 <p>由于博客的统计页面数据不能直接从百度站点中调用，因此需要自行从百度站点中将相应数据填入博客站点统计页面的源代码文件中，个人建议每隔一个月手动更新一次数据。</p>
@@ -650,12 +846,56 @@
 <p>大家可以查看YLUI官方的<a target="_blank" rel="noopener" href="https://github.com/yuri2peter/ylui/tree/master/documents">开发文档</a>进行开发，有不懂的可以加官方的QQ群：<code>191372634</code> 进行讨论。</p>
 <h4 id="12-博客动漫风格背景图"><a href="#12-博客动漫风格背景图" class="headerlink" title="12. 博客动漫风格背景图"></a>12. 博客动漫风格背景图</h4><p>因为在上一个LuckyBlog版本发布的网站风格是偏向动漫风格的，如果大家喜欢动漫风格，只需要替换以下配置即可。</p>
 <p><strong>博客每日轮播图：</strong> 以下链接图片全部下载保存到<code>MyBlog\themes\matery\source\medias\banner</code>中，以0~7.jpg的文件名格式命名即可。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">https://cdn.jsdelivr.net/gh/LuckyZmj/LuckyBlog@master/themes/matery/source/medias/banner/0.jpg</span><br><span class="line">https://cdn.jsdelivr.net/gh/LuckyZmj/LuckyBlog@master/themes/matery/source/medias/banner/1.jpg</span><br><span class="line">https://cdn.jsdelivr.net/gh/LuckyZmj/LuckyBlog@master/themes/matery/source/medias/banner/2.jpg</span><br><span class="line">https://cdn.jsdelivr.net/gh/LuckyZmj/LuckyBlog@master/themes/matery/source/medias/banner/3.jpg</span><br><span class="line">https://cdn.jsdelivr.net/gh/LuckyZmj/LuckyBlog@master/themes/matery/source/medias/banner/4.jpg</span><br><span class="line">https://cdn.jsdelivr.net/gh/LuckyZmj/LuckyBlog@master/themes/matery/source/medias/banner/5.jpg</span><br><span class="line">https://cdn.jsdelivr.net/gh/LuckyZmj/LuckyBlog@master/themes/matery/source/medias/banner/6.jpg</span><br><span class="line">https://cdn.jsdelivr.net/gh/LuckyZmj/LuckyBlog@master/themes/matery/source/medias/banner/7.jpg</span><br></pre></td></tr></table></figure>
-
+<pre><code class="html">https://cdn.jsdelivr.net/gh/LuckyZmj/LuckyBlog@master/themes/matery/source/medias/banner/0.jpg
+https://cdn.jsdelivr.net/gh/LuckyZmj/LuckyBlog@master/themes/matery/source/medias/banner/1.jpg
+https://cdn.jsdelivr.net/gh/LuckyZmj/LuckyBlog@master/themes/matery/source/medias/banner/2.jpg
+https://cdn.jsdelivr.net/gh/LuckyZmj/LuckyBlog@master/themes/matery/source/medias/banner/3.jpg
+https://cdn.jsdelivr.net/gh/LuckyZmj/LuckyBlog@master/themes/matery/source/medias/banner/4.jpg
+https://cdn.jsdelivr.net/gh/LuckyZmj/LuckyBlog@master/themes/matery/source/medias/banner/5.jpg
+https://cdn.jsdelivr.net/gh/LuckyZmj/LuckyBlog@master/themes/matery/source/medias/banner/6.jpg
+https://cdn.jsdelivr.net/gh/LuckyZmj/LuckyBlog@master/themes/matery/source/medias/banner/7.jpg
+</code></pre>
 <p><strong>无文章特色背景图：</strong> 打开主题配置文件<code>MyBlog\themes\matery\_config.yml</code>，修改替换如下代码即可：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># The post featured images that needs to be displayed when there is no image.</span></span><br><span class="line"><span class="comment"># 无文章特色图片时需要显示的文章特色图片.</span></span><br><span class="line">featureImages: </span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/01.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/02.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/04.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/06.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/07.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/10.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/11.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/12.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/09.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/14.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/15.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/16.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E/06.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E6%8F%92%E7%94%BB/02.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E6%8F%92%E7%94%BB/03.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E6%8F%92%E7%94%BB/04.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E6%8F%92%E7%94%BB/07.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E6%8F%92%E7%94%BB/08.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E6%8F%92%E7%94%BB/11.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E6%8F%92%E7%94%BB/10.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E6%8F%92%E7%94%BB/09.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E6%8F%92%E7%94%BB/12.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E6%8F%92%E7%94%BB/13.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E6%8F%92%E7%94%BB/14.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E7%92%80%E7%92%A8%E6%98%9F%E7%A9%BA/16.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E7%92%80%E7%92%A8%E6%98%9F%E7%A9%BA/15.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E7%92%80%E7%92%A8%E6%98%9F%E7%A9%BA/11.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E7%92%80%E7%92%A8%E6%98%9F%E7%A9%BA/09.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E7%92%80%E7%92%A8%E6%98%9F%E7%A9%BA/03.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/08.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/03.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/13.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E6%8F%92%E7%94%BB/01.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E6%8F%92%E7%94%BB/05.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E7%92%80%E7%92%A8%E6%98%9F%E7%A9%BA/14.jpg</span><br><span class="line">- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E7%92%80%E7%92%A8%E6%98%9F%E7%A9%BA/01.jpg</span><br></pre></td></tr></table></figure>
-
-
+<pre><code class="bash"># The post featured images that needs to be displayed when there is no image.
+# 无文章特色图片时需要显示的文章特色图片.
+featureImages: 
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/01.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/02.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/04.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/06.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/07.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/10.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/11.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/12.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/09.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/14.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/15.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/16.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E/06.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E6%8F%92%E7%94%BB/02.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E6%8F%92%E7%94%BB/03.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E6%8F%92%E7%94%BB/04.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E6%8F%92%E7%94%BB/07.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E6%8F%92%E7%94%BB/08.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E6%8F%92%E7%94%BB/11.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E6%8F%92%E7%94%BB/10.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E6%8F%92%E7%94%BB/09.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E6%8F%92%E7%94%BB/12.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E6%8F%92%E7%94%BB/13.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E6%8F%92%E7%94%BB/14.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E7%92%80%E7%92%A8%E6%98%9F%E7%A9%BA/16.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E7%92%80%E7%92%A8%E6%98%9F%E7%A9%BA/15.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E7%92%80%E7%92%A8%E6%98%9F%E7%A9%BA/11.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E7%92%80%E7%92%A8%E6%98%9F%E7%A9%BA/09.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E7%92%80%E7%92%A8%E6%98%9F%E7%A9%BA/03.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/08.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/03.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/13.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E6%8F%92%E7%94%BB/01.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E5%8A%A8%E6%BC%AB%E6%8F%92%E7%94%BB/05.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E7%92%80%E7%92%A8%E6%98%9F%E7%A9%BA/14.jpg
+- https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/galleries/%E7%92%80%E7%92%A8%E6%98%9F%E7%A9%BA/01.jpg
+</code></pre>
 <h3 id="0x04-更多内容优化"><a href="#0x04-更多内容优化" class="headerlink" title="0x04 更多内容优化"></a>0x04 更多内容优化</h3><p>以上简单介绍了 <code>LuckyBlog</code> 中一些要修改的个性化地方，其他更详细的优化参考其他关于<code>Matery</code>的文章。以下几篇文章都是基于<code>hexo-theme-matery</code>主题优化的教程，大家如果遇到问题，可以参考其中的方法。</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="http://luckyzmj.cn/posts/e3e08109.html">个人博客搭建</a></li>
@@ -964,19 +1204,19 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/04/28/EL%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+                <a href="/2020/04/28/Hexo-xr/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="EL表达式">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Hexo之渲染绕过">
                         
-                        <span class="card-title">EL表达式</span>
+                        <span class="card-title">Hexo之渲染绕过</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            EL表达式
+                            在Hexo部署时会默认渲染source下的所有html页面，但有时候想在Hexo博客上单独自定义html页面或README.md时，却不希望被Hexo渲染。
                         
                     </div>
                     <div class="publish-info">
@@ -987,8 +1227,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JavaWeb/" class="post-category">
-                                    JavaWeb
+                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E7%AF%87/" class="post-category">
+                                    博客篇
                                 </a>
                             
                             
@@ -998,8 +1238,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JavaWeb/">
-                        <span class="chip bg-color">JavaWeb</span>
+                    <a href="/tags/Hexo/">
+                        <span class="chip bg-color">Hexo</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%B8%B2%E6%9F%93%E7%BB%95%E8%BF%87/">
+                        <span class="chip bg-color">渲染绕过</span>
                     </a>
                     
                 </div>

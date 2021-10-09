@@ -513,8 +513,37 @@
 <p>② 手动的生成一个异常对象，并抛出（throw）</p>
 <p>过程二：”抓”：可以理解为异常的处理方式：① try-catch-finally  ② throws</p>
 <p>try-catch-finally的使用：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">  	<span class="comment">//可能出现异常的代码</span></span><br><span class="line">&#125;<span class="keyword">catch</span>(异常类型<span class="number">1</span> 变量名<span class="number">1</span>)&#123;</span><br><span class="line">	<span class="comment">//处理异常的方式1</span></span><br><span class="line">&#125;<span class="keyword">catch</span>(异常类型<span class="number">2</span> 变量名<span class="number">2</span>)&#123;</span><br><span class="line">	<span class="comment">//处理异常的方式2</span></span><br><span class="line">&#125;<span class="keyword">catch</span>(异常类型<span class="number">3</span> 变量名<span class="number">3</span>)&#123;</span><br><span class="line">	<span class="comment">//处理异常的方式3</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">finally</span>&#123;</span><br><span class="line">	<span class="comment">//一定会执行的代码</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">* <span class="number">1.</span> <span class="keyword">finally</span>是可选的。</span><br><span class="line"> * <span class="number">2.</span> 使用<span class="keyword">try</span>将可能出现异常代码包装起来，在执行过程中，一旦出现异常，就会生成一个对应异常类的对象，根据此对象</span><br><span class="line"> *    的类型，去<span class="keyword">catch</span>中进行匹配</span><br><span class="line"> * <span class="number">3.</span> 一旦<span class="keyword">try</span>中的异常对象匹配到某一个<span class="keyword">catch</span>时，就进入<span class="keyword">catch</span>中进行异常的处理。一旦处理完成，就跳出当前的</span><br><span class="line"> *    <span class="keyword">try</span>-<span class="keyword">catch</span>结构（在没有写<span class="keyword">finally</span>的情况）。继续执行其后的代码</span><br><span class="line"> * <span class="number">4.</span> <span class="keyword">catch</span>中的异常类型如果没有子父类关系，则谁声明在上，谁声明在下无所谓。</span><br><span class="line"> *    <span class="keyword">catch</span>中的异常类型如果满足子父类关系，则要求子类一定声明在父类的上面。否则，报错</span><br><span class="line"> * <span class="number">5.</span> 常用的异常对象处理的方式： ① <span class="function">String  <span class="title">getMessage</span><span class="params">()</span>    ② <span class="title">printStackTrace</span><span class="params">()</span></span></span><br><span class="line"><span class="function"> * 6. 在<span class="keyword">try</span>结构中声明的变量，再出了<span class="keyword">try</span>结构以后，就不能再被调用</span></span><br><span class="line"><span class="function"> * 7. <span class="keyword">try</span>-<span class="keyword">catch</span>-<span class="keyword">finally</span>结构可以嵌套</span></span><br><span class="line"><span class="function"> * </span></span><br><span class="line"><span class="function"> * 体会1：使用<span class="keyword">try</span>-<span class="keyword">catch</span>-<span class="keyword">finally</span>处理编译时异常，是得程序在编译时就不再报错，但是运行时仍可能报错。</span></span><br><span class="line"><span class="function"> *     相当于我们使用<span class="keyword">try</span>-<span class="keyword">catch</span>-<span class="keyword">finally</span>将一个编译时可能出现的异常，延迟到运行时出现。</span></span><br><span class="line"><span class="function"> *     </span></span><br><span class="line"><span class="function"> * 体会2：开发中，由于运行时异常比较常见，所以我们通常就不针对运行时异常编写<span class="keyword">try</span>-<span class="keyword">catch</span>-<span class="keyword">finally</span>了。</span></span><br><span class="line"><span class="function"> *      针对于编译时异常，我们说一定要考虑异常的处理。</span></span><br></pre></td></tr></table></figure>
+<pre><code class="java">try&#123;
+      //可能出现异常的代码
+&#125;catch(异常类型1 变量名1)&#123;
+    //处理异常的方式1
+&#125;catch(异常类型2 变量名2)&#123;
+    //处理异常的方式2
+&#125;catch(异常类型3 变量名3)&#123;
+    //处理异常的方式3
+&#125;
+finally&#123;
+    //一定会执行的代码
+&#125;
 
+
+* 1. finally是可选的。
+ * 2. 使用try将可能出现异常代码包装起来，在执行过程中，一旦出现异常，就会生成一个对应异常类的对象，根据此对象
+ *    的类型，去catch中进行匹配
+ * 3. 一旦try中的异常对象匹配到某一个catch时，就进入catch中进行异常的处理。一旦处理完成，就跳出当前的
+ *    try-catch结构（在没有写finally的情况）。继续执行其后的代码
+ * 4. catch中的异常类型如果没有子父类关系，则谁声明在上，谁声明在下无所谓。
+ *    catch中的异常类型如果满足子父类关系，则要求子类一定声明在父类的上面。否则，报错
+ * 5. 常用的异常对象处理的方式： ① String  getMessage()    ② printStackTrace()
+ * 6. 在try结构中声明的变量，再出了try结构以后，就不能再被调用
+ * 7. try-catch-finally结构可以嵌套
+ * 
+ * 体会1：使用try-catch-finally处理编译时异常，是得程序在编译时就不再报错，但是运行时仍可能报错。
+ *     相当于我们使用try-catch-finally将一个编译时可能出现的异常，延迟到运行时出现。
+ *     
+ * 体会2：开发中，由于运行时异常比较常见，所以我们通常就不针对运行时异常编写try-catch-finally了。
+ *      针对于编译时异常，我们说一定要考虑异常的处理。
+</code></pre>
 <p>try-catch-finally中finally的使用：</p>
 <ul>
 <li>finally是可选的</li>
@@ -522,14 +551,56 @@
 <li>像数据库连接、输入输出流、网络编程Socket等资源，JVM是不能自动的回收的，我们需要自己手动的进行资源的释放。此时的资源释放，就需要声明在finally中。</li>
 </ul>
 <h3 id="2、2-throws-异常类型"><a href="#2、2-throws-异常类型" class="headerlink" title="2、2  throws  +  异常类型"></a>2、2  throws  +  异常类型</h3><p>格式：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">regist</span><span class="params">(<span class="keyword">int</span> id)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(id &gt; <span class="number">0</span>)&#123;</span><br><span class="line">			<span class="keyword">this</span>.id = id;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> MyException(<span class="string">&quot;不能输入负数&quot;</span>);</span><br><span class="line">		&#125;	</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="java">public void regist(int id) throws Exception &#123;
+        if(id &gt; 0)&#123;
+            this.id = id;
+        &#125;else&#123;
+            throw new MyException(&quot;不能输入负数&quot;);
+        &#125;    
+    &#125;
+</code></pre>
 <p>一旦方法执行时出现异常会产生一个异常类型的对象，此对象若满足throws后的异常类型，则抛出。异常后续代码不再执行。</p>
 <p>抛出的异常总会有人处理的，谁调用谁处理，处理不了继续往上抛。try–catch–finally才是真正解决异常的方式。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentTest</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Student s = <span class="keyword">new</span> Student();</span><br><span class="line">			s.regist(-<span class="number">1001</span>);</span><br><span class="line">			System.out.println(s);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line"><span class="comment">//			e.printStackTrace();</span></span><br><span class="line">			System.out.println(e.getMessage());</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">regist</span><span class="params">(<span class="keyword">int</span> id)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(id &gt; <span class="number">0</span>)&#123;</span><br><span class="line">			<span class="keyword">this</span>.id = id;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line"><span class="comment">//			System.out.println(&quot;您输入的数据非法！&quot;);</span></span><br><span class="line">			<span class="comment">//手动抛出异常对象</span></span><br><span class="line"><span class="comment">//			throw new RuntimeException(&quot;您输入的数据非法！&quot;);</span></span><br><span class="line"><span class="comment">//			throw new Exception(&quot;您输入的数据非法！&quot;);</span></span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> MyException(<span class="string">&quot;不能输入负数&quot;</span>);</span><br><span class="line">			<span class="comment">//错误的</span></span><br><span class="line"><span class="comment">//			throw new String(&quot;不能输入负数&quot;);</span></span><br><span class="line">		&#125;	</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;Student [id=&quot;</span> + id + <span class="string">&quot;]&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="java">public class StudentTest &#123;
+    
+    public static void main(String[] args) &#123;
+        try &#123;
+            Student s = new Student();
+            s.regist(-1001);
+            System.out.println(s);
+        &#125; catch (Exception e) &#123;
+//            e.printStackTrace();
+            System.out.println(e.getMessage());
+        &#125;
+    &#125;
+    
+&#125;
 
 
+class Student&#123;
+    
+    private int id;
+    
+    public void regist(int id) throws Exception &#123;
+        if(id &gt; 0)&#123;
+            this.id = id;
+        &#125;else&#123;
+//            System.out.println(&quot;您输入的数据非法！&quot;);
+            //手动抛出异常对象
+//            throw new RuntimeException(&quot;您输入的数据非法！&quot;);
+//            throw new Exception(&quot;您输入的数据非法！&quot;);
+            throw new MyException(&quot;不能输入负数&quot;);
+            //错误的
+//            throw new String(&quot;不能输入负数&quot;);
+        &#125;    
+    &#125;
 
+    @Override
+    public String toString() &#123;
+        return &quot;Student [id=&quot; + id + &quot;]&quot;;
+    &#125;
+&#125;
+</code></pre>
 <h3 id="2、3-其他注意点"><a href="#2、3-其他注意点" class="headerlink" title="2、3 其他注意点"></a>2、3 其他注意点</h3><ol>
 <li><strong>如果父类中被重写的方法没有throws方式处理异常，则子类重写的方法也不能使用throws，意味着如果子类重写的方法中有异常，必须使用try-catch-finally方式处理。</strong></li>
 <li>执行的方法a中，先后又调用了另外的几个方法，这几个方法是递进关系执行的。我们建议这几个方法使用throws的方式进行处理。而执行的方法a可以考虑使用try-catch-finally方式进行处理。(这几个方法递进执行，需要保证每个方法return出来的数据是有用的，如果在方法内就把异常处理了，出来的数据不一定准确，所以不如直接报异常，终止方法执行，直接让外部方法获取异常，在去处理。)</li>
@@ -539,8 +610,46 @@
 <li>系统自动生成异常对象</li>
 <li>手动的生成异常对象，并抛出(throw)；</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentTest</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Student s = <span class="keyword">new</span> Student();</span><br><span class="line">			s.regist(-<span class="number">1001</span>);</span><br><span class="line">			System.out.println(s);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line"><span class="comment">//			e.printStackTrace();</span></span><br><span class="line">			System.out.println(e.getMessage());</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">regist</span><span class="params">(<span class="keyword">int</span> id)</span> <span class="keyword">throws</span> Exception </span>&#123; <span class="comment">//抛出的异常传给方法</span></span><br><span class="line">		<span class="keyword">if</span>(id &gt; <span class="number">0</span>)&#123;</span><br><span class="line">			<span class="keyword">this</span>.id = id;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="comment">//手动抛出异常对象</span></span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">&quot;您输入的数据非法！&quot;</span>);</span><br><span class="line">			<span class="comment">//错误的</span></span><br><span class="line"><span class="comment">//			throw new String(&quot;不能输入负数&quot;);</span></span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;Student [id=&quot;</span> + id + <span class="string">&quot;]&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="java">public class StudentTest &#123;
+    
+    public static void main(String[] args) &#123;
+        try &#123;
+            Student s = new Student();
+            s.regist(-1001);
+            System.out.println(s);
+        &#125; catch (Exception e) &#123;
+//            e.printStackTrace();
+            System.out.println(e.getMessage());
+        &#125;
+    &#125;
+    
+&#125;
 
+
+class Student&#123;
+    
+    private int id;
+    
+    public void regist(int id) throws Exception &#123; //抛出的异常传给方法
+        if(id &gt; 0)&#123;
+            this.id = id;
+        &#125;else&#123;
+            //手动抛出异常对象
+            throw new Exception(&quot;您输入的数据非法！&quot;);
+            //错误的
+//            throw new String(&quot;不能输入负数&quot;);
+        &#125;
+        
+    &#125;
+
+    @Override
+    public String toString() &#123;
+        return &quot;Student [id=&quot; + id + &quot;]&quot;;
+    &#125;
+    
+    
+&#125;
+</code></pre>
 <p>在throw异常前会执行finally代码块里的代码。</p>
 <h2 id="4、用户自定义异常"><a href="#4、用户自定义异常" class="headerlink" title="4、用户自定义异常"></a>4、用户自定义异常</h2><ul>
 <li>如何自定义异常类？</li>
@@ -557,10 +666,67 @@
 </ol>
 </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 如何自定义异常类？</span></span><br><span class="line"><span class="comment"> * 1. 继承于现有的异常结构：RuntimeException 、Exception</span></span><br><span class="line"><span class="comment"> * 2. 提供全局常量：serialVersionUID</span></span><br><span class="line"><span class="comment"> * 3. 提供重载的构造器</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyException</span> <span class="keyword">extends</span> <span class="title">Exception</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">7034897193246939L</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">MyException</span><span class="params">()</span></span>&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">MyException</span><span class="params">(String msg)</span></span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(msg);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="java">/*
+ * 如何自定义异常类？
+ * 1. 继承于现有的异常结构：RuntimeException 、Exception
+ * 2. 提供全局常量：serialVersionUID
+ * 3. 提供重载的构造器
+ * 
+ */
+public class MyException extends Exception&#123;
+    
+    static final long serialVersionUID = -7034897193246939L;
+    
+    public MyException()&#123;
+        
+    &#125;
+    
+    public MyException(String msg)&#123;
+        super(msg);
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">public class StudentTest &#123;
+    
+    public static void main(String[] args) &#123;
+        try &#123;
+            Student s = new Student();
+            s.regist(-1001);
+            System.out.println(s);
+        &#125; catch (Exception e) &#123;
+//            e.printStackTrace();
+            System.out.println(e.getMessage());
+        &#125;
+    &#125;
+    
+&#125;
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentTest</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Student s = <span class="keyword">new</span> Student();</span><br><span class="line">			s.regist(-<span class="number">1001</span>);</span><br><span class="line">			System.out.println(s);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line"><span class="comment">//			e.printStackTrace();</span></span><br><span class="line">			System.out.println(e.getMessage());</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">regist</span><span class="params">(<span class="keyword">int</span> id)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(id &gt; <span class="number">0</span>)&#123;</span><br><span class="line">			<span class="keyword">this</span>.id = id;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line"><span class="comment">//			System.out.println(&quot;您输入的数据非法！&quot;);</span></span><br><span class="line">			<span class="comment">//手动抛出异常对象</span></span><br><span class="line"><span class="comment">//			throw new RuntimeException(&quot;您输入的数据非法！&quot;);</span></span><br><span class="line"><span class="comment">//			throw new Exception(&quot;您输入的数据非法！&quot;);</span></span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> MyException(<span class="string">&quot;不能输入负数&quot;</span>);</span><br><span class="line">			<span class="comment">//错误的</span></span><br><span class="line"><span class="comment">//			throw new String(&quot;不能输入负数&quot;);</span></span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;Student [id=&quot;</span> + id + <span class="string">&quot;]&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+class Student&#123;
+    
+    private int id;
+    
+    public void regist(int id) throws Exception &#123;
+        if(id &gt; 0)&#123;
+            this.id = id;
+        &#125;else&#123;
+//            System.out.println(&quot;您输入的数据非法！&quot;);
+            //手动抛出异常对象
+//            throw new RuntimeException(&quot;您输入的数据非法！&quot;);
+//            throw new Exception(&quot;您输入的数据非法！&quot;);
+            throw new MyException(&quot;不能输入负数&quot;);
+            //错误的
+//            throw new String(&quot;不能输入负数&quot;);
+        &#125;
+        
+    &#125;
+
+    @Override
+    public String toString() &#123;
+        return &quot;Student [id=&quot; + id + &quot;]&quot;;
+    &#125;
+&#125;
+</code></pre>
 
                 
             </div>

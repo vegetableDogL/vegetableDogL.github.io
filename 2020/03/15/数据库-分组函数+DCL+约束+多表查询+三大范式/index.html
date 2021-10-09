@@ -483,34 +483,125 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="1、数据库"><a href="#1、数据库" class="headerlink" title="1、数据库"></a>1、数据库</h1><h2 id="1、DCL"><a href="#1、DCL" class="headerlink" title="1、DCL"></a>1、DCL</h2><p><strong>sql运行顺序：</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">一、<span class="keyword">sql</span>执行顺序 </span><br><span class="line">(<span class="number">1</span>)<span class="keyword">from</span> </span><br><span class="line">(<span class="number">3</span>) <span class="keyword">join</span> </span><br><span class="line">(<span class="number">2</span>) <span class="keyword">on</span> </span><br><span class="line">(<span class="number">4</span>) <span class="keyword">where</span> </span><br><span class="line">(<span class="number">5</span>)<span class="keyword">group</span> <span class="keyword">by</span>(开始使用<span class="keyword">select</span>中的别名，后面的语句中都可以使用)</span><br><span class="line">(<span class="number">6</span>) avg,sum.... </span><br><span class="line">(<span class="number">7</span>)<span class="keyword">having</span> </span><br><span class="line">(<span class="number">8</span>) <span class="keyword">select</span> </span><br><span class="line">(<span class="number">9</span>) <span class="keyword">distinct</span> </span><br><span class="line">(<span class="number">10</span>) <span class="keyword">order</span> <span class="keyword">by</span> </span><br></pre></td></tr></table></figure>
+<pre><code class="sql">一、sql执行顺序 
+(1)from 
+(3) join 
+(2) on 
+(4) where 
+(5)group by(开始使用select中的别名，后面的语句中都可以使用)
+(6) avg,sum.... 
+(7)having 
+(8) select 
+(9) distinct 
+(10) order by 
+</code></pre>
+<h3 id="1、创建用户"><a href="#1、创建用户" class="headerlink" title="1、创建用户"></a>1、创建用户</h3><pre><code class="sql"># 1.创建u1用户，只能在本机登录，不能远程登录，且密码1234&#39;
+create user &#39;u1&#39;@&#39;localhost&#39; identified by &#39;1234&#39;;
+
+# 1.创建u2用户，在任意电脑都可以登录，且密码1234&#39;
+# 说明：%匹配任意IP地址或者域名
+create user &#39;u2&#39;@&#39;%&#39; identified by &#39;1234&#39;;
+</code></pre>
+<h3 id="2、用户授权与撤销权限："><a href="#2、用户授权与撤销权限：" class="headerlink" title="2、用户授权与撤销权限："></a>2、用户授权与撤销权限：</h3><pre><code class="sql"># 3.给u1用户分配对heima01的操作权限，但是不包含对表中数据删除操作
+# 说明：之前学习的sql的语句的首个关键字都是权限
+# heima01.*：表示指定的权限只能作用在heima01下的所有的表
+grant create,alter,insert,update,select on heima01.* to &#39;u1&#39;@&#39;localhost&#39;;
+# 4.撤销u1用户的所有权限
+revoke create,alter,insert,update,select on heima01.* from &#39;u1&#39;@&#39;localhost&#39;;
+# all:关键字，匹配所有权限
+revoke all on heima01.* from &#39;u1&#39;@&#39;localhost&#39;;
+</code></pre>
+<h3 id="3、删除用户和密码修改："><a href="#3、删除用户和密码修改：" class="headerlink" title="3、删除用户和密码修改："></a>3、删除用户和密码修改：</h3><pre><code class="sql"># 1.删除u2 (删除普通用户)
+drop user &#39;u2&#39;@&#39;%&#39;;
+# 2.修改root超级管理员密码
+[root@localhost ~]# mysqladmin -uroot -p123456 password root
+# 3.修改普通用户密码 u1 666
+set password for &#39;u1&#39;@&#39;localhost&#39; =password(&#39;666&#39;);
+</code></pre>
+<h3 id="4-数据库备份与还原"><a href="#4-数据库备份与还原" class="headerlink" title="4.数据库备份与还原"></a>4.数据库备份与还原</h3><pre><code class="sql"># 1.将数据库db1备份，保存在day02.sql文件下
+# 注意：备份时，仅仅备份库中表的信息，数据库的创建语句不备份
+[root@localhost ~]# mysqldump -uroot -proot db1 &gt; ./day02.sql
+# 2.还原数据到day01
+# 注意：还原数据时，数据库需要自己创建
+[root@localhost ~]# mysql -uroot -proot day01 &lt; ./day02.sql 
+</code></pre>
+<h2 id="2、聚合函数"><a href="#2、聚合函数" class="headerlink" title="2、聚合函数"></a>2、聚合函数</h2><pre><code class="sql">    最大值：max()
+    最小值：min()
+    平均值：avg()
+    记录数：count()
+    亲和：sum()
+</code></pre>
+<pre><code class="sql"># 1.统计学生总数
+# 说明：聚合函数统计行记录数使用：count(字段名称)
+# 注意事项：count中统计的字段的值如果为null，那么这一行的统计就丢失了；
+select count(id) from student3;-- 8
+select count(english) from student3;-- 7
+# 扩展：如何实现，只要某一行有任意值，就加入统计
+# *匹配任意列，只要列存在，那么就加入统计
+select count(*) from student3;
+
+# 2.查询年龄大于40的总数
+# 说明：如果有条件，那么先进行条件的过滤，然后再聚合统计
+select count(*) from student3 where age &gt; 40;
+
+# 3.统计数学成绩总分
+select sum(math) from student3;
+
+# 4.一个sql统计出数学成绩最高分和最低分
+select max(math) as 最高成绩,min(math) as 最低成绩 from student3;
+
+# 5.统计数学和英语的总成绩
+# 分析：方式1：先每列的math+english 然后再sum求和
+#       方式2：sum(math)+sum(english)
+select sum(math)+sum(english) from student3;-- 1206
+# 在myslq中任何值与null进行数学运算，那么结果都为null，而聚合函数对null不处理
+select sum(math+english) from student3;-- 1120 差86
+# 如何解决？使用ifnull(v1,v2)
+select id,name,ifnull(english,&#39;没有成绩&#39;) from student3;
+select sum(ifnull(math,0)+ifnull(english,0)) from student3;-- 1206
 
 
+# 6.数学成绩平均分数
+select avg(math) from student3;-- 79.5000
+select round(avg(math),0) from student3;-- 80
+# 四舍五入函数,举例：
+# 说明：round中参数1：表示要四舍五入的数，参数2：保留的小数位
+select round(12.6735,3);-- 12.674
+# 不做四舍五入处理，仅仅数字截取
+select truncate(12.6735,3);-- 12.673
+</code></pre>
+<h2 id="3、分组查询"><a href="#3、分组查询" class="headerlink" title="3、分组查询"></a>3、分组查询</h2><pre><code class="sql"># 查询停车场每种颜色车辆的总价
+# 分析：1.先根据颜色分组，形成各种颜色的小组  2.在每个小组内使用聚合函数统计各自的车的总金额
+# 第一步：统计每种颜色
+select color from car group by color;
+select distinct color from car
+# 第二步：统计每种颜色小组下的总金额
+select color,sum(price) from car group by color;
 
-<h3 id="1、创建用户"><a href="#1、创建用户" class="headerlink" title="1、创建用户"></a>1、创建用户</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># <span class="number">1.</span>创建u1用户，只能在本机登录，不能远程登录，且密码<span class="number">1234</span><span class="string">&#x27;</span></span><br><span class="line"><span class="string">create user &#x27;</span>u1<span class="string">&#x27;@&#x27;</span>localhost<span class="string">&#x27; identified by &#x27;</span><span class="number">1234</span><span class="string">&#x27;;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 1.创建u2用户，在任意电脑都可以登录，且密码1234&#x27;</span></span><br><span class="line"># 说明：<span class="operator">%</span>匹配任意IP地址或者域名</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> <span class="string">&#x27;u2&#x27;</span>@<span class="string">&#x27;%&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;1234&#x27;</span>;</span><br></pre></td></tr></table></figure>
+# 2.统计每种颜色的车辆中总金额大于30的颜色对应的总金额信息；
+# 语法错误：You have an error in your SQL syntax;
+# 结论：where关键字后边不能直接使用聚合函数
+select color,sum(price) from car group by color where sum(price)&gt;30;
+# Invalid use of group function
+select color,sum(price) from car where sum(price)&gt;30 group by color ;
+# 如何解决？使用having关键字
+select color,sum(price) from car group by color having sum(price)&gt;30;
 
-<h3 id="2、用户授权与撤销权限："><a href="#2、用户授权与撤销权限：" class="headerlink" title="2、用户授权与撤销权限："></a>2、用户授权与撤销权限：</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># <span class="number">3.</span>给u1用户分配对heima01的操作权限，但是不包含对表中数据删除操作</span><br><span class="line"># 说明：之前学习的<span class="keyword">sql</span>的语句的首个关键字都是权限</span><br><span class="line"># heima01.<span class="operator">*</span>：表示指定的权限只能作用在heima01下的所有的表</span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">create</span>,<span class="keyword">alter</span>,<span class="keyword">insert</span>,update,<span class="keyword">select</span> <span class="keyword">on</span> heima01.<span class="operator">*</span> <span class="keyword">to</span> <span class="string">&#x27;u1&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span>;</span><br><span class="line"># <span class="number">4.</span>撤销u1用户的所有权限</span><br><span class="line"><span class="keyword">revoke</span> <span class="keyword">create</span>,<span class="keyword">alter</span>,<span class="keyword">insert</span>,update,<span class="keyword">select</span> <span class="keyword">on</span> heima01.<span class="operator">*</span> <span class="keyword">from</span> <span class="string">&#x27;u1&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span>;</span><br><span class="line"># <span class="keyword">all</span>:关键字，匹配所有权限</span><br><span class="line"><span class="keyword">revoke</span> <span class="keyword">all</span> <span class="keyword">on</span> heima01.<span class="operator">*</span> <span class="keyword">from</span> <span class="string">&#x27;u1&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="3、删除用户和密码修改："><a href="#3、删除用户和密码修改：" class="headerlink" title="3、删除用户和密码修改："></a>3、删除用户和密码修改：</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># <span class="number">1.</span>删除u2 (删除普通用户)</span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">user</span> <span class="string">&#x27;u2&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br><span class="line"># <span class="number">2.</span>修改root超级管理员密码</span><br><span class="line">[root<span class="variable">@localhost</span> <span class="operator">~</span>]# mysqladmin <span class="operator">-</span>uroot <span class="operator">-</span>p123456 password root</span><br><span class="line"># <span class="number">3.</span>修改普通用户密码 u1 <span class="number">666</span></span><br><span class="line"><span class="keyword">set</span> password <span class="keyword">for</span> <span class="string">&#x27;u1&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> <span class="operator">=</span>password(<span class="string">&#x27;666&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-数据库备份与还原"><a href="#4-数据库备份与还原" class="headerlink" title="4.数据库备份与还原"></a>4.数据库备份与还原</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># <span class="number">1.</span>将数据库db1备份，保存在day02.sql文件下</span><br><span class="line"># 注意：备份时，仅仅备份库中表的信息，数据库的创建语句不备份</span><br><span class="line">[root<span class="variable">@localhost</span> <span class="operator">~</span>]# mysqldump <span class="operator">-</span>uroot <span class="operator">-</span>proot db1 <span class="operator">&gt;</span> .<span class="operator">/</span>day02.sql</span><br><span class="line"># <span class="number">2.</span>还原数据到day01</span><br><span class="line"># 注意：还原数据时，数据库需要自己创建</span><br><span class="line">[root<span class="variable">@localhost</span> <span class="operator">~</span>]# mysql <span class="operator">-</span>uroot <span class="operator">-</span>proot day01 <span class="operator">&lt;</span> .<span class="operator">/</span>day02.sql </span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="2、聚合函数"><a href="#2、聚合函数" class="headerlink" title="2、聚合函数"></a>2、聚合函数</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">最大值：<span class="built_in">max</span>()</span><br><span class="line">最小值：<span class="built_in">min</span>()</span><br><span class="line">平均值：<span class="built_in">avg</span>()</span><br><span class="line">记录数：<span class="built_in">count</span>()</span><br><span class="line">亲和：<span class="built_in">sum</span>()</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"># <span class="number">1.</span>统计学生总数</span><br><span class="line"># 说明：聚合函数统计行记录数使用：<span class="built_in">count</span>(字段名称)</span><br><span class="line"># 注意事项：count中统计的字段的值如果为<span class="keyword">null</span>，那么这一行的统计就丢失了；</span><br><span class="line"><span class="keyword">select</span> <span class="built_in">count</span>(id) <span class="keyword">from</span> student3;<span class="comment">-- 8</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">count</span>(english) <span class="keyword">from</span> student3;<span class="comment">-- 7</span></span><br><span class="line"># 扩展：如何实现，只要某一行有任意值，就加入统计</span><br><span class="line"># <span class="operator">*</span>匹配任意列，只要列存在，那么就加入统计</span><br><span class="line"><span class="keyword">select</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> student3;</span><br><span class="line"></span><br><span class="line"># <span class="number">2.</span>查询年龄大于<span class="number">40</span>的总数</span><br><span class="line"># 说明：如果有条件，那么先进行条件的过滤，然后再聚合统计</span><br><span class="line"><span class="keyword">select</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> student3 <span class="keyword">where</span> age <span class="operator">&gt;</span> <span class="number">40</span>;</span><br><span class="line"></span><br><span class="line"># <span class="number">3.</span>统计数学成绩总分</span><br><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(math) <span class="keyword">from</span> student3;</span><br><span class="line"></span><br><span class="line"># <span class="number">4.</span>一个<span class="keyword">sql</span>统计出数学成绩最高分和最低分</span><br><span class="line"><span class="keyword">select</span> <span class="built_in">max</span>(math) <span class="keyword">as</span> 最高成绩,<span class="built_in">min</span>(math) <span class="keyword">as</span> 最低成绩 <span class="keyword">from</span> student3;</span><br><span class="line"></span><br><span class="line"># <span class="number">5.</span>统计数学和英语的总成绩</span><br><span class="line"># 分析：方式<span class="number">1</span>：先每列的math<span class="operator">+</span>english 然后再sum求和</span><br><span class="line">#       方式<span class="number">2</span>：<span class="built_in">sum</span>(math)<span class="operator">+</span><span class="built_in">sum</span>(english)</span><br><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(math)<span class="operator">+</span><span class="built_in">sum</span>(english) <span class="keyword">from</span> student3;<span class="comment">-- 1206</span></span><br><span class="line"># 在myslq中任何值与<span class="keyword">null</span>进行数学运算，那么结果都为<span class="keyword">null</span>，而聚合函数对<span class="keyword">null</span>不处理</span><br><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(math<span class="operator">+</span>english) <span class="keyword">from</span> student3;<span class="comment">-- 1120 差86</span></span><br><span class="line"># 如何解决？使用ifnull(v1,v2)</span><br><span class="line"><span class="keyword">select</span> id,name,ifnull(english,<span class="string">&#x27;没有成绩&#x27;</span>) <span class="keyword">from</span> student3;</span><br><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(ifnull(math,<span class="number">0</span>)<span class="operator">+</span>ifnull(english,<span class="number">0</span>)) <span class="keyword">from</span> student3;<span class="comment">-- 1206</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># <span class="number">6.</span>数学成绩平均分数</span><br><span class="line"><span class="keyword">select</span> <span class="built_in">avg</span>(math) <span class="keyword">from</span> student3;<span class="comment">-- 79.5000</span></span><br><span class="line"><span class="keyword">select</span> round(<span class="built_in">avg</span>(math),<span class="number">0</span>) <span class="keyword">from</span> student3;<span class="comment">-- 80</span></span><br><span class="line"># 四舍五入函数,举例：</span><br><span class="line"># 说明：round中参数<span class="number">1</span>：表示要四舍五入的数，参数<span class="number">2</span>：保留的小数位</span><br><span class="line"><span class="keyword">select</span> round(<span class="number">12.6735</span>,<span class="number">3</span>);<span class="comment">-- 12.674</span></span><br><span class="line"># 不做四舍五入处理，仅仅数字截取</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">truncate</span>(<span class="number">12.6735</span>,<span class="number">3</span>);<span class="comment">-- 12.673</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="3、分组查询"><a href="#3、分组查询" class="headerlink" title="3、分组查询"></a>3、分组查询</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"># 查询停车场每种颜色车辆的总价</span><br><span class="line"># 分析：<span class="number">1.</span>先根据颜色分组，形成各种颜色的小组  <span class="number">2.</span>在每个小组内使用聚合函数统计各自的车的总金额</span><br><span class="line"># 第一步：统计每种颜色</span><br><span class="line"><span class="keyword">select</span> color <span class="keyword">from</span> car <span class="keyword">group</span> <span class="keyword">by</span> color;</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> color <span class="keyword">from</span> car</span><br><span class="line"># 第二步：统计每种颜色小组下的总金额</span><br><span class="line"><span class="keyword">select</span> color,<span class="built_in">sum</span>(price) <span class="keyword">from</span> car <span class="keyword">group</span> <span class="keyword">by</span> color;</span><br><span class="line"></span><br><span class="line"># <span class="number">2.</span>统计每种颜色的车辆中总金额大于<span class="number">30</span>的颜色对应的总金额信息；</span><br><span class="line"># 语法错误：You have an error <span class="keyword">in</span> your <span class="keyword">SQL</span> syntax;</span><br><span class="line"># 结论：<span class="keyword">where</span>关键字后边不能直接使用聚合函数</span><br><span class="line"><span class="keyword">select</span> color,<span class="built_in">sum</span>(price) <span class="keyword">from</span> car <span class="keyword">group</span> <span class="keyword">by</span> color <span class="keyword">where</span> <span class="built_in">sum</span>(price)<span class="operator">&gt;</span><span class="number">30</span>;</span><br><span class="line"># Invalid use <span class="keyword">of</span> <span class="keyword">group</span> <span class="keyword">function</span></span><br><span class="line"><span class="keyword">select</span> color,<span class="built_in">sum</span>(price) <span class="keyword">from</span> car <span class="keyword">where</span> <span class="built_in">sum</span>(price)<span class="operator">&gt;</span><span class="number">30</span> <span class="keyword">group</span> <span class="keyword">by</span> color ;</span><br><span class="line"># 如何解决？使用<span class="keyword">having</span>关键字</span><br><span class="line"><span class="keyword">select</span> color,<span class="built_in">sum</span>(price) <span class="keyword">from</span> car <span class="keyword">group</span> <span class="keyword">by</span> color <span class="keyword">having</span> <span class="built_in">sum</span>(price)<span class="operator">&gt;</span><span class="number">30</span>;</span><br><span class="line"></span><br><span class="line"># 可以查询到</span><br><span class="line"><span class="keyword">select</span> id,color <span class="keyword">from</span> car <span class="keyword">where</span> id <span class="operator">&gt;</span> <span class="number">4</span>;</span><br><span class="line"><span class="keyword">select</span> id,color <span class="keyword">from</span> car <span class="keyword">having</span> id <span class="operator">&gt;</span> <span class="number">4</span>;</span><br><span class="line"># 可以查询到</span><br><span class="line"><span class="keyword">select</span> color <span class="keyword">from</span> car <span class="keyword">where</span> id <span class="operator">&gt;</span> <span class="number">4</span>;</span><br><span class="line"># 出错：<span class="literal">Unknown</span> <span class="keyword">column</span> <span class="string">&#x27;id&#x27;</span> <span class="keyword">in</span> <span class="string">&#x27;having clause&#x27;</span> 推断：<span class="keyword">having</span>查询基于<span class="keyword">select</span>后边指点的字段，如果</span><br><span class="line"># 字段没有指定，查询报错</span><br><span class="line"><span class="keyword">select</span> color <span class="keyword">from</span> car <span class="keyword">having</span> id <span class="operator">&gt;</span> <span class="number">4</span>;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># <span class="keyword">having</span>与<span class="keyword">where</span>区别？</span><br><span class="line"># <span class="number">1.</span><span class="keyword">where</span>后边不能使用聚合函数，但是<span class="keyword">having</span>可以</span><br><span class="line"># <span class="number">2.</span><span class="keyword">having</span>一般在<span class="keyword">group</span> <span class="keyword">by</span>后边使用，但是<span class="keyword">where</span>一般用于<span class="keyword">group</span> <span class="keyword">by</span>之前，做条件的第一道过滤；</span><br><span class="line"># <span class="number">3.</span><span class="keyword">where</span>能用的地方，<span class="keyword">having</span>都可以用，虽然如何，非必须，使用<span class="keyword">where</span>关键字；</span><br><span class="line"># <span class="number">4.</span>因为<span class="keyword">where</span>查询可以走索引，提高查询效率，但是<span class="keyword">having</span>不走索引；</span><br></pre></td></tr></table></figure>
-
-
-
-
-
+# 可以查询到
+select id,color from car where id &gt; 4;
+select id,color from car having id &gt; 4;
+# 可以查询到
+select color from car where id &gt; 4;
+# 出错：Unknown column &#39;id&#39; in &#39;having clause&#39; 推断：having查询基于select后边指点的字段，如果
+# 字段没有指定，查询报错
+select color from car having id &gt; 4;
+</code></pre>
+<pre><code class="sql"># having与where区别？
+# 1.where后边不能使用聚合函数，但是having可以
+# 2.having一般在group by后边使用，但是where一般用于group by之前，做条件的第一道过滤；
+# 3.where能用的地方，having都可以用，虽然如何，非必须，使用where关键字；
+# 4.因为where查询可以走索引，提高查询效率，但是having不走索引；
+</code></pre>
 <h2 id="4、约束"><a href="#4、约束" class="headerlink" title="4、约束"></a>4、约束</h2><table>
 <thead>
 <tr>
@@ -553,28 +644,42 @@
 <p><strong>创建主键方式</strong>：</p>
 <ol>
 <li><p><strong>在创建表的时候给字段添加主键</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">字段名 字段类型 PRIMARY KEY</span><br></pre></td></tr></table></figure></li>
+<pre><code>字段名 字段类型 PRIMARY KEY
+</code></pre>
+</li>
 <li><p><strong>在已有表中添加主键(了解)</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 <span class="keyword">ADD</span> <span class="keyword">PRIMARY</span> KEY(字段名);</span><br></pre></td></tr></table></figure></li>
+<pre><code class="sql">ALTER TABLE 表名 ADD PRIMARY KEY(字段名);
+</code></pre>
+</li>
 </ol>
 <p>具体操作：</p>
 <ul>
 <li>创建表学生表st5, 包含字段(id, name, age)将id做为主键</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> st5 (</span><br><span class="line">	id <span class="type">INT</span> <span class="keyword">PRIMARY</span> KEY, <span class="comment">-- id是主键</span></span><br><span class="line">	NAME <span class="type">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">	age <span class="type">INT</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">CREATE TABLE st5 (
+    id INT PRIMARY KEY, -- id是主键
+    NAME VARCHAR(20),
+    age INT
+);
+</code></pre>
 <ul>
 <li>插入重复的主键值</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 主键是唯一的不能重复：Duplicate entry &#x27;1&#x27; for key &#x27;PRIMARY&#x27;</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> st5 (id, NAME,age) <span class="keyword">VALUES</span> (<span class="number">1</span>, <span class="string">&#x27;文征明2&#x27;</span>,<span class="number">30</span>);</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">-- 主键是唯一的不能重复：Duplicate entry &#39;1&#39; for key &#39;PRIMARY&#39;
+INSERT INTO st5 (id, NAME,age) VALUES (1, &#39;文征明2&#39;,30);
+</code></pre>
 <ul>
 <li>插入NULL的主键值</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 主键是不能为空的：Column &#x27;id&#x27; cannot be null</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> st5 (id, NAME,age) <span class="keyword">VALUES</span> (<span class="keyword">NULL</span>, <span class="string">&#x27;文征明3&#x27;</span>,<span class="number">18</span>);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 扩展：联合主键（联合索引）</span><br><span class="line"># 主键只能有一个，但是可以由多个字段组成一个主键<span class="operator">-</span>联合主键（id,name）</span><br><span class="line"># 联合主键特点与普通主键一致，也就是有多个字段组成一个主键，所以，多个字段组成的值要唯一</span><br><span class="line"># 比如：<span class="keyword">primary</span> key(id,name)<span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">&gt;</span><span class="number">1</span><span class="operator">-</span>马云，如果你再次保存<span class="number">1</span><span class="operator">-</span>马云，报错：Duplicate,同时各个字段</span><br><span class="line"># 不能为<span class="keyword">null</span><span class="operator">=</span><span class="operator">=</span>》<span class="keyword">null</span><span class="operator">-</span>田七，id不能为<span class="keyword">null</span></span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">-- 主键是不能为空的：Column &#39;id&#39; cannot be null
+INSERT INTO st5 (id, NAME,age) VALUES (NULL, &#39;文征明3&#39;,18);
+</code></pre>
+<pre><code class="sql"># 扩展：联合主键（联合索引）
+# 主键只能有一个，但是可以由多个字段组成一个主键-联合主键（id,name）
+# 联合主键特点与普通主键一致，也就是有多个字段组成一个主键，所以，多个字段组成的值要唯一
+# 比如：primary key(id,name)===&gt;1-马云，如果你再次保存1-马云，报错：Duplicate,同时各个字段
+# 不能为null==》null-田七，id不能为null
+</code></pre>
 <h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><ol>
 <li><p>说出主键约束的作用？唯一,区分一条记录</p>
 </li>
@@ -584,83 +689,156 @@
 <p>ALTER TABLE 表名 ADD PRIMARY KEY(字段名);</p>
 </li>
 <li><p>主键如果让我们自己添加很有可能重复,我们通常希望在每次插入新记录时,数据库自动生成主键字段的值</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">字段名 字段类型 <span class="keyword">PRIMARY</span> KEY AUTO_INCREMENT</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">字段名 字段类型 PRIMARY KEY AUTO_INCREMENT
+</code></pre>
 <p><code>AUTO_INCREMENT</code> 表示自动增长(<strong>字段类型必须是整数类型</strong>)</p>
 </li>
 </ol>
-<h3 id="2、唯一约束"><a href="#2、唯一约束" class="headerlink" title="2、唯一约束"></a>2、唯一约束</h3><h4 id="唯一约束的基本格式"><a href="#唯一约束的基本格式" class="headerlink" title="唯一约束的基本格式"></a>唯一约束的基本格式</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">字段名 字段类型 <span class="keyword">UNIQUE</span></span><br></pre></td></tr></table></figure>
-
+<h3 id="2、唯一约束"><a href="#2、唯一约束" class="headerlink" title="2、唯一约束"></a>2、唯一约束</h3><h4 id="唯一约束的基本格式"><a href="#唯一约束的基本格式" class="headerlink" title="唯一约束的基本格式"></a>唯一约束的基本格式</h4><pre><code class="sql">字段名 字段类型 UNIQUE
+</code></pre>
 <p>具体步骤：</p>
 <ul>
 <li>创建学生表st7, 包含字段(id, name),name这一列设置唯一约束,不能出现同名的学生</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> st7 (</span><br><span class="line">	id <span class="type">INT</span>,</span><br><span class="line">	NAME <span class="type">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">UNIQUE</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">CREATE TABLE st7 (
+    id INT,
+    NAME VARCHAR(20) UNIQUE
+);
+</code></pre>
 <ul>
 <li>添加一些学生</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> st7 <span class="keyword">VALUES</span> (<span class="number">1</span>, <span class="string">&#x27;貂蝉&#x27;</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> st7 <span class="keyword">VALUES</span> (<span class="number">2</span>, <span class="string">&#x27;西施&#x27;</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> st7 <span class="keyword">VALUES</span> (<span class="number">3</span>, <span class="string">&#x27;王昭君&#x27;</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> st7 <span class="keyword">VALUES</span> (<span class="number">4</span>, <span class="string">&#x27;杨玉环&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 插入相同的名字出现name重复: Duplicate entry &#x27;貂蝉&#x27; for key &#x27;name&#x27;</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> st7 <span class="keyword">VALUES</span> (<span class="number">5</span>, <span class="string">&#x27;貂蝉&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 出现多个null的时候会怎样？因为null是没有值，所以不存在重复的问题</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> st3 <span class="keyword">VALUES</span> (<span class="number">5</span>, <span class="keyword">NULL</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> st3 <span class="keyword">VALUES</span> (<span class="number">6</span>, <span class="keyword">NULL</span>);</span><br></pre></td></tr></table></figure>
+<pre><code class="sql">INSERT INTO st7 VALUES (1, &#39;貂蝉&#39;);
+INSERT INTO st7 VALUES (2, &#39;西施&#39;);
+INSERT INTO st7 VALUES (3, &#39;王昭君&#39;);
+INSERT INTO st7 VALUES (4, &#39;杨玉环&#39;);
 
+-- 插入相同的名字出现name重复: Duplicate entry &#39;貂蝉&#39; for key &#39;name&#39;
+INSERT INTO st7 VALUES (5, &#39;貂蝉&#39;);
+
+-- 出现多个null的时候会怎样？因为null是没有值，所以不存在重复的问题
+INSERT INTO st3 VALUES (5, NULL);
+INSERT INTO st3 VALUES (6, NULL);
+</code></pre>
 <h4 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h4><ol>
 <li>说出唯一约束的作用？让这个字段的值不能重复</li>
 <li>添加唯一约束格式？字段名 字段类型 UNIQUE</li>
 <li>添加唯一约束时会自动创建出一个唯一索引</li>
 </ol>
 <h3 id="3、非空约束"><a href="#3、非空约束" class="headerlink" title="3、非空约束"></a>3、非空约束</h3><h4 id="非空约束的作用"><a href="#非空约束的作用" class="headerlink" title="非空约束的作用"></a>非空约束的作用</h4><p>这个字段必须设置值,不能是NULL</p>
-<h4 id="非空约束的基本语法格式"><a href="#非空约束的基本语法格式" class="headerlink" title="非空约束的基本语法格式"></a>非空约束的基本语法格式</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">字段名 字段类型 <span class="keyword">NOT</span> <span class="keyword">NULL</span></span><br></pre></td></tr></table></figure>
-
+<h4 id="非空约束的基本语法格式"><a href="#非空约束的基本语法格式" class="headerlink" title="非空约束的基本语法格式"></a>非空约束的基本语法格式</h4><pre><code class="sql">字段名 字段类型 NOT NULL
+</code></pre>
 <p>具体操作：</p>
 <ul>
 <li>创建表学生表st8, 包含字段(id,name,gender)其中name不能为NULL</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> st8 (</span><br><span class="line">	id <span class="type">INT</span>,</span><br><span class="line">	NAME <span class="type">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">	gender <span class="type">CHAR</span>(<span class="number">2</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">CREATE TABLE st8 (
+    id INT,
+    NAME VARCHAR(20) NOT NULL,
+    gender CHAR(2)
+);
+</code></pre>
 <ul>
 <li>添加一些完整的记录</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> st8 <span class="keyword">VALUES</span> (<span class="number">1</span>, <span class="string">&#x27;郭富城&#x27;</span>, <span class="string">&#x27;男&#x27;</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> st8 <span class="keyword">VALUES</span> (<span class="number">2</span>, <span class="string">&#x27;黎明&#x27;</span>, <span class="string">&#x27;男&#x27;</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> st8 <span class="keyword">VALUES</span> (<span class="number">3</span>, <span class="string">&#x27;张学友&#x27;</span>, <span class="string">&#x27;男&#x27;</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> st8 <span class="keyword">VALUES</span> (<span class="number">4</span>, <span class="string">&#x27;刘德华&#x27;</span>, <span class="string">&#x27;男&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 姓名不赋值出现姓名不能为null: Column &#x27;name&#x27; cannot be null</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> st8 <span class="keyword">VALUES</span> (<span class="number">5</span>, <span class="keyword">NULL</span>, <span class="string">&#x27;男&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<pre><code class="sql">INSERT INTO st8 VALUES (1, &#39;郭富城&#39;, &#39;男&#39;);
+INSERT INTO st8 VALUES (2, &#39;黎明&#39;, &#39;男&#39;);
+INSERT INTO st8 VALUES (3, &#39;张学友&#39;, &#39;男&#39;);
+INSERT INTO st8 VALUES (4, &#39;刘德华&#39;, &#39;男&#39;);
 
+-- 姓名不赋值出现姓名不能为null: Column &#39;name&#39; cannot be null
+INSERT INTO st8 VALUES (5, NULL, &#39;男&#39;);
+</code></pre>
 <h4 id="小结-2"><a href="#小结-2" class="headerlink" title="小结"></a>小结</h4><p>非空约束的格式:</p>
 <p>字段名 数据类型 NOT NULL</p>
 <h3 id="唯一约束与主键约束的区别"><a href="#唯一约束与主键约束的区别" class="headerlink" title="唯一约束与主键约束的区别"></a><font color='red'>唯一约束与主键约束的区别</font></h3><p>主键约束与唯一+非空约束区别？</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>主键约束在表中只能存在一个，但是唯一<span class="operator">+</span>非空可以多个；</span><br><span class="line"><span class="number">2.</span>主键约束可以配合主键自增使用，但是唯一<span class="operator">+</span>非空不行；</span><br><span class="line"><span class="number">3.</span>主键约束底层维护了主键索引，但是唯一约束底层维护唯一索引；</span><br></pre></td></tr></table></figure>
-
-
-
+<pre><code class="sql">1.主键约束在表中只能存在一个，但是唯一+非空可以多个；
+2.主键约束可以配合主键自增使用，但是唯一+非空不行；
+3.主键约束底层维护了主键索引，但是唯一约束底层维护唯一索引；
+</code></pre>
 <h3 id="4、默认值约束"><a href="#4、默认值约束" class="headerlink" title="4、默认值约束"></a>4、默认值约束</h3><h4 id="默认值的作用"><a href="#默认值的作用" class="headerlink" title="默认值的作用"></a>默认值的作用</h4><p>往表中添加数据时,如果不指定这个字段的数据,就使用默认值</p>
-<h4 id="默认值格式"><a href="#默认值格式" class="headerlink" title="默认值格式"></a>默认值格式</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">字段名 字段类型 <span class="keyword">DEFAULT</span> 默认值</span><br></pre></td></tr></table></figure>
-
+<h4 id="默认值格式"><a href="#默认值格式" class="headerlink" title="默认值格式"></a>默认值格式</h4><pre><code class="sql">字段名 字段类型 DEFAULT 默认值
+</code></pre>
 <p>具体步骤：</p>
 <ul>
 <li>创建一个学生表 st9，包含字段(id,name,address)， 地址默认值是广州</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 设置默认值约束，address默认值上海</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> st5(</span><br><span class="line">	id <span class="type">int</span>,</span><br><span class="line">	name <span class="type">varchar</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">	address <span class="type">varchar</span>(<span class="number">50</span>) <span class="keyword">default</span> <span class="string">&#x27;上海&#x27;</span></span><br><span class="line">);</span><br><span class="line"># 测试默认值约束</span><br><span class="line"># 如果给值，则使用给定的值</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> st5 <span class="keyword">values</span>(<span class="number">1</span>,<span class="string">&#x27;zhangsan&#x27;</span>,<span class="string">&#x27;北京&#x27;</span>);</span><br><span class="line"># 直接赋值为<span class="keyword">null</span>时，不使用默认值</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> st5 <span class="keyword">values</span>(<span class="number">1</span>,<span class="string">&#x27;zhangsan&#x27;</span>,<span class="keyword">null</span>);</span><br><span class="line"># 如果不定义值，那么就使用默认值</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> st5(id,name) <span class="keyword">values</span>(<span class="number">2</span>,<span class="string">&#x27;lisi&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-
-
+<pre><code class="sql"># 设置默认值约束，address默认值上海
+create table st5(
+    id int,
+    name varchar(10) not null,
+    address varchar(50) default &#39;上海&#39;
+);
+# 测试默认值约束
+# 如果给值，则使用给定的值
+insert into st5 values(1,&#39;zhangsan&#39;,&#39;北京&#39;);
+# 直接赋值为null时，不使用默认值
+insert into st5 values(1,&#39;zhangsan&#39;,null);
+# 如果不定义值，那么就使用默认值
+insert into st5(id,name) values(2,&#39;lisi&#39;);
+</code></pre>
 <h3 id="5、外键约束"><a href="#5、外键约束" class="headerlink" title="5、外键约束"></a>5、外键约束</h3><blockquote>
 <p>创建外键约束，会自动创建一个普通索引，常用于连接查询的条件</p>
 </blockquote>
 <h4 id="1、添加约束："><a href="#1、添加约束：" class="headerlink" title="1、添加约束："></a>1、添加约束：</h4><p>第一种方式：给已经存在的表添加外键约束：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 来自于程序员表</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> coder_project <span class="keyword">add</span> <span class="keyword">constraint</span> c_id_fk <span class="keyword">foreign</span> key(coder_id) <span class="keyword">references</span> coder(id);</span><br><span class="line"><span class="comment">-- 来自于项目表</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> coder_project <span class="keyword">add</span> <span class="keyword">constraint</span> p_id_fk <span class="keyword">foreign</span> key(project_id) <span class="keyword">references</span> project(id);</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">-- 来自于程序员表
+alter table coder_project add constraint c_id_fk foreign key(coder_id) references coder(id);
+-- 来自于项目表
+alter table coder_project add constraint p_id_fk foreign key(project_id) references project(id);
+</code></pre>
 <p>第二种方式：创建表时就添加外键约束：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> coder_project(</span><br><span class="line">	coder_id <span class="type">int</span>,</span><br><span class="line">	project_id <span class="type">int</span>,</span><br><span class="line">    <span class="keyword">constraint</span> c_id_fk <span class="keyword">foreign</span> key(coder_id) <span class="keyword">references</span> coder(id),</span><br><span class="line">    <span class="keyword">constraint</span> p_id_fk <span class="keyword">foreign</span> key(project_id) <span class="keyword">references</span> project(id)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<pre><code class="sql">create table coder_project(
+    coder_id int,
+    project_id int,
+    constraint c_id_fk foreign key(coder_id) references coder(id),
+    constraint p_id_fk foreign key(project_id) references project(id)
+);
+</code></pre>
+<h4 id="2、外键级联"><a href="#2、外键级联" class="headerlink" title="2、外键级联"></a>2、外键级联</h4><pre><code class="sql">### 外键的级联(掌握)
 
-<h4 id="2、外键级联"><a href="#2、外键级联" class="headerlink" title="2、外键级联"></a>2、外键级联</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">### 外键的级联(掌握)</span><br><span class="line"></span><br><span class="line">在修改和删除主表的主键时，同时更新或删除从表的外键值，称为级联操作</span><br><span class="line">`<span class="keyword">ON</span> UPDATE CASCADE` <span class="comment">-- 级联更新，主键发生更新时，外键也会更新</span></span><br><span class="line">`<span class="keyword">ON</span> <span class="keyword">DELETE</span> CASCADE` <span class="comment">-- 级联删除，主键发生删除时，外键也会删除</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建程序员表</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> coder(</span><br><span class="line">	id <span class="type">int</span> <span class="keyword">primary</span> key auto_increment,</span><br><span class="line">	name <span class="type">varchar</span>(<span class="number">50</span>),</span><br><span class="line">	salary <span class="keyword">double</span></span><br><span class="line">);</span><br><span class="line"><span class="comment">-- 创建项目表</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> project(</span><br><span class="line">	id <span class="type">int</span> <span class="keyword">primary</span> key auto_increment,</span><br><span class="line">	name <span class="type">varchar</span>(<span class="number">50</span>)</span><br><span class="line">);</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> coder_project(</span><br><span class="line">	coder_id <span class="type">int</span>,</span><br><span class="line">	project_id <span class="type">int</span>,</span><br><span class="line">    <span class="comment">-- 添加外键约束,并且添加级联更新和级联删除</span></span><br><span class="line">    <span class="keyword">constraint</span> c_id_fk <span class="keyword">foreign</span> key(coder_id) <span class="keyword">references</span> coder(id) <span class="keyword">ON</span> UPDATE CASCADE <span class="keyword">ON</span> <span class="keyword">DELETE</span> CASCADE,</span><br><span class="line">    <span class="keyword">constraint</span> p_id_fk <span class="keyword">foreign</span> key(project_id) <span class="keyword">references</span> project(id) <span class="keyword">ON</span> UPDATE CASCADE <span class="keyword">ON</span> <span class="keyword">DELETE</span> CASCADE</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-
-
+在修改和删除主表的主键时，同时更新或删除从表的外键值，称为级联操作
+`ON UPDATE CASCADE` -- 级联更新，主键发生更新时，外键也会更新
+`ON DELETE CASCADE` -- 级联删除，主键发生删除时，外键也会删除
+</code></pre>
+<pre><code class="sql">-- 创建程序员表
+create table coder(
+    id int primary key auto_increment,
+    name varchar(50),
+    salary double
+);
+-- 创建项目表
+create table project(
+    id int primary key auto_increment,
+    name varchar(50)
+);
+create table coder_project(
+    coder_id int,
+    project_id int,
+    -- 添加外键约束,并且添加级联更新和级联删除
+    constraint c_id_fk foreign key(coder_id) references coder(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    constraint p_id_fk foreign key(project_id) references project(id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+</code></pre>
 <h2 id="5、多表关系和设计原则"><a href="#5、多表关系和设计原则" class="headerlink" title="5、多表关系和设计原则"></a>5、多表关系和设计原则</h2><h3 id="1、一对一"><a href="#1、一对一" class="headerlink" title="1、一对一"></a>1、一对一</h3><blockquote>
 <p>给随便一个表添加字段，添加外键约束,外键添加唯一约束</p>
 </blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 一对一：玩家与微信绑定</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> wechat(</span><br><span class="line">	id <span class="type">int</span> <span class="keyword">primary</span> key,</span><br><span class="line">	name <span class="type">varchar</span>(<span class="number">10</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> player(</span><br><span class="line">	id <span class="type">int</span> <span class="keyword">primary</span> key,</span><br><span class="line">	name <span class="type">varchar</span>(<span class="number">10</span>),</span><br><span class="line">	wechat_id <span class="type">int</span></span><br><span class="line">);</span><br><span class="line"># 添加外键约束</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> player <span class="keyword">add</span> <span class="keyword">constraint</span> fk_wechat <span class="keyword">foreign</span> key(wechat_id) </span><br><span class="line"><span class="keyword">references</span> wechat(id);</span><br><span class="line"># 给player中wechat_id添加唯一约束，实现一对一</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> player <span class="keyword">add</span> <span class="keyword">unique</span>(wechat_id);</span><br></pre></td></tr></table></figure>
+<pre><code class="sql"># 一对一：玩家与微信绑定
+create table wechat(
+    id int primary key,
+    name varchar(10)
+);
 
-
-
+create table player(
+    id int primary key,
+    name varchar(10),
+    wechat_id int
+);
+# 添加外键约束
+alter table player add constraint fk_wechat foreign key(wechat_id) 
+references wechat(id);
+# 给player中wechat_id添加唯一约束，实现一对一
+alter table player add unique(wechat_id);
+</code></pre>
 <h3 id="2、一对多"><a href="#2、一对多" class="headerlink" title="2、一对多"></a>2、一对多</h3><blockquote>
 <p>给多的一方添加一个字段，添加外键，指向少的一方的主键。</p>
 <p>比如作者与作品的关系</p>
@@ -669,64 +847,113 @@
 <h3 id="3、多对多"><a href="#3、多对多" class="headerlink" title="3、多对多"></a>3、多对多</h3><blockquote>
 <p>创建一个中间表，在中间表中创建两个字段，分别建立外键约束指向另外两个表的主键。</p>
 </blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span> 中间表 程序员与项目之间的关系</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建程序员表</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> coder(</span><br><span class="line">	id <span class="type">int</span> <span class="keyword">primary</span> key auto_increment,</span><br><span class="line">	name <span class="type">varchar</span>(<span class="number">50</span>),</span><br><span class="line">	salary <span class="keyword">double</span></span><br><span class="line">);</span><br><span class="line"><span class="comment">-- 创建项目表</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> project(</span><br><span class="line">	id <span class="type">int</span> <span class="keyword">primary</span> key auto_increment,</span><br><span class="line">	name <span class="type">varchar</span>(<span class="number">50</span>)</span><br><span class="line">);</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> coder_project(</span><br><span class="line">	coder_id <span class="type">int</span>,</span><br><span class="line">	project_id <span class="type">int</span>,</span><br><span class="line">    <span class="comment">-- 添加外键约束,并且添加级联更新和级联删除</span></span><br><span class="line">    <span class="keyword">constraint</span> c_id_fk <span class="keyword">foreign</span> key(coder_id) <span class="keyword">references</span> coder(id) <span class="keyword">ON</span> UPDATE CASCADE <span class="keyword">ON</span> <span class="keyword">DELETE</span> CASCADE,</span><br><span class="line">    <span class="keyword">constraint</span> p_id_fk <span class="keyword">foreign</span> key(project_id) <span class="keyword">references</span> project(id) <span class="keyword">ON</span> UPDATE CASCADE <span class="keyword">ON</span> <span class="keyword">DELETE</span> CASCADE</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<pre><code class="sql">// 中间表 程序员与项目之间的关系
 
-<h3 id="4、设计原则"><a href="#4、设计原则" class="headerlink" title="4、设计原则"></a>4、设计原则</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 设计原则</span></span><br><span class="line">多对多：通过设计一张中间表将主表之间多对多的关系，转换成与中间中之间一对多的关系（简化关系）</span><br><span class="line">一对多：由多的一方维护2表的关系；</span><br><span class="line">一对一：任意一方都可以维护，实际情况，根据业务做选择；</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-<h2 id="6、三大范式"><a href="#6、三大范式" class="headerlink" title="6、三大范式"></a>6、三大范式</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">第一范式：表中每一列不能分割；</span><br><span class="line">第二范式：1.满足第一方式 2.消除部分依赖（在联合主键中才能出现）   // 一般都可以分裂成两个表</span><br><span class="line">第三范式：1.满足第二范式 2.先出传递依赖（分类描述---》分类---》商品）</span><br></pre></td></tr></table></figure>
-
+-- 创建程序员表
+create table coder(
+    id int primary key auto_increment,
+    name varchar(50),
+    salary double
+);
+-- 创建项目表
+create table project(
+    id int primary key auto_increment,
+    name varchar(50)
+);
+create table coder_project(
+    coder_id int,
+    project_id int,
+    -- 添加外键约束,并且添加级联更新和级联删除
+    constraint c_id_fk foreign key(coder_id) references coder(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    constraint p_id_fk foreign key(project_id) references project(id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+</code></pre>
+<h3 id="4、设计原则"><a href="#4、设计原则" class="headerlink" title="4、设计原则"></a>4、设计原则</h3><pre><code class="markdown"># 设计原则
+多对多：通过设计一张中间表将主表之间多对多的关系，转换成与中间中之间一对多的关系（简化关系）
+一对多：由多的一方维护2表的关系；
+一对一：任意一方都可以维护，实际情况，根据业务做选择；
+</code></pre>
+<h2 id="6、三大范式"><a href="#6、三大范式" class="headerlink" title="6、三大范式"></a>6、三大范式</h2><pre><code class="markdown">第一范式：表中每一列不能分割；
+第二范式：1.满足第一方式 2.消除部分依赖（在联合主键中才能出现）   // 一般都可以分裂成两个表
+第三范式：1.满足第二范式 2.先出传递依赖（分类描述---》分类---》商品）
+</code></pre>
 <p>反3范式：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">满足<span class="number">3</span>范式的设计，不一定是最最好的设计，因为实际情况要根据具体的业务场景分析；</span><br><span class="line">加入冗余字段，来提高数据库的运行效率，提高查询性能； 用户与订单，在订单中加入用户信息，避免大表联查，提高查询效率；</span><br></pre></td></tr></table></figure>
+<pre><code class="sql">满足3范式的设计，不一定是最最好的设计，因为实际情况要根据具体的业务场景分析；
+加入冗余字段，来提高数据库的运行效率，提高查询性能； 用户与订单，在订单中加入用户信息，避免大表联查，提高查询效率；
+</code></pre>
+<h2 id="7、多表查询"><a href="#7、多表查询" class="headerlink" title="7、多表查询"></a>7、多表查询</h2><h3 id="1-内连接查询（隐式和显示）"><a href="#1-内连接查询（隐式和显示）" class="headerlink" title="1.内连接查询（隐式和显示）"></a>1.内连接查询（隐式和显示）</h3><pre><code class="sql"># 查询水果和价格的信息
+select * from fruit,price;
+# 笛卡尔积过滤：条件过滤
 
-
-
-<h2 id="7、多表查询"><a href="#7、多表查询" class="headerlink" title="7、多表查询"></a>7、多表查询</h2><h3 id="1-内连接查询（隐式和显示）"><a href="#1-内连接查询（隐式和显示）" class="headerlink" title="1.内连接查询（隐式和显示）"></a>1.内连接查询（隐式和显示）</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 查询水果和价格的信息</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> fruit,price;</span><br><span class="line"># 笛卡尔积过滤：条件过滤</span><br><span class="line"></span><br><span class="line"># 隐式内连接</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> fruit,price <span class="keyword">where</span> fruit.price_id<span class="operator">=</span>price.id;</span><br><span class="line"># 显示内连接</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> fruit <span class="keyword">inner</span> <span class="keyword">join</span> price <span class="keyword">on</span> fruit.price_id<span class="operator">=</span>price.id;</span><br></pre></td></tr></table></figure>
-
-
-
+# 隐式内连接
+select * from fruit,price where fruit.price_id=price.id;
+# 显示内连接
+select * from fruit inner join price on fruit.price_id=price.id;
+</code></pre>
 <h3 id="2-外连接查询"><a href="#2-外连接查询" class="headerlink" title="2.外连接查询"></a>2.外连接查询</h3><p>左外特点：左表都显示，右表只显示满足条件的数据；</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># <span class="number">1.</span>无论水果信息是否有关联的price，水果信息都要显示；</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> fruit <span class="keyword">left</span> <span class="keyword">outer</span> <span class="keyword">join</span> price <span class="keyword">on</span> fruit.price_id<span class="operator">=</span>price.id;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql"># 1.无论水果信息是否有关联的price，水果信息都要显示；
+select * from fruit left outer join price on fruit.price_id=price.id;
+</code></pre>
 <p>右外特点：右表都显示，左表只显示满足条件的数据；</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># <span class="number">1.</span>无论水果信息是否有关联的price，价格信息都要显示；</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> price <span class="keyword">left</span> <span class="keyword">outer</span> <span class="keyword">join</span> fruit <span class="keyword">on</span> fruit.price_id<span class="operator">=</span>price.id;</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> fruit <span class="keyword">right</span> <span class="keyword">outer</span> <span class="keyword">join</span> price <span class="keyword">on</span> fruit.price_id<span class="operator">=</span>price.id;</span><br></pre></td></tr></table></figure>
-
-
-
+<pre><code class="sql"># 1.无论水果信息是否有关联的price，价格信息都要显示；
+select * from price left outer join fruit on fruit.price_id=price.id;
+select * from fruit right outer join price on fruit.price_id=price.id;
+</code></pre>
 <h3 id="3-子查询"><a href="#3-子查询" class="headerlink" title="3.子查询"></a>3.子查询</h3><h4 id="1-单行单列查询（比较运算符）"><a href="#1-单行单列查询（比较运算符）" class="headerlink" title="1.单行单列查询（比较运算符）"></a>1.单行单列查询（比较运算符）</h4><blockquote>
 <p>比较运算符</p>
 </blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> emp <span class="keyword">where</span> salary<span class="operator">=</span>(<span class="keyword">select</span> <span class="built_in">max</span>(salary) <span class="keyword">from</span> emp);</span><br></pre></td></tr></table></figure>
-
-
-
+<pre><code class="sql">select * from emp where salary=(select max(salary) from emp);
+</code></pre>
 <h4 id="2-多行单列查询（in-，all，some，any关键字）"><a href="#2-多行单列查询（in-，all，some，any关键字）" class="headerlink" title="2. 多行单列查询（in ，all，some，any关键字）"></a>2. 多行单列查询（in ，all，some，any关键字）</h4><blockquote>
 <p>in ，all，some，any关键字</p>
 </blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> name <span class="keyword">from</span> dept <span class="keyword">where</span> id <span class="keyword">in</span>(<span class="keyword">select</span> dept_id <span class="keyword">from</span> emp <span class="keyword">where</span> salary <span class="operator">&gt;</span> <span class="number">5000</span>);</span><br></pre></td></tr></table></figure>
-
-
-
+<pre><code class="sql">select name from dept where id in(select dept_id from emp where salary &gt; 5000);
+</code></pre>
 <h4 id="3-多行多列查询（多行多列起别名将结果作为一张表，与其他表联合查询）"><a href="#3-多行多列查询（多行多列起别名将结果作为一张表，与其他表联合查询）" class="headerlink" title="3.多行多列查询（多行多列起别名将结果作为一张表，与其他表联合查询）"></a>3.多行多列查询（多行多列起别名将结果作为一张表，与其他表联合查询）</h4><blockquote>
 <p>多行多列起别名将结果作为一张表，与其他表联合查询</p>
 </blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> tmp.<span class="operator">*</span>,dept.name </span><br><span class="line"><span class="keyword">from</span> (<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> emp <span class="keyword">where</span> join_date <span class="operator">&gt;</span> <span class="string">&#x27;2011-01-01&#x27;</span>) <span class="keyword">as</span> tmp,dept </span><br><span class="line"><span class="keyword">where</span> tmp.dept_id<span class="operator">=</span>dept.id;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="1-DQL"><a href="#1-DQL" class="headerlink" title="1.DQL"></a>1.DQL</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>聚合函数<span class="operator">=</span><span class="operator">=</span>》<span class="number">5</span>大聚合函数</span><br><span class="line">	<span class="keyword">select</span> 聚合函数(字段) <span class="keyword">from</span> 表；</span><br><span class="line">	最大值：<span class="built_in">max</span>()</span><br><span class="line">	最小值：<span class="built_in">min</span>()</span><br><span class="line">	平均值：<span class="built_in">avg</span>()</span><br><span class="line">	记录数：<span class="built_in">count</span>()</span><br><span class="line">	亲和：<span class="built_in">sum</span>()</span><br><span class="line">注意事项：聚合函数对<span class="keyword">null</span>不处理；  	</span><br><span class="line"><span class="number">2.</span>分组 <span class="operator">=</span><span class="operator">=</span><span class="operator">=</span>》<span class="keyword">group</span> <span class="keyword">by</span> 字段 配合聚合函数一块使用</span><br><span class="line">	<span class="keyword">select</span> 分组字段，聚合函数(字段) <span class="keyword">from</span> 表 <span class="keyword">group</span> <span class="keyword">by</span> 分组字段 <span class="keyword">having</span> 条件；</span><br><span class="line">  <span class="keyword">having</span>与<span class="keyword">where</span>区别？</span><br><span class="line">  	<span class="number">1.</span><span class="keyword">having</span>后边可以使用聚合函数，但是<span class="keyword">where</span>不可以；</span><br><span class="line">  	<span class="number">2.</span><span class="keyword">having</span>查询不走索引，但是<span class="keyword">where</span>可以走索引；</span><br><span class="line">  	<span class="number">3.</span><span class="keyword">having</span>用于分组之后的条件过滤，但是<span class="keyword">where</span>一般应用于分组之间的条件过滤；</span><br><span class="line">  	<span class="number">4.</span><span class="keyword">having</span>条件中使用的字段必须在<span class="keyword">select</span>语句中声明</span><br><span class="line"><span class="number">2.</span>限制查询<span class="operator">=</span><span class="operator">=</span>》limit</span><br><span class="line">	<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> 表名 <span class="keyword">where</span> 条件 limit 索引位，返回的记录数；</span><br><span class="line">	注意事项：<span class="number">1.</span>索引位默认从<span class="number">0</span>开始 ，如果从<span class="number">0</span>开始那么省略不写索引位；</span><br><span class="line">	分页公式：索引位<span class="operator">=</span>（当前页<span class="number">-1</span>）<span class="operator">*</span>每页大小；</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-DCL"><a href="#2-DCL" class="headerlink" title="2.DCL"></a>2.DCL</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>创建用户</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> <span class="string">&#x27;用户名称&#x27;</span>@<span class="string">&#x27;登录主键名称&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;密码&#x27;</span>；</span><br><span class="line"><span class="number">2.</span>授权</span><br><span class="line">	<span class="keyword">grant</span> <span class="keyword">create</span>,<span class="keyword">insert</span>,... <span class="keyword">on</span> <span class="operator">*</span>.<span class="operator">*</span>  <span class="keyword">to</span> <span class="string">&#x27;用户名称&#x27;</span>@<span class="string">&#x27;登录主键名称&#x27;</span>;</span><br><span class="line"><span class="number">3.</span>撤销</span><br><span class="line">	<span class="keyword">revoke</span> <span class="keyword">create</span>,<span class="keyword">insert</span>,... <span class="keyword">on</span> <span class="operator">*</span>.<span class="operator">*</span>   <span class="keyword">from</span> <span class="string">&#x27;用户名称&#x27;</span>@<span class="string">&#x27;登录主键名称&#x27;</span>;</span><br><span class="line"><span class="number">4.</span>删除用户</span><br><span class="line">	<span class="keyword">drop</span> <span class="keyword">user</span> <span class="string">&#x27;用户名称&#x27;</span>@<span class="string">&#x27;登录主键名称&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-多表关系与设计原则"><a href="#3-多表关系与设计原则" class="headerlink" title="3.多表关系与设计原则"></a>3.多表关系与设计原则</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">【<span class="number">1</span>】关系</span><br><span class="line"><span class="number">1.</span>多对多：程序员与项目、渣男与渣女、用户与角色，从任意一方看，都是一对多；</span><br><span class="line"><span class="number">2.</span>一对多：班级与学生；</span><br><span class="line"><span class="number">3.</span>一对第一：用户与身份证，玩家与微信号</span><br><span class="line">【<span class="number">2</span>】设计原则</span><br><span class="line">多对多：通过设计一张中间表将主表之间多对多的关系，转换成与中间中之间一对多的关系（简化关系）</span><br><span class="line">一对多：由多的一方维护<span class="number">2</span>表的关系；</span><br><span class="line">一对一：任意一方都可以维护，实际情况，根据业务做选择；</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">select tmp.*,dept.name 
+from (select * from emp where join_date &gt; &#39;2011-01-01&#39;) as tmp,dept 
+where tmp.dept_id=dept.id;
+</code></pre>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="1-DQL"><a href="#1-DQL" class="headerlink" title="1.DQL"></a>1.DQL</h3><pre><code class="sql">1.聚合函数==》5大聚合函数
+    select 聚合函数(字段) from 表；
+    最大值：max()
+    最小值：min()
+    平均值：avg()
+    记录数：count()
+    亲和：sum()
+注意事项：聚合函数对null不处理；      
+2.分组 ===》group by 字段 配合聚合函数一块使用
+    select 分组字段，聚合函数(字段) from 表 group by 分组字段 having 条件；
+  having与where区别？
+      1.having后边可以使用聚合函数，但是where不可以；
+      2.having查询不走索引，但是where可以走索引；
+      3.having用于分组之后的条件过滤，但是where一般应用于分组之间的条件过滤；
+      4.having条件中使用的字段必须在select语句中声明
+2.限制查询==》limit
+    select * from 表名 where 条件 limit 索引位，返回的记录数；
+    注意事项：1.索引位默认从0开始 ，如果从0开始那么省略不写索引位；
+    分页公式：索引位=（当前页-1）*每页大小；
+</code></pre>
+<h3 id="2-DCL"><a href="#2-DCL" class="headerlink" title="2.DCL"></a>2.DCL</h3><pre><code class="SQL">1.创建用户
+create user &#39;用户名称&#39;@&#39;登录主键名称&#39; identified by &#39;密码&#39;；
+2.授权
+    grant create,insert,... on *.*  to &#39;用户名称&#39;@&#39;登录主键名称&#39;;
+3.撤销
+    revoke create,insert,... on *.*   from &#39;用户名称&#39;@&#39;登录主键名称&#39;;
+4.删除用户
+    drop user &#39;用户名称&#39;@&#39;登录主键名称&#39;;
+</code></pre>
+<h3 id="3-多表关系与设计原则"><a href="#3-多表关系与设计原则" class="headerlink" title="3.多表关系与设计原则"></a>3.多表关系与设计原则</h3><pre><code class="sql">【1】关系
+1.多对多：程序员与项目、渣男与渣女、用户与角色，从任意一方看，都是一对多；
+2.一对多：班级与学生；
+3.一对第一：用户与身份证，玩家与微信号
+【2】设计原则
+多对多：通过设计一张中间表将主表之间多对多的关系，转换成与中间中之间一对多的关系（简化关系）
+一对多：由多的一方维护2表的关系；
+一对一：任意一方都可以维护，实际情况，根据业务做选择；
+</code></pre>
 <h3 id="4-约束"><a href="#4-约束" class="headerlink" title="4.约束"></a>4.约束</h3><table>
 <thead>
 <tr>
@@ -766,13 +993,38 @@
 <td></td>
 </tr>
 </tbody></table>
-<h3 id="5、3大范式"><a href="#5、3大范式" class="headerlink" title="5、3大范式"></a>5、3大范式</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">第一范式：表中每一列不能分割；</span><br><span class="line">第二范式：<span class="number">1.</span>满足第一方式 <span class="number">2.</span>消除部分依赖（在联合主键中才能出现）</span><br><span class="line">第三范式：<span class="number">1.</span>满足第二范式 <span class="number">2.</span>先出传递依赖（分类描述<span class="comment">---》分类---》商品）</span></span><br></pre></td></tr></table></figure>
-
+<h3 id="5、3大范式"><a href="#5、3大范式" class="headerlink" title="5、3大范式"></a>5、3大范式</h3><pre><code class="sql">第一范式：表中每一列不能分割；
+第二范式：1.满足第一方式 2.消除部分依赖（在联合主键中才能出现）
+第三范式：1.满足第二范式 2.先出传递依赖（分类描述---》分类---》商品）
+</code></pre>
 <p>反3范式：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">满足<span class="number">3</span>范式的设计，不一定是最最好的设计，因为实际情况要根据具体的业务场景分析；</span><br><span class="line">加入冗余字段，来提高数据库的运行效率，提高查询性能； 用户与订单，在订单中加入用户信息，避免大表联查，提高查询效率；</span><br></pre></td></tr></table></figure>
-
-<h3 id="6-多表查询"><a href="#6-多表查询" class="headerlink" title="6.多表查询"></a>6.多表查询</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>查询方式：</span><br><span class="line">	表的连接查询</span><br><span class="line">		内连接查询：特点交集查询，只显示都满足条件的数据</span><br><span class="line">			隐式内连接</span><br><span class="line">				<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t1 ,t2 <span class="keyword">where</span> 条件；</span><br><span class="line">			显示内连接</span><br><span class="line">				<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t1 <span class="keyword">inner</span> <span class="keyword">join</span> t2 <span class="keyword">on</span> 条件；</span><br><span class="line">		外连接查询</span><br><span class="line">			左外连接查询:左侧表都显示，右表只显示满足条件的数据</span><br><span class="line">				<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t1 <span class="keyword">left</span> <span class="keyword">join</span> t2 <span class="keyword">on</span> 条件；</span><br><span class="line">			右外连接查询：右侧表都显示，左表只显示满足条件的数据</span><br><span class="line">			    <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t1 <span class="keyword">right</span> <span class="keyword">join</span> t2 <span class="keyword">on</span> 条件；</span><br><span class="line">	子查询：一个<span class="keyword">sql</span>语句嵌套在另一个<span class="keyword">sql</span>语句内</span><br><span class="line">		单行单列：</span><br><span class="line">			使用比较运算符 eg:<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> student <span class="keyword">where</span> score <span class="operator">=</span>(<span class="keyword">select</span> <span class="built_in">max</span>(score) <span class="keyword">from</span> student);</span><br><span class="line">		多行单列:</span><br><span class="line">			使用<span class="keyword">in</span>关键字：eg:<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> emp <span class="keyword">where</span> dept_id <span class="keyword">in</span> (<span class="keyword">select</span> id <span class="keyword">from</span> dept <span class="keyword">where</span> name <span class="keyword">in</span> (<span class="string">&#x27;财务&#x27;</span>，<span class="string">&#x27;开发&#x27;</span>))</span><br><span class="line">		多行多列:</span><br><span class="line">			子查询结果多行多列，使用<span class="keyword">as</span>取别名作为一张表与其他表关联查询；</span><br><span class="line"><span class="number">2.</span>多表查询规则：</span><br><span class="line">	<span class="number">1.</span>确定业务需要哪些表； <span class="number">2.</span>确定表与表之间的关系（字段之间连接<span class="comment">--》外键字段练习）3.确定其他的查询条件</span></span><br><span class="line">	<span class="number">4.</span>确定需要查询的列信息</span><br><span class="line">			</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">满足3范式的设计，不一定是最最好的设计，因为实际情况要根据具体的业务场景分析；
+加入冗余字段，来提高数据库的运行效率，提高查询性能； 用户与订单，在订单中加入用户信息，避免大表联查，提高查询效率；
+</code></pre>
+<h3 id="6-多表查询"><a href="#6-多表查询" class="headerlink" title="6.多表查询"></a>6.多表查询</h3><pre><code class="sql">1.查询方式：
+    表的连接查询
+        内连接查询：特点交集查询，只显示都满足条件的数据
+            隐式内连接
+                select * from t1 ,t2 where 条件；
+            显示内连接
+                select * from t1 inner join t2 on 条件；
+        外连接查询
+            左外连接查询:左侧表都显示，右表只显示满足条件的数据
+                select * from t1 left join t2 on 条件；
+            右外连接查询：右侧表都显示，左表只显示满足条件的数据
+                select * from t1 right join t2 on 条件；
+    子查询：一个sql语句嵌套在另一个sql语句内
+        单行单列：
+            使用比较运算符 eg:select * from student where score =(select max(score) from student);
+        多行单列:
+            使用in关键字：eg:select * from emp where dept_id in (select id from dept where name in (&#39;财务&#39;，&#39;开发&#39;))
+        多行多列:
+            子查询结果多行多列，使用as取别名作为一张表与其他表关联查询；
+2.多表查询规则：
+    1.确定业务需要哪些表； 2.确定表与表之间的关系（字段之间连接--》外键字段练习）3.确定其他的查询条件
+    4.确定需要查询的列信息
+            
+</code></pre>
 
                 
             </div>

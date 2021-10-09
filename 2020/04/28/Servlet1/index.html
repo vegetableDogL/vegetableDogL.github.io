@@ -483,53 +483,305 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="1、servlet"><a href="#1、servlet" class="headerlink" title="1、servlet"></a>1、servlet</h1><h2 id="1、servlet快速案例"><a href="#1、servlet快速案例" class="headerlink" title="1、servlet快速案例"></a>1、servlet快速案例</h2><h3 id="1、创建web项目"><a href="#1、创建web项目" class="headerlink" title="1、创建web项目"></a>1、创建web项目</h3><p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210831213426821.png" alt="image-20210831213426821"></p>
-<h3 id="2、编写普通java类，实现servlet接口"><a href="#2、编写普通java类，实现servlet接口" class="headerlink" title="2、编写普通java类，实现servlet接口"></a>2、编写普通java类，实现servlet接口</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.itheima01.servlet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.*;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> servlet : 写一个入门案例</span></span><br><span class="line"><span class="comment">		I. 编写一个类实现Servlet接口</span></span><br><span class="line"><span class="comment">		        重写了service方法</span></span><br><span class="line"><span class="comment">		II. 配置web.xml文件</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">  # 快捷键</span></span><br><span class="line"><span class="comment">        1. ctrl + i(implements): 提示接口中还未重写方法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyServlet</span> <span class="keyword">implements</span> <span class="title">Servlet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(ServletRequest servletRequest, ServletResponse servletResponse)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;MyServlet被访问了&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//网页上显示出来,不要写中文,会乱码</span></span><br><span class="line">        servletResponse.getWriter().print(<span class="string">&quot;hello servlet&quot;</span>);<span class="comment">//响应给浏览器</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ServletConfig servletConfig)</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ServletConfig <span class="title">getServletConfig</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getServletInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、编写普通java类，实现servlet接口"><a href="#2、编写普通java类，实现servlet接口" class="headerlink" title="2、编写普通java类，实现servlet接口"></a>2、编写普通java类，实现servlet接口</h3><pre><code class="java">package com.itheima01.servlet;
 
-<h3 id="3、配置web-xml"><a href="#3、配置web-xml" class="headerlink" title="3、配置web.xml"></a>3、配置web.xml</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">web-app</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">version</span>=<span class="string">&quot;4.0&quot;</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>MyServletsb<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>com.itheima01.servlet.MyServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>MyServletsb<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/my<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
+import javax.servlet.*;
+import java.io.IOException;
+
+/*
+ servlet : 写一个入门案例
+        I. 编写一个类实现Servlet接口
+                重写了service方法
+        II. 配置web.xml文件
+
+  # 快捷键
+        1. ctrl + i(implements): 提示接口中还未重写方法
+ */
+public class MyServlet implements Servlet &#123;
+
+    @Override
+    public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException &#123;
+        System.out.println(&quot;MyServlet被访问了&quot;);
+
+        //网页上显示出来,不要写中文,会乱码
+        servletResponse.getWriter().print(&quot;hello servlet&quot;);//响应给浏览器
+    &#125;
+
+    @Override
+    public void init(ServletConfig servletConfig) throws ServletException &#123;
+
+    &#125;
+
+    @Override
+    public ServletConfig getServletConfig() &#123;
+        return null;
+    &#125;
 
 
+    @Override
+    public String getServletInfo() &#123;
+        return null;
+    &#125;
 
+    @Override
+    public void destroy() &#123;
 
-
-<h2 id="2、执行原理"><a href="#2、执行原理" class="headerlink" title="2、执行原理"></a>2、执行原理</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>点击运行  tomcat种的main方法会首先执行</span><br><span class="line">    </span><br><span class="line"><span class="number">2.</span>main方法会读取部署在tomcat上的web.xml</span><br><span class="line">    </span><br><span class="line"><span class="number">3.</span>tomcat进入等待状态（等待浏览器访问）</span><br><span class="line">    </span><br><span class="line"><span class="number">4.</span>用户使用浏览器访问</span><br><span class="line">    http:<span class="comment">//localhost:8080/myweb/myservlet</span></span><br><span class="line"><span class="number">5.</span>tomcat通过路径获取全类名</span><br><span class="line">    </span><br><span class="line"><span class="number">6.</span>tomcat通过反射创建MyServlet对象</span><br><span class="line">    </span><br><span class="line"><span class="number">7.</span>通过对象调用service方法</span><br></pre></td></tr></table></figure>
-
+    &#125;
+&#125;
+</code></pre>
+<h3 id="3、配置web-xml"><a href="#3、配置web-xml" class="headerlink" title="3、配置web.xml"></a>3、配置web.xml</h3><pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;web-app xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd&quot;
+         version=&quot;4.0&quot;&gt;
+    
+    &lt;servlet&gt;
+        &lt;servlet-name&gt;MyServletsb&lt;/servlet-name&gt;
+        &lt;servlet-class&gt;com.itheima01.servlet.MyServlet&lt;/servlet-class&gt;
+    &lt;/servlet&gt;
+    &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;MyServletsb&lt;/servlet-name&gt;
+        &lt;url-pattern&gt;/my&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+&lt;/web-app&gt;
+</code></pre>
+<h2 id="2、执行原理"><a href="#2、执行原理" class="headerlink" title="2、执行原理"></a>2、执行原理</h2><pre><code class="java">1.点击运行  tomcat种的main方法会首先执行
+    
+2.main方法会读取部署在tomcat上的web.xml
+    
+3.tomcat进入等待状态（等待浏览器访问）
+    
+4.用户使用浏览器访问
+    http://localhost:8080/myweb/myservlet
+5.tomcat通过路径获取全类名
+    
+6.tomcat通过反射创建MyServlet对象
+    
+7.通过对象调用service方法
+</code></pre>
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210831214340031.png" alt="image-20210831214340031"></p>
-<h2 id="3、Servlet相关API"><a href="#3、Servlet相关API" class="headerlink" title="3、Servlet相关API"></a>3、Servlet相关API</h2><h3 id="1、生命周期"><a href="#1、生命周期" class="headerlink" title="1、生命周期"></a>1、生命周期</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. servlet对象创建时，调用此方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ServletConfig servletConfig)</span></span>;</span><br><span class="line"><span class="comment">// 2. 用户访问servlet时，调用此方法 (每次访问都会调用一次) 可以接受任何协议的信息，不限于http</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(ServletRequest servletRequest, ServletResponse servletResponse)</span></span>;</span><br><span class="line"><span class="comment">// 3. servlet对象销毁时，调用此方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<h2 id="3、Servlet相关API"><a href="#3、Servlet相关API" class="headerlink" title="3、Servlet相关API"></a>3、Servlet相关API</h2><h3 id="1、生命周期"><a href="#1、生命周期" class="headerlink" title="1、生命周期"></a>1、生命周期</h3><pre><code class="java">// 1. servlet对象创建时，调用此方法
+public void init(ServletConfig servletConfig);
+// 2. 用户访问servlet时，调用此方法 (每次访问都会调用一次) 可以接受任何协议的信息，不限于http
+public void service(ServletRequest servletRequest, ServletResponse servletResponse);
+// 3. servlet对象销毁时，调用此方法
+public void destroy();
+</code></pre>
+<pre><code class="markdown">* 创建
+    1）默认情况下
+        用户第一次访问时，创建servlet，执行init方法
+    2）修改创建时机
+        &lt;load-on-startup&gt;&lt;/load-onstartup&gt;
+            正数：5-N  【服务器启动时，创建】
+                补充：Tomcat的web.xml里有1,4 所以推荐5-n 
+            负数（默认值）：-1 【用户第一次访问时，创建】
+    
+* 运行（提供服务）
+        用户每次访问时，都执行service方法
 
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span> 创建</span><br><span class="line"><span class="code">	1）默认情况下</span></span><br><span class="line"><span class="code">		用户第一次访问时，创建servlet，执行init方法</span></span><br><span class="line"><span class="code">	2）修改创建时机</span></span><br><span class="line"><span class="code">		&lt;load-on-startup&gt;&lt;/load-onstartup&gt;</span></span><br><span class="line"><span class="code">			正数：5-N  【服务器启动时，创建】</span></span><br><span class="line"><span class="code">				补充：Tomcat的web.xml里有1,4 所以推荐5-n </span></span><br><span class="line"><span class="code">			负数（默认值）：-1 【用户第一次访问时，创建】</span></span><br><span class="line"><span class="code">	</span></span><br><span class="line"><span class="code">* 运行（提供服务）</span></span><br><span class="line"><span class="code">		用户每次访问时，都执行service方法</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="bullet">*</span> 销毁</span><br><span class="line"><span class="code">		服务器正常关闭时，销毁servlet，执行destroy方法</span></span><br></pre></td></tr></table></figure>
-
+* 销毁
+        服务器正常关闭时，销毁servlet，执行destroy方法
+</code></pre>
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210831214716462.png" alt="image-20210831214716462"></p>
-<h3 id="3-1-3-启动加载"><a href="#3-1-3-启动加载" class="headerlink" title="3.1.3 启动加载"></a>3.1.3 启动加载</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 启动加载</span></span><br><span class="line"><span class="bullet">*</span>       1)问题: 发现 init 默认第一次被访问的时候才调用,适合用来初始化项目数据</span><br><span class="line"><span class="bullet">*</span>           如果项目数据很多, 加载就需要一定的时间,这样就会给第一个用户的体验不好,因为要等比较久</span><br><span class="line"><span class="bullet">*</span></span><br><span class="line"><span class="bullet">*</span>       2)解决: 服务器一启动,就执行init方法</span><br><span class="line"><span class="bullet">*</span>       </span><br><span class="line"><span class="bullet">*</span>       3) 实现: 要在web.xml配置 <span class="xml"><span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span></span>0<span class="xml"><span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span></span><br><span class="line"><span class="code">		</span></span><br><span class="line"><span class="code">        &lt;servlet&gt;</span></span><br><span class="line"><span class="code">        	&lt;servlet-name&gt;LifeServlet&lt;/servlet-name&gt;</span></span><br><span class="line"><span class="code">        	&lt;servlet-class&gt;com.itheima02.life.LifeServlet&lt;/servlet-class&gt;</span></span><br><span class="line"><span class="code">        	&lt;load-on-startup&gt;0&lt;/load-on-startup&gt;</span></span><br><span class="line"><span class="code">        &lt;/servlet&gt;</span></span><br><span class="line"><span class="code">        </span></span><br><span class="line"><span class="code">        </span></span><br><span class="line"><span class="code">            load-on-startup 启动加载</span></span><br><span class="line"><span class="code">                I. 必须是整数 n</span></span><br><span class="line"><span class="code">                II. n &lt; 0 , 表示不设置启动加载(默认-1)</span></span><br><span class="line"><span class="code">                III. n &gt;= 0 ,表示设置启动加载, 数字越小优先级越高</span></span><br></pre></td></tr></table></figure>
-
-
-
+<h3 id="3-1-3-启动加载"><a href="#3-1-3-启动加载" class="headerlink" title="3.1.3 启动加载"></a>3.1.3 启动加载</h3><pre><code class="markdown"># 启动加载
+*       1)问题: 发现 init 默认第一次被访问的时候才调用,适合用来初始化项目数据
+*           如果项目数据很多, 加载就需要一定的时间,这样就会给第一个用户的体验不好,因为要等比较久
+*
+*       2)解决: 服务器一启动,就执行init方法
+*       
+*       3) 实现: 要在web.xml配置 &lt;load-on-startup&gt;0&lt;/load-on-startup&gt;
+        
+        &lt;servlet&gt;
+            &lt;servlet-name&gt;LifeServlet&lt;/servlet-name&gt;
+            &lt;servlet-class&gt;com.itheima02.life.LifeServlet&lt;/servlet-class&gt;
+            &lt;load-on-startup&gt;0&lt;/load-on-startup&gt;
+        &lt;/servlet&gt;
+        
+        
+            load-on-startup 启动加载
+                I. 必须是整数 n
+                II. n &lt; 0 , 表示不设置启动加载(默认-1)
+                III. n &gt;= 0 ,表示设置启动加载, 数字越小优先级越高
+</code></pre>
 <h2 id="4、Servlet体系结构"><a href="#4、Servlet体系结构" class="headerlink" title="4、Servlet体系结构"></a>4、Servlet体系结构</h2><p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210831215309817.png" alt="image-20210831215309817"></p>
 <h3 id="4-1-GenericServlet"><a href="#4-1-GenericServlet" class="headerlink" title="4.1 GenericServlet"></a>4.1 GenericServlet</h3><p>1). 建立一个抽象类GenericServlet, 继承Servlet接口,重写除了service之外的四个抽象方法,空实现<br>2). 以后编写其他Servlet,只要继承 GenericServlet, 这时候就只要重写service方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GoodServlet</span> <span class="keyword">extends</span> <span class="title">GenericServlet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(ServletRequest servletRequest, ServletResponse servletResponse)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;GoodServlet被访问&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="java">public class GoodServlet extends GenericServlet &#123;
 
+    @Override
+    public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException &#123;
+        System.out.println(&quot;GoodServlet被访问&quot;);
+    &#125;
+    
+&#125;
+</code></pre>
+<h3 id="4-2-HttpServlet"><a href="#4-2-HttpServlet" class="headerlink" title="4.2 HttpServlet"></a>4.2 HttpServlet</h3><pre><code class="java">1. 问题: 
+     http协议中有不同请求方式,其中有两种常见的请求方式: GET/POST,现在没有进行任何区分
+2. 需求:
+        希望不同的请求方式,我们可以在代码中进行相应的区分
+            
+</code></pre>
+<pre><code class="java">//原来的写法
+public class MyHttpServlet extends GenericServlet &#123;
+    @Override
+    public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException &#123;
+        //强转: 协议使用http
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+        HttpServletResponse response = (HttpServletResponse) servletResponse;
+            //获取请求方式,如果前端发送的请求是get,这里就是get(如果是post,这里就是post)
+        String method = request.getMethod();
 
+        if(&quot;GET&quot;.equalsIgnoreCase(method))&#123;
+            //表示请求方式是get
+            doGet(request,response);
+        &#125;else if(&quot;POST&quot;.equalsIgnoreCase(method))&#123;
+            //表示请求方式是post
+            doPost(request,response);
+        &#125;
 
-<h3 id="4-2-HttpServlet"><a href="#4-2-HttpServlet" class="headerlink" title="4.2 HttpServlet"></a>4.2 HttpServlet</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> 问题: </span><br><span class="line">	 http协议中有不同请求方式,其中有两种常见的请求方式: GET/POST,现在没有进行任何区分</span><br><span class="line"><span class="number">2.</span> 需求:</span><br><span class="line">		希望不同的请求方式,我们可以在代码中进行相应的区分</span><br><span class="line">            </span><br></pre></td></tr></table></figure>
+    &#125;
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//原来的写法</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyHttpServlet</span> <span class="keyword">extends</span> <span class="title">GenericServlet</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(ServletRequest servletRequest, ServletResponse servletResponse)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">//强转: 协议使用http</span></span><br><span class="line">        HttpServletRequest request = (HttpServletRequest) servletRequest;</span><br><span class="line">        HttpServletResponse response = (HttpServletResponse) servletResponse;</span><br><span class="line">            <span class="comment">//获取请求方式,如果前端发送的请求是get,这里就是get(如果是post,这里就是post)</span></span><br><span class="line">        String method = request.getMethod();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(<span class="string">&quot;GET&quot;</span>.equalsIgnoreCase(method))&#123;</span><br><span class="line">            <span class="comment">//表示请求方式是get</span></span><br><span class="line">            doGet(request,response);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">&quot;POST&quot;</span>.equalsIgnoreCase(method))&#123;</span><br><span class="line">            <span class="comment">//表示请求方式是post</span></span><br><span class="line">            doPost(request,response);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) &#123;
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HahaServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//这是post请求方式的service方法</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;post请求方式&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//基本上请求方式默认都是get</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;get请求方式&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    HttpServlet是GenericServlet的子类</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    1. HttpServlet重写了service方法</span></span><br><span class="line"><span class="comment">    2. 在service方法中,根据请求方式(http协议)的不同,将service拆分成不同的方法</span></span><br><span class="line"><span class="comment">         1). 有两种常用的请求方式</span></span><br><span class="line"><span class="comment">                get</span></span><br><span class="line"><span class="comment">                post</span></span><br><span class="line"><span class="comment">         2). 用户发送请求时(用户在浏览器中访问servlet的地址)</span></span><br><span class="line"><span class="comment">                service方法就会执行 (接着就会判断)</span></span><br><span class="line"><span class="comment">                    get请求方式 -&gt; doGet</span></span><br><span class="line"><span class="comment">                    post请求方式 -&gt; doPost</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+    &#125;
 
-<h2 id="5、Servlet路径"><a href="#5、Servlet路径" class="headerlink" title="5、Servlet路径"></a>5、Servlet路径</h2><h3 id="1、url-pattern"><a href="#1、url-pattern" class="headerlink" title="1、url-pattern"></a>1、url-pattern</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"> // Servlet映射多个url</span><br><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>HahaServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>com.itheima04.http.HahaServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>HahaServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/HahaServlet1<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>HahaServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/HahaServlet2<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>HahaServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/HahaServlet3<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br></pre></td></tr></table></figure>
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) &#123;
 
-<h3 id="2、映射模式"><a href="#2、映射模式" class="headerlink" title="2、映射模式"></a>2、映射模式</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">配置 <span class="xml"><span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span></span> url地址取值可以是：</span><br><span class="line"></span><br><span class="line"><span class="bullet">1.</span> 精确匹配(掌握) </span><br><span class="line"> 		/servletDemo3  </span><br><span class="line"><span class="bullet">2.</span> 目录匹配 </span><br><span class="line"><span class="code">		/aa/*</span></span><br><span class="line"><span class="code">3. 后缀匹配 </span></span><br><span class="line"><span class="code">		*.xxx	例如：*.do</span></span><br><span class="line"><span class="code">		</span></span><br><span class="line"><span class="code">&lt;servlet-mapping&gt;</span></span><br><span class="line"><span class="code">        &lt;servlet-name&gt;PathServlet&lt;/servlet-name&gt;</span></span><br><span class="line"><span class="code">        &lt;!--</span></span><br><span class="line"><span class="code">            Servlet的路径(虚拟路径)</span></span><br><span class="line"><span class="code">            1. 一个Servlet可以配置多个虚拟路径  -&gt; 了解 (在Filter中有用)</span></span><br><span class="line"><span class="code">            2. 一个Servlet的路径有三种写法</span></span><br><span class="line"><span class="code">                2.1  精确匹配(掌握)</span></span><br><span class="line"><span class="code">                        /servletDemo3</span></span><br><span class="line"><span class="code">                2.2  目录匹配</span></span><br><span class="line"><span class="code">                        /aa/*</span></span><br><span class="line"><span class="code">                2.3 后缀匹配</span></span><br><span class="line"><span class="code">                        *.xxx	例如：*.do</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">        --&gt;</span></span><br><span class="line"><span class="code">        &lt;url-pattern&gt;/bbb/ccc&lt;/url-pattern&gt;</span></span><br><span class="line"><span class="code">        &lt;url-pattern&gt;/aa/*&lt;/url-pattern&gt;</span></span><br><span class="line"><span class="code">        &lt;url-pattern&gt;*.do&lt;/url-pattern&gt;</span></span><br><span class="line"><span class="code">    &lt;/servlet-mapping&gt;</span></span><br><span class="line"><span class="code">&lt;servlet-mapping&gt;</span></span><br><span class="line"><span class="code">    &lt;servlet-name&gt;PathServlet&lt;/servlet-name&gt;</span></span><br><span class="line"><span class="code">    &lt;url-pattern&gt;/pathServlet03&lt;/url-pattern&gt;</span></span><br><span class="line"><span class="code">&lt;/servlet-mapping&gt;</span></span><br></pre></td></tr></table></figure>
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">public class HahaServlet extends HttpServlet &#123;
 
-<h3 id="3、相对-绝对路径"><a href="#3、相对-绝对路径" class="headerlink" title="3、相对/绝对路径"></a>3、相对/绝对路径</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> 绝对路径</span><br><span class="line">    a. http:<span class="comment">//localhost:8080/day01-servlet/PathServlet</span></span><br><span class="line">b. /day01-servlet/PathServlet (省略了三要素,前提: 当前页面和所访问的资源必须在同一服务器上)</span><br><span class="line">    内部资源, 推荐!!!</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="number">2.</span> 相对路径(相对当前文件去找其他文件)</span><br><span class="line">    <span class="number">1</span>) ../ 是上一级</span><br><span class="line">    <span class="number">2</span>) ./ 是平级,可以省略</span><br></pre></td></tr></table></figure>
+    //这是post请求方式的service方法
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException &#123;
+        System.out.println(&quot;post请求方式&quot;);
+    &#125;
+    //基本上请求方式默认都是get
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException &#123;
+        System.out.println(&quot;get请求方式&quot;);
+    &#125;
+&#125;
+/*
+    HttpServlet是GenericServlet的子类
 
-<h2 id="6、注解"><a href="#6、注解" class="headerlink" title="6、注解"></a>6、注解</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> javax.servlet.annotation;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Target(&#123;ElementType.TYPE&#125;)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> WebServlet &#123;</span><br><span class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span> <span class="keyword">default</span> &quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">    String[] value() <span class="keyword">default</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    String[] urlPatterns() <span class="keyword">default</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">loadOnStartup</span><span class="params">()</span> <span class="keyword">default</span> -1</span>;</span><br><span class="line"></span><br><span class="line">    WebInitParam[] initParams() <span class="keyword">default</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">asyncSupported</span><span class="params">()</span> <span class="keyword">default</span> <span class="keyword">false</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">smallIcon</span><span class="params">()</span> <span class="keyword">default</span> &quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">largeIcon</span><span class="params">()</span> <span class="keyword">default</span> &quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">description</span><span class="params">()</span> <span class="keyword">default</span> &quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">displayName</span><span class="params">()</span> <span class="keyword">default</span> &quot;&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    1. HttpServlet重写了service方法
+    2. 在service方法中,根据请求方式(http协议)的不同,将service拆分成不同的方法
+         1). 有两种常用的请求方式
+                get
+                post
+         2). 用户发送请求时(用户在浏览器中访问servlet的地址)
+                service方法就会执行 (接着就会判断)
+                    get请求方式 -&gt; doGet
+                    post请求方式 -&gt; doPost
 
+ */
+</code></pre>
+<h2 id="5、Servlet路径"><a href="#5、Servlet路径" class="headerlink" title="5、Servlet路径"></a>5、Servlet路径</h2><h3 id="1、url-pattern"><a href="#1、url-pattern" class="headerlink" title="1、url-pattern"></a>1、url-pattern</h3><pre><code class="xml"> // Servlet映射多个url
+&lt;servlet&gt;
+        &lt;servlet-name&gt;HahaServlet&lt;/servlet-name&gt;
+        &lt;servlet-class&gt;com.itheima04.http.HahaServlet&lt;/servlet-class&gt;
+    &lt;/servlet&gt;
+    &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;HahaServlet&lt;/servlet-name&gt;
+        &lt;url-pattern&gt;/HahaServlet1&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+    &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;HahaServlet&lt;/servlet-name&gt;
+        &lt;url-pattern&gt;/HahaServlet2&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+    &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;HahaServlet&lt;/servlet-name&gt;
+        &lt;url-pattern&gt;/HahaServlet3&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+&lt;/servlet&gt;
+</code></pre>
+<h3 id="2、映射模式"><a href="#2、映射模式" class="headerlink" title="2、映射模式"></a>2、映射模式</h3><pre><code class="markdown">配置 &lt;url-pattern&gt; url地址取值可以是：
+
+1. 精确匹配(掌握) 
+         /servletDemo3  
+2. 目录匹配 
+        /aa/*
+3. 后缀匹配 
+        *.xxx    例如：*.do
+        
+&lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;PathServlet&lt;/servlet-name&gt;
+        &lt;!--
+            Servlet的路径(虚拟路径)
+            1. 一个Servlet可以配置多个虚拟路径  -&gt; 了解 (在Filter中有用)
+            2. 一个Servlet的路径有三种写法
+                2.1  精确匹配(掌握)
+                        /servletDemo3
+                2.2  目录匹配
+                        /aa/*
+                2.3 后缀匹配
+                        *.xxx    例如：*.do
+
+        --&gt;
+        &lt;url-pattern&gt;/bbb/ccc&lt;/url-pattern&gt;
+        &lt;url-pattern&gt;/aa/*&lt;/url-pattern&gt;
+        &lt;url-pattern&gt;*.do&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+&lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;PathServlet&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/pathServlet03&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
+</code></pre>
+<h3 id="3、相对-绝对路径"><a href="#3、相对-绝对路径" class="headerlink" title="3、相对/绝对路径"></a>3、相对/绝对路径</h3><pre><code class="java">1. 绝对路径
+    a. http://localhost:8080/day01-servlet/PathServlet
+b. /day01-servlet/PathServlet (省略了三要素,前提: 当前页面和所访问的资源必须在同一服务器上)
+    内部资源, 推荐!!!
+    
+    
+2. 相对路径(相对当前文件去找其他文件)
+    1) ../ 是上一级
+    2) ./ 是平级,可以省略
+</code></pre>
+<h2 id="6、注解"><a href="#6、注解" class="headerlink" title="6、注解"></a>6、注解</h2><pre><code class="java">package javax.servlet.annotation;
+
+@Target(&#123;ElementType.TYPE&#125;)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+public @interface WebServlet &#123;
+    String name() default &quot;&quot;;
+
+    String[] value() default &#123;&#125;;
+
+    String[] urlPatterns() default &#123;&#125;;
+
+    int loadOnStartup() default -1;
+
+    WebInitParam[] initParams() default &#123;&#125;;
+
+    boolean asyncSupported() default false;
+
+    String smallIcon() default &quot;&quot;;
+
+    String largeIcon() default &quot;&quot;;
+
+    String description() default &quot;&quot;;
+
+    String displayName() default &quot;&quot;;
+&#125;
+</code></pre>
 <p>注解和xml对应</p>
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210901103201028.png" alt="image-20210901103201028"></p>
 <p>编写普通类继承HttpServlet，配置@WebServlet</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// @WebServlet(name = &quot;QuickServlet&quot;,urlPatterns = &quot;/quickServlet&quot;)</span></span><br><span class="line"><span class="comment">// @WebServlet(urlPatterns = &quot;/quickServlet&quot;)</span></span><br><span class="line"><span class="comment">// @WebServlet(value = &quot;/quickServlet&quot;)</span></span><br><span class="line"><span class="meta">@WebServlet(&quot;/quickServlet&quot;)</span> <span class="comment">// 注解中有且仅有一个属性，名为value时，属性名可以省略...</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QuickServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="java">// @WebServlet(name = &quot;QuickServlet&quot;,urlPatterns = &quot;/quickServlet&quot;)
+// @WebServlet(urlPatterns = &quot;/quickServlet&quot;)
+// @WebServlet(value = &quot;/quickServlet&quot;)
+@WebServlet(&quot;/quickServlet&quot;) // 注解中有且仅有一个属性，名为value时，属性名可以省略...
+public class QuickServlet extends HttpServlet &#123;
+    
+&#125;
+</code></pre>
+<pre><code class="markdown">注解使用反射，虚拟路径——&gt;class类的映射，获取servlet类运行方法。
 
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">注解使用反射，虚拟路径——&gt;class类的映射，获取servlet类运行方法。</span><br><span class="line"></span><br><span class="line">xml使用dom4j解析，虚拟路径——&gt;class类的映射</span><br><span class="line"></span><br><span class="line">可以查看一下前面的  2、执行原理 加深印象</span><br></pre></td></tr></table></figure>
+xml使用dom4j解析，虚拟路径——&gt;class类的映射
 
+可以查看一下前面的  2、执行原理 加深印象
+</code></pre>
 
                 
             </div>
@@ -820,19 +1072,19 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/04/28/Session/">
+                <a href="/2020/04/28/TomCat/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Session">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="TomCat">
                         
-                        <span class="card-title">Session</span>
+                        <span class="card-title">TomCat</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Session
+                            TomCat的使用
                         
                     </div>
                     <div class="publish-info">

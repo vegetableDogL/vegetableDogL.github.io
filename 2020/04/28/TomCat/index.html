@@ -518,18 +518,61 @@
 <p><strong>或者修改tomcat端口：</strong></p>
 <p>进入Tomcat安装目录/conf/server.xml 文件修改 (重启tomcat生效)</p>
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210831211155178.png" alt="image-20210831211155178"></p>
-<h2 id="3、tomcat的资源访问规则"><a href="#3、tomcat的资源访问规则" class="headerlink" title="3、tomcat的资源访问规则"></a>3、tomcat的资源访问规则</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3.</span> tomcat资源位置访问规则</span><br><span class="line">	<span class="number">1</span>). 例子</span><br><span class="line">		I. tomcat/webapps/class134/a.txt</span><br><span class="line">			用浏览器访问</span><br><span class="line">        		http:<span class="comment">//localhost:8080/class134/a.txt        		II. tomcat/webapps/ROOT/b.txt</span></span><br><span class="line">			用浏览器访问</span><br><span class="line">        		http:<span class="comment">//localhost:8080/b.txt</span></span><br><span class="line">        III. tomcat/webapps/ROOT/index.jsp</span><br><span class="line">        	用浏览器访问</span><br><span class="line">        		http:<span class="comment">//localhost:8080/index.jsp</span></span><br><span class="line">        		http:<span class="comment">//localhost:8080/</span></span><br><span class="line">	<span class="number">2</span>). 规则</span><br><span class="line">		<span class="number">1</span>). webapps下的ROOT是根目录,访问时不写路径(强制的)</span><br><span class="line">			webapps下的一级资源是不能被访问到的!!!，目录可以访问。</span><br><span class="line">			</span><br><span class="line">		<span class="number">2</span>). 资源名为index.html或index.jsp,那么资源名可以省略不写</span><br><span class="line">			(写不写都可以)</span><br><span class="line">			如果不写的话, index.html 优先级高于 index.jsp</span><br><span class="line"><span class="number">4.</span> 回答: 为什么浏览器输入http:<span class="comment">//localhost:8080/ 就可以访问到tomcat的欢迎页?</span></span><br><span class="line">	</span><br><span class="line">	<span class="number">1</span>). 当浏览器访问http:<span class="comment">//localhost:8080/的时候,会访问到本机上的tomcat,并用http协议交换数据</span></span><br><span class="line">	<span class="number">2</span>). tomcat会先到webapps/ROOT目录先找index.html,找不到,接着找index.jsp(tomcat默认欢迎页)</span><br><span class="line">	<span class="number">3</span>). 最后tomcat会将index.jsp响应给浏览器</span><br></pre></td></tr></table></figure>
-
-
-
+<h2 id="3、tomcat的资源访问规则"><a href="#3、tomcat的资源访问规则" class="headerlink" title="3、tomcat的资源访问规则"></a>3、tomcat的资源访问规则</h2><pre><code class="java">3. tomcat资源位置访问规则
+    1). 例子
+        I. tomcat/webapps/class134/a.txt
+            用浏览器访问
+                http://localhost:8080/class134/a.txt                II. tomcat/webapps/ROOT/b.txt
+            用浏览器访问
+                http://localhost:8080/b.txt
+        III. tomcat/webapps/ROOT/index.jsp
+            用浏览器访问
+                http://localhost:8080/index.jsp
+                http://localhost:8080/
+    2). 规则
+        1). webapps下的ROOT是根目录,访问时不写路径(强制的)
+            webapps下的一级资源是不能被访问到的!!!，目录可以访问。
+            
+        2). 资源名为index.html或index.jsp,那么资源名可以省略不写
+            (写不写都可以)
+            如果不写的话, index.html 优先级高于 index.jsp
+4. 回答: 为什么浏览器输入http://localhost:8080/ 就可以访问到tomcat的欢迎页?
+    
+    1). 当浏览器访问http://localhost:8080/的时候,会访问到本机上的tomcat,并用http协议交换数据
+    2). tomcat会先到webapps/ROOT目录先找index.html,找不到,接着找index.jsp(tomcat默认欢迎页)
+    3). 最后tomcat会将index.jsp响应给浏览器
+</code></pre>
 <p>前提知识：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> 网络三要素</span><br><span class="line">	<span class="number">0</span>). 网络访问中必须的三个元素</span><br><span class="line">		网络: 计算机程序与计算机程序之间的数据交换</span><br><span class="line">	<span class="number">1</span>). 协议: 传输数据的内容和格式的规则</span><br><span class="line">		网络两端程序必须支持并遵循同一套协议</span><br><span class="line">    <span class="number">2</span>). ip</span><br><span class="line">    	一台计算机在网络中的唯一标识</span><br><span class="line">    	(目标程序所在的计算机)</span><br><span class="line">    	ip和域名本质上是同一个东西 (DNS)</span><br><span class="line">    	(<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> = localhost)</span><br><span class="line">    	(<span class="number">112.80</span><span class="number">.248</span><span class="number">.75</span> = www.baidu.com)</span><br><span class="line">    <span class="number">3</span>). port</span><br><span class="line">    	一个进程在一台计算机中的唯一标识</span><br><span class="line">    	</span><br><span class="line"><span class="number">2.</span> url格式 (网址)</span><br><span class="line"></span><br><span class="line">		 协议:<span class="comment">//ip:port/资源位置?参数</span></span><br></pre></td></tr></table></figure>
+<pre><code class="java">1. 网络三要素
+    0). 网络访问中必须的三个元素
+        网络: 计算机程序与计算机程序之间的数据交换
+    1). 协议: 传输数据的内容和格式的规则
+        网络两端程序必须支持并遵循同一套协议
+    2). ip
+        一台计算机在网络中的唯一标识
+        (目标程序所在的计算机)
+        ip和域名本质上是同一个东西 (DNS)
+        (127.0.0.1 = localhost)
+        (112.80.248.75 = www.baidu.com)
+    3). port
+        一个进程在一台计算机中的唯一标识
+        
+2. url格式 (网址)
 
-<h2 id="4、tomcat的3种发布项目的方式"><a href="#4、tomcat的3种发布项目的方式" class="headerlink" title="4、tomcat的3种发布项目的方式"></a>4、tomcat的3种发布项目的方式</h2><h3 id="1、webapps-部署-重点"><a href="#1、webapps-部署-重点" class="headerlink" title="1、webapps 部署(重点)"></a>1、webapps 部署(重点)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">直接将工程放在webapps下面。</span><br></pre></td></tr></table></figure>
-
+         协议://ip:port/资源位置?参数
+</code></pre>
+<h2 id="4、tomcat的3种发布项目的方式"><a href="#4、tomcat的3种发布项目的方式" class="headerlink" title="4、tomcat的3种发布项目的方式"></a>4、tomcat的3种发布项目的方式</h2><h3 id="1、webapps-部署-重点"><a href="#1、webapps-部署-重点" class="headerlink" title="1、webapps 部署(重点)"></a>1、webapps 部署(重点)</h3><pre><code class="java">直接将工程放在webapps下面。
+</code></pre>
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210831211825964.png" alt="image-20210831211825964"></p>
-<h3 id="2、-server-xml部署（了解）"><a href="#2、-server-xml部署（了解）" class="headerlink" title="2、 server.xml部署（了解）"></a>2、 server.xml部署（了解）</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在 tomcat/conf/server.xml 中找到&lt;Host&gt;标签内，添加&lt;Context&gt;标签</span></span><br><span class="line">&lt;!--</span><br><span class="line">    # 路径映射 : 虚拟路径和真实路径映射关系</span><br><span class="line">        虚拟路径 : mypro</span><br><span class="line">            真实路径 : 项目真正的路径</span><br><span class="line">                String mypro = <span class="string">&quot;C:\Users\spy\Desktop\aaa&quot;</span>;</span><br><span class="line">--&gt; </span><br><span class="line">    &lt;Context path=<span class="string">&quot;mypro&quot;</span> docBase=<span class="string">&quot;C:\Users\spy\Desktop\aaa&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
-
+<h3 id="2、-server-xml部署（了解）"><a href="#2、-server-xml部署（了解）" class="headerlink" title="2、 server.xml部署（了解）"></a>2、 server.xml部署（了解）</h3><pre><code class="java">// 在 tomcat/conf/server.xml 中找到&lt;Host&gt;标签内，添加&lt;Context&gt;标签
+&lt;!--
+    # 路径映射 : 虚拟路径和真实路径映射关系
+        虚拟路径 : mypro
+            真实路径 : 项目真正的路径
+                String mypro = &quot;C:\Users\spy\Desktop\aaa&quot;;
+--&gt; 
+    &lt;Context path=&quot;mypro&quot; docBase=&quot;C:\Users\spy\Desktop\aaa&quot;/&gt;
+</code></pre>
 <p>缺点：</p>
 <blockquote>
 <p>1.配置文件修改完毕后，需要重启tomcat生效…</p>
@@ -537,18 +580,38 @@
 <p>3.这种方案作为了解即可</p>
 </blockquote>
 <h3 id="3、独立xml部署-重点"><a href="#3、独立xml部署-重点" class="headerlink" title="3、独立xml部署( 重点)"></a>3、独立xml部署( 重点)</h3><p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210831212236656.png" alt="image-20210831212236656"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">虚拟路径部署方式</span><br><span class="line"></span><br><span class="line">在tomcat/conf/Catalina/localhost 目录下创建一个xml文件，添加&lt;Context&gt;标签</span><br><span class="line">    **文件名就是虚拟路径**</span><br><span class="line"></span><br><span class="line">    xml文件除了配置啥都不要写  :  &lt;Context docBase=<span class="string">&quot;C:\test\work&quot;</span>/&gt;</span><br><span class="line"></span><br><span class="line">    需要重启tomcat</span><br><span class="line"></span><br><span class="line">    访问的路径</span><br><span class="line"></span><br><span class="line">    ​	http:<span class="comment">//localhost:8080/yourpro/demo4.html </span></span><br><span class="line"></span><br><span class="line">    这样就可以访问到 C:\test\work\demo4.html</span><br></pre></td></tr></table></figure>
+<pre><code class="java">虚拟路径部署方式
 
+在tomcat/conf/Catalina/localhost 目录下创建一个xml文件，添加&lt;Context&gt;标签
+    **文件名就是虚拟路径**
 
+    xml文件除了配置啥都不要写  :  &lt;Context docBase=&quot;C:\test\work&quot;/&gt;
 
-<h2 id="5、Web项目结构"><a href="#5、Web项目结构" class="headerlink" title="5、Web项目结构"></a>5、Web项目结构</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> 前端项目</span><br><span class="line"><span class="code">        |-- myapp(项目名称)</span></span><br><span class="line"><span class="code">            |-- css 目录</span></span><br><span class="line"><span class="code">            |-- js  目录</span></span><br><span class="line"><span class="code">            |-- html目录</span></span><br><span class="line"><span class="code">            |-- img 目录</span></span><br><span class="line"><span class="code">            |-- index.html</span></span><br><span class="line"><span class="code">            </span></span><br><span class="line"><span class="code">2. web项目</span></span><br><span class="line"><span class="code">		|-- myapp（项目名称）</span></span><br><span class="line"><span class="code">			|-- 静态资源（html、css、js、img）</span></span><br><span class="line"><span class="code">			|-- WEB-INF 目录（浏览器无法直接访问内部的资源）</span></span><br><span class="line"><span class="code">				|-- classes 目录（java的字节码文件）</span></span><br><span class="line"><span class="code">				|-- lib     目录（当前项目所需要的第三方jar包）</span></span><br><span class="line"><span class="code">				|-- web.xml 文件 （当前项目核心配置文件，servlet3.0可以省略）</span></span><br><span class="line"><span class="code">			|-- index.html or index.jsp</span></span><br></pre></td></tr></table></figure>
+    需要重启tomcat
 
+    访问的路径
 
+    ​    http://localhost:8080/yourpro/demo4.html 
 
-
-
-
-
+    这样就可以访问到 C:\test\work\demo4.html
+</code></pre>
+<h2 id="5、Web项目结构"><a href="#5、Web项目结构" class="headerlink" title="5、Web项目结构"></a>5、Web项目结构</h2><pre><code class="markdown">1. 前端项目
+        |-- myapp(项目名称)
+            |-- css 目录
+            |-- js  目录
+            |-- html目录
+            |-- img 目录
+            |-- index.html
+            
+2. web项目
+        |-- myapp（项目名称）
+            |-- 静态资源（html、css、js、img）
+            |-- WEB-INF 目录（浏览器无法直接访问内部的资源）
+                |-- classes 目录（java的字节码文件）
+                |-- lib     目录（当前项目所需要的第三方jar包）
+                |-- web.xml 文件 （当前项目核心配置文件，servlet3.0可以省略）
+            |-- index.html or index.jsp
+</code></pre>
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210831213123507.png" alt="image-20210831213123507"></p>
 
                 
@@ -791,19 +854,19 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/04/28/Session/">
+                <a href="/2020/04/28/Servlet1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Session">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Srevlet">
                         
-                        <span class="card-title">Session</span>
+                        <span class="card-title">Srevlet</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Session
+                            Servlet的使用
                         
                     </div>
                     <div class="publish-info">
@@ -840,19 +903,19 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/04/28/cookie/">
+                <a href="/2020/04/28/Session/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="cookie">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Session">
                         
-                        <span class="card-title">cookie</span>
+                        <span class="card-title">Session</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Cookie
+                            Session
                         
                     </div>
                     <div class="publish-info">

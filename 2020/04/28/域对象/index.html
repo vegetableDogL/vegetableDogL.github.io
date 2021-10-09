@@ -488,20 +488,34 @@
 <p>如果别人说, web四大域对象</p>
 <p>​     jspContext(JSP) &lt;  request &lt; session &lt; ServletContext</p>
 </blockquote>
-<h2 id="2-1-域对象方法"><a href="#2-1-域对象方法" class="headerlink" title="2.1 域对象方法"></a>2.1 域对象方法</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 域对象方法都一致</span></span><br><span class="line"><span class="bullet">1.</span> 设置数据</span><br><span class="line"><span class="code">		void setAttribute(String name, Object o)	</span></span><br><span class="line"><span class="code">2. 获取数据</span></span><br><span class="line"><span class="code">		Object getAttribute(String name)	</span></span><br><span class="line"><span class="code">3. 删除数据</span></span><br><span class="line"><span class="code">		void removeAttribute(String name)</span></span><br><span class="line"><span class="code">		</span></span><br><span class="line"><span class="code"># 小域对象可以获取大域对象</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="section"># 不同域对象: 生命周期不一样 (作用范围)</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="2-1-域对象方法"><a href="#2-1-域对象方法" class="headerlink" title="2.1 域对象方法"></a>2.1 域对象方法</h2><pre><code class="markdown"># 域对象方法都一致
+1. 设置数据
+        void setAttribute(String name, Object o)    
+2. 获取数据
+        Object getAttribute(String name)    
+3. 删除数据
+        void removeAttribute(String name)
+        
+# 小域对象可以获取大域对象
 
+# 不同域对象: 生命周期不一样 (作用范围)
+</code></pre>
+<h2 id="2-2-生命周期"><a href="#2-2-生命周期" class="headerlink" title="2.2 生命周期"></a>2.2 生命周期</h2><h3 id="2-2-1-ServletContext域对象"><a href="#2-2-1-ServletContext域对象" class="headerlink" title="2.2.1 ServletContext域对象"></a>2.2.1 ServletContext域对象</h3><pre><code class="markdown">* 跟当前应用(项目)同生共死
+# tomcat上可以部署多个项目（每个项目都有一个servletContext对象），一个项目可以有多个jsp
 
+tomcat加载项目,servletContext创建
+项目停止运行,servletContext销毁
+</code></pre>
+<h3 id="2-2-2-HttpSession域对象"><a href="#2-2-2-HttpSession域对象" class="headerlink" title="2.2.2 HttpSession域对象"></a>2.2.2 HttpSession域对象</h3><pre><code class="markdown">* 一次会话中，多次请求间（共享数据）
+    浏览器第一次访问服务器时创建(没有jsessionid)
+    直到浏览器丢失cookie,或服务器销毁session时,session就找不到了
 
-<h2 id="2-2-生命周期"><a href="#2-2-生命周期" class="headerlink" title="2.2 生命周期"></a>2.2 生命周期</h2><h3 id="2-2-1-ServletContext域对象"><a href="#2-2-1-ServletContext域对象" class="headerlink" title="2.2.1 ServletContext域对象"></a>2.2.1 ServletContext域对象</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span> 跟当前应用(项目)同生共死</span><br><span class="line"><span class="section"># tomcat上可以部署多个项目（每个项目都有一个servletContext对象），一个项目可以有多个jsp</span></span><br><span class="line"></span><br><span class="line">tomcat加载项目,servletContext创建</span><br><span class="line">项目停止运行,servletContext销毁</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-2-2-HttpSession域对象"><a href="#2-2-2-HttpSession域对象" class="headerlink" title="2.2.2 HttpSession域对象"></a>2.2.2 HttpSession域对象</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span> 一次会话中，多次请求间（共享数据）</span><br><span class="line"><span class="code">	浏览器第一次访问服务器时创建(没有jsessionid)</span></span><br><span class="line"><span class="code">	直到浏览器丢失cookie,或服务器销毁session时,session就找不到了</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="section"># 会话的定义: 双方建立连接,连接期间的多次请求响应,直到一方断开连接为止</span></span><br><span class="line"><span class="code">	</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="2-2-3-HttpServletRequest域对象"><a href="#2-2-3-HttpServletRequest域对象" class="headerlink" title="2.2.3 HttpServletRequest域对象"></a>2.2.3 HttpServletRequest域对象</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span> 一次请求中，多次请求转发间（共享数据）</span><br><span class="line"><span class="code">	请求到达服务器时创建,服务器响应时销毁</span></span><br></pre></td></tr></table></figure>
-
-
-
+# 会话的定义: 双方建立连接,连接期间的多次请求响应,直到一方断开连接为止
+    
+</code></pre>
+<h3 id="2-2-3-HttpServletRequest域对象"><a href="#2-2-3-HttpServletRequest域对象" class="headerlink" title="2.2.3 HttpServletRequest域对象"></a>2.2.3 HttpServletRequest域对象</h3><pre><code class="markdown">* 一次请求中，多次请求转发间（共享数据）
+    请求到达服务器时创建,服务器响应时销毁
+</code></pre>
 <h2 id="2-3-小结"><a href="#2-3-小结" class="headerlink" title="2.3 小结"></a>2.3 小结</h2><ul>
 <li><p><strong>能用小的不用大的</strong>：request(一次请求)&lt;session(一次会话)&lt;servletContext(应用全局)</p>
 <blockquote>
@@ -768,19 +782,19 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/04/28/%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/">
+                <a href="/2020/04/28/vue/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="中文乱码">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Vue">
                         
-                        <span class="card-title">中文乱码</span>
+                        <span class="card-title">Vue</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            中文乱码
+                            Vue的指令，生命周期，异步请求
                         
                     </div>
                     <div class="publish-info">
@@ -791,8 +805,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JavaWeb/" class="post-category">
-                                    JavaWeb
+                            <a href="/categories/Vue/" class="post-category">
+                                    Vue
                                 </a>
                             
                             
@@ -802,8 +816,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JavaWeb/">
-                        <span class="chip bg-color">JavaWeb</span>
+                    <a href="/tags/Vue/">
+                        <span class="chip bg-color">Vue</span>
                     </a>
                     
                 </div>

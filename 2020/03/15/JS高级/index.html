@@ -483,32 +483,278 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="1、JS高级"><a href="#1、JS高级" class="headerlink" title="1、JS高级"></a>1、JS高级</h1><h2 id="1、BOM对象"><a href="#1、BOM对象" class="headerlink" title="1、BOM对象"></a>1、BOM对象</h2><p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210828203133499.png"></p>
-<h3 id="1、Windown对象"><a href="#1、Windown对象" class="headerlink" title="1、Windown对象"></a>1、Windown对象</h3><h4 id="1、三种弹框方式"><a href="#1、三种弹框方式" class="headerlink" title="1、三种弹框方式"></a>1、三种弹框方式</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">可以<span class="built_in">window</span>.alert(msg),也可以alert(msg),其他的也一样</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> alert(msg)</span><br><span class="line">     警告框: 通知用户某些信息</span><br><span class="line"></span><br><span class="line"> <span class="number">2.</span> <span class="keyword">let</span> result = confirm(msg)</span><br><span class="line">     确认框: 告知用户某些信息,让用户做选择</span><br><span class="line">     <span class="number">2.1</span> 确认 : 返回<span class="literal">true</span></span><br><span class="line">     <span class="number">2.2</span> 取消 : 返回<span class="literal">false</span></span><br><span class="line"></span><br><span class="line"> <span class="number">3.</span> <span class="keyword">let</span> result = prompt(msg,defaultValue)</span><br><span class="line">     提示框: 通过提问方式,让用户填写内容</span><br><span class="line">     <span class="number">3.1</span> defaultValue : 填写内容的默认值</span><br><span class="line">     <span class="number">3.2</span> result</span><br><span class="line">             用户点击确定 : result 就是用户输入的值</span><br><span class="line">             用户点击取消 : result 就是 <span class="literal">null</span></span><br></pre></td></tr></table></figure>
+<h3 id="1、Windown对象"><a href="#1、Windown对象" class="headerlink" title="1、Windown对象"></a>1、Windown对象</h3><h4 id="1、三种弹框方式"><a href="#1、三种弹框方式" class="headerlink" title="1、三种弹框方式"></a>1、三种弹框方式</h4><pre><code class="js">可以window.alert(msg),也可以alert(msg),其他的也一样
 
-<h4 id="2、两种计时器"><a href="#2、两种计时器" class="headerlink" title="2、两种计时器"></a>2、两种计时器</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"> <span class="built_in">window</span>两个定时器</span><br><span class="line"> <span class="number">1.</span> <span class="keyword">let</span> timer = <span class="built_in">setInterval</span>(函数调用,时间)</span><br><span class="line"> 每隔一定的时间(毫秒)执行一次函数调用 (无限循环)</span><br><span class="line"> 返回这个计时器自身</span><br><span class="line"></span><br><span class="line"> 取消当前计时器:</span><br><span class="line">     <span class="built_in">clearInterval</span>(timer)</span><br><span class="line"></span><br><span class="line"> <span class="number">2.</span> <span class="keyword">let</span> timer = <span class="built_in">setTimeout</span>(函数调用,时间)</span><br><span class="line"> 隔一定的时间(毫秒)执行一次函数调用(就执行就一次)</span><br><span class="line"> 返回这个计时器自身</span><br><span class="line"></span><br><span class="line"> 取消当前计时器:</span><br><span class="line">     <span class="built_in">clearTimeout</span>(timer)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">method01</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="comment">//获取当前时间的本地时间格式</span></span><br><span class="line">    <span class="keyword">var</span> time = <span class="keyword">new</span> <span class="built_in">Date</span>().toLocaleString();</span><br><span class="line">    <span class="built_in">console</span>.log(time)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> timer;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">begin</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//设置一个定时器, 返回自身</span></span><br><span class="line">    <span class="comment">// timer =setInterval(&quot;method01()&quot;,1000)</span></span><br><span class="line">    timer =<span class="built_in">setTimeout</span>(<span class="string">&quot;method01()&quot;</span>,<span class="number">1000</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">end2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//清除定时器</span></span><br><span class="line">    <span class="comment">// clearInterval(timer)</span></span><br><span class="line">    <span class="built_in">clearTimeout</span>(timer)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+1. alert(msg)
+     警告框: 通知用户某些信息
 
+ 2. let result = confirm(msg)
+     确认框: 告知用户某些信息,让用户做选择
+     2.1 确认 : 返回true
+     2.2 取消 : 返回false
+
+ 3. let result = prompt(msg,defaultValue)
+     提示框: 通过提问方式,让用户填写内容
+     3.1 defaultValue : 填写内容的默认值
+     3.2 result
+             用户点击确定 : result 就是用户输入的值
+             用户点击取消 : result 就是 null
+</code></pre>
+<h4 id="2、两种计时器"><a href="#2、两种计时器" class="headerlink" title="2、两种计时器"></a>2、两种计时器</h4><pre><code class="js"> window两个定时器
+ 1. let timer = setInterval(函数调用,时间)
+ 每隔一定的时间(毫秒)执行一次函数调用 (无限循环)
+ 返回这个计时器自身
+
+ 取消当前计时器:
+     clearInterval(timer)
+
+ 2. let timer = setTimeout(函数调用,时间)
+ 隔一定的时间(毫秒)执行一次函数调用(就执行就一次)
+ 返回这个计时器自身
+
+ 取消当前计时器:
+     clearTimeout(timer)
+
+
+
+function method01()&#123;
+        //获取当前时间的本地时间格式
+    var time = new Date().toLocaleString();
+    console.log(time)
+&#125;
+let timer;
+function begin()&#123;
+    //设置一个定时器, 返回自身
+    // timer =setInterval(&quot;method01()&quot;,1000)
+    timer =setTimeout(&quot;method01()&quot;,1000)
+&#125;
+
+function end2() &#123;
+    //清除定时器
+    // clearInterval(timer)
+    clearTimeout(timer)
+&#125;
+</code></pre>
 <h3 id="2、location对象"><a href="#2、location对象" class="headerlink" title="2、location对象"></a>2、location对象</h3><p>属性：href</p>
 <p>方法：reload（）</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">0. 指的是浏览器的地址栏</span><br><span class="line">1. 核心属性  href</span><br><span class="line">     指的是浏览器地址栏的地址</span><br><span class="line"></span><br><span class="line">2. 只要重置 href 属性的值,就会跳转</span><br><span class="line"></span><br><span class="line">3. 函数 reload() : 重新加载当前地址</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;zh-CN&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>03-location对象<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;获取当前浏览器地址&quot;</span> <span class="attr">onclick</span>=<span class="string">&quot;addr()&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;jump()&quot;</span>&gt;</span> 跳转页面(重点)<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;refresh()&quot;</span>&gt;</span>刷新当前页面<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">    a标签原理:</span></span><br><span class="line"><span class="comment">        实际上就是一个按钮, 底层绑定了一个点击事件:</span></span><br><span class="line"><span class="comment">            点击之后就修改location.href = a.href</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.baidu.com&quot;</span>&gt;</span>百度一下<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">addr</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(location.href);</span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">jump</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="comment">//重置地址栏的地址</span></span></span><br><span class="line"><span class="javascript">        location.href = <span class="string">&quot;http://www.baidu.com&quot;</span></span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">refresh</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        location.reload()</span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> result = confirm(<span class="string">&quot;你满18岁了?&quot;</span>);</span></span><br><span class="line"><span class="javascript">    <span class="keyword">if</span>(result)&#123;</span></span><br><span class="line"><span class="javascript">        location.href = <span class="string">&quot;http://www.baidu.com&quot;</span></span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="html">0. 指的是浏览器的地址栏
+1. 核心属性  href
+     指的是浏览器地址栏的地址
+
+2. 只要重置 href 属性的值,就会跳转
+
+3. 函数 reload() : 重新加载当前地址
 
 
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;03-location对象&lt;/title&gt;
 
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;input type=&quot;button&quot; value=&quot;获取当前浏览器地址&quot; onclick=&quot;addr()&quot;&gt;
+
+&lt;button onclick=&quot;jump()&quot;&gt; 跳转页面(重点)&lt;/button&gt;
+&lt;button onclick=&quot;refresh()&quot;&gt;刷新当前页面&lt;/button&gt;
+
+&lt;hr&gt;
+&lt;!--
+    a标签原理:
+        实际上就是一个按钮, 底层绑定了一个点击事件:
+            点击之后就修改location.href = a.href
+--&gt;
+&lt;a href=&quot;http://www.baidu.com&quot;&gt;百度一下&lt;/a&gt;
+&lt;/body&gt;
+
+&lt;script&gt;
+    function addr() &#123;
+        console.log(location.href);
+    &#125;
+
+    function jump() &#123;
+        //重置地址栏的地址
+        location.href = &quot;http://www.baidu.com&quot;
+    &#125;
+    function refresh() &#123;
+        location.reload()
+    &#125;
+
+    var result = confirm(&quot;你满18岁了?&quot;);
+    if(result)&#123;
+        location.href = &quot;http://www.baidu.com&quot;
+    &#125;
+
+&lt;/script&gt;
+&lt;/html&gt;
+</code></pre>
 <h2 id="2、DOM对象"><a href="#2、DOM对象" class="headerlink" title="2、DOM对象"></a>2、DOM对象</h2><p>作用：把所有页面标签抽象成为一个document对象，我们可以使用js动态修改标签及属性等内容。</p>
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210829113505797.png" alt="image-20210829113505797"></p>
-<h3 id="2、1-DOM获取元素"><a href="#2、1-DOM获取元素" class="headerlink" title="2、1 DOM获取元素"></a>2、1 DOM获取元素</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span> 第一种：es6之前获取方式</span><br><span class="line"><span class="code">	1）获取一个</span></span><br><span class="line"><span class="code">		document.getElementById(id属性值)  -&gt; 推荐</span></span><br><span class="line"><span class="code">	2）获取多个（了解）</span></span><br><span class="line"><span class="code">		document.getElementsByTagName(标签名)	根据标签名获取，返回数组对象</span></span><br><span class="line"><span class="code">		document.getElementsByClassName(class属性值)	根据class属性获取，返回数组对象</span></span><br><span class="line"><span class="code">		document.getElementsByName(name属性值)  根据name属性获取，返回数组对象</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="bullet">*</span> 第二种：es6可根据CSS选择器获取</span><br><span class="line"><span class="code">	1）获取一个</span></span><br><span class="line"><span class="code">		document.querySelector(id选择器)</span></span><br><span class="line"><span class="code">	2）获取多个</span></span><br><span class="line"><span class="code">		document.querySelectorAll(css选择器)   -&gt; 推荐</span></span><br><span class="line"><span class="code">        	标签</span></span><br><span class="line"><span class="code">        	class</span></span><br><span class="line"><span class="code">        	属性</span></span><br><span class="line"><span class="code">        	多层级</span></span><br><span class="line"><span class="code">        	并集</span></span><br><span class="line"><span class="code">        	单层级</span></span><br><span class="line"><span class="code">        	....</span></span><br></pre></td></tr></table></figure>
+<h3 id="2、1-DOM获取元素"><a href="#2、1-DOM获取元素" class="headerlink" title="2、1 DOM获取元素"></a>2、1 DOM获取元素</h3><pre><code class="markdown">* 第一种：es6之前获取方式
+    1）获取一个
+        document.getElementById(id属性值)  -&gt; 推荐
+    2）获取多个（了解）
+        document.getElementsByTagName(标签名)    根据标签名获取，返回数组对象
+        document.getElementsByClassName(class属性值)    根据class属性获取，返回数组对象
+        document.getElementsByName(name属性值)  根据name属性获取，返回数组对象
 
-<h3 id="2、2-Dom操作内容"><a href="#2、2-Dom操作内容" class="headerlink" title="2、2 Dom操作内容"></a>2、2 Dom操作内容</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> 获取或者修改元素（标签）的纯文本内容</span><br><span class="line"><span class="code">	语法：</span></span><br><span class="line"><span class="code">		js对象.innerText; </span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="bullet">2.</span> 获取或者修改元素的html超文本内容</span><br><span class="line"><span class="code">	语法：</span></span><br><span class="line"><span class="code">		js对象.innerHTML; </span></span><br><span class="line"><span class="code">		</span></span><br><span class="line"><span class="code">3. 获取或者修改包含自身的html内容（了解）</span></span><br><span class="line"><span class="code">	语法：</span></span><br><span class="line"><span class="code">		js对象.outerHTML; </span></span><br></pre></td></tr></table></figure>
+* 第二种：es6可根据CSS选择器获取
+    1）获取一个
+        document.querySelector(id选择器)
+    2）获取多个
+        document.querySelectorAll(css选择器)   -&gt; 推荐
+            标签
+            class
+            属性
+            多层级
+            并集
+            单层级
+            ....
+</code></pre>
+<h3 id="2、2-Dom操作内容"><a href="#2、2-Dom操作内容" class="headerlink" title="2、2 Dom操作内容"></a>2、2 Dom操作内容</h3><pre><code class="markdown">1. 获取或者修改元素（标签）的纯文本内容
+    语法：
+        js对象.innerText; 
 
-<h3 id="1-4-DOM操作属性"><a href="#1-4-DOM操作属性" class="headerlink" title="1.4 DOM操作属性"></a>1.4 DOM操作属性</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> 获取文本框的值(string),单选框或复选框的选中状态(boolean)</span><br><span class="line">	语法: </span><br><span class="line">		js对象.属性名 获取属性值</span><br><span class="line">		js对象.属性名=<span class="string">&#x27;新属性值&#x27;</span></span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    *   标签属性</span></span><br><span class="line"><span class="comment">    *   1. 文本属性</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    *   2. 状态属性</span></span><br><span class="line"><span class="comment">    *       1). 在html中,状态属性基本都可以书写</span></span><br><span class="line"><span class="comment">    *           eg. checked = &quot;checked&quot; 缩写成 checked</span></span><br><span class="line"><span class="comment">    *       2). 在js中,状态属性值是用boolean来表示的</span></span><br><span class="line"><span class="comment">    *       </span></span><br><span class="line"><span class="comment">    *       html 中的checked 相当于 js.checked  = true</span></span><br><span class="line"><span class="comment">    *       html 不写checked 相当于 js.checked = false</span></span><br><span class="line"><span class="comment">    </span></span><br><span class="line"><span class="comment">    * */</span></span><br><span class="line">    <span class="keyword">var</span> username = <span class="built_in">document</span>.getElementById(<span class="string">&quot;username&quot;</span>);</span><br><span class="line">        <span class="comment">//获取</span></span><br><span class="line">    <span class="built_in">console</span>.log(username.value); <span class="comment">//  德玛西亚</span></span><br><span class="line">    <span class="built_in">console</span>.log(username.type); <span class="comment">// text</span></span><br><span class="line">        <span class="comment">//设置</span></span><br><span class="line">    username.value = <span class="string">&quot;张三&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> smoke = <span class="built_in">document</span>.getElementById(<span class="string">&quot;smoke&quot;</span>);</span><br><span class="line">    smoke.checked = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+2. 获取或者修改元素的html超文本内容
+    语法：
+        js对象.innerHTML; 
+        
+3. 获取或者修改包含自身的html内容（了解）
+    语法：
+        js对象.outerHTML; 
+</code></pre>
+<h3 id="1-4-DOM操作属性"><a href="#1-4-DOM操作属性" class="headerlink" title="1.4 DOM操作属性"></a>1.4 DOM操作属性</h3><pre><code class="js">1. 获取文本框的值(string),单选框或复选框的选中状态(boolean)
+    语法: 
+        js对象.属性名 获取属性值
+        js对象.属性名=&#39;新属性值&#39;
+        
+        
+        
+&lt;script&gt;
+    /*
+    *   标签属性
+    *   1. 文本属性
+    *
+    *   2. 状态属性
+    *       1). 在html中,状态属性基本都可以书写
+    *           eg. checked = &quot;checked&quot; 缩写成 checked
+    *       2). 在js中,状态属性值是用boolean来表示的
+    *       
+    *       html 中的checked 相当于 js.checked  = true
+    *       html 不写checked 相当于 js.checked = false
+    
+    * */
+    var username = document.getElementById(&quot;username&quot;);
+        //获取
+    console.log(username.value); //  德玛西亚
+    console.log(username.type); // text
+        //设置
+    username.value = &quot;张三&quot;
 
-<h3 id="1-5-DOM操作样式"><a href="#1-5-DOM操作样式" class="headerlink" title="1.5 DOM操作样式"></a>1.5 DOM操作样式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> 设置一个css样式【会用】  行内样式,优先级高</span><br><span class="line">	语法: </span><br><span class="line">		js对象.style.样式名=<span class="string">&#x27;样式值&#x27;</span></span><br><span class="line">			特点：样式名按照驼峰式命名</span><br><span class="line">				css格式：font-size</span><br><span class="line">				js格式：fontSize</span><br><span class="line">				</span><br><span class="line"><span class="number">2.</span> 批量设置css样式（了解）  行内样式</span><br><span class="line">	语法: </span><br><span class="line">		js对象.style.cssText=<span class="string">&#x27;css样式字符串&#x27;</span></span><br><span class="line">			缺点：让开发者痛苦，有耦合性</span><br><span class="line">			</span><br><span class="line"><span class="number">3.</span> 通过<span class="class"><span class="keyword">class</span>设置样式【重点】 内部样式,外部样式,优先级低</span></span><br><span class="line"><span class="class">	语法: </span></span><br><span class="line"><span class="class">		<span class="title">js</span>对象.<span class="title">className</span></span>=<span class="string">&#x27;class选择器名&#x27;</span></span><br><span class="line">			特点：解耦</span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">    <span class="comment">// 1. 设置一个css样式</span></span><br><span class="line">    p1.style.color = <span class="string">&quot;green&quot;</span></span><br><span class="line">    p1.style.fontSize = <span class="string">&quot;50px&quot;</span></span><br><span class="line">    <span class="comment">// 2. 批量设置css样式</span></span><br><span class="line">    p2.style.cssText = <span class="string">&quot;color:blue;font-size : 30px&quot;</span></span><br><span class="line">    <span class="comment">// 3. 通过class设置样式</span></span><br><span class="line">    p3.className = <span class="string">&quot;mp&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//4. 优先级</span></span><br><span class="line">    p4.style.color = <span class="string">&quot;green&quot;</span></span><br><span class="line">    p4.className = <span class="string">&quot;mp&quot;</span></span><br><span class="line"></span><br><span class="line">    注意优先级问题: api尽量不要混用</span><br><span class="line">            行内 &gt; 内部/外部</span><br></pre></td></tr></table></figure>
+    var smoke = document.getElementById(&quot;smoke&quot;);
+    smoke.checked = true
 
-<h2 id="3、正则表达式"><a href="#3、正则表达式" class="headerlink" title="3、正则表达式"></a>3、正则表达式</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">和jAVA中的有点不一样，java中的是string字符串</span><br><span class="line"></span><br><span class="line">* 在js中使用正则表达式</span><br><span class="line">	<span class="number">1.</span>创建方式</span><br><span class="line">		<span class="number">1</span>）<span class="keyword">let</span> regex = <span class="keyword">new</span> <span class="built_in">RegExp</span>(“正则表达式字符串”);</span><br><span class="line">		<span class="number">2</span>）<span class="keyword">let</span> regex = <span class="regexp">/正则表达式/</span>;</span><br><span class="line">        </span><br><span class="line">	<span class="number">2.</span>验证方法</span><br><span class="line">		正则对象.test(字符串)</span><br><span class="line">			符合正则规则就返回<span class="literal">true</span>，否则<span class="literal">false</span></span><br><span class="line"></span><br><span class="line">	<span class="number">3.</span>在线正则表达式</span><br><span class="line">    	<span class="attr">https</span>:<span class="comment">//tool.oschina.net/regex/#</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+&lt;/script&gt;
+</code></pre>
+<h3 id="1-5-DOM操作样式"><a href="#1-5-DOM操作样式" class="headerlink" title="1.5 DOM操作样式"></a>1.5 DOM操作样式</h3><pre><code class="js">1. 设置一个css样式【会用】  行内样式,优先级高
+    语法: 
+        js对象.style.样式名=&#39;样式值&#39;
+            特点：样式名按照驼峰式命名
+                css格式：font-size
+                js格式：fontSize
+                
+2. 批量设置css样式（了解）  行内样式
+    语法: 
+        js对象.style.cssText=&#39;css样式字符串&#39;
+            缺点：让开发者痛苦，有耦合性
+            
+3. 通过class设置样式【重点】 内部样式,外部样式,优先级低
+    语法: 
+        js对象.className=&#39;class选择器名&#39;
+            特点：解耦
+            
+            
+            
+    // 1. 设置一个css样式
+    p1.style.color = &quot;green&quot;
+    p1.style.fontSize = &quot;50px&quot;
+    // 2. 批量设置css样式
+    p2.style.cssText = &quot;color:blue;font-size : 30px&quot;
+    // 3. 通过class设置样式
+    p3.className = &quot;mp&quot;
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">正则表达式</span><br><span class="line">     <span class="number">1.</span> 表达式 : 用特定的符号来表示复杂内容(作用: 简化)</span><br><span class="line">         <span class="number">1</span>). lambda表达式</span><br><span class="line">              () -&gt; &#123;&#125;</span><br><span class="line">         <span class="number">2</span>). xpath 路径表达式</span><br><span class="line">         <span class="number">3</span>). 正则表达式</span><br><span class="line">         ...</span><br><span class="line">     <span class="number">2.</span> 正则表达式: regular expression(regex有规律的表达式)</span><br><span class="line">         <span class="number">1</span>). 符号</span><br><span class="line">             \r\n : 回车换行</span><br><span class="line">             \t : 制表符</span><br><span class="line">             + : 一个或多个</span><br><span class="line">             [a-z] : 表示a~z其中一个</span><br><span class="line">             &#123;m,n&#125; : 至少m个,至多n个</span><br><span class="line">             (内容) : 括号中的内容为一个整体</span><br><span class="line">             \w : 等价于[a-zA-Z0-9_]</span><br><span class="line">             \d : [<span class="number">0</span>-<span class="number">9</span>]</span><br><span class="line"></span><br><span class="line">         <span class="number">2</span>). java中的正则</span><br><span class="line">             I. 用string类表示</span><br><span class="line">             II. 默认精准匹配</span><br><span class="line">             <span class="built_in">String</span> regex = <span class="string">&quot;[abc]&quot;</span></span><br><span class="line">             必须是abc中的一个,而且必须只有一个</span><br><span class="line"></span><br><span class="line">         <span class="number">3</span>). js中的正则表达式</span><br><span class="line">             I. 用对象来表示</span><br><span class="line">             II. 默认模糊匹配</span><br><span class="line">		<span class="keyword">let</span> regex = <span class="regexp">/[abc]/</span>;</span><br><span class="line">             只有包含有abc中的一个即可</span><br><span class="line">             </span><br><span class="line">  <span class="comment">//规则:  包含有abc中的一个即可</span></span><br><span class="line">   <span class="keyword">let</span> regex = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">&quot;[abc]&quot;</span>) <span class="comment">// 完整写法</span></span><br><span class="line">   <span class="keyword">let</span> regex = <span class="regexp">/[abc]/</span> <span class="comment">// 简略</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">//规则:  必须以abc中的一个开头</span></span><br><span class="line">   <span class="keyword">let</span> regex = <span class="regexp">/^[abc]/</span> <span class="comment">//  ^ 必须...开头</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">//规则:  必须以abc中的一个结尾</span></span><br><span class="line">   <span class="keyword">let</span> regex = <span class="regexp">/[abc]$/</span> <span class="comment">// $ 必须...结尾</span></span><br><span class="line">   </span><br><span class="line">  <span class="comment">//规则: 精准匹配：只有一个a</span></span><br><span class="line">  <span class="keyword">let</span> regex = <span class="regexp">/^a$/</span></span><br></pre></td></tr></table></figure>
+    //4. 优先级
+    p4.style.color = &quot;green&quot;
+    p4.className = &quot;mp&quot;
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 以邮箱举例</span></span><br><span class="line"><span class="keyword">let</span> emailReg =  <span class="regexp">/^\w+@\w+(.[a-zA-Z]&#123;2,3&#125;)&#123;1,2&#125;$/</span>;</span><br><span class="line"><span class="comment">// 以手机号举例</span></span><br><span class="line"><span class="keyword">let</span> phoneReg = <span class="regexp">/^1[34578]\d&#123;9&#125;$/</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    注意优先级问题: api尽量不要混用
+            行内 &gt; 内部/外部
+</code></pre>
+<h2 id="3、正则表达式"><a href="#3、正则表达式" class="headerlink" title="3、正则表达式"></a>3、正则表达式</h2><pre><code class="js">和jAVA中的有点不一样，java中的是string字符串
 
+* 在js中使用正则表达式
+    1.创建方式
+        1）let regex = new RegExp(“正则表达式字符串”);
+        2）let regex = /正则表达式/;
+        
+    2.验证方法
+        正则对象.test(字符串)
+            符合正则规则就返回true，否则false
+
+    3.在线正则表达式
+        https://tool.oschina.net/regex/#
+</code></pre>
+<pre><code class="js">  正则表达式
+       1. 表达式 : 用特定的符号来表示复杂内容(作用: 简化)
+           1). lambda表达式
+                () -&gt; &#123;&#125;
+           2). xpath 路径表达式
+           3). 正则表达式
+           ...
+       2. 正则表达式: regular expression(regex有规律的表达式)
+           1). 符号
+               \r\n : 回车换行
+               \t : 制表符
+               + : 一个或多个
+               [a-z] : 表示a~z其中一个
+               &#123;m,n&#125; : 至少m个,至多n个
+               (内容) : 括号中的内容为一个整体
+               \w : 等价于[a-zA-Z0-9_]
+               \d : [0-9]
+
+           2). java中的正则
+               I. 用string类表示
+               II. 默认精准匹配
+               String regex = &quot;[abc]&quot;
+               必须是abc中的一个,而且必须只有一个
+
+           3). js中的正则表达式
+               I. 用对象来表示
+               II. 默认模糊匹配
+                let regex = /[abc]/;
+               只有包含有abc中的一个即可
+               
+    //规则:  包含有abc中的一个即可
+     let regex = new RegExp(&quot;[abc]&quot;) // 完整写法
+     let regex = /[abc]/ // 简略
+
+    //规则:  必须以abc中的一个开头
+     let regex = /^[abc]/ //  ^ 必须...开头
+
+    //规则:  必须以abc中的一个结尾
+     let regex = /[abc]$/ // $ 必须...结尾
+     
+    //规则: 精准匹配：只有一个a
+    let regex = /^a$/
+</code></pre>
+<pre><code class="js">
+    // 以邮箱举例
+    let emailReg =  /^\w+@\w+(.[a-zA-Z]&#123;2,3&#125;)&#123;1,2&#125;$/;
+    // 以手机号举例
+    let phoneReg = /^1[34578]\d&#123;9&#125;$/;
+</code></pre>
 
                 
             </div>
@@ -750,6 +996,54 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
+                <a href="/2020/03/15/JSjs%E5%9F%BA%E7%A1%80/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/banner/12.jpg" class="responsive-img" alt="JS基础">
+                        
+                        <span class="card-title">JS基础</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            js引入，基础语法，函数，事件，常用内置对象
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-15
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/JS/" class="post-category">
+                                    JS
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JS/">
+                        <span class="chip bg-color">JS</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
                 <a href="/2020/03/15/Maven/">
                     <div class="card-image">
                         
@@ -765,9 +1059,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -785,59 +1079,6 @@
                     
                     <a href="/tags/Maven/">
                         <span class="chip bg-color">Maven</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/03/15/PicGo-GitHub/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="PicGo+GitHub 图床搭建">
-                        
-                        <span class="card-title">PicGo+GitHub 图床搭建</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            使用 PicGo+jsdelivr+GitHub 打造最稳定可靠的免费图床。
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-15
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E7%AF%87/" class="post-category">
-                                    博客篇
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/PicGo/">
-                        <span class="chip bg-color">PicGo</span>
-                    </a>
-                    
-                    <a href="/tags/GitHub%E5%9B%BE%E5%BA%8A/">
-                        <span class="chip bg-color">GitHub图床</span>
                     </a>
                     
                 </div>

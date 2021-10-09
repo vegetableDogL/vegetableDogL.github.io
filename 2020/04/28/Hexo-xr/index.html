@@ -489,11 +489,19 @@
                 <h3 id="0x001-Hexo-渲染"><a href="#0x001-Hexo-渲染" class="headerlink" title="0x001 Hexo 渲染"></a>0x001 Hexo 渲染</h3><p>&emsp;&emsp;在Hexo部署时会默认渲染source下的所有html页面，但有时候想在Hexo博客上单独自定义html页面或README.md时，却不希望被Hexo渲染。因此对某个文件或者目录进行排除渲染是非常必要的。</p>
 <h3 id="0x002-方法一：font-matter"><a href="#0x002-方法一：font-matter" class="headerlink" title="0x002 方法一：font matter"></a>0x002 方法一：font matter</h3><p><code>Hexo</code>新建网站页面，然后将你的代码直接写入 <code>index.md</code> 中</p>
 <p>在 <code>Front matter</code> 中添加 <code>layout: false</code>，此方法适用于单一的纯<code>HTML</code><br><code>CSS</code> 页面。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: tools</span><br><span class="line">date: 2020-04-28 00:00:00</span><br><span class="line"><span class="built_in">type</span>: <span class="string">&quot;tools&quot;</span></span><br><span class="line">layout: <span class="literal">false</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
+<pre><code class="bash">---
+title: tools
+date: 2020-04-28 00:00:00
+type: &quot;tools&quot;
+layout: false
+---
+</code></pre>
 <h3 id="0x003-方法二：skip-render"><a href="#0x003-方法二：skip-render" class="headerlink" title="0x003 方法二：skip render"></a>0x003 方法二：skip render</h3><p>在博客根目录下的 <code>_config.yml</code>，找到 <code>skip_render</code>，大概在32行左右，写入你想要的跳过渲染的路径，注意缩进和空格。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定目录跳过hexo渲染</span></span><br><span class="line">skip_render:</span><br><span class="line">  - <span class="string">&#x27;tools/*&#x27;</span></span><br><span class="line">  - <span class="string">&#x27;tools/**&#x27;</span></span><br></pre></td></tr></table></figure>
-
+<pre><code class="bash"># 指定目录跳过hexo渲染
+skip_render:
+  - &#39;tools/*&#39;
+  - &#39;tools/**&#39;
+</code></pre>
 <blockquote>
 <p>注释：<code>tools/*</code> 表示在目录 <code>source/fireworks</code> 下的文件全部跳过渲染，<code>tools/**</code> 表示在博客根目录 <code>source/tools/</code> 文件夹下的文件全部跳过渲染（例如页面的 js、css 在另一个文件夹中）。</p>
 </blockquote>
@@ -510,8 +518,10 @@
 <p>注意：将源码里的部分信息以及跳转链接按照你真实个人博客的环境进行修改。</p>
 </blockquote>
 <p>然后打开博客根目录下配置文件<code>_config.yml</code>，找到<code>skip_render</code>，做如下修改：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">skip_render:</span><br><span class="line">  - <span class="string">&#x27;tools/*&#x27;</span></span><br><span class="line">  - <span class="string">&#x27;tools/**&#x27;</span></span><br></pre></td></tr></table></figure>
-
+<pre><code class="bash">skip_render:
+  - &#39;tools/*&#39;
+  - &#39;tools/**&#39;
+</code></pre>
 <p>最后执行<code>hexo clean</code>和<code>hexo s -g </code>本地预览，检查无误后<code>hexo g -d</code>部署到服务器上即可。</p>
 <h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><ul>
 <li><a target="_blank" rel="noopener" href="https://xiabor.com/2020/04/21/hexo3/#%E5%A6%82%E4%BD%95%E8%B7%B3%E8%BF%87hexo%E7%9A%84%E6%B8%B2%E6%9F%93">https://xiabor.com/2020/04/21/hexo3/#%E5%A6%82%E4%BD%95%E8%B7%B3%E8%BF%87hexo%E7%9A%84%E6%B8%B2%E6%9F%93</a></li>
@@ -761,31 +771,31 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/04/28/EL%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+                <a href="/2020/09/17/BlogOpen/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="EL表达式">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="LuckyBlog开源搭建教程">
                         
-                        <span class="card-title">EL表达式</span>
+                        <span class="card-title">LuckyBlog开源搭建教程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            EL表达式
+                            之前在B站上发布了个人博客的视频，播放量也破千了，有网友私聊也想要搭建一个这样的博客。经过一段时间的准备，现将博客LuckyBlog的源代码公布出来，大家只需要根据以下的步骤，即可快速搭建一个漂亮且完善的博客。
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-28
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-09-17
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JavaWeb/" class="post-category">
-                                    JavaWeb
+                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E7%AF%87/" class="post-category">
+                                    博客篇
                                 </a>
                             
                             
@@ -795,8 +805,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JavaWeb/">
-                        <span class="chip bg-color">JavaWeb</span>
+                    <a href="/tags/hexo-blog-lucky/">
+                        <span class="chip bg-color">hexo-blog-lucky</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/">
+                        <span class="chip bg-color">博客搭建教程</span>
                     </a>
                     
                 </div>
@@ -810,19 +824,19 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/04/28/Filter&Listener/">
+                <a href="/2020/04/28/EL%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Filter&amp;Listener">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="EL表达式">
                         
-                        <span class="card-title">Filter&amp;Listener</span>
+                        <span class="card-title">EL表达式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Filter&Listener&拦截路径&三个组件的运行顺序
+                            EL表达式
                         
                     </div>
                     <div class="publish-info">

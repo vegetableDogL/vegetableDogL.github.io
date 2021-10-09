@@ -521,10 +521,20 @@
 <td>SELECT TRIM(‘ itheima ‘)</td>
 </tr>
 </tbody></table>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 获取字符的长度</span></span><br><span class="line"><span class="keyword">select</span> ename,<span class="keyword">char_length</span>(ename) <span class="keyword">from</span> emp;</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">char_length</span>(<span class="string">&#x27;laofang&#x27;</span>);<span class="comment">-- 7</span></span><br><span class="line"><span class="comment">-- 字符串拼接</span></span><br><span class="line"><span class="keyword">select</span> concat(<span class="string">&#x27;&#123;ename:&#x27;</span>,ename,<span class="string">&#x27;,job:&#x27;</span>,job,<span class="string">&#x27;,sal:&#x27;</span>,sal,<span class="string">&#x27;&#125;&#x27;</span>) <span class="keyword">from</span> emp;</span><br><span class="line"><span class="comment">-- 转小写</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">lower</span>(<span class="string">&#x27;FangJiCai&#x27;</span>);<span class="comment">-- fangjicai</span></span><br><span class="line"><span class="comment">-- 转大写</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">upper</span>(<span class="string">&#x27;FangJiCai&#x27;</span>);<span class="comment">-- FANGJICAI</span></span><br><span class="line"><span class="comment">-- 截取字符串长度</span></span><br><span class="line"><span class="keyword">select</span> substr(<span class="string">&#x27;wubolin&#x27;</span>,<span class="number">3</span>,<span class="number">2</span>);<span class="comment">-- bo</span></span><br><span class="line"><span class="comment">-- 去除字符串两边的空格</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">trim</span>(<span class="string">&#x27;    si qing  zhen   &#x27;</span>);<span class="comment">-- si qing  zhen</span></span><br></pre></td></tr></table></figure>
-
-
-
+<pre><code class="sql">-- 获取字符的长度
+select ename,char_length(ename) from emp;
+select char_length(&#39;laofang&#39;);-- 7
+-- 字符串拼接
+select concat(&#39;&#123;ename:&#39;,ename,&#39;,job:&#39;,job,&#39;,sal:&#39;,sal,&#39;&#125;&#39;) from emp;
+-- 转小写
+select lower(&#39;FangJiCai&#39;);-- fangjicai
+-- 转大写
+select upper(&#39;FangJiCai&#39;);-- FANGJICAI
+-- 截取字符串长度
+select substr(&#39;wubolin&#39;,3,2);-- bo
+-- 去除字符串两边的空格
+select trim(&#39;    si qing  zhen   &#39;);-- si qing  zhen
+</code></pre>
 <h4 id="2-数字函数"><a href="#2-数字函数" class="headerlink" title="2)数字函数"></a>2)数字函数</h4><table>
 <thead>
 <tr>
@@ -559,10 +569,17 @@
 <td>SELECT GREATEST(13, 14, 521, 74, 1)</td>
 </tr>
 </tbody></table>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 获取0到1的随机数</span></span><br><span class="line"><span class="keyword">select</span> rand();</span><br><span class="line"><span class="comment">-- 四舍五入函数</span></span><br><span class="line"><span class="keyword">select</span> round(<span class="number">3.1415926</span>,<span class="number">3</span>);<span class="comment">-- 3.142</span></span><br><span class="line"><span class="comment">-- 数字截取,不做四舍五入</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">truncate</span>(<span class="number">3.1415926</span>,<span class="number">3</span>);<span class="comment">-- 3.141</span></span><br><span class="line"><span class="comment">-- 返回列表中的最小值</span></span><br><span class="line"><span class="keyword">select</span> least(<span class="number">10</span>,<span class="number">40</span>,<span class="number">60</span>,<span class="number">5</span>,<span class="number">100</span>);<span class="comment">-- 5</span></span><br><span class="line"><span class="comment">-- 返回列表中的最大值</span></span><br><span class="line"><span class="keyword">select</span> greatest(<span class="number">10</span>,<span class="number">40</span>,<span class="number">60</span>,<span class="number">5</span>,<span class="number">100</span>);<span class="comment">-- 100</span></span><br></pre></td></tr></table></figure>
-
-
-
+<pre><code class="sql">-- 获取0到1的随机数
+select rand();
+-- 四舍五入函数
+select round(3.1415926,3);-- 3.142
+-- 数字截取,不做四舍五入
+select truncate(3.1415926,3);-- 3.141
+-- 返回列表中的最小值
+select least(10,40,60,5,100);-- 5
+-- 返回列表中的最大值
+select greatest(10,40,60,5,100);-- 100
+</code></pre>
 <hr style="height:10px;background-color:green;border:none;" />
 
 <h3 id="1-2-日期函数和高级函数"><a href="#1-2-日期函数和高级函数" class="headerlink" title="1.2 日期函数和高级函数"></a>1.2 日期函数和高级函数</h3><h4 id="1-日期函数"><a href="#1-日期函数" class="headerlink" title="1)日期函数"></a>1)日期函数</h4><table>
@@ -604,10 +621,25 @@
 <td align="left">SELECT DAY(NOW());</td>
 </tr>
 </tbody></table>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 返回系统的当前日期和时间</span></span><br><span class="line"><span class="keyword">select</span> now();<span class="comment">-- 2020-12-11 09:26:29</span></span><br><span class="line"><span class="keyword">select</span> sysdate();<span class="comment">-- 2020-12-11 09:26:29</span></span><br><span class="line"><span class="comment">-- 返回当前日期</span></span><br><span class="line"><span class="keyword">select</span> curdate();<span class="comment">-- 2020-12-11 </span></span><br><span class="line"><span class="comment">-- 返回当前系统时间</span></span><br><span class="line"><span class="keyword">select</span> curtime();<span class="comment">-- 09:27:08</span></span><br><span class="line"><span class="comment">-- 返回年份</span></span><br><span class="line"><span class="keyword">select</span> ename <span class="keyword">from</span> emp <span class="keyword">where</span> <span class="keyword">year</span>(hiredate)<span class="operator">=</span><span class="string">&#x27;1980&#x27;</span>;</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">year</span>(now());<span class="comment">-- 2020</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">year</span>(<span class="string">&#x27;2019-01-01&#x27;</span>); <span class="comment">-- 2019</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">year</span>(<span class="string">&#x27;2019/01/01&#x27;</span>); <span class="comment">-- 2019</span></span><br><span class="line"><span class="comment">-- 返回月份</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">month</span>(now());<span class="comment">-- 12</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">month</span>(<span class="string">&#x27;2019/01/01&#x27;</span>);<span class="comment">-- 1</span></span><br><span class="line"><span class="comment">-- 返回日</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">day</span>(now());<span class="comment">-- 11</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">day</span>(<span class="string">&#x27;2019-01-01&#x27;</span>);<span class="comment">-- 1</span></span><br></pre></td></tr></table></figure>
-
-
-
+<pre><code class="sql">-- 返回系统的当前日期和时间
+select now();-- 2020-12-11 09:26:29
+select sysdate();-- 2020-12-11 09:26:29
+-- 返回当前日期
+select curdate();-- 2020-12-11 
+-- 返回当前系统时间
+select curtime();-- 09:27:08
+-- 返回年份
+select ename from emp where year(hiredate)=&#39;1980&#39;;
+select year(now());-- 2020
+select year(&#39;2019-01-01&#39;); -- 2019
+select year(&#39;2019/01/01&#39;); -- 2019
+-- 返回月份
+select month(now());-- 12
+select month(&#39;2019/01/01&#39;);-- 1
+-- 返回日
+select day(now());-- 11
+select day(&#39;2019-01-01&#39;);-- 1
+</code></pre>
 <h4 id="2-高级函数"><a href="#2-高级函数" class="headerlink" title="2)高级函数"></a>2)高级函数</h4><table>
 <thead>
 <tr>
@@ -632,10 +664,19 @@
 <td align="left">SELECT ISNULL(NULL);</td>
 </tr>
 </tbody></table>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 返回当前用户</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">current_user</span>();<span class="comment">-- root@localhost</span></span><br><span class="line"><span class="comment">-- ifnull(v1,v2)如果 v1 的值不为 NULL，则返回 v1，否则返回 v2</span></span><br><span class="line"><span class="keyword">select</span> ename,ifnull(comm,<span class="number">0</span>) <span class="keyword">as</span> comm <span class="keyword">from</span> emp;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- isnull判断表达式是否为 NULL,为空则为1,不为空则为0</span></span><br><span class="line"><span class="keyword">select</span> isnull(<span class="keyword">null</span>);<span class="comment">-- true 1</span></span><br><span class="line"><span class="keyword">select</span> isnull(<span class="number">666</span>);<span class="comment">-- false 0</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> emp <span class="keyword">where</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> emp <span class="keyword">where</span> <span class="number">1</span>;</span><br><span class="line"><span class="comment">-- 查询comm为null的用户有哪些</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> emp <span class="keyword">where</span> isnull(comm);</span><br></pre></td></tr></table></figure>
+<pre><code class="sql">-- 返回当前用户
+select current_user();-- root@localhost
+-- ifnull(v1,v2)如果 v1 的值不为 NULL，则返回 v1，否则返回 v2
+select ename,ifnull(comm,0) as comm from emp;
 
-
-
+-- isnull判断表达式是否为 NULL,为空则为1,不为空则为0
+select isnull(null);-- true 1
+select isnull(666);-- false 0
+select * from emp where 0;
+select * from emp where 1;
+-- 查询comm为null的用户有哪些
+select * from emp where isnull(comm);
+</code></pre>
 <hr style="height:10px;background-color:green;border:none;" />
 
 <h2 id="第二章-事务-掌握"><a href="#第二章-事务-掌握" class="headerlink" title="第二章 事务(掌握)"></a>第二章 事务(掌握)</h2><h3 id="2-1-事务介绍及操作"><a href="#2-1-事务介绍及操作" class="headerlink" title="2.1 事务介绍及操作"></a>2.1 事务介绍及操作</h3><h4 id="1-事务的概念"><a href="#1-事务的概念" class="headerlink" title="1)事务的概念"></a>1)事务的概念</h4><p>​      在实际的业务开发中，有些业务操作要多次访问数据库。<strong>一个业务要发送多条SQL语句给数据库执行。需要将多次访问数据库的操作视为一个整体来执行，要么所有的SQL语句全部执行成功。</strong>如果其中有一条SQL语句失败，就进行事务的回滚，所有的SQL语句全部执行失败。</p>
@@ -670,33 +711,57 @@
 </tr>
 </tbody></table>
 <p>数据准备:</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 创建账号表</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> account(</span><br><span class="line">	id <span class="type">int</span> <span class="keyword">primary</span> key auto_increment,</span><br><span class="line">	name <span class="type">varchar</span>(<span class="number">20</span>),</span><br><span class="line">	money <span class="keyword">double</span></span><br><span class="line">);</span><br><span class="line"># 初始化数据</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> account <span class="keyword">values</span> (<span class="keyword">null</span>,<span class="string">&#x27;a&#x27;</span>,<span class="number">1000</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> account <span class="keyword">values</span> (<span class="keyword">null</span>,<span class="string">&#x27;b&#x27;</span>,<span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql"># 创建账号表
+create table account(
+    id int primary key auto_increment,
+    name varchar(20),
+    money double
+);
+# 初始化数据
+insert into account values (null,&#39;a&#39;,1000);
+insert into account values (null,&#39;b&#39;,1000);
+</code></pre>
 <p>说明:</p>
 <p>需求1:a给b转账100元,演示提交事务和回滚事务</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 需求1:a给b转账100元,演示提交事务</span></span><br><span class="line"><span class="comment">-- 1.1.手动开启事务</span></span><br><span class="line"><span class="keyword">start</span> transaction;</span><br><span class="line"><span class="comment">-- 1.2. a扣款100</span></span><br><span class="line">update account <span class="keyword">set</span> money<span class="operator">=</span>money<span class="number">-100</span> <span class="keyword">where</span> name<span class="operator">=</span><span class="string">&#x27;a&#x27;</span>;</span><br><span class="line"><span class="comment">-- 1.3 b收款100</span></span><br><span class="line">update account <span class="keyword">set</span> money<span class="operator">=</span>money<span class="operator">+</span><span class="number">100</span> <span class="keyword">where</span> name<span class="operator">=</span><span class="string">&#x27;b&#x27;</span>;</span><br><span class="line"><span class="comment">-- 1.4 事务提交</span></span><br><span class="line"><span class="keyword">commit</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 需求2:a给b转账100元,演示回滚事务</span></span><br><span class="line"><span class="comment">-- 1.1.手动开启事务</span></span><br><span class="line"><span class="keyword">start</span> transaction;</span><br><span class="line"><span class="comment">-- 1.2. a扣款100</span></span><br><span class="line">update account <span class="keyword">set</span> money<span class="operator">=</span>money<span class="number">-100</span> <span class="keyword">where</span> name<span class="operator">=</span><span class="string">&#x27;a&#x27;</span>;</span><br><span class="line"><span class="comment">-- 1.3 b收款100</span></span><br><span class="line">update account <span class="keyword">set</span> money<span class="operator">=</span>money<span class="operator">+</span><span class="number">100</span> <span class="keyword">where</span> name<span class="operator">=</span><span class="string">&#x27;b&#x27;</span>;</span><br><span class="line"><span class="comment">-- 1.4 事务回滚</span></span><br><span class="line"><span class="keyword">rollback</span>;</span><br></pre></td></tr></table></figure>
+<pre><code class="sql">-- 需求1:a给b转账100元,演示提交事务
+-- 1.1.手动开启事务
+start transaction;
+-- 1.2. a扣款100
+update account set money=money-100 where name=&#39;a&#39;;
+-- 1.3 b收款100
+update account set money=money+100 where name=&#39;b&#39;;
+-- 1.4 事务提交
+commit;
 
 
-
+-- 需求2:a给b转账100元,演示回滚事务
+-- 1.1.手动开启事务
+start transaction;
+-- 1.2. a扣款100
+update account set money=money-100 where name=&#39;a&#39;;
+-- 1.3 b收款100
+update account set money=money+100 where name=&#39;b&#39;;
+-- 1.4 事务回滚
+rollback;
+</code></pre>
 <h4 id="4-自动提交事务"><a href="#4-自动提交事务" class="headerlink" title="4)自动提交事务"></a>4)自动提交事务</h4><p>  <strong>MySQL的每一条DML(增删改)语句都是一个单独的事务</strong>，每条语句都会自动开启一个事务，执行完毕自动提交事务，MySQL默认开始自动提交事务。</p>
 <p>1.通过以下命令可以查看当前autocommit模式：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> variables <span class="keyword">like</span> <span class="string">&#x27;%commit%&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">show variables like &#39;%commit%&#39;;
+</code></pre>
 <p>2.设置自动提交的参数为OFF:</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> autocommit <span class="operator">=</span> <span class="number">0</span>;  <span class="comment">-- 0:OFF  1:ON</span></span><br></pre></td></tr></table></figure>
-
-
-
+<pre><code class="sql">set autocommit = 0;  -- 0:OFF  1:ON
+</code></pre>
 <p>小结:</p>
 <p>1.如何开启事务? </p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>)mysql默认事务自动开启,在进行增删改时,无需手动提交;</span><br><span class="line"><span class="number">2</span>)通过<span class="keyword">start</span> transaction可以手动开启事务,那么这个开启的事务就需要手动提交</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">1)mysql默认事务自动开启,在进行增删改时,无需手动提交;
+2)通过start transaction可以手动开启事务,那么这个开启的事务就需要手动提交
+</code></pre>
 <p>2.如何提交事务?</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">commit</span>;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">commit;
+</code></pre>
 <p>3.如何回滚事务?</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">rollback</span>;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">rollback;
+</code></pre>
 <hr style="height:10px;background-color:green;border:none;" />
 
 <h3 id="2-2-事务的回滚点和执行原理"><a href="#2-2-事务的回滚点和执行原理" class="headerlink" title="2.2 事务的回滚点和执行原理"></a>2.2 事务的回滚点和执行原理</h3><h4 id="1-回滚点介绍"><a href="#1-回滚点介绍" class="headerlink" title="1)回滚点介绍"></a>1)回滚点介绍</h4><p>上面的操作，如果回滚，直接回滚到事务开始前。有时我们只需要<strong>回滚到中间的某个位置</strong>，就可以设置回滚点。</p>
@@ -718,23 +783,49 @@
 </tr>
 </tbody></table>
 <p>练习:</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1. 将数据还原到1000</span><br><span class="line">2. 开启事务</span><br><span class="line">3. 让a用户先减100块</span><br><span class="line">4. 设置回滚点：savepoint itcast; </span><br><span class="line">5. 然后让a用户再次减100块</span><br><span class="line">6. 回到回滚点：rollback to itcast</span><br><span class="line">7. 最后commit提交事务</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 1.将数据还原到1000</span></span><br><span class="line"><span class="comment">-- 2.开启事务</span></span><br><span class="line"><span class="keyword">start</span> transaction;</span><br><span class="line"><span class="comment">-- 3. 让a用户先减100块</span></span><br><span class="line">update account <span class="keyword">set</span> money<span class="operator">=</span>money<span class="number">-100</span> <span class="keyword">where</span> name<span class="operator">=</span><span class="string">&#x27;a&#x27;</span>;</span><br><span class="line"><span class="comment">-- 4. 设置回滚点：savepoint itcast; </span></span><br><span class="line"><span class="keyword">savepoint</span> itcast;</span><br><span class="line"><span class="comment">-- 5.然后让a用户再次减100块</span></span><br><span class="line">update account <span class="keyword">set</span> money<span class="operator">=</span>money<span class="number">-100</span> <span class="keyword">where</span> name<span class="operator">=</span><span class="string">&#x27;a&#x27;</span>;</span><br><span class="line"><span class="comment">-- 6. 回到回滚点：rollback to itcast</span></span><br><span class="line"><span class="keyword">rollback</span> <span class="keyword">to</span> itcast;</span><br><span class="line"><span class="comment">-- 7. 最后commit提交事务</span></span><br><span class="line"><span class="keyword">commit</span>;</span><br></pre></td></tr></table></figure>
-
-
-
+<pre><code class="tex">1. 将数据还原到1000
+2. 开启事务
+3. 让a用户先减100块
+4. 设置回滚点：savepoint itcast; 
+5. 然后让a用户再次减100块
+6. 回到回滚点：rollback to itcast
+7. 最后commit提交事务
+</code></pre>
+<pre><code class="sql">-- 1.将数据还原到1000
+-- 2.开启事务
+start transaction;
+-- 3. 让a用户先减100块
+update account set money=money-100 where name=&#39;a&#39;;
+-- 4. 设置回滚点：savepoint itcast; 
+savepoint itcast;
+-- 5.然后让a用户再次减100块
+update account set money=money-100 where name=&#39;a&#39;;
+-- 6. 回到回滚点：rollback to itcast
+rollback to itcast;
+-- 7. 最后commit提交事务
+commit;
+</code></pre>
 <h4 id="2-事务原理"><a href="#2-事务原理" class="headerlink" title="2)事务原理"></a>2)事务原理</h4><p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210902002115077.png" alt="image-20210902002115077"></p>
 <p>说明:</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1)客户端连接mysql服务,服务端会对这个用户进行安全校验,通过后会创建一个临时的事务日志文件;</span><br><span class="line">2)当用户直接向数据库插入数据时(因为mysql默认事务自动提交),数据会直接刷入数据库;</span><br><span class="line">3)当用户调用start transaction命令手动开启事务时,事务相关的数据首先会写入这个临时的事务日志文件,然后当用户调用commit命令时,会将事务的数据刷入的数据库;</span><br><span class="line">4)当用户进行事务的回滚时,会直接清空这个临时的事务日志文件(redo.log,undo.log,binlog);</span><br><span class="line">5)当一个事务尚未提交,但是连接中断时,自动清除这个临时的事务文件;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="tex">1)客户端连接mysql服务,服务端会对这个用户进行安全校验,通过后会创建一个临时的事务日志文件;
+2)当用户直接向数据库插入数据时(因为mysql默认事务自动提交),数据会直接刷入数据库;
+3)当用户调用start transaction命令手动开启事务时,事务相关的数据首先会写入这个临时的事务日志文件,然后当用户调用commit命令时,会将事务的数据刷入的数据库;
+4)当用户进行事务的回滚时,会直接清空这个临时的事务日志文件(redo.log,undo.log,binlog);
+5)当一个事务尚未提交,但是连接中断时,自动清除这个临时的事务文件;
+</code></pre>
 <p>小结:</p>
 <p>1.事务回滚点设置?</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">savepoint</span> 回滚点名称;</span><br><span class="line"><span class="comment">-- 回滚到指定回滚点</span></span><br><span class="line"><span class="keyword">rollback</span> <span class="keyword">to</span> 回滚点名称;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">savepoint 回滚点名称;
+-- 回滚到指定回滚点
+rollback to 回滚点名称;
+</code></pre>
 <p>2.事务原理?</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>)客户端连接mysql服务,服务端会对这个用户进行安全校验,通过后会创建一个临时的事务日志文件;</span><br><span class="line"><span class="number">2</span>)当用户直接向数据库插入数据时(因为mysql默认事务自动提交),数据会直接刷入数据库;</span><br><span class="line"><span class="number">3</span>)当用户调用<span class="keyword">start</span> transaction命令手动开启事务时,事务相关的数据首先会写入这个临时的事务日志文件,然后当用户调用<span class="keyword">commit</span>命令时,会将事务的数据刷入的数据库;</span><br><span class="line"><span class="number">4</span>)当用户进行事务的回滚时,会直接清空这个临时的事务日志文件(redo.log,undo.log,binlog);</span><br><span class="line"><span class="number">5</span>)当一个事务尚未提交,但是连接中断时,自动清除这个临时的事务文件;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">1)客户端连接mysql服务,服务端会对这个用户进行安全校验,通过后会创建一个临时的事务日志文件;
+2)当用户直接向数据库插入数据时(因为mysql默认事务自动提交),数据会直接刷入数据库;
+3)当用户调用start transaction命令手动开启事务时,事务相关的数据首先会写入这个临时的事务日志文件,然后当用户调用commit命令时,会将事务的数据刷入的数据库;
+4)当用户进行事务的回滚时,会直接清空这个临时的事务日志文件(redo.log,undo.log,binlog);
+5)当一个事务尚未提交,但是连接中断时,自动清除这个临时的事务文件;
+</code></pre>
 <hr style="height:10px;background-color:green;border:none;" />
 
 <h3 id="2-3-事务的四大特性-ACID-面试"><a href="#2-3-事务的四大特性-ACID-面试" class="headerlink" title="2.3 事务的四大特性(ACID)(面试)"></a>2.3 事务的四大特性(ACID)(面试)</h3><p>  数据库的事务必须具备<strong>ACID</strong>特性，ACID是指 Atomicity（原子性）、Consistensy（一致性）、Isolation（隔离性）和Durability（持久性）的英文缩写。</p>
@@ -747,8 +838,11 @@
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210902002313241.png" alt="image-20210902002313241"></p>
 <p>小结:</p>
 <p>1.面试问题:说一下事务的4大特性?</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>)隔离性: 事务在并发下,事务彼此隔离,不受影响;</span><br><span class="line"><span class="number">2</span>)原子性:事务是一个不可分割的整体,要么都发生,要么都不发生;</span><br><span class="line"><span class="number">3</span>)持久性:事务一旦提交,对数据库数据的影响是永久性的,那么数据库重启,数据也不会丢失;</span><br><span class="line"><span class="number">4</span>)一致性:首先一致性是基于原子性的,强调的是一个业务逻辑的概念(比如转账业务,双方转账前总金额与转账后总金额要一致);</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">1)隔离性: 事务在并发下,事务彼此隔离,不受影响;
+2)原子性:事务是一个不可分割的整体,要么都发生,要么都不发生;
+3)持久性:事务一旦提交,对数据库数据的影响是永久性的,那么数据库重启,数据也不会丢失;
+4)一致性:首先一致性是基于原子性的,强调的是一个业务逻辑的概念(比如转账业务,双方转账前总金额与转账后总金额要一致);
+</code></pre>
 <p>2.事务相关的指令：</p>
 <table>
 <thead>
@@ -812,8 +906,10 @@
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210902002537169.png" alt="image-20210902002537169"></p>
 <p>小结:</p>
 <p>事务并发下的3个问题?</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>)脏读:一个事务读取了另一个事务未提交的数据;</span><br><span class="line"><span class="number">2</span>)不可重复读:一个事务在相同条件下前后读取的内容不同(强调:发生在其他事务进行update操作时);</span><br><span class="line"><span class="number">3</span>)幻读(虚读):一个事务在相同的条件下前后读取的行记录数不一致(强调:其他事务发生<span class="keyword">insert</span>,delte操作,并且事务<span class="keyword">commit</span>)</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">1)脏读:一个事务读取了另一个事务未提交的数据;
+2)不可重复读:一个事务在相同条件下前后读取的内容不同(强调:发生在其他事务进行update操作时);
+3)幻读(虚读):一个事务在相同的条件下前后读取的行记录数不一致(强调:其他事务发生insert,delte操作,并且事务commit)
+</code></pre>
 <hr style="height:10px;background-color:green;border:none;" />
 
 <h3 id="2-5-事务的隔离级别"><a href="#2-5-事务的隔离级别" class="headerlink" title="2.5 事务的隔离级别"></a>2.5 事务的隔离级别</h3><h4 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h4><p>MySQL数据库规范规定了4种隔离级别，用于解决上述出现的事务并发问题;</p>
@@ -871,88 +967,158 @@
 <p>  性能:  串行化&lt;可重复读&lt;读已提交&lt;读未提交 </p>
 <p>小结:</p>
 <p>面试:数据库有哪些隔离级别?</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>读未提交: 脏读,不可重复读,幻读</span><br><span class="line"><span class="number">2.</span>读已提交:不可重复读,幻读</span><br><span class="line"><span class="number">3.</span>可重复读:幻读</span><br><span class="line"><span class="number">4.</span>串行化</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">1.读未提交: 脏读,不可重复读,幻读
+2.读已提交:不可重复读,幻读
+3.可重复读:幻读
+4.串行化
+</code></pre>
 <hr style="height:10px;background-color:green;border:none;" />
 
 
 
 <p><strong>如何解决脏读的问题?</strong></p>
 <p> 说明: 需要将全局的隔离级别进行提升(read committed),然后开启两个sqlyog窗口演示,演示完毕恢复隔离级别即可;</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>)提高隔离级别 读已提交</span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> transaction isolation level read committed;</span><br><span class="line"><span class="number">2</span>）刷新session（重新连接）</span><br></pre></td></tr></table></figure>
-
-
-
+<pre><code class="sql">1)提高隔离级别 读已提交
+set global transaction isolation level read committed;
+2）刷新session（重新连接）
+</code></pre>
 <p>小结:</p>
 <p>  1.查看全局事务隔离级别命令?</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> @<span class="variable">@tx</span>_isolation;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">select @@tx_isolation;
+</code></pre>
 <p>  2.设置全局隔离级别?</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> transaction isolation level 隔离界别名称;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">set global transaction isolation level 隔离界别名称;
+</code></pre>
 <p>  3.如何解决脏读?</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">提高事务隔离级别: <span class="operator">&gt;=</span>读已提交;</span><br></pre></td></tr></table></figure>
-
-
-
+<pre><code class="sql">提高事务隔离级别: &gt;=读已提交;
+</code></pre>
 <hr style="height:10px;background-color:green;border:none;" />
 
 <h2 id="第三章-MySQL性能-理解"><a href="#第三章-MySQL性能-理解" class="headerlink" title="第三章 MySQL性能(理解)"></a>第三章 MySQL性能(理解)</h2><h3 id="3-1-分析-数据库查询效率低下"><a href="#3-1-分析-数据库查询效率低下" class="headerlink" title="3.1 分析-数据库查询效率低下"></a>3.1 分析-数据库查询效率低下</h3><p>要提高操作数据库的性能，有如下两种方式：</p>
 <p>1.硬优化：就是软优化之后性能还很低，只能采取硬优化，最后的步骤了，就是公司花钱购买服务器。在硬件上进行优化。</p>
 <p>2.<strong>软优化</strong>:  在操作和设计数据库方面上进行优化（重点）(<strong>表结构和sql语句</strong>)</p>
 <h3 id="3-2-分析-执行次数比较多的语句"><a href="#3-2-分析-执行次数比较多的语句" class="headerlink" title="3.2 分析-执行次数比较多的语句"></a>3.2 分析-执行次数比较多的语句</h3><p>1.执行次数比较多的语句分类</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">*</span> <span class="number">1</span>）查询密集型</span><br><span class="line"></span><br><span class="line"><span class="operator">*</span> <span class="number">2</span>）修改密集型  es solor</span><br></pre></td></tr></table></figure>
+<pre><code class="sql">* 1）查询密集型
 
+* 2）修改密集型  es solor
+</code></pre>
 <p>2.查询累计插入和返回数据条数，即查看<strong>当前数据库属于查询密集型还是修改密集型</strong>。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询累计插入和返回数据条数</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">global</span> status <span class="keyword">like</span> <span class="string">&#x27;Innodb_rows%&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">-- 查询累计插入和返回数据条数
+show global status like &#39;Innodb_rows%&#39;;
+</code></pre>
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210902002837634.png" alt="image-20210902002837634"></p>
 <h2 id="第四章-索引-掌握"><a href="#第四章-索引-掌握" class="headerlink" title="第四章 索引(掌握)"></a>第四章 索引(掌握)</h2><h3 id="4-1-索引介绍及分类"><a href="#4-1-索引介绍及分类" class="headerlink" title="4.1 索引介绍及分类"></a>4.1 索引介绍及分类</h3><h4 id="1-什么是索引"><a href="#1-什么是索引" class="headerlink" title="1)什么是索引"></a>1)什么是索引</h4><p> Mysql官方对索引的定义为：<strong>索引（index）是帮助Mysql高效获取数据的数据结构。</strong></p>
 <p><strong>可以得到索引的本质：索引就是数据结构：B+Tree</strong></p>
-<h4 id="2-MySQL索引分类"><a href="#2-MySQL索引分类" class="headerlink" title="2)MySQL索引分类"></a>2)MySQL索引分类</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">*</span> 主键（约束）索引</span><br><span class="line">		主键约束(唯一<span class="operator">+</span>非空)<span class="operator">+</span>提高查询效率</span><br><span class="line">		</span><br><span class="line"><span class="operator">*</span> 唯一（约束）索引</span><br><span class="line">		唯一约束<span class="operator">+</span>提高查询效率</span><br><span class="line"></span><br><span class="line"><span class="operator">*</span> 普通索引</span><br><span class="line">		仅提高查询效率</span><br><span class="line"></span><br><span class="line"><span class="operator">*</span> 组合（联合）索引</span><br><span class="line">		多个字段组成索引</span><br><span class="line">		[联合主键索引</span><br><span class="line">		联合唯一索引</span><br><span class="line">		联合普通索引]</span><br><span class="line"></span><br><span class="line"><span class="operator">*</span> 全文索引 TEXT BIGTEXY</span><br><span class="line">		solr、es</span><br><span class="line"></span><br><span class="line"><span class="operator">*</span> hash索引</span><br><span class="line">		根据key<span class="operator">-</span><span class="keyword">value</span> 效率非常高</span><br><span class="line">		 等值查询，不适合范围查询		</span><br></pre></td></tr></table></figure>
+<h4 id="2-MySQL索引分类"><a href="#2-MySQL索引分类" class="headerlink" title="2)MySQL索引分类"></a>2)MySQL索引分类</h4><pre><code class="sql">* 主键（约束）索引
+        主键约束(唯一+非空)+提高查询效率
+        
+* 唯一（约束）索引
+        唯一约束+提高查询效率
 
+* 普通索引
+        仅提高查询效率
 
+* 组合（联合）索引
+        多个字段组成索引
+        [联合主键索引
+        联合唯一索引
+        联合普通索引]
 
+* 全文索引 TEXT BIGTEXY
+        solr、es
+
+* hash索引
+        根据key-value 效率非常高
+         等值查询，不适合范围查询        
+</code></pre>
 <hr style="height:10px;background-color:green;border:none;" />
 
-<h3 id="4-2-MySQL索引语法"><a href="#4-2-MySQL索引语法" class="headerlink" title="4.2 MySQL索引语法"></a>4.2 MySQL索引语法</h3><h4 id="4-2-1-索引创建"><a href="#4-2-1-索引创建" class="headerlink" title="4.2.1 索引创建"></a>4.2.1 索引创建</h4><h5 id="1-创建索引-【了解】"><a href="#1-创建索引-【了解】" class="headerlink" title="1) 创建索引 【了解】"></a>1) 创建索引 【了解】</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建普通索引</span></span><br><span class="line"><span class="keyword">create</span> index 索引名 <span class="keyword">on</span> 表名(字段);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建唯一索引</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">unique</span> index 索引名 <span class="keyword">on</span> 表名(字段);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建普通组合索引</span></span><br><span class="line"><span class="keyword">create</span> index 索引名 <span class="keyword">on</span> 表名(字段<span class="number">1</span>,字段<span class="number">2</span>,..);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建唯一组合索引</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">unique</span> index 索引名 <span class="keyword">on</span> 表名(字段<span class="number">1</span>,字段<span class="number">2</span>,..);</span><br></pre></td></tr></table></figure>
+<h3 id="4-2-MySQL索引语法"><a href="#4-2-MySQL索引语法" class="headerlink" title="4.2 MySQL索引语法"></a>4.2 MySQL索引语法</h3><h4 id="4-2-1-索引创建"><a href="#4-2-1-索引创建" class="headerlink" title="4.2.1 索引创建"></a>4.2.1 索引创建</h4><h5 id="1-创建索引-【了解】"><a href="#1-创建索引-【了解】" class="headerlink" title="1) 创建索引 【了解】"></a>1) 创建索引 【了解】</h5><pre><code class="sql">-- 创建普通索引
+create index 索引名 on 表名(字段);
 
+-- 创建唯一索引
+create unique index 索引名 on 表名(字段);
+
+-- 创建普通组合索引
+create index 索引名 on 表名(字段1,字段2,..);
+
+-- 创建唯一组合索引
+create unique index 索引名 on 表名(字段1,字段2,..);
+</code></pre>
 <p>说明：</p>
 <p>​    1.如果在同一张表中创建多个索引，要保证索引名是不能重复的</p>
 <p>​    2.上述创建索引的方式比较麻烦，还需要指定索引名</p>
 <p>​    <strong>3.采用上述方式不能添加主键索引</strong></p>
 <p>【准备的创建表的SQL语句】</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建学生表</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> student(</span><br><span class="line"> id <span class="type">INT</span>,</span><br><span class="line"> name <span class="type">VARCHAR</span>(<span class="number">32</span>),</span><br><span class="line"> telephone <span class="type">VARCHAR</span>(<span class="number">11</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">-- 创建学生表
+CREATE TABLE student(
+ id INT,
+ name VARCHAR(32),
+ telephone VARCHAR(11)
+);
+</code></pre>
 <p>练习:</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-- 给name创建普通索引</span><br><span class="line">create index idx<span class="built_in">_</span>name on student(name);</span><br><span class="line">-- 给telephone添加唯一索引</span><br><span class="line">create unique index uniq<span class="built_in">_</span>telephone on student(telephone);</span><br></pre></td></tr></table></figure>
+<pre><code class="tex">-- 给name创建普通索引
+create index idx_name on student(name);
+-- 给telephone添加唯一索引
+create unique index uniq_telephone on student(telephone);
+</code></pre>
+<h5 id="2-在已有表的字段上修改表时指定【了解】"><a href="#2-在已有表的字段上修改表时指定【了解】" class="headerlink" title="2) 在已有表的字段上修改表时指定【了解】"></a>2) 在已有表的字段上修改表时指定【了解】</h5><pre><code class="sql">-- 添加一个主键，这意味着索引值必须是唯一的，且不能为NULL
+alter table 表名 add primary key(字段);  --默认索引名：primary
 
-<h5 id="2-在已有表的字段上修改表时指定【了解】"><a href="#2-在已有表的字段上修改表时指定【了解】" class="headerlink" title="2) 在已有表的字段上修改表时指定【了解】"></a>2) 在已有表的字段上修改表时指定【了解】</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 添加一个主键，这意味着索引值必须是唯一的，且不能为NULL</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">add</span> <span class="keyword">primary</span> key(字段);  <span class="comment">--默认索引名：primary</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 添加唯一索引（除了NULL外，NULL可能会出现多次）</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">add</span> <span class="keyword">unique</span>(字段); <span class="comment">-- 默认索引名：字段名</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 添加普通索引，索引值可以出现多次。</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">add</span> index(字段); <span class="comment">-- 默认索引名：字段名</span></span><br></pre></td></tr></table></figure>
+-- 添加唯一索引（除了NULL外，NULL可能会出现多次）
+alter table 表名 add unique(字段); -- 默认索引名：字段名
 
+-- 添加普通索引，索引值可以出现多次。
+alter table 表名 add index(字段); -- 默认索引名：字段名
+</code></pre>
 <p>【准备的创建表的SQL语句】</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建学生表</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> student2(</span><br><span class="line"> id <span class="type">INT</span>,</span><br><span class="line"> name <span class="type">VARCHAR</span>(<span class="number">32</span>),</span><br><span class="line"> telephone <span class="type">VARCHAR</span>(<span class="number">11</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">-- 创建学生表
+CREATE TABLE student2(
+ id INT,
+ name VARCHAR(32),
+ telephone VARCHAR(11)
+);
+</code></pre>
 <p>练习:</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-- 给id添加主键索引</span><br><span class="line">alter table student2 add primary key(id);</span><br><span class="line">-- 给name字段添加普通索引 索引名称默认是字段名称</span><br><span class="line">alter table student2 add index(name);</span><br><span class="line">-- 给telephone添加唯一索引</span><br><span class="line">alter table student2 add unique(telephone);</span><br></pre></td></tr></table></figure>
-
-<h5 id="3-创建表时指定【掌握】"><a href="#3-创建表时指定【掌握】" class="headerlink" title="3)  创建表时指定【掌握】"></a>3)  创建表时指定【掌握】</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建学生表</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> student3(</span><br><span class="line"> id <span class="type">INT</span> <span class="keyword">PRIMARY</span> KEY AUTO_INCREMENT, <span class="comment">-- 主键索引</span></span><br><span class="line"> name <span class="type">VARCHAR</span>(<span class="number">32</span>),</span><br><span class="line"> telephone <span class="type">VARCHAR</span>(<span class="number">11</span>) <span class="keyword">UNIQUE</span>, <span class="comment">-- 唯一索引</span></span><br><span class="line"> sex <span class="type">VARCHAR</span>(<span class="number">5</span>),</span><br><span class="line"> birthday <span class="type">DATE</span>,</span><br><span class="line"> INDEX(name) <span class="comment">-- 普通索引</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
+<pre><code class="tex">-- 给id添加主键索引
+alter table student2 add primary key(id);
+-- 给name字段添加普通索引 索引名称默认是字段名称
+alter table student2 add index(name);
+-- 给telephone添加唯一索引
+alter table student2 add unique(telephone);
+</code></pre>
+<h5 id="3-创建表时指定【掌握】"><a href="#3-创建表时指定【掌握】" class="headerlink" title="3)  创建表时指定【掌握】"></a>3)  创建表时指定【掌握】</h5><pre><code class="sql">-- 创建学生表
+CREATE TABLE student3(
+ id INT PRIMARY KEY AUTO_INCREMENT, -- 主键索引
+ name VARCHAR(32),
+ telephone VARCHAR(11) UNIQUE, -- 唯一索引
+ sex VARCHAR(5),
+ birthday DATE,
+ INDEX(name) -- 普通索引
+);
+</code></pre>
 <hr style="height:10px;background-color:green;border:none;" />
 
-<h4 id="4-2-2-查看与删除索引"><a href="#4-2-2-查看与删除索引" class="headerlink" title="4.2.2 查看与删除索引"></a>4.2.2 查看与删除索引</h4><h5 id="1-查看索引"><a href="#1-查看索引" class="headerlink" title="1) 查看索引"></a>1) 查看索引</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> index <span class="keyword">from</span> 表名; </span><br></pre></td></tr></table></figure>
-
+<h4 id="4-2-2-查看与删除索引"><a href="#4-2-2-查看与删除索引" class="headerlink" title="4.2.2 查看与删除索引"></a>4.2.2 查看与删除索引</h4><h5 id="1-查看索引"><a href="#1-查看索引" class="headerlink" title="1) 查看索引"></a>1) 查看索引</h5><pre><code class="sql">show index from 表名; 
+</code></pre>
 <p>练习:【查看student3表的索引信息】</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> index <span class="keyword">from</span> student3;</span><br></pre></td></tr></table></figure>
-
-<h5 id="2-删除索引"><a href="#2-删除索引" class="headerlink" title="2) 删除索引"></a>2) 删除索引</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 两种方式</span></span><br><span class="line"><span class="comment">-- 方式1:直接删除</span></span><br><span class="line"><span class="keyword">drop</span> index 索引名 <span class="keyword">on</span> 表名;</span><br><span class="line"><span class="comment">-- 方式2:-- 修改表时删除</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">drop</span> index 索引名;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">show index from student3;
+</code></pre>
+<h5 id="2-删除索引"><a href="#2-删除索引" class="headerlink" title="2) 删除索引"></a>2) 删除索引</h5><pre><code class="sql">-- 两种方式
+-- 方式1:直接删除
+drop index 索引名 on 表名;
+-- 方式2:-- 修改表时删除
+alter table 表名 drop index 索引名;
+</code></pre>
 <p>练习:</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">练习1:删除student表的name普通索引</span><br><span class="line">    drop index name<span class="built_in">_</span>idx on student;</span><br><span class="line">练习2:删除student表的telephone唯一索引</span><br><span class="line">    alter table student drop index telephone<span class="built_in">_</span>idx</span><br><span class="line">练习3:删除主键</span><br><span class="line">alter table student4 drop primary key;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
+<pre><code class="tex">练习1:删除student表的name普通索引
+    drop index name_idx on student;
+练习2:删除student表的telephone唯一索引
+    alter table student drop index telephone_idx
+练习3:删除主键
+alter table student4 drop primary key;
+</code></pre>
 <h3 id="4-4-索引优缺点及创建原则"><a href="#4-4-索引优缺点及创建原则" class="headerlink" title="4.4 索引优缺点及创建原则"></a>4.4 索引优缺点及创建原则</h3><h4 id="1-索引的优缺点"><a href="#1-索引的优缺点" class="headerlink" title="1.索引的优缺点"></a>1.索引的优缺点</h4><h5 id="1-优势"><a href="#1-优势" class="headerlink" title="1)优势"></a>1)优势</h5><p>​    1） 类似于书籍的目录索引，<strong>提高数据检索的效率，降低数据库的IO成本</strong>。<br>​    2） 索引底层就是排序，通过索引列对数据进行排序，降低数据排序的成本，<strong>降低CPU的消耗</strong>。</p>
 <h5 id="2-劣势"><a href="#2-劣势" class="headerlink" title="2)劣势"></a>2)劣势</h5><ul>
 <li>在数据库建立过程中，需花费较多的时间去建立并维护索引，特别是随着数据总量的增加，所花费的时间将不断递增(<strong>在海量数据前提下,创建索引成本高</strong>)。</li>
@@ -960,10 +1126,22 @@
 <li>在对表中的数据进行修改时，例如对其进行增加、删除或者是修改操作时，索引还需要进行动态的维护，这给数据库的维护速度带来了一定的麻烦(<strong>维护成本高</strong>)。</li>
 </ul>
 <h4 id="2-索引创建原则-面试"><a href="#2-索引创建原则-面试" class="headerlink" title="2.索引创建原则(面试)"></a>2.索引创建原则(面试)</h4><p>索引的设计可以遵循一些已有的原则，创建索引的时候请尽量考虑符合这些原则，便于提升索引的使用效率，更高效的使用索引。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> 字段内容可识别度不能低于<span class="number">70</span><span class="operator">%</span>，字段内数据唯一值的个数不能低于<span class="number">70</span><span class="operator">%</span></span><br><span class="line">	例如：一个表数据只有<span class="number">50</span>行，那么性别和年龄哪个字段适合创建索引，明显是年龄，因为年龄的唯一值个数比较多，性别只有两个选项。</span><br><span class="line">	<span class="keyword">select</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> student3;<span class="comment">-- 8</span></span><br><span class="line">    <span class="keyword">select</span> <span class="built_in">count</span>(<span class="keyword">distinct</span> name) <span class="keyword">from</span> student3;</span><br><span class="line">    <span class="keyword">select</span> (<span class="keyword">select</span> <span class="built_in">count</span>(<span class="keyword">distinct</span> name) <span class="keyword">from</span> student3)<span class="operator">/</span>(<span class="keyword">select</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> student3)</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> 经常使用<span class="keyword">where</span>条件搜索的字段，例如<span class="keyword">user</span>表的id name等字段。</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> 经常使用表连接的字段（内连接、外连接），可以加快连接的速度。</span><br><span class="line"></span><br><span class="line"><span class="number">4.</span> 经常排序的字段 <span class="keyword">order</span> <span class="keyword">by</span>，因为索引已经是排过序的，这样一来可以利用索引的排序，加快排序查 询速度。</span><br><span class="line"></span><br><span class="line"><span class="number">5.</span>空间原则（字段占用空间越小也好）</span><br><span class="line"></span><br><span class="line"><span class="operator">*</span> 注意: 索引并不是越多越好,因为索引的建立和维护都是需要耗时的 创建表时需要通过数据库去维护索引，添加记录、更新、修改时，也需要更新索引，会间接影响数据库的效率。</span><br></pre></td></tr></table></figure>
+<pre><code class="sql">1. 字段内容可识别度不能低于70%，字段内数据唯一值的个数不能低于70%
+    例如：一个表数据只有50行，那么性别和年龄哪个字段适合创建索引，明显是年龄，因为年龄的唯一值个数比较多，性别只有两个选项。
+    select count(*) from student3;-- 8
+    select count(distinct name) from student3;
+    select (select count(distinct name) from student3)/(select count(*) from student3)
 
+2. 经常使用where条件搜索的字段，例如user表的id name等字段。
 
+3. 经常使用表连接的字段（内连接、外连接），可以加快连接的速度。
 
+4. 经常排序的字段 order by，因为索引已经是排过序的，这样一来可以利用索引的排序，加快排序查 询速度。
+
+5.空间原则（字段占用空间越小也好）
+
+* 注意: 索引并不是越多越好,因为索引的建立和维护都是需要耗时的 创建表时需要通过数据库去维护索引，添加记录、更新、修改时，也需要更新索引，会间接影响数据库的效率。
+</code></pre>
 <hr style="height:10px;background-color:green;border:none;" />
 
 <h3 id="4-5-索引的数据结构【了解】"><a href="#4-5-索引的数据结构【了解】" class="headerlink" title="4.5 索引的数据结构【了解】"></a>4.5 索引的数据结构【了解】</h3><h4 id="4-5-1-索引示例介绍"><a href="#4-5-1-索引示例介绍" class="headerlink" title="4.5.1 索引示例介绍"></a>4.5.1 索引示例介绍</h4><p>我们知道<strong>索引</strong>是帮助MySQL高效获取数据的一种<strong>排好序</strong>的<strong>数据结构</strong>。</p>
@@ -975,8 +1153,8 @@
 <hr style="height:10px;background-color:green;border:none;" />
 
 <h4 id="4-5-2-二叉查找树和红黑树"><a href="#4-5-2-二叉查找树和红黑树" class="headerlink" title="4.5.2 二叉查找树和红黑树"></a>4.5.2 二叉查找树和红黑树</h4><p><strong>数据结构学习网站(美国旧金山大学)</strong></p>
-<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.cs.usfca.edu/~galles/visualization/Algorithms.html</span><br></pre></td></tr></table></figure>
-
+<pre><code class="http">https://www.cs.usfca.edu/~galles/visualization/Algorithms.html
+</code></pre>
 <h5 id="1-二叉查找树"><a href="#1-二叉查找树" class="headerlink" title="1.二叉查找树"></a>1.二叉查找树</h5><p>左边的子节点比父节点小，右边的子节点比父节点大;</p>
 <p><img src="https://i.loli.net/2021/09/02/SzmLxUCbOfIAD3Y.png" alt="image-20210902100458124"></p>
 <h5 id="2-红黑树"><a href="#2-红黑树" class="headerlink" title="2.红黑树"></a>2.红黑树</h5><p>平衡二叉树（左旋、右旋、变色）;</p>
@@ -994,8 +1172,9 @@
 <p>   如果存储的数据占1kb，那么每个节点存储的元素个数是<strong>15个元素</strong>，那么如果存储1000w数据树高多少？<strong>6</strong></p>
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210902003842317.png" alt="image-20210902003842317"></p>
 <p>思考：如何进一步降低树的高度及优化查询？</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1）数据查询的过程中，有一些数据data的加载时没有意义且浪费磁盘io；</span><br><span class="line">2）如果要进行范围查询，那么需要反复从根节点读取数据；</span><br></pre></td></tr></table></figure>
-
+<pre><code class="tex">1）数据查询的过程中，有一些数据data的加载时没有意义且浪费磁盘io；
+2）如果要进行范围查询，那么需要反复从根节点读取数据；
+</code></pre>
 <hr style="height:10px;background-color:green;border:none;" />
 
 <h4 id="4-5-4-B-Tree"><a href="#4-5-4-B-Tree" class="headerlink" title="4.5.4 B+Tree"></a>4.5.4 B+Tree</h4><h5 id="1-结构介绍"><a href="#1-结构介绍" class="headerlink" title="1.结构介绍"></a>1.结构介绍</h5><p>1）B+tree将树分为叶子节点和非叶子节点，其中非叶子节点只存储索引+指针，不存储数据，而叶子节点存储索引+指针域+数据；</p>
@@ -1016,8 +1195,9 @@
 <p>​    3）还有一点是mysql将根节点都加载到内存中，每张表有一个根节点，<strong>大小是16KB</strong>.那么这样的好处，按照上述如果是千万条数据，那么只有2次磁盘IO.这就是为什么我们加完索引之后瞬间查到数据的原因了。</p>
 <p>最终结论：</p>
 <p>   <strong>通过将树的每个节点存储的元素增大来降低树的高度；</strong></p>
-<h5 id="2-MySQL中的B-Tree"><a href="#2-MySQL中的B-Tree" class="headerlink" title="2. MySQL中的B+Tree"></a>2. MySQL中的B+Tree</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看mysql索引节点大小</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">global</span> status <span class="keyword">like</span> <span class="string">&#x27;innodb_page_size&#x27;</span>; <span class="comment">-- 16kb</span></span><br></pre></td></tr></table></figure>
-
+<h5 id="2-MySQL中的B-Tree"><a href="#2-MySQL中的B-Tree" class="headerlink" title="2. MySQL中的B+Tree"></a>2. MySQL中的B+Tree</h5><pre><code class="sql">-- 查看mysql索引节点大小
+show global status like &#39;innodb_page_size&#39;; -- 16kb
+</code></pre>
 <p>MySql索引数据结构对经典的B+Tree进行了优化。在原B+Tree的基础上，增加一个指向相邻叶子节点的链表指针，就形成了带有顺序指针的B+Tree，<strong>提高区间访问的性能</strong>。</p>
 <hr style="height:10px;background-color:green;border:none;" />
 
@@ -1026,50 +1206,74 @@
 <h4 id="2-应用场景"><a href="#2-应用场景" class="headerlink" title="2.应用场景"></a>2.应用场景</h4><p>1）多个地方用到同样的查询结果</p>
 <p>2）该查询结果使用的sql语句较复杂</p>
 <p>创建视图语法格式:</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> 视图名</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line">查询语句;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">create view 视图名
+as
+查询语句;
+</code></pre>
 <p>需求:查看所有国家和对应城市的信息</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 视图是一张虚拟的表,除了不保存数据数据外,其他规则都改表table一致</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> country_city_view <span class="keyword">as</span> </span><br><span class="line"><span class="keyword">select</span> city.<span class="operator">*</span>,country.country_name </span><br><span class="line"><span class="keyword">from</span> country,city <span class="keyword">where</span> country.country_id<span class="operator">=</span>city.country_id;</span><br></pre></td></tr></table></figure>
+<pre><code class="sql">-- 视图是一张虚拟的表,除了不保存数据数据外,其他规则都改表table一致
+create view country_city_view as 
+select city.*,country.country_name 
+from country,city where country.country_id=city.country_id;
+</code></pre>
+<h4 id="3-视图和表的区别"><a href="#3-视图和表的区别" class="headerlink" title="3.视图和表的区别"></a>3.视图和表的区别</h4><pre><code class="markdown">     使用方式      占用物理空间
 
+视图    完全相同     视图中的数据不保存，仅仅保存的是sql逻辑，磁盘上只有表结构，没有数据
 
-
-<h4 id="3-视图和表的区别"><a href="#3-视图和表的区别" class="headerlink" title="3.视图和表的区别"></a>3.视图和表的区别</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">	 使用方式	  占用物理空间</span></span><br><span class="line"><span class="code"></span></span><br><span class="line">视图	完全相同	 视图中的数据不保存，仅仅保存的是sql逻辑，磁盘上只有表结构，没有数据</span><br><span class="line"></span><br><span class="line">表	 完全相同	  占用</span><br></pre></td></tr></table></figure>
-
-<h4 id="4-视图的好处"><a href="#4-视图的好处" class="headerlink" title="4.视图的好处"></a>4.视图的好处</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span> 1、提高sql语句重用性，效率高(避免sql语句多次编译)</span><br><span class="line"><span class="bullet">*</span> 2、和表实现了分离，提高了安全性，使用视图的用户只能访问他们被允许查询的结果集</span><br></pre></td></tr></table></figure>
-
-
-
+表     完全相同      占用
+</code></pre>
+<h4 id="4-视图的好处"><a href="#4-视图的好处" class="headerlink" title="4.视图的好处"></a>4.视图的好处</h4><pre><code class="markdown">* 1、提高sql语句重用性，效率高(避免sql语句多次编译)
+* 2、和表实现了分离，提高了安全性，使用视图的用户只能访问他们被允许查询的结果集
+</code></pre>
 <hr style="height:10px;background-color:green;border:none;" />
 
 <h3 id="5-2-视图修改-查看与删除"><a href="#5-2-视图修改-查看与删除" class="headerlink" title="5.2 视图修改,查看与删除"></a>5.2 视图修改,查看与删除</h3><h4 id="1-视图修改"><a href="#1-视图修改" class="headerlink" title="1)视图修改"></a>1)视图修改</h4><p>方式1-创建过程覆盖旧的视图,达到修改的操作</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace <span class="keyword">view</span> 视图名</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line">查询语句;</span><br><span class="line"><span class="comment">-- 说明：如果存在该视图名就是修改视图，如果不存在该视图名则创建视图。</span></span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">create or replace view 视图名
+as
+查询语句;
+-- 说明：如果存在该视图名就是修改视图，如果不存在该视图名则创建视图。
+</code></pre>
 <p>需求：修改上述视图city_country_view，select语句变为查询城市名是上海的城市信息和所属国家信息</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace <span class="keyword">view</span> country_city_view <span class="keyword">as</span></span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">city.<span class="operator">*</span>,country.country_name </span><br><span class="line"><span class="keyword">from</span> country,city <span class="keyword">where</span> country.country_id<span class="operator">=</span>city.country_id <span class="keyword">and</span> city.city_name<span class="operator">=</span><span class="string">&#x27;上海&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">create or replace view country_city_view as
+select
+city.*,country.country_name 
+from country,city where country.country_id=city.country_id and city.city_name=&#39;上海&#39;;
+</code></pre>
 <p>方式2:使用alter修改</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">view</span> 视图名</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line">查询语句;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">alter view 视图名
+as
+查询语句;
+</code></pre>
 <p>需求：修改上述视图city_country_view，select语句变为查询城市名是北京的城市信息和所属国家信息</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">view</span> country_city_view <span class="keyword">as</span></span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">city.<span class="operator">*</span>,country.country_name </span><br><span class="line"><span class="keyword">from</span> country,city <span class="keyword">where</span> country.country_id<span class="operator">=</span>city.country_id <span class="keyword">and</span> city.city_name<span class="operator">=</span><span class="string">&#x27;北京&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">alter view country_city_view as
+select
+city.*,country.country_name 
+from country,city where country.country_id=city.country_id and city.city_name=&#39;北京&#39;;
+</code></pre>
 <h4 id="2-查看视图"><a href="#2-查看视图" class="headerlink" title="2)查看视图"></a>2)查看视图</h4><p>查看视图指令与table指令格式一致.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> tables;</span><br><span class="line"><span class="keyword">desc</span> country_view;</span><br><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">table</span> country_view;</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-删除视图"><a href="#3-删除视图" class="headerlink" title="3)删除视图"></a>3)删除视图</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">view</span> 视图名,视图名,.....;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">show tables;
+desc country_view;
+show create table country_view;
+</code></pre>
+<h4 id="3-删除视图"><a href="#3-删除视图" class="headerlink" title="3)删除视图"></a>3)删除视图</h4><pre><code class="sql">drop view 视图名,视图名,.....;
+</code></pre>
 <p>需求:删除 country_view视图</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">view</span> country_view;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">drop view country_view;
+</code></pre>
 <p>小结:</p>
 <p>视图应用场景及好处?</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">场景:</span><br><span class="line"><span class="number">1</span>)多场景使用相同且非常复杂的查询<span class="keyword">sql</span>;</span><br><span class="line"><span class="number">2</span>)在一些数据敏感,涉及到安全的场景;</span><br><span class="line"><span class="number">3</span>)网络访问密集的场景(减少网络io开销)；</span><br><span class="line">好处:</span><br><span class="line"><span class="number">1</span>)提高<span class="keyword">sql</span>的复用性;</span><br><span class="line"><span class="number">2</span>)提高数据的安全性和数据库性能;</span><br><span class="line"><span class="number">3</span>)减少网络io开销</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">场景:
+1)多场景使用相同且非常复杂的查询sql;
+2)在一些数据敏感,涉及到安全的场景;
+3)网络访问密集的场景(减少网络io开销)；
+好处:
+1)提高sql的复用性;
+2)提高数据的安全性和数据库性能;
+3)减少网络io开销
+</code></pre>
 <p>创建语句格式?</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> 视图名称 <span class="keyword">as</span>  <span class="keyword">select</span>语句;</span><br></pre></td></tr></table></figure>
-
-
-
+<pre><code class="sql">create view 视图名称 as  select语句;
+</code></pre>
 <hr style="height:10px;background-color:green;border:none;" />
 
 <h2 id="第六章-触发器-了解"><a href="#第六章-触发器-了解" class="headerlink" title="第六章 触发器(了解)"></a>第六章 触发器(了解)</h2><h3 id="6-1触发器概述与创建"><a href="#6-1触发器概述与创建" class="headerlink" title="6.1触发器概述与创建"></a>6.1触发器概述与创建</h3><h4 id="1-触发器概述"><a href="#1-触发器概述" class="headerlink" title="1)触发器概述"></a>1)触发器概述</h4><p>​    1.触发器主要是通过<strong>事件进行触发而被执行</strong>的,我们可以在修改数据的前后绑定事件,触发执行定义的SQL;</p>
@@ -1096,51 +1300,116 @@
 <td><strong>OLD 表示将要或者已经删除的数据</strong>,删除之后没有数据了，所以不能使用NEW</td>
 </tr>
 </tbody></table>
-<h4 id="2-创建触发器"><a href="#2-创建触发器" class="headerlink" title="2)创建触发器"></a>2)创建触发器</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 语法</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> trigger_name</span><br><span class="line">before<span class="operator">/</span>after <span class="keyword">insert</span><span class="operator">/</span>update<span class="operator">/</span><span class="keyword">delete</span></span><br><span class="line"><span class="keyword">on</span> tbl_name</span><br><span class="line"><span class="keyword">for</span> <span class="keyword">each</span> <span class="type">row</span>   <span class="comment">-- 行级触发器</span></span><br><span class="line">	trigger_stmt ;</span><br><span class="line">说明：</span><br><span class="line">	<span class="number">1</span>）before<span class="operator">/</span>after位置称为触发时机，一个触发器只能选择一个</span><br><span class="line">	<span class="number">2</span>）<span class="keyword">insert</span><span class="operator">/</span>update<span class="operator">/</span><span class="keyword">delete</span>位置称为触发事件，一个触发器只能选择一个</span><br><span class="line">	<span class="number">3</span>）<span class="keyword">for</span> <span class="keyword">each</span> <span class="type">row</span>称为行级触发器，触发器绑定实质是表中的所有行，因此当每一行发生指定改变的时候，就会触发触发器。</span><br></pre></td></tr></table></figure>
-
+<h4 id="2-创建触发器"><a href="#2-创建触发器" class="headerlink" title="2)创建触发器"></a>2)创建触发器</h4><pre><code class="sql">-- 语法
+create trigger trigger_name
+before/after insert/update/delete
+on tbl_name
+for each row   -- 行级触发器
+    trigger_stmt ;
+说明：
+    1）before/after位置称为触发时机，一个触发器只能选择一个
+    2）insert/update/delete位置称为触发事件，一个触发器只能选择一个
+    3）for each row称为行级触发器，触发器绑定实质是表中的所有行，因此当每一行发生指定改变的时候，就会触发触发器。
+</code></pre>
 <p>数据准备:</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建员工表，员工信息</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> emp(</span><br><span class="line">	id <span class="type">int</span> <span class="keyword">primary</span> key auto_increment,</span><br><span class="line">    name <span class="type">varchar</span>(<span class="number">30</span>) <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">    age <span class="type">int</span>,</span><br><span class="line">    salary <span class="type">int</span></span><br><span class="line">);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> emp(id,name,age,salary) <span class="keyword">values</span>(<span class="keyword">null</span>, <span class="string">&#x27;金毛狮王&#x27;</span>,<span class="number">40</span>,<span class="number">2500</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> emp(id,name,age,salary) <span class="keyword">values</span>(<span class="keyword">null</span>, <span class="string">&#x27;蝙蝠王&#x27;</span>,<span class="number">38</span>,<span class="number">3100</span>);</span><br><span class="line"><span class="comment">-- 创建一张日志表,存放日志信息</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> emp_logs(</span><br><span class="line">    id <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">primary</span> key auto_increment,</span><br><span class="line">    operation <span class="type">varchar</span>(<span class="number">20</span>) <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;操作类型, insert/update/delete&#x27;</span>,</span><br><span class="line">    operate_time datetime <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;操作时间&#x27;</span>,</span><br><span class="line">    operate_id <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">not</span> <span class="keyword">null</span> comment <span class="string">&#x27;操作表的ID,emp表数据的id&#x27;</span>,</span><br><span class="line">    operate_params <span class="type">varchar</span>(<span class="number">500</span>) comment <span class="string">&#x27;操作参数,插入emp中的数据&#x27;</span></span><br><span class="line">)engine<span class="operator">=</span>innodb <span class="keyword">default</span> charset<span class="operator">=</span>utf8;</span><br></pre></td></tr></table></figure>
-
-
-
+<pre><code class="sql">-- 创建员工表，员工信息
+create table emp(
+    id int primary key auto_increment,
+    name varchar(30) not null,
+    age int,
+    salary int
+);
+insert into emp(id,name,age,salary) values(null, &#39;金毛狮王&#39;,40,2500);
+insert into emp(id,name,age,salary) values(null, &#39;蝙蝠王&#39;,38,3100);
+-- 创建一张日志表,存放日志信息
+create table emp_logs(
+    id int(11) primary key auto_increment,
+    operation varchar(20) not null comment &#39;操作类型, insert/update/delete&#39;,
+    operate_time datetime not null comment &#39;操作时间&#39;,
+    operate_id int(11) not null comment &#39;操作表的ID,emp表数据的id&#39;,
+    operate_params varchar(500) comment &#39;操作参数,插入emp中的数据&#39;
+)engine=innodb default charset=utf8;
+</code></pre>
 <p> <strong>需求1:创建 insert 型触发器，完成插入数据时的日志记录  new</strong></p>
 <p>需求2:创建 update 型触发器，完成更新数据时的日志记录</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> update_tri </span><br><span class="line">after update</span><br><span class="line"><span class="keyword">on</span> emp</span><br><span class="line"><span class="keyword">for</span> <span class="keyword">each</span> <span class="type">row</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> emp_logs <span class="keyword">values</span>(<span class="keyword">null</span>,<span class="string">&#x27;update&#x27;</span>,now(),old.id,concat(<span class="string">&#x27;操作之前数据:&#x27;</span>,old.id,old.name,old.age,old.salary,<span class="string">&#x27;操作之后数据:&#x27;</span>,new.id,new.name,new.age,new.salary));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">create trigger update_tri 
+after update
+on emp
+for each row
+insert into emp_logs values(null,&#39;update&#39;,now(),old.id,concat(&#39;操作之前数据:&#39;,old.id,old.name,old.age,old.salary,&#39;操作之后数据:&#39;,new.id,new.name,new.age,new.salary));
+</code></pre>
 <p><strong>需求3:创建delete 行的触发器 , 完成删除数据时的日志记录  old</strong></p>
 <hr style="height:10px;background-color:green;border:none;" />
 
 <h3 id="6-2-触发器查看与删除"><a href="#6-2-触发器查看与删除" class="headerlink" title="6.2 触发器查看与删除"></a>6.2 触发器查看与删除</h3><h4 id="1-查看触发器"><a href="#1-查看触发器" class="headerlink" title="1)查看触发器"></a>1)查看触发器</h4><p>可使用指令或者可视化工具查看触发器;</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> TRIGGERS;</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-删除触发器"><a href="#2-删除触发器" class="headerlink" title="2) 删除触发器"></a>2) 删除触发器</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">trigger</span> trigger_name ;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
+<pre><code class="sql">SHOW TRIGGERS;
+</code></pre>
+<h4 id="2-删除触发器"><a href="#2-删除触发器" class="headerlink" title="2) 删除触发器"></a>2) 删除触发器</h4><pre><code class="sql">drop trigger trigger_name ;
+</code></pre>
 <h2 id="索引总结"><a href="#索引总结" class="headerlink" title="索引总结"></a>索引总结</h2><p>1.1 索引的创建</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># 方式<span class="number">1</span>：</span><br><span class="line">	# 普通索引</span><br><span class="line">	<span class="keyword">create</span> index 索引名称 <span class="keyword">on</span> 表名(字段名称,字段名称<span class="number">2</span>，....);</span><br><span class="line">	# 创建唯一索引</span><br><span class="line">	<span class="keyword">create</span> <span class="keyword">unique</span> index 索引名称 <span class="keyword">on</span> 表名(字段名称,字段名称<span class="number">2</span>，....);</span><br><span class="line"># 方式<span class="number">2</span>：</span><br><span class="line">	# 普通索引</span><br><span class="line">	<span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">add</span> index(字段名称,字段名称<span class="number">2</span>,.....);</span><br><span class="line">	# 唯一索引</span><br><span class="line">	<span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">add</span> <span class="keyword">unique</span>(字段名称，字段名称<span class="number">2</span>，....);</span><br><span class="line">	# 主键索引</span><br><span class="line">	<span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">add</span> <span class="keyword">primary</span> key(字段<span class="number">1</span>，字段<span class="number">2</span>，.....);</span><br><span class="line"># 方式<span class="number">3</span>：掌握</span><br><span class="line">	<span class="keyword">create</span> <span class="keyword">table</span> 表名(</span><br><span class="line">    	id <span class="type">int</span> <span class="keyword">primary</span> key auto_increment,<span class="comment">-- 主键且自增</span></span><br><span class="line">        name <span class="type">varchar</span>(<span class="number">10</span>),</span><br><span class="line">        tele <span class="type">varchar</span>(<span class="number">12</span>) <span class="keyword">unique</span>,</span><br><span class="line">        index(name)</span><br><span class="line">    );</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql"># 方式1：
+    # 普通索引
+    create index 索引名称 on 表名(字段名称,字段名称2，....);
+    # 创建唯一索引
+    create unique index 索引名称 on 表名(字段名称,字段名称2，....);
+# 方式2：
+    # 普通索引
+    alter table 表名 add index(字段名称,字段名称2,.....);
+    # 唯一索引
+    alter table 表名 add unique(字段名称，字段名称2，....);
+    # 主键索引
+    alter table 表名 add primary key(字段1，字段2，.....);
+# 方式3：掌握
+    create table 表名(
+        id int primary key auto_increment,-- 主键且自增
+        name varchar(10),
+        tele varchar(12) unique,
+        index(name)
+    );
+</code></pre>
 <p>1.2 索引分类</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">主键索引：特点 唯一<span class="operator">+</span> 非空<span class="operator">+</span> 提高查询效率 底层维护的是主键索引(聚集索引，通过索引数据，就可以找到满足条件的任意数据<span class="comment">--叶子节点数据都包含)</span></span><br><span class="line">唯一索引： 特点 唯一 <span class="operator">+</span> 提交查询效率   底层维护了唯一索引(非聚集索引，查询过程是先通过唯一索引btree检索到叶子节点下保存的主键值，然后再取主键索引根据主键的值查询对应的数据<span class="comment">--回表查询)</span></span><br><span class="line">唯一索引： 特点：没有任何约束，仅仅提高查询效率，底层与唯一索引类似；</span><br><span class="line">Hash索引：特点： 非常适合等值查询，但是不适合范围查询；</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">主键索引：特点 唯一+ 非空+ 提高查询效率 底层维护的是主键索引(聚集索引，通过索引数据，就可以找到满足条件的任意数据--叶子节点数据都包含)
+唯一索引： 特点 唯一 + 提交查询效率   底层维护了唯一索引(非聚集索引，查询过程是先通过唯一索引btree检索到叶子节点下保存的主键值，然后再取主键索引根据主键的值查询对应的数据--回表查询)
+唯一索引： 特点：没有任何约束，仅仅提高查询效率，底层与唯一索引类似；
+Hash索引：特点： 非常适合等值查询，但是不适合范围查询；
+</code></pre>
 <p>回表查询示意图：</p>
 <p><img src="https://i.loli.net/2021/09/02/kMwcOiXrY1qQ4vG.png" alt="image-20210819084509775"></p>
 <p>说明：实际情况中，普通索引或者唯一索引是btree结构(不是上图中的二叉树)；</p>
 <p>面试题：</p>
 <p>1.什么是回表查询？</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">一般主键查询时，不会回表查询，但是对应查询如果走非主键索引，那么需要先走普通索引拿主键索引值，然后再去主键索引查询拿数据；</span><br></pre></td></tr></table></figure>
-
+<pre><code class="tex">一般主键查询时，不会回表查询，但是对应查询如果走非主键索引，那么需要先走普通索引拿主键索引值，然后再去主键索引查询拿数据；
+</code></pre>
 <p>2.如何避免回表查询？</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">因为回表查询，整体效率是慢了一些；</span><br><span class="line"> 避免方式：</span><br><span class="line"> 	1.尽量让查询走主键索引；</span><br><span class="line"> 	2.建立联合索引；</span><br><span class="line"> 		举例： 根据手机号查询姓名；</span><br><span class="line"> 	    在表中将手机号和姓名一起创建一个【联合索引】，这样就可以直接在索引树中拿数据，避免了回表查询；</span><br></pre></td></tr></table></figure>
-
+<pre><code class="tex">因为回表查询，整体效率是慢了一些；
+ 避免方式：
+     1.尽量让查询走主键索引；
+     2.建立联合索引；
+         举例： 根据手机号查询姓名；
+         在表中将手机号和姓名一起创建一个【联合索引】，这样就可以直接在索引树中拿数据，避免了回表查询；
+</code></pre>
 <p>3.创建索引的原则</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1.创建索引的表示度要高</span><br><span class="line">	如何统计表示度？</span><br><span class="line">	select count(distinct 索引字段)/count(索引字段) from 表名；</span><br><span class="line">	结果越接近1越理想；</span><br><span class="line">2.条件中要使用对应的表的字段</span><br><span class="line">	2.1 where条件中【经常】使用的字段（having查询不走索引）；</span><br><span class="line">	2.2 多表join联查时，on关键字后边的字段；</span><br><span class="line">3.在排序的场景 order by 字段；</span><br><span class="line">4.空间原则</span><br><span class="line">	主键字段在满足业务需求的情况下，占空间越小越好；</span><br></pre></td></tr></table></figure>
-
+<pre><code class="tex">1.创建索引的表示度要高
+    如何统计表示度？
+    select count(distinct 索引字段)/count(索引字段) from 表名；
+    结果越接近1越理想；
+2.条件中要使用对应的表的字段
+    2.1 where条件中【经常】使用的字段（having查询不走索引）；
+    2.2 多表join联查时，on关键字后边的字段；
+3.在排序的场景 order by 字段；
+4.空间原则
+    主键字段在满足业务需求的情况下，占空间越小越好；
+</code></pre>
 <p>4.索引失效的原因？</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>索引字段使用函数</span><br><span class="line">	<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span>  表名 <span class="keyword">where</span> <span class="built_in">trim</span>(name)<span class="operator">=</span><span class="string">&#x27;xxxx&#x27;</span>；</span><br><span class="line"><span class="number">2.</span>索引字段参与数学运算</span><br><span class="line">	<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> 表名 <span class="keyword">where</span> id<span class="operator">+</span><span class="number">100</span><span class="operator">=</span><span class="number">200</span>;</span><br><span class="line"><span class="number">3.</span>索引字段存在类型转换</span><br><span class="line">	<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> 表名 <span class="keyword">where</span> name<span class="operator">=</span><span class="number">500</span>;</span><br><span class="line"><span class="number">4</span>索引字段频繁的进行写操作，导致索引树拼接的维护构建；	</span><br><span class="line">	如果一个字段拼接修改，那么完全没必有在这个字段创建索引了；</span><br></pre></td></tr></table></figure>
-
+<pre><code class="sql">1.索引字段使用函数
+    select * from  表名 where trim(name)=&#39;xxxx&#39;；
+2.索引字段参与数学运算
+    select * from 表名 where id+100=200;
+3.索引字段存在类型转换
+    select * from 表名 where name=500;
+4索引字段频繁的进行写操作，导致索引树拼接的维护构建；    
+    如果一个字段拼接修改，那么完全没必有在这个字段创建索引了；
+</code></pre>
 
                 
             </div>

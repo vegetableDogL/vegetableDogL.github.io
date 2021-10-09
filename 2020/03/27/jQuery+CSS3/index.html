@@ -926,41 +926,449 @@ function sunbeams() {
   initparticles();
 </script>
 
-<h3 id="0x002-Fires-特效"><a href="#0x002-Fires-特效" class="headerlink" title="0x002 Fires 特效"></a>0x002 Fires 特效</h3><h4 id="1-JS-代码"><a href="#1-JS-代码" class="headerlink" title="1. JS 代码"></a>1. JS 代码</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fire</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">   $.each($(<span class="string">&quot;.particletext.fire&quot;</span>), <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line">      <span class="keyword">var</span> firecount = ($(<span class="built_in">this</span>).width()/<span class="number">50</span>)*<span class="number">20</span>; </span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt;= firecount; i++) &#123; </span><br><span class="line">         <span class="keyword">var</span> size = $.rnd(<span class="number">8</span>,<span class="number">12</span>); </span><br><span class="line">         $(<span class="built_in">this</span>).append(<span class="string">&#x27;&lt;span class=&quot;particle&quot; style=&quot;top:&#x27;</span> + $.rnd(<span class="number">40</span>,<span class="number">70</span>) + <span class="string">&#x27;%; left:&#x27;</span> + $.rnd(-<span class="number">10</span>,<span class="number">100</span>) + <span class="string">&#x27;%;width:&#x27;</span> + size + <span class="string">&#x27;px; height:&#x27;</span> + size + <span class="string">&#x27;px;animation-delay: &#x27;</span> + ($.rnd(<span class="number">0</span>,<span class="number">20</span>)/<span class="number">10</span>) + <span class="string">&#x27;s;&quot;&gt;&lt;/span&gt;&#x27;</span>); </span><br><span class="line">      &#125; </span><br><span class="line">   &#125;); </span><br><span class="line">&#125; </span><br><span class="line">  jQuery.rnd = <span class="function"><span class="keyword">function</span>(<span class="params">m,n</span>) </span>&#123;</span><br><span class="line">      m = <span class="built_in">parseInt</span>(m);</span><br><span class="line">      n = <span class="built_in">parseInt</span>(n);</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">Math</span>.floor( <span class="built_in">Math</span>.random() * (n - m + <span class="number">1</span>) ) + m;</span><br><span class="line">  &#125;</span><br><span class="line">  fire();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="0x002-Fires-特效"><a href="#0x002-Fires-特效" class="headerlink" title="0x002 Fires 特效"></a>0x002 Fires 特效</h3><h4 id="1-JS-代码"><a href="#1-JS-代码" class="headerlink" title="1. JS 代码"></a>1. JS 代码</h4><pre><code class="javascript">&lt;script&gt;
+function fire() &#123; 
+   $.each($(&quot;.particletext.fire&quot;), function()&#123; 
+      var firecount = ($(this).width()/50)*20; 
+      for(var i = 0; i &lt;= firecount; i++) &#123; 
+         var size = $.rnd(8,12); 
+         $(this).append(&#39;&lt;span class=&quot;particle&quot; style=&quot;top:&#39; + $.rnd(40,70) + &#39;%; left:&#39; + $.rnd(-10,100) + &#39;%;width:&#39; + size + &#39;px; height:&#39; + size + &#39;px;animation-delay: &#39; + ($.rnd(0,20)/10) + &#39;s;&quot;&gt;&lt;/span&gt;&#39;); 
+      &#125; 
+   &#125;); 
+&#125; 
+  jQuery.rnd = function(m,n) &#123;
+      m = parseInt(m);
+      n = parseInt(n);
+      return Math.floor( Math.random() * (n - m + 1) ) + m;
+  &#125;
+  fire();
+&lt;/script&gt;
+</code></pre>
+<h4 id="2-CSS-代码"><a href="#2-CSS-代码" class="headerlink" title="2. CSS 代码"></a>2. CSS 代码</h4><pre><code class="css">&lt;style&gt;
+.fire &gt; .particle &#123;
+  position: absolute;
+  background-color: rgba(255, 193, 7, 0.5);
+  border-radius: 40px;
+  border-top-right-radius: 0px;
+  -webkit-animation: fires 0.8s linear infinite;
+          animation: fires 0.8s linear infinite;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  opacity: 0;
+&#125;
 
-<h4 id="2-CSS-代码"><a href="#2-CSS-代码" class="headerlink" title="2. CSS 代码"></a>2. CSS 代码</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line"><span class="selector-class">.fire</span> &gt; <span class="selector-class">.particle</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">193</span>, <span class="number">7</span>, <span class="number">0.5</span>);</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">40px</span>;</span><br><span class="line">  <span class="attribute">border-top-right-radius</span>: <span class="number">0px</span>;</span><br><span class="line">  -webkit-<span class="attribute">animation</span>: fires <span class="number">0.8s</span> linear infinite;</span><br><span class="line">          <span class="attribute">animation</span>: fires <span class="number">0.8s</span> linear infinite;</span><br><span class="line">  -webkit-<span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">45deg</span>);</span><br><span class="line">          <span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">45deg</span>);</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@-webkit-keyframes</span> fires &#123;</span><br><span class="line">  <span class="number">0%</span> &#123;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">70deg</span>) <span class="built_in">translateY</span>(<span class="number">0%</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">70deg</span>) <span class="built_in">translateY</span>(<span class="number">0%</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">25%</span> &#123;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">20deg</span>) <span class="built_in">translateY</span>(-<span class="number">5%</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">20deg</span>) <span class="built_in">translateY</span>(-<span class="number">5%</span>);</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">50%</span> &#123;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">70deg</span>) <span class="built_in">translateY</span>(-<span class="number">10%</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">70deg</span>) <span class="built_in">translateY</span>(-<span class="number">10%</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">75%</span> &#123;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">20deg</span>) <span class="built_in">translateY</span>(-<span class="number">20%</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">20deg</span>) <span class="built_in">translateY</span>(-<span class="number">20%</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">100%</span> &#123;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">70deg</span>) <span class="built_in">translateY</span>(-<span class="number">40%</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">70deg</span>) <span class="built_in">translateY</span>(-<span class="number">40%</span>);</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@keyframes</span> fires &#123;</span><br><span class="line">  <span class="number">0%</span> &#123;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">70deg</span>) <span class="built_in">translateY</span>(<span class="number">0%</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">70deg</span>) <span class="built_in">translateY</span>(<span class="number">0%</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">25%</span> &#123;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">20deg</span>) <span class="built_in">translateY</span>(-<span class="number">5%</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">20deg</span>) <span class="built_in">translateY</span>(-<span class="number">5%</span>);</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">50%</span> &#123;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">70deg</span>) <span class="built_in">translateY</span>(-<span class="number">10%</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">70deg</span>) <span class="built_in">translateY</span>(-<span class="number">10%</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">75%</span> &#123;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">20deg</span>) <span class="built_in">translateY</span>(-<span class="number">20%</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">20deg</span>) <span class="built_in">translateY</span>(-<span class="number">20%</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">100%</span> &#123;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">70deg</span>) <span class="built_in">translateY</span>(-<span class="number">40%</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">70deg</span>) <span class="built_in">translateY</span>(-<span class="number">40%</span>);</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+@-webkit-keyframes fires &#123;
+  0% &#123;
+    -webkit-transform: rotate(-70deg) translateY(0%);
+            transform: rotate(-70deg) translateY(0%);
+  &#125;
+  25% &#123;
+    -webkit-transform: rotate(-20deg) translateY(-5%);
+            transform: rotate(-20deg) translateY(-5%);
+    opacity: 1;
+  &#125;
+  50% &#123;
+    -webkit-transform: rotate(-70deg) translateY(-10%);
+            transform: rotate(-70deg) translateY(-10%);
+  &#125;
+  75% &#123;
+    -webkit-transform: rotate(-20deg) translateY(-20%);
+            transform: rotate(-20deg) translateY(-20%);
+  &#125;
+  100% &#123;
+    -webkit-transform: rotate(-70deg) translateY(-40%);
+            transform: rotate(-70deg) translateY(-40%);
+    opacity: 1;
+  &#125;
+&#125;
+@keyframes fires &#123;
+  0% &#123;
+    -webkit-transform: rotate(-70deg) translateY(0%);
+            transform: rotate(-70deg) translateY(0%);
+  &#125;
+  25% &#123;
+    -webkit-transform: rotate(-20deg) translateY(-5%);
+            transform: rotate(-20deg) translateY(-5%);
+    opacity: 1;
+  &#125;
+  50% &#123;
+    -webkit-transform: rotate(-70deg) translateY(-10%);
+            transform: rotate(-70deg) translateY(-10%);
+  &#125;
+  75% &#123;
+    -webkit-transform: rotate(-20deg) translateY(-20%);
+            transform: rotate(-20deg) translateY(-20%);
+  &#125;
+  100% &#123;
+    -webkit-transform: rotate(-70deg) translateY(-40%);
+            transform: rotate(-70deg) translateY(-40%);
+    opacity: 1;
+  &#125;
+&#125;
+&lt;/style&gt;
+</code></pre>
+<h4 id="3-HTML-代码"><a href="#3-HTML-代码" class="headerlink" title="3. HTML 代码"></a>3. HTML 代码</h4><pre><code class="html">&lt;div style=&quot;width: 100%;text-align: center; height: 120px; position: relative; bottom: 0px;&quot; &gt;
+&lt;span class=&quot;particletext fire&quot; style=&quot;font-size:48px;position: relative;&quot;&gt;This is fires&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+<h3 id="0x003-Lines-特效"><a href="#0x003-Lines-特效" class="headerlink" title="0x003 Lines 特效"></a>0x003 Lines 特效</h3><h4 id="1-JS-代码-1"><a href="#1-JS-代码-1" class="headerlink" title="1. JS 代码"></a>1. JS 代码</h4><pre><code class="javascript">&lt;script&gt;
+function lines() &#123; 
+   $.each($(&quot;.particletext.lines&quot;), function()&#123; 
+      var linecount = ($(this).width()/50)*10; 
+      for(var i = 0; i &lt;= linecount; i++) &#123; 
+         $(this).append(&#39;&lt;span class=&quot;particle&quot; style=&quot;top:&#39; + $.rnd(-30,30) + &#39;%; left:&#39; + $.rnd(-10,110) + &#39;%;width:&#39; + $.rnd(1,3) + &#39;px; height:&#39; + $.rnd(20,80) + &#39;%;animation-delay: -&#39; + ($.rnd(0,30)/10) + &#39;s;&quot;&gt;&lt;/span&gt;&#39;); 
+      &#125; 
+   &#125;); 
+&#125; 
+  jQuery.rnd = function(m,n) &#123;
+      m = parseInt(m);
+      n = parseInt(n);
+      return Math.floor( Math.random() * (n - m + 1) ) + m;
+  &#125;
+  lines();
+&lt;/script&gt;
+</code></pre>
+<h4 id="2-CSS-代码-1"><a href="#2-CSS-代码-1" class="headerlink" title="2. CSS 代码"></a>2. CSS 代码</h4><pre><code class="css">&lt;style&gt;
+.lines &gt; .particle &#123;
+  position: absolute;
+  background-color: rgba(244, 67, 54, 0.5);
+  -webkit-animation: lines 3s linear infinite;
+          animation: lines 3s linear infinite;
+&#125;
+@-webkit-keyframes lines &#123;
+  0%, 50%, 100% &#123;
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  &#125;
+  25% &#123;
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+  &#125;
+  75% &#123;
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+  &#125;
+&#125;
+@keyframes lines &#123;
+  0%, 50%, 100% &#123;
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  &#125;
+  25% &#123;
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+  &#125;
+  75% &#123;
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+  &#125;
+&#125;
+&lt;/style&gt;
+</code></pre>
+<h4 id="3-HTML-代码-1"><a href="#3-HTML-代码-1" class="headerlink" title="3. HTML 代码"></a>3. HTML 代码</h4><pre><code class="html">&lt;div style=&quot;width: 100%;text-align: center; height: 120px; position: relative; bottom: 0px;&quot; &gt; 
+&lt;span class=&quot;particletext lines&quot; style=&quot;font-size:48px; position: relative;&quot;&gt;This is lines&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+<h3 id="0x004-Hearts-特效"><a href="#0x004-Hearts-特效" class="headerlink" title="0x004 Hearts 特效"></a>0x004 Hearts 特效</h3><h4 id="1-JS-代码-2"><a href="#1-JS-代码-2" class="headerlink" title="1. JS 代码"></a>1. JS 代码</h4><pre><code class="javascript">&lt;script&gt;
+function hearts() &#123; 
+   $.each($(&quot;.particletext.hearts&quot;), function()&#123; 
+      var heartcount = ($(this).width()/50)*5; 
+      for(var i = 0; i &lt;= heartcount; i++) &#123; 
+         var size = ($.rnd(60,120)/10); 
+         $(this).append(&#39;&lt;span class=&quot;particle&quot; style=&quot;top:&#39; + $.rnd(20,80) + &#39;%; left:&#39; + $.rnd(0,95) + &#39;%;width:&#39; + size + &#39;px; height:&#39; + size + &#39;px;animation-delay: &#39; + ($.rnd(0,30)/10) + &#39;s;&quot;&gt;&lt;/span&gt;&#39;); 
+      &#125; 
+   &#125;); 
+&#125; 
+  jQuery.rnd = function(m,n) &#123;
+      m = parseInt(m);
+      n = parseInt(n);
+      return Math.floor( Math.random() * (n - m + 1) ) + m;
+  &#125;
+  hearts();
+&lt;/script&gt;
+</code></pre>
+<h4 id="2-CSS-代码-2"><a href="#2-CSS-代码-2" class="headerlink" title="2. CSS 代码"></a>2. CSS 代码</h4><pre><code class="css">&lt;style&gt;
+.hearts &gt; .particle &#123;
+  opacity: 0;
+  position: absolute;
+  background-color: #cc2a5d;
+  -webkit-animation: hearts 3s ease-in infinite;
+          animation: hearts 3s ease-in infinite;
+&#125;
+.hearts &gt; .particle:before, .hearts &gt; .particle:after &#123;
+  position: absolute;
+  content: &#39;&#39;;
+  border-radius: 100px;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: #cc2a5d;
+&#125;
+.hearts &gt; .particle:before &#123;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+&#125;
+.hearts &gt; .particle:after &#123;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+&#125;
+@-webkit-keyframes hearts &#123;
+  0% &#123;
+    opacity: 0;
+    -webkit-transform: translate(0, 0%) rotate(45deg);
+            transform: translate(0, 0%) rotate(45deg);
+  &#125;
+  20% &#123;
+    opacity: 0.8;
+    -webkit-transform: translate(0, -20%) rotate(45deg);
+            transform: translate(0, -20%) rotate(45deg);
+  &#125;
+  100% &#123;
+    opacity: 0;
+    -webkit-transform: translate(0, -1000%) rotate(45deg);
+            transform: translate(0, -1000%) rotate(45deg);
+  &#125;
+&#125;
+@keyframes hearts &#123;
+  0% &#123;
+    opacity: 0;
+    -webkit-transform: translate(0, 0%) rotate(45deg);
+            transform: translate(0, 0%) rotate(45deg);
+  &#125;
+  20% &#123;
+    opacity: 0.8;
+    -webkit-transform: translate(0, -20%) rotate(45deg);
+            transform: translate(0, -20%) rotate(45deg);
+  &#125;
+  100% &#123;
+    opacity: 0;
+    -webkit-transform: translate(0, -1000%) rotate(45deg);
+            transform: translate(0, -1000%) rotate(45deg);
+  &#125;
+&#125;
+&lt;/style&gt;
+</code></pre>
+<h4 id="3-HTML-代码-2"><a href="#3-HTML-代码-2" class="headerlink" title="3. HTML 代码"></a>3. HTML 代码</h4><pre><code class="html">&lt;div style=&quot;width: 100%;text-align: center; height: 120px; position: relative; bottom: 0px;&quot; &gt;
+&lt;span class=&quot;particletext hearts&quot; style=&quot;font-size:48px; position: relative;&quot;&gt;This is hearts&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+<h3 id="0x005-Bubbles-特效"><a href="#0x005-Bubbles-特效" class="headerlink" title="0x005 Bubbles 特效"></a>0x005 Bubbles 特效</h3><h4 id="1-JS-代码-3"><a href="#1-JS-代码-3" class="headerlink" title="1. JS 代码"></a>1. JS 代码</h4><pre><code class="javascript">&lt;script&gt;
+function bubbles() &#123; 
+   $.each($(&quot;.particletext.bubbles&quot;), function()&#123; 
+      var bubblecount = ($(this).width()/50)*10; 
+      for(var i = 0; i &lt;= bubblecount; i++) &#123; 
+         var size = ($.rnd(40,80)/10); 
+         $(this).append(&#39;&lt;span class=&quot;particle&quot; style=&quot;top:&#39; + $.rnd(20,80) + &#39;%; left:&#39; + $.rnd(0,95) + &#39;%;width:&#39; + size + &#39;px; height:&#39; + size + &#39;px;animation-delay: &#39; + ($.rnd(0,30)/10) + &#39;s;&quot;&gt;&lt;/span&gt;&#39;); 
+      &#125; 
+   &#125;); 
+&#125; 
+  jQuery.rnd = function(m,n) &#123;
+      m = parseInt(m);
+      n = parseInt(n);
+      return Math.floor( Math.random() * (n - m + 1) ) + m;
+  &#125;
+  bubbles();
+&lt;/script&gt;
+</code></pre>
+<h4 id="2-CSS-代码-3"><a href="#2-CSS-代码-3" class="headerlink" title="2. CSS 代码"></a>2. CSS 代码</h4><pre><code class="css">&lt;style&gt;
+&lt;style&gt;
+.bubbles &gt; .particle &#123;
+  opacity: 0;
+  position: absolute;
+  background-color: rgba(33, 150, 243, 0.5);
+  -webkit-animation: bubbles 3s ease-in infinite;
+          animation: bubbles 3s ease-in infinite;
+  border-radius: 100%;
+&#125;
+@-webkit-keyframes bubbles &#123;
+  0% &#123;
+    opacity: 0;
+  &#125;
+  20% &#123;
+    opacity: 1;
+    -webkit-transform: translate(0, -20%);
+            transform: translate(0, -20%);
+  &#125;
+  100% &#123;
+    opacity: 0;
+    -webkit-transform: translate(0, -1000%);
+            transform: translate(0, -1000%);
+  &#125;
+&#125;
 
-<h4 id="3-HTML-代码"><a href="#3-HTML-代码" class="headerlink" title="3. HTML 代码"></a>3. HTML 代码</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;width: 100%;text-align: center; height: 120px; position: relative; bottom: 0px;&quot;</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;particletext fire&quot;</span> <span class="attr">style</span>=<span class="string">&quot;font-size:48px;position: relative;&quot;</span>&gt;</span>This is fires<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+@keyframes bubbles &#123;
+  0% &#123;
+    opacity: 0;
+  &#125;
+  20% &#123;
+    opacity: 1;
+    -webkit-transform: translate(0, -20%);
+            transform: translate(0, -20%);
+  &#125;
+  100% &#123;
+    opacity: 0;
+    -webkit-transform: translate(0, -1000%);
+            transform: translate(0, -1000%);
+  &#125;
+&#125;
+&lt;/style&gt;
+</code></pre>
+<h4 id="3-HTML-代码-3"><a href="#3-HTML-代码-3" class="headerlink" title="3. HTML 代码"></a>3. HTML 代码</h4><pre><code class="html">&lt;div style=&quot;width: 100%;text-align: center; height: 120px; position: relative; bottom: 0px;&quot; &gt; 
+&lt;span class=&quot;particletext bubbles&quot; style=&quot;font-size:48px; position: relative;&quot;&gt;This is bubbles&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+<h3 id="0x006-Confetti-特效"><a href="#0x006-Confetti-特效" class="headerlink" title="0x006 Confetti 特效"></a>0x006 Confetti 特效</h3><h4 id="1-JS-代码-4"><a href="#1-JS-代码-4" class="headerlink" title="1. JS 代码"></a>1. JS 代码</h4><pre><code class="javascript">&lt;script&gt;
+function confetti() &#123; 
+   $.each($(&quot;.particletext.confetti&quot;), function()&#123; 
+      var confetticount = ($(this).width()/50)*10; 
+      for(var i = 0; i &lt;= confetticount; i++) &#123; 
+         $(this).append(&#39;&lt;span class=&quot;particle c&#39; + $.rnd(1,2) + &#39;&quot; style=&quot;top:&#39; + $.rnd(10,50) + &#39;%; left:&#39; + $.rnd(0,100) + &#39;%;width:&#39; + $.rnd(6,8) + &#39;px; height:&#39; + $.rnd(3,4) + &#39;px;animation-delay: &#39; + ($.rnd(0,30)/10) + &#39;s;&quot;&gt;&lt;/span&gt;&#39;); 
+      &#125; 
+   &#125;); 
+&#125; 
+  jQuery.rnd = function(m,n) &#123;
+      m = parseInt(m);
+      n = parseInt(n);
+      return Math.floor( Math.random() * (n - m + 1) ) + m;
+  &#125;
+  confetti();
+&lt;/script&gt;
+</code></pre>
+<h4 id="2-CSS-代码-4"><a href="#2-CSS-代码-4" class="headerlink" title="2. CSS 代码"></a>2. CSS 代码</h4><pre><code class="css">&lt;style&gt;
+.confetti &gt; .particle &#123;
+  opacity: 0;
+  position: absolute;
+  -webkit-animation: confetti 3s ease-in infinite;
+          animation: confetti 3s ease-in infinite;
+&#125;
+.confetti &gt; .particle.c1 &#123;
+  background-color: rgba(76, 175, 80, 0.5);
+&#125;
+.confetti &gt; .particle.c2 &#123;
+  background-color: rgba(156, 39, 176, 0.5);
+&#125;
+@-webkit-keyframes confetti &#123;
+  0% &#123;
+    opacity: 0;
+    -webkit-transform: translateY(0%) rotate(0deg);
+            transform: translateY(0%) rotate(0deg);
+  &#125;
+  10% &#123;
+    opacity: 1;
+  &#125;
+  35% &#123;
+    -webkit-transform: translateY(-800%) rotate(270deg);
+            transform: translateY(-800%) rotate(270deg);
+  &#125;
+  80% &#123;
+    opacity: 1;
+  &#125;
+  100% &#123;
+    opacity: 0;
+    -webkit-transform: translateY(2000%) rotate(1440deg);
+            transform: translateY(2000%) rotate(1440deg);
+  &#125;
+&#125;
+@keyframes confetti &#123;
+  0% &#123;
+    opacity: 0;
+    -webkit-transform: translateY(0%) rotate(0deg);
+            transform: translateY(0%) rotate(0deg);
+  &#125;
+  10% &#123;
+    opacity: 1;
+  &#125;
+  35% &#123;
+    -webkit-transform: translateY(-800%) rotate(270deg);
+            transform: translateY(-800%) rotate(270deg);
+  &#125;
+  80% &#123;
+    opacity: 1;
+  &#125;
+  100% &#123;
+    opacity: 0;
+    -webkit-transform: translateY(2000%) rotate(1440deg);
+            transform: translateY(2000%) rotate(1440deg);
+  &#125;
+&#125;
+&lt;/style&gt;
+</code></pre>
+<h4 id="3-HTML-代码-4"><a href="#3-HTML-代码-4" class="headerlink" title="3. HTML 代码"></a>3. HTML 代码</h4><pre><code class="html">&lt;div style=&quot;width: 100%;text-align: center; height: 120px; position: relative; bottom: 0px;&quot; &gt; 
+&lt;span class=&quot;particletext confetti&quot; style=&quot;font-size:48px; position: relative;&quot;&gt;This is confetti&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+<h3 id="0x007-Sunbeams-特效"><a href="#0x007-Sunbeams-特效" class="headerlink" title="0x007 Sunbeams 特效"></a>0x007 Sunbeams 特效</h3><h4 id="1-JS-代码-5"><a href="#1-JS-代码-5" class="headerlink" title="1. JS 代码"></a>1. JS 代码</h4><pre><code class="javascript">&lt;script&gt;
+function sunbeams() &#123; 
+   $.each($(&quot;.particletext.sunbeams&quot;), function()&#123; 
+      var linecount = ($(this).width()/50)*10; 
+      for(var i = 0; i &lt;= linecount; i++) &#123; 
+         $(this).append(&#39;&lt;span class=&quot;particle&quot; style=&quot;top:&#39; + $.rnd(-50,00) + &#39;%; left:&#39; + $.rnd(0,100) + &#39;%;width:&#39; + $.rnd(1,3) + &#39;px; height:&#39; + $.rnd(80,160) + &#39;%;animation-delay: -&#39; + ($.rnd(0,30)/10) + &#39;s;&quot;&gt;&lt;/span&gt;&#39;); 
+      &#125; 
+   &#125;); 
+&#125; 
+  jQuery.rnd = function(m,n) &#123;
+      m = parseInt(m);
+      n = parseInt(n);
+      return Math.floor( Math.random() * (n - m + 1) ) + m;
+  &#125;
+  sunbeams();
+&lt;/script&gt;
+</code></pre>
+<h4 id="2-CSS-代码-5"><a href="#2-CSS-代码-5" class="headerlink" title="2. CSS 代码"></a>2. CSS 代码</h4><pre><code class="css">&lt;style&gt;
+.sunbeams &gt; .particle &#123;
+  position: absolute;
+  background-color: rgba(253, 216, 53, 0.5);
+  -webkit-animation: sunbeams 3s linear infinite;
+          animation: sunbeams 3s linear infinite;
+&#125;
+@-webkit-keyframes sunbeams &#123;
+  0% &#123;
+    -webkit-transform: translateY(40%) rotate(0deg);
+            transform: translateY(40%) rotate(0deg);
+  &#125;
+  50% &#123;
+    -webkit-transform: translateY(-40%) rotate(180deg);
+            transform: translateY(-40%) rotate(180deg);
+  &#125;
+  100% &#123;
+    -webkit-transform: translateY(40%) rotate(360deg);
+            transform: translateY(40%) rotate(360deg);
+  &#125;
+  0%,14%,17%,43%,53%,71%,80%,94%,100% &#123;
+    opacity: 0;
+  &#125;
+  6%,15%,24%,28%,48%,55%,78%,82%,99% &#123;
+    opacity: 1;
+  &#125;
+&#125;
+@keyframes sunbeams &#123;
+  0% &#123;
+    -webkit-transform: translateY(40%) rotate(0deg);
+            transform: translateY(40%) rotate(0deg);
+  &#125;
+  50% &#123;
+    -webkit-transform: translateY(-40%) rotate(180deg);
+            transform: translateY(-40%) rotate(180deg);
+  &#125;
+  100% &#123;
+    -webkit-transform: translateY(40%) rotate(360deg);
+            transform: translateY(40%) rotate(360deg);
+  &#125;
+  0%,14%,17%,43%,53%,71%,80%,94%,100% &#123;
+    opacity: 0;
+  &#125;
+  6%,15%,24%,28%,48%,55%,78%,82%,99% &#123;
+    opacity: 1;
+  &#125;
+&#125;
+&lt;/style&gt;
+</code></pre>
+<h4 id="3-HTML-代码-5"><a href="#3-HTML-代码-5" class="headerlink" title="3. HTML 代码"></a>3. HTML 代码</h4><pre><code class="html">&lt;div style=&quot;width: 100%;text-align: center; height: 120px; position: relative; bottom: 0px;&quot; &gt;
+&lt;span class=&quot;particletext sunbeams&quot; style=&quot;font-size:48px; position: relative;&quot;&gt;This is sunbeams&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
 
-<h3 id="0x003-Lines-特效"><a href="#0x003-Lines-特效" class="headerlink" title="0x003 Lines 特效"></a>0x003 Lines 特效</h3><h4 id="1-JS-代码-1"><a href="#1-JS-代码-1" class="headerlink" title="1. JS 代码"></a>1. JS 代码</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">lines</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">   $.each($(<span class="string">&quot;.particletext.lines&quot;</span>), <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line">      <span class="keyword">var</span> linecount = ($(<span class="built_in">this</span>).width()/<span class="number">50</span>)*<span class="number">10</span>; </span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt;= linecount; i++) &#123; </span><br><span class="line">         $(<span class="built_in">this</span>).append(<span class="string">&#x27;&lt;span class=&quot;particle&quot; style=&quot;top:&#x27;</span> + $.rnd(-<span class="number">30</span>,<span class="number">30</span>) + <span class="string">&#x27;%; left:&#x27;</span> + $.rnd(-<span class="number">10</span>,<span class="number">110</span>) + <span class="string">&#x27;%;width:&#x27;</span> + $.rnd(<span class="number">1</span>,<span class="number">3</span>) + <span class="string">&#x27;px; height:&#x27;</span> + $.rnd(<span class="number">20</span>,<span class="number">80</span>) + <span class="string">&#x27;%;animation-delay: -&#x27;</span> + ($.rnd(<span class="number">0</span>,<span class="number">30</span>)/<span class="number">10</span>) + <span class="string">&#x27;s;&quot;&gt;&lt;/span&gt;&#x27;</span>); </span><br><span class="line">      &#125; </span><br><span class="line">   &#125;); </span><br><span class="line">&#125; </span><br><span class="line">  jQuery.rnd = <span class="function"><span class="keyword">function</span>(<span class="params">m,n</span>) </span>&#123;</span><br><span class="line">      m = <span class="built_in">parseInt</span>(m);</span><br><span class="line">      n = <span class="built_in">parseInt</span>(n);</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">Math</span>.floor( <span class="built_in">Math</span>.random() * (n - m + <span class="number">1</span>) ) + m;</span><br><span class="line">  &#125;</span><br><span class="line">  lines();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-CSS-代码-1"><a href="#2-CSS-代码-1" class="headerlink" title="2. CSS 代码"></a>2. CSS 代码</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line"><span class="selector-class">.lines</span> &gt; <span class="selector-class">.particle</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">244</span>, <span class="number">67</span>, <span class="number">54</span>, <span class="number">0.5</span>);</span><br><span class="line">  -webkit-<span class="attribute">animation</span>: lines <span class="number">3s</span> linear infinite;</span><br><span class="line">          <span class="attribute">animation</span>: lines <span class="number">3s</span> linear infinite;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@-webkit-keyframes</span> lines &#123;</span><br><span class="line">  <span class="number">0%</span>, <span class="number">50%</span>, <span class="number">100%</span> &#123;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">0%</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">0%</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">25%</span> &#123;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">100%</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">100%</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">75%</span> &#123;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translateY</span>(-<span class="number">100%</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translateY</span>(-<span class="number">100%</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@keyframes</span> lines &#123;</span><br><span class="line">  <span class="number">0%</span>, <span class="number">50%</span>, <span class="number">100%</span> &#123;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">0%</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">0%</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">25%</span> &#123;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">100%</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">100%</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">75%</span> &#123;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translateY</span>(-<span class="number">100%</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translateY</span>(-<span class="number">100%</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-HTML-代码-1"><a href="#3-HTML-代码-1" class="headerlink" title="3. HTML 代码"></a>3. HTML 代码</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;width: 100%;text-align: center; height: 120px; position: relative; bottom: 0px;&quot;</span> &gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;particletext lines&quot;</span> <span class="attr">style</span>=<span class="string">&quot;font-size:48px; position: relative;&quot;</span>&gt;</span>This is lines<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="0x004-Hearts-特效"><a href="#0x004-Hearts-特效" class="headerlink" title="0x004 Hearts 特效"></a>0x004 Hearts 特效</h3><h4 id="1-JS-代码-2"><a href="#1-JS-代码-2" class="headerlink" title="1. JS 代码"></a>1. JS 代码</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hearts</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">   $.each($(<span class="string">&quot;.particletext.hearts&quot;</span>), <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line">      <span class="keyword">var</span> heartcount = ($(<span class="built_in">this</span>).width()/<span class="number">50</span>)*<span class="number">5</span>; </span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt;= heartcount; i++) &#123; </span><br><span class="line">         <span class="keyword">var</span> size = ($.rnd(<span class="number">60</span>,<span class="number">120</span>)/<span class="number">10</span>); </span><br><span class="line">         $(<span class="built_in">this</span>).append(<span class="string">&#x27;&lt;span class=&quot;particle&quot; style=&quot;top:&#x27;</span> + $.rnd(<span class="number">20</span>,<span class="number">80</span>) + <span class="string">&#x27;%; left:&#x27;</span> + $.rnd(<span class="number">0</span>,<span class="number">95</span>) + <span class="string">&#x27;%;width:&#x27;</span> + size + <span class="string">&#x27;px; height:&#x27;</span> + size + <span class="string">&#x27;px;animation-delay: &#x27;</span> + ($.rnd(<span class="number">0</span>,<span class="number">30</span>)/<span class="number">10</span>) + <span class="string">&#x27;s;&quot;&gt;&lt;/span&gt;&#x27;</span>); </span><br><span class="line">      &#125; </span><br><span class="line">   &#125;); </span><br><span class="line">&#125; </span><br><span class="line">  jQuery.rnd = <span class="function"><span class="keyword">function</span>(<span class="params">m,n</span>) </span>&#123;</span><br><span class="line">      m = <span class="built_in">parseInt</span>(m);</span><br><span class="line">      n = <span class="built_in">parseInt</span>(n);</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">Math</span>.floor( <span class="built_in">Math</span>.random() * (n - m + <span class="number">1</span>) ) + m;</span><br><span class="line">  &#125;</span><br><span class="line">  hearts();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-CSS-代码-2"><a href="#2-CSS-代码-2" class="headerlink" title="2. CSS 代码"></a>2. CSS 代码</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line"><span class="selector-class">.hearts</span> &gt; <span class="selector-class">.particle</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#cc2a5d</span>;</span><br><span class="line">  -webkit-<span class="attribute">animation</span>: hearts <span class="number">3s</span> ease-in infinite;</span><br><span class="line">          <span class="attribute">animation</span>: hearts <span class="number">3s</span> ease-in infinite;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.hearts</span> &gt; <span class="selector-class">.particle</span>:before, .hearts &gt; .particle:after &#123;</span><br><span class="line">  position: absolute;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0px</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0px</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#cc2a5d</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.hearts</span> &gt; <span class="selector-class">.particle</span>:before &#123;</span><br><span class="line">  -webkit-transform: <span class="built_in">translateX</span>(-<span class="number">50%</span>);</span><br><span class="line">          <span class="attribute">transform</span>: <span class="built_in">translateX</span>(-<span class="number">50%</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.hearts</span> &gt; <span class="selector-class">.particle</span>:after &#123;</span><br><span class="line">  -webkit-transform: <span class="built_in">translateY</span>(-<span class="number">50%</span>);</span><br><span class="line">          <span class="attribute">transform</span>: <span class="built_in">translateY</span>(-<span class="number">50%</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@-webkit-keyframes</span> hearts &#123;</span><br><span class="line">  <span class="number">0%</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">0</span>, <span class="number">0%</span>) <span class="built_in">rotate</span>(<span class="number">45deg</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">0</span>, <span class="number">0%</span>) <span class="built_in">rotate</span>(<span class="number">45deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">20%</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0.8</span>;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">0</span>, -<span class="number">20%</span>) <span class="built_in">rotate</span>(<span class="number">45deg</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">0</span>, -<span class="number">20%</span>) <span class="built_in">rotate</span>(<span class="number">45deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">100%</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">0</span>, -<span class="number">1000%</span>) <span class="built_in">rotate</span>(<span class="number">45deg</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">0</span>, -<span class="number">1000%</span>) <span class="built_in">rotate</span>(<span class="number">45deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@keyframes</span> hearts &#123;</span><br><span class="line">  <span class="number">0%</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">0</span>, <span class="number">0%</span>) <span class="built_in">rotate</span>(<span class="number">45deg</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">0</span>, <span class="number">0%</span>) <span class="built_in">rotate</span>(<span class="number">45deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">20%</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0.8</span>;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">0</span>, -<span class="number">20%</span>) <span class="built_in">rotate</span>(<span class="number">45deg</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">0</span>, -<span class="number">20%</span>) <span class="built_in">rotate</span>(<span class="number">45deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">100%</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">0</span>, -<span class="number">1000%</span>) <span class="built_in">rotate</span>(<span class="number">45deg</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">0</span>, -<span class="number">1000%</span>) <span class="built_in">rotate</span>(<span class="number">45deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-HTML-代码-2"><a href="#3-HTML-代码-2" class="headerlink" title="3. HTML 代码"></a>3. HTML 代码</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;width: 100%;text-align: center; height: 120px; position: relative; bottom: 0px;&quot;</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;particletext hearts&quot;</span> <span class="attr">style</span>=<span class="string">&quot;font-size:48px; position: relative;&quot;</span>&gt;</span>This is hearts<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="0x005-Bubbles-特效"><a href="#0x005-Bubbles-特效" class="headerlink" title="0x005 Bubbles 特效"></a>0x005 Bubbles 特效</h3><h4 id="1-JS-代码-3"><a href="#1-JS-代码-3" class="headerlink" title="1. JS 代码"></a>1. JS 代码</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbles</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">   $.each($(<span class="string">&quot;.particletext.bubbles&quot;</span>), <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line">      <span class="keyword">var</span> bubblecount = ($(<span class="built_in">this</span>).width()/<span class="number">50</span>)*<span class="number">10</span>; </span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt;= bubblecount; i++) &#123; </span><br><span class="line">         <span class="keyword">var</span> size = ($.rnd(<span class="number">40</span>,<span class="number">80</span>)/<span class="number">10</span>); </span><br><span class="line">         $(<span class="built_in">this</span>).append(<span class="string">&#x27;&lt;span class=&quot;particle&quot; style=&quot;top:&#x27;</span> + $.rnd(<span class="number">20</span>,<span class="number">80</span>) + <span class="string">&#x27;%; left:&#x27;</span> + $.rnd(<span class="number">0</span>,<span class="number">95</span>) + <span class="string">&#x27;%;width:&#x27;</span> + size + <span class="string">&#x27;px; height:&#x27;</span> + size + <span class="string">&#x27;px;animation-delay: &#x27;</span> + ($.rnd(<span class="number">0</span>,<span class="number">30</span>)/<span class="number">10</span>) + <span class="string">&#x27;s;&quot;&gt;&lt;/span&gt;&#x27;</span>); </span><br><span class="line">      &#125; </span><br><span class="line">   &#125;); </span><br><span class="line">&#125; </span><br><span class="line">  jQuery.rnd = <span class="function"><span class="keyword">function</span>(<span class="params">m,n</span>) </span>&#123;</span><br><span class="line">      m = <span class="built_in">parseInt</span>(m);</span><br><span class="line">      n = <span class="built_in">parseInt</span>(n);</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">Math</span>.floor( <span class="built_in">Math</span>.random() * (n - m + <span class="number">1</span>) ) + m;</span><br><span class="line">  &#125;</span><br><span class="line">  bubbles();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-CSS-代码-3"><a href="#2-CSS-代码-3" class="headerlink" title="2. CSS 代码"></a>2. CSS 代码</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line"><span class="selector-class">.bubbles</span> &gt; <span class="selector-class">.particle</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">33</span>, <span class="number">150</span>, <span class="number">243</span>, <span class="number">0.5</span>);</span><br><span class="line">  -webkit-<span class="attribute">animation</span>: bubbles <span class="number">3s</span> ease-in infinite;</span><br><span class="line">          <span class="attribute">animation</span>: bubbles <span class="number">3s</span> ease-in infinite;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@-webkit-keyframes</span> bubbles &#123;</span><br><span class="line">  <span class="number">0%</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">20%</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">0</span>, -<span class="number">20%</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">0</span>, -<span class="number">20%</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">100%</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">0</span>, -<span class="number">1000%</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">0</span>, -<span class="number">1000%</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@keyframes</span> bubbles &#123;</span><br><span class="line">  <span class="number">0%</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">20%</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">0</span>, -<span class="number">20%</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">0</span>, -<span class="number">20%</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">100%</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">0</span>, -<span class="number">1000%</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">0</span>, -<span class="number">1000%</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-HTML-代码-3"><a href="#3-HTML-代码-3" class="headerlink" title="3. HTML 代码"></a>3. HTML 代码</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;width: 100%;text-align: center; height: 120px; position: relative; bottom: 0px;&quot;</span> &gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;particletext bubbles&quot;</span> <span class="attr">style</span>=<span class="string">&quot;font-size:48px; position: relative;&quot;</span>&gt;</span>This is bubbles<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="0x006-Confetti-特效"><a href="#0x006-Confetti-特效" class="headerlink" title="0x006 Confetti 特效"></a>0x006 Confetti 特效</h3><h4 id="1-JS-代码-4"><a href="#1-JS-代码-4" class="headerlink" title="1. JS 代码"></a>1. JS 代码</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">confetti</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">   $.each($(<span class="string">&quot;.particletext.confetti&quot;</span>), <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line">      <span class="keyword">var</span> confetticount = ($(<span class="built_in">this</span>).width()/<span class="number">50</span>)*<span class="number">10</span>; </span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt;= confetticount; i++) &#123; </span><br><span class="line">         $(<span class="built_in">this</span>).append(<span class="string">&#x27;&lt;span class=&quot;particle c&#x27;</span> + $.rnd(<span class="number">1</span>,<span class="number">2</span>) + <span class="string">&#x27;&quot; style=&quot;top:&#x27;</span> + $.rnd(<span class="number">10</span>,<span class="number">50</span>) + <span class="string">&#x27;%; left:&#x27;</span> + $.rnd(<span class="number">0</span>,<span class="number">100</span>) + <span class="string">&#x27;%;width:&#x27;</span> + $.rnd(<span class="number">6</span>,<span class="number">8</span>) + <span class="string">&#x27;px; height:&#x27;</span> + $.rnd(<span class="number">3</span>,<span class="number">4</span>) + <span class="string">&#x27;px;animation-delay: &#x27;</span> + ($.rnd(<span class="number">0</span>,<span class="number">30</span>)/<span class="number">10</span>) + <span class="string">&#x27;s;&quot;&gt;&lt;/span&gt;&#x27;</span>); </span><br><span class="line">      &#125; </span><br><span class="line">   &#125;); </span><br><span class="line">&#125; </span><br><span class="line">  jQuery.rnd = <span class="function"><span class="keyword">function</span>(<span class="params">m,n</span>) </span>&#123;</span><br><span class="line">      m = <span class="built_in">parseInt</span>(m);</span><br><span class="line">      n = <span class="built_in">parseInt</span>(n);</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">Math</span>.floor( <span class="built_in">Math</span>.random() * (n - m + <span class="number">1</span>) ) + m;</span><br><span class="line">  &#125;</span><br><span class="line">  confetti();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-CSS-代码-4"><a href="#2-CSS-代码-4" class="headerlink" title="2. CSS 代码"></a>2. CSS 代码</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line"><span class="selector-class">.confetti</span> &gt; <span class="selector-class">.particle</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  -webkit-<span class="attribute">animation</span>: confetti <span class="number">3s</span> ease-in infinite;</span><br><span class="line">          <span class="attribute">animation</span>: confetti <span class="number">3s</span> ease-in infinite;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.confetti</span> &gt; <span class="selector-class">.particle</span><span class="selector-class">.c1</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">76</span>, <span class="number">175</span>, <span class="number">80</span>, <span class="number">0.5</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.confetti</span> &gt; <span class="selector-class">.particle</span><span class="selector-class">.c2</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">156</span>, <span class="number">39</span>, <span class="number">176</span>, <span class="number">0.5</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@-webkit-keyframes</span> confetti &#123;</span><br><span class="line">  <span class="number">0%</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">0%</span>) <span class="built_in">rotate</span>(<span class="number">0deg</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">0%</span>) <span class="built_in">rotate</span>(<span class="number">0deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">10%</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">35%</span> &#123;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translateY</span>(-<span class="number">800%</span>) <span class="built_in">rotate</span>(<span class="number">270deg</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translateY</span>(-<span class="number">800%</span>) <span class="built_in">rotate</span>(<span class="number">270deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">80%</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">100%</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">2000%</span>) <span class="built_in">rotate</span>(<span class="number">1440deg</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">2000%</span>) <span class="built_in">rotate</span>(<span class="number">1440deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@keyframes</span> confetti &#123;</span><br><span class="line">  <span class="number">0%</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">0%</span>) <span class="built_in">rotate</span>(<span class="number">0deg</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">0%</span>) <span class="built_in">rotate</span>(<span class="number">0deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">10%</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">35%</span> &#123;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translateY</span>(-<span class="number">800%</span>) <span class="built_in">rotate</span>(<span class="number">270deg</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translateY</span>(-<span class="number">800%</span>) <span class="built_in">rotate</span>(<span class="number">270deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">80%</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">100%</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">2000%</span>) <span class="built_in">rotate</span>(<span class="number">1440deg</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">2000%</span>) <span class="built_in">rotate</span>(<span class="number">1440deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-HTML-代码-4"><a href="#3-HTML-代码-4" class="headerlink" title="3. HTML 代码"></a>3. HTML 代码</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;width: 100%;text-align: center; height: 120px; position: relative; bottom: 0px;&quot;</span> &gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;particletext confetti&quot;</span> <span class="attr">style</span>=<span class="string">&quot;font-size:48px; position: relative;&quot;</span>&gt;</span>This is confetti<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="0x007-Sunbeams-特效"><a href="#0x007-Sunbeams-特效" class="headerlink" title="0x007 Sunbeams 特效"></a>0x007 Sunbeams 特效</h3><h4 id="1-JS-代码-5"><a href="#1-JS-代码-5" class="headerlink" title="1. JS 代码"></a>1. JS 代码</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sunbeams</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">   $.each($(<span class="string">&quot;.particletext.sunbeams&quot;</span>), <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line">      <span class="keyword">var</span> linecount = ($(<span class="built_in">this</span>).width()/<span class="number">50</span>)*<span class="number">10</span>; </span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt;= linecount; i++) &#123; </span><br><span class="line">         $(<span class="built_in">this</span>).append(<span class="string">&#x27;&lt;span class=&quot;particle&quot; style=&quot;top:&#x27;</span> + $.rnd(-<span class="number">50</span>,<span class="number">00</span>) + <span class="string">&#x27;%; left:&#x27;</span> + $.rnd(<span class="number">0</span>,<span class="number">100</span>) + <span class="string">&#x27;%;width:&#x27;</span> + $.rnd(<span class="number">1</span>,<span class="number">3</span>) + <span class="string">&#x27;px; height:&#x27;</span> + $.rnd(<span class="number">80</span>,<span class="number">160</span>) + <span class="string">&#x27;%;animation-delay: -&#x27;</span> + ($.rnd(<span class="number">0</span>,<span class="number">30</span>)/<span class="number">10</span>) + <span class="string">&#x27;s;&quot;&gt;&lt;/span&gt;&#x27;</span>); </span><br><span class="line">      &#125; </span><br><span class="line">   &#125;); </span><br><span class="line">&#125; </span><br><span class="line">  jQuery.rnd = <span class="function"><span class="keyword">function</span>(<span class="params">m,n</span>) </span>&#123;</span><br><span class="line">      m = <span class="built_in">parseInt</span>(m);</span><br><span class="line">      n = <span class="built_in">parseInt</span>(n);</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">Math</span>.floor( <span class="built_in">Math</span>.random() * (n - m + <span class="number">1</span>) ) + m;</span><br><span class="line">  &#125;</span><br><span class="line">  sunbeams();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-CSS-代码-5"><a href="#2-CSS-代码-5" class="headerlink" title="2. CSS 代码"></a>2. CSS 代码</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line"><span class="selector-class">.sunbeams</span> &gt; <span class="selector-class">.particle</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">253</span>, <span class="number">216</span>, <span class="number">53</span>, <span class="number">0.5</span>);</span><br><span class="line">  -webkit-<span class="attribute">animation</span>: sunbeams <span class="number">3s</span> linear infinite;</span><br><span class="line">          <span class="attribute">animation</span>: sunbeams <span class="number">3s</span> linear infinite;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@-webkit-keyframes</span> sunbeams &#123;</span><br><span class="line">  <span class="number">0%</span> &#123;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">40%</span>) <span class="built_in">rotate</span>(<span class="number">0deg</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">40%</span>) <span class="built_in">rotate</span>(<span class="number">0deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">50%</span> &#123;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translateY</span>(-<span class="number">40%</span>) <span class="built_in">rotate</span>(<span class="number">180deg</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translateY</span>(-<span class="number">40%</span>) <span class="built_in">rotate</span>(<span class="number">180deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">100%</span> &#123;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">40%</span>) <span class="built_in">rotate</span>(<span class="number">360deg</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">40%</span>) <span class="built_in">rotate</span>(<span class="number">360deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">0%</span>,<span class="number">14%</span>,<span class="number">17%</span>,<span class="number">43%</span>,<span class="number">53%</span>,<span class="number">71%</span>,<span class="number">80%</span>,<span class="number">94%</span>,<span class="number">100%</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">6%</span>,<span class="number">15%</span>,<span class="number">24%</span>,<span class="number">28%</span>,<span class="number">48%</span>,<span class="number">55%</span>,<span class="number">78%</span>,<span class="number">82%</span>,<span class="number">99%</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@keyframes</span> sunbeams &#123;</span><br><span class="line">  <span class="number">0%</span> &#123;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">40%</span>) <span class="built_in">rotate</span>(<span class="number">0deg</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">40%</span>) <span class="built_in">rotate</span>(<span class="number">0deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">50%</span> &#123;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translateY</span>(-<span class="number">40%</span>) <span class="built_in">rotate</span>(<span class="number">180deg</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translateY</span>(-<span class="number">40%</span>) <span class="built_in">rotate</span>(<span class="number">180deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">100%</span> &#123;</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">40%</span>) <span class="built_in">rotate</span>(<span class="number">360deg</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">40%</span>) <span class="built_in">rotate</span>(<span class="number">360deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">0%</span>,<span class="number">14%</span>,<span class="number">17%</span>,<span class="number">43%</span>,<span class="number">53%</span>,<span class="number">71%</span>,<span class="number">80%</span>,<span class="number">94%</span>,<span class="number">100%</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">6%</span>,<span class="number">15%</span>,<span class="number">24%</span>,<span class="number">28%</span>,<span class="number">48%</span>,<span class="number">55%</span>,<span class="number">78%</span>,<span class="number">82%</span>,<span class="number">99%</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-HTML-代码-5"><a href="#3-HTML-代码-5" class="headerlink" title="3. HTML 代码"></a>3. HTML 代码</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;width: 100%;text-align: center; height: 120px; position: relative; bottom: 0px;&quot;</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;particletext sunbeams&quot;</span> <span class="attr">style</span>=<span class="string">&quot;font-size:48px; position: relative;&quot;</span>&gt;</span>This is sunbeams<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
                 
             </div>
             <hr/>

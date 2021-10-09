@@ -482,38 +482,159 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1、JSP"><a href="#1、JSP" class="headerlink" title="1、JSP"></a>1、JSP</h1><h2 id="1、概念"><a href="#1、概念" class="headerlink" title="1、概念"></a>1、概念</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 简单来说：可以在html标签中嵌套java代码</span></span><br><span class="line">有一些页面: 动静态结合</span><br><span class="line"></span><br><span class="line"><span class="bullet">1.</span> html可以写静态效果,但是动态效果写不了(写不了java)</span><br><span class="line"></span><br><span class="line"><span class="bullet">2.</span> servlet可以实现动静态结合,写静态很麻烦</span><br><span class="line"></span><br><span class="line">   -&gt; jsp : html + java</span><br></pre></td></tr></table></figure>
+                <h1 id="1、JSP"><a href="#1、JSP" class="headerlink" title="1、JSP"></a>1、JSP</h1><h2 id="1、概念"><a href="#1、概念" class="headerlink" title="1、概念"></a>1、概念</h2><pre><code class="markdown"># 简单来说：可以在html标签中嵌套java代码
+有一些页面: 动静态结合
 
+1. html可以写静态效果,但是动态效果写不了(写不了java)
 
+2. servlet可以实现动静态结合,写静态很麻烦
 
+   -&gt; jsp : html + java
+</code></pre>
 <h2 id="2、工作原理"><a href="#2、工作原理" class="headerlink" title="2、工作原理"></a>2、工作原理</h2><p><strong>JSP本质上就是一个Servlet</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"># JSP运行原理</span><br><span class="line"><span class="number">0.</span> 查看流程</span><br><span class="line">    a. 运行看tomcat日志输出 </span><br><span class="line">            <span class="number">1</span>). Using CATALINA_BASE:   <span class="string">&quot;C:\Users\spy\.IntelliJIdea2018.2\system\tomcat\_class114&quot;</span></span><br><span class="line">            (要打开这个路径)</span><br><span class="line">            <span class="number">2</span>). 浏览器访问了jsp页面, 然后到这个目录下查看路径 work\Catalina\localhost\模块名\org\apache\jsp</span><br><span class="line">            <span class="number">3</span>). 找到xx_jsp.java(继承自org.apache.jasper.runtime.HttpJspBase) 和 对应的<span class="class"><span class="keyword">class</span>文件</span></span><br><span class="line"><span class="class">    <span class="title">b</span>. 查找<span class="title">HttpJspBase</span>(实现自<span class="title">HttpServlet</span>)</span></span><br><span class="line"><span class="class">            1). 在<span class="title">tomcat</span>安装路径下查看<span class="title">lib</span>目录有个<span class="title">jasper</span>.<span class="title">jar</span>复制出来</span></span><br><span class="line"><span class="class">            2). 用压缩软件打开找到这个<span class="title">HttpJspBase</span>.<span class="title">class</span>文件</span></span><br><span class="line"><span class="class">            3). 拖进<span class="title">idea</span>反编译</span></span><br><span class="line"><span class="class">1. <span class="title">JSP</span>运行流程：</span></span><br><span class="line"><span class="class">		1). 前端请求<span class="title">JSP</span>页面</span></span><br><span class="line"><span class="class">		2). 服务器操作</span></span><br><span class="line"><span class="class">			1. <span class="title">JSP</span>页面被<span class="title">tomcat</span>翻译成<span class="title">Servlet</span>,并且调用此<span class="title">Servlet</span>的<span class="title">service</span>方法 (<span class="title">_jspService</span>方法)</span></span><br><span class="line"><span class="class">			2. <span class="title">HTML</span>代码：<span class="title">out</span>.<span class="title">write</span>() 输出在网页</span></span><br><span class="line"><span class="class">			3. <span class="title">java</span>代码：在<span class="title">Servlet</span>中被原样保留</span></span><br><span class="line"><span class="class">		3). 服务器响应 </span></span><br><span class="line"><span class="class">	</span></span><br><span class="line"><span class="class">2. <span class="title">JSP</span>本质：是一个<span class="title">Servlet</span></span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"># 分析</span></span><br><span class="line"><span class="class">1. <span class="title">JSP</span>从语法上看: 在<span class="title">html</span>上写<span class="title">java</span>代码</span></span><br><span class="line"><span class="class">2. <span class="title">Jsp</span>从本质上看: 实际上是一个<span class="title">Servlet</span></span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"># 结论</span></span><br><span class="line"><span class="class">1. 浏览器访问<span class="title">hello</span>.<span class="title">jsp</span>,<span class="title">tomcat</span>会产生<span class="title">java</span>代码: <span class="title">hello_jsp</span>.<span class="title">java</span>(<span class="title">Servlet</span>)</span></span><br><span class="line"><span class="class">	并且立即编译出<span class="title">hello_jsp</span>.<span class="title">class</span>,并调用<span class="title">_jspService</span>方法</span></span><br><span class="line"><span class="class">2. <span class="title">hello_jsp</span>.<span class="title">java</span>是<span class="title">tomcat</span>根据<span class="title">hello</span>.<span class="title">jsp</span>翻译成的代码</span></span><br><span class="line"><span class="class">	1). <span class="title">html</span>   被翻译成 -&gt;  <span class="title">out</span>.<span class="title">write</span>(&quot;<span class="title">html</span>&quot;) 响应体输出</span></span><br><span class="line"><span class="class">	2). <span class="title">java</span>   原封不动</span></span><br><span class="line"><span class="class">3. <span class="title">tomcat</span>中的<span class="title">JspServlet</span></span></span><br><span class="line"><span class="class">	1). 启动加载</span></span><br><span class="line"><span class="class">	2). 虚拟路径是*.<span class="title">jsp</span> (后缀名匹配)</span></span><br><span class="line"><span class="class">		浏览器访问任何以<span class="title">jsp</span>结尾的路径,<span class="title">JspServlet</span>会运行(实现将找到浏览器访问的<span class="title">jsp</span>,翻译成<span class="title">Servlet</span>)</span></span><br><span class="line"><span class="class">		并且调用此<span class="title">servlet</span>的<span class="title">service</span>方法</span></span><br></pre></td></tr></table></figure>
+<pre><code class="java"># JSP运行原理
+0. 查看流程
+    a. 运行看tomcat日志输出 
+            1). Using CATALINA_BASE:   &quot;C:\Users\spy\.IntelliJIdea2018.2\system\tomcat\_class114&quot;
+            (要打开这个路径)
+            2). 浏览器访问了jsp页面, 然后到这个目录下查看路径 work\Catalina\localhost\模块名\org\apache\jsp
+            3). 找到xx_jsp.java(继承自org.apache.jasper.runtime.HttpJspBase) 和 对应的class文件
+    b. 查找HttpJspBase(实现自HttpServlet)
+            1). 在tomcat安装路径下查看lib目录有个jasper.jar复制出来
+            2). 用压缩软件打开找到这个HttpJspBase.class文件
+            3). 拖进idea反编译
+1. JSP运行流程：
+        1). 前端请求JSP页面
+        2). 服务器操作
+            1. JSP页面被tomcat翻译成Servlet,并且调用此Servlet的service方法 (_jspService方法)
+            2. HTML代码：out.write() 输出在网页
+            3. java代码：在Servlet中被原样保留
+        3). 服务器响应 
+    
+2. JSP本质：是一个Servlet
 
+# 分析
+1. JSP从语法上看: 在html上写java代码
+2. Jsp从本质上看: 实际上是一个Servlet
 
-
+# 结论
+1. 浏览器访问hello.jsp,tomcat会产生java代码: hello_jsp.java(Servlet)
+    并且立即编译出hello_jsp.class,并调用_jspService方法
+2. hello_jsp.java是tomcat根据hello.jsp翻译成的代码
+    1). html   被翻译成 -&gt;  out.write(&quot;html&quot;) 响应体输出
+    2). java   原封不动
+3. tomcat中的JspServlet
+    1). 启动加载
+    2). 虚拟路径是*.jsp (后缀名匹配)
+        浏览器访问任何以jsp结尾的路径,JspServlet会运行(实现将找到浏览器访问的jsp,翻译成Servlet)
+        并且调用此servlet的service方法
+</code></pre>
 <h2 id="3、3种脚本"><a href="#3、3种脚本" class="headerlink" title="3、3种脚本"></a>3、3种脚本</h2><p><strong>JSP通过脚本方式来定义java代码</strong></p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> &lt;% 代码 %&gt;</span><br><span class="line"><span class="code">		脚本片段,生成在service方法中,每次请求的时候都会执行</span></span><br><span class="line"><span class="code">		</span></span><br><span class="line"><span class="code">2. &lt;%! 代码 %&gt;</span></span><br><span class="line"><span class="code">		声明片段,在java代码中声明成员,放在jsp生成java文件中的成员位置</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="bullet">3.</span> &lt;%=代码 %&gt;</span><br><span class="line"><span class="code">		输出脚本片段,相当于在service方法中使用out.print(&quot;代码&quot;) 方法，输出到jsp页面</span></span><br></pre></td></tr></table></figure>
+<pre><code class="markdown">1. &lt;% 代码 %&gt;
+        脚本片段,生成在service方法中,每次请求的时候都会执行
+        
+2. &lt;%! 代码 %&gt;
+        声明片段,在java代码中声明成员,放在jsp生成java文件中的成员位置
 
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">jsp有三种脚本语法:</span><br><span class="line"><span class="bullet">1.</span> 脚本片段</span><br><span class="line"><span class="code">    1). &lt;% java代码 %&gt;</span></span><br><span class="line"><span class="code">    2). 会被翻译到servlet的service方法中</span></span><br><span class="line"><span class="code">    3). 扩展:</span></span><br><span class="line"><span class="code">        JspWriter out/PrintWriter writer : 响应体输出流</span></span><br><span class="line"><span class="code">        writer优先级高于out</span></span><br><span class="line"><span class="code">        推荐用out (因为html是用out输出的,保证书写顺序和执行顺序的一致性)</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="bullet">2.</span> 输出脚本片段</span><br><span class="line"><span class="code">    1). &lt;%=输出的内容%&gt;</span></span><br><span class="line"><span class="code">    2).  &lt;% out.print(&quot;输出的内容&quot;); %&gt; 省略格式</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="bullet">3.</span> 声明片段</span><br><span class="line"><span class="code">    1).  &lt;%! java代码  %&gt;</span></span><br><span class="line"><span class="code">    2). 会被翻译到servlet的成员位置(类中方法外)</span></span><br><span class="line"><span class="code">    3). 往往用于方法或成员变量的声明</span></span><br></pre></td></tr></table></figure>
+3. &lt;%=代码 %&gt;
+        输出脚本片段,相当于在service方法中使用out.print(&quot;代码&quot;) 方法，输出到jsp页面
+</code></pre>
+<pre><code class="markdown">  jsp有三种脚本语法:
+  1. 脚本片段
+      1). &lt;% java代码 %&gt;
+      2). 会被翻译到servlet的service方法中
+      3). 扩展:
+          JspWriter out/PrintWriter writer : 响应体输出流
+          writer优先级高于out
+          推荐用out (因为html是用out输出的,保证书写顺序和执行顺序的一致性)
 
+  2. 输出脚本片段
+      1). &lt;%=输出的内容%&gt;
+      2).  &lt;% out.print(&quot;输出的内容&quot;); %&gt; 省略格式
 
+  3. 声明片段
+      1).  &lt;%! java代码  %&gt;
+      2). 会被翻译到servlet的成员位置(类中方法外)
+      3). 往往用于方法或成员变量的声明
+</code></pre>
+<h2 id="4、3种注释"><a href="#4、3种注释" class="headerlink" title="4、3种注释"></a>4、3种注释</h2><pre><code class="markdown">1. html注释
+        &lt;!-- 注释静态资源 --&gt;
+    
+2. JSP注释
+        &lt;%-- 注释所有 --%&gt;
 
-<h2 id="4、3种注释"><a href="#4、3种注释" class="headerlink" title="4、3种注释"></a>4、3种注释</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> html注释</span><br><span class="line"><span class="code">		&lt;!-- 注释静态资源 --&gt;</span></span><br><span class="line"><span class="code">	</span></span><br><span class="line"><span class="code">2. JSP注释</span></span><br><span class="line"><span class="code">		&lt;%-- 注释所有 --%&gt;</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="bullet">3.</span> java注释（JSP脚本内使用）</span><br><span class="line"><span class="code">		// 单行</span></span><br><span class="line"><span class="code">		/* 多行 */</span></span><br><span class="line"><span class="code">		/**文档 */</span></span><br><span class="line"><span class="code">		</span></span><br><span class="line"><span class="code">#备注: 因为html注释在页面源码中可见(不安全), 所以在jsp中推荐使用JSP注释或java注释	</span></span><br></pre></td></tr></table></figure>
+3. java注释（JSP脚本内使用）
+        // 单行
+        /* 多行 */
+        /**文档 */
+        
+#备注: 因为html注释在页面源码中可见(不安全), 所以在jsp中推荐使用JSP注释或java注释    
+</code></pre>
+<h2 id="5、3大指令"><a href="#5、3大指令" class="headerlink" title="5、3大指令"></a>5、3大指令</h2><pre><code class="markdown">* 作用
+        JSP指令用来设置整个JSP页面相关的属性    
+* 格式
+        &lt;%@指令名称 属性名1=&quot;属性值1&quot; 属性名2=&quot;属性值2&quot; ...%&gt;
+        
+* 三大指令
+    1. page：配置JSP页面
+    
+    2. include：页面包含（静态）
+    
+    3. taglib:导入资源文件
+</code></pre>
+<h3 id="1、page指令"><a href="#1、page指令" class="headerlink" title="1、page指令"></a>1、page指令</h3><pre><code class="markdown">&lt;%@ page contentType=&quot;text/html;charset=UTF-8&quot; language=&quot;java&quot; %&gt;
+    1). contentType 等价于 response.setContentType(); 设置响应体的MIME类型和编码方式
+    2). language    目前仅支持java语言
+    3). import      导入jar包
+        &lt;%@ page import=&quot;java.util.Date&quot; %&gt;
+     4). errorPage : 发生错误时的跳转页面
+       5). isErrorPage : 默认false, errorPage才会设置true的话,可以调用exception对象查看异常原因    
+</code></pre>
+<h3 id="2、include指令"><a href="#2、include指令" class="headerlink" title="2、include指令"></a>2、include指令</h3><pre><code class="markdown">1. 作用: 在一个jsp页面包含其他的页面
+2. 目的: 避免代码冗余
+3. 举例:
+        a. 有A.jsp和B.jsp两个页面, 头部都一样, 那么两个页面得写相同的代码两遍, 很冗余
+        b. 把头部抽取出来 top.jsp , 分别A.jsp和B.jsp包含即可, 这样避免了代码冗余
+        
+4. 语法:  
+    &lt;%@include file=&quot;top.jsp&quot;%&gt;     
+</code></pre>
+<h3 id="3、taglib指令"><a href="#3、taglib指令" class="headerlink" title="3、taglib指令"></a>3、taglib指令</h3><pre><code class="jsp">导入apache提供的jstl标准标签库
 
+&lt;%@taglib prefix=&quot;c&quot; uri=&quot;http://java.sun.com/jsp/jstl/core&quot; %&gt;
+</code></pre>
+<h2 id="6、九大内置对象"><a href="#6、九大内置对象" class="headerlink" title="6、九大内置对象"></a>6、九大内置对象</h2><pre><code class="markdown">* 作用
+        在JSP页面中不需要获取和创建，可以直接使用的对象
+        
+* JSP一共有9个内置对象
+    变量名                  真实类型                    作用
+    pageContext            PageContext                  当前JSP页面中共享数据（域对象）
+    request                HttpServletRequest       一次请求中共享数据（域对象）
+    session             HttpSession                 一次会话中共享数据（域对象）
+    application            ServletContext             整个web应用共享数据（域对象）
+    -----------------------------------------------
+    response            HttpServletResponse         响应对象
+    page（this）                Object                当前页面(servlet)对象
+    out                 JSPWriter                 输出对象
+    config              ServletConfig             servlet配置对象
+    exception           Throwable                 异常对象（默认关闭...）        
 
-
-<h2 id="5、3大指令"><a href="#5、3大指令" class="headerlink" title="5、3大指令"></a>5、3大指令</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span> 作用</span><br><span class="line"><span class="code">		JSP指令用来设置整个JSP页面相关的属性	</span></span><br><span class="line"><span class="code">* 格式</span></span><br><span class="line"><span class="code">		&lt;%@指令名称 属性名1=&quot;属性值1&quot; 属性名2=&quot;属性值2&quot; ...%&gt;</span></span><br><span class="line"><span class="code">		</span></span><br><span class="line"><span class="code">* 三大指令</span></span><br><span class="line"><span class="code">	1. page：配置JSP页面</span></span><br><span class="line"><span class="code">	</span></span><br><span class="line"><span class="code">	2. include：页面包含（静态）</span></span><br><span class="line"><span class="code">	</span></span><br><span class="line"><span class="code">	3. taglib:导入资源文件</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="1、page指令"><a href="#1、page指令" class="headerlink" title="1、page指令"></a>1、page指令</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=&quot;text/html;charset=UTF-8&quot; language=&quot;java&quot; %&gt;</span><br><span class="line"><span class="code">	1). contentType 等价于 response.setContentType(); 设置响应体的MIME类型和编码方式</span></span><br><span class="line"><span class="code">	2). language    目前仅支持java语言</span></span><br><span class="line"><span class="code">	3). import      导入jar包</span></span><br><span class="line"><span class="code">		&lt;%@ page import=&quot;java.util.Date&quot; %&gt;</span></span><br><span class="line"><span class="code">	 4). errorPage : 发生错误时的跳转页面</span></span><br><span class="line"><span class="code">       5). isErrorPage : 默认false, errorPage才会设置true的话,可以调用exception对象查看异常原因	</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="2、include指令"><a href="#2、include指令" class="headerlink" title="2、include指令"></a>2、include指令</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> 作用: 在一个jsp页面包含其他的页面</span><br><span class="line"><span class="bullet">2.</span> 目的: 避免代码冗余</span><br><span class="line"><span class="bullet">3.</span> 举例:</span><br><span class="line"><span class="code">		a. 有A.jsp和B.jsp两个页面, 头部都一样, 那么两个页面得写相同的代码两遍, 很冗余</span></span><br><span class="line"><span class="code">        b. 把头部抽取出来 top.jsp , 分别A.jsp和B.jsp包含即可, 这样避免了代码冗余</span></span><br><span class="line"><span class="code">        </span></span><br><span class="line"><span class="code">4. 语法:  </span></span><br><span class="line"><span class="code">	&lt;%@include file=&quot;top.jsp&quot;%&gt;     </span></span><br></pre></td></tr></table></figure>
-
-<h3 id="3、taglib指令"><a href="#3、taglib指令" class="headerlink" title="3、taglib指令"></a>3、taglib指令</h3><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">导入apache提供的jstl标准标签库</span><br><span class="line"></span><br><span class="line">&lt;%<span class="meta">@taglib</span> prefix=<span class="string">&quot;c&quot;</span> uri=<span class="string">&quot;http://java.sun.com/jsp/jstl/core&quot;</span> %&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="6、九大内置对象"><a href="#6、九大内置对象" class="headerlink" title="6、九大内置对象"></a>6、九大内置对象</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span> 作用</span><br><span class="line"><span class="code">		在JSP页面中不需要获取和创建，可以直接使用的对象</span></span><br><span class="line"><span class="code">		</span></span><br><span class="line"><span class="code">* JSP一共有9个内置对象</span></span><br><span class="line"><span class="code">	变量名				  真实类型					作用</span></span><br><span class="line"><span class="code">	pageContext		    PageContext			 	 当前JSP页面中共享数据（域对象）</span></span><br><span class="line"><span class="code">    request				HttpServletRequest       一次请求中共享数据（域对象）</span></span><br><span class="line"><span class="code">    session             HttpSession				 一次会话中共享数据（域对象）</span></span><br><span class="line"><span class="code">    application			ServletContext			 整个web应用共享数据（域对象）</span></span><br><span class="line"><span class="code">    -----------------------------------------------</span></span><br><span class="line"><span class="code">    response			HttpServletResponse		 响应对象</span></span><br><span class="line"><span class="code">    page（this）				Object			    当前页面(servlet)对象</span></span><br><span class="line"><span class="code">    out                 JSPWriter				 输出对象</span></span><br><span class="line"><span class="code">    config              ServletConfig			 servlet配置对象</span></span><br><span class="line"><span class="code">    exception           Throwable				 异常对象（默认关闭...）		</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="bullet">*</span> 常用</span><br><span class="line"><span class="bullet">	1.</span> pageContext</span><br><span class="line"><span class="code">			1）当前页面的域对象</span></span><br><span class="line"><span class="code">			2）获取其他八个内置对象		</span></span><br><span class="line"><span class="code">	2. request</span></span><br><span class="line"><span class="code">			1）接收用户请求（参数）</span></span><br><span class="line"><span class="code">			2）一次请求中域对象</span></span><br><span class="line"><span class="code">			</span></span><br><span class="line"><span class="code">	3. response</span></span><br><span class="line"><span class="code">			1）设置响应</span></span><br><span class="line"><span class="code">				字节流</span></span><br><span class="line"><span class="code">				字符流</span></span><br><span class="line"><span class="code">	4. out</span></span><br><span class="line"><span class="code">			1）专门在jsp中处理字符输出流</span></span><br><span class="line"><span class="code">				print(); // 在网页中输出内容</span></span><br></pre></td></tr></table></figure>
-
+* 常用
+    1. pageContext
+            1）当前页面的域对象
+            2）获取其他八个内置对象        
+    2. request
+            1）接收用户请求（参数）
+            2）一次请求中域对象
+            
+    3. response
+            1）设置响应
+                字节流
+                字符流
+    4. out
+            1）专门在jsp中处理字符输出流
+                print(); // 在网页中输出内容
+</code></pre>
 
                 
             </div>
@@ -804,19 +925,19 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/04/28/vue/">
+                <a href="/2020/04/28/%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Vue">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="中文乱码">
                         
-                        <span class="card-title">Vue</span>
+                        <span class="card-title">中文乱码</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Vue的指令，生命周期，异步请求
+                            中文乱码
                         
                     </div>
                     <div class="publish-info">
@@ -827,8 +948,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Vue/" class="post-category">
-                                    Vue
+                            <a href="/categories/JavaWeb/" class="post-category">
+                                    JavaWeb
                                 </a>
                             
                             
@@ -838,8 +959,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Vue/">
-                        <span class="chip bg-color">Vue</span>
+                    <a href="/tags/JavaWeb/">
+                        <span class="chip bg-color">JavaWeb</span>
                     </a>
                     
                 </div>
