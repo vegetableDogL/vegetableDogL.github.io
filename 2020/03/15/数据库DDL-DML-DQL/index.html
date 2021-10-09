@@ -477,44 +477,51 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1、数据库"><a href="#1、数据库" class="headerlink" title="1、数据库"></a>1、数据库</h1><h2 id="1、安装注意事项"><a href="#1、安装注意事项" class="headerlink" title="1、安装注意事项"></a>1、安装注意事项</h2><h3 id="1、1-数据库远程登录问题？"><a href="#1、1-数据库远程登录问题？" class="headerlink" title="1、1.数据库远程登录问题？"></a>1、1.数据库远程登录问题？</h3><pre><code class="mysql">linux下安装的mysql为安全起见，不支持远程登录mysql，所以需要设置开启，并且刷新权限缓存；
+                <h1 id="1、数据库"><a href="#1、数据库" class="headerlink" title="1、数据库"></a>1、数据库</h1><h2 id="1、安装注意事项"><a href="#1、安装注意事项" class="headerlink" title="1、安装注意事项"></a>1、安装注意事项</h2><h3 id="1、1-数据库远程登录问题？"><a href="#1、1-数据库远程登录问题？" class="headerlink" title="1、1.数据库远程登录问题？"></a>1、1.数据库远程登录问题？</h3><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">linux下安装的mysql为安全起见，不支持远程登录mysql，所以需要设置开启，并且刷新权限缓存；
     # 授权root用户在root密码下远程登录
-    grant all privileges on *.* to &#39;root&#39;@&#39;%&#39; identified by &#39;root&#39;;
+	grant all privileges on *.* to &#39;root&#39;@&#39;%&#39; identified by &#39;root&#39;;
     # 刷新权限
     flush privileges;
-    # 注意：如果刷新依旧失效，则重启mysql服务即可；
-</code></pre>
-<h3 id="2-防火墙问题"><a href="#2-防火墙问题" class="headerlink" title="2-防火墙问题"></a>2-防火墙问题</h3><pre><code class="mysql">因为要远程连接linux系统，系统为数据库3306端口，开启访问权限；
+    # 注意：如果刷新依旧失效，则重启mysql服务即可；<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2-防火墙问题"><a href="#2-防火墙问题" class="headerlink" title="2-防火墙问题"></a>2-防火墙问题</h3><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">因为要远程连接linux系统，系统为数据库3306端口，开启访问权限；
 方式1：关闭防火墙；
 方式2：释放3306端口；
 
 关闭防火墙指令：
-    systemctrl stop firewalld.service
-    
+	systemctrl stop firewalld.service
+	
 或者释放端口（推荐）：
 #开放的端口永久保存到防火墙(linux命令)
-/sbin/iptables -I INPUT -p tcp --dport 3306 -j ACCEPT
+&#x2F;sbin&#x2F;iptables -I INPUT -p tcp --dport 3306 -j ACCEPT
 # 允许3306访问
-firewall-cmd --zone=public --add-port=3306/tcp --permanent
-</code></pre>
-<h3 id="3、数据库编码问题"><a href="#3、数据库编码问题" class="headerlink" title="3、数据库编码问题"></a>3、数据库编码问题</h3><pre><code class="mysql">mysql在windows下默认编码格式是UTF8，但是在linux下默认编码格式为lant1,有时会导致乱码问题，我们可以统一设置mysql默认的编码格式为UTF8：
+firewall-cmd --zone&#x3D;public --add-port&#x3D;3306&#x2F;tcp --permanent<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-[root@localhost ~]# vi /etc/my.cnf
+<h3 id="3、数据库编码问题"><a href="#3、数据库编码问题" class="headerlink" title="3、数据库编码问题"></a>3、数据库编码问题</h3><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">mysql在windows下默认编码格式是UTF8，但是在linux下默认编码格式为lant1,有时会导致乱码问题，我们可以统一设置mysql默认的编码格式为UTF8：
+
+[root@localhost ~]# vi &#x2F;etc&#x2F;my.cnf
 在mysqld下添加服务编码格式：
-character_set_server = utf8
+character_set_server &#x3D; utf8
 
 # 设置完毕后，重启mysql服务
-[root@localhost ~]# systemctl restart mysqld
-</code></pre>
-<h3 id="4、远程root用户授权问题"><a href="#4、远程root用户授权问题" class="headerlink" title="4、远程root用户授权问题"></a>4、远程root用户授权问题</h3><pre><code class="mysql">修改mysql库user表的权限
-</code></pre>
-<h2 id="2、登录使用数据库"><a href="#2、登录使用数据库" class="headerlink" title="2、登录使用数据库"></a>2、登录使用数据库</h2><pre><code class="mysql"># 方式1：
-# -h :表示远程mysql服务器的ip地址/域名 -P:port，指定数据库端口号 -u:user，用户名 -p:password 密码
+[root@localhost ~]# systemctl restart mysqld<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="4、远程root用户授权问题"><a href="#4、远程root用户授权问题" class="headerlink" title="4、远程root用户授权问题"></a>4、远程root用户授权问题</h3><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">修改mysql库user表的权限<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+
+
+<h2 id="2、登录使用数据库"><a href="#2、登录使用数据库" class="headerlink" title="2、登录使用数据库"></a>2、登录使用数据库</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># 方式1：
+# -h :表示远程mysql服务器的ip地址&#x2F;域名 -P:port，指定数据库端口号 -u:user，用户名 -p:password 密码
 [root@localhost ~]# mysql -h 192.168.188.130 -P 3306 -uroot -proot
 
 # 方式2：推荐
@@ -522,18 +529,18 @@ character_set_server = utf8
 [root@localhost ~]# mysql -h 192.168.188.130 -P 3306 -uroot -p
 
 # 连接本地测试
-[root@localhost ~]# mysql -uroot -p
-</code></pre>
-<pre><code class="mysql"># 定义数据库
+[root@localhost ~]# mysql -uroot -p<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># 定义数据库
 create database day01;
 # 定义表
 create table st1(id int,name varchar(10));
 # 向表中插入数据
 insert into st1 values(1,&#39;zhangsan&#39;);
 # 查询数据
-select * from st1;
-</code></pre>
-<h2 id="3、DDL语言"><a href="#3、DDL语言" class="headerlink" title="3、DDL语言"></a>3、DDL语言</h2><h3 id="1、定义数据库信息"><a href="#1、定义数据库信息" class="headerlink" title="1、定义数据库信息"></a>1、定义数据库信息</h3><pre><code class="mysql"># 1.创建库
+select * from st1;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="3、DDL语言"><a href="#3、DDL语言" class="headerlink" title="3、DDL语言"></a>3、DDL语言</h2><h3 id="1、定义数据库信息"><a href="#1、定义数据库信息" class="headerlink" title="1、定义数据库信息"></a>1、定义数据库信息</h3><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># 1.创建库
 # create:定义关键子，可以定义库、表
 # database：数据库关键字
 create database db1;
@@ -544,15 +551,15 @@ create database if not exists db2;
 
 # 3.定义数据库，并设置字符集
 # 说明：character set用于定义库或者表的字符集，同时注意mysql中万国码：utf8
-create database db3 character set gbk;
-</code></pre>
-<h3 id="2、查看数据库信息"><a href="#2、查看数据库信息" class="headerlink" title="2、查看数据库信息"></a>2、查看数据库信息</h3><pre><code class="mysql"># 1.查询所有数据库,列表显示所有的数据库的名称信息
+create database db3 character set gbk;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2、查看数据库信息"><a href="#2、查看数据库信息" class="headerlink" title="2、查看数据库信息"></a>2、查看数据库信息</h3><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># 1.查询所有数据库,列表显示所有的数据库的名称信息
 show databases;
 
 # 2.查看数据库的详细信息
-show create database db1;
-</code></pre>
-<h3 id="3-数据库修改删除操作"><a href="#3-数据库修改删除操作" class="headerlink" title="3. 数据库修改删除操作"></a>3. 数据库修改删除操作</h3><pre><code class="mysql"># 1.修改数据库字符集
+show create database db1;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="3-数据库修改删除操作"><a href="#3-数据库修改删除操作" class="headerlink" title="3. 数据库修改删除操作"></a>3. 数据库修改删除操作</h3><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># 1.修改数据库字符集
 # alter：ddl修改关键字
 alter database db3 character set utf8; 
 
@@ -564,8 +571,10 @@ drop database db2;
 use db3;
 
 # 4.查看当前正在使用哪个数据库
-select database();
-</code></pre>
+select database();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h3 id="4、表的定义"><a href="#4、表的定义" class="headerlink" title="4、表的定义"></a>4、表的定义</h3><h4 id="1-定义表的常用数据类型"><a href="#1-定义表的常用数据类型" class="headerlink" title="1.定义表的常用数据类型"></a>1.定义表的常用数据类型</h4><table>
 <thead>
 <tr>
@@ -590,184 +599,193 @@ select database();
 <td>常用：char(n)==&gt;定义长字符，举例：name   char(5):意思是姓名长度必须是5，如果输入长度小于5，则以空格填充补齐，如果长度超过5，则截取。应用场景：身份证号、手机号等<br>varchar(n)—-&gt;边长字符串，举例：name  varchar(5):输入什么字符串，就保存什么字符串，但是要求：长度不要唱过指定的n长度(超过时，不报错，但是自动给截取：“12345678”–》“12345”)</td>
 </tr>
 </tbody></table>
-<h4 id="2-创建表"><a href="#2-创建表" class="headerlink" title="2.创建表"></a>2.创建表</h4><pre><code class="sql"># 创建表
-# create:创建表关键字
-# table:表关键字
-create table student(
-    id int,
-    name varchar(10),
-    birthday date
-);
-</code></pre>
-<h4 id="3-表的查看与删除操作"><a href="#3-表的查看与删除操作" class="headerlink" title="3.表的查看与删除操作"></a>3.表的查看与删除操作</h4><pre><code class="sql"># 1.查看当前库下的所有表
-show tables;
-# 2.查看表的字段信息：名称和类型
-desc student;
+<h4 id="2-创建表"><a href="#2-创建表" class="headerlink" title="2.创建表"></a>2.创建表</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 创建表</span>
+<span class="token comment"># create:创建表关键字</span>
+<span class="token comment"># table:表关键字</span>
+<span class="token keyword">create</span> <span class="token keyword">table</span> student<span class="token punctuation">(</span>
+	id <span class="token keyword">int</span><span class="token punctuation">,</span>
+	name <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+	birthday <span class="token keyword">date</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-# 3.查看创建表的信息
-#CREATE TABLE `student` (
-#  `id` int(11) DEFAULT NULL,
-#  `name` varchar(10) DEFAULT NULL,
-#  `birthday` date DEFAULT NULL
-#) ENGINE=InnoDB DEFAULT CHARSET=utf8
-show create table student;
+<h4 id="3-表的查看与删除操作"><a href="#3-表的查看与删除操作" class="headerlink" title="3.表的查看与删除操作"></a>3.表的查看与删除操作</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 1.查看当前库下的所有表</span>
+<span class="token keyword">show</span> <span class="token keyword">tables</span><span class="token punctuation">;</span>
+<span class="token comment"># 2.查看表的字段信息：名称和类型</span>
+<span class="token keyword">desc</span> student<span class="token punctuation">;</span>
 
-# 4.删表 
-# if exists:存在则删除，不存在也不报错
-drop table if exists student;
-</code></pre>
-<h4 id="4-对表的字段的修改"><a href="#4-对表的字段的修改" class="headerlink" title="4.对表的字段的修改"></a>4.对表的字段的修改</h4><pre><code class="sql"># 1.为表添加字段
-# add:关键字，表示添加字段信息
-alter table student add remark varchar(20);
+<span class="token comment"># 3.查看创建表的信息</span>
+<span class="token comment">#CREATE TABLE `student` (</span>
+<span class="token comment">#  `id` int(11) DEFAULT NULL,</span>
+<span class="token comment">#  `name` varchar(10) DEFAULT NULL,</span>
+<span class="token comment">#  `birthday` date DEFAULT NULL</span>
+<span class="token comment">#) ENGINE=InnoDB DEFAULT CHARSET=utf8</span>
+<span class="token keyword">show</span> <span class="token keyword">create</span> <span class="token keyword">table</span> student<span class="token punctuation">;</span>
 
-# 2.修改字段类型
-# modify:关键字，表示对字段类型修改
-alter table student modify remark varchar(100);
+<span class="token comment"># 4.删表 </span>
+<span class="token comment"># if exists:存在则删除，不存在也不报错</span>
+<span class="token keyword">drop</span> <span class="token keyword">table</span> <span class="token keyword">if</span> <span class="token keyword">exists</span> student<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-# 3.修改字段的名称和类型
-# change:关键字，表示修改字段名称与类型
-alter table student change remark intro varchar(30);
+<h4 id="4-对表的字段的修改"><a href="#4-对表的字段的修改" class="headerlink" title="4.对表的字段的修改"></a>4.对表的字段的修改</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 1.为表添加字段</span>
+<span class="token comment"># add:关键字，表示添加字段信息</span>
+<span class="token keyword">alter</span> <span class="token keyword">table</span> student <span class="token keyword">add</span> remark <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-# 4.删除字段（列）
-# drop:关键字，删除，不仅可以删除库和表，也可以删除表中的字段
-alter table student drop intro;
+<span class="token comment"># 2.修改字段类型</span>
+<span class="token comment"># modify:关键字，表示对字段类型修改</span>
+<span class="token keyword">alter</span> <span class="token keyword">table</span> student <span class="token keyword">modify</span> remark <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-# 1.修改表名
-# 语法结构：rename xxx to ：修改表名称
-rename table student to st2;
+<span class="token comment"># 3.修改字段的名称和类型</span>
+<span class="token comment"># change:关键字，表示修改字段名称与类型</span>
+<span class="token keyword">alter</span> <span class="token keyword">table</span> student change remark intro <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-# 2.修改表的字符集
-alter table st2 character set gbk;
-</code></pre>
-<h2 id="4、-DML"><a href="#4、-DML" class="headerlink" title="4、 DML"></a>4、 DML</h2><h3 id="1-更新表操作"><a href="#1-更新表操作" class="headerlink" title="1.更新表操作"></a>1.更新表操作</h3><pre><code class="mysql"># 1.全表更新性别为女 (开发慎用)
+<span class="token comment"># 4.删除字段（列）</span>
+<span class="token comment"># drop:关键字，删除，不仅可以删除库和表，也可以删除表中的字段</span>
+<span class="token keyword">alter</span> <span class="token keyword">table</span> student <span class="token keyword">drop</span> intro<span class="token punctuation">;</span>
+
+<span class="token comment"># 1.修改表名</span>
+<span class="token comment"># 语法结构：rename xxx to ：修改表名称</span>
+<span class="token keyword">rename</span> <span class="token keyword">table</span> student <span class="token keyword">to</span> st2<span class="token punctuation">;</span>
+
+<span class="token comment"># 2.修改表的字符集</span>
+<span class="token keyword">alter</span> <span class="token keyword">table</span> st2 <span class="token keyword">character</span> <span class="token keyword">set</span> gbk<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="4、-DML"><a href="#4、-DML" class="headerlink" title="4、 DML"></a>4、 DML</h2><h3 id="1-更新表操作"><a href="#1-更新表操作" class="headerlink" title="1.更新表操作"></a>1.更新表操作</h3><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># 1.全表更新性别为女 (开发慎用)
 # 说明：数据修改关键字：update  set,如果不加更新条件，默认全表更新，等价于删表操作
-update student set sex=&#39;女&#39;,address=&#39;铁岭&#39;;
-# 2.更新id=2 性别为男
+update student set sex&#x3D;&#39;女&#39;,address&#x3D;&#39;铁岭&#39;;
+# 2.更新id&#x3D;2 性别为男
 # 开发推荐，使用条件关键字：where,只更新满足条件的数据
-update student set sex=&#39;男&#39; where id=2;
-</code></pre>
-<h3 id="2-删除表中数据"><a href="#2-删除表中数据" class="headerlink" title="2.删除表中数据"></a>2.删除表中数据</h3><pre><code class="mysql"># 1.删除id=3的学生信息
+update student set sex&#x3D;&#39;男&#39; where id&#x3D;2;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2-删除表中数据"><a href="#2-删除表中数据" class="headerlink" title="2.删除表中数据"></a>2.删除表中数据</h3><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># 1.删除id&#x3D;3的学生信息
 # 特点：仅仅删除满足条件的数据
-delete from student where id=3;
+delete from student where id&#x3D;3;
 # 2.全表删除（开发慎用）
 # 删除操作，如果不设置删除条件，则全表删除
-delete from student;
-</code></pre>
+delete from student;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p><strong>两种清空表的方式：</strong></p>
-<pre><code class="mysql"># truncate是DDL语句，特点：先将整张表删除（包含表的结构和数据），然后再
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># truncate是DDL语句，特点：先将整张表删除（包含表的结构和数据），然后再
 # 创建一张一模一样的表，而delete语句仅仅删除表中的数据，对表结构没有影响
 # 从删除效率看，如果数据量比较大，truncate删除的效率更高
 truncate table student;
 # 等价于：
 drop table student;
-create table student(xx);
-</code></pre>
-<h3 id="3-DML小节"><a href="#3-DML小节" class="headerlink" title="3 DML小节"></a>3 DML小节</h3><pre><code class="mysql">插入：insert into
-更新：update  set
-删除：delete from
-</code></pre>
-<h2 id="5、DQL数据查询"><a href="#5、DQL数据查询" class="headerlink" title="5、DQL数据查询"></a>5、DQL数据查询</h2><h3 id="1-无条件查询"><a href="#1-无条件查询" class="headerlink" title="1.无条件查询"></a>1.无条件查询</h3><pre><code class="sql"># 1.查询所有的学生信息（无条件全表查询）
-# 说明：DQL查询关键字：select 字段名称  from 表
-select id,name,age,sex,address,math,english from student3;
-# 全字段查询时，可使用*匹配当前表下的所有列
-select * from student3;
-# 只查询id和姓名
-select id,name from student3;
-</code></pre>
-<h4 id="查询结果参与运算"><a href="#查询结果参与运算" class="headerlink" title="查询结果参与运算"></a>查询结果参与运算</h4><pre><code class="sql"># 字段与字段运算
-select 字段1[+、-、*、/、%]字段2 from tab;
-# 字段与常量值运算
-select 字段1[+、-、*、/、%]固定值 from tab;
+create table student(xx);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
--- 需求1:查询姓名、年龄，将每个人的数学增加10分
-select name,age,math+10 as math from student;
--- 查询所有列与math + english的和并使用别名”总成绩”
-若是其中一个为null，则运算出阿来的结果也为null。
-select *,math+english as 总成绩 from student;
-</code></pre>
+<h3 id="3-DML小节"><a href="#3-DML小节" class="headerlink" title="3 DML小节"></a>3 DML小节</h3><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">插入：insert into
+更新：update  set
+删除：delete from<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="5、DQL数据查询"><a href="#5、DQL数据查询" class="headerlink" title="5、DQL数据查询"></a>5、DQL数据查询</h2><h3 id="1-无条件查询"><a href="#1-无条件查询" class="headerlink" title="1.无条件查询"></a>1.无条件查询</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 1.查询所有的学生信息（无条件全表查询）</span>
+<span class="token comment"># 说明：DQL查询关键字：select 字段名称  from 表</span>
+<span class="token keyword">select</span> id<span class="token punctuation">,</span>name<span class="token punctuation">,</span>age<span class="token punctuation">,</span>sex<span class="token punctuation">,</span>address<span class="token punctuation">,</span>math<span class="token punctuation">,</span>english <span class="token keyword">from</span> student3<span class="token punctuation">;</span>
+<span class="token comment"># 全字段查询时，可使用*匹配当前表下的所有列</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3<span class="token punctuation">;</span>
+<span class="token comment"># 只查询id和姓名</span>
+<span class="token keyword">select</span> id<span class="token punctuation">,</span>name <span class="token keyword">from</span> student3<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="查询结果参与运算"><a href="#查询结果参与运算" class="headerlink" title="查询结果参与运算"></a>查询结果参与运算</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 字段与字段运算</span>
+<span class="token keyword">select</span> 字段<span class="token number">1</span><span class="token punctuation">[</span><span class="token operator">+</span>、<span class="token operator">-</span>、<span class="token operator">*</span>、<span class="token operator">/</span>、<span class="token operator">%</span><span class="token punctuation">]</span>字段<span class="token number">2</span> <span class="token keyword">from</span> tab<span class="token punctuation">;</span>
+<span class="token comment"># 字段与常量值运算</span>
+<span class="token keyword">select</span> 字段<span class="token number">1</span><span class="token punctuation">[</span><span class="token operator">+</span>、<span class="token operator">-</span>、<span class="token operator">*</span>、<span class="token operator">/</span>、<span class="token operator">%</span><span class="token punctuation">]</span>固定值 <span class="token keyword">from</span> tab<span class="token punctuation">;</span>
+
+<span class="token comment">-- 需求1:查询姓名、年龄，将每个人的数学增加10分</span>
+<span class="token keyword">select</span> name<span class="token punctuation">,</span>age<span class="token punctuation">,</span>math<span class="token operator">+</span><span class="token number">10</span> <span class="token keyword">as</span> math <span class="token keyword">from</span> student<span class="token punctuation">;</span>
+<span class="token comment">-- 查询所有列与math + english的和并使用别名”总成绩”</span>
+若是其中一个为<span class="token boolean">null</span>，则运算出阿来的结果也为<span class="token boolean">null</span>。
+<span class="token keyword">select</span> <span class="token operator">*</span><span class="token punctuation">,</span>math<span class="token operator">+</span>english <span class="token keyword">as</span> 总成绩 <span class="token keyword">from</span> student<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h3 id="2-去重查询操作"><a href="#2-去重查询操作" class="headerlink" title="2.去重查询操作"></a>2.去重查询操作</h3><p>distant</p>
-<pre><code class="sql">select distant address from student;
-# 去重时，如果是多个字段，那么只有多个字段名的值都相同才会去重，distant后面的字段越少越好。
-select distant sex, address from student;
-</code></pre>
-<h3 id="3-蠕虫复制"><a href="#3-蠕虫复制" class="headerlink" title="3.蠕虫复制"></a>3.蠕虫复制</h3><pre><code class="sql"># 要求：通过蠕虫复制快速将student3表中的id，name,age信息复制到student表下
-insert into student(id,name,age) select id,name,age from student3;
-# 快速创建一张与student3结构一样的表
-# 创建了一张空表，字段信息与student3一致
-create table student2 like student3;
-insert into student2 select * from student3;
-</code></pre>
-<h3 id="4-比较运算符"><a href="#4-比较运算符" class="headerlink" title="4.比较运算符"></a>4.比较运算符</h3><pre><code class="sql"># 1.查询数学称呼大于80
-select * from student3 where math &gt; 80;
-# 2.查询英语成绩小于或者等于80的学生信息
-# 说明：在数据库中null表示不存在，无法与存在的值进行比较，所以直接丢弃不显示
-select * from student3 where english &lt;=80;
-# 3.查询年龄等于20
-select * from student3 where age=20;
-# 3.查询年龄不等于20
-select * from student3 where age!=20;
-select * from student3 where age&lt;&gt;20;
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> distant address <span class="token keyword">from</span> student<span class="token punctuation">;</span>
+<span class="token comment"># 去重时，如果是多个字段，那么只有多个字段名的值都相同才会去重，distant后面的字段越少越好。</span>
+<span class="token keyword">select</span> distant sex<span class="token punctuation">,</span> address <span class="token keyword">from</span> student<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="3-蠕虫复制"><a href="#3-蠕虫复制" class="headerlink" title="3.蠕虫复制"></a>3.蠕虫复制</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 要求：通过蠕虫复制快速将student3表中的id，name,age信息复制到student表下</span>
+<span class="token keyword">insert</span> <span class="token keyword">into</span> student<span class="token punctuation">(</span>id<span class="token punctuation">,</span>name<span class="token punctuation">,</span>age<span class="token punctuation">)</span> <span class="token keyword">select</span> id<span class="token punctuation">,</span>name<span class="token punctuation">,</span>age <span class="token keyword">from</span> student3<span class="token punctuation">;</span>
+<span class="token comment"># 快速创建一张与student3结构一样的表</span>
+<span class="token comment"># 创建了一张空表，字段信息与student3一致</span>
+<span class="token keyword">create</span> <span class="token keyword">table</span> student2 <span class="token operator">like</span> student3<span class="token punctuation">;</span>
+<span class="token keyword">insert</span> <span class="token keyword">into</span> student2 <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="4-比较运算符"><a href="#4-比较运算符" class="headerlink" title="4.比较运算符"></a>4.比较运算符</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 1.查询数学称呼大于80</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> math <span class="token operator">></span> <span class="token number">80</span><span class="token punctuation">;</span>
+<span class="token comment"># 2.查询英语成绩小于或者等于80的学生信息</span>
+<span class="token comment"># 说明：在数据库中null表示不存在，无法与存在的值进行比较，所以直接丢弃不显示</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> english <span class="token operator">&lt;=</span><span class="token number">80</span><span class="token punctuation">;</span>
+<span class="token comment"># 3.查询年龄等于20</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> age<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">;</span>
+<span class="token comment"># 3.查询年龄不等于20</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> age<span class="token operator">!=</span><span class="token number">20</span><span class="token punctuation">;</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> age<span class="token operator">&lt;></span><span class="token number">20</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="5-逻辑运算符"><a href="#5-逻辑运算符" class="headerlink" title="5.逻辑运算符"></a>5.逻辑运算符</h3><p>逻辑运算符用于多条件之间的关联关系；</p>
-<pre><code class="sql"># 2.查询age&gt;35 且sex=&#39;男&#39;
-select * from student3 where age &gt; 35 and sex=&#39;男&#39;;
-# 2.查询age&gt;35 或者sex=&#39;男&#39;
-# or左右条件满足其一就显示
-select * from student3 where age &gt; 35 or sex=&#39;男&#39;;
-# 3.查询id等于1 或者3 或者5 或者7
-# 连续使用or，造成sql关键字冗余，维护性差【不推荐】
-select * from student3 where id=1 or id=3 or id=5 or id=7;
-</code></pre>
-<h3 id="6-范围查询-in，-between-and"><a href="#6-范围查询-in，-between-and" class="headerlink" title="6.范围查询  in， between and"></a>6.范围查询  in， between and</h3><pre><code class="sql"># 3.查询id等于1 或者3 或者5 或者7
-# 连续使用or，造成sql关键字冗余，维护性差【不推荐】
-select * from student3 where id=1 or id=3 or id=5 or id=7;
-# 推荐使用in关键字查询
-select * from student3 where id in (1,3,5,7);
-# 查询id不是1,3,5,7的学生
-# not in： 反向查询，不在指定的枚举的值内
-select * from student3 where id not in (1,3,5,7);
-# 查询英语成绩大于等于75，小于等于90
-select * from student3 where english &gt;=75 and english &lt;=90;
-select * from student3 where english between 75 and 90;
-</code></pre>
-<h3 id="7-like模糊搜索"><a href="#7-like模糊搜索" class="headerlink" title="7.like模糊搜索"></a>7.like模糊搜索</h3><pre><code class="sql"># 1.查询姓马的学生
-# 姓名必须以马开头
-# 说明：like:像，表示模糊搜索关键字 %：匹配任意多个字符，包含0个
-select * from student3 where name like &#39;马%&#39;;
-# 2.姓名包含德
-select * from student3 where name like &#39;%德%&#39;;
-# 3.姓马且名字长度为3
-select * from student3 where name like &#39;马__&#39;;
-</code></pre>
-<h3 id="8-排序查询"><a href="#8-排序查询" class="headerlink" title="8.排序查询"></a>8.排序查询</h3><pre><code class="sql"># 1.根据age降序排序
-# 如果不指定排序规则，默认升序ASC
-select * from student3 order by age desc;
-# 2.根据age 降序排序和math 升序排序综合排序
-# sql规则：先根据age进行排序，如果age中有相同的值，然后根据math进行排序
-select * from student3 order by age desc,math asc;
-</code></pre>
-<h3 id="9、limit"><a href="#9、limit" class="headerlink" title="9、limit"></a>9、limit</h3><pre><code class="sql">select * from 表名 limit  offset, row_count;
-mysql中limit的用法：返回前几条或者中间某几行数据
-select * from 表名 limit 1,4。
-1表示索引，注意这里的索引从0开始。对应表中第一行数据
-4表示查询记录数。
-上述就表示从第2条记录开始查询，一共查询4条，即到第5条。
-</code></pre>
-<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><pre><code class="sq">1.DDL:数据定义语言，核心定义库 表 表中字段信息
-    1.1.库相关：
-        create database 数据库名称；
-        show create database 数据库名称；
-        show databases;
-        drop database 数据库名称
-        alter database 数据库名称 character set 新的字符集
-    1.2 表
-        create table 表名(字段名称  字段类型,.....);
-        常用数据类型：
-            整数：int bitint--&gt;long
-            日期：date  datetime time
-            小数：double float decimal(m,n)---》m数字总长度，n表示小数位数，整数位=m-n
-            字符串：char(n)--&gt;定长，如果不足，则空格填充
-                   varchar(n)-&gt;变长
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 2.查询age>35 且sex='男'</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> age <span class="token operator">></span> <span class="token number">35</span> <span class="token operator">and</span> sex<span class="token operator">=</span><span class="token string">'男'</span><span class="token punctuation">;</span>
+<span class="token comment"># 2.查询age>35 或者sex='男'</span>
+<span class="token comment"># or左右条件满足其一就显示</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> age <span class="token operator">></span> <span class="token number">35</span> <span class="token operator">or</span> sex<span class="token operator">=</span><span class="token string">'男'</span><span class="token punctuation">;</span>
+<span class="token comment"># 3.查询id等于1 或者3 或者5 或者7</span>
+<span class="token comment"># 连续使用or，造成sql关键字冗余，维护性差【不推荐】</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> id<span class="token operator">=</span><span class="token number">1</span> <span class="token operator">or</span> id<span class="token operator">=</span><span class="token number">3</span> <span class="token operator">or</span> id<span class="token operator">=</span><span class="token number">5</span> <span class="token operator">or</span> id<span class="token operator">=</span><span class="token number">7</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="6-范围查询-in，-between-and"><a href="#6-范围查询-in，-between-and" class="headerlink" title="6.范围查询  in， between and"></a>6.范围查询  in， between and</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 3.查询id等于1 或者3 或者5 或者7</span>
+<span class="token comment"># 连续使用or，造成sql关键字冗余，维护性差【不推荐】</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> id<span class="token operator">=</span><span class="token number">1</span> <span class="token operator">or</span> id<span class="token operator">=</span><span class="token number">3</span> <span class="token operator">or</span> id<span class="token operator">=</span><span class="token number">5</span> <span class="token operator">or</span> id<span class="token operator">=</span><span class="token number">7</span><span class="token punctuation">;</span>
+<span class="token comment"># 推荐使用in关键字查询</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> id <span class="token operator">in</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment"># 查询id不是1,3,5,7的学生</span>
+<span class="token comment"># not in： 反向查询，不在指定的枚举的值内</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> id <span class="token operator">not</span> <span class="token operator">in</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment"># 查询英语成绩大于等于75，小于等于90</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> english <span class="token operator">>=</span><span class="token number">75</span> <span class="token operator">and</span> english <span class="token operator">&lt;=</span><span class="token number">90</span><span class="token punctuation">;</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> english <span class="token operator">between</span> <span class="token number">75</span> <span class="token operator">and</span> <span class="token number">90</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="7-like模糊搜索"><a href="#7-like模糊搜索" class="headerlink" title="7.like模糊搜索"></a>7.like模糊搜索</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 1.查询姓马的学生</span>
+<span class="token comment"># 姓名必须以马开头</span>
+<span class="token comment"># 说明：like:像，表示模糊搜索关键字 %：匹配任意多个字符，包含0个</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> name <span class="token operator">like</span> <span class="token string">'马%'</span><span class="token punctuation">;</span>
+<span class="token comment"># 2.姓名包含德</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> name <span class="token operator">like</span> <span class="token string">'%德%'</span><span class="token punctuation">;</span>
+<span class="token comment"># 3.姓马且名字长度为3</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> name <span class="token operator">like</span> <span class="token string">'马__'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="8-排序查询"><a href="#8-排序查询" class="headerlink" title="8.排序查询"></a>8.排序查询</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 1.根据age降序排序</span>
+<span class="token comment"># 如果不指定排序规则，默认升序ASC</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">order</span> <span class="token keyword">by</span> age <span class="token keyword">desc</span><span class="token punctuation">;</span>
+<span class="token comment"># 2.根据age 降序排序和math 升序排序综合排序</span>
+<span class="token comment"># sql规则：先根据age进行排序，如果age中有相同的值，然后根据math进行排序</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">order</span> <span class="token keyword">by</span> age <span class="token keyword">desc</span><span class="token punctuation">,</span>math <span class="token keyword">asc</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="9、limit"><a href="#9、limit" class="headerlink" title="9、limit"></a>9、limit</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> 表名 <span class="token keyword">limit</span>  <span class="token keyword">offset</span><span class="token punctuation">,</span> row_count<span class="token punctuation">;</span>
+mysql中<span class="token keyword">limit</span>的用法：返回前几条或者中间某几行数据
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> 表名 <span class="token keyword">limit</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">4</span>。
+<span class="token number">1</span>表示索引，注意这里的索引从<span class="token number">0</span>开始。对应表中第一行数据
+<span class="token number">4</span>表示查询记录数。
+上述就表示从第<span class="token number">2</span>条记录开始查询，一共查询<span class="token number">4</span>条，即到第<span class="token number">5</span>条。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><pre class="line-numbers language-sq" data-language="sq"><code class="language-sq">1.DDL:数据定义语言，核心定义库 表 表中字段信息
+	1.1.库相关：
+		create database 数据库名称；
+		show create database 数据库名称；
+		show databases;
+		drop database 数据库名称
+		alter database 数据库名称 character set 新的字符集
+	1.2 表
+    	create table 表名(字段名称  字段类型,.....);
+    	常用数据类型：
+    		整数：int bitint--&gt;long
+    		日期：date  datetime time
+    		小数：double float decimal(m,n)---》m数字总长度，n表示小数位数，整数位&#x3D;m-n
+    		字符串：char(n)--&gt;定长，如果不足，则空格填充
+    			   varchar(n)-&gt;变长
        show tables;
        show create table 表名；
        desc 表名；（查询表中列的信息）
@@ -779,45 +797,45 @@ select * from 表名 limit 1,4。
        alter table 表名 change 旧字段名称 新字段名称 新字段类型；
        alter table 表名 drop 字段名称；
 2.DML:对表中的数据进行增删改操作；
-     增：insert into 表名（字段名称1，字段名称2，...） values(v1,v2,...),(v1,v2,...);
-     更新：
-         无条件：全表更新，等价于删表操作慎重
-         update 表名 set 字段1=v1,字段2=v2,...;
+	 增：insert into 表名（字段名称1，字段名称2，...） values(v1,v2,...),(v1,v2,...);
+	 更新：
+	 	无条件：全表更新，等价于删表操作慎重
+	 	update 表名 set 字段1&#x3D;v1,字段2&#x3D;v2,...;
         有条件：开发常用
-        update 表名 set 字段1=v1,字段2=v2,... where 条件;
+        update 表名 set 字段1&#x3D;v1,字段2&#x3D;v2,... where 条件;
      删除：
-         delete from 表名；===》全表删除  与truncate有啥区别？
-         delete from 表名 where 条件；开发最常用
+     	delete from 表名；&#x3D;&#x3D;&#x3D;》全表删除  与truncate有啥区别？
+     	delete from 表名 where 条件；开发最常用
 3.DQL:数据查询语言，主要用户对表中的数据进行select查询操作；
-      1.无条件 select 字段1，... from 表名；===》全表查询
-          字段参与运算：
-          select 字段1[+、-、*、/、%]字段2/常量值  from 表名
-          表名查询：
-              关键字as,可以省略不写
-              select 字段1 as 别名 from 别名；
+      1.无条件 select 字段1，... from 表名；&#x3D;&#x3D;&#x3D;》全表查询
+      	字段参与运算：
+      	select 字段1[+、-、*、&#x2F;、%]字段2&#x2F;常量值  from 表名
+      	表名查询：
+      		关键字as,可以省略不写
+      		select 字段1 as 别名 from 别名；
       2.有条件查询
-          2.1 比较运算符 &lt; &lt;= &gt; &gt;= != &lt;&gt; =
-          2.2 逻辑运算符：作用关联多个条件 
-                  and:and左右的条件，都满足，才显示
+      	2.1 比较运算符 &lt; &lt;&#x3D; &gt; &gt;&#x3D; !&#x3D; &lt;&gt; &#x3D;
+      	2.2 逻辑运算符：作用关联多个条件 
+      			and:and左右的条件，都满足，才显示
                 or：or满足其一就显示；
                 not：反向查询
         模糊搜索：
-            关键字：like  基本语法：select * from 表名 where 字段 like &#39;通配符字符串&#39;;
-            2种通配符：
-                %：匹配任意多个字符包含0个
-                _:匹配一个
+        	关键字：like  基本语法：select * from 表名 where 字段 like &#39;通配符字符串&#39;;
+        	2种通配符：
+        		%：匹配任意多个字符包含0个
+        		_:匹配一个
         排序：
-            关键字：order by 基本语法：select * from 表名 order by 字段1 [asc|desc]，字段2 [asc|desc];
-            联合排序的规则：先根据第一个字段进行排序，如果第一个字段中有相同的值，则按照第二个字段排序，一次类推；
-            潜台词：如果第一个字段，都不一样，其他字段不参与排序运算；
+        	关键字：order by 基本语法：select * from 表名 order by 字段1 [asc|desc]，字段2 [asc|desc];
+        	联合排序的规则：先根据第一个字段进行排序，如果第一个字段中有相同的值，则按照第二个字段排序，一次类推；
+        	潜台词：如果第一个字段，都不一样，其他字段不参与排序运算；
         范围查询：
-            in:查询等于枚举的值的数据信息 语法：select * from 表名 where 字段 in (v1，v2,...);
-            只要字段等于括号内的任意值，都显示；
-            between  and:范围查询关键字 语法：select * from 表名 where 字段 between v1 and v2;
-            注意事项：1.v1值必须小于v2 2.查询包含边界值
-            
-              
-</code></pre>
+        	in:查询等于枚举的值的数据信息 语法：select * from 表名 where 字段 in (v1，v2,...);
+        	只要字段等于括号内的任意值，都显示；
+        	between  and:范围查询关键字 语法：select * from 表名 where 字段 between v1 and v2;
+        	注意事项：1.v1值必须小于v2 2.查询包含边界值
+        	
+      		<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
                 
             </div>
@@ -1059,18 +1077,19 @@ select * from 表名 limit 1,4。
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/03/15/%E6%95%B0%E6%8D%AE%E5%BA%93-%E5%88%86%E7%BB%84%E5%87%BD%E6%95%B0+DCL+%E7%BA%A6%E6%9D%9F+%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2+%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F/">
+                <a href="/2020/03/15/%E5%BC%82%E5%B8%B8%E4%BD%93%E7%B3%BB/">
                     <div class="card-image">
                         
-                        <img src="/medias/banner/3.jpg" class="responsive-img" alt="02分组函数+DCL+约束+多表查询+三大范式">
                         
-                        <span class="card-title">02分组函数+DCL+约束+多表查询+三大范式</span>
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="异常体系">
+                        
+                        <span class="card-title">异常体系</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            分组函数+DCL+约束+多表查询+三大范式
+                            异常处理，自定义异常
                         
                     </div>
                     <div class="publish-info">
@@ -1081,8 +1100,8 @@ select * from 表名 limit 1,4。
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                    数据库
+                            <a href="/categories/JAVA%E5%9F%BA%E7%A1%80/" class="post-category">
+                                    JAVA基础
                                 </a>
                             
                             
@@ -1092,8 +1111,8 @@ select * from 表名 limit 1,4。
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                        <span class="chip bg-color">数据库</span>
+                    <a href="/tags/JAVA%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">JAVA基础</span>
                     </a>
                     
                 </div>
@@ -1107,18 +1126,19 @@ select * from 表名 limit 1,4。
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/15/JDBC/">
+                <a href="/2020/03/15/JAVAEE%E9%9D%A2%E8%AF%95/">
                     <div class="card-image">
                         
-                        <img src="/medias/banner/1.jpg" class="responsive-img" alt="JDBC">
                         
-                        <span class="card-title">JDBC</span>
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="JAVAEE面试题目">
+                        
+                        <span class="card-title">JAVAEE面试题目</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            JDBC+连接池
+                            JAVAEE面试题目
                         
                     </div>
                     <div class="publish-info">
@@ -1129,8 +1149,8 @@ select * from 表名 limit 1,4。
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JDBC/" class="post-category">
-                                    JDBC
+                            <a href="/categories/JAVA%E5%9F%BA%E7%A1%80/" class="post-category">
+                                    JAVA基础
                                 </a>
                             
                             
@@ -1140,8 +1160,8 @@ select * from 表名 limit 1,4。
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JDBC/">
-                        <span class="chip bg-color">JDBC</span>
+                    <a href="/tags/JAVA%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">JAVA基础</span>
                     </a>
                     
                 </div>

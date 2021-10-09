@@ -477,6 +477,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -484,47 +487,49 @@
             <div id="articleContent">
                 <h1 id="1、EL表达式"><a href="#1、EL表达式" class="headerlink" title="1、EL表达式"></a>1、EL表达式</h1><h2 id="1-2-1-获取域中的值-重要"><a href="#1-2-1-获取域中的值-重要" class="headerlink" title="1.2.1 获取域中的值  (重要!!)"></a>1.2.1 获取域中的值  (重要!!)</h2><p>EL表达式主要简化从域对象（4个域）中获取数据</p>
 <p><strong>语法</strong></p>
-<pre><code class="markdown">* 标准（了解）
-    1. $&#123;pageScope.键名&#125; 
-            从page域中获取指定键名对应的值
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token list punctuation">*</span> 标准（了解）
+	<span class="token list punctuation">1.</span> $&#123;pageScope.键名&#125; 
+			从page域中获取指定键名对应的值
 
-    2. $&#123;requestScope.键名&#125; 
-            从request域中获取指定键名对应的值
+<span class="token code keyword">	2. $&#123;requestScope.键名&#125; 
+			从request域中获取指定键名对应的值</span>
 
-    3. $&#123;sessionScope.键名&#125; 
-            从session域中获取指定键名对应的值
+<span class="token code keyword">	3. $&#123;sessionScope.键名&#125; 
+			从session域中获取指定键名对应的值</span>
 
-    4. $&#123;applicationScope.键名&#125; 
-            从servletContext域中获取指定键名对应的值
-        
-* 简化（掌握）
-    $&#123;键名&#125;
-        特点：默认从最小域开始找，找到后直接显示，不在继续寻找
-        小结：要求四个域键名唯一
-    
-</code></pre>
-<pre><code class="jsp">&lt;%@ page contentType=&quot;text/html;charset=UTF-8&quot; language=&quot;java&quot; %&gt;
+<span class="token code keyword">	4. $&#123;applicationScope.键名&#125; 
+			从servletContext域中获取指定键名对应的值
+		</span>
+<span class="token list punctuation">*</span> 简化（掌握）
+	$&#123;键名&#125;
+		特点：默认从最小域开始找，找到后直接显示，不在继续寻找
+		小结：要求四个域键名唯一
+	<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;%@ page contentType&#x3D;&quot;text&#x2F;html;charset&#x3D;UTF-8&quot; language&#x3D;&quot;java&quot; %&gt;
 &lt;html&gt;
 &lt;head&gt;
-    &lt;title&gt;Title&lt;/title&gt;
-&lt;/head&gt;
+    &lt;title&gt;Title&lt;&#x2F;title&gt;
+&lt;&#x2F;head&gt;
 &lt;body&gt;
         &lt;div&gt;
             &lt;%
-                //存值
+                &#x2F;&#x2F;存值
                 pageContext.setAttribute(&quot;name1&quot;, &quot;value1&quot;);
                 request.setAttribute(&quot;name2&quot;, &quot;value2&quot;);
                 session.setAttribute(&quot;name3&quot;, &quot;value3&quot;);
                 application.setAttribute(&quot;name4&quot;, &quot;value4&quot;);
 
-//                pageContext.setAttribute(&quot;name5&quot;, &quot;value11&quot;);
+&#x2F;&#x2F;                pageContext.setAttribute(&quot;name5&quot;, &quot;value11&quot;);
                 request.setAttribute(&quot;name5&quot;, &quot;value22&quot;);
                 session.setAttribute(&quot;name5&quot;, &quot;value33&quot;);
                 application.setAttribute(&quot;name5&quot;, &quot;value44&quot;);
             %&gt;
             &lt;%
-                //取值
-                Object name2 = request.getAttribute(&quot;name2&quot;);
+                &#x2F;&#x2F;取值
+                Object name2 &#x3D; request.getAttribute(&quot;name2&quot;);
                 out.print(name2);
             %&gt;
             $&#123;name2&#125;
@@ -554,105 +559,115 @@
             $&#123;name4&#125;
             &lt;hr&gt;
             $&#123;name5&#125;
-        &lt;/div&gt;
+        &lt;&#x2F;div&gt;
 
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
+&lt;&#x2F;body&gt;
+&lt;&#x2F;html&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
 <p><strong>练习【作业】</strong></p>
-<pre><code class="markdown">1. 获取字符串
-        $&#123;键名&#125;
-        
-2. 获取对象（User）
-        $&#123;键名.属性名&#125;
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token list punctuation">1.</span> 获取字符串
+		$&#123;键名&#125;
+		
+<span class="token list punctuation">2.</span> 获取对象（User）
+		$&#123;键名.属性名&#125;
 
-3. 获取List（Array）集合
-        $&#123;键名[索引]&#125;
+<span class="token list punctuation">3.</span> 获取List（Array）集合
+		$&#123;键名[索引]&#125;
 
-4. 获取Map集合
-        $&#123;键名.key&#125;
-        $&#123;键名[&quot;key&quot;]&#125;
-        
-5. 补充
-    el不会出现null和索引角标越界问题
-</code></pre>
-<pre><code class="jsp">&lt;%@ page import=&quot;java.util.ArrayList&quot; %&gt;
-&lt;%@ page import=&quot;java.util.Collections&quot; %&gt;
-&lt;%@ page import=&quot;java.util.HashMap&quot; %&gt;
-&lt;%@ page import=&quot;com.itheima.pojo.User&quot; %&gt;
-&lt;%@ page contentType=&quot;text/html;charset=UTF-8&quot; language=&quot;java&quot; %&gt;
+<span class="token list punctuation">4.</span> 获取Map集合
+		$&#123;键名.key&#125;
+		$&#123;键名["key"]&#125;
+		
+<span class="token list punctuation">5.</span> 补充
+	el不会出现null和索引角标越界问题<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;%@ page import&#x3D;&quot;java.util.ArrayList&quot; %&gt;
+&lt;%@ page import&#x3D;&quot;java.util.Collections&quot; %&gt;
+&lt;%@ page import&#x3D;&quot;java.util.HashMap&quot; %&gt;
+&lt;%@ page import&#x3D;&quot;com.itheima.pojo.User&quot; %&gt;
+&lt;%@ page contentType&#x3D;&quot;text&#x2F;html;charset&#x3D;UTF-8&quot; language&#x3D;&quot;java&quot; %&gt;
 &lt;html&gt;
 &lt;head&gt;
-    &lt;title&gt;Title&lt;/title&gt;
-&lt;/head&gt;
+    &lt;title&gt;Title&lt;&#x2F;title&gt;
+&lt;&#x2F;head&gt;
 &lt;body&gt;
         &lt;div&gt;
             &lt;%
-               //当value=string
-                String str = &quot;abc&quot;;
+               &#x2F;&#x2F;当value&#x3D;string
+                String str &#x3D; &quot;abc&quot;;
                 request.setAttribute(&quot;str&quot;, str);
-                //当value=javaBean
-                User aa = new User(&quot;张三&quot;, 18);
+                &#x2F;&#x2F;当value&#x3D;javaBean
+                User aa &#x3D; new User(&quot;张三&quot;, 18);
                 request.setAttribute(&quot;user&quot;, aa);
-                //当value=list
-                ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;();
+                &#x2F;&#x2F;当value&#x3D;list
+                ArrayList&lt;String&gt; list &#x3D; new ArrayList&lt;&gt;();
                 Collections.addAll(list, &quot;a&quot;,&quot;b&quot;,&quot;c&quot;);
                 request.setAttribute(&quot;list&quot;, list);
-                //当value=map
-                HashMap&lt;String, String&gt; map = new HashMap&lt;&gt;();
+                &#x2F;&#x2F;当value&#x3D;map
+                HashMap&lt;String, String&gt; map &#x3D; new HashMap&lt;&gt;();
                 map.put(&quot;name&quot;, &quot;高圆圆&quot;);
                 map.put(&quot;age&quot;, &quot;18&quot;);
                 map.put(&quot;xx.yy&quot;, &quot;呵呵&quot;);
                 request.setAttribute(&quot;map&quot;, map);
             %&gt;
-        &lt;/div&gt;
+        &lt;&#x2F;div&gt;
         &lt;div&gt;
             $&#123;str&#125; &lt;br&gt;
             $&#123;user.name&#125; ,$&#123;user.age&#125; &lt;br&gt;
             $&#123;list[2]&#125; &lt;br&gt;
             $&#123;map.name&#125; , $&#123;map.age&#125;,$&#123;map[&quot;xx.yy&quot;]&#125;
-        &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<h2 id="1-2-2-执行运算-重要"><a href="#1-2-2-执行运算-重要" class="headerlink" title="1.2.2 执行运算(重要)"></a>1.2.2 执行运算(重要)</h2><pre><code class="markdown">* 算数运算符
-        语法： +     -     *     /(div)         %(mod)
-        
-* 比较运算符
-        语法：&gt;     &lt;     &gt;=     &lt;=     ==(eq)         !=(ne)
-        
-* 逻辑运算符
-        语法：&amp;&amp;(and) ||(or) !(not)
-        
-* 三元运算符
-        语法：$&#123;条件表达式？为真:为假&#125;
+        &lt;&#x2F;div&gt;
+&lt;&#x2F;body&gt;
+&lt;&#x2F;html&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-------------------------------
 
-* 空运算符
-         语法：$&#123;not empty 对象&#125;
-         功能：
-             a. 可以判断对象是否为null
-             b. 可以判断字符串是否空串 &quot;&quot;
-             c. 可以判断一个集合的长度是否为0
-</code></pre>
-<pre><code class="jsp">&lt;%@ page import=&quot;java.util.List&quot; %&gt;
-&lt;%@ page import=&quot;java.util.ArrayList&quot; %&gt;
-&lt;%@ page contentType=&quot;text/html;charset=UTF-8&quot; language=&quot;java&quot; %&gt;
+
+<h2 id="1-2-2-执行运算-重要"><a href="#1-2-2-执行运算-重要" class="headerlink" title="1.2.2 执行运算(重要)"></a>1.2.2 执行运算(重要)</h2><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token list punctuation">*</span> 算数运算符
+		语法： + 	- 	<span class="token italic"><span class="token punctuation">*</span><span class="token content"> 	/(div) 		%(mod)
+		
+</span><span class="token punctuation">*</span></span> 比较运算符
+		语法：> 	&lt; 	>= 	&lt;= 	==(eq) 		!=(ne)
+		
+<span class="token list punctuation">*</span> 逻辑运算符
+		语法：&amp;&amp;(and) ||(or) !(not)
+		
+<span class="token list punctuation">*</span> 三元运算符
+		语法：$&#123;条件表达式？为真:为假&#125;
+
+<span class="token hr punctuation">------------------------------</span>
+
+<span class="token list punctuation">*</span> 空运算符
+ 		语法：$&#123;not empty 对象&#125;
+ 		功能：
+ 			a. 可以判断对象是否为null
+ 			b. 可以判断字符串是否空串 ""
+ 			c. 可以判断一个集合的长度是否为0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;%@ page import&#x3D;&quot;java.util.List&quot; %&gt;
+&lt;%@ page import&#x3D;&quot;java.util.ArrayList&quot; %&gt;
+&lt;%@ page contentType&#x3D;&quot;text&#x2F;html;charset&#x3D;UTF-8&quot; language&#x3D;&quot;java&quot; %&gt;
 &lt;html&gt;
 &lt;head&gt;
-    &lt;title&gt;Title&lt;/title&gt;
-&lt;/head&gt;
+    &lt;title&gt;Title&lt;&#x2F;title&gt;
+&lt;&#x2F;head&gt;
 &lt;body&gt;
         &lt;div&gt;
             &lt;%
                 request.setAttribute(&quot;n1&quot;, 10);
                 request.setAttribute(&quot;n2&quot;, 4);
             %&gt;
-            $&#123;n1&#125; / $&#123;n2&#125; = $&#123;n1/n2&#125; &lt;br&gt;
+            $&#123;n1&#125; &#x2F; $&#123;n2&#125; &#x3D; $&#123;n1&#x2F;n2&#125; &lt;br&gt;
             $&#123;n1%n2&#125; , $&#123;n1 mod n2&#125; &lt;br&gt;
 
-        &lt;/div&gt;
+        &lt;&#x2F;div&gt;
 
         &lt;div&gt;
             &lt;%
@@ -661,9 +676,9 @@
 
             姓名 : 张三 &lt;br&gt;
             性别 :
-            &lt;input type=&quot;radio&quot; name=&quot;sex&quot; $&#123;sex==&#39;男&#39;?&#39;checked&#39; : &#39;&#39;&#125;&gt; 男
-            &lt;input type=&quot;radio&quot; name=&quot;sex&quot; $&#123;sex==&#39;女&#39;?&#39;checked&#39; : &#39;&#39;&#125;&gt; 女
-        &lt;/div&gt;
+            &lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;sex&quot; $&#123;sex&#x3D;&#x3D;&#39;男&#39;?&#39;checked&#39; : &#39;&#39;&#125;&gt; 男
+            &lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;sex&quot; $&#123;sex&#x3D;&#x3D;&#39;女&#39;?&#39;checked&#39; : &#39;&#39;&#125;&gt; 女
+        &lt;&#x2F;div&gt;
 
         &lt;div&gt;
             &lt;%--
@@ -676,9 +691,9 @@
                c. 可以判断一个集合的长度是否为0
           --%&gt;
             &lt;%
-                Object obj = null;
-                String str = &quot;&quot;;
-                List&lt;String&gt; list = new ArrayList&lt;&gt;();
+                Object obj &#x3D; null;
+                String str &#x3D; &quot;&quot;;
+                List&lt;String&gt; list &#x3D; new ArrayList&lt;&gt;();
 
                 request.setAttribute(&quot;obj&quot;, obj);
                 request.setAttribute(&quot;str&quot;, str);
@@ -687,27 +702,30 @@
             $&#123;not empty obj&#125;
             $&#123;not empty str&#125;
             $&#123;not empty list&#125;
-        &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<h2 id="1-2-3-隐式对象-了解"><a href="#1-2-3-隐式对象-了解" class="headerlink" title="1.2.3 隐式对象(了解)"></a>1.2.3 隐式对象(了解)</h2><pre><code class="markdown">* el表达式中有11个隐式对象
-    掌握:             cookie
-            可以获取浏览器指定cookie名称的值            
-              $&#123;cookie.name属性名.value&#125;
-</code></pre>
-<pre><code class="jsp">&lt;%@ page contentType=&quot;text/html;charset=UTF-8&quot; language=&quot;java&quot; %&gt;
+        &lt;&#x2F;div&gt;
+&lt;&#x2F;body&gt;
+&lt;&#x2F;html&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="1-2-3-隐式对象-了解"><a href="#1-2-3-隐式对象-了解" class="headerlink" title="1.2.3 隐式对象(了解)"></a>1.2.3 隐式对象(了解)</h2><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token list punctuation">*</span> el表达式中有11个隐式对象
+	掌握:		 	cookie
+			可以获取浏览器指定cookie名称的值			
+			  $&#123;cookie.name属性名.value&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;%@ page contentType&#x3D;&quot;text&#x2F;html;charset&#x3D;UTF-8&quot; language&#x3D;&quot;java&quot; %&gt;
 &lt;html&gt;
 &lt;head&gt;
-    &lt;title&gt;Title&lt;/title&gt;
-&lt;/head&gt;
+    &lt;title&gt;Title&lt;&#x2F;title&gt;
+&lt;&#x2F;head&gt;
 &lt;body&gt;
     &lt;div&gt;
         &lt;%
-            Cookie[] cookies = request.getCookies();
+            Cookie[] cookies &#x3D; request.getCookies();
             for (Cookie cookie : cookies) &#123;
-                String name = cookie.getName();
-                String value = cookie.getValue();
+                String name &#x3D; cookie.getName();
+                String value &#x3D; cookie.getValue();
                 out.println(name);
                 out.print(&quot;&lt;br&gt;&quot;);
                 out.println(value);
@@ -721,10 +739,11 @@
         --%&gt;
         $&#123;cookie.JSESSIONID.name&#125; &lt;br&gt;
         $&#123;cookie.JSESSIONID.value&#125;
-    &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;body&gt;
+&lt;&#x2F;html&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
                 
             </div>
@@ -1019,19 +1038,19 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/04/28/Hexo-xr/">
+                <a href="/2020/04/28/Filter&Listener/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Hexo之渲染绕过">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Filter&amp;Listener">
                         
-                        <span class="card-title">Hexo之渲染绕过</span>
+                        <span class="card-title">Filter&amp;Listener</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            在Hexo部署时会默认渲染source下的所有html页面，但有时候想在Hexo博客上单独自定义html页面或README.md时，却不希望被Hexo渲染。
+                            Filter&Listener&拦截路径&三个组件的运行顺序
                         
                     </div>
                     <div class="publish-info">
@@ -1042,8 +1061,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E7%AF%87/" class="post-category">
-                                    博客篇
+                            <a href="/categories/JavaWeb/" class="post-category">
+                                    JavaWeb
                                 </a>
                             
                             
@@ -1053,12 +1072,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Hexo/">
-                        <span class="chip bg-color">Hexo</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%B8%B2%E6%9F%93%E7%BB%95%E8%BF%87/">
-                        <span class="chip bg-color">渲染绕过</span>
+                    <a href="/tags/JavaWeb/">
+                        <span class="chip bg-color">JavaWeb</span>
                     </a>
                     
                 </div>

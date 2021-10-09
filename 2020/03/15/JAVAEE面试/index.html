@@ -477,12 +477,15 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1、面向对象的三个基本特征，说说自己的理解？"><a href="#1、面向对象的三个基本特征，说说自己的理解？" class="headerlink" title="1、面向对象的三个基本特征，说说自己的理解？"></a>1、面向对象的三个基本特征，说说自己的理解？</h2><pre><code class="markdown">1，封装 继承 多态
+                <h2 id="1、面向对象的三个基本特征，说说自己的理解？"><a href="#1、面向对象的三个基本特征，说说自己的理解？" class="headerlink" title="1、面向对象的三个基本特征，说说自己的理解？"></a>1、面向对象的三个基本特征，说说自己的理解？</h2><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">1，封装 继承 多态
 2，理解和以下大同小异即可，主要看表达能力
 (1)封装(Encapsulation)所谓封装，也就是把客观事物封装成抽象的类，
 并且类可以把自己的数据和方法只让可信的类或者对象操作，对不可信的进行信息隐藏。
@@ -500,22 +503,32 @@
 多态机制使具有不同内部结构的对象可以共享相同的外部接口。
 这意味着，虽然针对不同对象的具体操作不同，但通过一个公共的类，
 它们（那些操作）可以通过相同的方式予以调用。最常见的多态就是将子类传入父类参数中，
-运行时调用父类方法时通过传入的子类决定具体的内部结构或行为。
-</code></pre>
-<h2 id="2、八种基本数据类型，以及他们的封装类？"><a href="#2、八种基本数据类型，以及他们的封装类？" class="headerlink" title="2、八种基本数据类型，以及他们的封装类？"></a>2、八种基本数据类型，以及他们的封装类？</h2><pre><code class="markdown">回答要点：
+运行时调用父类方法时通过传入的子类决定具体的内部结构或行为。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+<h2 id="2、八种基本数据类型，以及他们的封装类？"><a href="#2、八种基本数据类型，以及他们的封装类？" class="headerlink" title="2、八种基本数据类型，以及他们的封装类？"></a>2、八种基本数据类型，以及他们的封装类？</h2><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">回答要点：
 八种基本数据类型：int、short、float、double、long、boolean、byte、char。
-封装类分别是：Integer、Short、Float、Double、Long、Boolean、Byte、Character。
-</code></pre>
-<h2 id="3、接口和抽象类有什么区别？"><a href="#3、接口和抽象类有什么区别？" class="headerlink" title="3、接口和抽象类有什么区别？"></a>3、接口和抽象类有什么区别？</h2><pre><code class="markdown">区别：
+封装类分别是：Integer、Short、Float、Double、Long、Boolean、Byte、Character。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+<h2 id="3、接口和抽象类有什么区别？"><a href="#3、接口和抽象类有什么区别？" class="headerlink" title="3、接口和抽象类有什么区别？"></a>3、接口和抽象类有什么区别？</h2><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">区别：
 1，实现：抽象类的子类使用 extends 来继承；接口必须使用 implements 来实现接口。
 2，实现数量：类可以实现很多个接口；但是只能继承一个抽象类。
 3，构造方法：抽象类可以有构造方法；接口不能有。
 4，main 方法：抽象类可以有 main 方法，并且我们能运行它；接口不能有 main 方法。
-5，方法修饰符：接口中的方法默认使用 public 修饰；抽象类中的方法可以是任意访问修饰符。
-</code></pre>
-<h2 id="4、final、finally、finalize的区别？"><a href="#4、final、finally、finalize的区别？" class="headerlink" title="4、final、finally、finalize的区别？"></a>4、final、finally、finalize的区别？</h2><pre><code class="markdown">区别：
+5，方法修饰符：接口中的方法默认使用 public 修饰；抽象类中的方法可以是任意访问修饰符。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-1、final 
+
+
+<h2 id="4、final、finally、finalize的区别？"><a href="#4、final、finally、finalize的区别？" class="headerlink" title="4、final、finally、finalize的区别？"></a>4、final、finally、finalize的区别？</h2><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">区别：
+
+1、final 
 在java中，final可以用来修饰类不能被继承，
 方法不能被重写和变量变成常量（成员变量或局部变量）；
 
@@ -528,60 +541,72 @@ finally作为异常处理的一部分，它只能用在try/catch语句中，
 　　finalize()是在java.lang.Object里定义的，也就是说每一个对象都有这么个方法。
 　　这个方法在gc启动，该对象被回收的时候被调用。
 　　其实gc可以回收大部分的对象（凡是new出来的对象，gc都能搞定，一般情况下我们又不会用new以外的方式去创建对象）
-　　，所以一般是不需要程序员去实现finalize的。 
+　　，所以一般是不需要程序员去实现finalize的。 
 特殊情况下，需要程序员实现finalize，当对象被回收的时候释放一些资源，
-比如：一个socket链接，在对象初始化时创建，整个生命周期内有效，那么就需要实现finalize，关闭这个链接。
-</code></pre>
-<h2 id="5、重写（也叫覆盖）和重载的区别？"><a href="#5、重写（也叫覆盖）和重载的区别？" class="headerlink" title="5、重写（也叫覆盖）和重载的区别？"></a>5、重写（也叫覆盖）和重载的区别？</h2><pre><code class="markdown">1、概念：
+比如：一个socket链接，在对象初始化时创建，整个生命周期内有效，那么就需要实现finalize，关闭这个链接。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="5、重写（也叫覆盖）和重载的区别？"><a href="#5、重写（也叫覆盖）和重载的区别？" class="headerlink" title="5、重写（也叫覆盖）和重载的区别？"></a>5、重写（也叫覆盖）和重载的区别？</h2><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">1、概念：
 1.1、重写(Override)：子类继承了父类原有的方法，但有时子类并不想原封不动的继承父类中的某个方法，所以在方法名，参数列表，返回类型(除过子类中方法的返回值是父类中方法返回值的子类时)都相同的情况下， 对方法体进行修改或覆盖，这就是重写；
 1.2、重载(Overload)：在一个类中，同名的方法如果有不同的参数列表（参数类型不同、参数个数不同甚至是参数顺序不同）则视为重载。同时，重载对返回类型没有要求，可以相同也可以不同，但不能通过返回类型是否相同来判断重载。
 2、总结：
-2.1、重载：发生在父类与子类之间；方法名、参数列表、返回值类型（子类方法中的返回值类型可以是父类方法中返回值类型的子类）必须相同；子类方法的权限修饰符的限制一定要大于或等于被重写方法的权限修饰符（public&gt;protected&gt;default&gt;private)；重写方法一定不能抛出新的检查异常或者比被重写方法申明更加宽泛的检查型异常；父类中私有方法不能被重写。
+2.1、重载：发生在父类与子类之间；方法名、参数列表、返回值类型（子类方法中的返回值类型可以是父类方法中返回值类型的子类）必须相同；子类方法的权限修饰符的限制一定要大于或等于被重写方法的权限修饰符（public>protected>default>private)；重写方法一定不能抛出新的检查异常或者比被重写方法申明更加宽泛的检查型异常；父类中私有方法不能被重写。
 2.2、重载是一个类中多态性的一种表现；重载要求同名方法的参数列表不同(参数类型，参数个数甚至是参数顺序)；重载的时候，返回值类型可以相同也可以不相同。无法以返回型别作为重载函数的区分标准。
 3、区别：
 3.1、重载发生在一个类中，同名的方法如果有不同的参数列表则视为重载；
-3.2、重写发生在子类与父类之间，重写要求子类被重写方法与父类被重写方法有相同的参数列表，有兼容的返回类型，比父类被重写方法更好访问，不能比父类被重写方法声明更多的异常。
-</code></pre>
-<h2 id="6、-和-equals-的区别是什么？-两个对象的-hashCode-相同，则-equals-也一定为-true，对吗？"><a href="#6、-和-equals-的区别是什么？-两个对象的-hashCode-相同，则-equals-也一定为-true，对吗？" class="headerlink" title="6、 == 和 equals 的区别是什么？ 两个对象的 hashCode()相同，则 equals()也一定为 true，对吗？"></a>6、 == 和 equals 的区别是什么？ 两个对象的 hashCode()相同，则 equals()也一定为 true，对吗？</h2><pre><code class="markdown">要点：
+3.2、重写发生在子类与父类之间，重写要求子类被重写方法与父类被重写方法有相同的参数列表，有兼容的返回类型，比父类被重写方法更好访问，不能比父类被重写方法声明更多的异常。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="6、-和-equals-的区别是什么？-两个对象的-hashCode-相同，则-equals-也一定为-true，对吗？"><a href="#6、-和-equals-的区别是什么？-两个对象的-hashCode-相同，则-equals-也一定为-true，对吗？" class="headerlink" title="6、 == 和 equals 的区别是什么？ 两个对象的 hashCode()相同，则 equals()也一定为 true，对吗？"></a>6、 == 和 equals 的区别是什么？ 两个对象的 hashCode()相同，则 equals()也一定为 true，对吗？</h2><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">要点：
 1，==比较 的是变量（栈区）内存中存放的对象的（堆区）内存地址，用来判断两个对象地址是否相同，即是否指向相同一个对象。比较的是真正意义上的指针操作。比较的是操作符两端的操作数是否是同一个对象；
 2，equals用来比较的是两个对象的内容是否相等，由于所有的类都是继承自java.lang.object类，所以适用与所有对象，如果没有对该方法进行覆盖，Object中的equals方法等同==
-3，不一定相同，两个对象equals相等，我们常规定hashcode返回值要相等，两个对象的equals()不相等，那么对这两个对象中的任一对象上调用 hashCode 方法不要求一定生成不同的整数结果。
-</code></pre>
-<h2 id="7、Java-中操作String的都有哪些类？它们之间有什么区别？"><a href="#7、Java-中操作String的都有哪些类？它们之间有什么区别？" class="headerlink" title="7、Java 中操作String的都有哪些类？它们之间有什么区别？"></a>7、Java 中操作String的都有哪些类？它们之间有什么区别？</h2><pre><code class="markdown">要点：
+3，不一定相同，两个对象equals相等，我们常规定hashcode返回值要相等，两个对象的equals()不相等，那么对这两个对象中的任一对象上调用 hashCode 方法不要求一定生成不同的整数结果。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="7、Java-中操作String的都有哪些类？它们之间有什么区别？"><a href="#7、Java-中操作String的都有哪些类？它们之间有什么区别？" class="headerlink" title="7、Java 中操作String的都有哪些类？它们之间有什么区别？"></a>7、Java 中操作String的都有哪些类？它们之间有什么区别？</h2><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">要点：
 1，String StringBuffer StringBuilder；
 2，String是不可变的对象，对每次String类型的改变都会生成一个新的对象；
 3，StringBufer和StringBuilder是可以改变对象的；
-4，操作效率StringBuilder &gt; Stringbuffer &gt; String；
-5，线程安全：StringBuffer是线程安全，用于多线程，Stringbuilder是非线程安全，用于单线程；
-</code></pre>
-<h2 id="8、BIO、NIO、AIO-有什么区别？"><a href="#8、BIO、NIO、AIO-有什么区别？" class="headerlink" title="8、BIO、NIO、AIO 有什么区别？"></a>8、BIO、NIO、AIO 有什么区别？</h2><pre><code class="markdown">要点：
+4，操作效率StringBuilder > Stringbuffer > String；
+5，线程安全：StringBuffer是线程安全，用于多线程，Stringbuilder是非线程安全，用于单线程；<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="8、BIO、NIO、AIO-有什么区别？"><a href="#8、BIO、NIO、AIO-有什么区别？" class="headerlink" title="8、BIO、NIO、AIO 有什么区别？"></a>8、BIO、NIO、AIO 有什么区别？</h2><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">要点：
 BIO：Block IO同步阻塞式IO，传统IO，模式简单，并发处理能力低
 
 NIO：New IO同步非阻塞IO，是传统IO的升级，客户端和服务器端通过Channel通道通讯，实现了多路复用
 
-AIO：Asynchronous IO,NIO的升级，也叫NIO2，实现了异步非堵塞IO，异步IO的操作基于事件和回调机制
-</code></pre>
-<h2 id="9、冒泡排序，选择排序，快速排序知道吗？"><a href="#9、冒泡排序，选择排序，快速排序知道吗？" class="headerlink" title="9、冒泡排序，选择排序，快速排序知道吗？"></a>9、冒泡排序，选择排序，快速排序知道吗？</h2><pre><code class="markdown">要点：（参考以下描述，大同小异即可）
+AIO：Asynchronous IO,NIO的升级，也叫NIO2，实现了异步非堵塞IO，异步IO的操作基于事件和回调机制<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="9、冒泡排序，选择排序，快速排序知道吗？"><a href="#9、冒泡排序，选择排序，快速排序知道吗？" class="headerlink" title="9、冒泡排序，选择排序，快速排序知道吗？"></a>9、冒泡排序，选择排序，快速排序知道吗？</h2><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">要点：（参考以下描述，大同小异即可）
 一，冒泡排序（Bubble Sort）： 对要进行排序的数据中相邻的数据进行两两比较，将较大的数据放在后面，依次对所有的数据进行操作，直至所有数据按要求完成排序。双重循环时间 O(n^2)
 算法描述：
-1. 比较相邻两个数据如果。第一个比第二个大，就交换两个数
-2. 对每一个相邻的数做同样1的工作，这样从开始一队到结尾一队在最后的数就是最大的数。
-3. 针对所有元素上面的操作，除了最后一个。
-4. 重复1~3步骤，直到顺序完成。
+<span class="token list punctuation">1.</span> 比较相邻两个数据如果。第一个比第二个大，就交换两个数
+<span class="token list punctuation">2.</span> 对每一个相邻的数做同样1的工作，这样从开始一队到结尾一队在最后的数就是最大的数。
+<span class="token list punctuation">3.</span> 针对所有元素上面的操作，除了最后一个。
+<span class="token list punctuation">4.</span> 重复1~3步骤，直到顺序完成。
 
 二，选择排序：选中数组的某个元素,其后面的元素依次和选中的元素进行两两比较，将较大的数据放在后面，依次从前到后选中每个元素，直至所有数据按要求完成排序。如果有n个数据进行排序，总共需要比较n-1次，每一次比较完毕，下一次的比较就会少一个数据参与
 算法描述：
-1. 在一个长度为 N 的无序数组中，第一次遍历 n-1 个数找到最小的和第一个数交换。
-2. 第二次从下一个数开始遍历 n-2 个数，找到最小的数和第二个数交换。
-3. 重复以上操作直到第 n-1 次遍历最小的数和第 n-1 个数交换，排序完成。
+<span class="token list punctuation">1.</span> 在一个长度为 N 的无序数组中，第一次遍历 n-1 个数找到最小的和第一个数交换。
+<span class="token list punctuation">2.</span> 第二次从下一个数开始遍历 n-2 个数，找到最小的数和第二个数交换。
+<span class="token list punctuation">3.</span> 重复以上操作直到第 n-1 次遍历最小的数和第 n-1 个数交换，排序完成。
 
 三，快速排序：快速排序采用了分治法，在数据序列中选择一个元素作为基准值，每趟从数据序列的两端开始交替进行，将小于基准值的元素交换到序列前端，将大于基准值的元素交换到序列后端，介于两者之间的位置则成为了基准值的最终位置。同时，序列被划分成两个子序列，再分别对两个子序列进行快速排序，直到子序列的长度为1，则完成排序。
 算法描述：
-1. 从数列中挑出一个元素作为基准。
-2. 重新排列数列，把所有的比基准小的放在基准前面，反之放在后面（一样大可任意一边）完成后基准处在分区的中间位置。
-3. 通过递归调用把小于基准元素和大于基准元素的子序列进行排序。
-</code></pre>
-<h2 id="10、List、Set、Map-之间的区别是什么？"><a href="#10、List、Set、Map-之间的区别是什么？" class="headerlink" title="10、List、Set、Map 之间的区别是什么？"></a>10、List、Set、Map 之间的区别是什么？</h2><pre><code class="markdown">要点：
+<span class="token list punctuation">1.</span> 从数列中挑出一个元素作为基准。
+<span class="token list punctuation">2.</span> 重新排列数列，把所有的比基准小的放在基准前面，反之放在后面（一样大可任意一边）完成后基准处在分区的中间位置。
+<span class="token list punctuation">3.</span> 通过递归调用把小于基准元素和大于基准元素的子序列进行排序。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="10、List、Set、Map-之间的区别是什么？"><a href="#10、List、Set、Map-之间的区别是什么？" class="headerlink" title="10、List、Set、Map 之间的区别是什么？"></a>10、List、Set、Map 之间的区别是什么？</h2><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">要点：
 LIST和set继承自collection，Map是一个接口
 List：
 可以允许重复的对象
@@ -598,70 +623,90 @@ Map不是collection的子接口或者实现类，Map是一个接口
 Map的每个Entry都持有两个对象，也就是一个键一个值，Map可能会持有相同的值对象但键对象必须是唯一的
 TreeMap也通过Comparator或者Comparable维护一个排序顺序
 Map里你可以随意拥有多个null值但是只能有一个null键
-Map流行的几个实现类HashMap、LinkedHashMap、HashTable和TreeMap
-</code></pre>
-<h2 id="11、-哪些集合类是线程安全的？"><a href="#11、-哪些集合类是线程安全的？" class="headerlink" title="11、 哪些集合类是线程安全的？"></a>11、 哪些集合类是线程安全的？</h2><pre><code class="markdown">要点：
+Map流行的几个实现类HashMap、LinkedHashMap、HashTable和TreeMap<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="11、-哪些集合类是线程安全的？"><a href="#11、-哪些集合类是线程安全的？" class="headerlink" title="11、 哪些集合类是线程安全的？"></a>11、 哪些集合类是线程安全的？</h2><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">要点：
 Vector：就比Arraylist多了个同步化机制（线程安全）。
 Hashtable：就比Hashmap多了个线程安全。
 ConcurrentHashMap:是一种高效但是线程安全的集合。
-Stack：栈，也是线程安全的，继承于Vector
-</code></pre>
-<h2 id="12、线程和进程的区别？"><a href="#12、线程和进程的区别？" class="headerlink" title="12、线程和进程的区别？"></a>12、线程和进程的区别？</h2><pre><code class="markdown">要点：
+Stack：栈，也是线程安全的，继承于Vector<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="12、线程和进程的区别？"><a href="#12、线程和进程的区别？" class="headerlink" title="12、线程和进程的区别？"></a>12、线程和进程的区别？</h2><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">要点：
 进程：是并发执行的程序在执行过程中分配和管理资源的基本单位，是一个动态概念，竞争计算机系统资源的基本单位。
-线程：是进程的一个执行单元，是进程内科调度实体。比进程更小的独立运行的基本单位。线程也被称为轻量级进程。
-</code></pre>
-<h2 id="13、说一下Runnable接口和Callable接口有什么相同点和不同点？"><a href="#13、说一下Runnable接口和Callable接口有什么相同点和不同点？" class="headerlink" title="13、说一下Runnable接口和Callable接口有什么相同点和不同点？"></a>13、说一下Runnable接口和Callable接口有什么相同点和不同点？</h2><pre><code class="markdown">要点：
+线程：是进程的一个执行单元，是进程内科调度实体。比进程更小的独立运行的基本单位。线程也被称为轻量级进程。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="13、说一下Runnable接口和Callable接口有什么相同点和不同点？"><a href="#13、说一下Runnable接口和Callable接口有什么相同点和不同点？" class="headerlink" title="13、说一下Runnable接口和Callable接口有什么相同点和不同点？"></a>13、说一下Runnable接口和Callable接口有什么相同点和不同点？</h2><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">要点：
 1，相同点：两者都是接口，都需要调用Thread.start()
 2，不同：实现callable接口的任务线程能返回执行结果，而实现Runnable接口的任务线程不能返回结果
-3，callable接口的call（）方法允许抛出异常，而runnable（）接口的run()方法的异常只能在内部消化，不能继续上抛；
-</code></pre>
-<h2 id="14、在-Java-程序中怎么保证多线程的运行安全？"><a href="#14、在-Java-程序中怎么保证多线程的运行安全？" class="headerlink" title="14、在 Java 程序中怎么保证多线程的运行安全？"></a>14、在 Java 程序中怎么保证多线程的运行安全？</h2><pre><code class="markdown">要点：
+3，callable接口的call（）方法允许抛出异常，而runnable（）接口的run()方法的异常只能在内部消化，不能继续上抛；<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="14、在-Java-程序中怎么保证多线程的运行安全？"><a href="#14、在-Java-程序中怎么保证多线程的运行安全？" class="headerlink" title="14、在 Java 程序中怎么保证多线程的运行安全？"></a>14、在 Java 程序中怎么保证多线程的运行安全？</h2><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">要点：
 1、使用synchronied关键字，可以用于代码块，方法（静态方法，同步锁是当前字节码对象；实例方法，同步锁是实例对象）
 2、使用volatile 关键字，防止指令重排，被volatile修饰的变量的值，将不会被本地线程缓存，所有对该变量的读写都是直接操作共享内存，从而确保多个线程能正确的处理该变量
 3、lock锁机制
-4、使用线程安全的类，比如Vector、HashTable、StringBuffer
-</code></pre>
-<h2 id="15、Synchronized-和-Lock-有什么区别？"><a href="#15、Synchronized-和-Lock-有什么区别？" class="headerlink" title="15、Synchronized 和 Lock 有什么区别？"></a>15、Synchronized 和 Lock 有什么区别？</h2><pre><code class="markdown">要点：
+4、使用线程安全的类，比如Vector、HashTable、StringBuffer<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="15、Synchronized-和-Lock-有什么区别？"><a href="#15、Synchronized-和-Lock-有什么区别？" class="headerlink" title="15、Synchronized 和 Lock 有什么区别？"></a>15、Synchronized 和 Lock 有什么区别？</h2><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">要点：
 1，首先synchronized是java内置关键字；
 2，在jvm层面，Lock是个java类；
 3，synchronized无法判断是否获取锁的状态，Lock可以判断是否获取到锁；
 4，synchronized会自动释放锁(a 线程执行完同步代码会释放锁 ；b 线程执行过程中发生异常会释放锁)，Lock需在finally中手工释放锁（unlock()方法释放锁），否则容易造成线程死锁；
 5，用synchronized关键字的两个线程1和线程2，如果当前线程1获得锁，线程2线程等待。如果线程1阻塞，线程2则会一直等待下去，而Lock锁就不一定会等待下去，如果尝试获取不到锁，线程可以不用一直等待就结束了；
 6，synchronized的锁可重入、不可中断、非公平，而Lock锁可重入、可判断、可公平（两者皆可）；
-7，Lock锁适合大量同步的代码的同步问题，synchronized锁适合代码少量的同步问题
-</code></pre>
-<h2 id="16、什么是反射？能提供哪些功能？"><a href="#16、什么是反射？能提供哪些功能？" class="headerlink" title="16、什么是反射？能提供哪些功能？"></a>16、什么是反射？能提供哪些功能？</h2><pre><code class="markdown">要点：
+7，Lock锁适合大量同步的代码的同步问题，synchronized锁适合代码少量的同步问题<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="16、什么是反射？能提供哪些功能？"><a href="#16、什么是反射？能提供哪些功能？" class="headerlink" title="16、什么是反射？能提供哪些功能？"></a>16、什么是反射？能提供哪些功能？</h2><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">要点：
 1，在java运行环境中，对于任意一个类，能否知道这个类有哪些属性和方法，对于任意一个对象，能否调用任意的方法
 2，java反射机制主要提供以下功能：
-         在运行时判断任意一个对象所属的类
-         在运行时构造任意一个类的对象
-         在运行时判断任意一个类所具有的成员变量和方法
-         在运行时调用任意一个对象的方法
-</code></pre>
-<h2 id="17、什么是Java序列化？什么情况下需要序列化？"><a href="#17、什么是Java序列化？什么情况下需要序列化？" class="headerlink" title="17、什么是Java序列化？什么情况下需要序列化？"></a>17、什么是Java序列化？什么情况下需要序列化？</h2><pre><code class="markdown">要点：
+         在运行时判断任意一个对象所属的类
+         在运行时构造任意一个类的对象
+         在运行时判断任意一个类所具有的成员变量和方法
+         在运行时调用任意一个对象的方法<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="17、什么是Java序列化？什么情况下需要序列化？"><a href="#17、什么是Java序列化？什么情况下需要序列化？" class="headerlink" title="17、什么是Java序列化？什么情况下需要序列化？"></a>17、什么是Java序列化？什么情况下需要序列化？</h2><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">要点：
 1，java序列化，就是把java对象变为二进制对象，便于存储和在网络上传输
 2，什么情况下需要：
 当你想把你内存中的对象状态保存到一个文件中或者数据库中的时候
 当你想用套接字在网络上传送对象的时候
-当你想通过RMI传输对象的时候
-</code></pre>
-<h2 id="18、什么是动态代理？说说你知道的动态代理方式？"><a href="#18、什么是动态代理？说说你知道的动态代理方式？" class="headerlink" title="18、什么是动态代理？说说你知道的动态代理方式？"></a>18、什么是动态代理？说说你知道的动态代理方式？</h2><pre><code class="markdown">要点：
+当你想通过RMI传输对象的时候<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="18、什么是动态代理？说说你知道的动态代理方式？"><a href="#18、什么是动态代理？说说你知道的动态代理方式？" class="headerlink" title="18、什么是动态代理？说说你知道的动态代理方式？"></a>18、什么是动态代理？说说你知道的动态代理方式？</h2><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">要点：
 1，代理类在程序运行时创建的代理对象被称为动态代理，代理类并不是在Java代码中定义的，而是在运行时根据我们在Java代码中的“指示”动态生成的。动态代理可以对被代理对象的方法进行增强，可以在不修改方法源码的情况下，增强被代理对象方法的功能，在方法执行前后做任何你想做的事情。
 2，动态代理有两类，一是基于接口的JDK动态代理，另外一种是基于类的CGLib代理：
 JDK动态代理 （使用Proxy类，InvocationHandler接口）代理对象不用实现接口，是利用JDK的API生成的，动态在内存中构建代理对象（需要我们指定）
 代理类所在包：java.lang.reflect.Proxy 用于构建代理对象，newProxyInstance方法创建代理类实例，实现InvocationHandler接口的invoke方法
 3，目标对象就是一个对象，没有实现任何接口，就不能使用JDK动态代理。那这时候可以使用CGLib代理。
 CGLibb代理也叫子类代理，它是在内存中构建一个子类对象，从而实现对目标对象功能的扩展。
-使用Enhancer类设置目标类作为父类，动态生成子类，MethodInterceptor接口的intercept方法作为代理方法逻辑
-</code></pre>
-<h2 id="19、Collection-和-Collections-有什么区别？"><a href="#19、Collection-和-Collections-有什么区别？" class="headerlink" title="19、Collection 和 Collections 有什么区别？"></a>19、Collection 和 Collections 有什么区别？</h2><pre><code class="markdown">要点：
+使用Enhancer类设置目标类作为父类，动态生成子类，MethodInterceptor接口的intercept方法作为代理方法逻辑<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="19、Collection-和-Collections-有什么区别？"><a href="#19、Collection-和-Collections-有什么区别？" class="headerlink" title="19、Collection 和 Collections 有什么区别？"></a>19、Collection 和 Collections 有什么区别？</h2><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">要点：
 1，java.util.Collection 是一个集合接口（集合类的一个顶级接口）。它提供了对集合对象进行基本操作的通用接口方法。
 2，Collection接口在Java 类库中有很多具体的实现。
 3，Collection接口的意义是为各种具体的集合提供了最大化的统一操作方式，其直接继承接口有List与Set。
 4，Collections则是集合类的一个工具类/帮助类，其中提供了一系列静态方法，用于对集合中元素进行排序、搜索以及线程安全等各种操作。
-        例如binarySearch（）sort（）synchronizedList（）
-</code></pre>
-<h2 id="20、死锁的四个必要条件？怎样防止死锁？"><a href="#20、死锁的四个必要条件？怎样防止死锁？" class="headerlink" title="20、死锁的四个必要条件？怎样防止死锁？"></a>20、死锁的四个必要条件？怎样防止死锁？</h2><pre><code class="markdown">要点：
+        例如binarySearch（）sort（）synchronizedList（）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="20、死锁的四个必要条件？怎样防止死锁？"><a href="#20、死锁的四个必要条件？怎样防止死锁？" class="headerlink" title="20、死锁的四个必要条件？怎样防止死锁？"></a>20、死锁的四个必要条件？怎样防止死锁？</h2><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">要点：
 1,互斥条件：进程对所分配到的资源不允许其他进程进行访问，若其他进程访问该资源，只能等待，直至占有该资源的进程使用完成后释放该资源；
 2,请求和保持条件：进程获得一定的资源之后，又对其他资源发出请求，但是该资源可能被其他进程占有，此时请求阻塞，但又对自己获得的资源保持不放；
 3,不可剥夺条件：是指进程已获得的资源，在未完成使用之前，不可被剥夺，只能在使用完后自己释放；
@@ -669,8 +714,8 @@ CGLibb代理也叫子类代理，它是在内存中构建一个子类对象，�
 这四个条件是死锁的必要条件，只要系统发生死锁，这些条件必然成立，而只要上述条件之一不满足，就不会发生死锁。
 理解了死锁的原因，尤其是产生死锁的四个必要条件，就可以最大可能地避免、预防和 解除死锁。
 所以，在系统设计、进程调度等方面注意如何不让这四个必要条件成立，如何确 定资源的合理分配算法，避免进程永久占据系统资源。
-此外，也要防止进程在处于等待状态的情况下占用资源。因此，对资源的分配要给予合理的规划。
-</code></pre>
+此外，也要防止进程在处于等待状态的情况下占用资源。因此，对资源的分配要给予合理的规划。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
                 
             </div>
@@ -912,19 +957,18 @@ CGLibb代理也叫子类代理，它是在内存中构建一个子类对象，�
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/03/15/%E5%BC%82%E5%B8%B8%E4%BD%93%E7%B3%BB/">
+                <a href="/2020/03/15/%E6%95%B0%E6%8D%AE%E5%BA%93DDL-DML-DQL/">
                     <div class="card-image">
                         
+                        <img src="/medias/banner/4.jpg" class="responsive-img" alt="DDL_DML_DQL">
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="异常体系">
-                        
-                        <span class="card-title">异常体系</span>
+                        <span class="card-title">DDL_DML_DQL</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            异常处理，自定义异常
+                            DDL，DML，DQL，模糊搜素，蠕虫复制，排序，去重
                         
                     </div>
                     <div class="publish-info">
@@ -935,8 +979,8 @@ CGLibb代理也叫子类代理，它是在内存中构建一个子类对象，�
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JAVA%E5%9F%BA%E7%A1%80/" class="post-category">
-                                    JAVA基础
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
                                 </a>
                             
                             
@@ -946,8 +990,8 @@ CGLibb代理也叫子类代理，它是在内存中构建一个子类对象，�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JAVA%E5%9F%BA%E7%A1%80/">
-                        <span class="chip bg-color">JAVA基础</span>
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">数据库</span>
                     </a>
                     
                 </div>

@@ -477,123 +477,134 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="1、session"><a href="#1、session" class="headerlink" title="1、session"></a>1、session</h1><h2 id="1、简述"><a href="#1、简述" class="headerlink" title="1、简述"></a>1、简述</h2><p><strong>session是服务器端的会话技术</strong></p>
-<pre><code class="markdown"># session的作用
-    在一次会话的多次请求之间共享数据，将数据保存到服务器端
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span> session的作用</span>
+	在一次会话的多次请求之间共享数据，将数据保存到服务器端
 
-# HttpSession是一个域对象 
-    HttpSession是一个接口
-    域对象可以看成是map(存储多个键值对), cookie是一个entry(只能存一个键值对)
-1. 域对象的方法 
-    a. 存储数据
-            void setAttribute(String name,Object value)
-    b. 获取数据
-            Object getAttribute(String name)
-    c. 删除数据
-            void removeAttribute(String name)
-            
-2. 生命周期: 一次会话的多次请求之间
-        pageContext(JSP) &lt; request &lt; session &lt; servletContext
-            从api上来说, 小域对象可以获取大域对象    
-</code></pre>
-<h2 id="2、工作原理"><a href="#2、工作原理" class="headerlink" title="2、工作原理"></a>2、工作原理</h2><pre><code class="java">session创建，会创建一个cookie对象，name为JSESSIONID , value为Session的id
-    发送到客户端。
-</code></pre>
+<span class="token title important"><span class="token punctuation">#</span> HttpSession是一个域对象 </span>
+	HttpSession是一个接口
+	域对象可以看成是map(存储多个键值对), cookie是一个entry(只能存一个键值对)
+<span class="token list punctuation">1.</span> 域对象的方法 
+	a. 存储数据
+			void setAttribute(String name,Object value)
+	b. 获取数据
+			Object getAttribute(String name)
+	c. 删除数据
+			void removeAttribute(String name)
+			
+<span class="token list punctuation">2.</span> 生命周期: 一次会话的多次请求之间
+		pageContext(JSP) &lt; request &lt; session &lt; servletContext
+			从api上来说, 小域对象可以获取大域对象	<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="2、工作原理"><a href="#2、工作原理" class="headerlink" title="2、工作原理"></a>2、工作原理</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java">session创建，会创建一个cookie对象，name为JSESSIONID <span class="token punctuation">,</span> value为<span class="token class-name">Session</span>的id
+    发送到客户端。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p><strong>方法介绍：</strong></p>
-<pre><code class="java">1. 获取session对象: 
-        HttpSession  session = request.getSession()
-        1). 通过请求对象创建一个会话对象,如果当前用户会话不存在，创建会话。  
-        2). 如果会话已经存在，这个方法返回已经存在的会话对象。
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token number">1.</span> 获取session对象<span class="token operator">:</span> 
+		<span class="token class-name">HttpSession</span>  session <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+		<span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span> 通过请求对象创建一个会话对象<span class="token punctuation">,</span>如果当前用户会话不存在，创建会话。  
+		<span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span> 如果会话已经存在，这个方法返回已经存在的会话对象。
             
-2. 获取session的id
-        String sessionId = session.getId();
+<span class="token number">2.</span> 获取session的id
+		<span class="token class-name">String</span> sessionId <span class="token operator">=</span> session<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-3.  使当前session失效
-        ression.invalidate();    
-</code></pre>
+<span class="token number">3.</span>  使当前session失效
+		ression<span class="token punctuation">.</span><span class="token function">invalidate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p><strong>创建过程：</strong></p>
-<pre><code class="java">        //获取session对象(tomcat创建session对象)
-        HttpSession session = request.getSession();
-        session.setAttribute(&quot;sick&quot;, &quot;有点虚&quot;);
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">        <span class="token comment">//获取session对象(tomcat创建session对象)</span>
+        <span class="token class-name">HttpSession</span> session <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        session<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"sick"</span><span class="token punctuation">,</span> <span class="token string">"有点虚"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        //tomcat底层自动实现了
-//        String id = session.getId();
-//        Cookie cookie = new Cookie(&quot;JSESSIONID&quot;, id);
-//        response.addCookie(cookie);
-</code></pre>
-<h2 id="3、什么情况下会找不到原来的session"><a href="#3、什么情况下会找不到原来的session" class="headerlink" title="3、什么情况下会找不到原来的session"></a>3、什么情况下会找不到原来的session</h2><pre><code class="markdown"># 什么情况下会找不到原来的session (通俗版)
-    
-1. 浏览器的原因 : 编号丢了(cookie删除)
-    1). 用户清除浏览记录（清除cookie）
-        浏览记录有包含cookie
-    2). 用户关闭浏览器 （cookie过期）
-        cookie默认存活到浏览会话结束  
-        1. 解决方案 session持久化
-        2. 原理 实际上是持久化cookie  达到 session持久化的目的
-                
-2. 服务器的原因 : 病历本没了(session销毁)
-    1). 主动销毁
-        session.invalidate();
-    2). 默认间隔30分钟不访问过期
-        I. tomcat的设置(tomcat/conf/web.xml)
-             &lt;session-config&gt;
-                &lt;session-timeout&gt;30&lt;/session-timeout&gt;
-            &lt;/session-config&gt;    
+        <span class="token comment">//tomcat底层自动实现了</span>
+<span class="token comment">//        String id = session.getId();</span>
+<span class="token comment">//        Cookie cookie = new Cookie("JSESSIONID", id);</span>
+<span class="token comment">//        response.addCookie(cookie);</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="3、什么情况下会找不到原来的session"><a href="#3、什么情况下会找不到原来的session" class="headerlink" title="3、什么情况下会找不到原来的session"></a>3、什么情况下会找不到原来的session</h2><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span> 什么情况下会找不到原来的session (通俗版)</span>
+	
+<span class="token list punctuation">1.</span> 浏览器的原因 : 编号丢了(cookie删除)
+	1). 用户清除浏览记录（清除cookie）
+		浏览记录有包含cookie
+	2). 用户关闭浏览器 （cookie过期）
+		cookie默认存活到浏览会话结束  
+		<span class="token list punctuation">1.</span> 解决方案 session持久化
+		<span class="token list punctuation">2.</span> 原理 实际上是持久化cookie  达到 session持久化的目的
+				
+<span class="token list punctuation">2.</span> 服务器的原因 : 病历本没了(session销毁)
+	1). 主动销毁
+		session.invalidate();
+	2). 默认间隔30分钟不访问过期
+		I. tomcat的设置(tomcat/conf/web.xml)
+             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>session-config</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>session-timeout</span><span class="token punctuation">></span></span>30<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>session-timeout</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>session-config</span><span class="token punctuation">></span></span>	
         II. 当前项目进行设置(web.xml)    
-             &lt;session-config&gt;
-                &lt;session-timeout&gt;5&lt;/session-timeout&gt;
-            &lt;/session-config&gt;
+         	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>session-config</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>session-timeout</span><span class="token punctuation">></span></span>5<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>session-timeout</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>session-config</span><span class="token punctuation">></span></span>
     3). tomcat非正常关闭   
-            但是tomcat正常关闭,session会被tomcat保存起来 -&gt; session钝化和活化
-</code></pre>
-<h2 id="4、session的持久化"><a href="#4、session的持久化" class="headerlink" title="4、session的持久化"></a>4、session的持久化</h2><pre><code class="markdown"># 设置cookie的过期时间,session依然找到的
-        1. 在Servlet中手动创建name=JESSIONID的cookie；
-        2. 这个cookie存储session的id,设置持久化级别 setMaxAge(秒)；
-        3. 将JESSIONID的cookie响应给浏览器； 
-        
-# 配置session的过期时间
-        I. tomcat的设置(tomcat/conf/web.xml)
-             &lt;session-config&gt;
-                &lt;session-timeout&gt;30&lt;/session-timeout&gt;
-            &lt;/session-config&gt;    
-        II. 当前项目进行设置(web.xml)    
-             &lt;session-config&gt;
-                &lt;session-timeout&gt;5&lt;/session-timeout&gt;
-            &lt;/session-config&gt;
-</code></pre>
-<h2 id="5、session的钝化和活化"><a href="#5、session的钝化和活化" class="headerlink" title="5、session的钝化和活化"></a>5、session的钝化和活化</h2><pre><code class="java"># 之前提到, 当服务器正常关闭，重启后，还可以再获取session(跟之前的一样)
-这是因为tomcat已实现以下二个功能
-1. 钝化（序列化: ObjectOutputStream） 保存
-        当服务器正常关闭时，session中的数据，会序列化到硬盘 (持久化)
-            序列化的目的: 将内存中对象或数据结构 保存 到硬盘 (编码: 看得懂 -&gt; 看不懂)
-                内存: 临时性存储设备, 断电了数据就消失
-                硬盘: 持久性存储设备, 断电了数据依然在
-                
-2. 活化（反序列化 : ObjectInputStream） 读取
-        当服务器开启后，从磁盘文件中，将数据反序列化到内存中
-            反序列化的目的: 将硬盘上的数据读取到内存,形成对象或数据结构 (解码: 看不懂 -&gt; 看得懂)
+		    但是tomcat正常关闭,session会被tomcat保存起来 -> session钝化和活化<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-备注: 钝化和活化的本质是序列化技术, 所以保存的存储数据类型需要实现serializable接口
-</code></pre>
-<h2 id="6、Session特点"><a href="#6、Session特点" class="headerlink" title="6、Session特点"></a>6、Session特点</h2><pre><code class="java"># session是服务器端的会话技术
-    作用: 在一次会话的多次请求之间共享数据
-        从浏览器第一次向服务器发起请求建立会话, 直到其中一方断开为止会话结束
+<h2 id="4、session的持久化"><a href="#4、session的持久化" class="headerlink" title="4、session的持久化"></a>4、session的持久化</h2><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span> 设置cookie的过期时间,session依然找到的</span>
+        <span class="token list punctuation">1.</span> 在Servlet中手动创建name=JESSIONID的cookie；
+        <span class="token list punctuation">2.</span> 这个cookie存储session的id,设置持久化级别 setMaxAge(秒)；
+        <span class="token list punctuation">3.</span> 将JESSIONID的cookie响应给浏览器； 
         
-1. session存储数据在服务器
-2. session存储任意类型的数据（Object）
-3. session存储大小和数量没有限制（在服务器内存）
-4. session存储相对安全
-</code></pre>
-<h2 id="7、找到持久化后的session文件"><a href="#7、找到持久化后的session文件" class="headerlink" title="7、找到持久化后的session文件"></a>7、找到持久化后的session文件</h2><pre><code class="java">1.idea需要勾选保留cookie
+<span class="token title important"><span class="token punctuation">#</span> 配置session的过期时间</span>
+		I. tomcat的设置(tomcat/conf/web.xml)
+             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>session-config</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>session-timeout</span><span class="token punctuation">></span></span>30<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>session-timeout</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>session-config</span><span class="token punctuation">></span></span>	
+        II. 当前项目进行设置(web.xml)    
+         	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>session-config</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>session-timeout</span><span class="token punctuation">></span></span>5<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>session-timeout</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>session-config</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="5、session的钝化和活化"><a href="#5、session的钝化和活化" class="headerlink" title="5、session的钝化和活化"></a>5、session的钝化和活化</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"># 之前提到<span class="token punctuation">,</span> 当服务器正常关闭，重启后，还可以再获取<span class="token function">session</span><span class="token punctuation">(</span>跟之前的一样<span class="token punctuation">)</span>
+这是因为tomcat已实现以下二个功能
+<span class="token number">1.</span> 钝化（序列化<span class="token operator">:</span> <span class="token class-name">ObjectOutputStream</span>） 保存
+		当服务器正常关闭时，session中的数据，会序列化到硬盘 <span class="token punctuation">(</span>持久化<span class="token punctuation">)</span>
+			序列化的目的<span class="token operator">:</span> 将内存中对象或数据结构 保存 到硬盘 <span class="token punctuation">(</span>编码<span class="token operator">:</span> 看得懂 <span class="token operator">-></span> 看不懂<span class="token punctuation">)</span>
+				内存<span class="token operator">:</span> 临时性存储设备<span class="token punctuation">,</span> 断电了数据就消失
+				硬盘<span class="token operator">:</span> 持久性存储设备<span class="token punctuation">,</span> 断电了数据依然在
+				
+<span class="token number">2.</span> 活化（反序列化 <span class="token operator">:</span> <span class="token class-name">ObjectInputStream</span>） 读取
+		当服务器开启后，从磁盘文件中，将数据反序列化到内存中
+			反序列化的目的<span class="token operator">:</span> 将硬盘上的数据读取到内存<span class="token punctuation">,</span>形成对象或数据结构 <span class="token punctuation">(</span>解码<span class="token operator">:</span> 看不懂 <span class="token operator">-></span> 看得懂<span class="token punctuation">)</span>
+
+备注<span class="token operator">:</span> 钝化和活化的本质是序列化技术<span class="token punctuation">,</span> 所以保存的存储数据类型需要实现serializable接口<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="6、Session特点"><a href="#6、Session特点" class="headerlink" title="6、Session特点"></a>6、Session特点</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"># session是服务器端的会话技术
+	作用<span class="token operator">:</span> 在一次会话的多次请求之间共享数据
+		从浏览器第一次向服务器发起请求建立会话<span class="token punctuation">,</span> 直到其中一方断开为止会话结束
+        
+<span class="token number">1.</span> session存储数据在服务器
+<span class="token number">2.</span> session存储任意类型的数据（<span class="token class-name">Object</span>）
+<span class="token number">3.</span> session存储大小和数量没有限制（在服务器内存）
+<span class="token number">4.</span> session存储相对安全<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="7、找到持久化后的session文件"><a href="#7、找到持久化后的session文件" class="headerlink" title="7、找到持久化后的session文件"></a>7、找到持久化后的session文件</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token number">1.</span>idea需要勾选保留cookie
     
-2.查看运行后的tomcat日志输出 Using CATALINA_BASE:的路径
-    
-</code></pre>
+<span class="token number">2.</span>查看运行后的tomcat日志输出 <span class="token class-name">Using</span> CATALINA_BASE<span class="token operator">:</span>的路径
+    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 
                 
             </div>
@@ -835,19 +846,19 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/04/28/Servlet1/">
+                <a href="/2020/04/28/TomCat/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Srevlet">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="TomCat">
                         
-                        <span class="card-title">Srevlet</span>
+                        <span class="card-title">TomCat</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Servlet的使用
+                            TomCat的使用
                         
                     </div>
                     <div class="publish-info">
@@ -884,19 +895,19 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/04/28/TomCat/">
+                <a href="/2020/04/28/cookie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="TomCat">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="cookie">
                         
-                        <span class="card-title">TomCat</span>
+                        <span class="card-title">cookie</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            TomCat的使用
+                            Cookie
                         
                     </div>
                     <div class="publish-info">

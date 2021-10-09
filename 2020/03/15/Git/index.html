@@ -477,32 +477,39 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="1、Git"><a href="#1、Git" class="headerlink" title="1、Git"></a>1、Git</h1><h2 id="1、常用版本管理工具介绍"><a href="#1、常用版本管理工具介绍" class="headerlink" title="1、常用版本管理工具介绍"></a>1、常用版本管理工具介绍</h2><h3 id="1、SVN-集中式版本管理控制"><a href="#1、SVN-集中式版本管理控制" class="headerlink" title="1、SVN 集中式版本管理控制"></a>1、SVN 集中式版本管理控制</h3><p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825204620076.png" alt="image-20210825204620076"></p>
-<pre><code class="java">数据都存储在中心服务器上，一旦宕机，后果很严重
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">数据都存储在中心服务器上，一旦宕机，后果很严重
 
 弊端：
-    1.因为远程中心仓库保存了所有的历史版本信息，当远程仓库异常宕机时，开发者就无法同步代码和获取最新变更的代码，使得开发工作基本处于停滞状态；最严重的是服务器硬盘损坏，这是致命的，也就意味着维护的项目丢失了所有的历史记录
-    2.使用svn无法随时随意提交代码；
-    一般使用svn开发时都是开发好一个完成的功能后，才可以提交，也就是说，提高到远程中心仓库的代码都是可使用，可交付状态的代码；
-</code></pre>
-<h3 id="2、Git分布式版本管理控制"><a href="#2、Git分布式版本管理控制" class="headerlink" title="2、Git分布式版本管理控制"></a>2、Git分布式版本管理控制</h3><pre><code class="java">优点：
-    1.每一个客户端都保存了完整的历史记录;服务器的故障，都可以通过客户端的记录得以恢复;
+    <span class="token number">1.</span>因为远程中心仓库保存了所有的历史版本信息，当远程仓库异常宕机时，开发者就无法同步代码和获取最新变更的代码，使得开发工作基本处于停滞状态；最严重的是服务器硬盘损坏，这是致命的，也就意味着维护的项目丢失了所有的历史记录
+    <span class="token number">2.</span>使用svn无法随时随意提交代码；
+	一般使用svn开发时都是开发好一个完成的功能后，才可以提交，也就是说，提高到远程中心仓库的代码都是可使用，可交付状态的代码；<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-    2.代码提交时机
+<h3 id="2、Git分布式版本管理控制"><a href="#2、Git分布式版本管理控制" class="headerlink" title="2、Git分布式版本管理控制"></a>2、Git分布式版本管理控制</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java">优点：
+    <span class="token number">1.</span>每一个客户端都保存了完整的历史记录<span class="token punctuation">;</span>服务器的故障，都可以通过客户端的记录得以恢复<span class="token punctuation">;</span>
+
+	<span class="token number">2.</span>代码提交时机
         代码可随时提交到本地仓库，维护提交记录，待功能晚上，然后提交到远程仓库（开发人员可以随时将代码提交到本地仓库）；
-        分布式和集中式的最大区别也就是分布式可以【本地提交代码】；
-        分布式的提交代码方式：先将代码提交到本地，然后再将代码从本地推送到远程服务器；
-</code></pre>
+		分布式和集中式的最大区别也就是分布式可以【本地提交代码】；
+		分布式的提交代码方式：先将代码提交到本地，然后再将代码从本地推送到远程服务器；<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
 <h2 id="2、git操作入门"><a href="#2、git操作入门" class="headerlink" title="2、git操作入门"></a>2、git操作入门</h2><h3 id="1、理解-工作目录、暂存区和本地仓库"><a href="#1、理解-工作目录、暂存区和本地仓库" class="headerlink" title="1、理解**工作目录、暂存区和本地仓库**"></a>1、理解**<font color='red'>工作目录、暂存区和本地仓库</font>**</h3><p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825205304574.png" alt="image-20210825205304574"></p>
-<pre><code class="java">1.工作区：就是我们的工程代码所存放的磁盘目录（程序员敲代码的磁盘目录位置）；
-2.本地仓库：在工作区内有个隐藏的目录.git,它就是git的本地版本库（本地仓库维护了从工作区提交的所有的代码的操作流水）；
-3.暂存区：存放在本地版本仓库.git目录的index文件中（.git/index）（保存临时提交代码的区域，此时提交的代码时可以撤销的）；
-</code></pre>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token number">1.</span>工作区：就是我们的工程代码所存放的磁盘目录（程序员敲代码的磁盘目录位置）；
+<span class="token number">2.</span>本地仓库：在工作区内有个隐藏的目录<span class="token punctuation">.</span>git<span class="token punctuation">,</span>它就是git的本地版本库（本地仓库维护了从工作区提交的所有的代码的操作流水）；
+<span class="token number">3.</span>暂存区：存放在本地版本仓库<span class="token punctuation">.</span>git目录的index文件中（<span class="token punctuation">.</span>git<span class="token operator">/</span>index）（保存临时提交代码的区域，此时提交的代码时可以撤销的）；<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825205644607.png" alt="image-20210825205644607"></p>
 <h3 id="2、git常用命令"><a href="#2、git常用命令" class="headerlink" title="2、git常用命令"></a>2、git常用命令</h3><table>
 <thead>
@@ -556,28 +563,30 @@
 <td>从暂存区撤销文件，就是git add的逆向操作；</td>
 </tr>
 </tbody></table>
-<h3 id="3、配置用户名和邮箱"><a href="#3、配置用户名和邮箱" class="headerlink" title="3、配置用户名和邮箱"></a>3、配置用户名和邮箱</h3><h4 id="1、config的三个作用域"><a href="#1、config的三个作用域" class="headerlink" title="1、config的三个作用域"></a>1、config的三个作用域</h4><pre><code class="bash">git config --local # 只对某个仓库有效；缺省时，等于local
+<h3 id="3、配置用户名和邮箱"><a href="#3、配置用户名和邮箱" class="headerlink" title="3、配置用户名和邮箱"></a>3、配置用户名和邮箱</h3><h4 id="1、config的三个作用域"><a href="#1、config的三个作用域" class="headerlink" title="1、config的三个作用域"></a>1、config的三个作用域</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> config --local <span class="token comment"># 只对某个仓库有效；缺省时，等于local</span>
 
-git config --global # 对当前用户所有仓库有效❤❤❤
-git config --system # 对系统所有登录的用户有效
-</code></pre>
-<pre><code class="bash"># 设置用户名和邮箱，实际开发中用户名一般是开发者真实姓名，邮箱则是公司为开发者分配的个人邮箱
-git congfig --global user.name &quot;your name&quot;
-git config --global user.email &quot;your email&quot;
-# 查看git全局配置
-git config --list --global
-</code></pre>
-<h3 id="4、历史版本的切换"><a href="#4、历史版本的切换" class="headerlink" title="4、历史版本的切换"></a>4、历史版本的切换</h3><pre><code class="bash">git reflog    可以查看所有分支的所有操作记录
-git reset --hard 版本唯一索引值     回滚到之前的版本
-</code></pre>
+<span class="token function">git</span> config --global <span class="token comment"># 对当前用户所有仓库有效❤❤❤</span>
+<span class="token function">git</span> config --system <span class="token comment"># 对系统所有登录的用户有效</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 设置用户名和邮箱，实际开发中用户名一般是开发者真实姓名，邮箱则是公司为开发者分配的个人邮箱</span>
+<span class="token function">git</span> congfig --global user.name <span class="token string">"your name"</span>
+<span class="token function">git</span> config --global user.email <span class="token string">"your email"</span>
+<span class="token comment"># 查看git全局配置</span>
+<span class="token function">git</span> config --list --global<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="4、历史版本的切换"><a href="#4、历史版本的切换" class="headerlink" title="4、历史版本的切换"></a>4、历史版本的切换</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> reflog    可以查看所有分支的所有操作记录
+<span class="token function">git</span> reset --hard 版本唯一索引值     回滚到之前的版本<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p><strong>git reflog与git log的区别：回滚之后log命令查不到回滚后面的版本</strong></p>
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825211029730.png" alt="image-20210825211029730"></p>
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825211051519.png" alt="image-20210825211051519"></p>
 <h2 id="3、分支介绍"><a href="#3、分支介绍" class="headerlink" title="3、分支介绍"></a>3、分支介绍</h2><p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825211549665.png" alt="image-20210825211549665"></p>
-<pre><code class="bash"> Master: git主分支，代码最终合并到该分支下；
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"> Master: git主分支，代码最终合并到该分支下；
 
-dev：开发分支
-</code></pre>
+dev：开发分支<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825213013168.png" alt="image-20210825213013168"></p>
 <p><strong>分支常见命令</strong></p>
 <table>
@@ -609,71 +618,83 @@ dev：开发分支
 </tr>
 </tbody></table>
 <p><strong><font color='red'>不同分支之间的关系是【平行的关系，不会相互影响】</font></strong></p>
-<pre><code class="bash">合并命令:
-    git merge  分支名
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">合并命令:
+    <span class="token function">git</span> merge  分支名
 举例:    
     分支1如果想要合并分支2，那么先切换到分支1下，然后执行合并指令:
-    git checkout 分支1
-    git merge 分支2
-</code></pre>
-<h2 id="4、远程仓库"><a href="#4、远程仓库" class="headerlink" title="4、远程仓库"></a>4、远程仓库</h2><p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825213807549.png" alt="image-20210825213807549"></p>
-<h3 id="1、ssh公钥配置"><a href="#1、ssh公钥配置" class="headerlink" title="1、ssh公钥配置"></a>1、ssh公钥配置</h3><pre><code class="bash"># 在本地配置开发者用户名和邮箱地址(理论将我们可以随便定义，实际应该配置个人真实姓名和开发中个人邮箱地址)
-git config user.name（查看git账户）
-git config user.email（查看git邮箱）
-git config --global user.name “账户名”（设置全局账户名）
-git config --global user.email “邮箱”（设置全局邮箱）
+	<span class="token function">git</span> checkout 分支1
+    <span class="token function">git</span> merge 分支2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-# 检查本地用户是否生成过RAS公钥
-cd ~/.ssh（查看是否生成过SSH公钥）
+
+
+
+
+
+
+<h2 id="4、远程仓库"><a href="#4、远程仓库" class="headerlink" title="4、远程仓库"></a>4、远程仓库</h2><p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825213807549.png" alt="image-20210825213807549"></p>
+<h3 id="1、ssh公钥配置"><a href="#1、ssh公钥配置" class="headerlink" title="1、ssh公钥配置"></a>1、ssh公钥配置</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 在本地配置开发者用户名和邮箱地址(理论将我们可以随便定义，实际应该配置个人真实姓名和开发中个人邮箱地址)</span>
+<span class="token function">git</span> config user.name（查看git账户）
+<span class="token function">git</span> config user.email（查看git邮箱）
+<span class="token function">git</span> config --global user.name “账户名”（设置全局账户名）
+<span class="token function">git</span> config --global user.email “邮箱”（设置全局邮箱）
+
+<span class="token comment"># 检查本地用户是否生成过RAS公钥</span>
+<span class="token builtin class-name">cd</span> ~/.ssh（查看是否生成过SSH公钥）
 
 
 生成ssh公钥命令: 
-ssh-keygen -t rsa -C &quot;你的邮箱&quot;  
-注意：这里需要【敲3次回车键】即可
-</code></pre>
+ssh-keygen -t rsa -C <span class="token string">"你的邮箱"</span>  
+注意：这里需要【敲3次回车键】即可<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>公钥存在你的用户目录的  .ssh  文件夹的id_rsa.pub中</p>
-<pre><code class="bash">查看公钥命令:
-cat ~/.ssh/id-rsa.pub
-</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">查看公钥命令:
+<span class="token function">cat</span> ~/.ssh/id-rsa.pub<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p>到gitee或github中设置公钥</p>
 <p>测试公钥是否可用</p>
-<pre><code class="bash">命令配置情况: 
-ssh -T git@gitee.com
-</code></pre>
-<h3 id="2、推送到远程仓库"><a href="#2、推送到远程仓库" class="headerlink" title="2、推送到远程仓库"></a>2、推送到远程仓库</h3><pre><code class="bash"># 为远程仓库地址取别名，简化书写，其中original变量名称理论上讲可随便定义；
-git remote add original 远程仓库地址
-# 推送本地仓库master分支代码到远程仓库
-git push -u original master
-# 说明：push指令后加了参数-u后，以后再推送代码，即可直接使用git push即可
-</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">命令配置情况: 
+<span class="token function">ssh</span> -T git@gitee.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="2、推送到远程仓库"><a href="#2、推送到远程仓库" class="headerlink" title="2、推送到远程仓库"></a>2、推送到远程仓库</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 为远程仓库地址取别名，简化书写，其中original变量名称理论上讲可随便定义；</span>
+<span class="token function">git</span> remote <span class="token function">add</span> original 远程仓库地址
+<span class="token comment"># 推送本地仓库master分支代码到远程仓库</span>
+<span class="token function">git</span> push -u original master
+<span class="token comment"># 说明：push指令后加了参数-u后，以后再推送代码，即可直接使用git push即可</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825214341575.png" alt="image-20210825214341575"></p>
-<h3 id="3、拉取远程仓库中代码"><a href="#3、拉取远程仓库中代码" class="headerlink" title="3、拉取远程仓库中代码"></a>3、拉取远程仓库中代码</h3><pre><code class="bash">1. 将远程仓库的代码，克隆到本地仓库
+<h3 id="3、拉取远程仓库中代码"><a href="#3、拉取远程仓库中代码" class="headerlink" title="3、拉取远程仓库中代码"></a>3、拉取远程仓库中代码</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">1</span>. 将远程仓库的代码，克隆到本地仓库
    克隆命令：
-      git clone 仓库地址
-2. 创建新文件，添加并提交到本地仓库
-3. 推送至远程仓库
-4. 项目拉取更新
+      <span class="token function">git</span> clone 仓库地址
+<span class="token number">2</span>. 创建新文件，添加并提交到本地仓库
+<span class="token number">3</span>. 推送至远程仓库
+<span class="token number">4</span>. 项目拉取更新
    拉取命令：
-       git pull 远程仓库名 分支名
-</code></pre>
-<h3 id="4、代码冲突问题"><a href="#4、代码冲突问题" class="headerlink" title="4、代码冲突问题"></a>4、代码冲突问题</h3><pre><code class="bash">1.两个程序员操作同一个文件,其中一个程序员在修改文件后,push到远程仓库,此时远程仓库提交记录发生改变;
+       <span class="token function">git</span> pull 远程仓库名 分支名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="4、代码冲突问题"><a href="#4、代码冲突问题" class="headerlink" title="4、代码冲突问题"></a>4、代码冲突问题</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">1</span>.两个程序员操作同一个文件,其中一个程序员在修改文件后,push到远程仓库,此时远程仓库提交记录发生改变<span class="token punctuation">;</span>
 此时，另一个程序员也修改了相同文件的代码，然后也push到远程仓库中，这样因为修改了相同行的代码，冲突也就出现了；
-2.如何解决呢？
-  实际开发中应该先通过pull命令拉去远程仓库中最新的代码到本地仓库，然后再开发新业务代码,之后再push到远程仓库；
-</code></pre>
+<span class="token number">2</span>.如何解决呢？
+  实际开发中应该先通过pull命令拉去远程仓库中最新的代码到本地仓库，然后再开发新业务代码,之后再push到远程仓库；<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825214718757.png" alt="image-20210825214718757"></p>
 <p>当本地代码与远程代码存在冲突时，push提交会被拒绝，所以<font color='red'>项目提交前要先pull解决冲突问题，然后在push</font>！</p>
-<pre><code class="bash"># 拉去远程代码
-git pull origin master
-# 拉去远程代码之前，先将暂存区代码提交到本地仓库，否则可能会需要二次合并
-</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 拉去远程代码</span>
+<span class="token function">git</span> pull origin master
+<span class="token comment"># 拉去远程代码之前，先将暂存区代码提交到本地仓库，否则可能会需要二次合并</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p>pull之后会出现：出现也本地修改的内容，也出现了远程修改的内容</p>
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825215047564.png" alt="image-20210825215047564"></p>
-<pre><code class="bash">&lt;&lt;&lt;&lt;&lt;&lt;&lt;和&gt;&gt;&gt;&gt;&gt;&gt;&gt;中间的内容,就是冲突部分
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;&lt;&lt;</span><span class="token operator">&lt;</span>和<span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span><span class="token operator">></span>中间的内容,就是冲突部分
 
-1. 修改冲突行，保存，即可解决冲突。
-2. 重新add冲突文件并commit到本地仓库，重新push到远程
-</code></pre>
+<span class="token number">1</span>. 修改冲突行，保存，即可解决冲突。
+<span class="token number">2</span>. 重新add冲突文件并commit到本地仓库，重新push到远程<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h2 id="5、IDEA继承Git"><a href="#5、IDEA继承Git" class="headerlink" title="5、IDEA继承Git"></a>5、IDEA继承Git</h2><h3 id="1、设置idea"><a href="#1、设置idea" class="headerlink" title="1、设置idea"></a>1、设置idea</h3><p>file–》setting–》version Control–》Git</p>
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825215344791.png" alt="image-20210825215344791"></p>
 <p>找到git.exe路径点击Test  点apply 点OK</p>
@@ -683,13 +704,13 @@ git pull origin master
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825220052466.png" alt="image-20210825220052466"></p>
 <p>或者直接用下列方式：</p>
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825220142715.png" alt="image-20210825220142715"></p>
-<h4 id="3、代码提交到本地仓库"><a href="#3、代码提交到本地仓库" class="headerlink" title="3、代码提交到本地仓库"></a>3、代码提交到本地仓库</h4><h2 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h2><h3 id="1-git核心概念："><a href="#1-git核心概念：" class="headerlink" title="1.git核心概念："></a>1.git核心概念：</h3><pre><code class="tex">工作区：
-    说白了就是我们的代码存放的目录；
+<h4 id="3、代码提交到本地仓库"><a href="#3、代码提交到本地仓库" class="headerlink" title="3、代码提交到本地仓库"></a>3、代码提交到本地仓库</h4><h2 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h2><h3 id="1-git核心概念："><a href="#1-git核心概念：" class="headerlink" title="1.git核心概念："></a>1.git核心概念：</h3><pre class="line-numbers language-tex" data-language="tex"><code class="language-tex">工作区：
+	说白了就是我们的代码存放的目录；
 暂存区：
-    将工作区的内存暂时保存的一个区域（这个区域在.git目录下有个一index文件）
+	将工作区的内存暂时保存的一个区域（这个区域在.git目录下有个一index文件）
 本地仓库：
-    保存提交代码的历史版本信息（信息包含：生成的每一次提交，都会被保存，包含：提交记录ID,作者信息、邮箱信息、提交时间，提交说明等）
-</code></pre>
+	保存提交代码的历史版本信息（信息包含：生成的每一次提交，都会被保存，包含：提交记录ID,作者信息、邮箱信息、提交时间，提交说明等）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="2-git常用命令"><a href="#2-git常用命令" class="headerlink" title="2.git常用命令"></a>2.git常用命令</h3><table>
 <thead>
 <tr>
@@ -770,24 +791,26 @@ git pull origin master
 <td>将本地代码推送到远程服务器下，一般推送的是master分支下的代码；</td>
 </tr>
 </tbody></table>
-<h3 id="3-开发场景"><a href="#3-开发场景" class="headerlink" title="3.开发场景"></a>3.开发场景</h3><pre><code class="tex">1.本地仓库有代码，但是远程仓库为空
-    场景发生在：项目新开始，然后架构师搭架子后，其他开发人员填充业务代码；
-    git add 
-    git commit -m &quot;xxxx&quot;
-    git branch 分支名称
-    git checkout 分支名称
-    git merge 分支名称
-    git push ....
+<h3 id="3-开发场景"><a href="#3-开发场景" class="headerlink" title="3.开发场景"></a>3.开发场景</h3><pre class="line-numbers language-tex" data-language="tex"><code class="language-tex">1.本地仓库有代码，但是远程仓库为空
+	场景发生在：项目新开始，然后架构师搭架子后，其他开发人员填充业务代码；
+	git add 
+	git commit -m &quot;xxxx&quot;
+	git branch 分支名称
+	git checkout 分支名称
+	git merge 分支名称
+	git push ....
 2.本地仓库为空，但是远程仓库存在代码
-    场景发生在：新员工入职时
-    git clone 
-    git add 
-    git commit -m &quot;xxxx&quot;
-    git branch 分支名称
-    git checkout 分支名称
-    git merge 分支名称
-    git push ....
-</code></pre>
+	场景发生在：新员工入职时
+	git clone 
+	git add 
+	git commit -m &quot;xxxx&quot;
+	git branch 分支名称
+	git checkout 分支名称
+	git merge 分支名称
+	git push ....<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 
                 
             </div>

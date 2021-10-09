@@ -481,6 +481,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -489,19 +492,19 @@
                 <h3 id="0x001-Hexo-渲染"><a href="#0x001-Hexo-渲染" class="headerlink" title="0x001 Hexo 渲染"></a>0x001 Hexo 渲染</h3><p>&emsp;&emsp;在Hexo部署时会默认渲染source下的所有html页面，但有时候想在Hexo博客上单独自定义html页面或README.md时，却不希望被Hexo渲染。因此对某个文件或者目录进行排除渲染是非常必要的。</p>
 <h3 id="0x002-方法一：font-matter"><a href="#0x002-方法一：font-matter" class="headerlink" title="0x002 方法一：font matter"></a>0x002 方法一：font matter</h3><p><code>Hexo</code>新建网站页面，然后将你的代码直接写入 <code>index.md</code> 中</p>
 <p>在 <code>Front matter</code> 中添加 <code>layout: false</code>，此方法适用于单一的纯<code>HTML</code><br><code>CSS</code> 页面。</p>
-<pre><code class="bash">---
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">---
 title: tools
-date: 2020-04-28 00:00:00
-type: &quot;tools&quot;
-layout: false
----
-</code></pre>
+date: <span class="token number">2020</span>-04-28 00:00:00
+type: <span class="token string">"tools"</span>
+layout: <span class="token boolean">false</span>
+---<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="0x003-方法二：skip-render"><a href="#0x003-方法二：skip-render" class="headerlink" title="0x003 方法二：skip render"></a>0x003 方法二：skip render</h3><p>在博客根目录下的 <code>_config.yml</code>，找到 <code>skip_render</code>，大概在32行左右，写入你想要的跳过渲染的路径，注意缩进和空格。</p>
-<pre><code class="bash"># 指定目录跳过hexo渲染
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 指定目录跳过hexo渲染</span>
 skip_render:
-  - &#39;tools/*&#39;
-  - &#39;tools/**&#39;
-</code></pre>
+  - <span class="token string">'tools/*'</span>
+  - <span class="token string">'tools/**'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <blockquote>
 <p>注释：<code>tools/*</code> 表示在目录 <code>source/fireworks</code> 下的文件全部跳过渲染，<code>tools/**</code> 表示在博客根目录 <code>source/tools/</code> 文件夹下的文件全部跳过渲染（例如页面的 js、css 在另一个文件夹中）。</p>
 </blockquote>
@@ -518,10 +521,10 @@ skip_render:
 <p>注意：将源码里的部分信息以及跳转链接按照你真实个人博客的环境进行修改。</p>
 </blockquote>
 <p>然后打开博客根目录下配置文件<code>_config.yml</code>，找到<code>skip_render</code>，做如下修改：</p>
-<pre><code class="bash">skip_render:
-  - &#39;tools/*&#39;
-  - &#39;tools/**&#39;
-</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">skip_render:
+  - <span class="token string">'tools/*'</span>
+  - <span class="token string">'tools/**'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p>最后执行<code>hexo clean</code>和<code>hexo s -g </code>本地预览，检查无误后<code>hexo g -d</code>部署到服务器上即可。</p>
 <h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><ul>
 <li><a target="_blank" rel="noopener" href="https://xiabor.com/2020/04/21/hexo3/#%E5%A6%82%E4%BD%95%E8%B7%B3%E8%BF%87hexo%E7%9A%84%E6%B8%B2%E6%9F%93">https://xiabor.com/2020/04/21/hexo3/#%E5%A6%82%E4%BD%95%E8%B7%B3%E8%BF%87hexo%E7%9A%84%E6%B8%B2%E6%9F%93</a></li>
@@ -771,19 +774,19 @@ skip_render:
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/04/28/EL%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+                <a href="/2020/04/28/Filter&Listener/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="EL表达式">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Filter&amp;Listener">
                         
-                        <span class="card-title">EL表达式</span>
+                        <span class="card-title">Filter&amp;Listener</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            EL表达式
+                            Filter&Listener&拦截路径&三个组件的运行顺序
                         
                     </div>
                     <div class="publish-info">
@@ -820,19 +823,19 @@ skip_render:
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/04/28/Filter&Listener/">
+                <a href="/2020/04/28/Servlet1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Filter&amp;Listener">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Srevlet">
                         
-                        <span class="card-title">Filter&amp;Listener</span>
+                        <span class="card-title">Srevlet</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Filter&Listener&拦截路径&三个组件的运行顺序
+                            Servlet的使用
                         
                     </div>
                     <div class="publish-info">
