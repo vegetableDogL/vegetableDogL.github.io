@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 
@@ -485,45 +485,45 @@
                 <h1 id="1、Redis"><a href="#1、Redis" class="headerlink" title="1、Redis"></a>1、Redis</h1><h2 id="1、NoSql"><a href="#1、NoSql" class="headerlink" title="1、NoSql"></a>1、NoSql</h2><blockquote>
 <p>Not Only SQL (不仅仅是SQL), 泛指非关系型数据库，通常用于提升数据查询的速度，有时也叫缓存。Redis是非关系型数据库的一种。非关系型数据库不能代替关系型数据库，只是关系型数据库的补充。</p>
 </blockquote>
-<h3 id="1、非关系和关系型数据库的区别"><a href="#1、非关系和关系型数据库的区别" class="headerlink" title="1、非关系和关系型数据库的区别"></a>1、非关系和关系型数据库的区别</h3><pre><code class="markdown"> #非关系和关系型数据库
-1. 关系型数据库 (正面战场)
-        mysql,oracle,sqlserver,access,db2...
-        最典型的数据结构是表，由二维表及其之间的联系所组成的一个数据组织
-    a. 优点：
-        1、易于维护：都是使用表结构，格式一致；
-        2、使用方便：SQL语言通用，可用于复杂查询；
-        3、学习成本低：有统一的操作规范(支持SQL),学习成本低。
-    b. 缺点：
-        1、存储在硬盘上, 所以读写性能比较差，尤其是海量数据的高效率读写；
-        2、固定的表结构，灵活度稍欠；
+<h3 id="1、非关系和关系型数据库的区别"><a href="#1、非关系和关系型数据库的区别" class="headerlink" title="1、非关系和关系型数据库的区别"></a>1、非关系和关系型数据库的区别</h3><pre class=" language-markdown"><code class="language-markdown"> <span class="token title important"><span class="token punctuation">#</span>非关系和关系型数据库</span>
+<span class="token list punctuation">1.</span> 关系型数据库 (正面战场)
+<span class="token code keyword">        mysql,oracle,sqlserver,access,db2...</span>
+<span class="token code keyword">        最典型的数据结构是表，由二维表及其之间的联系所组成的一个数据组织</span>
+<span class="token code keyword">    a. 优点：</span>
+<span class="token code keyword">        1、易于维护：都是使用表结构，格式一致；</span>
+<span class="token code keyword">        2、使用方便：SQL语言通用，可用于复杂查询；</span>
+<span class="token code keyword">        3、学习成本低：有统一的操作规范(支持SQL),学习成本低。</span>
+<span class="token code keyword">    b. 缺点：</span>
+<span class="token code keyword">        1、存储在硬盘上, 所以读写性能比较差，尤其是海量数据的高效率读写；</span>
+<span class="token code keyword">        2、固定的表结构，灵活度稍欠；</span>
 
-2. 非关系型数据库(游击队)
-        非关系型数据库严格上不是一种数据库，应该是一种数据结构化存储方法的集合,可以是文档或者键值对等。
-    a. 优点：
-        1、格式灵活：存储数据的格式可以是key,value形式、文档形式、图片形式等等，文档形式、图片形式等等，使用灵活，应用场景广泛，而关系型数据库则只支持基础类型。
-        2、速度快：nosql可以使用硬盘或者内存作为载体，而关系型数据库只能使用硬盘；
-        3、高扩展性；
-        4、成本低：nosql数据库部署简单，基本都是开源软件。
-    b. 缺点：
-        1、不提供sql支持，学习和使用成本较高；
-        2、一般没有事务处理；
-        3、数据结构相对复杂，复杂查询方面稍欠。
+<span class="token list punctuation">2.</span> 非关系型数据库(游击队)
+<span class="token code keyword">        非关系型数据库严格上不是一种数据库，应该是一种数据结构化存储方法的集合,可以是文档或者键值对等。</span>
+<span class="token code keyword">    a. 优点：</span>
+<span class="token code keyword">        1、格式灵活：存储数据的格式可以是key,value形式、文档形式、图片形式等等，文档形式、图片形式等等，使用灵活，应用场景广泛，而关系型数据库则只支持基础类型。</span>
+<span class="token code keyword">        2、速度快：nosql可以使用硬盘或者内存作为载体，而关系型数据库只能使用硬盘；</span>
+<span class="token code keyword">        3、高扩展性；</span>
+<span class="token code keyword">        4、成本低：nosql数据库部署简单，基本都是开源软件。</span>
+<span class="token code keyword">    b. 缺点：</span>
+<span class="token code keyword">        1、不提供sql支持，学习和使用成本较高；</span>
+<span class="token code keyword">        2、一般没有事务处理；</span>
+<span class="token code keyword">        3、数据结构相对复杂，复杂查询方面稍欠。</span>
 </code></pre>
-<h3 id="2、NoSQL数据库的四大分类"><a href="#2、NoSQL数据库的四大分类" class="headerlink" title="2、NoSQL数据库的四大分类"></a>2、NoSQL数据库的四大分类</h3><pre><code class="markdown">#NoSQL数据库的四大分类
+<h3 id="2、NoSQL数据库的四大分类"><a href="#2、NoSQL数据库的四大分类" class="headerlink" title="2、NoSQL数据库的四大分类"></a>2、NoSQL数据库的四大分类</h3><pre class=" language-markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span>NoSQL数据库的四大分类</span>
 按存储的格式分成：
-1. 键值(Key-Value)存储数据库
-        这一类数据库主要会使用到一个哈希表，这个表中有一个特定的键和一个指针指向特定的数据。今天学习的Redis就是这种类型。Redis是使用C语言编写的(键值的类型很熟悉,但跟java不一样)，免费开源的。
-2. 列存储数据库
-        通常是用来应对分布式存储的海量数据。键仍然存在，但是它们的特点是指向了多个列。如：Cassandra, HBase, Riak.            
-3. 文档型数据库
-        文档型数据库可以看作是键值数据库的升级版，允许嵌套键值对。而且文档型数据库比键值数据库的查询效率更高。如：CouchDB, MongoDb。国内也有文档型数据库SequoiaDB，已经开源。
-4. 图形(Graph)数据库
-        图形结构的数据库同其他行列以及刚性结构的SQL数据库不同，它是使用灵活的图形模型，并且能够扩展到多个服务器上。
+<span class="token list punctuation">1.</span> 键值(Key-Value)存储数据库
+<span class="token code keyword">        这一类数据库主要会使用到一个哈希表，这个表中有一个特定的键和一个指针指向特定的数据。今天学习的Redis就是这种类型。Redis是使用C语言编写的(键值的类型很熟悉,但跟java不一样)，免费开源的。</span>
+<span class="token list punctuation">2.</span> 列存储数据库
+<span class="token code keyword">        通常是用来应对分布式存储的海量数据。键仍然存在，但是它们的特点是指向了多个列。如：Cassandra, HBase, Riak.            </span>
+<span class="token list punctuation">3.</span> 文档型数据库
+<span class="token code keyword">        文档型数据库可以看作是键值数据库的升级版，允许嵌套键值对。而且文档型数据库比键值数据库的查询效率更高。如：CouchDB, MongoDb。国内也有文档型数据库SequoiaDB，已经开源。</span>
+<span class="token list punctuation">4.</span> 图形(Graph)数据库
+<span class="token code keyword">        图形结构的数据库同其他行列以及刚性结构的SQL数据库不同，它是使用灵活的图形模型，并且能够扩展到多个服务器上。</span>
 </code></pre>
-<h3 id="3、使用NOSQL解决的问题"><a href="#3、使用NOSQL解决的问题" class="headerlink" title="3、使用NOSQL解决的问题"></a>3、使用NOSQL解决的问题</h3><pre><code class="markdown">具体表现为对如下三高问题的解决：
-    **High Performance - 数据库高并发访问** 
-    **Huge Storage - 海量数据的存储** 
-    **High Scalability &amp;&amp; High Availability- 高可扩展性和高可用性的需求** 
+<h3 id="3、使用NOSQL解决的问题"><a href="#3、使用NOSQL解决的问题" class="headerlink" title="3、使用NOSQL解决的问题"></a>3、使用NOSQL解决的问题</h3><pre class=" language-markdown"><code class="language-markdown">具体表现为对如下三高问题的解决：
+<span class="token code keyword">    **High Performance - 数据库高并发访问** </span>
+<span class="token code keyword">    **Huge Storage - 海量数据的存储** </span>
+<span class="token code keyword">    **High Scalability &amp;&amp; High Availability- 高可扩展性和高可用性的需求** </span>
 </code></pre>
 <h2 id="2、redis的的五大值类型"><a href="#2、redis的的五大值类型" class="headerlink" title="2、redis的的五大值类型"></a>2、redis的的五大值类型</h2><blockquote>
 <p>​    redis是一种高级的key-value的存储系统，<strong>键是string类型</strong>，其中value支持五种数据类型</p>
@@ -557,23 +557,23 @@
 </tr>
 </tbody></table>
 <h3 id="1、string"><a href="#1、string" class="headerlink" title="1、string"></a>1、string</h3><p><img src="https://i.loli.net/2021/09/13/KDALn84HrumlSvX.png" alt="image-20210913184057939"></p>
-<pre><code class="markdown">#特点
-1. 字符串类型是Redis中最为基础的数据存储类型
-2. 二进制安全, 存储不涉及编解码操作(数据底层是二进制 0101,直接存储0101)
-3. 最多可以容纳的数据长度是512M
+<pre class=" language-markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span>特点</span>
+<span class="token list punctuation">1.</span> 字符串类型是Redis中最为基础的数据存储类型
+<span class="token list punctuation">2.</span> 二进制安全, 存储不涉及编解码操作(数据底层是二进制 0101,直接存储0101)
+<span class="token list punctuation">3.</span> 最多可以容纳的数据长度是512M
 
 
-#常用命令
-1. 增
-        1. 存一个值：set key value
-        2. 存多个值：mset key1 value1 key2 value2 (multi)
-2. 查
-        1. 获取指定key的值：get key
-        2. 获取多个指定key的值：mget key1 key2
-3. 删
-        删除指定key的值：del key[key2...] 
-4. 改:
-        set 已存在的key 新value(覆盖)
+<span class="token title important"><span class="token punctuation">#</span>常用命令</span>
+<span class="token list punctuation">1.</span> 增
+<span class="token code keyword">        1. 存一个值：set key value</span>
+<span class="token code keyword">        2. 存多个值：mset key1 value1 key2 value2 (multi)</span>
+<span class="token list punctuation">2.</span> 查
+<span class="token code keyword">        1. 获取指定key的值：get key</span>
+<span class="token code keyword">        2. 获取多个指定key的值：mget key1 key2</span>
+<span class="token list punctuation">3.</span> 删
+<span class="token code keyword">        删除指定key的值：del key[key2...] </span>
+<span class="token list punctuation">4.</span> 改:
+<span class="token code keyword">        set 已存在的key 新value(覆盖)</span>
 </code></pre>
 <table>
 <thead>
@@ -608,23 +608,23 @@
 </tr>
 </tbody></table>
 <h3 id="2、hash"><a href="#2、hash" class="headerlink" title="2、hash"></a>2、hash</h3><p><img src="https://i.loli.net/2021/09/13/9YdLDN7k18B3bS6.png" alt="image-20210913184620924"></p>
-<pre><code class="markdown">#特点
-    1. Redis中的Hash类型可以看成是键和值都是String类型的Map容器
-    2. 每一个Hash可以存储4G个键值对。
-    3. 该类型非常适合于存储对象的信息。如一个用户有姓名，密码，年龄等信息，则可以有username、password和age等键。
-    4. redis没有null的概念，如果把value都删除了，key也会自动移除。
+<pre class=" language-markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span>特点</span>
+<span class="token code keyword">    1. Redis中的Hash类型可以看成是键和值都是String类型的Map容器</span>
+<span class="token code keyword">    2. 每一个Hash可以存储4G个键值对。</span>
+<span class="token code keyword">    3. 该类型非常适合于存储对象的信息。如一个用户有姓名，密码，年龄等信息，则可以有username、password和age等键。</span>
+<span class="token code keyword">    4. redis没有null的概念，如果把value都删除了，key也会自动移除。</span>
 
-#常用命令
-1. 增
-        1. hset key field value
-        2. hmset key field1 value1 field2 value2 ...
-2. 查
-        1. hget key field  (单个)
-        2. hmget key field1 field2 (多个)
-        3. hgetall key (获取此hash所有信息)
-3. 删
-        1. hdel key    [filed1 filed2...]  (删除一个或多个字段)
-        2. del key 可以删除整个键值对 (通用的)
+<span class="token title important"><span class="token punctuation">#</span>常用命令</span>
+<span class="token list punctuation">1.</span> 增
+<span class="token code keyword">        1. hset key field value</span>
+<span class="token code keyword">        2. hmset key field1 value1 field2 value2 ...</span>
+<span class="token list punctuation">2.</span> 查
+<span class="token code keyword">        1. hget key field  (单个)</span>
+<span class="token code keyword">        2. hmget key field1 field2 (多个)</span>
+<span class="token code keyword">        3. hgetall key (获取此hash所有信息)</span>
+<span class="token list punctuation">3.</span> 删
+<span class="token code keyword">        1. hdel key    [filed1 filed2...]  (删除一个或多个字段)</span>
+<span class="token code keyword">        2. del key 可以删除整个键值对 (通用的)</span>
 </code></pre>
 <table>
 <thead>
@@ -671,23 +671,23 @@
 </tr>
 </tbody></table>
 <h3 id="3、list"><a href="#3、list" class="headerlink" title="3、list"></a>3、list</h3><p><img src="https://i.loli.net/2021/09/13/lSxmPtqgjvXVwH7.png" alt="image-20210913185237622"></p>
-<pre><code class="markdown">#特点
-    1. 在Redis中，List类型是按照插入顺序排序的字符串链表。(可以左右操作)
-    2. 有序(插入顺序),有索引,可重复
-    3. 如果该键并不存在，Redis将为该键创建一个新的链表。与此相反，如果链表中所有的元素均被移除，那么该键也将会被从数据库中删除
-    4. List中可以包含的最大元素数量是4G个
+<pre class=" language-markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span>特点</span>
+<span class="token code keyword">    1. 在Redis中，List类型是按照插入顺序排序的字符串链表。(可以左右操作)</span>
+<span class="token code keyword">    2. 有序(插入顺序),有索引,可重复</span>
+<span class="token code keyword">    3. 如果该键并不存在，Redis将为该键创建一个新的链表。与此相反，如果链表中所有的元素均被移除，那么该键也将会被从数据库中删除</span>
+<span class="token code keyword">    4. List中可以包含的最大元素数量是4G个</span>
 
-# 常用命令
-1. 增
-        1. lpush key value1[value2...] (left : addFirst)
-        2. rpush key value1[value2...] (right : addLast)
-2. 查
-        1. lrange key start end (闭区间 : 两边都包括)
-        2. lrange key 0 -1  (查询所有)
-        3. lindex key index  (索引 : 0基  左边第一个0, 右边第一个索引-1)
-3. 删
-        1. lpop key 从左边删除一个
-        2. rpop key 从右边删除一个
+<span class="token title important"><span class="token punctuation">#</span> 常用命令</span>
+<span class="token list punctuation">1.</span> 增
+<span class="token code keyword">        1. lpush key value1[value2...] (left : addFirst)</span>
+<span class="token code keyword">        2. rpush key value1[value2...] (right : addLast)</span>
+<span class="token list punctuation">2.</span> 查
+<span class="token code keyword">        1. lrange key start end (闭区间 : 两边都包括)</span>
+<span class="token code keyword">        2. lrange key 0 -1  (查询所有)</span>
+<span class="token code keyword">        3. lindex key index  (索引 : 0基  左边第一个0, 右边第一个索引-1)</span>
+<span class="token list punctuation">3.</span> 删
+<span class="token code keyword">        1. lpop key 从左边删除一个</span>
+<span class="token code keyword">        2. rpop key 从右边删除一个</span>
 </code></pre>
 <table>
 <thead>
@@ -730,20 +730,20 @@
 </tr>
 </tbody></table>
 <h3 id="4、set"><a href="#4、set" class="headerlink" title="4、set"></a>4、set</h3><p><img src="https://i.loli.net/2021/09/13/olH7nmYhMT49jzP.png" alt="image-20210913185853208"></p>
-<pre><code class="markdown">#特点
-       1. 无序,无索引, 不可重复
-    2. Set可包含的最大元素数量是4G
+<pre class=" language-markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span>特点</span>
+<span class="token code keyword">       1. 无序,无索引, 不可重复</span>
+<span class="token code keyword">    2. Set可包含的最大元素数量是4G</span>
 
-# 常用命令
-1. 增
-        1. sadd key value[value2...]
-2. 查
-        1. smembers key(查询所有value)
-        2. scard key(查询value的数量)
-        3. sismember key value (判断指定的元素是否存在，存在返回1，否则返回0)
-3. 删
-        1. spop key : 随机删除
-        2. srem key members[member1,member2...] : 删除指定元素
+<span class="token title important"><span class="token punctuation">#</span> 常用命令</span>
+<span class="token list punctuation">1.</span> 增
+<span class="token code keyword">        1. sadd key value[value2...]</span>
+<span class="token list punctuation">2.</span> 查
+<span class="token code keyword">        1. smembers key(查询所有value)</span>
+<span class="token code keyword">        2. scard key(查询value的数量)</span>
+<span class="token code keyword">        3. sismember key value (判断指定的元素是否存在，存在返回1，否则返回0)</span>
+<span class="token list punctuation">3.</span> 删
+<span class="token code keyword">        1. spop key : 随机删除</span>
+<span class="token code keyword">        2. srem key members[member1,member2...] : 删除指定元素</span>
 </code></pre>
 <table>
 <thead>
@@ -778,21 +778,21 @@
 </tr>
 </tbody></table>
 <h3 id="5、zset"><a href="#5、zset" class="headerlink" title="5、zset"></a>5、zset</h3><p><img src="https://i.loli.net/2021/09/13/lByFZQU5AjmwJis.png" alt="image-20210913190325458"></p>
-<pre><code class="markdown">#特点
-    1. 每个元素都会关联一个分数
-    2. 排序(按score大小排序) , 支持左右索引
-    2. 一个元素(score,value) 其中score可重复,value不可重复
-    3. 应用 : 排行版
-#常用命令
-1. 增
-        1. zadd key score1 member1[score2 member2...]
-2. 查
-        1. zcard key (统计数量)
-        2. zrange key start stop [withscores]    -&gt; 范围查询
-        3. zrevrange key start stop[withscores]  (reverse 反转)
+<pre class=" language-markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span>特点</span>
+<span class="token code keyword">    1. 每个元素都会关联一个分数</span>
+<span class="token code keyword">    2. 排序(按score大小排序) , 支持左右索引</span>
+<span class="token code keyword">    2. 一个元素(score,value) 其中score可重复,value不可重复</span>
+<span class="token code keyword">    3. 应用 : 排行版</span>
+<span class="token title important"><span class="token punctuation">#</span>常用命令</span>
+<span class="token list punctuation">1.</span> 增
+<span class="token code keyword">        1. zadd key score1 member1[score2 member2...]</span>
+<span class="token list punctuation">2.</span> 查
+<span class="token code keyword">        1. zcard key (统计数量)</span>
+<span class="token code keyword">        2. zrange key start stop [withscores]    -> 范围查询</span>
+<span class="token code keyword">        3. zrevrange key start stop[withscores]  (reverse 反转)</span>
 
-3. 删
-        1. zrem key member[member2...]    
+<span class="token list punctuation">3.</span> 删
+<span class="token code keyword">        1. zrem key member[member2...]    </span>
 </code></pre>
 <table>
 <thead>
@@ -830,12 +830,12 @@
 <td>查找分数从开始score到结束score的value</td>
 </tr>
 </tbody></table>
-<pre><code class="markdown">    zcard/zcount key score区间/zrank key values值/zscore key 对应值
+<pre class=" language-markdown"><code class="language-markdown"><span class="token code keyword">    zcard/zcount key score区间/zrank key values值/zscore key 对应值</span>
     
-    zcard zet01            获取zet01键的值的数量
-    zcount zet01 60 80        统计60分到80分的值的数量
-    zrank zet01 v4            获取值为v4的下标
-    zscore zet01 v4            获取值为v4的分数
+<span class="token code keyword">    zcard zet01            获取zet01键的值的数量</span>
+<span class="token code keyword">    zcount zet01 60 80        统计60分到80分的值的数量</span>
+<span class="token code keyword">    zrank zet01 v4            获取值为v4的下标</span>
+<span class="token code keyword">    zscore zet01 v4            获取值为v4的分数</span>
 </code></pre>
 <h3 id="6、key的命令（通用命令）"><a href="#6、key的命令（通用命令）" class="headerlink" title="6、key的命令（通用命令）"></a>6、key的命令（通用命令）</h3><table>
 <thead>
@@ -901,19 +901,19 @@
 </ol>
 </blockquote>
 <p><strong>RDB持久化机制</strong></p>
-<pre><code class="markdown"># 优点
-1. 方便备份与恢复
-        整个Redis数据库将只包含一个文件，默认是dump.rdb，这对于文件备份和恢复而言是非常完美的。因为我们可以非常轻松的将一个单独的文件压缩后再转移到其它存储介质上。一旦系统出现灾难性故障，我们可以非常容易的进行恢复。
-2. 性能最大化
-        对于Redis的服务进程而言，在开始持久化时，它唯一需要做的只是分叉出子进程，由子进程完成这些持久化的工作，这样就可以极大的避免服务进程执行IO操作了。
-3. 启动效率更高
-        相比于AOF机制，如果数据集很大，RDB的启动效率会更高
+<pre class=" language-markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span> 优点</span>
+<span class="token list punctuation">1.</span> 方便备份与恢复
+<span class="token code keyword">        整个Redis数据库将只包含一个文件，默认是dump.rdb，这对于文件备份和恢复而言是非常完美的。因为我们可以非常轻松的将一个单独的文件压缩后再转移到其它存储介质上。一旦系统出现灾难性故障，我们可以非常容易的进行恢复。</span>
+<span class="token list punctuation">2.</span> 性能最大化
+<span class="token code keyword">        对于Redis的服务进程而言，在开始持久化时，它唯一需要做的只是分叉出子进程，由子进程完成这些持久化的工作，这样就可以极大的避免服务进程执行IO操作了。</span>
+<span class="token list punctuation">3.</span> 启动效率更高
+<span class="token code keyword">        相比于AOF机制，如果数据集很大，RDB的启动效率会更高</span>
 
-#缺点
-1. 不能完全避免数据丢失
-        因为RDB是每隔一段时间写入数据，所以系统一旦在定时持久化之前出现宕机现象，此前没有来得及写入磁盘的数据都将丢失。
-2. 会导致服务器暂停的现象
-        由于RDB是通过子进程来协助完成数据持久化工作的，因此当数据集较大时，可能会导致整个服务器停止服务几百毫秒，甚至是1秒钟。
+<span class="token title important"><span class="token punctuation">#</span>缺点</span>
+<span class="token list punctuation">1.</span> 不能完全避免数据丢失
+<span class="token code keyword">        因为RDB是每隔一段时间写入数据，所以系统一旦在定时持久化之前出现宕机现象，此前没有来得及写入磁盘的数据都将丢失。</span>
+<span class="token list punctuation">2.</span> 会导致服务器暂停的现象
+<span class="token code keyword">        由于RDB是通过子进程来协助完成数据持久化工作的，因此当数据集较大时，可能会导致整个服务器停止服务几百毫秒，甚至是1秒钟。</span>
 </code></pre>
 <h3 id="2、RDB持久化"><a href="#2、RDB持久化" class="headerlink" title="2、RDB持久化"></a>2、RDB持久化</h3><p>在redis.windows.conf配置文件中的SNAPSHOTTING中有如下说明：</p>
 <table>
@@ -959,70 +959,70 @@
 </tr>
 </tbody></table>
 <p><img src="https://i.loli.net/2021/09/13/hXpJBNblqAiC2Vf.png" alt="image-20210913193731531"></p>
-<h4 id="1、原理"><a href="#1、原理" class="headerlink" title="1、原理"></a>1、原理</h4><pre><code class="markdown">1. 默认的持久化方式（自动开启）
-2. 以二级制方式将数据写入文件中（dump.rdb）
-3. 每隔一段时间写入一次
-4. 每次会将数据库中的数据全部重新写入（从内存中使用fork出的线程直接读取数据，在保存到文件中）。
+<h4 id="1、原理"><a href="#1、原理" class="headerlink" title="1、原理"></a>1、原理</h4><pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">1.</span> 默认的持久化方式（自动开启）
+<span class="token list punctuation">2.</span> 以二级制方式将数据写入文件中（dump.rdb）
+<span class="token list punctuation">3.</span> 每隔一段时间写入一次
+<span class="token list punctuation">4.</span> 每次会将数据库中的数据全部重新写入（从内存中使用fork出的线程直接读取数据，在保存到文件中）。
 </code></pre>
 <h4 id="2、修改conf文件，改变快照（snapshot）配置。"><a href="#2、修改conf文件，改变快照（snapshot）配置。" class="headerlink" title="2、修改conf文件，改变快照（snapshot）配置。"></a>2、修改conf文件，改变快照（snapshot）配置。</h4><blockquote>
 <p>即改变dump.rdb文件生成时机</p>
 </blockquote>
 <p>redis.window.conf中snapshot中的配置</p>
-<pre><code class="markdown">######### SNAPSHOTTING  #########
+<pre class=" language-markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#########</span> SNAPSHOTTING  <span class="token punctuation">#########</span></span>
 #
-# Save the DB on disk:
+<span class="token title important"><span class="token punctuation">#</span> Save the DB on disk:</span>
 #
-# save &lt;seconds&gt; &lt;changes&gt;
+<span class="token title important"><span class="token punctuation">#</span> save &lt;seconds> &lt;changes></span>
 
 
 save 900 1
 save 300 10
 save 60 10000
 
-# 如果保存出现错误，则停止数据库继续写入
+<span class="token title important"><span class="token punctuation">#</span> 如果保存出现错误，则停止数据库继续写入</span>
 stop-writes-on-bgsave-error yes
 
-# 是否压缩
+<span class="token title important"><span class="token punctuation">#</span> 是否压缩</span>
 rdbcompression yes
 
-# 是否检验错误
+<span class="token title important"><span class="token punctuation">#</span> 是否检验错误</span>
 rdbchecksum yes
 
-# 保存的文件的文件名
+<span class="token title important"><span class="token punctuation">#</span> 保存的文件的文件名</span>
 dbfilename dump.rdb
 
-# 工作路径
+<span class="token title important"><span class="token punctuation">#</span> 工作路径</span>
 dir ./
 </code></pre>
 <h3 id="3、AOF持久化"><a href="#3、AOF持久化" class="headerlink" title="3、AOF持久化"></a>3、AOF持久化</h3><p><img src="https://i.loli.net/2021/09/13/rG7m94wqFQbEJlW.png" alt="image-20210913193745290"></p>
-<h4 id="1、原理-1"><a href="#1、原理-1" class="headerlink" title="1、原理"></a>1、原理</h4><pre><code class="markdown">1. 以文本的方式记录用户的每次操作（流水账）（和rdb有所不同，rdb每次保存全部数据，aof是基于原来的文件继续追加）
-2. 还原的时候，redis服务器读取aof文件，执行文件里的命令，将数据还原。
+<h4 id="1、原理-1"><a href="#1、原理-1" class="headerlink" title="1、原理"></a>1、原理</h4><pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">1.</span> 以文本的方式记录用户的每次操作（流水账）（和rdb有所不同，rdb每次保存全部数据，aof是基于原来的文件继续追加）
+<span class="token list punctuation">2.</span> 还原的时候，redis服务器读取aof文件，执行文件里的命令，将数据还原。
 </code></pre>
-<h4 id="2、修改配置"><a href="#2、修改配置" class="headerlink" title="2、修改配置"></a>2、修改配置</h4><pre><code class="markdown">############################## APPEND ONLY MODE ###############################
+<h4 id="2、修改配置"><a href="#2、修改配置" class="headerlink" title="2、修改配置"></a>2、修改配置</h4><pre class=" language-markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">##############################</span> APPEND ONLY MODE <span class="token punctuation">###############################</span></span>
 
 
-# 开启aof 默认是no
+<span class="token title important"><span class="token punctuation">#</span> 开启aof 默认是no</span>
 appendonly yes
 
 
-# 每执行一次就同步一次
+<span class="token title important"><span class="token punctuation">#</span> 每执行一次就同步一次</span>
 appendfsync always
-# appendfsync everysec   每秒同步一次
-# appendfsync no        写入aof文件，不等待磁盘同步
+<span class="token title important"><span class="token punctuation">#</span> appendfsync everysec   每秒同步一次</span>
+<span class="token title important"><span class="token punctuation">#</span> appendfsync no        写入aof文件，不等待磁盘同步</span>
 
-# 在aof重写的过程中进行磁盘同步（磁盘同步会被阻塞）
+<span class="token title important"><span class="token punctuation">#</span> 在aof重写的过程中进行磁盘同步（磁盘同步会被阻塞）</span>
 no-appendfsync-on-rewrite no
 
-# aof重写配置
+<span class="token title important"><span class="token punctuation">#</span> aof重写配置</span>
 auto-aof-rewrite-percentage 100
 auto-aof-rewrite-min-size 64mb
 </code></pre>
-<pre><code class="markdown"># AOF持久化机制优点
-        AOF包含一个格式清晰、易于理解的日志文件用于记录所有的修改操作。也可以通过该文件完成数据的重建。该机制可以带来更高的数据安全性，所有的操作都是异步完成的。
+<pre class=" language-markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span> AOF持久化机制优点</span>
+<span class="token code keyword">        AOF包含一个格式清晰、易于理解的日志文件用于记录所有的修改操作。也可以通过该文件完成数据的重建。该机制可以带来更高的数据安全性，所有的操作都是异步完成的。</span>
 
-# AOF持久化机制缺点
-    1. 文件比RDB更大：对于相同数量的数据集而言，AOF文件通常要大于RDB文件。
-    2. 运行效率比RDB更慢：根据同步策略的不同，AOF在运行效率上往往会慢于RDB。
+<span class="token title important"><span class="token punctuation">#</span> AOF持久化机制缺点</span>
+<span class="token code keyword">    1. 文件比RDB更大：对于相同数量的数据集而言，AOF文件通常要大于RDB文件。</span>
+<span class="token code keyword">    2. 运行效率比RDB更慢：根据同步策略的不同，AOF在运行效率上往往会慢于RDB。</span>
 </code></pre>
 <table>
 <thead>
@@ -1086,22 +1086,22 @@ auto-aof-rewrite-min-size 64mb
 </tbody></table>
 <p><img src="https://i.loli.net/2021/09/13/sl9nabqMXv7QdYw.png" alt="image-20210913200020634"></p>
 <h3 id="4、AOF和RDB的区别"><a href="#4、AOF和RDB的区别" class="headerlink" title="4、AOF和RDB的区别"></a>4、AOF和RDB的区别</h3><p><img src="https://i.loli.net/2021/09/13/aLPmniR47WBbvhj.png" alt="image-20210913195925217"></p>
-<pre><code class="markdown"># 从写的效率上看
-    1. redis数据量小，rdb效率高（rdb直接保存二进制数据）
-    2. rides数据量大的时候，aof效率高（aof是增量更新）
+<pre class=" language-markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span> 从写的效率上看</span>
+<span class="token code keyword">    1. redis数据量小，rdb效率高（rdb直接保存二进制数据）</span>
+<span class="token code keyword">    2. rides数据量大的时候，aof效率高（aof是增量更新）</span>
     
-# 从读的效率上看
-    1. Rdb效率高，直接读取二进制
-    aof是读取命令，执行命令，相对较慢。
+<span class="token title important"><span class="token punctuation">#</span> 从读的效率上看</span>
+<span class="token code keyword">    1. Rdb效率高，直接读取二进制</span>
+<span class="token code keyword">    aof是读取命令，执行命令，相对较慢。</span>
     
-# 数据安全
-    1. aof 相对安全
+<span class="token title important"><span class="token punctuation">#</span> 数据安全</span>
+<span class="token code keyword">    1. aof 相对安全</span>
 </code></pre>
-<h2 id="4、Jedis的使用"><a href="#4、Jedis的使用" class="headerlink" title="4、Jedis的使用"></a>4、Jedis的使用</h2><h3 id="1、导包"><a href="#1、导包" class="headerlink" title="1、导包"></a>1、导包</h3><pre><code class="xml">&lt;dependency&gt;
-    &lt;groupId&gt;redis.clients&lt;/groupId&gt;
-    &lt;artifactId&gt;jedis&lt;/artifactId&gt;
-    &lt;version&gt;2.8.1&lt;/version&gt;
-&lt;/dependency&gt;
+<h2 id="4、Jedis的使用"><a href="#4、Jedis的使用" class="headerlink" title="4、Jedis的使用"></a>4、Jedis的使用</h2><h3 id="1、导包"><a href="#1、导包" class="headerlink" title="1、导包"></a>1、导包</h3><pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>redis.clients<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>jedis<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>2.8.1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
 </code></pre>
 <h3 id="2-Jedis类常用方法"><a href="#2-Jedis类常用方法" class="headerlink" title="2 Jedis类常用方法"></a>2 Jedis类常用方法</h3><p>注：每个方法就是redis中的命令名，方法的参数就是命令的参数。</p>
 <p>在每次访问Redis数据库的时候，都需要创建一个Jedis对象。每个Jedis对象似于JDBC中Connection对象，类似于mybatis中session对象。</p>
@@ -1213,46 +1213,46 @@ auto-aof-rewrite-min-size 64mb
 <li>关闭Jedis对象，释放资源</li>
 <li>通过客户端查看数据库中是否有数据</li>
 </ol>
-<pre><code class="java"> @Test
-    public void method01()&#123;
-        //1. 创建连接
-        String host = &quot;127.0.0.1&quot;;
-        int port = 6379;
-        Jedis jedis = new Jedis(host, port);
-        //2. 访问redis数据库
-       jedis.lpush(&quot;list&quot;, &quot;a&quot;,&quot;b&quot;,&quot;c&quot;);
-       jedis.set(&quot;book&quot;, &quot;thinking in java&quot;);
-       jedis.set(&quot;gf&quot;, &quot;高圆圆&quot;);
-        HashMap&lt;String, Double&gt; exam = new HashMap&lt;&gt;();
-        exam.put(&quot;zs&quot;, 15.0);
-        exam.put(&quot;ls&quot;, 7.0);
-        exam.put(&quot;ww&quot;, 22.0);
-        jedis.zadd(&quot;exam&quot;, exam);
-       //3. 关闭连接
-        jedis.close();
-    &#125;
+<pre class=" language-java"><code class="language-java"> <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">method01</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//1. 创建连接</span>
+        String host <span class="token operator">=</span> <span class="token string">"127.0.0.1"</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> port <span class="token operator">=</span> <span class="token number">6379</span><span class="token punctuation">;</span>
+        Jedis jedis <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Jedis</span><span class="token punctuation">(</span>host<span class="token punctuation">,</span> port<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//2. 访问redis数据库</span>
+       jedis<span class="token punctuation">.</span><span class="token function">lpush</span><span class="token punctuation">(</span><span class="token string">"list"</span><span class="token punctuation">,</span> <span class="token string">"a"</span><span class="token punctuation">,</span><span class="token string">"b"</span><span class="token punctuation">,</span><span class="token string">"c"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+       jedis<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"book"</span><span class="token punctuation">,</span> <span class="token string">"thinking in java"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+       jedis<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"gf"</span><span class="token punctuation">,</span> <span class="token string">"高圆圆"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        HashMap<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Double<span class="token operator">></span> exam <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        exam<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"zs"</span><span class="token punctuation">,</span> <span class="token number">15.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        exam<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"ls"</span><span class="token punctuation">,</span> <span class="token number">7.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        exam<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"ww"</span><span class="token punctuation">,</span> <span class="token number">22.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jedis<span class="token punctuation">.</span><span class="token function">zadd</span><span class="token punctuation">(</span><span class="token string">"exam"</span><span class="token punctuation">,</span> exam<span class="token punctuation">)</span><span class="token punctuation">;</span>
+       <span class="token comment" spellcheck="true">//3. 关闭连接</span>
+        jedis<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-    @Test
-    public void method02()&#123;
-        //1. 创建连接
-        String host = &quot;127.0.0.1&quot;;
-        int port = 6379;
-        Jedis jedis = new Jedis(host, port);
-        //2. 访问redis数据库
-        String gf = jedis.get(&quot;gf&quot;);
-        System.out.println(gf);
-        List&lt;String&gt; list = jedis.lrange(&quot;list&quot;, 0, -1);
-        System.out.println(list);
-        //3. 关闭连接
-        jedis.close();
-    &#125;
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">method02</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//1. 创建连接</span>
+        String host <span class="token operator">=</span> <span class="token string">"127.0.0.1"</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> port <span class="token operator">=</span> <span class="token number">6379</span><span class="token punctuation">;</span>
+        Jedis jedis <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Jedis</span><span class="token punctuation">(</span>host<span class="token punctuation">,</span> port<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//2. 访问redis数据库</span>
+        String gf <span class="token operator">=</span> jedis<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"gf"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>gf<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        List<span class="token operator">&lt;</span>String<span class="token operator">></span> list <span class="token operator">=</span> jedis<span class="token punctuation">.</span><span class="token function">lrange</span><span class="token punctuation">(</span><span class="token string">"list"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>list<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//3. 关闭连接</span>
+        jedis<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 </code></pre>
-<h2 id="5、Jedis连接池的使用"><a href="#5、Jedis连接池的使用" class="headerlink" title="5、Jedis连接池的使用"></a>5、Jedis连接池的使用</h2><pre><code class="markdown"># 连接池的作用
-1. 问题: 在服务端,如果频繁的创建和销毁连接, 非常消耗性能
-2. 解决: 连接池
-    1). 将多个连接放在一个容器进行统一管理
-    2). 用的时候取
-    3). 用完的时候还回去
+<h2 id="5、Jedis连接池的使用"><a href="#5、Jedis连接池的使用" class="headerlink" title="5、Jedis连接池的使用"></a>5、Jedis连接池的使用</h2><pre class=" language-markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span> 连接池的作用</span>
+<span class="token list punctuation">1.</span> 问题: 在服务端,如果频繁的创建和销毁连接, 非常消耗性能
+<span class="token list punctuation">2.</span> 解决: 连接池
+<span class="token code keyword">    1). 将多个连接放在一个容器进行统一管理</span>
+<span class="token code keyword">    2). 用的时候取</span>
+<span class="token code keyword">    3). 用完的时候还回去</span>
 </code></pre>
 <h3 id="1、-Jedis连接池API"><a href="#1、-Jedis连接池API" class="headerlink" title="1、 Jedis连接池API"></a>1、 Jedis连接池API</h3><table>
 <thead>
@@ -1290,73 +1290,73 @@ auto-aof-rewrite-min-size 64mb
 <td>从连接池中得到一个连接对象Jedis</td>
 </tr>
 </tbody></table>
-<pre><code class="java"> public void method01()&#123;
-        //1. 创建连接池
-        JedisPoolConfig config = new JedisPoolConfig();
-        config.setMaxTotal(5);// 最大连接数: 5
-        config.setMaxWaitMillis(2000); // 最长等待时间: 2000ms
-        String host = &quot;127.0.0.1&quot;;
-        int port = 6379;
-        JedisPool pool = new JedisPool(config, host, port);
-        //2. 获取连接
-        Jedis jedis = pool.getResource();
-        //3. 访问redis数据库
-        String gf = jedis.get(&quot;gf&quot;);
-        System.out.println(gf);
+<pre class=" language-java"><code class="language-java"> <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">method01</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//1. 创建连接池</span>
+        JedisPoolConfig config <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JedisPoolConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        config<span class="token punctuation">.</span><span class="token function">setMaxTotal</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 最大连接数: 5</span>
+        config<span class="token punctuation">.</span><span class="token function">setMaxWaitMillis</span><span class="token punctuation">(</span><span class="token number">2000</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 最长等待时间: 2000ms</span>
+        String host <span class="token operator">=</span> <span class="token string">"127.0.0.1"</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> port <span class="token operator">=</span> <span class="token number">6379</span><span class="token punctuation">;</span>
+        JedisPool pool <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JedisPool</span><span class="token punctuation">(</span>config<span class="token punctuation">,</span> host<span class="token punctuation">,</span> port<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//2. 获取连接</span>
+        Jedis jedis <span class="token operator">=</span> pool<span class="token punctuation">.</span><span class="token function">getResource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//3. 访问redis数据库</span>
+        String gf <span class="token operator">=</span> jedis<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"gf"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>gf<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        //4. 将连接还给连接池(释放连接)
-        jedis.close();
+        <span class="token comment" spellcheck="true">//4. 将连接还给连接池(释放连接)</span>
+        jedis<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h3 id="2、jedis连接池工具类"><a href="#2、jedis连接池工具类" class="headerlink" title="2、jedis连接池工具类"></a>2、jedis连接池工具类</h3><p><strong>redis.properties配置文件</strong></p>
-<pre><code class="properties"># 主机名
-host=localhost
-# 端口号
-port=6379
-# 最大连接数
-maxTotal=20
-# 最长等待时间
-maxWaitMillis=3000
+<pre class=" language-properties"><code class="language-properties"><span class="token comment" spellcheck="true"># 主机名</span>
+<span class="token attr-name">host</span><span class="token punctuation">=</span><span class="token attr-value">localhost</span>
+<span class="token comment" spellcheck="true"># 端口号</span>
+<span class="token attr-name">port</span><span class="token punctuation">=</span><span class="token attr-value">6379</span>
+<span class="token comment" spellcheck="true"># 最大连接数</span>
+<span class="token attr-name">maxTotal</span><span class="token punctuation">=</span><span class="token attr-value">20</span>
+<span class="token comment" spellcheck="true"># 最长等待时间</span>
+<span class="token attr-name">maxWaitMillis</span><span class="token punctuation">=</span><span class="token attr-value">3000</span>
 </code></pre>
 <p><strong>JedisUtil.java</strong></p>
-<pre><code class="java">package com.itheima.jedis;
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>jedis<span class="token punctuation">;</span>
 
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
-import redis.clients.jedis.JedisPoolConfig;
+<span class="token keyword">import</span> redis<span class="token punctuation">.</span>clients<span class="token punctuation">.</span>jedis<span class="token punctuation">.</span>Jedis<span class="token punctuation">;</span>
+<span class="token keyword">import</span> redis<span class="token punctuation">.</span>clients<span class="token punctuation">.</span>jedis<span class="token punctuation">.</span>JedisPool<span class="token punctuation">;</span>
+<span class="token keyword">import</span> redis<span class="token punctuation">.</span>clients<span class="token punctuation">.</span>jedis<span class="token punctuation">.</span>JedisPoolConfig<span class="token punctuation">;</span>
 
-import java.util.ResourceBundle;
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>ResourceBundle<span class="token punctuation">;</span>
 
-public class JedisUtil &#123;
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JedisUtil</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
 
-    private static JedisPool pool;
+    <span class="token keyword">private</span> <span class="token keyword">static</span> JedisPool pool<span class="token punctuation">;</span>
 
 
-    static&#123;
-        ResourceBundle bundle = ResourceBundle.getBundle(&quot;redis&quot;);
-        int maxTotal = Integer.parseInt(bundle.getString(&quot;maxTotal&quot;));
-        int maxWaitMillis = Integer.parseInt(bundle.getString(&quot;maxWaitMillis&quot;));
-        int port = Integer.parseInt(bundle.getString(&quot;port&quot;));
-        String host = bundle.getString(&quot;host&quot;);
-        //1. 创建连接池
-        JedisPoolConfig config = new JedisPoolConfig();
-        config.setMaxTotal(maxTotal);// 最大连接数: 5
-        config.setMaxWaitMillis(maxWaitMillis); // 最长等待时间: 2000ms
-        pool = new JedisPool(config, host, port);
-    &#125;
+    <span class="token keyword">static</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        ResourceBundle bundle <span class="token operator">=</span> ResourceBundle<span class="token punctuation">.</span><span class="token function">getBundle</span><span class="token punctuation">(</span><span class="token string">"redis"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> maxTotal <span class="token operator">=</span> Integer<span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span>bundle<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"maxTotal"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> maxWaitMillis <span class="token operator">=</span> Integer<span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span>bundle<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"maxWaitMillis"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> port <span class="token operator">=</span> Integer<span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span>bundle<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"port"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        String host <span class="token operator">=</span> bundle<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"host"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//1. 创建连接池</span>
+        JedisPoolConfig config <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JedisPoolConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        config<span class="token punctuation">.</span><span class="token function">setMaxTotal</span><span class="token punctuation">(</span>maxTotal<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 最大连接数: 5</span>
+        config<span class="token punctuation">.</span><span class="token function">setMaxWaitMillis</span><span class="token punctuation">(</span>maxWaitMillis<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 最长等待时间: 2000ms</span>
+        pool <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JedisPool</span><span class="token punctuation">(</span>config<span class="token punctuation">,</span> host<span class="token punctuation">,</span> port<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-    public static Jedis getResource()&#123;
-        return pool.getResource();
-    &#125;
-&#125;
+    <span class="token keyword">public</span> <span class="token keyword">static</span> Jedis <span class="token function">getResource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> pool<span class="token punctuation">.</span><span class="token function">getResource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 </code></pre>
-<pre><code class="java"> @Test
-    public void method03()&#123;
-        Jedis jedis = JedisUtil.getResource();
-        String s = jedis.get(&quot;gf&quot;);
-        System.out.println(s);
-        jedis.close();
+<pre class=" language-java"><code class="language-java"> <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">method03</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        Jedis jedis <span class="token operator">=</span> JedisUtil<span class="token punctuation">.</span><span class="token function">getResource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        String s <span class="token operator">=</span> jedis<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"gf"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jedis<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    &#125;
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 </code></pre>
 
                 

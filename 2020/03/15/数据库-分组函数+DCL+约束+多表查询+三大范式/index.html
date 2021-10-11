@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 
@@ -483,124 +483,124 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="1、数据库"><a href="#1、数据库" class="headerlink" title="1、数据库"></a>1、数据库</h1><h2 id="1、DCL"><a href="#1、DCL" class="headerlink" title="1、DCL"></a>1、DCL</h2><p><strong>sql运行顺序：</strong></p>
-<pre><code class="sql">一、sql执行顺序 
-(1)from 
-(3) join 
-(2) on 
-(4) where 
-(5)group by(开始使用select中的别名，后面的语句中都可以使用)
-(6) avg,sum.... 
-(7)having 
-(8) select 
-(9) distinct 
-(10) order by 
+<pre class=" language-sql"><code class="language-sql">一、sql执行顺序 
+<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token keyword">from</span> 
+<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token keyword">join</span> 
+<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">on</span> 
+<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token keyword">where</span> 
+<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token keyword">group</span> <span class="token keyword">by</span><span class="token punctuation">(</span>开始使用<span class="token keyword">select</span>中的别名，后面的语句中都可以使用<span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span> avg<span class="token punctuation">,</span>sum<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> 
+<span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token keyword">having</span> 
+<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span> <span class="token keyword">select</span> 
+<span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">)</span> <span class="token keyword">distinct</span> 
+<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token keyword">order</span> <span class="token keyword">by</span> 
 </code></pre>
-<h3 id="1、创建用户"><a href="#1、创建用户" class="headerlink" title="1、创建用户"></a>1、创建用户</h3><pre><code class="sql"># 1.创建u1用户，只能在本机登录，不能远程登录，且密码1234&#39;
-create user &#39;u1&#39;@&#39;localhost&#39; identified by &#39;1234&#39;;
+<h3 id="1、创建用户"><a href="#1、创建用户" class="headerlink" title="1、创建用户"></a>1、创建用户</h3><pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true"># 1.创建u1用户，只能在本机登录，不能远程登录，且密码1234'</span>
+<span class="token keyword">create</span> <span class="token keyword">user</span> <span class="token string">'u1'</span>@'localhost<span class="token string">' identified by '</span><span class="token number">1234</span>'<span class="token punctuation">;</span>
 
-# 1.创建u2用户，在任意电脑都可以登录，且密码1234&#39;
-# 说明：%匹配任意IP地址或者域名
-create user &#39;u2&#39;@&#39;%&#39; identified by &#39;1234&#39;;
+<span class="token comment" spellcheck="true"># 1.创建u2用户，在任意电脑都可以登录，且密码1234'</span>
+<span class="token comment" spellcheck="true"># 说明：%匹配任意IP地址或者域名</span>
+<span class="token keyword">create</span> <span class="token keyword">user</span> <span class="token string">'u2'</span>@'<span class="token operator">%</span><span class="token string">' identified by '</span><span class="token number">1234</span>'<span class="token punctuation">;</span>
 </code></pre>
-<h3 id="2、用户授权与撤销权限："><a href="#2、用户授权与撤销权限：" class="headerlink" title="2、用户授权与撤销权限："></a>2、用户授权与撤销权限：</h3><pre><code class="sql"># 3.给u1用户分配对heima01的操作权限，但是不包含对表中数据删除操作
-# 说明：之前学习的sql的语句的首个关键字都是权限
-# heima01.*：表示指定的权限只能作用在heima01下的所有的表
-grant create,alter,insert,update,select on heima01.* to &#39;u1&#39;@&#39;localhost&#39;;
-# 4.撤销u1用户的所有权限
-revoke create,alter,insert,update,select on heima01.* from &#39;u1&#39;@&#39;localhost&#39;;
-# all:关键字，匹配所有权限
-revoke all on heima01.* from &#39;u1&#39;@&#39;localhost&#39;;
+<h3 id="2、用户授权与撤销权限："><a href="#2、用户授权与撤销权限：" class="headerlink" title="2、用户授权与撤销权限："></a>2、用户授权与撤销权限：</h3><pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true"># 3.给u1用户分配对heima01的操作权限，但是不包含对表中数据删除操作</span>
+<span class="token comment" spellcheck="true"># 说明：之前学习的sql的语句的首个关键字都是权限</span>
+<span class="token comment" spellcheck="true"># heima01.*：表示指定的权限只能作用在heima01下的所有的表</span>
+<span class="token keyword">grant</span> <span class="token keyword">create</span><span class="token punctuation">,</span><span class="token keyword">alter</span><span class="token punctuation">,</span><span class="token keyword">insert</span><span class="token punctuation">,</span><span class="token keyword">update</span><span class="token punctuation">,</span><span class="token keyword">select</span> <span class="token keyword">on</span> heima01<span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">to</span> <span class="token string">'u1'</span><span class="token variable">@'localhost'</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true"># 4.撤销u1用户的所有权限</span>
+<span class="token keyword">revoke</span> <span class="token keyword">create</span><span class="token punctuation">,</span><span class="token keyword">alter</span><span class="token punctuation">,</span><span class="token keyword">insert</span><span class="token punctuation">,</span><span class="token keyword">update</span><span class="token punctuation">,</span><span class="token keyword">select</span> <span class="token keyword">on</span> heima01<span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">from</span> <span class="token string">'u1'</span><span class="token variable">@'localhost'</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true"># all:关键字，匹配所有权限</span>
+<span class="token keyword">revoke</span> <span class="token keyword">all</span> <span class="token keyword">on</span> heima01<span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">from</span> <span class="token string">'u1'</span><span class="token variable">@'localhost'</span><span class="token punctuation">;</span>
 </code></pre>
-<h3 id="3、删除用户和密码修改："><a href="#3、删除用户和密码修改：" class="headerlink" title="3、删除用户和密码修改："></a>3、删除用户和密码修改：</h3><pre><code class="sql"># 1.删除u2 (删除普通用户)
-drop user &#39;u2&#39;@&#39;%&#39;;
-# 2.修改root超级管理员密码
-[root@localhost ~]# mysqladmin -uroot -p123456 password root
-# 3.修改普通用户密码 u1 666
-set password for &#39;u1&#39;@&#39;localhost&#39; =password(&#39;666&#39;);
+<h3 id="3、删除用户和密码修改："><a href="#3、删除用户和密码修改：" class="headerlink" title="3、删除用户和密码修改："></a>3、删除用户和密码修改：</h3><pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true"># 1.删除u2 (删除普通用户)</span>
+<span class="token keyword">drop</span> <span class="token keyword">user</span> <span class="token string">'u2'</span><span class="token variable">@'%'</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true"># 2.修改root超级管理员密码</span>
+<span class="token punctuation">[</span>root<span class="token variable">@localhost</span> <span class="token operator">~</span><span class="token punctuation">]</span><span class="token comment" spellcheck="true"># mysqladmin -uroot -p123456 password root</span>
+<span class="token comment" spellcheck="true"># 3.修改普通用户密码 u1 666</span>
+<span class="token keyword">set</span> password <span class="token keyword">for</span> <span class="token string">'u1'</span>@'localhost<span class="token string">' =password('</span><span class="token number">666</span>'<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<h3 id="4-数据库备份与还原"><a href="#4-数据库备份与还原" class="headerlink" title="4.数据库备份与还原"></a>4.数据库备份与还原</h3><pre><code class="sql"># 1.将数据库db1备份，保存在day02.sql文件下
-# 注意：备份时，仅仅备份库中表的信息，数据库的创建语句不备份
-[root@localhost ~]# mysqldump -uroot -proot db1 &gt; ./day02.sql
-# 2.还原数据到day01
-# 注意：还原数据时，数据库需要自己创建
-[root@localhost ~]# mysql -uroot -proot day01 &lt; ./day02.sql 
+<h3 id="4-数据库备份与还原"><a href="#4-数据库备份与还原" class="headerlink" title="4.数据库备份与还原"></a>4.数据库备份与还原</h3><pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true"># 1.将数据库db1备份，保存在day02.sql文件下</span>
+<span class="token comment" spellcheck="true"># 注意：备份时，仅仅备份库中表的信息，数据库的创建语句不备份</span>
+<span class="token punctuation">[</span>root<span class="token variable">@localhost</span> <span class="token operator">~</span><span class="token punctuation">]</span><span class="token comment" spellcheck="true"># mysqldump -uroot -proot db1 > ./day02.sql</span>
+<span class="token comment" spellcheck="true"># 2.还原数据到day01</span>
+<span class="token comment" spellcheck="true"># 注意：还原数据时，数据库需要自己创建</span>
+<span class="token punctuation">[</span>root<span class="token variable">@localhost</span> <span class="token operator">~</span><span class="token punctuation">]</span><span class="token comment" spellcheck="true"># mysql -uroot -proot day01 &lt; ./day02.sql </span>
 </code></pre>
-<h2 id="2、聚合函数"><a href="#2、聚合函数" class="headerlink" title="2、聚合函数"></a>2、聚合函数</h2><pre><code class="sql">    最大值：max()
-    最小值：min()
-    平均值：avg()
-    记录数：count()
-    亲和：sum()
+<h2 id="2、聚合函数"><a href="#2、聚合函数" class="headerlink" title="2、聚合函数"></a>2、聚合函数</h2><pre class=" language-sql"><code class="language-sql">    最大值：<span class="token function">max</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    最小值：<span class="token function">min</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    平均值：<span class="token function">avg</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    记录数：<span class="token function">count</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    亲和：<span class="token function">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
-<pre><code class="sql"># 1.统计学生总数
-# 说明：聚合函数统计行记录数使用：count(字段名称)
-# 注意事项：count中统计的字段的值如果为null，那么这一行的统计就丢失了；
-select count(id) from student3;-- 8
-select count(english) from student3;-- 7
-# 扩展：如何实现，只要某一行有任意值，就加入统计
-# *匹配任意列，只要列存在，那么就加入统计
-select count(*) from student3;
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true"># 1.统计学生总数</span>
+<span class="token comment" spellcheck="true"># 说明：聚合函数统计行记录数使用：count(字段名称)</span>
+<span class="token comment" spellcheck="true"># 注意事项：count中统计的字段的值如果为null，那么这一行的统计就丢失了；</span>
+<span class="token keyword">select</span> <span class="token function">count</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token keyword">from</span> student3<span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- 8</span>
+<span class="token keyword">select</span> <span class="token function">count</span><span class="token punctuation">(</span>english<span class="token punctuation">)</span> <span class="token keyword">from</span> student3<span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- 7</span>
+<span class="token comment" spellcheck="true"># 扩展：如何实现，只要某一行有任意值，就加入统计</span>
+<span class="token comment" spellcheck="true"># *匹配任意列，只要列存在，那么就加入统计</span>
+<span class="token keyword">select</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">from</span> student3<span class="token punctuation">;</span>
 
-# 2.查询年龄大于40的总数
-# 说明：如果有条件，那么先进行条件的过滤，然后再聚合统计
-select count(*) from student3 where age &gt; 40;
+<span class="token comment" spellcheck="true"># 2.查询年龄大于40的总数</span>
+<span class="token comment" spellcheck="true"># 说明：如果有条件，那么先进行条件的过滤，然后再聚合统计</span>
+<span class="token keyword">select</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> age <span class="token operator">></span> <span class="token number">40</span><span class="token punctuation">;</span>
 
-# 3.统计数学成绩总分
-select sum(math) from student3;
+<span class="token comment" spellcheck="true"># 3.统计数学成绩总分</span>
+<span class="token keyword">select</span> <span class="token function">sum</span><span class="token punctuation">(</span>math<span class="token punctuation">)</span> <span class="token keyword">from</span> student3<span class="token punctuation">;</span>
 
-# 4.一个sql统计出数学成绩最高分和最低分
-select max(math) as 最高成绩,min(math) as 最低成绩 from student3;
+<span class="token comment" spellcheck="true"># 4.一个sql统计出数学成绩最高分和最低分</span>
+<span class="token keyword">select</span> <span class="token function">max</span><span class="token punctuation">(</span>math<span class="token punctuation">)</span> <span class="token keyword">as</span> 最高成绩<span class="token punctuation">,</span><span class="token function">min</span><span class="token punctuation">(</span>math<span class="token punctuation">)</span> <span class="token keyword">as</span> 最低成绩 <span class="token keyword">from</span> student3<span class="token punctuation">;</span>
 
-# 5.统计数学和英语的总成绩
-# 分析：方式1：先每列的math+english 然后再sum求和
-#       方式2：sum(math)+sum(english)
-select sum(math)+sum(english) from student3;-- 1206
-# 在myslq中任何值与null进行数学运算，那么结果都为null，而聚合函数对null不处理
-select sum(math+english) from student3;-- 1120 差86
-# 如何解决？使用ifnull(v1,v2)
-select id,name,ifnull(english,&#39;没有成绩&#39;) from student3;
-select sum(ifnull(math,0)+ifnull(english,0)) from student3;-- 1206
+<span class="token comment" spellcheck="true"># 5.统计数学和英语的总成绩</span>
+<span class="token comment" spellcheck="true"># 分析：方式1：先每列的math+english 然后再sum求和</span>
+<span class="token comment" spellcheck="true">#       方式2：sum(math)+sum(english)</span>
+<span class="token keyword">select</span> <span class="token function">sum</span><span class="token punctuation">(</span>math<span class="token punctuation">)</span><span class="token operator">+</span><span class="token function">sum</span><span class="token punctuation">(</span>english<span class="token punctuation">)</span> <span class="token keyword">from</span> student3<span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- 1206</span>
+<span class="token comment" spellcheck="true"># 在myslq中任何值与null进行数学运算，那么结果都为null，而聚合函数对null不处理</span>
+<span class="token keyword">select</span> <span class="token function">sum</span><span class="token punctuation">(</span>math<span class="token operator">+</span>english<span class="token punctuation">)</span> <span class="token keyword">from</span> student3<span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- 1120 差86</span>
+<span class="token comment" spellcheck="true"># 如何解决？使用ifnull(v1,v2)</span>
+<span class="token keyword">select</span> id<span class="token punctuation">,</span>name<span class="token punctuation">,</span>ifnull<span class="token punctuation">(</span>english<span class="token punctuation">,</span><span class="token string">'没有成绩'</span><span class="token punctuation">)</span> <span class="token keyword">from</span> student3<span class="token punctuation">;</span>
+<span class="token keyword">select</span> <span class="token function">sum</span><span class="token punctuation">(</span>ifnull<span class="token punctuation">(</span>math<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">+</span>ifnull<span class="token punctuation">(</span>english<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">from</span> student3<span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- 1206</span>
 
 
-# 6.数学成绩平均分数
-select avg(math) from student3;-- 79.5000
-select round(avg(math),0) from student3;-- 80
-# 四舍五入函数,举例：
-# 说明：round中参数1：表示要四舍五入的数，参数2：保留的小数位
-select round(12.6735,3);-- 12.674
-# 不做四舍五入处理，仅仅数字截取
-select truncate(12.6735,3);-- 12.673
+<span class="token comment" spellcheck="true"># 6.数学成绩平均分数</span>
+<span class="token keyword">select</span> <span class="token function">avg</span><span class="token punctuation">(</span>math<span class="token punctuation">)</span> <span class="token keyword">from</span> student3<span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- 79.5000</span>
+<span class="token keyword">select</span> <span class="token function">round</span><span class="token punctuation">(</span><span class="token function">avg</span><span class="token punctuation">(</span>math<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">from</span> student3<span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- 80</span>
+<span class="token comment" spellcheck="true"># 四舍五入函数,举例：</span>
+<span class="token comment" spellcheck="true"># 说明：round中参数1：表示要四舍五入的数，参数2：保留的小数位</span>
+<span class="token keyword">select</span> <span class="token function">round</span><span class="token punctuation">(</span><span class="token number">12.6735</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- 12.674</span>
+<span class="token comment" spellcheck="true"># 不做四舍五入处理，仅仅数字截取</span>
+<span class="token keyword">select</span> <span class="token keyword">truncate</span><span class="token punctuation">(</span><span class="token number">12.6735</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- 12.673</span>
 </code></pre>
-<h2 id="3、分组查询"><a href="#3、分组查询" class="headerlink" title="3、分组查询"></a>3、分组查询</h2><pre><code class="sql"># 查询停车场每种颜色车辆的总价
-# 分析：1.先根据颜色分组，形成各种颜色的小组  2.在每个小组内使用聚合函数统计各自的车的总金额
-# 第一步：统计每种颜色
-select color from car group by color;
-select distinct color from car
-# 第二步：统计每种颜色小组下的总金额
-select color,sum(price) from car group by color;
+<h2 id="3、分组查询"><a href="#3、分组查询" class="headerlink" title="3、分组查询"></a>3、分组查询</h2><pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true"># 查询停车场每种颜色车辆的总价</span>
+<span class="token comment" spellcheck="true"># 分析：1.先根据颜色分组，形成各种颜色的小组  2.在每个小组内使用聚合函数统计各自的车的总金额</span>
+<span class="token comment" spellcheck="true"># 第一步：统计每种颜色</span>
+<span class="token keyword">select</span> color <span class="token keyword">from</span> car <span class="token keyword">group</span> <span class="token keyword">by</span> color<span class="token punctuation">;</span>
+<span class="token keyword">select</span> <span class="token keyword">distinct</span> color <span class="token keyword">from</span> car
+<span class="token comment" spellcheck="true"># 第二步：统计每种颜色小组下的总金额</span>
+<span class="token keyword">select</span> color<span class="token punctuation">,</span><span class="token function">sum</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span> <span class="token keyword">from</span> car <span class="token keyword">group</span> <span class="token keyword">by</span> color<span class="token punctuation">;</span>
 
-# 2.统计每种颜色的车辆中总金额大于30的颜色对应的总金额信息；
-# 语法错误：You have an error in your SQL syntax;
-# 结论：where关键字后边不能直接使用聚合函数
-select color,sum(price) from car group by color where sum(price)&gt;30;
-# Invalid use of group function
-select color,sum(price) from car where sum(price)&gt;30 group by color ;
-# 如何解决？使用having关键字
-select color,sum(price) from car group by color having sum(price)&gt;30;
+<span class="token comment" spellcheck="true"># 2.统计每种颜色的车辆中总金额大于30的颜色对应的总金额信息；</span>
+<span class="token comment" spellcheck="true"># 语法错误：You have an error in your SQL syntax;</span>
+<span class="token comment" spellcheck="true"># 结论：where关键字后边不能直接使用聚合函数</span>
+<span class="token keyword">select</span> color<span class="token punctuation">,</span><span class="token function">sum</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span> <span class="token keyword">from</span> car <span class="token keyword">group</span> <span class="token keyword">by</span> color <span class="token keyword">where</span> <span class="token function">sum</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span><span class="token operator">></span><span class="token number">30</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true"># Invalid use of group function</span>
+<span class="token keyword">select</span> color<span class="token punctuation">,</span><span class="token function">sum</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span> <span class="token keyword">from</span> car <span class="token keyword">where</span> <span class="token function">sum</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span><span class="token operator">></span><span class="token number">30</span> <span class="token keyword">group</span> <span class="token keyword">by</span> color <span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true"># 如何解决？使用having关键字</span>
+<span class="token keyword">select</span> color<span class="token punctuation">,</span><span class="token function">sum</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span> <span class="token keyword">from</span> car <span class="token keyword">group</span> <span class="token keyword">by</span> color <span class="token keyword">having</span> <span class="token function">sum</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span><span class="token operator">></span><span class="token number">30</span><span class="token punctuation">;</span>
 
-# 可以查询到
-select id,color from car where id &gt; 4;
-select id,color from car having id &gt; 4;
-# 可以查询到
-select color from car where id &gt; 4;
-# 出错：Unknown column &#39;id&#39; in &#39;having clause&#39; 推断：having查询基于select后边指点的字段，如果
-# 字段没有指定，查询报错
-select color from car having id &gt; 4;
+<span class="token comment" spellcheck="true"># 可以查询到</span>
+<span class="token keyword">select</span> id<span class="token punctuation">,</span>color <span class="token keyword">from</span> car <span class="token keyword">where</span> id <span class="token operator">></span> <span class="token number">4</span><span class="token punctuation">;</span>
+<span class="token keyword">select</span> id<span class="token punctuation">,</span>color <span class="token keyword">from</span> car <span class="token keyword">having</span> id <span class="token operator">></span> <span class="token number">4</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true"># 可以查询到</span>
+<span class="token keyword">select</span> color <span class="token keyword">from</span> car <span class="token keyword">where</span> id <span class="token operator">></span> <span class="token number">4</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true"># 出错：Unknown column 'id' in 'having clause' 推断：having查询基于select后边指点的字段，如果</span>
+<span class="token comment" spellcheck="true"># 字段没有指定，查询报错</span>
+<span class="token keyword">select</span> color <span class="token keyword">from</span> car <span class="token keyword">having</span> id <span class="token operator">></span> <span class="token number">4</span><span class="token punctuation">;</span>
 </code></pre>
-<pre><code class="sql"># having与where区别？
-# 1.where后边不能使用聚合函数，但是having可以
-# 2.having一般在group by后边使用，但是where一般用于group by之前，做条件的第一道过滤；
-# 3.where能用的地方，having都可以用，虽然如何，非必须，使用where关键字；
-# 4.因为where查询可以走索引，提高查询效率，但是having不走索引；
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true"># having与where区别？</span>
+<span class="token comment" spellcheck="true"># 1.where后边不能使用聚合函数，但是having可以</span>
+<span class="token comment" spellcheck="true"># 2.having一般在group by后边使用，但是where一般用于group by之前，做条件的第一道过滤；</span>
+<span class="token comment" spellcheck="true"># 3.where能用的地方，having都可以用，虽然如何，非必须，使用where关键字；</span>
+<span class="token comment" spellcheck="true"># 4.因为where查询可以走索引，提高查询效率，但是having不走索引；</span>
 </code></pre>
 <h2 id="4、约束"><a href="#4、约束" class="headerlink" title="4、约束"></a>4、约束</h2><table>
 <thead>
@@ -648,7 +648,7 @@ select color from car having id &gt; 4;
 </code></pre>
 </li>
 <li><p><strong>在已有表中添加主键(了解)</strong></p>
-<pre><code class="sql">ALTER TABLE 表名 ADD PRIMARY KEY(字段名);
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> 表名 <span class="token keyword">ADD</span> <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span><span class="token punctuation">(</span>字段名<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 </li>
 </ol>
@@ -656,29 +656,29 @@ select color from car having id &gt; 4;
 <ul>
 <li>创建表学生表st5, 包含字段(id, name, age)将id做为主键</li>
 </ul>
-<pre><code class="sql">CREATE TABLE st5 (
-    id INT PRIMARY KEY, -- id是主键
-    NAME VARCHAR(20),
-    age INT
-);
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> st5 <span class="token punctuation">(</span>
+    id <span class="token keyword">INT</span> <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">-- id是主键</span>
+    NAME <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    age <span class="token keyword">INT</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <ul>
 <li>插入重复的主键值</li>
 </ul>
-<pre><code class="sql">-- 主键是唯一的不能重复：Duplicate entry &#39;1&#39; for key &#39;PRIMARY&#39;
-INSERT INTO st5 (id, NAME,age) VALUES (1, &#39;文征明2&#39;,30);
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 主键是唯一的不能重复：Duplicate entry '1' for key 'PRIMARY'</span>
+<span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> st5 <span class="token punctuation">(</span>id<span class="token punctuation">,</span> NAME<span class="token punctuation">,</span>age<span class="token punctuation">)</span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'文征明2'</span><span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <ul>
 <li>插入NULL的主键值</li>
 </ul>
-<pre><code class="sql">-- 主键是不能为空的：Column &#39;id&#39; cannot be null
-INSERT INTO st5 (id, NAME,age) VALUES (NULL, &#39;文征明3&#39;,18);
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 主键是不能为空的：Column 'id' cannot be null</span>
+<span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> st5 <span class="token punctuation">(</span>id<span class="token punctuation">,</span> NAME<span class="token punctuation">,</span>age<span class="token punctuation">)</span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token boolean">NULL</span><span class="token punctuation">,</span> <span class="token string">'文征明3'</span><span class="token punctuation">,</span><span class="token number">18</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<pre><code class="sql"># 扩展：联合主键（联合索引）
-# 主键只能有一个，但是可以由多个字段组成一个主键-联合主键（id,name）
-# 联合主键特点与普通主键一致，也就是有多个字段组成一个主键，所以，多个字段组成的值要唯一
-# 比如：primary key(id,name)===&gt;1-马云，如果你再次保存1-马云，报错：Duplicate,同时各个字段
-# 不能为null==》null-田七，id不能为null
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true"># 扩展：联合主键（联合索引）</span>
+<span class="token comment" spellcheck="true"># 主键只能有一个，但是可以由多个字段组成一个主键-联合主键（id,name）</span>
+<span class="token comment" spellcheck="true"># 联合主键特点与普通主键一致，也就是有多个字段组成一个主键，所以，多个字段组成的值要唯一</span>
+<span class="token comment" spellcheck="true"># 比如：primary key(id,name)===>1-马云，如果你再次保存1-马云，报错：Duplicate,同时各个字段</span>
+<span class="token comment" spellcheck="true"># 不能为null==》null-田七，id不能为null</span>
 </code></pre>
 <h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><ol>
 <li><p>说出主键约束的作用？唯一,区分一条记录</p>
@@ -689,36 +689,36 @@ INSERT INTO st5 (id, NAME,age) VALUES (NULL, &#39;文征明3&#39;,18);
 <p>ALTER TABLE 表名 ADD PRIMARY KEY(字段名);</p>
 </li>
 <li><p>主键如果让我们自己添加很有可能重复,我们通常希望在每次插入新记录时,数据库自动生成主键字段的值</p>
-<pre><code class="sql">字段名 字段类型 PRIMARY KEY AUTO_INCREMENT
+<pre class=" language-sql"><code class="language-sql">字段名 字段类型 <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token keyword">AUTO_INCREMENT</span>
 </code></pre>
 <p><code>AUTO_INCREMENT</code> 表示自动增长(<strong>字段类型必须是整数类型</strong>)</p>
 </li>
 </ol>
-<h3 id="2、唯一约束"><a href="#2、唯一约束" class="headerlink" title="2、唯一约束"></a>2、唯一约束</h3><h4 id="唯一约束的基本格式"><a href="#唯一约束的基本格式" class="headerlink" title="唯一约束的基本格式"></a>唯一约束的基本格式</h4><pre><code class="sql">字段名 字段类型 UNIQUE
+<h3 id="2、唯一约束"><a href="#2、唯一约束" class="headerlink" title="2、唯一约束"></a>2、唯一约束</h3><h4 id="唯一约束的基本格式"><a href="#唯一约束的基本格式" class="headerlink" title="唯一约束的基本格式"></a>唯一约束的基本格式</h4><pre class=" language-sql"><code class="language-sql">字段名 字段类型 <span class="token keyword">UNIQUE</span>
 </code></pre>
 <p>具体步骤：</p>
 <ul>
 <li>创建学生表st7, 包含字段(id, name),name这一列设置唯一约束,不能出现同名的学生</li>
 </ul>
-<pre><code class="sql">CREATE TABLE st7 (
-    id INT,
-    NAME VARCHAR(20) UNIQUE
-);
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> st7 <span class="token punctuation">(</span>
+    id <span class="token keyword">INT</span><span class="token punctuation">,</span>
+    NAME <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span> <span class="token keyword">UNIQUE</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <ul>
 <li>添加一些学生</li>
 </ul>
-<pre><code class="sql">INSERT INTO st7 VALUES (1, &#39;貂蝉&#39;);
-INSERT INTO st7 VALUES (2, &#39;西施&#39;);
-INSERT INTO st7 VALUES (3, &#39;王昭君&#39;);
-INSERT INTO st7 VALUES (4, &#39;杨玉环&#39;);
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> st7 <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'貂蝉'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> st7 <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'西施'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> st7 <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">'王昭君'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> st7 <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token string">'杨玉环'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
--- 插入相同的名字出现name重复: Duplicate entry &#39;貂蝉&#39; for key &#39;name&#39;
-INSERT INTO st7 VALUES (5, &#39;貂蝉&#39;);
+<span class="token comment" spellcheck="true">-- 插入相同的名字出现name重复: Duplicate entry '貂蝉' for key 'name'</span>
+<span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> st7 <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token string">'貂蝉'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
--- 出现多个null的时候会怎样？因为null是没有值，所以不存在重复的问题
-INSERT INTO st3 VALUES (5, NULL);
-INSERT INTO st3 VALUES (6, NULL);
+<span class="token comment" spellcheck="true">-- 出现多个null的时候会怎样？因为null是没有值，所以不存在重复的问题</span>
+<span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> st3 <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token boolean">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> st3 <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">,</span> <span class="token boolean">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h4 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h4><ol>
 <li>说出唯一约束的作用？让这个字段的值不能重复</li>
@@ -726,118 +726,118 @@ INSERT INTO st3 VALUES (6, NULL);
 <li>添加唯一约束时会自动创建出一个唯一索引</li>
 </ol>
 <h3 id="3、非空约束"><a href="#3、非空约束" class="headerlink" title="3、非空约束"></a>3、非空约束</h3><h4 id="非空约束的作用"><a href="#非空约束的作用" class="headerlink" title="非空约束的作用"></a>非空约束的作用</h4><p>这个字段必须设置值,不能是NULL</p>
-<h4 id="非空约束的基本语法格式"><a href="#非空约束的基本语法格式" class="headerlink" title="非空约束的基本语法格式"></a>非空约束的基本语法格式</h4><pre><code class="sql">字段名 字段类型 NOT NULL
+<h4 id="非空约束的基本语法格式"><a href="#非空约束的基本语法格式" class="headerlink" title="非空约束的基本语法格式"></a>非空约束的基本语法格式</h4><pre class=" language-sql"><code class="language-sql">字段名 字段类型 <span class="token operator">NOT</span> <span class="token boolean">NULL</span>
 </code></pre>
 <p>具体操作：</p>
 <ul>
 <li>创建表学生表st8, 包含字段(id,name,gender)其中name不能为NULL</li>
 </ul>
-<pre><code class="sql">CREATE TABLE st8 (
-    id INT,
-    NAME VARCHAR(20) NOT NULL,
-    gender CHAR(2)
-);
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> st8 <span class="token punctuation">(</span>
+    id <span class="token keyword">INT</span><span class="token punctuation">,</span>
+    NAME <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+    gender CHAR<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <ul>
 <li>添加一些完整的记录</li>
 </ul>
-<pre><code class="sql">INSERT INTO st8 VALUES (1, &#39;郭富城&#39;, &#39;男&#39;);
-INSERT INTO st8 VALUES (2, &#39;黎明&#39;, &#39;男&#39;);
-INSERT INTO st8 VALUES (3, &#39;张学友&#39;, &#39;男&#39;);
-INSERT INTO st8 VALUES (4, &#39;刘德华&#39;, &#39;男&#39;);
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> st8 <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'郭富城'</span><span class="token punctuation">,</span> <span class="token string">'男'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> st8 <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'黎明'</span><span class="token punctuation">,</span> <span class="token string">'男'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> st8 <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">'张学友'</span><span class="token punctuation">,</span> <span class="token string">'男'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> st8 <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token string">'刘德华'</span><span class="token punctuation">,</span> <span class="token string">'男'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
--- 姓名不赋值出现姓名不能为null: Column &#39;name&#39; cannot be null
-INSERT INTO st8 VALUES (5, NULL, &#39;男&#39;);
+<span class="token comment" spellcheck="true">-- 姓名不赋值出现姓名不能为null: Column 'name' cannot be null</span>
+<span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> st8 <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span> <span class="token string">'男'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h4 id="小结-2"><a href="#小结-2" class="headerlink" title="小结"></a>小结</h4><p>非空约束的格式:</p>
 <p>字段名 数据类型 NOT NULL</p>
 <h3 id="唯一约束与主键约束的区别"><a href="#唯一约束与主键约束的区别" class="headerlink" title="唯一约束与主键约束的区别"></a><font color='red'>唯一约束与主键约束的区别</font></h3><p>主键约束与唯一+非空约束区别？</p>
-<pre><code class="sql">1.主键约束在表中只能存在一个，但是唯一+非空可以多个；
-2.主键约束可以配合主键自增使用，但是唯一+非空不行；
-3.主键约束底层维护了主键索引，但是唯一约束底层维护唯一索引；
+<pre class=" language-sql"><code class="language-sql"><span class="token number">1</span><span class="token punctuation">.</span>主键约束在表中只能存在一个，但是唯一<span class="token operator">+</span>非空可以多个；
+<span class="token number">2</span><span class="token punctuation">.</span>主键约束可以配合主键自增使用，但是唯一<span class="token operator">+</span>非空不行；
+<span class="token number">3</span><span class="token punctuation">.</span>主键约束底层维护了主键索引，但是唯一约束底层维护唯一索引；
 </code></pre>
 <h3 id="4、默认值约束"><a href="#4、默认值约束" class="headerlink" title="4、默认值约束"></a>4、默认值约束</h3><h4 id="默认值的作用"><a href="#默认值的作用" class="headerlink" title="默认值的作用"></a>默认值的作用</h4><p>往表中添加数据时,如果不指定这个字段的数据,就使用默认值</p>
-<h4 id="默认值格式"><a href="#默认值格式" class="headerlink" title="默认值格式"></a>默认值格式</h4><pre><code class="sql">字段名 字段类型 DEFAULT 默认值
+<h4 id="默认值格式"><a href="#默认值格式" class="headerlink" title="默认值格式"></a>默认值格式</h4><pre class=" language-sql"><code class="language-sql">字段名 字段类型 <span class="token keyword">DEFAULT</span> 默认值
 </code></pre>
 <p>具体步骤：</p>
 <ul>
 <li>创建一个学生表 st9，包含字段(id,name,address)， 地址默认值是广州</li>
 </ul>
-<pre><code class="sql"># 设置默认值约束，address默认值上海
-create table st5(
-    id int,
-    name varchar(10) not null,
-    address varchar(50) default &#39;上海&#39;
-);
-# 测试默认值约束
-# 如果给值，则使用给定的值
-insert into st5 values(1,&#39;zhangsan&#39;,&#39;北京&#39;);
-# 直接赋值为null时，不使用默认值
-insert into st5 values(1,&#39;zhangsan&#39;,null);
-# 如果不定义值，那么就使用默认值
-insert into st5(id,name) values(2,&#39;lisi&#39;);
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true"># 设置默认值约束，address默认值上海</span>
+<span class="token keyword">create</span> <span class="token keyword">table</span> st5<span class="token punctuation">(</span>
+    id <span class="token keyword">int</span><span class="token punctuation">,</span>
+    name <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
+    address <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token string">'上海'</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true"># 测试默认值约束</span>
+<span class="token comment" spellcheck="true"># 如果给值，则使用给定的值</span>
+<span class="token keyword">insert</span> <span class="token keyword">into</span> st5 <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string">'zhangsan'</span><span class="token punctuation">,</span><span class="token string">'北京'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true"># 直接赋值为null时，不使用默认值</span>
+<span class="token keyword">insert</span> <span class="token keyword">into</span> st5 <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string">'zhangsan'</span><span class="token punctuation">,</span><span class="token boolean">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true"># 如果不定义值，那么就使用默认值</span>
+<span class="token keyword">insert</span> <span class="token keyword">into</span> st5<span class="token punctuation">(</span>id<span class="token punctuation">,</span>name<span class="token punctuation">)</span> <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token string">'lisi'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h3 id="5、外键约束"><a href="#5、外键约束" class="headerlink" title="5、外键约束"></a>5、外键约束</h3><blockquote>
 <p>创建外键约束，会自动创建一个普通索引，常用于连接查询的条件</p>
 </blockquote>
 <h4 id="1、添加约束："><a href="#1、添加约束：" class="headerlink" title="1、添加约束："></a>1、添加约束：</h4><p>第一种方式：给已经存在的表添加外键约束：</p>
-<pre><code class="sql">-- 来自于程序员表
-alter table coder_project add constraint c_id_fk foreign key(coder_id) references coder(id);
--- 来自于项目表
-alter table coder_project add constraint p_id_fk foreign key(project_id) references project(id);
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 来自于程序员表</span>
+<span class="token keyword">alter</span> <span class="token keyword">table</span> coder_project <span class="token keyword">add</span> <span class="token keyword">constraint</span> c_id_fk <span class="token keyword">foreign</span> <span class="token keyword">key</span><span class="token punctuation">(</span>coder_id<span class="token punctuation">)</span> <span class="token keyword">references</span> coder<span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 来自于项目表</span>
+<span class="token keyword">alter</span> <span class="token keyword">table</span> coder_project <span class="token keyword">add</span> <span class="token keyword">constraint</span> p_id_fk <span class="token keyword">foreign</span> <span class="token keyword">key</span><span class="token punctuation">(</span>project_id<span class="token punctuation">)</span> <span class="token keyword">references</span> project<span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>第二种方式：创建表时就添加外键约束：</p>
-<pre><code class="sql">create table coder_project(
-    coder_id int,
-    project_id int,
-    constraint c_id_fk foreign key(coder_id) references coder(id),
-    constraint p_id_fk foreign key(project_id) references project(id)
-);
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">table</span> coder_project<span class="token punctuation">(</span>
+    coder_id <span class="token keyword">int</span><span class="token punctuation">,</span>
+    project_id <span class="token keyword">int</span><span class="token punctuation">,</span>
+    <span class="token keyword">constraint</span> c_id_fk <span class="token keyword">foreign</span> <span class="token keyword">key</span><span class="token punctuation">(</span>coder_id<span class="token punctuation">)</span> <span class="token keyword">references</span> coder<span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token keyword">constraint</span> p_id_fk <span class="token keyword">foreign</span> <span class="token keyword">key</span><span class="token punctuation">(</span>project_id<span class="token punctuation">)</span> <span class="token keyword">references</span> project<span class="token punctuation">(</span>id<span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<h4 id="2、外键级联"><a href="#2、外键级联" class="headerlink" title="2、外键级联"></a>2、外键级联</h4><pre><code class="sql">### 外键的级联(掌握)
+<h4 id="2、外键级联"><a href="#2、外键级联" class="headerlink" title="2、外键级联"></a>2、外键级联</h4><pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">### 外键的级联(掌握)</span>
 
 在修改和删除主表的主键时，同时更新或删除从表的外键值，称为级联操作
-`ON UPDATE CASCADE` -- 级联更新，主键发生更新时，外键也会更新
-`ON DELETE CASCADE` -- 级联删除，主键发生删除时，外键也会删除
+<span class="token punctuation">`</span><span class="token keyword">ON</span> <span class="token keyword">UPDATE</span> <span class="token keyword">CASCADE</span><span class="token punctuation">`</span> <span class="token comment" spellcheck="true">-- 级联更新，主键发生更新时，外键也会更新</span>
+<span class="token punctuation">`</span><span class="token keyword">ON</span> <span class="token keyword">DELETE</span> <span class="token keyword">CASCADE</span><span class="token punctuation">`</span> <span class="token comment" spellcheck="true">-- 级联删除，主键发生删除时，外键也会删除</span>
 </code></pre>
-<pre><code class="sql">-- 创建程序员表
-create table coder(
-    id int primary key auto_increment,
-    name varchar(50),
-    salary double
-);
--- 创建项目表
-create table project(
-    id int primary key auto_increment,
-    name varchar(50)
-);
-create table coder_project(
-    coder_id int,
-    project_id int,
-    -- 添加外键约束,并且添加级联更新和级联删除
-    constraint c_id_fk foreign key(coder_id) references coder(id) ON UPDATE CASCADE ON DELETE CASCADE,
-    constraint p_id_fk foreign key(project_id) references project(id) ON UPDATE CASCADE ON DELETE CASCADE
-);
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 创建程序员表</span>
+<span class="token keyword">create</span> <span class="token keyword">table</span> coder<span class="token punctuation">(</span>
+    id <span class="token keyword">int</span> <span class="token keyword">primary</span> <span class="token keyword">key</span> <span class="token keyword">auto_increment</span><span class="token punctuation">,</span>
+    name <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    salary <span class="token keyword">double</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 创建项目表</span>
+<span class="token keyword">create</span> <span class="token keyword">table</span> project<span class="token punctuation">(</span>
+    id <span class="token keyword">int</span> <span class="token keyword">primary</span> <span class="token keyword">key</span> <span class="token keyword">auto_increment</span><span class="token punctuation">,</span>
+    name <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">create</span> <span class="token keyword">table</span> coder_project<span class="token punctuation">(</span>
+    coder_id <span class="token keyword">int</span><span class="token punctuation">,</span>
+    project_id <span class="token keyword">int</span><span class="token punctuation">,</span>
+    <span class="token comment" spellcheck="true">-- 添加外键约束,并且添加级联更新和级联删除</span>
+    <span class="token keyword">constraint</span> c_id_fk <span class="token keyword">foreign</span> <span class="token keyword">key</span><span class="token punctuation">(</span>coder_id<span class="token punctuation">)</span> <span class="token keyword">references</span> coder<span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token keyword">ON</span> <span class="token keyword">UPDATE</span> <span class="token keyword">CASCADE</span> <span class="token keyword">ON</span> <span class="token keyword">DELETE</span> <span class="token keyword">CASCADE</span><span class="token punctuation">,</span>
+    <span class="token keyword">constraint</span> p_id_fk <span class="token keyword">foreign</span> <span class="token keyword">key</span><span class="token punctuation">(</span>project_id<span class="token punctuation">)</span> <span class="token keyword">references</span> project<span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token keyword">ON</span> <span class="token keyword">UPDATE</span> <span class="token keyword">CASCADE</span> <span class="token keyword">ON</span> <span class="token keyword">DELETE</span> <span class="token keyword">CASCADE</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h2 id="5、多表关系和设计原则"><a href="#5、多表关系和设计原则" class="headerlink" title="5、多表关系和设计原则"></a>5、多表关系和设计原则</h2><h3 id="1、一对一"><a href="#1、一对一" class="headerlink" title="1、一对一"></a>1、一对一</h3><blockquote>
 <p>给随便一个表添加字段，添加外键约束,外键添加唯一约束</p>
 </blockquote>
-<pre><code class="sql"># 一对一：玩家与微信绑定
-create table wechat(
-    id int primary key,
-    name varchar(10)
-);
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true"># 一对一：玩家与微信绑定</span>
+<span class="token keyword">create</span> <span class="token keyword">table</span> wechat<span class="token punctuation">(</span>
+    id <span class="token keyword">int</span> <span class="token keyword">primary</span> <span class="token keyword">key</span><span class="token punctuation">,</span>
+    name <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-create table player(
-    id int primary key,
-    name varchar(10),
-    wechat_id int
-);
-# 添加外键约束
-alter table player add constraint fk_wechat foreign key(wechat_id) 
-references wechat(id);
-# 给player中wechat_id添加唯一约束，实现一对一
-alter table player add unique(wechat_id);
+<span class="token keyword">create</span> <span class="token keyword">table</span> player<span class="token punctuation">(</span>
+    id <span class="token keyword">int</span> <span class="token keyword">primary</span> <span class="token keyword">key</span><span class="token punctuation">,</span>
+    name <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    wechat_id <span class="token keyword">int</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true"># 添加外键约束</span>
+<span class="token keyword">alter</span> <span class="token keyword">table</span> player <span class="token keyword">add</span> <span class="token keyword">constraint</span> fk_wechat <span class="token keyword">foreign</span> <span class="token keyword">key</span><span class="token punctuation">(</span>wechat_id<span class="token punctuation">)</span> 
+<span class="token keyword">references</span> wechat<span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true"># 给player中wechat_id添加唯一约束，实现一对一</span>
+<span class="token keyword">alter</span> <span class="token keyword">table</span> player <span class="token keyword">add</span> <span class="token keyword">unique</span><span class="token punctuation">(</span>wechat_id<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h3 id="2、一对多"><a href="#2、一对多" class="headerlink" title="2、一对多"></a>2、一对多</h3><blockquote>
 <p>给多的一方添加一个字段，添加外键，指向少的一方的主键。</p>
@@ -847,111 +847,111 @@ alter table player add unique(wechat_id);
 <h3 id="3、多对多"><a href="#3、多对多" class="headerlink" title="3、多对多"></a>3、多对多</h3><blockquote>
 <p>创建一个中间表，在中间表中创建两个字段，分别建立外键约束指向另外两个表的主键。</p>
 </blockquote>
-<pre><code class="sql">// 中间表 程序员与项目之间的关系
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">// 中间表 程序员与项目之间的关系</span>
 
--- 创建程序员表
-create table coder(
-    id int primary key auto_increment,
-    name varchar(50),
-    salary double
-);
--- 创建项目表
-create table project(
-    id int primary key auto_increment,
-    name varchar(50)
-);
-create table coder_project(
-    coder_id int,
-    project_id int,
-    -- 添加外键约束,并且添加级联更新和级联删除
-    constraint c_id_fk foreign key(coder_id) references coder(id) ON UPDATE CASCADE ON DELETE CASCADE,
-    constraint p_id_fk foreign key(project_id) references project(id) ON UPDATE CASCADE ON DELETE CASCADE
-);
+<span class="token comment" spellcheck="true">-- 创建程序员表</span>
+<span class="token keyword">create</span> <span class="token keyword">table</span> coder<span class="token punctuation">(</span>
+    id <span class="token keyword">int</span> <span class="token keyword">primary</span> <span class="token keyword">key</span> <span class="token keyword">auto_increment</span><span class="token punctuation">,</span>
+    name <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    salary <span class="token keyword">double</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 创建项目表</span>
+<span class="token keyword">create</span> <span class="token keyword">table</span> project<span class="token punctuation">(</span>
+    id <span class="token keyword">int</span> <span class="token keyword">primary</span> <span class="token keyword">key</span> <span class="token keyword">auto_increment</span><span class="token punctuation">,</span>
+    name <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">create</span> <span class="token keyword">table</span> coder_project<span class="token punctuation">(</span>
+    coder_id <span class="token keyword">int</span><span class="token punctuation">,</span>
+    project_id <span class="token keyword">int</span><span class="token punctuation">,</span>
+    <span class="token comment" spellcheck="true">-- 添加外键约束,并且添加级联更新和级联删除</span>
+    <span class="token keyword">constraint</span> c_id_fk <span class="token keyword">foreign</span> <span class="token keyword">key</span><span class="token punctuation">(</span>coder_id<span class="token punctuation">)</span> <span class="token keyword">references</span> coder<span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token keyword">ON</span> <span class="token keyword">UPDATE</span> <span class="token keyword">CASCADE</span> <span class="token keyword">ON</span> <span class="token keyword">DELETE</span> <span class="token keyword">CASCADE</span><span class="token punctuation">,</span>
+    <span class="token keyword">constraint</span> p_id_fk <span class="token keyword">foreign</span> <span class="token keyword">key</span><span class="token punctuation">(</span>project_id<span class="token punctuation">)</span> <span class="token keyword">references</span> project<span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token keyword">ON</span> <span class="token keyword">UPDATE</span> <span class="token keyword">CASCADE</span> <span class="token keyword">ON</span> <span class="token keyword">DELETE</span> <span class="token keyword">CASCADE</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<h3 id="4、设计原则"><a href="#4、设计原则" class="headerlink" title="4、设计原则"></a>4、设计原则</h3><pre><code class="markdown"># 设计原则
+<h3 id="4、设计原则"><a href="#4、设计原则" class="headerlink" title="4、设计原则"></a>4、设计原则</h3><pre class=" language-markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span> 设计原则</span>
 多对多：通过设计一张中间表将主表之间多对多的关系，转换成与中间中之间一对多的关系（简化关系）
 一对多：由多的一方维护2表的关系；
 一对一：任意一方都可以维护，实际情况，根据业务做选择；
 </code></pre>
-<h2 id="6、三大范式"><a href="#6、三大范式" class="headerlink" title="6、三大范式"></a>6、三大范式</h2><pre><code class="markdown">第一范式：表中每一列不能分割；
+<h2 id="6、三大范式"><a href="#6、三大范式" class="headerlink" title="6、三大范式"></a>6、三大范式</h2><pre class=" language-markdown"><code class="language-markdown">第一范式：表中每一列不能分割；
 第二范式：1.满足第一方式 2.消除部分依赖（在联合主键中才能出现）   // 一般都可以分裂成两个表
 第三范式：1.满足第二范式 2.先出传递依赖（分类描述---》分类---》商品）
 </code></pre>
 <p>反3范式：</p>
-<pre><code class="sql">满足3范式的设计，不一定是最最好的设计，因为实际情况要根据具体的业务场景分析；
+<pre class=" language-sql"><code class="language-sql">满足<span class="token number">3</span>范式的设计，不一定是最最好的设计，因为实际情况要根据具体的业务场景分析；
 加入冗余字段，来提高数据库的运行效率，提高查询性能； 用户与订单，在订单中加入用户信息，避免大表联查，提高查询效率；
 </code></pre>
-<h2 id="7、多表查询"><a href="#7、多表查询" class="headerlink" title="7、多表查询"></a>7、多表查询</h2><h3 id="1-内连接查询（隐式和显示）"><a href="#1-内连接查询（隐式和显示）" class="headerlink" title="1.内连接查询（隐式和显示）"></a>1.内连接查询（隐式和显示）</h3><pre><code class="sql"># 查询水果和价格的信息
-select * from fruit,price;
-# 笛卡尔积过滤：条件过滤
+<h2 id="7、多表查询"><a href="#7、多表查询" class="headerlink" title="7、多表查询"></a>7、多表查询</h2><h3 id="1-内连接查询（隐式和显示）"><a href="#1-内连接查询（隐式和显示）" class="headerlink" title="1.内连接查询（隐式和显示）"></a>1.内连接查询（隐式和显示）</h3><pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true"># 查询水果和价格的信息</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> fruit<span class="token punctuation">,</span>price<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true"># 笛卡尔积过滤：条件过滤</span>
 
-# 隐式内连接
-select * from fruit,price where fruit.price_id=price.id;
-# 显示内连接
-select * from fruit inner join price on fruit.price_id=price.id;
+<span class="token comment" spellcheck="true"># 隐式内连接</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> fruit<span class="token punctuation">,</span>price <span class="token keyword">where</span> fruit<span class="token punctuation">.</span>price_id<span class="token operator">=</span>price<span class="token punctuation">.</span>id<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true"># 显示内连接</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> fruit <span class="token keyword">inner</span> <span class="token keyword">join</span> price <span class="token keyword">on</span> fruit<span class="token punctuation">.</span>price_id<span class="token operator">=</span>price<span class="token punctuation">.</span>id<span class="token punctuation">;</span>
 </code></pre>
 <h3 id="2-外连接查询"><a href="#2-外连接查询" class="headerlink" title="2.外连接查询"></a>2.外连接查询</h3><p>左外特点：左表都显示，右表只显示满足条件的数据；</p>
-<pre><code class="sql"># 1.无论水果信息是否有关联的price，水果信息都要显示；
-select * from fruit left outer join price on fruit.price_id=price.id;
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true"># 1.无论水果信息是否有关联的price，水果信息都要显示；</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> fruit <span class="token keyword">left</span> <span class="token keyword">outer</span> <span class="token keyword">join</span> price <span class="token keyword">on</span> fruit<span class="token punctuation">.</span>price_id<span class="token operator">=</span>price<span class="token punctuation">.</span>id<span class="token punctuation">;</span>
 </code></pre>
 <p>右外特点：右表都显示，左表只显示满足条件的数据；</p>
-<pre><code class="sql"># 1.无论水果信息是否有关联的price，价格信息都要显示；
-select * from price left outer join fruit on fruit.price_id=price.id;
-select * from fruit right outer join price on fruit.price_id=price.id;
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true"># 1.无论水果信息是否有关联的price，价格信息都要显示；</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> price <span class="token keyword">left</span> <span class="token keyword">outer</span> <span class="token keyword">join</span> fruit <span class="token keyword">on</span> fruit<span class="token punctuation">.</span>price_id<span class="token operator">=</span>price<span class="token punctuation">.</span>id<span class="token punctuation">;</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> fruit <span class="token keyword">right</span> <span class="token keyword">outer</span> <span class="token keyword">join</span> price <span class="token keyword">on</span> fruit<span class="token punctuation">.</span>price_id<span class="token operator">=</span>price<span class="token punctuation">.</span>id<span class="token punctuation">;</span>
 </code></pre>
 <h3 id="3-子查询"><a href="#3-子查询" class="headerlink" title="3.子查询"></a>3.子查询</h3><h4 id="1-单行单列查询（比较运算符）"><a href="#1-单行单列查询（比较运算符）" class="headerlink" title="1.单行单列查询（比较运算符）"></a>1.单行单列查询（比较运算符）</h4><blockquote>
 <p>比较运算符</p>
 </blockquote>
-<pre><code class="sql">select * from emp where salary=(select max(salary) from emp);
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> emp <span class="token keyword">where</span> salary<span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token function">max</span><span class="token punctuation">(</span>salary<span class="token punctuation">)</span> <span class="token keyword">from</span> emp<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h4 id="2-多行单列查询（in-，all，some，any关键字）"><a href="#2-多行单列查询（in-，all，some，any关键字）" class="headerlink" title="2. 多行单列查询（in ，all，some，any关键字）"></a>2. 多行单列查询（in ，all，some，any关键字）</h4><blockquote>
 <p>in ，all，some，any关键字</p>
 </blockquote>
-<pre><code class="sql">select name from dept where id in(select dept_id from emp where salary &gt; 5000);
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> name <span class="token keyword">from</span> dept <span class="token keyword">where</span> id <span class="token operator">in</span><span class="token punctuation">(</span><span class="token keyword">select</span> dept_id <span class="token keyword">from</span> emp <span class="token keyword">where</span> salary <span class="token operator">></span> <span class="token number">5000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h4 id="3-多行多列查询（多行多列起别名将结果作为一张表，与其他表联合查询）"><a href="#3-多行多列查询（多行多列起别名将结果作为一张表，与其他表联合查询）" class="headerlink" title="3.多行多列查询（多行多列起别名将结果作为一张表，与其他表联合查询）"></a>3.多行多列查询（多行多列起别名将结果作为一张表，与其他表联合查询）</h4><blockquote>
 <p>多行多列起别名将结果作为一张表，与其他表联合查询</p>
 </blockquote>
-<pre><code class="sql">select tmp.*,dept.name 
-from (select * from emp where join_date &gt; &#39;2011-01-01&#39;) as tmp,dept 
-where tmp.dept_id=dept.id;
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> tmp<span class="token punctuation">.</span><span class="token operator">*</span><span class="token punctuation">,</span>dept<span class="token punctuation">.</span>name 
+<span class="token keyword">from</span> <span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> emp <span class="token keyword">where</span> join_date <span class="token operator">></span> <span class="token string">'2011-01-01'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> tmp<span class="token punctuation">,</span>dept 
+<span class="token keyword">where</span> tmp<span class="token punctuation">.</span>dept_id<span class="token operator">=</span>dept<span class="token punctuation">.</span>id<span class="token punctuation">;</span>
 </code></pre>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="1-DQL"><a href="#1-DQL" class="headerlink" title="1.DQL"></a>1.DQL</h3><pre><code class="sql">1.聚合函数==》5大聚合函数
-    select 聚合函数(字段) from 表；
-    最大值：max()
-    最小值：min()
-    平均值：avg()
-    记录数：count()
-    亲和：sum()
-注意事项：聚合函数对null不处理；      
-2.分组 ===》group by 字段 配合聚合函数一块使用
-    select 分组字段，聚合函数(字段) from 表 group by 分组字段 having 条件；
-  having与where区别？
-      1.having后边可以使用聚合函数，但是where不可以；
-      2.having查询不走索引，但是where可以走索引；
-      3.having用于分组之后的条件过滤，但是where一般应用于分组之间的条件过滤；
-      4.having条件中使用的字段必须在select语句中声明
-2.限制查询==》limit
-    select * from 表名 where 条件 limit 索引位，返回的记录数；
-    注意事项：1.索引位默认从0开始 ，如果从0开始那么省略不写索引位；
-    分页公式：索引位=（当前页-1）*每页大小；
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="1-DQL"><a href="#1-DQL" class="headerlink" title="1.DQL"></a>1.DQL</h3><pre class=" language-sql"><code class="language-sql"><span class="token number">1</span><span class="token punctuation">.</span>聚合函数<span class="token operator">=</span><span class="token operator">=</span>》<span class="token number">5</span>大聚合函数
+    <span class="token keyword">select</span> 聚合函数<span class="token punctuation">(</span>字段<span class="token punctuation">)</span> <span class="token keyword">from</span> 表；
+    最大值：<span class="token function">max</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    最小值：<span class="token function">min</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    平均值：<span class="token function">avg</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    记录数：<span class="token function">count</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    亲和：<span class="token function">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+注意事项：聚合函数对<span class="token boolean">null</span>不处理；      
+<span class="token number">2</span><span class="token punctuation">.</span>分组 <span class="token operator">=</span><span class="token operator">=</span><span class="token operator">=</span>》<span class="token keyword">group</span> <span class="token keyword">by</span> 字段 配合聚合函数一块使用
+    <span class="token keyword">select</span> 分组字段，聚合函数<span class="token punctuation">(</span>字段<span class="token punctuation">)</span> <span class="token keyword">from</span> 表 <span class="token keyword">group</span> <span class="token keyword">by</span> 分组字段 <span class="token keyword">having</span> 条件；
+  <span class="token keyword">having</span>与<span class="token keyword">where</span>区别？
+      <span class="token number">1</span><span class="token punctuation">.</span><span class="token keyword">having</span>后边可以使用聚合函数，但是<span class="token keyword">where</span>不可以；
+      <span class="token number">2</span><span class="token punctuation">.</span><span class="token keyword">having</span>查询不走索引，但是<span class="token keyword">where</span>可以走索引；
+      <span class="token number">3</span><span class="token punctuation">.</span><span class="token keyword">having</span>用于分组之后的条件过滤，但是<span class="token keyword">where</span>一般应用于分组之间的条件过滤；
+      <span class="token number">4</span><span class="token punctuation">.</span><span class="token keyword">having</span>条件中使用的字段必须在<span class="token keyword">select</span>语句中声明
+<span class="token number">2</span><span class="token punctuation">.</span>限制查询<span class="token operator">=</span><span class="token operator">=</span>》<span class="token keyword">limit</span>
+    <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> 表名 <span class="token keyword">where</span> 条件 <span class="token keyword">limit</span> 索引位，返回的记录数；
+    注意事项：<span class="token number">1</span><span class="token punctuation">.</span>索引位默认从<span class="token number">0</span>开始 ，如果从<span class="token number">0</span>开始那么省略不写索引位；
+    分页公式：索引位<span class="token operator">=</span>（当前页<span class="token operator">-</span><span class="token number">1</span>）<span class="token operator">*</span>每页大小；
 </code></pre>
-<h3 id="2-DCL"><a href="#2-DCL" class="headerlink" title="2.DCL"></a>2.DCL</h3><pre><code class="SQL">1.创建用户
-create user &#39;用户名称&#39;@&#39;登录主键名称&#39; identified by &#39;密码&#39;；
+<h3 id="2-DCL"><a href="#2-DCL" class="headerlink" title="2.DCL"></a>2.DCL</h3><pre class=" language-SQL"><code class="language-SQL">1.创建用户
+create user '用户名称'@'登录主键名称' identified by '密码'；
 2.授权
-    grant create,insert,... on *.*  to &#39;用户名称&#39;@&#39;登录主键名称&#39;;
+    grant create,insert,... on *.*  to '用户名称'@'登录主键名称';
 3.撤销
-    revoke create,insert,... on *.*   from &#39;用户名称&#39;@&#39;登录主键名称&#39;;
+    revoke create,insert,... on *.*   from '用户名称'@'登录主键名称';
 4.删除用户
-    drop user &#39;用户名称&#39;@&#39;登录主键名称&#39;;
+    drop user '用户名称'@'登录主键名称';
 </code></pre>
-<h3 id="3-多表关系与设计原则"><a href="#3-多表关系与设计原则" class="headerlink" title="3.多表关系与设计原则"></a>3.多表关系与设计原则</h3><pre><code class="sql">【1】关系
-1.多对多：程序员与项目、渣男与渣女、用户与角色，从任意一方看，都是一对多；
-2.一对多：班级与学生；
-3.一对第一：用户与身份证，玩家与微信号
-【2】设计原则
+<h3 id="3-多表关系与设计原则"><a href="#3-多表关系与设计原则" class="headerlink" title="3.多表关系与设计原则"></a>3.多表关系与设计原则</h3><pre class=" language-sql"><code class="language-sql">【<span class="token number">1</span>】关系
+<span class="token number">1</span><span class="token punctuation">.</span>多对多：程序员与项目、渣男与渣女、用户与角色，从任意一方看，都是一对多；
+<span class="token number">2</span><span class="token punctuation">.</span>一对多：班级与学生；
+<span class="token number">3</span><span class="token punctuation">.</span>一对第一：用户与身份证，玩家与微信号
+【<span class="token number">2</span>】设计原则
 多对多：通过设计一张中间表将主表之间多对多的关系，转换成与中间中之间一对多的关系（简化关系）
-一对多：由多的一方维护2表的关系；
+一对多：由多的一方维护<span class="token number">2</span>表的关系；
 一对一：任意一方都可以维护，实际情况，根据业务做选择；
 </code></pre>
 <h3 id="4-约束"><a href="#4-约束" class="headerlink" title="4.约束"></a>4.约束</h3><table>
@@ -993,36 +993,36 @@ create user &#39;用户名称&#39;@&#39;登录主键名称&#39; identified by &#
 <td></td>
 </tr>
 </tbody></table>
-<h3 id="5、3大范式"><a href="#5、3大范式" class="headerlink" title="5、3大范式"></a>5、3大范式</h3><pre><code class="sql">第一范式：表中每一列不能分割；
-第二范式：1.满足第一方式 2.消除部分依赖（在联合主键中才能出现）
-第三范式：1.满足第二范式 2.先出传递依赖（分类描述---》分类---》商品）
+<h3 id="5、3大范式"><a href="#5、3大范式" class="headerlink" title="5、3大范式"></a>5、3大范式</h3><pre class=" language-sql"><code class="language-sql">第一范式：表中每一列不能分割；
+第二范式：<span class="token number">1</span><span class="token punctuation">.</span>满足第一方式 <span class="token number">2</span><span class="token punctuation">.</span>消除部分依赖（在联合主键中才能出现）
+第三范式：<span class="token number">1</span><span class="token punctuation">.</span>满足第二范式 <span class="token number">2</span><span class="token punctuation">.</span>先出传递依赖（分类描述<span class="token comment" spellcheck="true">---》分类---》商品）</span>
 </code></pre>
 <p>反3范式：</p>
-<pre><code class="sql">满足3范式的设计，不一定是最最好的设计，因为实际情况要根据具体的业务场景分析；
+<pre class=" language-sql"><code class="language-sql">满足<span class="token number">3</span>范式的设计，不一定是最最好的设计，因为实际情况要根据具体的业务场景分析；
 加入冗余字段，来提高数据库的运行效率，提高查询性能； 用户与订单，在订单中加入用户信息，避免大表联查，提高查询效率；
 </code></pre>
-<h3 id="6-多表查询"><a href="#6-多表查询" class="headerlink" title="6.多表查询"></a>6.多表查询</h3><pre><code class="sql">1.查询方式：
+<h3 id="6-多表查询"><a href="#6-多表查询" class="headerlink" title="6.多表查询"></a>6.多表查询</h3><pre class=" language-sql"><code class="language-sql"><span class="token number">1</span><span class="token punctuation">.</span>查询方式：
     表的连接查询
         内连接查询：特点交集查询，只显示都满足条件的数据
             隐式内连接
-                select * from t1 ,t2 where 条件；
+                <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> t1 <span class="token punctuation">,</span>t2 <span class="token keyword">where</span> 条件；
             显示内连接
-                select * from t1 inner join t2 on 条件；
+                <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> t1 <span class="token keyword">inner</span> <span class="token keyword">join</span> t2 <span class="token keyword">on</span> 条件；
         外连接查询
             左外连接查询:左侧表都显示，右表只显示满足条件的数据
-                select * from t1 left join t2 on 条件；
+                <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> t1 <span class="token keyword">left</span> <span class="token keyword">join</span> t2 <span class="token keyword">on</span> 条件；
             右外连接查询：右侧表都显示，左表只显示满足条件的数据
-                select * from t1 right join t2 on 条件；
+                <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> t1 <span class="token keyword">right</span> <span class="token keyword">join</span> t2 <span class="token keyword">on</span> 条件；
     子查询：一个sql语句嵌套在另一个sql语句内
         单行单列：
-            使用比较运算符 eg:select * from student where score =(select max(score) from student);
+            使用比较运算符 eg:<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student <span class="token keyword">where</span> score <span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token function">max</span><span class="token punctuation">(</span>score<span class="token punctuation">)</span> <span class="token keyword">from</span> student<span class="token punctuation">)</span><span class="token punctuation">;</span>
         多行单列:
-            使用in关键字：eg:select * from emp where dept_id in (select id from dept where name in (&#39;财务&#39;，&#39;开发&#39;))
+            使用<span class="token operator">in</span>关键字：eg:<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> emp <span class="token keyword">where</span> dept_id <span class="token operator">in</span> <span class="token punctuation">(</span><span class="token keyword">select</span> id <span class="token keyword">from</span> dept <span class="token keyword">where</span> name <span class="token operator">in</span> <span class="token punctuation">(</span><span class="token string">'财务'</span>，<span class="token string">'开发'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
         多行多列:
-            子查询结果多行多列，使用as取别名作为一张表与其他表关联查询；
-2.多表查询规则：
-    1.确定业务需要哪些表； 2.确定表与表之间的关系（字段之间连接--》外键字段练习）3.确定其他的查询条件
-    4.确定需要查询的列信息
+            子查询结果多行多列，使用<span class="token keyword">as</span>取别名作为一张表与其他表关联查询；
+<span class="token number">2</span><span class="token punctuation">.</span>多表查询规则：
+    <span class="token number">1</span><span class="token punctuation">.</span>确定业务需要哪些表； <span class="token number">2</span><span class="token punctuation">.</span>确定表与表之间的关系（字段之间连接<span class="token comment" spellcheck="true">--》外键字段练习）3.确定其他的查询条件</span>
+    <span class="token number">4</span><span class="token punctuation">.</span>确定需要查询的列信息
             
 </code></pre>
 

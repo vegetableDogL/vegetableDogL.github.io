@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 
@@ -482,84 +482,84 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1、中文乱码"><a href="#1、中文乱码" class="headerlink" title="1、中文乱码"></a>1、中文乱码</h1><h2 id="1、请求体乱码"><a href="#1、请求体乱码" class="headerlink" title="1、请求体乱码"></a>1、请求体乱码</h2><pre><code class="markdown"># 问题: post请求参数乱码
-    1. get请求没有乱码
-        tomcat8以前是有乱码,tomcat8以及之后版本就没有了
-    2. post请求有乱码
-        0). 乱码原因: 编码和解码所使用的字符集(编码表)不一样
-        1). 编码 : 浏览器在编码 (utf-8)
-        2). 解码     : 服务器在解码
-                tomcat  (默认使用iso-8859-1 欧码)
-                servlet
+                <h1 id="1、中文乱码"><a href="#1、中文乱码" class="headerlink" title="1、中文乱码"></a>1、中文乱码</h1><h2 id="1、请求体乱码"><a href="#1、请求体乱码" class="headerlink" title="1、请求体乱码"></a>1、请求体乱码</h2><pre class=" language-markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span> 问题: post请求参数乱码</span>
+<span class="token code keyword">    1. get请求没有乱码</span>
+<span class="token code keyword">        tomcat8以前是有乱码,tomcat8以及之后版本就没有了</span>
+<span class="token code keyword">    2. post请求有乱码</span>
+<span class="token code keyword">        0). 乱码原因: 编码和解码所使用的字符集(编码表)不一样</span>
+<span class="token code keyword">        1). 编码 : 浏览器在编码 (utf-8)</span>
+<span class="token code keyword">        2). 解码     : 服务器在解码</span>
+<span class="token code keyword">                tomcat  (默认使用iso-8859-1 欧码)</span>
+<span class="token code keyword">                servlet</span>
 
-                servlet没有设置,会使用tomcat的默认设置,如果设置了就使用servlet设置的
+<span class="token code keyword">                servlet没有设置,会使用tomcat的默认设置,如果设置了就使用servlet设置的</span>
 
-       解决:
-             request.setCharacterEncoding(&quot;utf-8&quot;);
-             注意: 一定要写在获取请求参数之前
+<span class="token code keyword">       解决:</span>
+<span class="token code keyword">             request.setCharacterEncoding("utf-8");</span>
+<span class="token code keyword">             注意: 一定要写在获取请求参数之前</span>
 </code></pre>
-<h2 id="2、响应体中文乱码"><a href="#2、响应体中文乱码" class="headerlink" title="2、响应体中文乱码"></a>2、响应体中文乱码</h2><pre><code class="markdown">原因分析
+<h2 id="2、响应体中文乱码"><a href="#2、响应体中文乱码" class="headerlink" title="2、响应体中文乱码"></a>2、响应体中文乱码</h2><pre class=" language-markdown"><code class="language-markdown">原因分析
 
 markdown
-1. 通过response获取字符输出流
-        PrintWriter pw = response.getWriter();        
-2. 通过字符输出输出中文字符
-        pw.write(&quot;中文....&quot;);
-3. 浏览器访问,网页出现中文乱码    
+<span class="token list punctuation">1.</span> 通过response获取字符输出流
+<span class="token code keyword">        PrintWriter pw = response.getWriter();        </span>
+<span class="token list punctuation">2.</span> 通过字符输出输出中文字符
+<span class="token code keyword">        pw.write("中文....");</span>
+<span class="token list punctuation">3.</span> 浏览器访问,网页出现中文乱码    
 
-4. 解决 : 统一浏览器和服务器编码(utf-8)    
-    response.setContentType(&quot;text/html;charset=utf-8&quot;);
-    或者
-    response.setHeader(&quot;content-type&quot;, &quot;text/html;charset=utf-8&quot;);
+<span class="token list punctuation">4.</span> 解决 : 统一浏览器和服务器编码(utf-8)    
+<span class="token code keyword">    response.setContentType("text/html;charset=utf-8");</span>
+<span class="token code keyword">    或者</span>
+<span class="token code keyword">    response.setHeader("content-type", "text/html;charset=utf-8");</span>
 
-# 第二个响应头 : content-type (内容类型)
-    服务器告诉浏览器,使用何种语法解析响应体,使用何种字符集解码响应体
-     response.setHeader(&quot;content-type&quot;, &quot;text/html;charset=utf-8&quot;);
+<span class="token title important"><span class="token punctuation">#</span> 第二个响应头 : content-type (内容类型)</span>
+<span class="token code keyword">    服务器告诉浏览器,使用何种语法解析响应体,使用何种字符集解码响应体</span>
+<span class="token code keyword">     response.setHeader("content-type", "text/html;charset=utf-8");</span>
 
-       1). 响应体中文乱码
-            I. 编码 : servlet (utf-8)
-            II. 解码 : 浏览器
-            服务器告诉浏览器, 用utf-8解码响应体
+<span class="token code keyword">       1). 响应体中文乱码</span>
+<span class="token code keyword">            I. 编码 : servlet (utf-8)</span>
+<span class="token code keyword">            II. 解码 : 浏览器</span>
+<span class="token code keyword">            服务器告诉浏览器, 用utf-8解码响应体</span>
 
-       2).  MIME type (多用途互联网邮件扩展MIME，Multipurpose Internet Mail Extensions）
-            windows后缀名 :    txt         html            json
-             MIME type :    text/plain   text/html    application/json
+<span class="token code keyword">       2).  MIME type (多用途互联网邮件扩展MIME，Multipurpose Internet Mail Extensions）</span>
+<span class="token code keyword">            windows后缀名 :    txt         html            json</span>
+<span class="token code keyword">             MIME type :    text/plain   text/html    application/json</span>
 
-             windows : \
-             java : /  (unix系统)
+<span class="token code keyword">             windows : \</span>
+<span class="token code keyword">             java : /  (unix系统)</span>
 
-           服务器告诉浏览器, 用text/html的语法解析响应体
+<span class="token code keyword">           服务器告诉浏览器, 用text/html的语法解析响应体</span>
 </code></pre>
-<h2 id="3、响应头乱码"><a href="#3、响应头乱码" class="headerlink" title="3、响应头乱码"></a>3、响应头乱码</h2><pre><code class="markdown">* 如果该下载文件名是中文的话，会出现乱码...
-    谷歌和绝大多数的浏览器是通过 url编码
-        URLEncode() 编码
-        URLDecode() 解码
-    火狐浏览器   base64编码
+<h2 id="3、响应头乱码"><a href="#3、响应头乱码" class="headerlink" title="3、响应头乱码"></a>3、响应头乱码</h2><pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">*</span> 如果该下载文件名是中文的话，会出现乱码...
+<span class="token code keyword">    谷歌和绝大多数的浏览器是通过 url编码</span>
+<span class="token code keyword">        URLEncode() 编码</span>
+<span class="token code keyword">        URLDecode() 解码</span>
+<span class="token code keyword">    火狐浏览器   base64编码</span>
     
-* 我们就需要考虑浏览器兼容性问题....
-    资料提供了判断浏览器不同编码的工具类直接使用即可....
+<span class="token list punctuation">*</span> 我们就需要考虑浏览器兼容性问题....
+<span class="token code keyword">    资料提供了判断浏览器不同编码的工具类直接使用即可....</span>
 </code></pre>
-<pre><code class="java">public class DownLoadUtils &#123;
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DownLoadUtils</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
 
-    //根据请求头的User-Agent信息判断是哪种浏览器，然后将文件名进行编码
-    public static String getName(HttpServletRequest request, String filename) throws UnsupportedEncodingException &#123;
-        // 获得请求头中的User-Agent
-        String agent = request.getHeader(&quot;User-Agent&quot;);
-        // 根据不同的客户端进行不同的编码
-        String filenameEncoder = &quot;&quot;;
-         if (agent.contains(&quot;Firefox&quot;)) &#123;
-            // 火狐浏览器
-             System.out.println(&quot;我是火狐&quot;);
-            BASE64Encoder base64Encoder = new BASE64Encoder();
-            filenameEncoder = &quot;=?utf-8?B?&quot; + base64Encoder.encode(filename.getBytes(&quot;utf-8&quot;)) + &quot;?=&quot;;
-        &#125; else &#123;
-            // 其它浏览器
-             System.out.println(&quot;我是google&quot;);
-            filenameEncoder = URLEncoder.encode(filename, &quot;utf-8&quot;);
-        &#125;
-        return filenameEncoder;
-    &#125;
-&#125;
+    <span class="token comment" spellcheck="true">//根据请求头的User-Agent信息判断是哪种浏览器，然后将文件名进行编码</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> String <span class="token function">getName</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> String filename<span class="token punctuation">)</span> <span class="token keyword">throws</span> UnsupportedEncodingException <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 获得请求头中的User-Agent</span>
+        String agent <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getHeader</span><span class="token punctuation">(</span><span class="token string">"User-Agent"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 根据不同的客户端进行不同的编码</span>
+        String filenameEncoder <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+         <span class="token keyword">if</span> <span class="token punctuation">(</span>agent<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">"Firefox"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">// 火狐浏览器</span>
+             System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"我是火狐"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            BASE64Encoder base64Encoder <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BASE64Encoder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            filenameEncoder <span class="token operator">=</span> <span class="token string">"=?utf-8?B?"</span> <span class="token operator">+</span> base64Encoder<span class="token punctuation">.</span><span class="token function">encode</span><span class="token punctuation">(</span>filename<span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"?="</span><span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">// 其它浏览器</span>
+             System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"我是google"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            filenameEncoder <span class="token operator">=</span> URLEncoder<span class="token punctuation">.</span><span class="token function">encode</span><span class="token punctuation">(</span>filename<span class="token punctuation">,</span> <span class="token string">"utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> filenameEncoder<span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 </code></pre>
 
                 
@@ -802,55 +802,6 @@ markdown
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/04/28/jsp/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="JSP">
-                        
-                        <span class="card-title">JSP</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            JSP
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-28
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/JavaWeb/" class="post-category">
-                                    JavaWeb
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/JavaWeb/">
-                        <span class="chip bg-color">JavaWeb</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
                 <a href="/2020/04/28/vue/">
                     <div class="card-image">
                         
@@ -867,9 +818,9 @@ markdown
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-28
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-28
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -887,6 +838,55 @@ markdown
                     
                     <a href="/tags/Vue/">
                         <span class="chip bg-color">Vue</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/04/28/%E5%9F%9F%E5%AF%B9%E8%B1%A1/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="域对象">
+                        
+                        <span class="card-title">域对象</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            域对象
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/JavaWeb/" class="post-category">
+                                    JavaWeb
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JavaWeb/">
+                        <span class="chip bg-color">JavaWeb</span>
                     </a>
                     
                 </div>

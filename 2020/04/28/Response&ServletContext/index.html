@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 
@@ -482,45 +482,45 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1、Response-amp-ServletContext"><a href="#1、Response-amp-ServletContext" class="headerlink" title="1、Response&amp;ServletContext"></a>1、Response&amp;ServletContext</h1><h2 id="1、http响应消息格式"><a href="#1、http响应消息格式" class="headerlink" title="1、http响应消息格式"></a>1、http响应消息格式</h2><h3 id="①-响应行"><a href="#①-响应行" class="headerlink" title="① 响应行"></a>① 响应行</h3><pre><code class="markdown">* 格式
-        协议/版本号 状态码
-* 例如
-        HTTP/1.1 200
+                <h1 id="1、Response-amp-ServletContext"><a href="#1、Response-amp-ServletContext" class="headerlink" title="1、Response&amp;ServletContext"></a>1、Response&amp;ServletContext</h1><h2 id="1、http响应消息格式"><a href="#1、http响应消息格式" class="headerlink" title="1、http响应消息格式"></a>1、http响应消息格式</h2><h3 id="①-响应行"><a href="#①-响应行" class="headerlink" title="① 响应行"></a>① 响应行</h3><pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">*</span> 格式
+<span class="token code keyword">        协议/版本号 状态码</span>
+<span class="token list punctuation">*</span> 例如
+<span class="token code keyword">        HTTP/1.1 200</span>
 
-* 常见状态码
-    --------------- 用户可以正常访问页面
-    200 ：表示成功    
-    302 ：重定向(response学习)
-    304 ：从缓存中读取数据
-        (如果这个资源没有变化,浏览器是会缓存的,下次请求,就直接从缓存中读取,提高效率)
-    --------------- 用户无法正常访问页面
-    404：请求资源未找到（not  found）
-    405：请求的方法未找到（明天讲了servlet给大家演示....）
-    500：服务器内部错误（java代码写错了.....）
+<span class="token list punctuation">*</span> 常见状态码
+<span class="token code keyword">    --------------- 用户可以正常访问页面</span>
+<span class="token code keyword">    200 ：表示成功    </span>
+<span class="token code keyword">    302 ：重定向(response学习)</span>
+<span class="token code keyword">    304 ：从缓存中读取数据</span>
+<span class="token code keyword">        (如果这个资源没有变化,浏览器是会缓存的,下次请求,就直接从缓存中读取,提高效率)</span>
+<span class="token code keyword">    --------------- 用户无法正常访问页面</span>
+<span class="token code keyword">    404：请求资源未找到（not  found）</span>
+<span class="token code keyword">    405：请求的方法未找到（明天讲了servlet给大家演示....）</span>
+<span class="token code keyword">    500：服务器内部错误（java代码写错了.....）</span>
 </code></pre>
-<h3 id="②-响应头"><a href="#②-响应头" class="headerlink" title="② 响应头"></a>② 响应头</h3><pre><code class="markdown">* 格式
-        响应头名称：响应头的值
-* 例如
-        Last-Modified: Mon, 13 Apr 2020 06:11:24 GMT
-        Location: ./SuccessServlet
-        Content-Type: text/html;charset=utf-8
-        Content-Length: 0
-        Date: Fri, 03 Sep 2021 10:18:13 GMT
-        Keep-Alive: timeout=20
-        Connection: keep-alive
+<h3 id="②-响应头"><a href="#②-响应头" class="headerlink" title="② 响应头"></a>② 响应头</h3><pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">*</span> 格式
+<span class="token code keyword">        响应头名称：响应头的值</span>
+<span class="token list punctuation">*</span> 例如
+<span class="token code keyword">        Last-Modified: Mon, 13 Apr 2020 06:11:24 GMT</span>
+<span class="token code keyword">        Location: ./SuccessServlet</span>
+<span class="token code keyword">        Content-Type: text/html;charset=utf-8</span>
+<span class="token code keyword">        Content-Length: 0</span>
+<span class="token code keyword">        Date: Fri, 03 Sep 2021 10:18:13 GMT</span>
+<span class="token code keyword">        Keep-Alive: timeout=20</span>
+<span class="token code keyword">        Connection: keep-alive</span>
 </code></pre>
 <p><strong>常见响应头</strong>：</p>
-<pre><code class="markdown">1. Location：通常与状态码302一起使用，实现重定向操作
-        Location:http://www.itcast.cn
-2. Content-Type：服务器告诉客户端，返回响应体的数据类型和编码方式
-        Content-Type:text/html;charset=utf-8
-3. Content-Disposition：服务器告诉客户端，以什么样方式打开响应体
-        * in-line（默认）：浏览器直接打开相应内容，展示给用户
-        * attachment;filename=文件名：浏览器以附件的方式保存文件 【文件下载】
-4. Refresh：在指定间隔时间后，跳转到某个页面
-        Refresh:5;http://www.itcast.cn
+<pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">1.</span> Location：通常与状态码302一起使用，实现重定向操作
+<span class="token code keyword">        Location:http://www.itcast.cn</span>
+<span class="token list punctuation">2.</span> Content-Type：服务器告诉客户端，返回响应体的数据类型和编码方式
+<span class="token code keyword">        Content-Type:text/html;charset=utf-8</span>
+<span class="token list punctuation">3.</span> Content-Disposition：服务器告诉客户端，以什么样方式打开响应体
+<span class="token code keyword">        * in-line（默认）：浏览器直接打开相应内容，展示给用户</span>
+<span class="token code keyword">        * attachment;filename=文件名：浏览器以附件的方式保存文件 【文件下载】</span>
+<span class="token list punctuation">4.</span> Refresh：在指定间隔时间后，跳转到某个页面
+<span class="token code keyword">        Refresh:5;http://www.itcast.cn</span>
 </code></pre>
-<h3 id="③-响应体（正文）"><a href="#③-响应体（正文）" class="headerlink" title="③ 响应体（正文）"></a>③ 响应体（正文）</h3><pre><code class="markdown">* 服务器返回的数据，由浏览器解析后展示给用户
+<h3 id="③-响应体（正文）"><a href="#③-响应体（正文）" class="headerlink" title="③ 响应体（正文）"></a>③ 响应体（正文）</h3><pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">*</span> 服务器返回的数据，由浏览器解析后展示给用户
    用户看到页面所有的内容，都是在响应体中返回的
 </code></pre>
 <p><img src="https://i.loli.net/2021/09/03/8jgytsdnCRZzKwU.png" alt="image-20210903183704356"></p>
@@ -537,187 +537,187 @@
 </blockquote>
 </li>
 </ul>
-<pre><code class="markdown">    ServletResponse 接口 (理论上兼容大部分协议)
-            |    
-    HttpServletResponse 接口 (专门指的是http协议的响应)
-            |    
-    org.apache.catalina.connector.ResponseFacade 实现类（由tomcat提供的）
+<pre class=" language-markdown"><code class="language-markdown"><span class="token code keyword">    ServletResponse 接口 (理论上兼容大部分协议)</span>
+<span class="token code keyword">            |    </span>
+<span class="token code keyword">    HttpServletResponse 接口 (专门指的是http协议的响应)</span>
+<span class="token code keyword">            |    </span>
+<span class="token code keyword">    org.apache.catalina.connector.ResponseFacade 实现类（由tomcat提供的）</span>
 </code></pre>
-<h3 id="2-、设置Http响应行"><a href="#2-、设置Http响应行" class="headerlink" title="2 、设置Http响应行"></a>2 、设置Http响应行</h3><pre><code class="markdown">* 格式
-         协议/版本号 状态码(status code) 
-* 例如
-        HTTP/1.1 200    
-* API
-    1. 设置状态码(status code) 
-             void setStatus(int sc)  
-    2. 常见响应状态码：
-            200：请求和响应都OK(顺利)
-            
-            302：重定向 (待会)
-            304：浏览器从缓存中加载数据
-            
-            404：请求的路径错误或请求的资源不存在(自己开发的时候,路径有问题)
-            405: 在HttpServlet的子类中, doGet或doPost方法没有重写
-            500：服务器内部异常
-            
-    3. 注意事项：上述常见的响应状态码，通常是由tomcat服务器自动响应给浏览器。我们一般是不需要手动设置的；       
+<h3 id="2-、设置Http响应行"><a href="#2-、设置Http响应行" class="headerlink" title="2 、设置Http响应行"></a>2 、设置Http响应行</h3><pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">*</span> 格式
+<span class="token code keyword">         协议/版本号 状态码(status code) </span>
+<span class="token list punctuation">*</span> 例如
+<span class="token code keyword">        HTTP/1.1 200    </span>
+<span class="token list punctuation">*</span> API
+<span class="token code keyword">    1. 设置状态码(status code) </span>
+<span class="token code keyword">             void setStatus(int sc)  </span>
+<span class="token code keyword">    2. 常见响应状态码：</span>
+<span class="token code keyword">            200：请求和响应都OK(顺利)</span>
+<span class="token code keyword">            </span>
+<span class="token code keyword">            302：重定向 (待会)</span>
+<span class="token code keyword">            304：浏览器从缓存中加载数据</span>
+<span class="token code keyword">            </span>
+<span class="token code keyword">            404：请求的路径错误或请求的资源不存在(自己开发的时候,路径有问题)</span>
+<span class="token code keyword">            405: 在HttpServlet的子类中, doGet或doPost方法没有重写</span>
+<span class="token code keyword">            500：服务器内部异常</span>
+<span class="token code keyword">            </span>
+<span class="token code keyword">    3. 注意事项：上述常见的响应状态码，通常是由tomcat服务器自动响应给浏览器。我们一般是不需要手动设置的；       </span>
 </code></pre>
 <p><strong>浏览器缓存</strong>(304)</p>
 <p><img src="https://i.loli.net/2021/09/03/Wg4ftx2UmE8IpKQ.png" alt="1599619354298"></p>
-<pre><code class="java">protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
+<pre class=" language-java"><code class="language-java"><span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doPost</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">)</span> <span class="token keyword">throws</span> ServletException<span class="token punctuation">,</span> IOException <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
        
-    response.setStatus(302);
-    response.getWriter().print(&quot;hello&quot;);
-&#125;
+    response<span class="token punctuation">.</span><span class="token function">setStatus</span><span class="token punctuation">(</span><span class="token number">302</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    response<span class="token punctuation">.</span><span class="token function">getWriter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 </code></pre>
-<h3 id="3、设置Http响应头"><a href="#3、设置Http响应头" class="headerlink" title="3、设置Http响应头"></a>3、设置Http响应头</h3><pre><code class="markdown">* 格式
-        响应头名称：响应头的值
-        (name : value)
-* 例如
-        Content-Length : 5 (指的是响应体内容长度5个字符)
-* API
-    1. 设置指定头名称和对应的值
-            void setHeader(String name, String value)  
-    2. value值可以由多个参数组成，不同参数之间使用分号隔开：         
-            response.setHeader(key,&quot;value1;value2&quot;)；
-    3. 常用响应头：
-            refresh：定时刷新；
-            content-type:设置响应数据的数据类型和编码格式； (内容类型)
-            location:配合302响应状态码完成重定向；(位置)
-            content-disposition：通知浏览器以附件的形式解析响应的数据；(内容处置方式)        
+<h3 id="3、设置Http响应头"><a href="#3、设置Http响应头" class="headerlink" title="3、设置Http响应头"></a>3、设置Http响应头</h3><pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">*</span> 格式
+<span class="token code keyword">        响应头名称：响应头的值</span>
+<span class="token code keyword">        (name : value)</span>
+<span class="token list punctuation">*</span> 例如
+<span class="token code keyword">        Content-Length : 5 (指的是响应体内容长度5个字符)</span>
+<span class="token list punctuation">*</span> API
+<span class="token code keyword">    1. 设置指定头名称和对应的值</span>
+<span class="token code keyword">            void setHeader(String name, String value)  </span>
+<span class="token code keyword">    2. value值可以由多个参数组成，不同参数之间使用分号隔开：         </span>
+<span class="token code keyword">            response.setHeader(key,"value1;value2")；</span>
+<span class="token code keyword">    3. 常用响应头：</span>
+<span class="token code keyword">            refresh：定时刷新；</span>
+<span class="token code keyword">            content-type:设置响应数据的数据类型和编码格式； (内容类型)</span>
+<span class="token code keyword">            location:配合302响应状态码完成重定向；(位置)</span>
+<span class="token code keyword">            content-disposition：通知浏览器以附件的形式解析响应的数据；(内容处置方式)        </span>
 </code></pre>
-<h3 id="4、设置Http响应体"><a href="#4、设置Http响应体" class="headerlink" title="4、设置Http响应体"></a>4、设置Http响应体</h3><pre><code class="markdown">响应体中包含 响应数据的正文
+<h3 id="4、设置Http响应体"><a href="#4、设置Http响应体" class="headerlink" title="4、设置Http响应体"></a>4、设置Http响应体</h3><pre class=" language-markdown"><code class="language-markdown">响应体中包含 响应数据的正文
 响应是服务器给浏览器发送数据: 输出流
-* API（输出流对象）
-    1. 字符输出流 : 用于向浏览器输出字符数据(文本)
-            PrintWriter getWriter()            
-    2. 字节输出流 : 用于向浏览器输出二进制数据(比如文件下载)
-            ServletOutputStream getOutputStream()
+<span class="token list punctuation">*</span> API（输出流对象）
+<span class="token code keyword">    1. 字符输出流 : 用于向浏览器输出字符数据(文本)</span>
+<span class="token code keyword">            PrintWriter getWriter()            </span>
+<span class="token code keyword">    2. 字节输出流 : 用于向浏览器输出二进制数据(比如文件下载)</span>
+<span class="token code keyword">            ServletOutputStream getOutputStream()</span>
 
-    注意：在同一个servlet中，二种类型的输出流不能同时存在，互斥
+<span class="token code keyword">    注意：在同一个servlet中，二种类型的输出流不能同时存在，互斥</span>
     
-        # response操作
-        1. tomcat有默认设置
-        2. servlet可以手动设置(会覆盖默认设置)
+<span class="token code keyword">        # response操作</span>
+<span class="token code keyword">        1. tomcat有默认设置</span>
+<span class="token code keyword">        2. servlet可以手动设置(会覆盖默认设置)</span>
 </code></pre>
-<pre><code class="java">    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doPost</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">)</span> <span class="token keyword">throws</span> ServletException<span class="token punctuation">,</span> IOException <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
 
-        //只有重定向需要设置状态码302，其他的tomcat已经帮忙做好了
-//        response.setStatus(302);
-//        response.getWriter().print(&quot;hello&quot;);
+        <span class="token comment" spellcheck="true">//只有重定向需要设置状态码302，其他的tomcat已经帮忙做好了</span>
+<span class="token comment" spellcheck="true">//        response.setStatus(302);</span>
+<span class="token comment" spellcheck="true">//        response.getWriter().print("hello");</span>
 
-        //获取响应体字节输出流
-        ServletOutputStream os = response.getOutputStream();
-        os.print(&quot;hello world&quot;);
+        <span class="token comment" spellcheck="true">//获取响应体字节输出流</span>
+        ServletOutputStream os <span class="token operator">=</span> response<span class="token punctuation">.</span><span class="token function">getOutputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        os<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"hello world"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        //获取响应字符输出流
-        PrintWriter writer = response.getWriter();
-        writer.print(&quot;hello world2&quot;);
-    &#125;
+        <span class="token comment" spellcheck="true">//获取响应字符输出流</span>
+        PrintWriter writer <span class="token operator">=</span> response<span class="token punctuation">.</span><span class="token function">getWriter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        writer<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"hello world2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 </code></pre>
 <h2 id="3、-响应头的功能"><a href="#3、-响应头的功能" class="headerlink" title="3、 响应头的功能"></a>3、 响应头的功能</h2><h3 id="1、响应定时刷新-refresh"><a href="#1、响应定时刷新-refresh" class="headerlink" title="1、响应定时刷新(refresh)"></a>1、响应定时刷新(refresh)</h3><p><strong>步骤分析</strong></p>
-<pre><code class="markdown">1. 通过response设置响应头 Refresh
-        response.setHeader(&quot;Refresh&quot;,&quot;间隔时间（秒）;跳转页面&quot;);
+<pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">1.</span> 通过response设置响应头 Refresh
+<span class="token code keyword">        response.setHeader("Refresh","间隔时间（秒）;跳转页面");</span>
 </code></pre>
-<pre><code class="java">第一个响应头 : refresh(刷新)
-          response.setHeader(响应头name值, &quot;value值1;value值2&quot; );
+<pre class=" language-java"><code class="language-java">第一个响应头 <span class="token operator">:</span> <span class="token function">refresh</span><span class="token punctuation">(</span>刷新<span class="token punctuation">)</span>
+          response<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span>响应头name值<span class="token punctuation">,</span> <span class="token string">"value值1;value值2"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-          response.setHeader(&quot;refresh&quot;, &quot;5;http://www.baidu.com&quot;);
-          服务器告诉浏览器, 你5秒之后跳转到http://www.baidu.com 刷新页面
+          response<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">"refresh"</span><span class="token punctuation">,</span> <span class="token string">"5;http://www.baidu.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          服务器告诉浏览器<span class="token punctuation">,</span> 你<span class="token number">5</span>秒之后跳转到http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>baidu<span class="token punctuation">.</span>com 刷新页面
 </code></pre>
 <h3 id="2、响应体中文乱码-content-type"><a href="#2、响应体中文乱码-content-type" class="headerlink" title="2、响应体中文乱码(content-type)"></a>2、响应体中文乱码(content-type)</h3><p><strong>需求</strong></p>
 <p>向页面输出中文数据没有乱码  </p>
 <p><strong>原因分析</strong></p>
-<pre><code class="markdown">1. 通过response获取字符输出流
-        PrintWriter pw = response.getWriter();        
-2. 通过字符输出输出中文字符
-        pw.write(&quot;中文....&quot;);
-3. 浏览器访问,网页出现中文乱码    
+<pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">1.</span> 通过response获取字符输出流
+<span class="token code keyword">        PrintWriter pw = response.getWriter();        </span>
+<span class="token list punctuation">2.</span> 通过字符输出输出中文字符
+<span class="token code keyword">        pw.write("中文....");</span>
+<span class="token list punctuation">3.</span> 浏览器访问,网页出现中文乱码    
 
-4. 解决 : 统一浏览器和服务器编码(utf-8)    
-    response.setContentType(&quot;text/html;charset=utf-8&quot;);
+<span class="token list punctuation">4.</span> 解决 : 统一浏览器和服务器编码(utf-8)    
+<span class="token code keyword">    response.setContentType("text/html;charset=utf-8");</span>
 </code></pre>
-<pre><code class="markdown"># 第二个响应头 : content-type (内容类型)
-    服务器告诉浏览器,使用何种语法解析响应体,使用何种字符集解码响应体
-     response.setHeader(&quot;content-type&quot;, &quot;text/html;charset=utf-8&quot;);
+<pre class=" language-markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span> 第二个响应头 : content-type (内容类型)</span>
+<span class="token code keyword">    服务器告诉浏览器,使用何种语法解析响应体,使用何种字符集解码响应体</span>
+<span class="token code keyword">     response.setHeader("content-type", "text/html;charset=utf-8");</span>
 
-       1). 响应体中文乱码
-            I. 编码 : servlet (utf-8)
-            II. 解码 : 浏览器
-            服务器告诉浏览器, 用utf-8解码响应体
+<span class="token code keyword">       1). 响应体中文乱码</span>
+<span class="token code keyword">            I. 编码 : servlet (utf-8)</span>
+<span class="token code keyword">            II. 解码 : 浏览器</span>
+<span class="token code keyword">            服务器告诉浏览器, 用utf-8解码响应体</span>
 
-       2).  MIME type (多用途互联网邮件扩展MIME，Multipurpose Internet Mail Extensions）
-            windows后缀名 :    txt         html            json
-             MIME type :    text/plain   text/html    application/json
+<span class="token code keyword">       2).  MIME type (多用途互联网邮件扩展MIME，Multipurpose Internet Mail Extensions）</span>
+<span class="token code keyword">            windows后缀名 :    txt         html            json</span>
+<span class="token code keyword">             MIME type :    text/plain   text/html    application/json</span>
 
-             windows : \
-             java : /  (unix系统)
+<span class="token code keyword">             windows : \</span>
+<span class="token code keyword">             java : /  (unix系统)</span>
 
-           服务器告诉浏览器, 用text/html的语法解析响应体
+<span class="token code keyword">           服务器告诉浏览器, 用text/html的语法解析响应体</span>
 </code></pre>
 <h3 id="3、响应重定向-location-302"><a href="#3、响应重定向-location-302" class="headerlink" title="3、响应重定向(location+302)"></a>3、响应重定向(location+302)</h3><p><img src="https://i.loli.net/2021/09/03/2Qzr1saW5VUSTeJ.png" alt="image-20210903185758444"></p>
 <p><strong>步骤分析</strong></p>
-<pre><code class="markdown">* 方式一
-    // 1.设置状态码
-        response.setStatus(302);
-    // 2.设置响应头 Location
-        response.setHeader(&quot;Location&quot;,&quot;重定向网络地址&quot;);
-            
-* 方式二
-    // 1.response这哥们封装专门处理重定向的方法 (掌握)
-        response.sendRedirect(&quot;重定向网络地址&quot;);
+<pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">*</span> 方式一
+<span class="token code keyword">    // 1.设置状态码</span>
+<span class="token code keyword">        response.setStatus(302);</span>
+<span class="token code keyword">    // 2.设置响应头 Location</span>
+<span class="token code keyword">        response.setHeader("Location","重定向网络地址");</span>
+<span class="token code keyword">            </span>
+<span class="token list punctuation">*</span> 方式二
+<span class="token code keyword">    // 1.response这哥们封装专门处理重定向的方法 (掌握)</span>
+<span class="token code keyword">        response.sendRedirect("重定向网络地址");</span>
 </code></pre>
 <p><strong>重定向特点</strong></p>
-<pre><code class="markdown"># 重定向是浏览器行为
-1. 起码发起两次请求
-2. 浏览器地址栏的url被修改了(指向最后访问的地址)
-3. 可以访问服务器外部资源
-4. 不能通过request域对象共享数据
+<pre class=" language-markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span> 重定向是浏览器行为</span>
+<span class="token list punctuation">1.</span> 起码发起两次请求
+<span class="token list punctuation">2.</span> 浏览器地址栏的url被修改了(指向最后访问的地址)
+<span class="token list punctuation">3.</span> 可以访问服务器外部资源
+<span class="token list punctuation">4.</span> 不能通过request域对象共享数据
 </code></pre>
-<pre><code class="java">    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
-        //1. 接收请求
-        String msg = request.getParameter(&quot;msg&quot;);
-        System.out.println(&quot;CServlet:&quot; + msg);
-        //2. 业务处理
-        System.out.println(&quot;CServlet: 收钱&quot;);
-        //3. 响应(重定向)
-//        response.setStatus(302);
-//        response.setHeader(&quot;location&quot;, &quot;DServlet&quot;);
-        //等价于上面两行
-        response.sendRedirect(&quot;DServlet&quot;);
-    &#125;
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doPost</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">)</span> <span class="token keyword">throws</span> ServletException<span class="token punctuation">,</span> IOException <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//1. 接收请求</span>
+        String msg <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getParameter</span><span class="token punctuation">(</span><span class="token string">"msg"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"CServlet:"</span> <span class="token operator">+</span> msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//2. 业务处理</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"CServlet: 收钱"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//3. 响应(重定向)</span>
+<span class="token comment" spellcheck="true">//        response.setStatus(302);</span>
+<span class="token comment" spellcheck="true">//        response.setHeader("location", "DServlet");</span>
+        <span class="token comment" spellcheck="true">//等价于上面两行</span>
+        response<span class="token punctuation">.</span><span class="token function">sendRedirect</span><span class="token punctuation">(</span><span class="token string">"DServlet"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 </code></pre>
-<h3 id="总结：请求转发与重定向的区别"><a href="#总结：请求转发与重定向的区别" class="headerlink" title="总结：请求转发与重定向的区别"></a><strong>总结：请求转发与重定向的区别</strong></h3><pre><code class="markdown">1. 哪个对象的方法
-    1). 请求转发 : request
-        request.getRequestDispatcher(转发地址).forward(request,response)        
-    2). 重定向 : response
-        response.sendRedirect(重定向地址); // 302状态码 + location头
-2. 行为人
-    请求转发 : 服务器内部行为,浏览器不知道服务器内部发生了什么
-    重定向 : 浏览器行为  
-            可以定向到其他服务器,但是请求转发只能在本服务器内
-3. 请求次数
-    请求转发 : 1次
-    重定向: 起码2次    
-            浏览器会限制重定向的次数,比如 google浏览器不超过20次    
+<h3 id="总结：请求转发与重定向的区别"><a href="#总结：请求转发与重定向的区别" class="headerlink" title="总结：请求转发与重定向的区别"></a><strong>总结：请求转发与重定向的区别</strong></h3><pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">1.</span> 哪个对象的方法
+<span class="token code keyword">    1). 请求转发 : request</span>
+<span class="token code keyword">        request.getRequestDispatcher(转发地址).forward(request,response)        </span>
+<span class="token code keyword">    2). 重定向 : response</span>
+<span class="token code keyword">        response.sendRedirect(重定向地址); // 302状态码 + location头</span>
+<span class="token list punctuation">2.</span> 行为人
+<span class="token code keyword">    请求转发 : 服务器内部行为,浏览器不知道服务器内部发生了什么</span>
+<span class="token code keyword">    重定向 : 浏览器行为  </span>
+<span class="token code keyword">            可以定向到其他服务器,但是请求转发只能在本服务器内</span>
+<span class="token list punctuation">3.</span> 请求次数
+<span class="token code keyword">    请求转发 : 1次</span>
+<span class="token code keyword">    重定向: 起码2次    </span>
+<span class="token code keyword">            浏览器会限制重定向的次数,比如 google浏览器不超过20次    </span>
 
-4. 数据共享 (重要)
-    请求转发: request域对象可以传递数据
-    重定向 : 不可以用request域对象传递数据 
-        重定向涉及多次请求, 超出一个request作用范围
-        
-5. 地址栏指向
-    请求转发: 一开始设置的路径 AServlet
-        一次请求
-    重定向: 最终指向最后一次请求的地址 DServlet        
-        多次请求,后续请求地址覆盖前面请求地址
-6. 总结
-    请求转发: 就一次请求, 可以使用request域传递数据,不可以转发到其他服务器
-    重定向: 涉及多次请求,不可以用request域传递数据,但是可以定向到其他的服务器
+<span class="token list punctuation">4.</span> 数据共享 (重要)
+<span class="token code keyword">    请求转发: request域对象可以传递数据</span>
+<span class="token code keyword">    重定向 : 不可以用request域对象传递数据 </span>
+<span class="token code keyword">        重定向涉及多次请求, 超出一个request作用范围</span>
+<span class="token code keyword">        </span>
+<span class="token list punctuation">5.</span> 地址栏指向
+<span class="token code keyword">    请求转发: 一开始设置的路径 AServlet</span>
+<span class="token code keyword">        一次请求</span>
+<span class="token code keyword">    重定向: 最终指向最后一次请求的地址 DServlet        </span>
+<span class="token code keyword">        多次请求,后续请求地址覆盖前面请求地址</span>
+<span class="token list punctuation">6.</span> 总结
+<span class="token code keyword">    请求转发: 就一次请求, 可以使用request域传递数据,不可以转发到其他服务器</span>
+<span class="token code keyword">    重定向: 涉及多次请求,不可以用request域传递数据,但是可以定向到其他的服务器</span>
     
-7. 使用
-    a. 如果用request域对象传递数据,并且两个资源在同服务器内 -&gt; 请求转发
-    b. 如果不需要request传递数据,或两个资源在不同服务器上  -&gt; 重定向
+<span class="token list punctuation">7.</span> 使用
+<span class="token code keyword">    a. 如果用request域对象传递数据,并且两个资源在同服务器内 -> 请求转发</span>
+<span class="token code keyword">    b. 如果不需要request传递数据,或两个资源在不同服务器上  -> 重定向</span>
 </code></pre>
 <h2 id="4、ServletContext"><a href="#4、ServletContext" class="headerlink" title="4、ServletContext"></a>4、ServletContext</h2><h3 id="1、-概述"><a href="#1、-概述" class="headerlink" title="1、 概述"></a>1、 概述</h3><ul>
 <li><p>web容器（tomcat）在启动时，它会为每个web项目承建一个对应的ServletContext对象(唯一)</p>
@@ -729,66 +729,66 @@
 <p><strong>主要作用</strong></p>
 <ol>
 <li><p>域对象（共享数据）</p>
-<pre><code class="markdown"># javaweb四大域对象:  有作用范围,并可在作用范围中共享数据的对象(有点像Map)
+<pre class=" language-markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span> javaweb四大域对象:  有作用范围,并可在作用范围中共享数据的对象(有点像Map)</span>
 
-1. 域对象方法api一样 : 
-       setAttribute(name,value) 
-       value  = getAttribute(name)
-       removeAttribute(name)
-       
-2. 作用范围不一样
-        pageContext &lt;  request &lt; session &lt; ServletContext
-        
-3. 获取域对象规律:
-    小域对象可以获取大域对象
+<span class="token list punctuation">1.</span> 域对象方法api一样 : 
+<span class="token code keyword">       setAttribute(name,value) </span>
+<span class="token code keyword">       value  = getAttribute(name)</span>
+<span class="token code keyword">       removeAttribute(name)</span>
+<span class="token code keyword">       </span>
+<span class="token list punctuation">2.</span> 作用范围不一样
+<span class="token code keyword">        pageContext &lt;  request &lt; session &lt; ServletContext</span>
+<span class="token code keyword">        </span>
+<span class="token list punctuation">3.</span> 获取域对象规律:
+<span class="token code keyword">    小域对象可以获取大域对象</span>
 </code></pre>
 </li>
 <li><p>获取一些应用全局的数据</p>
 <p>1). 获取全局的配置参数</p>
-<pre><code class="java">获取web.xml中的初始化参数   getInitParameter(&quot;参数名&quot;);
+<pre class=" language-java"><code class="language-java">获取web<span class="token punctuation">.</span>xml中的初始化参数   <span class="token function">getInitParameter</span><span class="token punctuation">(</span><span class="token string">"参数名"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>2).获取项目中资源的真实路径</p>
-<pre><code class="java">String realPath = context.getRealPath(&quot;resource/3.txt&quot;);
+<pre class=" language-java"><code class="language-java">String realPath <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">getRealPath</span><span class="token punctuation">(</span><span class="token string">"resource/3.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>3).获取资源的MIME类型</p>
-<pre><code class="java">String mimeType = context.getMimeType(&quot;resource/3.txt&quot;);
+<pre class=" language-java"><code class="language-java">String mimeType <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">getMimeType</span><span class="token punctuation">(</span><span class="token string">"resource/3.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    *  mime type : 是文件类型一种表示形式
-    *    txt -&gt; text/plain
-    *    html -&gt; text/html
+    <span class="token operator">*</span>  mime type <span class="token operator">:</span> 是文件类型一种表示形式
+    <span class="token operator">*</span>    txt <span class="token operator">-</span><span class="token operator">></span> text<span class="token operator">/</span>plain
+    <span class="token operator">*</span>    html <span class="token operator">-</span><span class="token operator">></span> text<span class="token operator">/</span>html
 </code></pre>
 </li>
 </ol>
 <p><strong>获取ServletContext对象</strong></p>
-<pre><code class="java">    ServletContext
-        1. 对象获取
-            0). 注意: servletContext是tomcat创建的,全局唯一
-            1). 在servlet中直接获取
-            2). 小域对象可以获取大域对象
-            pageContext &lt; request &lt; session &lt; servletContext
+<pre class=" language-java"><code class="language-java">    ServletContext
+        <span class="token number">1</span><span class="token punctuation">.</span> 对象获取
+            <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span> 注意<span class="token operator">:</span> servletContext是tomcat创建的<span class="token punctuation">,</span>全局唯一
+            <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span> 在servlet中直接获取
+            <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span> 小域对象可以获取大域对象
+            pageContext <span class="token operator">&lt;</span> request <span class="token operator">&lt;</span> session <span class="token operator">&lt;</span> servletContext
                 
 
-1. 通过request对象获得
-        ServletContext sc = request.getServletContext();
+<span class="token number">1</span><span class="token punctuation">.</span> 通过request对象获得
+        ServletContext sc <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getServletContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         
-2. 继承HttpServlet后，可以直接调用
-        ServletContext sc = getServletContext();
+<span class="token number">2</span><span class="token punctuation">.</span> 继承HttpServlet后，可以直接调用
+        ServletContext sc <span class="token operator">=</span> <span class="token function">getServletContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h3 id="2-、域对象（共享数据）"><a href="#2-、域对象（共享数据）" class="headerlink" title="2 、域对象（共享数据）"></a>2 、域对象（共享数据）</h3><blockquote>
 <p>在当前整个服务器应用范围内，共享数据</p>
 </blockquote>
 <ul>
 <li><p><strong>生命周期</strong></p>
-<pre><code class="markdown">1. 何时创建？
-        项目加载时，创建唯一的一个ServletContext对象(全局唯一)
-2. 何时销毁？
-        项目卸载时，销毁
-3. 作用范围？
-        与项目共存亡（多个servlet和多次请求都可以操作它）
+<pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">1.</span> 何时创建？
+<span class="token code keyword">        项目加载时，创建唯一的一个ServletContext对象(全局唯一)</span>
+<span class="token list punctuation">2.</span> 何时销毁？
+<span class="token code keyword">        项目卸载时，销毁</span>
+<span class="token list punctuation">3.</span> 作用范围？
+<span class="token code keyword">        与项目共存亡（多个servlet和多次请求都可以操作它）</span>
 </code></pre>
 </li>
 <li><p><strong>API方法</strong></p>
-<pre><code class="tex">1. 存储数据
+<pre class=" language-tex"><code class="language-tex">1. 存储数据
         void setAttribute(String name,Object value)
 2. 获取数据
         Object getAttribute(String name)
@@ -797,94 +797,94 @@
 </code></pre>
 </li>
 </ul>
-<pre><code class="java">    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doPost</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">)</span> <span class="token keyword">throws</span> ServletException<span class="token punctuation">,</span> IOException <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
 
-        ServletContext context1 = getServletContext();
-        ServletContext context2 = request.getServletContext();
-        //org.apache.catalina.core.ApplicationContextFacade@7f95da61
-        System.out.println(context1);
-        //org.apache.catalina.core.ApplicationContextFacade@7f95da61
-        System.out.println(context2);
+        ServletContext context1 <span class="token operator">=</span> <span class="token function">getServletContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ServletContext context2 <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getServletContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//org.apache.catalina.core.ApplicationContextFacade@7f95da61</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>context1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//org.apache.catalina.core.ApplicationContextFacade@7f95da61</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>context2<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        context1.setAttribute(&quot;key&quot;, &quot;dongxi&quot;);
+        context1<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"key"</span><span class="token punctuation">,</span> <span class="token string">"dongxi"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    &#125;
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 </code></pre>
-<h3 id="3、获取资源在服务器的真实路径"><a href="#3、获取资源在服务器的真实路径" class="headerlink" title="3、获取资源在服务器的真实路径"></a>3、获取资源在服务器的真实路径</h3><pre><code class="java">* API
-        String getRealPath(String path);
+<h3 id="3、获取资源在服务器的真实路径"><a href="#3、获取资源在服务器的真实路径" class="headerlink" title="3、获取资源在服务器的真实路径"></a>3、获取资源在服务器的真实路径</h3><pre class=" language-java"><code class="language-java"><span class="token operator">*</span> API
+        String <span class="token function">getRealPath</span><span class="token punctuation">(</span>String path<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<pre><code class="markdown">            项目虚拟路径:     /day06-response
-            项目真实路径:     E:\test\class125_web\out\artifacts\day06_response_war_exploded
+<pre class=" language-markdown"><code class="language-markdown"><span class="token code keyword">            项目虚拟路径:     /day06-response</span>
+<span class="token code keyword">            项目真实路径:     E:\test\class125_web\out\artifacts\day06_response_war_exploded</span>
 
 
-            举个例子:  访问资源 3.txt
-                虚拟路径:  http://localhost:8080/day06-response/resource/3.txt
-                真实路径:
-                        1). 项目源码路径,不是真实路径    E:\test\class125_web\day06-response\web\resource\3.txt
-                                E:\test\class125_web\day06-response
-                                    a. src   -&gt; 编译到 web-inf/classes中
-                                            问题: jar包是class文件压缩包,直接放web-inf
-                                    b. web  -&gt; 无需编译
+<span class="token code keyword">            举个例子:  访问资源 3.txt</span>
+<span class="token code keyword">                虚拟路径:  http://localhost:8080/day06-response/resource/3.txt</span>
+<span class="token code keyword">                真实路径:</span>
+<span class="token code keyword">                        1). 项目源码路径,不是真实路径    E:\test\class125_web\day06-response\web\resource\3.txt</span>
+<span class="token code keyword">                                E:\test\class125_web\day06-response</span>
+<span class="token code keyword">                                    a. src   -> 编译到 web-inf/classes中</span>
+<span class="token code keyword">                                            问题: jar包是class文件压缩包,直接放web-inf</span>
+<span class="token code keyword">                                    b. web  -> 无需编译</span>
 
-                        2).项目编译路径,才是真实路径
-                                 E:\test\class125_web\out\artifacts\day06_response_war_exploded
-                                    web-inf
+<span class="token code keyword">                        2).项目编译路径,才是真实路径</span>
+<span class="token code keyword">                                 E:\test\class125_web\out\artifacts\day06_response_war_exploded</span>
+<span class="token code keyword">                                    web-inf</span>
 </code></pre>
-<pre><code class="java">       ServletContext context = request.getServletContext();
-        //根据资源的相对路径,获取其绝对真实路径
-        String realPath = context.getRealPath(&quot;resource/3.txt&quot;);
-        System.out.println(realPath);
+<pre class=" language-java"><code class="language-java">       ServletContext context <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getServletContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//根据资源的相对路径,获取其绝对真实路径</span>
+        String realPath <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">getRealPath</span><span class="token punctuation">(</span><span class="token string">"resource/3.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>realPath<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<h3 id="4、获取资源Mime类型"><a href="#4、获取资源Mime类型" class="headerlink" title="4、获取资源Mime类型"></a>4、获取资源Mime类型</h3><pre><code class="java">context.getMimeType(&quot;resource/3.txt&quot;);
+<h3 id="4、获取资源Mime类型"><a href="#4、获取资源Mime类型" class="headerlink" title="4、获取资源Mime类型"></a>4、获取资源Mime类型</h3><pre class=" language-java"><code class="language-java">context<span class="token punctuation">.</span><span class="token function">getMimeType</span><span class="token punctuation">(</span><span class="token string">"resource/3.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<pre><code class="java">        /*
+<pre class=" language-java"><code class="language-java">        <span class="token comment" spellcheck="true">/*
         *  mime type : 是文件类型一种表示形式
-        *    txt -&gt; text/plain
-        *    html -&gt; text/html
-        *    json -&gt;application/json
-        * */
-        String mimeType = context.getMimeType(&quot;resource/3.txt&quot;);
-        System.out.println(mimeType);
+        *    txt -> text/plain
+        *    html -> text/html
+        *    json ->application/json
+        * */</span>
+        String mimeType <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">getMimeType</span><span class="token punctuation">(</span><span class="token string">"resource/3.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>mimeType<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h3 id="5、获取全局参数"><a href="#5、获取全局参数" class="headerlink" title="5、获取全局参数"></a>5、获取全局参数</h3><p>1). 获取全局的配置参数</p>
-<pre><code class="java">获取web.xml中的初始化参数   getInitParameter(&quot;参数名&quot;);
+<pre class=" language-java"><code class="language-java">获取web<span class="token punctuation">.</span>xml中的初始化参数   <span class="token function">getInitParameter</span><span class="token punctuation">(</span><span class="token string">"参数名"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p><strong>web.xml</strong></p>
-<pre><code class="xml">    &lt;context-param&gt;
-        &lt;param-name&gt;spring&lt;/param-name&gt;
-        &lt;param-value&gt;sping.xml&lt;/param-value&gt;
-    &lt;/context-param&gt;
+<pre class=" language-xml"><code class="language-xml">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>context-param</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-name</span><span class="token punctuation">></span></span>spring<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-name</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-value</span><span class="token punctuation">></span></span>sping.xml<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-value</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>context-param</span><span class="token punctuation">></span></span>
 </code></pre>
 <h2 id="5、案例文件下载"><a href="#5、案例文件下载" class="headerlink" title="5、案例文件下载"></a>5、案例文件下载</h2><p><strong>html：</strong></p>
-<pre><code class="html">&lt;body&gt;
-        &lt;!--&lt;h1&gt;文件下载第一种 直接下载不常用&lt;/h1&gt;
-        &lt;a href=&quot;resource/1.zip&quot;&gt;1.zip&lt;/a&gt; &lt;br&gt;
-        &lt;a href=&quot;resource/2.exe&quot;&gt;2.exe&lt;/a&gt; &lt;br&gt;
-        &lt;a href=&quot;resource/3.txt&quot;&gt;3.txt&lt;/a&gt; &lt;br&gt;
-        &lt;a href=&quot;resource/4.jpg&quot;&gt;4.jpg&lt;/a&gt; &lt;br&gt;--&gt;
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+        <span class="token comment" spellcheck="true">&lt;!--&lt;h1>文件下载第一种 直接下载不常用&lt;/h1>
+        &lt;a href="resource/1.zip">1.zip&lt;/a> &lt;br>
+        &lt;a href="resource/2.exe">2.exe&lt;/a> &lt;br>
+        &lt;a href="resource/3.txt">3.txt&lt;/a> &lt;br>
+        &lt;a href="resource/4.jpg">4.jpg&lt;/a> &lt;br>--></span>
 
-        &lt;h1&gt;文件下载第二种方案&lt;/h1&gt;
-        &lt;a href=&quot;DownloadServlet?file=1.zip&quot;&gt;1.zip&lt;/a&gt; &lt;br&gt;
-        &lt;a href=&quot;DownloadServlet?file=2.exe&quot;&gt;2.exe&lt;/a&gt; &lt;br&gt;
-        &lt;a href=&quot;DownloadServlet?file=3.txt&quot;&gt;3.txt&lt;/a&gt; &lt;br&gt;
-        &lt;a href=&quot;DownloadServlet?file=4.jpg&quot;&gt;4.jpg&lt;/a&gt; &lt;br&gt;
-        &lt;a href=&quot;DownloadServlet?file=葵花宝典.zip&quot;&gt;葵花宝典.zip&lt;/a&gt; &lt;br&gt;
-&lt;/body&gt;
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>文件下载第二种方案<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>DownloadServlet?file<span class="token punctuation">=</span>1.zip<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>1.zip<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>DownloadServlet?file<span class="token punctuation">=</span>2.exe<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>2.exe<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>DownloadServlet?file<span class="token punctuation">=</span>3.txt<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>3.txt<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>DownloadServlet?file<span class="token punctuation">=</span>4.jpg<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>4.jpg<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>DownloadServlet?file<span class="token punctuation">=</span>葵花宝典.zip<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>葵花宝典.zip<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
 </code></pre>
 <p><strong>DownLoadServlet：</strong></p>
-<pre><code class="markdown">1.获取文件名
+<pre class=" language-markdown"><code class="language-markdown">1.获取文件名
 2.设置响应头信息，content-type，content-disposition
 3.找到真实路径
 4.通过流，进行复制。
 5.关闭流
 </code></pre>
-<pre><code class="java">    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
-        //1. 获取请求
-        String fileName = request.getParameter(&quot;file&quot;);
-        //2. 业务处理
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doPost</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">)</span> <span class="token keyword">throws</span> ServletException<span class="token punctuation">,</span> IOException <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//1. 获取请求</span>
+        String fileName <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getParameter</span><span class="token punctuation">(</span><span class="token string">"file"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//2. 业务处理</span>
 
-        //3. 响应
-        /*
+        <span class="token comment" spellcheck="true">//3. 响应</span>
+        <span class="token comment" spellcheck="true">/*
             contentType: text/html;charset=utf-8
                 解决响应体中文乱码
 
@@ -893,67 +893,67 @@
                     url网络传输不支持非法符号(比如中文)
 
                         word=%E6%9D%AF%E5%AD%90
-                       url编码 : 杯子 -&gt;  %E6%9D%AF%E5%AD%90
-                       url解码 : %E6%9D%AF%E5%AD%90 -&gt; 杯子
+                       url编码 : 杯子 ->  %E6%9D%AF%E5%AD%90
+                       url解码 : %E6%9D%AF%E5%AD%90 -> 杯子
 
                     如果中文直接放响应头, 就会乱码
                 2. 解决:
                     url编码
 
-         */
+         */</span>
         
-        // 中文编码，设置响应头
-        String code = DownLoadUtils.getName(request, fileName);
-        response.setHeader(&quot;content-disposition&quot;, &quot;attachment;filename=X&quot; + code);
+        <span class="token comment" spellcheck="true">// 中文编码，设置响应头</span>
+        String code <span class="token operator">=</span> DownLoadUtils<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> fileName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        response<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">"content-disposition"</span><span class="token punctuation">,</span> <span class="token string">"attachment;filename=X"</span> <span class="token operator">+</span> code<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        // 设置内容类型
-        String mimeType = request.getServletContext().getMimeType(&quot;resource/&quot; + fileName);
-        response.setContentType(mimeType);
+        <span class="token comment" spellcheck="true">// 设置内容类型</span>
+        String mimeType <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getServletContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getMimeType</span><span class="token punctuation">(</span><span class="token string">"resource/"</span> <span class="token operator">+</span> fileName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        response<span class="token punctuation">.</span><span class="token function">setContentType</span><span class="token punctuation">(</span>mimeType<span class="token punctuation">)</span><span class="token punctuation">;</span>
         
-        String realPath = request.getServletContext().getRealPath(&quot;resource/&quot; + fileName);
-        FileInputStream is = new FileInputStream(realPath);
-        ServletOutputStream os = response.getOutputStream();
-        int length;
-        byte[] buffer = new byte[1024];
-        while((length = is.read(buffer)) != -1)&#123;
-            os.write(buffer,0,length);
-        &#125;
+        String realPath <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getServletContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getRealPath</span><span class="token punctuation">(</span><span class="token string">"resource/"</span> <span class="token operator">+</span> fileName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        FileInputStream is <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileInputStream</span><span class="token punctuation">(</span>realPath<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ServletOutputStream os <span class="token operator">=</span> response<span class="token punctuation">.</span><span class="token function">getOutputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> length<span class="token punctuation">;</span>
+        <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> buffer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">byte</span><span class="token punctuation">[</span><span class="token number">1024</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>length <span class="token operator">=</span> is<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span>buffer<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            os<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>buffer<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-        os.close();
-        is.close();
+        os<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        is<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    &#125;
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 </code></pre>
 <p><strong>可能出现的问题：响应头中文乱码</strong></p>
-<pre><code class="markdown">* 如果该下载文件名是中文的话，会出现乱码...
-    谷歌和绝大多数的浏览器是通过 url编码
-        URLEncode() 编码
-        URLDecode() 解码
-    火狐浏览器   base64编码
+<pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">*</span> 如果该下载文件名是中文的话，会出现乱码...
+<span class="token code keyword">    谷歌和绝大多数的浏览器是通过 url编码</span>
+<span class="token code keyword">        URLEncode() 编码</span>
+<span class="token code keyword">        URLDecode() 解码</span>
+<span class="token code keyword">    火狐浏览器   base64编码</span>
     
-* 我们就需要考虑浏览器兼容性问题....
-    资料提供了判断浏览器不同编码的工具类直接使用即可....
+<span class="token list punctuation">*</span> 我们就需要考虑浏览器兼容性问题....
+<span class="token code keyword">    资料提供了判断浏览器不同编码的工具类直接使用即可....</span>
 </code></pre>
-<pre><code class="java">public class DownLoadUtils &#123;
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DownLoadUtils</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
 
-    public static String getName(HttpServletRequest request, String filename) throws UnsupportedEncodingException &#123;
-        // 获得请求头中的User-Agent
-        String agent = request.getHeader(&quot;User-Agent&quot;);
-        // 根据不同的客户端进行不同的编码
-        String filenameEncoder = &quot;&quot;;
-         if (agent.contains(&quot;Firefox&quot;)) &#123;
-            // 火狐浏览器
-             System.out.println(&quot;我是火狐&quot;);
-            BASE64Encoder base64Encoder = new BASE64Encoder();
-            filenameEncoder = &quot;=?utf-8?B?&quot; + base64Encoder.encode(filename.getBytes(&quot;utf-8&quot;)) + &quot;?=&quot;;
-        &#125; else &#123;
-            // 其它浏览器
-             System.out.println(&quot;我是google&quot;);
-            filenameEncoder = URLEncoder.encode(filename, &quot;utf-8&quot;);
-        &#125;
-        return filenameEncoder;
-    &#125;
-&#125;
+    <span class="token keyword">public</span> <span class="token keyword">static</span> String <span class="token function">getName</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> String filename<span class="token punctuation">)</span> <span class="token keyword">throws</span> UnsupportedEncodingException <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 获得请求头中的User-Agent</span>
+        String agent <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getHeader</span><span class="token punctuation">(</span><span class="token string">"User-Agent"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 根据不同的客户端进行不同的编码</span>
+        String filenameEncoder <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+         <span class="token keyword">if</span> <span class="token punctuation">(</span>agent<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">"Firefox"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">// 火狐浏览器</span>
+             System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"我是火狐"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            BASE64Encoder base64Encoder <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BASE64Encoder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            filenameEncoder <span class="token operator">=</span> <span class="token string">"=?utf-8?B?"</span> <span class="token operator">+</span> base64Encoder<span class="token punctuation">.</span><span class="token function">encode</span><span class="token punctuation">(</span>filename<span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"?="</span><span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">// 其它浏览器</span>
+             System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"我是google"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            filenameEncoder <span class="token operator">=</span> URLEncoder<span class="token punctuation">.</span><span class="token function">encode</span><span class="token punctuation">(</span>filename<span class="token punctuation">,</span> <span class="token string">"utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> filenameEncoder<span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 </code></pre>
 
                 

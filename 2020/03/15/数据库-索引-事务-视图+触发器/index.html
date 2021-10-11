@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 
@@ -521,19 +521,19 @@
 <td>SELECT TRIM(‘ itheima ‘)</td>
 </tr>
 </tbody></table>
-<pre><code class="sql">-- 获取字符的长度
-select ename,char_length(ename) from emp;
-select char_length(&#39;laofang&#39;);-- 7
--- 字符串拼接
-select concat(&#39;&#123;ename:&#39;,ename,&#39;,job:&#39;,job,&#39;,sal:&#39;,sal,&#39;&#125;&#39;) from emp;
--- 转小写
-select lower(&#39;FangJiCai&#39;);-- fangjicai
--- 转大写
-select upper(&#39;FangJiCai&#39;);-- FANGJICAI
--- 截取字符串长度
-select substr(&#39;wubolin&#39;,3,2);-- bo
--- 去除字符串两边的空格
-select trim(&#39;    si qing  zhen   &#39;);-- si qing  zhen
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 获取字符的长度</span>
+<span class="token keyword">select</span> ename<span class="token punctuation">,</span>char_length<span class="token punctuation">(</span>ename<span class="token punctuation">)</span> <span class="token keyword">from</span> emp<span class="token punctuation">;</span>
+<span class="token keyword">select</span> char_length<span class="token punctuation">(</span><span class="token string">'laofang'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- 7</span>
+<span class="token comment" spellcheck="true">-- 字符串拼接</span>
+<span class="token keyword">select</span> concat<span class="token punctuation">(</span>'<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;ename:',ename,',job:',job,',sal:',sal,'&amp;#125;') from emp;</span>
+<span class="token comment" spellcheck="true">-- 转小写</span>
+<span class="token keyword">select</span> lower<span class="token punctuation">(</span><span class="token string">'FangJiCai'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- fangjicai</span>
+<span class="token comment" spellcheck="true">-- 转大写</span>
+<span class="token keyword">select</span> upper<span class="token punctuation">(</span><span class="token string">'FangJiCai'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- FANGJICAI</span>
+<span class="token comment" spellcheck="true">-- 截取字符串长度</span>
+<span class="token keyword">select</span> substr<span class="token punctuation">(</span><span class="token string">'wubolin'</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- bo</span>
+<span class="token comment" spellcheck="true">-- 去除字符串两边的空格</span>
+<span class="token keyword">select</span> trim<span class="token punctuation">(</span><span class="token string">'    si qing  zhen   '</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- si qing  zhen</span>
 </code></pre>
 <h4 id="2-数字函数"><a href="#2-数字函数" class="headerlink" title="2)数字函数"></a>2)数字函数</h4><table>
 <thead>
@@ -569,16 +569,16 @@ select trim(&#39;    si qing  zhen   &#39;);-- si qing  zhen
 <td>SELECT GREATEST(13, 14, 521, 74, 1)</td>
 </tr>
 </tbody></table>
-<pre><code class="sql">-- 获取0到1的随机数
-select rand();
--- 四舍五入函数
-select round(3.1415926,3);-- 3.142
--- 数字截取,不做四舍五入
-select truncate(3.1415926,3);-- 3.141
--- 返回列表中的最小值
-select least(10,40,60,5,100);-- 5
--- 返回列表中的最大值
-select greatest(10,40,60,5,100);-- 100
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 获取0到1的随机数</span>
+<span class="token keyword">select</span> rand<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 四舍五入函数</span>
+<span class="token keyword">select</span> <span class="token function">round</span><span class="token punctuation">(</span><span class="token number">3.1415926</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- 3.142</span>
+<span class="token comment" spellcheck="true">-- 数字截取,不做四舍五入</span>
+<span class="token keyword">select</span> <span class="token keyword">truncate</span><span class="token punctuation">(</span><span class="token number">3.1415926</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- 3.141</span>
+<span class="token comment" spellcheck="true">-- 返回列表中的最小值</span>
+<span class="token keyword">select</span> least<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">40</span><span class="token punctuation">,</span><span class="token number">60</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- 5</span>
+<span class="token comment" spellcheck="true">-- 返回列表中的最大值</span>
+<span class="token keyword">select</span> greatest<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">40</span><span class="token punctuation">,</span><span class="token number">60</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- 100</span>
 </code></pre>
 <hr style="height:10px;background-color:green;border:none;" />
 
@@ -621,24 +621,24 @@ select greatest(10,40,60,5,100);-- 100
 <td align="left">SELECT DAY(NOW());</td>
 </tr>
 </tbody></table>
-<pre><code class="sql">-- 返回系统的当前日期和时间
-select now();-- 2020-12-11 09:26:29
-select sysdate();-- 2020-12-11 09:26:29
--- 返回当前日期
-select curdate();-- 2020-12-11 
--- 返回当前系统时间
-select curtime();-- 09:27:08
--- 返回年份
-select ename from emp where year(hiredate)=&#39;1980&#39;;
-select year(now());-- 2020
-select year(&#39;2019-01-01&#39;); -- 2019
-select year(&#39;2019/01/01&#39;); -- 2019
--- 返回月份
-select month(now());-- 12
-select month(&#39;2019/01/01&#39;);-- 1
--- 返回日
-select day(now());-- 11
-select day(&#39;2019-01-01&#39;);-- 1
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 返回系统的当前日期和时间</span>
+<span class="token keyword">select</span> <span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- 2020-12-11 09:26:29</span>
+<span class="token keyword">select</span> sysdate<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- 2020-12-11 09:26:29</span>
+<span class="token comment" spellcheck="true">-- 返回当前日期</span>
+<span class="token keyword">select</span> curdate<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- 2020-12-11 </span>
+<span class="token comment" spellcheck="true">-- 返回当前系统时间</span>
+<span class="token keyword">select</span> curtime<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- 09:27:08</span>
+<span class="token comment" spellcheck="true">-- 返回年份</span>
+<span class="token keyword">select</span> ename <span class="token keyword">from</span> emp <span class="token keyword">where</span> year<span class="token punctuation">(</span>hiredate<span class="token punctuation">)</span><span class="token operator">=</span><span class="token string">'1980'</span><span class="token punctuation">;</span>
+<span class="token keyword">select</span> year<span class="token punctuation">(</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- 2020</span>
+<span class="token keyword">select</span> year<span class="token punctuation">(</span><span class="token string">'2019-01-01'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">-- 2019</span>
+<span class="token keyword">select</span> year<span class="token punctuation">(</span><span class="token string">'2019/01/01'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">-- 2019</span>
+<span class="token comment" spellcheck="true">-- 返回月份</span>
+<span class="token keyword">select</span> month<span class="token punctuation">(</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- 12</span>
+<span class="token keyword">select</span> month<span class="token punctuation">(</span><span class="token string">'2019/01/01'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- 1</span>
+<span class="token comment" spellcheck="true">-- 返回日</span>
+<span class="token keyword">select</span> day<span class="token punctuation">(</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- 11</span>
+<span class="token keyword">select</span> day<span class="token punctuation">(</span><span class="token string">'2019-01-01'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- 1</span>
 </code></pre>
 <h4 id="2-高级函数"><a href="#2-高级函数" class="headerlink" title="2)高级函数"></a>2)高级函数</h4><table>
 <thead>
@@ -664,18 +664,18 @@ select day(&#39;2019-01-01&#39;);-- 1
 <td align="left">SELECT ISNULL(NULL);</td>
 </tr>
 </tbody></table>
-<pre><code class="sql">-- 返回当前用户
-select current_user();-- root@localhost
--- ifnull(v1,v2)如果 v1 的值不为 NULL，则返回 v1，否则返回 v2
-select ename,ifnull(comm,0) as comm from emp;
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 返回当前用户</span>
+<span class="token keyword">select</span> <span class="token keyword">current_user</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- root@localhost</span>
+<span class="token comment" spellcheck="true">-- ifnull(v1,v2)如果 v1 的值不为 NULL，则返回 v1，否则返回 v2</span>
+<span class="token keyword">select</span> ename<span class="token punctuation">,</span>ifnull<span class="token punctuation">(</span>comm<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">as</span> comm <span class="token keyword">from</span> emp<span class="token punctuation">;</span>
 
--- isnull判断表达式是否为 NULL,为空则为1,不为空则为0
-select isnull(null);-- true 1
-select isnull(666);-- false 0
-select * from emp where 0;
-select * from emp where 1;
--- 查询comm为null的用户有哪些
-select * from emp where isnull(comm);
+<span class="token comment" spellcheck="true">-- isnull判断表达式是否为 NULL,为空则为1,不为空则为0</span>
+<span class="token keyword">select</span> isnull<span class="token punctuation">(</span><span class="token boolean">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- true 1</span>
+<span class="token keyword">select</span> isnull<span class="token punctuation">(</span><span class="token number">666</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- false 0</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> emp <span class="token keyword">where</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> emp <span class="token keyword">where</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 查询comm为null的用户有哪些</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> emp <span class="token keyword">where</span> isnull<span class="token punctuation">(</span>comm<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <hr style="height:10px;background-color:green;border:none;" />
 
@@ -711,56 +711,56 @@ select * from emp where isnull(comm);
 </tr>
 </tbody></table>
 <p>数据准备:</p>
-<pre><code class="sql"># 创建账号表
-create table account(
-    id int primary key auto_increment,
-    name varchar(20),
-    money double
-);
-# 初始化数据
-insert into account values (null,&#39;a&#39;,1000);
-insert into account values (null,&#39;b&#39;,1000);
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true"># 创建账号表</span>
+<span class="token keyword">create</span> <span class="token keyword">table</span> account<span class="token punctuation">(</span>
+    id <span class="token keyword">int</span> <span class="token keyword">primary</span> <span class="token keyword">key</span> <span class="token keyword">auto_increment</span><span class="token punctuation">,</span>
+    name <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    money <span class="token keyword">double</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true"># 初始化数据</span>
+<span class="token keyword">insert</span> <span class="token keyword">into</span> account <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token boolean">null</span><span class="token punctuation">,</span><span class="token string">'a'</span><span class="token punctuation">,</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">insert</span> <span class="token keyword">into</span> account <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token boolean">null</span><span class="token punctuation">,</span><span class="token string">'b'</span><span class="token punctuation">,</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>说明:</p>
 <p>需求1:a给b转账100元,演示提交事务和回滚事务</p>
-<pre><code class="sql">-- 需求1:a给b转账100元,演示提交事务
--- 1.1.手动开启事务
-start transaction;
--- 1.2. a扣款100
-update account set money=money-100 where name=&#39;a&#39;;
--- 1.3 b收款100
-update account set money=money+100 where name=&#39;b&#39;;
--- 1.4 事务提交
-commit;
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 需求1:a给b转账100元,演示提交事务</span>
+<span class="token comment" spellcheck="true">-- 1.1.手动开启事务</span>
+<span class="token keyword">start</span> <span class="token keyword">transaction</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 1.2. a扣款100</span>
+<span class="token keyword">update</span> account <span class="token keyword">set</span> money<span class="token operator">=</span>money<span class="token number">-100</span> <span class="token keyword">where</span> name<span class="token operator">=</span><span class="token string">'a'</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 1.3 b收款100</span>
+<span class="token keyword">update</span> account <span class="token keyword">set</span> money<span class="token operator">=</span>money<span class="token operator">+</span><span class="token number">100</span> <span class="token keyword">where</span> name<span class="token operator">=</span><span class="token string">'b'</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 1.4 事务提交</span>
+<span class="token keyword">commit</span><span class="token punctuation">;</span>
 
 
--- 需求2:a给b转账100元,演示回滚事务
--- 1.1.手动开启事务
-start transaction;
--- 1.2. a扣款100
-update account set money=money-100 where name=&#39;a&#39;;
--- 1.3 b收款100
-update account set money=money+100 where name=&#39;b&#39;;
--- 1.4 事务回滚
-rollback;
+<span class="token comment" spellcheck="true">-- 需求2:a给b转账100元,演示回滚事务</span>
+<span class="token comment" spellcheck="true">-- 1.1.手动开启事务</span>
+<span class="token keyword">start</span> <span class="token keyword">transaction</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 1.2. a扣款100</span>
+<span class="token keyword">update</span> account <span class="token keyword">set</span> money<span class="token operator">=</span>money<span class="token number">-100</span> <span class="token keyword">where</span> name<span class="token operator">=</span><span class="token string">'a'</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 1.3 b收款100</span>
+<span class="token keyword">update</span> account <span class="token keyword">set</span> money<span class="token operator">=</span>money<span class="token operator">+</span><span class="token number">100</span> <span class="token keyword">where</span> name<span class="token operator">=</span><span class="token string">'b'</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 1.4 事务回滚</span>
+<span class="token keyword">rollback</span><span class="token punctuation">;</span>
 </code></pre>
 <h4 id="4-自动提交事务"><a href="#4-自动提交事务" class="headerlink" title="4)自动提交事务"></a>4)自动提交事务</h4><p>  <strong>MySQL的每一条DML(增删改)语句都是一个单独的事务</strong>，每条语句都会自动开启一个事务，执行完毕自动提交事务，MySQL默认开始自动提交事务。</p>
 <p>1.通过以下命令可以查看当前autocommit模式：</p>
-<pre><code class="sql">show variables like &#39;%commit%&#39;;
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">show</span> variables <span class="token operator">like</span> <span class="token string">'%commit%'</span><span class="token punctuation">;</span>
 </code></pre>
 <p>2.设置自动提交的参数为OFF:</p>
-<pre><code class="sql">set autocommit = 0;  -- 0:OFF  1:ON
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">set</span> autocommit <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">-- 0:OFF  1:ON</span>
 </code></pre>
 <p>小结:</p>
 <p>1.如何开启事务? </p>
-<pre><code class="sql">1)mysql默认事务自动开启,在进行增删改时,无需手动提交;
-2)通过start transaction可以手动开启事务,那么这个开启的事务就需要手动提交
+<pre class=" language-sql"><code class="language-sql"><span class="token number">1</span><span class="token punctuation">)</span>mysql默认事务自动开启<span class="token punctuation">,</span>在进行增删改时<span class="token punctuation">,</span>无需手动提交<span class="token punctuation">;</span>
+<span class="token number">2</span><span class="token punctuation">)</span>通过<span class="token keyword">start</span> <span class="token keyword">transaction</span>可以手动开启事务<span class="token punctuation">,</span>那么这个开启的事务就需要手动提交
 </code></pre>
 <p>2.如何提交事务?</p>
-<pre><code class="sql">commit;
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">commit</span><span class="token punctuation">;</span>
 </code></pre>
 <p>3.如何回滚事务?</p>
-<pre><code class="sql">rollback;
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">rollback</span><span class="token punctuation">;</span>
 </code></pre>
 <hr style="height:10px;background-color:green;border:none;" />
 
@@ -783,7 +783,7 @@ rollback;
 </tr>
 </tbody></table>
 <p>练习:</p>
-<pre><code class="tex">1. 将数据还原到1000
+<pre class=" language-tex"><code class="language-tex">1. 将数据还原到1000
 2. 开启事务
 3. 让a用户先减100块
 4. 设置回滚点：savepoint itcast; 
@@ -791,23 +791,23 @@ rollback;
 6. 回到回滚点：rollback to itcast
 7. 最后commit提交事务
 </code></pre>
-<pre><code class="sql">-- 1.将数据还原到1000
--- 2.开启事务
-start transaction;
--- 3. 让a用户先减100块
-update account set money=money-100 where name=&#39;a&#39;;
--- 4. 设置回滚点：savepoint itcast; 
-savepoint itcast;
--- 5.然后让a用户再次减100块
-update account set money=money-100 where name=&#39;a&#39;;
--- 6. 回到回滚点：rollback to itcast
-rollback to itcast;
--- 7. 最后commit提交事务
-commit;
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 1.将数据还原到1000</span>
+<span class="token comment" spellcheck="true">-- 2.开启事务</span>
+<span class="token keyword">start</span> <span class="token keyword">transaction</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 3. 让a用户先减100块</span>
+<span class="token keyword">update</span> account <span class="token keyword">set</span> money<span class="token operator">=</span>money<span class="token number">-100</span> <span class="token keyword">where</span> name<span class="token operator">=</span><span class="token string">'a'</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 4. 设置回滚点：savepoint itcast; </span>
+<span class="token keyword">savepoint</span> itcast<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 5.然后让a用户再次减100块</span>
+<span class="token keyword">update</span> account <span class="token keyword">set</span> money<span class="token operator">=</span>money<span class="token number">-100</span> <span class="token keyword">where</span> name<span class="token operator">=</span><span class="token string">'a'</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 6. 回到回滚点：rollback to itcast</span>
+<span class="token keyword">rollback</span> <span class="token keyword">to</span> itcast<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 7. 最后commit提交事务</span>
+<span class="token keyword">commit</span><span class="token punctuation">;</span>
 </code></pre>
 <h4 id="2-事务原理"><a href="#2-事务原理" class="headerlink" title="2)事务原理"></a>2)事务原理</h4><p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210902002115077.png" alt="image-20210902002115077"></p>
 <p>说明:</p>
-<pre><code class="tex">1)客户端连接mysql服务,服务端会对这个用户进行安全校验,通过后会创建一个临时的事务日志文件;
+<pre class=" language-tex"><code class="language-tex">1)客户端连接mysql服务,服务端会对这个用户进行安全校验,通过后会创建一个临时的事务日志文件;
 2)当用户直接向数据库插入数据时(因为mysql默认事务自动提交),数据会直接刷入数据库;
 3)当用户调用start transaction命令手动开启事务时,事务相关的数据首先会写入这个临时的事务日志文件,然后当用户调用commit命令时,会将事务的数据刷入的数据库;
 4)当用户进行事务的回滚时,会直接清空这个临时的事务日志文件(redo.log,undo.log,binlog);
@@ -815,16 +815,16 @@ commit;
 </code></pre>
 <p>小结:</p>
 <p>1.事务回滚点设置?</p>
-<pre><code class="sql">savepoint 回滚点名称;
--- 回滚到指定回滚点
-rollback to 回滚点名称;
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">savepoint</span> 回滚点名称<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 回滚到指定回滚点</span>
+<span class="token keyword">rollback</span> <span class="token keyword">to</span> 回滚点名称<span class="token punctuation">;</span>
 </code></pre>
 <p>2.事务原理?</p>
-<pre><code class="sql">1)客户端连接mysql服务,服务端会对这个用户进行安全校验,通过后会创建一个临时的事务日志文件;
-2)当用户直接向数据库插入数据时(因为mysql默认事务自动提交),数据会直接刷入数据库;
-3)当用户调用start transaction命令手动开启事务时,事务相关的数据首先会写入这个临时的事务日志文件,然后当用户调用commit命令时,会将事务的数据刷入的数据库;
-4)当用户进行事务的回滚时,会直接清空这个临时的事务日志文件(redo.log,undo.log,binlog);
-5)当一个事务尚未提交,但是连接中断时,自动清除这个临时的事务文件;
+<pre class=" language-sql"><code class="language-sql"><span class="token number">1</span><span class="token punctuation">)</span>客户端连接mysql服务<span class="token punctuation">,</span>服务端会对这个用户进行安全校验<span class="token punctuation">,</span>通过后会创建一个临时的事务日志文件<span class="token punctuation">;</span>
+<span class="token number">2</span><span class="token punctuation">)</span>当用户直接向数据库插入数据时<span class="token punctuation">(</span>因为mysql默认事务自动提交<span class="token punctuation">)</span><span class="token punctuation">,</span>数据会直接刷入数据库<span class="token punctuation">;</span>
+<span class="token number">3</span><span class="token punctuation">)</span>当用户调用<span class="token keyword">start</span> <span class="token keyword">transaction</span>命令手动开启事务时<span class="token punctuation">,</span>事务相关的数据首先会写入这个临时的事务日志文件<span class="token punctuation">,</span>然后当用户调用<span class="token keyword">commit</span>命令时<span class="token punctuation">,</span>会将事务的数据刷入的数据库<span class="token punctuation">;</span>
+<span class="token number">4</span><span class="token punctuation">)</span>当用户进行事务的回滚时<span class="token punctuation">,</span>会直接清空这个临时的事务日志文件<span class="token punctuation">(</span>redo<span class="token punctuation">.</span>log<span class="token punctuation">,</span>undo<span class="token punctuation">.</span>log<span class="token punctuation">,</span>binlog<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token number">5</span><span class="token punctuation">)</span>当一个事务尚未提交<span class="token punctuation">,</span>但是连接中断时<span class="token punctuation">,</span>自动清除这个临时的事务文件<span class="token punctuation">;</span>
 </code></pre>
 <hr style="height:10px;background-color:green;border:none;" />
 
@@ -838,10 +838,10 @@ rollback to 回滚点名称;
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210902002313241.png" alt="image-20210902002313241"></p>
 <p>小结:</p>
 <p>1.面试问题:说一下事务的4大特性?</p>
-<pre><code class="sql">1)隔离性: 事务在并发下,事务彼此隔离,不受影响;
-2)原子性:事务是一个不可分割的整体,要么都发生,要么都不发生;
-3)持久性:事务一旦提交,对数据库数据的影响是永久性的,那么数据库重启,数据也不会丢失;
-4)一致性:首先一致性是基于原子性的,强调的是一个业务逻辑的概念(比如转账业务,双方转账前总金额与转账后总金额要一致);
+<pre class=" language-sql"><code class="language-sql"><span class="token number">1</span><span class="token punctuation">)</span>隔离性: 事务在并发下<span class="token punctuation">,</span>事务彼此隔离<span class="token punctuation">,</span>不受影响<span class="token punctuation">;</span>
+<span class="token number">2</span><span class="token punctuation">)</span>原子性:事务是一个不可分割的整体<span class="token punctuation">,</span>要么都发生<span class="token punctuation">,</span>要么都不发生<span class="token punctuation">;</span>
+<span class="token number">3</span><span class="token punctuation">)</span>持久性:事务一旦提交<span class="token punctuation">,</span>对数据库数据的影响是永久性的<span class="token punctuation">,</span>那么数据库重启<span class="token punctuation">,</span>数据也不会丢失<span class="token punctuation">;</span>
+<span class="token number">4</span><span class="token punctuation">)</span>一致性:首先一致性是基于原子性的<span class="token punctuation">,</span>强调的是一个业务逻辑的概念<span class="token punctuation">(</span>比如转账业务<span class="token punctuation">,</span>双方转账前总金额与转账后总金额要一致<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>2.事务相关的指令：</p>
 <table>
@@ -906,9 +906,9 @@ rollback to 回滚点名称;
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210902002537169.png" alt="image-20210902002537169"></p>
 <p>小结:</p>
 <p>事务并发下的3个问题?</p>
-<pre><code class="sql">1)脏读:一个事务读取了另一个事务未提交的数据;
-2)不可重复读:一个事务在相同条件下前后读取的内容不同(强调:发生在其他事务进行update操作时);
-3)幻读(虚读):一个事务在相同的条件下前后读取的行记录数不一致(强调:其他事务发生insert,delte操作,并且事务commit)
+<pre class=" language-sql"><code class="language-sql"><span class="token number">1</span><span class="token punctuation">)</span>脏读:一个事务读取了另一个事务未提交的数据<span class="token punctuation">;</span>
+<span class="token number">2</span><span class="token punctuation">)</span>不可重复读:一个事务在相同条件下前后读取的内容不同<span class="token punctuation">(</span>强调:发生在其他事务进行<span class="token keyword">update</span>操作时<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token number">3</span><span class="token punctuation">)</span>幻读<span class="token punctuation">(</span>虚读<span class="token punctuation">)</span>:一个事务在相同的条件下前后读取的行记录数不一致<span class="token punctuation">(</span>强调:其他事务发生<span class="token keyword">insert</span><span class="token punctuation">,</span>delte操作<span class="token punctuation">,</span>并且事务<span class="token keyword">commit</span><span class="token punctuation">)</span>
 </code></pre>
 <hr style="height:10px;background-color:green;border:none;" />
 
@@ -967,10 +967,10 @@ rollback to 回滚点名称;
 <p>  性能:  串行化&lt;可重复读&lt;读已提交&lt;读未提交 </p>
 <p>小结:</p>
 <p>面试:数据库有哪些隔离级别?</p>
-<pre><code class="sql">1.读未提交: 脏读,不可重复读,幻读
-2.读已提交:不可重复读,幻读
-3.可重复读:幻读
-4.串行化
+<pre class=" language-sql"><code class="language-sql"><span class="token number">1</span><span class="token punctuation">.</span>读未提交: 脏读<span class="token punctuation">,</span>不可重复读<span class="token punctuation">,</span>幻读
+<span class="token number">2</span><span class="token punctuation">.</span>读已提交:不可重复读<span class="token punctuation">,</span>幻读
+<span class="token number">3</span><span class="token punctuation">.</span>可重复读:幻读
+<span class="token number">4</span><span class="token punctuation">.</span>串行化
 </code></pre>
 <hr style="height:10px;background-color:green;border:none;" />
 
@@ -978,19 +978,19 @@ rollback to 回滚点名称;
 
 <p><strong>如何解决脏读的问题?</strong></p>
 <p> 说明: 需要将全局的隔离级别进行提升(read committed),然后开启两个sqlyog窗口演示,演示完毕恢复隔离级别即可;</p>
-<pre><code class="sql">1)提高隔离级别 读已提交
-set global transaction isolation level read committed;
-2）刷新session（重新连接）
+<pre class=" language-sql"><code class="language-sql"><span class="token number">1</span><span class="token punctuation">)</span>提高隔离级别 读已提交
+<span class="token keyword">set</span> <span class="token keyword">global</span> <span class="token keyword">transaction</span> <span class="token keyword">isolation level</span> <span class="token keyword">read</span> <span class="token keyword">committed</span><span class="token punctuation">;</span>
+<span class="token number">2</span>）刷新<span class="token keyword">session</span>（重新连接）
 </code></pre>
 <p>小结:</p>
 <p>  1.查看全局事务隔离级别命令?</p>
-<pre><code class="sql">select @@tx_isolation;
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> @<span class="token variable">@tx_isolation</span><span class="token punctuation">;</span>
 </code></pre>
 <p>  2.设置全局隔离级别?</p>
-<pre><code class="sql">set global transaction isolation level 隔离界别名称;
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">set</span> <span class="token keyword">global</span> <span class="token keyword">transaction</span> <span class="token keyword">isolation level</span> 隔离界别名称<span class="token punctuation">;</span>
 </code></pre>
 <p>  3.如何解决脏读?</p>
-<pre><code class="sql">提高事务隔离级别: &gt;=读已提交;
+<pre class=" language-sql"><code class="language-sql">提高事务隔离级别: <span class="token operator">>=</span>读已提交<span class="token punctuation">;</span>
 </code></pre>
 <hr style="height:10px;background-color:green;border:none;" />
 
@@ -998,121 +998,121 @@ set global transaction isolation level read committed;
 <p>1.硬优化：就是软优化之后性能还很低，只能采取硬优化，最后的步骤了，就是公司花钱购买服务器。在硬件上进行优化。</p>
 <p>2.<strong>软优化</strong>:  在操作和设计数据库方面上进行优化（重点）(<strong>表结构和sql语句</strong>)</p>
 <h3 id="3-2-分析-执行次数比较多的语句"><a href="#3-2-分析-执行次数比较多的语句" class="headerlink" title="3.2 分析-执行次数比较多的语句"></a>3.2 分析-执行次数比较多的语句</h3><p>1.执行次数比较多的语句分类</p>
-<pre><code class="sql">* 1）查询密集型
+<pre class=" language-sql"><code class="language-sql"><span class="token operator">*</span> <span class="token number">1</span>）查询密集型
 
-* 2）修改密集型  es solor
+<span class="token operator">*</span> <span class="token number">2</span>）修改密集型  es solor
 </code></pre>
 <p>2.查询累计插入和返回数据条数，即查看<strong>当前数据库属于查询密集型还是修改密集型</strong>。</p>
-<pre><code class="sql">-- 查询累计插入和返回数据条数
-show global status like &#39;Innodb_rows%&#39;;
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 查询累计插入和返回数据条数</span>
+<span class="token keyword">show</span> <span class="token keyword">global</span> <span class="token keyword">status</span> <span class="token operator">like</span> <span class="token string">'Innodb_rows%'</span><span class="token punctuation">;</span>
 </code></pre>
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210902002837634.png" alt="image-20210902002837634"></p>
 <h2 id="第四章-索引-掌握"><a href="#第四章-索引-掌握" class="headerlink" title="第四章 索引(掌握)"></a>第四章 索引(掌握)</h2><h3 id="4-1-索引介绍及分类"><a href="#4-1-索引介绍及分类" class="headerlink" title="4.1 索引介绍及分类"></a>4.1 索引介绍及分类</h3><h4 id="1-什么是索引"><a href="#1-什么是索引" class="headerlink" title="1)什么是索引"></a>1)什么是索引</h4><p> Mysql官方对索引的定义为：<strong>索引（index）是帮助Mysql高效获取数据的数据结构。</strong></p>
 <p><strong>可以得到索引的本质：索引就是数据结构：B+Tree</strong></p>
-<h4 id="2-MySQL索引分类"><a href="#2-MySQL索引分类" class="headerlink" title="2)MySQL索引分类"></a>2)MySQL索引分类</h4><pre><code class="sql">* 主键（约束）索引
-        主键约束(唯一+非空)+提高查询效率
+<h4 id="2-MySQL索引分类"><a href="#2-MySQL索引分类" class="headerlink" title="2)MySQL索引分类"></a>2)MySQL索引分类</h4><pre class=" language-sql"><code class="language-sql"><span class="token operator">*</span> 主键（约束）索引
+        主键约束<span class="token punctuation">(</span>唯一<span class="token operator">+</span>非空<span class="token punctuation">)</span><span class="token operator">+</span>提高查询效率
         
-* 唯一（约束）索引
-        唯一约束+提高查询效率
+<span class="token operator">*</span> 唯一（约束）索引
+        唯一约束<span class="token operator">+</span>提高查询效率
 
-* 普通索引
+<span class="token operator">*</span> 普通索引
         仅提高查询效率
 
-* 组合（联合）索引
+<span class="token operator">*</span> 组合（联合）索引
         多个字段组成索引
-        [联合主键索引
+        <span class="token punctuation">[</span>联合主键索引
         联合唯一索引
-        联合普通索引]
+        联合普通索引<span class="token punctuation">]</span>
 
-* 全文索引 TEXT BIGTEXY
+<span class="token operator">*</span> 全文索引 <span class="token keyword">TEXT</span> BIGTEXY
         solr、es
 
-* hash索引
-        根据key-value 效率非常高
+<span class="token operator">*</span> <span class="token keyword">hash</span>索引
+        根据<span class="token keyword">key</span><span class="token operator">-</span><span class="token keyword">value</span> 效率非常高
          等值查询，不适合范围查询        
 </code></pre>
 <hr style="height:10px;background-color:green;border:none;" />
 
-<h3 id="4-2-MySQL索引语法"><a href="#4-2-MySQL索引语法" class="headerlink" title="4.2 MySQL索引语法"></a>4.2 MySQL索引语法</h3><h4 id="4-2-1-索引创建"><a href="#4-2-1-索引创建" class="headerlink" title="4.2.1 索引创建"></a>4.2.1 索引创建</h4><h5 id="1-创建索引-【了解】"><a href="#1-创建索引-【了解】" class="headerlink" title="1) 创建索引 【了解】"></a>1) 创建索引 【了解】</h5><pre><code class="sql">-- 创建普通索引
-create index 索引名 on 表名(字段);
+<h3 id="4-2-MySQL索引语法"><a href="#4-2-MySQL索引语法" class="headerlink" title="4.2 MySQL索引语法"></a>4.2 MySQL索引语法</h3><h4 id="4-2-1-索引创建"><a href="#4-2-1-索引创建" class="headerlink" title="4.2.1 索引创建"></a>4.2.1 索引创建</h4><h5 id="1-创建索引-【了解】"><a href="#1-创建索引-【了解】" class="headerlink" title="1) 创建索引 【了解】"></a>1) 创建索引 【了解】</h5><pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 创建普通索引</span>
+<span class="token keyword">create</span> <span class="token keyword">index</span> 索引名 <span class="token keyword">on</span> 表名<span class="token punctuation">(</span>字段<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
--- 创建唯一索引
-create unique index 索引名 on 表名(字段);
+<span class="token comment" spellcheck="true">-- 创建唯一索引</span>
+<span class="token keyword">create</span> <span class="token keyword">unique</span> <span class="token keyword">index</span> 索引名 <span class="token keyword">on</span> 表名<span class="token punctuation">(</span>字段<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
--- 创建普通组合索引
-create index 索引名 on 表名(字段1,字段2,..);
+<span class="token comment" spellcheck="true">-- 创建普通组合索引</span>
+<span class="token keyword">create</span> <span class="token keyword">index</span> 索引名 <span class="token keyword">on</span> 表名<span class="token punctuation">(</span>字段<span class="token number">1</span><span class="token punctuation">,</span>字段<span class="token number">2</span><span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
--- 创建唯一组合索引
-create unique index 索引名 on 表名(字段1,字段2,..);
+<span class="token comment" spellcheck="true">-- 创建唯一组合索引</span>
+<span class="token keyword">create</span> <span class="token keyword">unique</span> <span class="token keyword">index</span> 索引名 <span class="token keyword">on</span> 表名<span class="token punctuation">(</span>字段<span class="token number">1</span><span class="token punctuation">,</span>字段<span class="token number">2</span><span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>说明：</p>
 <p>​    1.如果在同一张表中创建多个索引，要保证索引名是不能重复的</p>
 <p>​    2.上述创建索引的方式比较麻烦，还需要指定索引名</p>
 <p>​    <strong>3.采用上述方式不能添加主键索引</strong></p>
 <p>【准备的创建表的SQL语句】</p>
-<pre><code class="sql">-- 创建学生表
-CREATE TABLE student(
- id INT,
- name VARCHAR(32),
- telephone VARCHAR(11)
-);
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 创建学生表</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> student<span class="token punctuation">(</span>
+ id <span class="token keyword">INT</span><span class="token punctuation">,</span>
+ name <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+ telephone <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>练习:</p>
-<pre><code class="tex">-- 给name创建普通索引
+<pre class=" language-tex"><code class="language-tex">-- 给name创建普通索引
 create index idx_name on student(name);
 -- 给telephone添加唯一索引
 create unique index uniq_telephone on student(telephone);
 </code></pre>
-<h5 id="2-在已有表的字段上修改表时指定【了解】"><a href="#2-在已有表的字段上修改表时指定【了解】" class="headerlink" title="2) 在已有表的字段上修改表时指定【了解】"></a>2) 在已有表的字段上修改表时指定【了解】</h5><pre><code class="sql">-- 添加一个主键，这意味着索引值必须是唯一的，且不能为NULL
-alter table 表名 add primary key(字段);  --默认索引名：primary
+<h5 id="2-在已有表的字段上修改表时指定【了解】"><a href="#2-在已有表的字段上修改表时指定【了解】" class="headerlink" title="2) 在已有表的字段上修改表时指定【了解】"></a>2) 在已有表的字段上修改表时指定【了解】</h5><pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 添加一个主键，这意味着索引值必须是唯一的，且不能为NULL</span>
+<span class="token keyword">alter</span> <span class="token keyword">table</span> 表名 <span class="token keyword">add</span> <span class="token keyword">primary</span> <span class="token keyword">key</span><span class="token punctuation">(</span>字段<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">--默认索引名：primary</span>
 
--- 添加唯一索引（除了NULL外，NULL可能会出现多次）
-alter table 表名 add unique(字段); -- 默认索引名：字段名
+<span class="token comment" spellcheck="true">-- 添加唯一索引（除了NULL外，NULL可能会出现多次）</span>
+<span class="token keyword">alter</span> <span class="token keyword">table</span> 表名 <span class="token keyword">add</span> <span class="token keyword">unique</span><span class="token punctuation">(</span>字段<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">-- 默认索引名：字段名</span>
 
--- 添加普通索引，索引值可以出现多次。
-alter table 表名 add index(字段); -- 默认索引名：字段名
+<span class="token comment" spellcheck="true">-- 添加普通索引，索引值可以出现多次。</span>
+<span class="token keyword">alter</span> <span class="token keyword">table</span> 表名 <span class="token keyword">add</span> <span class="token keyword">index</span><span class="token punctuation">(</span>字段<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">-- 默认索引名：字段名</span>
 </code></pre>
 <p>【准备的创建表的SQL语句】</p>
-<pre><code class="sql">-- 创建学生表
-CREATE TABLE student2(
- id INT,
- name VARCHAR(32),
- telephone VARCHAR(11)
-);
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 创建学生表</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> student2<span class="token punctuation">(</span>
+ id <span class="token keyword">INT</span><span class="token punctuation">,</span>
+ name <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+ telephone <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>练习:</p>
-<pre><code class="tex">-- 给id添加主键索引
+<pre class=" language-tex"><code class="language-tex">-- 给id添加主键索引
 alter table student2 add primary key(id);
 -- 给name字段添加普通索引 索引名称默认是字段名称
 alter table student2 add index(name);
 -- 给telephone添加唯一索引
 alter table student2 add unique(telephone);
 </code></pre>
-<h5 id="3-创建表时指定【掌握】"><a href="#3-创建表时指定【掌握】" class="headerlink" title="3)  创建表时指定【掌握】"></a>3)  创建表时指定【掌握】</h5><pre><code class="sql">-- 创建学生表
-CREATE TABLE student3(
- id INT PRIMARY KEY AUTO_INCREMENT, -- 主键索引
- name VARCHAR(32),
- telephone VARCHAR(11) UNIQUE, -- 唯一索引
- sex VARCHAR(5),
- birthday DATE,
- INDEX(name) -- 普通索引
-);
+<h5 id="3-创建表时指定【掌握】"><a href="#3-创建表时指定【掌握】" class="headerlink" title="3)  创建表时指定【掌握】"></a>3)  创建表时指定【掌握】</h5><pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 创建学生表</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> student3<span class="token punctuation">(</span>
+ id <span class="token keyword">INT</span> <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token keyword">AUTO_INCREMENT</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">-- 主键索引</span>
+ name <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+ telephone <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span> <span class="token keyword">UNIQUE</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">-- 唯一索引</span>
+ sex <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+ birthday <span class="token keyword">DATE</span><span class="token punctuation">,</span>
+ <span class="token keyword">INDEX</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">-- 普通索引</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <hr style="height:10px;background-color:green;border:none;" />
 
-<h4 id="4-2-2-查看与删除索引"><a href="#4-2-2-查看与删除索引" class="headerlink" title="4.2.2 查看与删除索引"></a>4.2.2 查看与删除索引</h4><h5 id="1-查看索引"><a href="#1-查看索引" class="headerlink" title="1) 查看索引"></a>1) 查看索引</h5><pre><code class="sql">show index from 表名; 
+<h4 id="4-2-2-查看与删除索引"><a href="#4-2-2-查看与删除索引" class="headerlink" title="4.2.2 查看与删除索引"></a>4.2.2 查看与删除索引</h4><h5 id="1-查看索引"><a href="#1-查看索引" class="headerlink" title="1) 查看索引"></a>1) 查看索引</h5><pre class=" language-sql"><code class="language-sql"><span class="token keyword">show</span> <span class="token keyword">index</span> <span class="token keyword">from</span> 表名<span class="token punctuation">;</span> 
 </code></pre>
 <p>练习:【查看student3表的索引信息】</p>
-<pre><code class="sql">show index from student3;
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">show</span> <span class="token keyword">index</span> <span class="token keyword">from</span> student3<span class="token punctuation">;</span>
 </code></pre>
-<h5 id="2-删除索引"><a href="#2-删除索引" class="headerlink" title="2) 删除索引"></a>2) 删除索引</h5><pre><code class="sql">-- 两种方式
--- 方式1:直接删除
-drop index 索引名 on 表名;
--- 方式2:-- 修改表时删除
-alter table 表名 drop index 索引名;
+<h5 id="2-删除索引"><a href="#2-删除索引" class="headerlink" title="2) 删除索引"></a>2) 删除索引</h5><pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 两种方式</span>
+<span class="token comment" spellcheck="true">-- 方式1:直接删除</span>
+<span class="token keyword">drop</span> <span class="token keyword">index</span> 索引名 <span class="token keyword">on</span> 表名<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 方式2:-- 修改表时删除</span>
+<span class="token keyword">alter</span> <span class="token keyword">table</span> 表名 <span class="token keyword">drop</span> <span class="token keyword">index</span> 索引名<span class="token punctuation">;</span>
 </code></pre>
 <p>练习:</p>
-<pre><code class="tex">练习1:删除student表的name普通索引
+<pre class=" language-tex"><code class="language-tex">练习1:删除student表的name普通索引
     drop index name_idx on student;
 练习2:删除student表的telephone唯一索引
     alter table student drop index telephone_idx
@@ -1126,21 +1126,21 @@ alter table student4 drop primary key;
 <li>在对表中的数据进行修改时，例如对其进行增加、删除或者是修改操作时，索引还需要进行动态的维护，这给数据库的维护速度带来了一定的麻烦(<strong>维护成本高</strong>)。</li>
 </ul>
 <h4 id="2-索引创建原则-面试"><a href="#2-索引创建原则-面试" class="headerlink" title="2.索引创建原则(面试)"></a>2.索引创建原则(面试)</h4><p>索引的设计可以遵循一些已有的原则，创建索引的时候请尽量考虑符合这些原则，便于提升索引的使用效率，更高效的使用索引。</p>
-<pre><code class="sql">1. 字段内容可识别度不能低于70%，字段内数据唯一值的个数不能低于70%
-    例如：一个表数据只有50行，那么性别和年龄哪个字段适合创建索引，明显是年龄，因为年龄的唯一值个数比较多，性别只有两个选项。
-    select count(*) from student3;-- 8
-    select count(distinct name) from student3;
-    select (select count(distinct name) from student3)/(select count(*) from student3)
+<pre class=" language-sql"><code class="language-sql"><span class="token number">1</span><span class="token punctuation">.</span> 字段内容可识别度不能低于<span class="token number">70</span><span class="token operator">%</span>，字段内数据唯一值的个数不能低于<span class="token number">70</span><span class="token operator">%</span>
+    例如：一个表数据只有<span class="token number">50</span>行，那么性别和年龄哪个字段适合创建索引，明显是年龄，因为年龄的唯一值个数比较多，性别只有两个选项。
+    <span class="token keyword">select</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">from</span> student3<span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- 8</span>
+    <span class="token keyword">select</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token keyword">distinct</span> name<span class="token punctuation">)</span> <span class="token keyword">from</span> student3<span class="token punctuation">;</span>
+    <span class="token keyword">select</span> <span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token keyword">distinct</span> name<span class="token punctuation">)</span> <span class="token keyword">from</span> student3<span class="token punctuation">)</span><span class="token operator">/</span><span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">from</span> student3<span class="token punctuation">)</span>
 
-2. 经常使用where条件搜索的字段，例如user表的id name等字段。
+<span class="token number">2</span><span class="token punctuation">.</span> 经常使用<span class="token keyword">where</span>条件搜索的字段，例如<span class="token keyword">user</span>表的id name等字段。
 
-3. 经常使用表连接的字段（内连接、外连接），可以加快连接的速度。
+<span class="token number">3</span><span class="token punctuation">.</span> 经常使用表连接的字段（内连接、外连接），可以加快连接的速度。
 
-4. 经常排序的字段 order by，因为索引已经是排过序的，这样一来可以利用索引的排序，加快排序查 询速度。
+<span class="token number">4</span><span class="token punctuation">.</span> 经常排序的字段 <span class="token keyword">order</span> <span class="token keyword">by</span>，因为索引已经是排过序的，这样一来可以利用索引的排序，加快排序查 询速度。
 
-5.空间原则（字段占用空间越小也好）
+<span class="token number">5</span><span class="token punctuation">.</span>空间原则（字段占用空间越小也好）
 
-* 注意: 索引并不是越多越好,因为索引的建立和维护都是需要耗时的 创建表时需要通过数据库去维护索引，添加记录、更新、修改时，也需要更新索引，会间接影响数据库的效率。
+<span class="token operator">*</span> 注意: 索引并不是越多越好<span class="token punctuation">,</span>因为索引的建立和维护都是需要耗时的 创建表时需要通过数据库去维护索引，添加记录、更新、修改时，也需要更新索引，会间接影响数据库的效率。
 </code></pre>
 <hr style="height:10px;background-color:green;border:none;" />
 
@@ -1153,7 +1153,7 @@ alter table student4 drop primary key;
 <hr style="height:10px;background-color:green;border:none;" />
 
 <h4 id="4-5-2-二叉查找树和红黑树"><a href="#4-5-2-二叉查找树和红黑树" class="headerlink" title="4.5.2 二叉查找树和红黑树"></a>4.5.2 二叉查找树和红黑树</h4><p><strong>数据结构学习网站(美国旧金山大学)</strong></p>
-<pre><code class="http">https://www.cs.usfca.edu/~galles/visualization/Algorithms.html
+<pre class=" language-http"><code class="language-http"><span class="token header-name keyword">https:</span>//www.cs.usfca.edu/~galles/visualization/Algorithms.html
 </code></pre>
 <h5 id="1-二叉查找树"><a href="#1-二叉查找树" class="headerlink" title="1.二叉查找树"></a>1.二叉查找树</h5><p>左边的子节点比父节点小，右边的子节点比父节点大;</p>
 <p><img src="https://i.loli.net/2021/09/02/SzmLxUCbOfIAD3Y.png" alt="image-20210902100458124"></p>
@@ -1172,7 +1172,7 @@ alter table student4 drop primary key;
 <p>   如果存储的数据占1kb，那么每个节点存储的元素个数是<strong>15个元素</strong>，那么如果存储1000w数据树高多少？<strong>6</strong></p>
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210902003842317.png" alt="image-20210902003842317"></p>
 <p>思考：如何进一步降低树的高度及优化查询？</p>
-<pre><code class="tex">1）数据查询的过程中，有一些数据data的加载时没有意义且浪费磁盘io；
+<pre class=" language-tex"><code class="language-tex">1）数据查询的过程中，有一些数据data的加载时没有意义且浪费磁盘io；
 2）如果要进行范围查询，那么需要反复从根节点读取数据；
 </code></pre>
 <hr style="height:10px;background-color:green;border:none;" />
@@ -1195,8 +1195,8 @@ alter table student4 drop primary key;
 <p>​    3）还有一点是mysql将根节点都加载到内存中，每张表有一个根节点，<strong>大小是16KB</strong>.那么这样的好处，按照上述如果是千万条数据，那么只有2次磁盘IO.这就是为什么我们加完索引之后瞬间查到数据的原因了。</p>
 <p>最终结论：</p>
 <p>   <strong>通过将树的每个节点存储的元素增大来降低树的高度；</strong></p>
-<h5 id="2-MySQL中的B-Tree"><a href="#2-MySQL中的B-Tree" class="headerlink" title="2. MySQL中的B+Tree"></a>2. MySQL中的B+Tree</h5><pre><code class="sql">-- 查看mysql索引节点大小
-show global status like &#39;innodb_page_size&#39;; -- 16kb
+<h5 id="2-MySQL中的B-Tree"><a href="#2-MySQL中的B-Tree" class="headerlink" title="2. MySQL中的B+Tree"></a>2. MySQL中的B+Tree</h5><pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 查看mysql索引节点大小</span>
+<span class="token keyword">show</span> <span class="token keyword">global</span> <span class="token keyword">status</span> <span class="token operator">like</span> <span class="token string">'innodb_page_size'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">-- 16kb</span>
 </code></pre>
 <p>MySql索引数据结构对经典的B+Tree进行了优化。在原B+Tree的基础上，增加一个指向相邻叶子节点的链表指针，就形成了带有顺序指针的B+Tree，<strong>提高区间访问的性能</strong>。</p>
 <hr style="height:10px;background-color:green;border:none;" />
@@ -1206,73 +1206,73 @@ show global status like &#39;innodb_page_size&#39;; -- 16kb
 <h4 id="2-应用场景"><a href="#2-应用场景" class="headerlink" title="2.应用场景"></a>2.应用场景</h4><p>1）多个地方用到同样的查询结果</p>
 <p>2）该查询结果使用的sql语句较复杂</p>
 <p>创建视图语法格式:</p>
-<pre><code class="sql">create view 视图名
-as
-查询语句;
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">view</span> 视图名
+<span class="token keyword">as</span>
+查询语句<span class="token punctuation">;</span>
 </code></pre>
 <p>需求:查看所有国家和对应城市的信息</p>
-<pre><code class="sql">-- 视图是一张虚拟的表,除了不保存数据数据外,其他规则都改表table一致
-create view country_city_view as 
-select city.*,country.country_name 
-from country,city where country.country_id=city.country_id;
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 视图是一张虚拟的表,除了不保存数据数据外,其他规则都改表table一致</span>
+<span class="token keyword">create</span> <span class="token keyword">view</span> country_city_view <span class="token keyword">as</span> 
+<span class="token keyword">select</span> city<span class="token punctuation">.</span><span class="token operator">*</span><span class="token punctuation">,</span>country<span class="token punctuation">.</span>country_name 
+<span class="token keyword">from</span> country<span class="token punctuation">,</span>city <span class="token keyword">where</span> country<span class="token punctuation">.</span>country_id<span class="token operator">=</span>city<span class="token punctuation">.</span>country_id<span class="token punctuation">;</span>
 </code></pre>
-<h4 id="3-视图和表的区别"><a href="#3-视图和表的区别" class="headerlink" title="3.视图和表的区别"></a>3.视图和表的区别</h4><pre><code class="markdown">     使用方式      占用物理空间
+<h4 id="3-视图和表的区别"><a href="#3-视图和表的区别" class="headerlink" title="3.视图和表的区别"></a>3.视图和表的区别</h4><pre class=" language-markdown"><code class="language-markdown"><span class="token code keyword">     使用方式      占用物理空间</span>
 
 视图    完全相同     视图中的数据不保存，仅仅保存的是sql逻辑，磁盘上只有表结构，没有数据
 
 表     完全相同      占用
 </code></pre>
-<h4 id="4-视图的好处"><a href="#4-视图的好处" class="headerlink" title="4.视图的好处"></a>4.视图的好处</h4><pre><code class="markdown">* 1、提高sql语句重用性，效率高(避免sql语句多次编译)
-* 2、和表实现了分离，提高了安全性，使用视图的用户只能访问他们被允许查询的结果集
+<h4 id="4-视图的好处"><a href="#4-视图的好处" class="headerlink" title="4.视图的好处"></a>4.视图的好处</h4><pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">*</span> 1、提高sql语句重用性，效率高(避免sql语句多次编译)
+<span class="token list punctuation">*</span> 2、和表实现了分离，提高了安全性，使用视图的用户只能访问他们被允许查询的结果集
 </code></pre>
 <hr style="height:10px;background-color:green;border:none;" />
 
 <h3 id="5-2-视图修改-查看与删除"><a href="#5-2-视图修改-查看与删除" class="headerlink" title="5.2 视图修改,查看与删除"></a>5.2 视图修改,查看与删除</h3><h4 id="1-视图修改"><a href="#1-视图修改" class="headerlink" title="1)视图修改"></a>1)视图修改</h4><p>方式1-创建过程覆盖旧的视图,达到修改的操作</p>
-<pre><code class="sql">create or replace view 视图名
-as
-查询语句;
--- 说明：如果存在该视图名就是修改视图，如果不存在该视图名则创建视图。
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token operator">or</span> replace <span class="token keyword">view</span> 视图名
+<span class="token keyword">as</span>
+查询语句<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 说明：如果存在该视图名就是修改视图，如果不存在该视图名则创建视图。</span>
 </code></pre>
 <p>需求：修改上述视图city_country_view，select语句变为查询城市名是上海的城市信息和所属国家信息</p>
-<pre><code class="sql">create or replace view country_city_view as
-select
-city.*,country.country_name 
-from country,city where country.country_id=city.country_id and city.city_name=&#39;上海&#39;;
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token operator">or</span> replace <span class="token keyword">view</span> country_city_view <span class="token keyword">as</span>
+<span class="token keyword">select</span>
+city<span class="token punctuation">.</span><span class="token operator">*</span><span class="token punctuation">,</span>country<span class="token punctuation">.</span>country_name 
+<span class="token keyword">from</span> country<span class="token punctuation">,</span>city <span class="token keyword">where</span> country<span class="token punctuation">.</span>country_id<span class="token operator">=</span>city<span class="token punctuation">.</span>country_id <span class="token operator">and</span> city<span class="token punctuation">.</span>city_name<span class="token operator">=</span><span class="token string">'上海'</span><span class="token punctuation">;</span>
 </code></pre>
 <p>方式2:使用alter修改</p>
-<pre><code class="sql">alter view 视图名
-as
-查询语句;
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">alter</span> <span class="token keyword">view</span> 视图名
+<span class="token keyword">as</span>
+查询语句<span class="token punctuation">;</span>
 </code></pre>
 <p>需求：修改上述视图city_country_view，select语句变为查询城市名是北京的城市信息和所属国家信息</p>
-<pre><code class="sql">alter view country_city_view as
-select
-city.*,country.country_name 
-from country,city where country.country_id=city.country_id and city.city_name=&#39;北京&#39;;
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">alter</span> <span class="token keyword">view</span> country_city_view <span class="token keyword">as</span>
+<span class="token keyword">select</span>
+city<span class="token punctuation">.</span><span class="token operator">*</span><span class="token punctuation">,</span>country<span class="token punctuation">.</span>country_name 
+<span class="token keyword">from</span> country<span class="token punctuation">,</span>city <span class="token keyword">where</span> country<span class="token punctuation">.</span>country_id<span class="token operator">=</span>city<span class="token punctuation">.</span>country_id <span class="token operator">and</span> city<span class="token punctuation">.</span>city_name<span class="token operator">=</span><span class="token string">'北京'</span><span class="token punctuation">;</span>
 </code></pre>
 <h4 id="2-查看视图"><a href="#2-查看视图" class="headerlink" title="2)查看视图"></a>2)查看视图</h4><p>查看视图指令与table指令格式一致.</p>
-<pre><code class="sql">show tables;
-desc country_view;
-show create table country_view;
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">show</span> <span class="token keyword">tables</span><span class="token punctuation">;</span>
+<span class="token keyword">desc</span> country_view<span class="token punctuation">;</span>
+<span class="token keyword">show</span> <span class="token keyword">create</span> <span class="token keyword">table</span> country_view<span class="token punctuation">;</span>
 </code></pre>
-<h4 id="3-删除视图"><a href="#3-删除视图" class="headerlink" title="3)删除视图"></a>3)删除视图</h4><pre><code class="sql">drop view 视图名,视图名,.....;
+<h4 id="3-删除视图"><a href="#3-删除视图" class="headerlink" title="3)删除视图"></a>3)删除视图</h4><pre class=" language-sql"><code class="language-sql"><span class="token keyword">drop</span> <span class="token keyword">view</span> 视图名<span class="token punctuation">,</span>视图名<span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span>
 </code></pre>
 <p>需求:删除 country_view视图</p>
-<pre><code class="sql">drop view country_view;
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">drop</span> <span class="token keyword">view</span> country_view<span class="token punctuation">;</span>
 </code></pre>
 <p>小结:</p>
 <p>视图应用场景及好处?</p>
-<pre><code class="sql">场景:
-1)多场景使用相同且非常复杂的查询sql;
-2)在一些数据敏感,涉及到安全的场景;
-3)网络访问密集的场景(减少网络io开销)；
+<pre class=" language-sql"><code class="language-sql">场景:
+<span class="token number">1</span><span class="token punctuation">)</span>多场景使用相同且非常复杂的查询sql<span class="token punctuation">;</span>
+<span class="token number">2</span><span class="token punctuation">)</span>在一些数据敏感<span class="token punctuation">,</span>涉及到安全的场景<span class="token punctuation">;</span>
+<span class="token number">3</span><span class="token punctuation">)</span>网络访问密集的场景<span class="token punctuation">(</span>减少网络io开销<span class="token punctuation">)</span>；
 好处:
-1)提高sql的复用性;
-2)提高数据的安全性和数据库性能;
-3)减少网络io开销
+<span class="token number">1</span><span class="token punctuation">)</span>提高sql的复用性<span class="token punctuation">;</span>
+<span class="token number">2</span><span class="token punctuation">)</span>提高数据的安全性和数据库性能<span class="token punctuation">;</span>
+<span class="token number">3</span><span class="token punctuation">)</span>减少网络io开销
 </code></pre>
 <p>创建语句格式?</p>
-<pre><code class="sql">create view 视图名称 as  select语句;
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">view</span> 视图名称 <span class="token keyword">as</span>  <span class="token keyword">select</span>语句<span class="token punctuation">;</span>
 </code></pre>
 <hr style="height:10px;background-color:green;border:none;" />
 
@@ -1300,88 +1300,88 @@ show create table country_view;
 <td><strong>OLD 表示将要或者已经删除的数据</strong>,删除之后没有数据了，所以不能使用NEW</td>
 </tr>
 </tbody></table>
-<h4 id="2-创建触发器"><a href="#2-创建触发器" class="headerlink" title="2)创建触发器"></a>2)创建触发器</h4><pre><code class="sql">-- 语法
-create trigger trigger_name
-before/after insert/update/delete
-on tbl_name
-for each row   -- 行级触发器
-    trigger_stmt ;
+<h4 id="2-创建触发器"><a href="#2-创建触发器" class="headerlink" title="2)创建触发器"></a>2)创建触发器</h4><pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 语法</span>
+<span class="token keyword">create</span> <span class="token keyword">trigger</span> trigger_name
+before<span class="token operator">/</span><span class="token keyword">after</span> <span class="token keyword">insert</span><span class="token operator">/</span><span class="token keyword">update</span><span class="token operator">/</span><span class="token keyword">delete</span>
+<span class="token keyword">on</span> tbl_name
+<span class="token keyword">for each row</span>   <span class="token comment" spellcheck="true">-- 行级触发器</span>
+    trigger_stmt <span class="token punctuation">;</span>
 说明：
-    1）before/after位置称为触发时机，一个触发器只能选择一个
-    2）insert/update/delete位置称为触发事件，一个触发器只能选择一个
-    3）for each row称为行级触发器，触发器绑定实质是表中的所有行，因此当每一行发生指定改变的时候，就会触发触发器。
+    <span class="token number">1</span>）before<span class="token operator">/</span><span class="token keyword">after</span>位置称为触发时机，一个触发器只能选择一个
+    <span class="token number">2</span>）<span class="token keyword">insert</span><span class="token operator">/</span><span class="token keyword">update</span><span class="token operator">/</span><span class="token keyword">delete</span>位置称为触发事件，一个触发器只能选择一个
+    <span class="token number">3</span>）<span class="token keyword">for each row</span>称为行级触发器，触发器绑定实质是表中的所有行，因此当每一行发生指定改变的时候，就会触发触发器。
 </code></pre>
 <p>数据准备:</p>
-<pre><code class="sql">-- 创建员工表，员工信息
-create table emp(
-    id int primary key auto_increment,
-    name varchar(30) not null,
-    age int,
-    salary int
-);
-insert into emp(id,name,age,salary) values(null, &#39;金毛狮王&#39;,40,2500);
-insert into emp(id,name,age,salary) values(null, &#39;蝙蝠王&#39;,38,3100);
--- 创建一张日志表,存放日志信息
-create table emp_logs(
-    id int(11) primary key auto_increment,
-    operation varchar(20) not null comment &#39;操作类型, insert/update/delete&#39;,
-    operate_time datetime not null comment &#39;操作时间&#39;,
-    operate_id int(11) not null comment &#39;操作表的ID,emp表数据的id&#39;,
-    operate_params varchar(500) comment &#39;操作参数,插入emp中的数据&#39;
-)engine=innodb default charset=utf8;
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 创建员工表，员工信息</span>
+<span class="token keyword">create</span> <span class="token keyword">table</span> emp<span class="token punctuation">(</span>
+    id <span class="token keyword">int</span> <span class="token keyword">primary</span> <span class="token keyword">key</span> <span class="token keyword">auto_increment</span><span class="token punctuation">,</span>
+    name <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
+    age <span class="token keyword">int</span><span class="token punctuation">,</span>
+    salary <span class="token keyword">int</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">insert</span> <span class="token keyword">into</span> emp<span class="token punctuation">(</span>id<span class="token punctuation">,</span>name<span class="token punctuation">,</span>age<span class="token punctuation">,</span>salary<span class="token punctuation">)</span> <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token boolean">null</span><span class="token punctuation">,</span> <span class="token string">'金毛狮王'</span><span class="token punctuation">,</span><span class="token number">40</span><span class="token punctuation">,</span><span class="token number">2500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">insert</span> <span class="token keyword">into</span> emp<span class="token punctuation">(</span>id<span class="token punctuation">,</span>name<span class="token punctuation">,</span>age<span class="token punctuation">,</span>salary<span class="token punctuation">)</span> <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token boolean">null</span><span class="token punctuation">,</span> <span class="token string">'蝙蝠王'</span><span class="token punctuation">,</span><span class="token number">38</span><span class="token punctuation">,</span><span class="token number">3100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 创建一张日志表,存放日志信息</span>
+<span class="token keyword">create</span> <span class="token keyword">table</span> emp_logs<span class="token punctuation">(</span>
+    id <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span> <span class="token keyword">primary</span> <span class="token keyword">key</span> <span class="token keyword">auto_increment</span><span class="token punctuation">,</span>
+    operation <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span> <span class="token operator">not</span> <span class="token boolean">null</span> <span class="token keyword">comment</span> <span class="token string">'操作类型, insert/update/delete'</span><span class="token punctuation">,</span>
+    operate_time <span class="token keyword">datetime</span> <span class="token operator">not</span> <span class="token boolean">null</span> <span class="token keyword">comment</span> <span class="token string">'操作时间'</span><span class="token punctuation">,</span>
+    operate_id <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span> <span class="token operator">not</span> <span class="token boolean">null</span> <span class="token keyword">comment</span> <span class="token string">'操作表的ID,emp表数据的id'</span><span class="token punctuation">,</span>
+    operate_params <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">)</span> <span class="token keyword">comment</span> <span class="token string">'操作参数,插入emp中的数据'</span>
+<span class="token punctuation">)</span><span class="token keyword">engine</span><span class="token operator">=</span><span class="token keyword">innodb</span> <span class="token keyword">default</span> <span class="token keyword">charset</span><span class="token operator">=</span>utf8<span class="token punctuation">;</span>
 </code></pre>
 <p> <strong>需求1:创建 insert 型触发器，完成插入数据时的日志记录  new</strong></p>
 <p>需求2:创建 update 型触发器，完成更新数据时的日志记录</p>
-<pre><code class="sql">create trigger update_tri 
-after update
-on emp
-for each row
-insert into emp_logs values(null,&#39;update&#39;,now(),old.id,concat(&#39;操作之前数据:&#39;,old.id,old.name,old.age,old.salary,&#39;操作之后数据:&#39;,new.id,new.name,new.age,new.salary));
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">trigger</span> update_tri 
+<span class="token keyword">after</span> <span class="token keyword">update</span>
+<span class="token keyword">on</span> emp
+<span class="token keyword">for each row</span>
+<span class="token keyword">insert</span> <span class="token keyword">into</span> emp_logs <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token boolean">null</span><span class="token punctuation">,</span><span class="token string">'update'</span><span class="token punctuation">,</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>old<span class="token punctuation">.</span>id<span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token string">'操作之前数据:'</span><span class="token punctuation">,</span>old<span class="token punctuation">.</span>id<span class="token punctuation">,</span>old<span class="token punctuation">.</span>name<span class="token punctuation">,</span>old<span class="token punctuation">.</span>age<span class="token punctuation">,</span>old<span class="token punctuation">.</span>salary<span class="token punctuation">,</span><span class="token string">'操作之后数据:'</span><span class="token punctuation">,</span>new<span class="token punctuation">.</span>id<span class="token punctuation">,</span>new<span class="token punctuation">.</span>name<span class="token punctuation">,</span>new<span class="token punctuation">.</span>age<span class="token punctuation">,</span>new<span class="token punctuation">.</span>salary<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p><strong>需求3:创建delete 行的触发器 , 完成删除数据时的日志记录  old</strong></p>
 <hr style="height:10px;background-color:green;border:none;" />
 
 <h3 id="6-2-触发器查看与删除"><a href="#6-2-触发器查看与删除" class="headerlink" title="6.2 触发器查看与删除"></a>6.2 触发器查看与删除</h3><h4 id="1-查看触发器"><a href="#1-查看触发器" class="headerlink" title="1)查看触发器"></a>1)查看触发器</h4><p>可使用指令或者可视化工具查看触发器;</p>
-<pre><code class="sql">SHOW TRIGGERS;
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">SHOW</span> TRIGGERS<span class="token punctuation">;</span>
 </code></pre>
-<h4 id="2-删除触发器"><a href="#2-删除触发器" class="headerlink" title="2) 删除触发器"></a>2) 删除触发器</h4><pre><code class="sql">drop trigger trigger_name ;
+<h4 id="2-删除触发器"><a href="#2-删除触发器" class="headerlink" title="2) 删除触发器"></a>2) 删除触发器</h4><pre class=" language-sql"><code class="language-sql"><span class="token keyword">drop</span> <span class="token keyword">trigger</span> trigger_name <span class="token punctuation">;</span>
 </code></pre>
 <h2 id="索引总结"><a href="#索引总结" class="headerlink" title="索引总结"></a>索引总结</h2><p>1.1 索引的创建</p>
-<pre><code class="sql"># 方式1：
-    # 普通索引
-    create index 索引名称 on 表名(字段名称,字段名称2，....);
-    # 创建唯一索引
-    create unique index 索引名称 on 表名(字段名称,字段名称2，....);
-# 方式2：
-    # 普通索引
-    alter table 表名 add index(字段名称,字段名称2,.....);
-    # 唯一索引
-    alter table 表名 add unique(字段名称，字段名称2，....);
-    # 主键索引
-    alter table 表名 add primary key(字段1，字段2，.....);
-# 方式3：掌握
-    create table 表名(
-        id int primary key auto_increment,-- 主键且自增
-        name varchar(10),
-        tele varchar(12) unique,
-        index(name)
-    );
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true"># 方式1：</span>
+    <span class="token comment" spellcheck="true"># 普通索引</span>
+    <span class="token keyword">create</span> <span class="token keyword">index</span> 索引名称 <span class="token keyword">on</span> 表名<span class="token punctuation">(</span>字段名称<span class="token punctuation">,</span>字段名称<span class="token number">2</span>，<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true"># 创建唯一索引</span>
+    <span class="token keyword">create</span> <span class="token keyword">unique</span> <span class="token keyword">index</span> 索引名称 <span class="token keyword">on</span> 表名<span class="token punctuation">(</span>字段名称<span class="token punctuation">,</span>字段名称<span class="token number">2</span>，<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true"># 方式2：</span>
+    <span class="token comment" spellcheck="true"># 普通索引</span>
+    <span class="token keyword">alter</span> <span class="token keyword">table</span> 表名 <span class="token keyword">add</span> <span class="token keyword">index</span><span class="token punctuation">(</span>字段名称<span class="token punctuation">,</span>字段名称<span class="token number">2</span><span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true"># 唯一索引</span>
+    <span class="token keyword">alter</span> <span class="token keyword">table</span> 表名 <span class="token keyword">add</span> <span class="token keyword">unique</span><span class="token punctuation">(</span>字段名称，字段名称<span class="token number">2</span>，<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true"># 主键索引</span>
+    <span class="token keyword">alter</span> <span class="token keyword">table</span> 表名 <span class="token keyword">add</span> <span class="token keyword">primary</span> <span class="token keyword">key</span><span class="token punctuation">(</span>字段<span class="token number">1</span>，字段<span class="token number">2</span>，<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true"># 方式3：掌握</span>
+    <span class="token keyword">create</span> <span class="token keyword">table</span> 表名<span class="token punctuation">(</span>
+        id <span class="token keyword">int</span> <span class="token keyword">primary</span> <span class="token keyword">key</span> <span class="token keyword">auto_increment</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">-- 主键且自增</span>
+        name <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        tele <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">)</span> <span class="token keyword">unique</span><span class="token punctuation">,</span>
+        <span class="token keyword">index</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>1.2 索引分类</p>
-<pre><code class="sql">主键索引：特点 唯一+ 非空+ 提高查询效率 底层维护的是主键索引(聚集索引，通过索引数据，就可以找到满足条件的任意数据--叶子节点数据都包含)
-唯一索引： 特点 唯一 + 提交查询效率   底层维护了唯一索引(非聚集索引，查询过程是先通过唯一索引btree检索到叶子节点下保存的主键值，然后再取主键索引根据主键的值查询对应的数据--回表查询)
+<pre class=" language-sql"><code class="language-sql">主键索引：特点 唯一<span class="token operator">+</span> 非空<span class="token operator">+</span> 提高查询效率 底层维护的是主键索引<span class="token punctuation">(</span>聚集索引，通过索引数据，就可以找到满足条件的任意数据<span class="token comment" spellcheck="true">--叶子节点数据都包含)</span>
+唯一索引： 特点 唯一 <span class="token operator">+</span> 提交查询效率   底层维护了唯一索引<span class="token punctuation">(</span>非聚集索引，查询过程是先通过唯一索引<span class="token keyword">btree</span>检索到叶子节点下保存的主键值，然后再取主键索引根据主键的值查询对应的数据<span class="token comment" spellcheck="true">--回表查询)</span>
 唯一索引： 特点：没有任何约束，仅仅提高查询效率，底层与唯一索引类似；
-Hash索引：特点： 非常适合等值查询，但是不适合范围查询；
+<span class="token keyword">Hash</span>索引：特点： 非常适合等值查询，但是不适合范围查询；
 </code></pre>
 <p>回表查询示意图：</p>
 <p><img src="https://i.loli.net/2021/09/02/kMwcOiXrY1qQ4vG.png" alt="image-20210819084509775"></p>
 <p>说明：实际情况中，普通索引或者唯一索引是btree结构(不是上图中的二叉树)；</p>
 <p>面试题：</p>
 <p>1.什么是回表查询？</p>
-<pre><code class="tex">一般主键查询时，不会回表查询，但是对应查询如果走非主键索引，那么需要先走普通索引拿主键索引值，然后再去主键索引查询拿数据；
+<pre class=" language-tex"><code class="language-tex">一般主键查询时，不会回表查询，但是对应查询如果走非主键索引，那么需要先走普通索引拿主键索引值，然后再去主键索引查询拿数据；
 </code></pre>
 <p>2.如何避免回表查询？</p>
-<pre><code class="tex">因为回表查询，整体效率是慢了一些；
+<pre class=" language-tex"><code class="language-tex">因为回表查询，整体效率是慢了一些；
  避免方式：
      1.尽量让查询走主键索引；
      2.建立联合索引；
@@ -1389,7 +1389,7 @@ Hash索引：特点： 非常适合等值查询，但是不适合范围查询；
          在表中将手机号和姓名一起创建一个【联合索引】，这样就可以直接在索引树中拿数据，避免了回表查询；
 </code></pre>
 <p>3.创建索引的原则</p>
-<pre><code class="tex">1.创建索引的表示度要高
+<pre class=" language-tex"><code class="language-tex">1.创建索引的表示度要高
     如何统计表示度？
     select count(distinct 索引字段)/count(索引字段) from 表名；
     结果越接近1越理想；
@@ -1401,13 +1401,13 @@ Hash索引：特点： 非常适合等值查询，但是不适合范围查询；
     主键字段在满足业务需求的情况下，占空间越小越好；
 </code></pre>
 <p>4.索引失效的原因？</p>
-<pre><code class="sql">1.索引字段使用函数
-    select * from  表名 where trim(name)=&#39;xxxx&#39;；
-2.索引字段参与数学运算
-    select * from 表名 where id+100=200;
-3.索引字段存在类型转换
-    select * from 表名 where name=500;
-4索引字段频繁的进行写操作，导致索引树拼接的维护构建；    
+<pre class=" language-sql"><code class="language-sql"><span class="token number">1</span><span class="token punctuation">.</span>索引字段使用函数
+    <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span>  表名 <span class="token keyword">where</span> trim<span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token operator">=</span><span class="token string">'xxxx'</span>；
+<span class="token number">2</span><span class="token punctuation">.</span>索引字段参与数学运算
+    <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> 表名 <span class="token keyword">where</span> id<span class="token operator">+</span><span class="token number">100</span><span class="token operator">=</span><span class="token number">200</span><span class="token punctuation">;</span>
+<span class="token number">3</span><span class="token punctuation">.</span>索引字段存在类型转换
+    <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> 表名 <span class="token keyword">where</span> name<span class="token operator">=</span><span class="token number">500</span><span class="token punctuation">;</span>
+<span class="token number">4</span>索引字段频繁的进行写操作，导致索引树拼接的维护构建；    
     如果一个字段拼接修改，那么完全没必有在这个字段创建索引了；
 </code></pre>
 

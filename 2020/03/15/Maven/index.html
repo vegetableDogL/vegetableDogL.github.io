@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 
@@ -511,8 +511,8 @@
 </tr>
 </tbody></table>
 <p><strong>配置本地仓库：</strong></p>
-<pre><code class="markdown"># 
-    1.本地仓库的位置是通过maven的核心配置文件（settings.xml）来配置的。settings.xml文件位于maven安装目录：..\apache-maven-3.5.2\conf\settings.xml 。
+<pre class=" language-markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span> </span>
+<span class="token code keyword">    1.本地仓库的位置是通过maven的核心配置文件（settings.xml）来配置的。settings.xml文件位于maven安装目录：..\apache-maven-3.5.2\conf\settings.xml 。</span>
     
 </code></pre>
 <ol>
@@ -523,42 +523,42 @@
 <ol start="2">
 <li> 配置本地仓库，修改maven的安装目录中conf/settings.xml文件，在53行配置本地仓库为上面的目录。默认是注释掉的。</li>
 </ol>
-<pre><code class="xml">&lt;localRepository&gt;e:\repository&lt;/localRepository&gt;
+<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>localRepository</span><span class="token punctuation">></span></span>e:\repository<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>localRepository</span><span class="token punctuation">></span></span>
 </code></pre>
 <ol start="3">
 <li> 私服配置，修改settings.xml文件，159行指定中央仓库的镜像。这里使用的是阿里云的中央仓库，速度比官方的快很多。注：要保留mirrors (s)</li>
 </ol>
-<pre><code class="xml">&lt;mirror&gt;  
-    &lt;id&gt;nexus-aliyun&lt;/id&gt;  
-    &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;    
-    &lt;name&gt;Nexus aliyun&lt;/name&gt;  
-    &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt;  
-&lt;/mirror&gt;
+<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mirror</span><span class="token punctuation">></span></span>  
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">></span></span>nexus-aliyun<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">></span></span>  
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mirrorOf</span><span class="token punctuation">></span></span>central<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mirrorOf</span><span class="token punctuation">></span></span>    
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>Nexus aliyun<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>  
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url</span><span class="token punctuation">></span></span>http://maven.aliyun.com/nexus/content/groups/public<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url</span><span class="token punctuation">></span></span>  
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mirror</span><span class="token punctuation">></span></span>
 </code></pre>
 <ol start="4">
 <li>修改maven使用JDK的版本，200行。如果不配置就需要在idea中配置。maven默认使用的是JDK1.5的版本，这里使用1.8的版本。</li>
 </ol>
-<pre><code class="xml">&lt;profile&gt;    
-    &lt;id&gt;jdk-1.8&lt;/id&gt;    
-     &lt;activation&gt;    
-          &lt;activeByDefault&gt;true&lt;/activeByDefault&gt;    
-          &lt;jdk&gt;1.8&lt;/jdk&gt;    
-      &lt;/activation&gt;    
-    &lt;properties&gt;    
-        &lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;    
-        &lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;    
-        &lt;maven.compiler.compilerVersion&gt;1.8&lt;/maven.compiler.compilerVersion&gt;    
-    &lt;/properties&gt;    
-&lt;/profile&gt;
+<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>profile</span><span class="token punctuation">></span></span>    
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">></span></span>jdk-1.8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">></span></span>    
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>activation</span><span class="token punctuation">></span></span>    
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>activeByDefault</span><span class="token punctuation">></span></span>true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>activeByDefault</span><span class="token punctuation">></span></span>    
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>jdk</span><span class="token punctuation">></span></span>1.8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>jdk</span><span class="token punctuation">></span></span>    
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>activation</span><span class="token punctuation">></span></span>    
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>properties</span><span class="token punctuation">></span></span>    
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>maven.compiler.source</span><span class="token punctuation">></span></span>1.8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>maven.compiler.source</span><span class="token punctuation">></span></span>    
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>maven.compiler.target</span><span class="token punctuation">></span></span>1.8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>maven.compiler.target</span><span class="token punctuation">></span></span>    
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>maven.compiler.compilerVersion</span><span class="token punctuation">></span></span>1.8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>maven.compiler.compilerVersion</span><span class="token punctuation">></span></span>    
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>properties</span><span class="token punctuation">></span></span>    
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>profile</span><span class="token punctuation">></span></span>
 </code></pre>
 <p>5). 私服说明</p>
 <p>【阿里云私服】–连外网时使用</p>
-<pre><code class="xml">&lt;mirror&gt;
-     &lt;id&gt;nexus-aliyun&lt;/id&gt;
-     &lt;mirrorOf&gt;*&lt;/mirrorOf&gt;
-     &lt;name&gt;Nexus aliyun&lt;/name&gt;
-     &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt;
- &lt;/mirror&gt;
+<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mirror</span><span class="token punctuation">></span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">></span></span>nexus-aliyun<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">></span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mirrorOf</span><span class="token punctuation">></span></span>*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mirrorOf</span><span class="token punctuation">></span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>Nexus aliyun<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url</span><span class="token punctuation">></span></span>http://maven.aliyun.com/nexus/content/groups/public<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url</span><span class="token punctuation">></span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mirror</span><span class="token punctuation">></span></span>
 </code></pre>
 <p><strong>注:  千万注意, 只可配置一个(另一个要注释!)   不然两个可能发生冲突 ,导致jar包下不下来 !!!!!!!</strong></p>
 <h2 id="3、maven项目构建的生命周期"><a href="#3、maven项目构建的生命周期" class="headerlink" title="3、maven项目构建的生命周期"></a>3、maven项目构建的生命周期</h2><h3 id="1、maven的三套生命周期："><a href="#1、maven的三套生命周期：" class="headerlink" title="1、maven的三套生命周期："></a>1、<strong>maven的三套生命周期：</strong></h3><p>（1）clean：清理工作</p>
@@ -580,7 +580,7 @@
 <p>post-site：执行一些在生成站点文档之后完成的工作，为部署做准备</p>
 <p>site-deploy：将生成的站点文档部署到特定的服务器上</p>
 </blockquote>
-<h3 id="2、maven生命周期相关命令"><a href="#2、maven生命周期相关命令" class="headerlink" title="2、maven生命周期相关命令"></a>2、maven生命周期相关命令</h3><pre><code class="markdown">mvn clean：调用clean生命周期的clean阶段，清理上一次构建项目生成的文件；
+<h3 id="2、maven生命周期相关命令"><a href="#2、maven生命周期相关命令" class="headerlink" title="2、maven生命周期相关命令"></a>2、maven生命周期相关命令</h3><pre class=" language-markdown"><code class="language-markdown">mvn clean：调用clean生命周期的clean阶段，清理上一次构建项目生成的文件；
 mvn compile ：编译src/main/java中的java代码；
 mvn test ：编译并运行了test中内容 ；
 mvn package：将项目打包成可发布的文件，如jar或者war包； 
@@ -592,24 +592,24 @@ mvn install ：发布项目到本地仓库 ；
 <p><strong>mvn install：</strong></p>
 <p>​    install命令是将当前的项目打包并发布到本地仓库中，供本地的其他maven项目使用。项目发布的路径：<strong>本地仓库路径/groupId/artifactId/</strong> </p>
 <h2 id="4、maven应用详解"><a href="#4、maven应用详解" class="headerlink" title="4、maven应用详解"></a>4、maven应用详解</h2><h3 id="1、pom配置文件"><a href="#1、pom配置文件" class="headerlink" title="1、pom配置文件"></a>1、pom配置文件</h3><p>pom.xml</p>
-<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
-         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
-    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
-    &lt;groupId&gt;com.heima.maven&lt;/groupId&gt;
-    &lt;artifactId&gt;maven-web2&lt;/artifactId&gt;
-    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
-      &lt;packaging&gt;war&lt;/packaging&gt;
-&lt;/project&gt;
+<pre class=" language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>project</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://maven.apache.org/POM/4.0.0<span class="token punctuation">"</span></span>
+         <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>
+         <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>modelVersion</span><span class="token punctuation">></span></span>4.0.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>modelVersion</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.heima.maven<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>maven-web2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.0-SNAPSHOT<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>packaging</span><span class="token punctuation">></span></span>war<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>packaging</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>project</span><span class="token punctuation">></span></span>
 </code></pre>
 <p><strong>【pom文件详解】</strong> </p>
-<pre><code class="xml">1. &lt;project&gt; ：pom文件的根节点；
-2. &lt;modelVersion&gt;： 声明项目描述符遵循哪一个POM模型版本。模型本身的版本很少改变，虽然如此，但它仍然是必不可少的，目前POM模型版本是4.0.0；
-3. &lt;groupId&gt; ：maven项目组织id标识符，一般是公司域名倒过来写；
-4. &lt;artifactId&gt;：项目的标识符--项目名。
-5. &lt;version&gt;：项目的版本号；
-6. &lt;packaging&gt;：maven项目的打包方式一般配置jar或者war；
+<pre class=" language-xml"><code class="language-xml">1. <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>project</span><span class="token punctuation">></span></span> ：pom文件的根节点；
+2. <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>modelVersion</span><span class="token punctuation">></span></span>： 声明项目描述符遵循哪一个POM模型版本。模型本身的版本很少改变，虽然如此，但它仍然是必不可少的，目前POM模型版本是4.0.0；
+3. <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span> ：maven项目组织id标识符，一般是公司域名倒过来写；
+4. <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>：项目的标识符--项目名。
+5. <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>：项目的版本号；
+6. <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>packaging</span><span class="token punctuation">></span></span>：maven项目的打包方式一般配置jar或者war；
 </code></pre>
 <h3 id="2、依赖管理"><a href="#2、依赖管理" class="headerlink" title="2、依赖管理"></a>2、依赖管理</h3><h4 id="1、Maven坐标"><a href="#1、Maven坐标" class="headerlink" title="1、Maven坐标"></a>1、Maven坐标</h4><ol>
 <li>groupId：定义当前项目（jar包）隶属的实际项目组。</li>
@@ -617,14 +617,14 @@ mvn install ：发布项目到本地仓库 ；
 <li>version：定义当前项目（jar包）的版本号；</li>
 </ol>
 <p>通过上面三个参数我们就能够确定一个唯一版本号的jar包。</p>
-<pre><code class="markdown">&lt;dependencies&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
-            &lt;artifactId&gt;javax.servlet-api&lt;/artifactId&gt;
-            &lt;version&gt;3.0.1&lt;/version&gt;
-            &lt;scope&gt;provided&lt;/scope&gt;
-        &lt;/dependency&gt;
-&lt;/dependencies&gt;
+<pre class=" language-markdown"><code class="language-markdown"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
+<span class="token code keyword">        &lt;dependency></span>
+<span class="token code keyword">            &lt;groupId>javax.servlet&lt;/groupId></span>
+<span class="token code keyword">            &lt;artifactId>javax.servlet-api&lt;/artifactId></span>
+<span class="token code keyword">            &lt;version>3.0.1&lt;/version></span>
+<span class="token code keyword">            &lt;scope>provided&lt;/scope></span>
+<span class="token code keyword">        &lt;/dependency></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span>
 </code></pre>
 <h4 id="2、依赖范围"><a href="#2、依赖范围" class="headerlink" title="2、依赖范围"></a>2、依赖范围</h4><p>依赖的jar默认情况可以在任何地方可用，可以通过<code>scope</code>标签设定其作用范围</p>
 <p>这里的范围主要是指以下三种范围</p>
@@ -634,95 +634,95 @@ mvn install ：发布项目到本地仓库 ；
 <p>此外：<code>scope</code>标签的取值有四种：<code>compile,test,provided,runtime</code></p>
 <p>这四种取值与范围的对应情况如下：</p>
 <p><img src="https://i.loli.net/2021/09/11/zyjZs2m8JCkSWg1.png">  </p>
-<pre><code class="markdown">&lt;dependency&gt;
-  &lt;groupId&gt;org.springframework&lt;/groupId&gt;
-  &lt;artifactId&gt;spring-core&lt;/artifactId&gt;
-  &lt;version&gt;4.3.9.RELEASE&lt;/version&gt;
-  &lt;!--compile是默认的依赖范围，可以不用写出来--&gt;
-  &lt;scope&gt;compile&lt;/scope&gt;
-&lt;/dependency&gt;
+<pre class=" language-markdown"><code class="language-markdown"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-core<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>4.3.9.RELEASE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+  <span class="token comment" spellcheck="true">&lt;!--compile是默认的依赖范围，可以不用写出来--></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>compile<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
 
-&lt;dependency&gt;
-  &lt;groupId&gt;junit&lt;/groupId&gt;
-  &lt;artifactId&gt;junit&lt;/artifactId&gt;
-  &lt;version&gt;4.12&lt;/version&gt;
-  &lt;scope&gt;test&lt;/scope&gt;
-&lt;/dependency&gt;
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>junit<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>junit<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>4.12<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
 
- &lt;dependency&gt;
-     &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
-     &lt;artifactId&gt;javax.servlet-api&lt;/artifactId&gt;
-     &lt;version&gt;3.1.0&lt;/version&gt;
-     &lt;scope&gt;provided&lt;/scope&gt;
-&lt;/dependency&gt;
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+<span class="token code keyword">     &lt;groupId>javax.servlet&lt;/groupId></span>
+<span class="token code keyword">     &lt;artifactId>javax.servlet-api&lt;/artifactId></span>
+<span class="token code keyword">     &lt;version>3.1.0&lt;/version></span>
+<span class="token code keyword">     &lt;scope>provided&lt;/scope></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
 
-&lt;dependency&gt;
-  &lt;groupId&gt;mysql&lt;/groupId&gt;
-  &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
-  &lt;version&gt;5.0.8&lt;/version&gt;
-  &lt;scope&gt;runtime&lt;/scope&gt;
-&lt;/dependency&gt;
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>mysql<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>mysql-connector-java<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>5.0.8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>runtime<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
 </code></pre>
 <h4 id="3、依赖版本维护"><a href="#3、依赖版本维护" class="headerlink" title="3、依赖版本维护"></a>3、依赖版本维护</h4><p>第一步 ：在pom.xml中使用<propeties>属性定义jar包的版本 </p>
-<pre><code class="markdown"> &lt;properties&gt;
-        &lt;junit.version&gt;4.13&lt;/junit.version&gt;
-        &lt;mybatis.version&gt;3.4.5&lt;/mybatis.version&gt;
-    &lt;/properties&gt;
+<pre class=" language-markdown"><code class="language-markdown"> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>properties</span><span class="token punctuation">></span></span>
+<span class="token code keyword">        &lt;junit.version>4.13&lt;/junit.version></span>
+<span class="token code keyword">        &lt;mybatis.version>3.4.5&lt;/mybatis.version></span>
+<span class="token code keyword">    &lt;/properties></span>
 </code></pre>
 <p>第二步 ：在依赖的<version>中使用${}引入前面定义好的版本</p>
-<pre><code class="markdown"> &lt;dependencies&gt;
-     &lt;dependency&gt;
-         &lt;groupId&gt;junit&lt;/groupId&gt;
-         &lt;artifactId&gt;junit&lt;/artifactId&gt;
-         &lt;version&gt;$&#123;junit.version&#125;&lt;/version&gt;
-         &lt;scope&gt;test&lt;/scope&gt;
-     &lt;/dependency&gt;
+<pre class=" language-markdown"><code class="language-markdown"> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
+<span class="token code keyword">     &lt;dependency></span>
+<span class="token code keyword">         &lt;groupId>junit&lt;/groupId></span>
+<span class="token code keyword">         &lt;artifactId>junit&lt;/artifactId></span>
+<span class="token code keyword">         &lt;version>$&amp;#123;junit.version&amp;#125;&lt;/version></span>
+<span class="token code keyword">         &lt;scope>test&lt;/scope></span>
+<span class="token code keyword">     &lt;/dependency></span>
 
-     
-     &lt;dependency&gt;
-         &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
-         &lt;artifactId&gt;mybatis&lt;/artifactId&gt;
-         &lt;version&gt;$&#123;mybatis.version&#125;&lt;/version&gt;
-         &lt;scope&gt;compile&lt;/scope&gt;
-     &lt;/dependency&gt;
-&lt;/dependencies&gt;
+<span class="token code keyword">     </span>
+<span class="token code keyword">     &lt;dependency></span>
+<span class="token code keyword">         &lt;groupId>org.mybatis&lt;/groupId></span>
+<span class="token code keyword">         &lt;artifactId>mybatis&lt;/artifactId></span>
+<span class="token code keyword">         &lt;version>$&amp;#123;mybatis.version&amp;#125;&lt;/version></span>
+<span class="token code keyword">         &lt;scope>compile&lt;/scope></span>
+<span class="token code keyword">     &lt;/dependency></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span>
 </code></pre>
 <p>好处：方便对项目中使用的jar包版本的统一管理。</p>
-<h4 id="4、maven插件"><a href="#4、maven插件" class="headerlink" title="4、maven插件"></a>4、maven插件</h4><pre><code class="markdown"> &lt;build&gt;
-        &lt;plugins&gt;
-            &lt;!--JDK编译插件--&gt;
-            &lt;plugin&gt;
-                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-                &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
-                &lt;version&gt;3.2&lt;/version&gt;
-                &lt;configuration&gt;
-                    &lt;source&gt;1.8&lt;/source&gt;
-                    &lt;target&gt;1.8&lt;/target&gt;
-                    &lt;encoding&gt;UTF-8&lt;/encoding&gt;
-                &lt;/configuration&gt;
-            &lt;/plugin&gt;
-            &lt;!--test插件--&gt;
-            &lt;plugin&gt;
-                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-                &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
-                &lt;version&gt;2.16&lt;/version&gt;
-                &lt;configuration&gt;
-                    &lt;forkMode&gt;once&lt;/forkMode&gt;
-                    &lt;argLine&gt;-Dfile.encoding=UTF-8&lt;/argLine&gt;
-                &lt;/configuration&gt;
-            &lt;/plugin&gt;
-            &lt;!-- tomcat7插件 --&gt;
-            &lt;plugin&gt;
-              &lt;groupId&gt;org.apache.tomcat.maven&lt;/groupId&gt;
-              &lt;artifactId&gt;tomcat7-maven-plugin&lt;/artifactId&gt;
-              &lt;version&gt;2.2&lt;/version&gt;
-              &lt;configuration&gt;
-                &lt;port&gt;80&lt;/port&gt;
-                &lt;path&gt;/&lt;/path&gt;
-              &lt;/configuration&gt;
-            &lt;/plugin&gt;
-        &lt;/plugins&gt;
- &lt;/build&gt;
+<h4 id="4、maven插件"><a href="#4、maven插件" class="headerlink" title="4、maven插件"></a>4、maven插件</h4><pre class=" language-markdown"><code class="language-markdown"> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>build</span><span class="token punctuation">></span></span>
+<span class="token code keyword">        &lt;plugins></span>
+<span class="token code keyword">            </span><span class="token comment" spellcheck="true">&lt;!--JDK编译插件--></span>
+<span class="token code keyword">            &lt;plugin></span>
+<span class="token code keyword">                &lt;groupId>org.apache.maven.plugins&lt;/groupId></span>
+<span class="token code keyword">                &lt;artifactId>maven-compiler-plugin&lt;/artifactId></span>
+<span class="token code keyword">                &lt;version>3.2&lt;/version></span>
+<span class="token code keyword">                &lt;configuration></span>
+<span class="token code keyword">                    &lt;source>1.8&lt;/source></span>
+<span class="token code keyword">                    &lt;target>1.8&lt;/target></span>
+<span class="token code keyword">                    &lt;encoding>UTF-8&lt;/encoding></span>
+<span class="token code keyword">                &lt;/configuration></span>
+<span class="token code keyword">            &lt;/plugin></span>
+<span class="token code keyword">            </span><span class="token comment" spellcheck="true">&lt;!--test插件--></span>
+<span class="token code keyword">            &lt;plugin></span>
+<span class="token code keyword">                &lt;groupId>org.apache.maven.plugins&lt;/groupId></span>
+<span class="token code keyword">                &lt;artifactId>maven-surefire-plugin&lt;/artifactId></span>
+<span class="token code keyword">                &lt;version>2.16&lt;/version></span>
+<span class="token code keyword">                &lt;configuration></span>
+<span class="token code keyword">                    &lt;forkMode>once&lt;/forkMode></span>
+<span class="token code keyword">                    &lt;argLine>-Dfile.encoding=UTF-8&lt;/argLine></span>
+<span class="token code keyword">                &lt;/configuration></span>
+<span class="token code keyword">            &lt;/plugin></span>
+<span class="token code keyword">            </span><span class="token comment" spellcheck="true">&lt;!-- tomcat7插件 --></span>
+<span class="token code keyword">            &lt;plugin></span>
+<span class="token code keyword">              &lt;groupId>org.apache.tomcat.maven&lt;/groupId></span>
+<span class="token code keyword">              &lt;artifactId>tomcat7-maven-plugin&lt;/artifactId></span>
+<span class="token code keyword">              &lt;version>2.2&lt;/version></span>
+<span class="token code keyword">              &lt;configuration></span>
+<span class="token code keyword">                &lt;port>80&lt;/port></span>
+<span class="token code keyword">                &lt;path>/&lt;/path></span>
+<span class="token code keyword">              &lt;/configuration></span>
+<span class="token code keyword">            &lt;/plugin></span>
+<span class="token code keyword">        &lt;/plugins></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>build</span><span class="token punctuation">></span></span>
 </code></pre>
 
                 

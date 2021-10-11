@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 
@@ -482,12 +482,12 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1、Filter-amp-Listener"><a href="#1、Filter-amp-Listener" class="headerlink" title="1、Filter&amp;Listener"></a>1、Filter&amp;Listener</h1><h2 id="1、WEB三大组件的介绍"><a href="#1、WEB三大组件的介绍" class="headerlink" title="1、WEB三大组件的介绍"></a>1、WEB三大组件的介绍</h2><pre><code class="markdown"># 概念
-1. 组件: 是一个系统的组成部件
-2. javaweb组件 : javaweb项目的组成部件
-    1). servlet 
-    2). filter 
-    3). listener 
+                <h1 id="1、Filter-amp-Listener"><a href="#1、Filter-amp-Listener" class="headerlink" title="1、Filter&amp;Listener"></a>1、Filter&amp;Listener</h1><h2 id="1、WEB三大组件的介绍"><a href="#1、WEB三大组件的介绍" class="headerlink" title="1、WEB三大组件的介绍"></a>1、WEB三大组件的介绍</h2><pre class=" language-markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span> 概念</span>
+<span class="token list punctuation">1.</span> 组件: 是一个系统的组成部件
+<span class="token list punctuation">2.</span> javaweb组件 : javaweb项目的组成部件
+<span class="token code keyword">    1). servlet </span>
+<span class="token code keyword">    2). filter </span>
+<span class="token code keyword">    3). listener </span>
 </code></pre>
 <table>
 <thead>
@@ -523,180 +523,180 @@
 <p><strong>应用场景：</strong></p>
 <p>如：登录验证、统一编码处理、敏感字符过滤</p>
 <p><img src="https://i.loli.net/2021/09/07/4ScFxEb89NrWDmJ.png" alt="image-20210907172801213"></p>
-<h3 id="1、使用："><a href="#1、使用：" class="headerlink" title="1、使用："></a>1、使用：</h3><pre><code class="markdown"># 1.编写java类，实现filter接口（javax.servlet.Filter）
+<h3 id="1、使用："><a href="#1、使用：" class="headerlink" title="1、使用："></a>1、使用：</h3><pre class=" language-markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span> 1.编写java类，实现filter接口（javax.servlet.Filter）</span>
 
-# 2.编写web.xml配置
+<span class="token title important"><span class="token punctuation">#</span> 2.编写web.xml配置</span>
 </code></pre>
 <p>java类</p>
-<pre><code class="java">// 也可使用注解  @WebFilter(&quot;/MyServlet&quot;)，使用注解就不能用xml配置，会出错
-public class MyFilter implements Filter &#123;
-    @Override
-    public void init(FilterConfig filterConfig) throws ServletException &#123;
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 也可使用注解  @WebFilter("/MyServlet")，使用注解就不能用xml配置，会出错</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyFilter</span> <span class="token keyword">implements</span> <span class="token class-name">Filter</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span>FilterConfig filterConfig<span class="token punctuation">)</span> <span class="token keyword">throws</span> ServletException <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
 
-    &#125;
-    /*
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/*
         doFilter方法: 类似于Servlet的service方法
         1. 请求每发一次, 此方法就会执行一次
         2. 这个方法先于资源(Servlet的service方法)执行,起到拦截请求的作用
-     */
-    @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,
-                         FilterChain filterChain) throws IOException, ServletException &#123;
-        System.out.println(&quot;MyFilter执行了&quot;);
-        //此方法类似于Servlet的请求转发, 此方法需要调用后续资源才会被访问到
-        //放行
-        filterChain.doFilter(servletRequest, servletResponse);
-//        servletRequest.getRequestDispatcher(&quot;目标地址&quot;).forward(servletRequest, servletResponse);
-    &#125;
+     */</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">doFilter</span><span class="token punctuation">(</span>ServletRequest servletRequest<span class="token punctuation">,</span> ServletResponse servletResponse<span class="token punctuation">,</span>
+                         FilterChain filterChain<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException<span class="token punctuation">,</span> ServletException <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"MyFilter执行了"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//此方法类似于Servlet的请求转发, 此方法需要调用后续资源才会被访问到</span>
+        <span class="token comment" spellcheck="true">//放行</span>
+        filterChain<span class="token punctuation">.</span><span class="token function">doFilter</span><span class="token punctuation">(</span>servletRequest<span class="token punctuation">,</span> servletResponse<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//        servletRequest.getRequestDispatcher("目标地址").forward(servletRequest, servletResponse);</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-    @Override
-    public void destroy() &#123;
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
 
-    &#125;
-&#125;
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 </code></pre>
 <p><strong>web.xml</strong></p>
-<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;web-app xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;
-         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-         xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd&quot;
-         version=&quot;4.0&quot;&gt;
+<pre class=" language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>web-app</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://xmlns.jcp.org/xml/ns/javaee<span class="token punctuation">"</span></span>
+         <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>
+         <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd<span class="token punctuation">"</span></span>
+         <span class="token attr-name">version</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>4.0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
 
-    &lt;filter&gt;
-        &lt;filter-name&gt;MyFilter&lt;/filter-name&gt;
-        &lt;filter-class&gt;com.itheima01.MyFilter&lt;/filter-class&gt;
-    &lt;/filter&gt;
-    &lt;!--
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">></span></span>MyFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-class</span><span class="token punctuation">></span></span>com.itheima01.MyFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-class</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter</span><span class="token punctuation">></span></span>
+    <span class="token comment" spellcheck="true">&lt;!--
         过滤器:
             拦截客户端对web资源的请求
             (这里配置的是拦截的路径)
-    --&gt;
-    &lt;filter-mapping&gt;
-        &lt;filter-name&gt;MyFilter&lt;/filter-name&gt;
-        &lt;url-pattern&gt;/MyServlet&lt;/url-pattern&gt;
-    &lt;/filter-mapping&gt;
-&lt;/web-app&gt;
+    --></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-mapping</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">></span></span>MyFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">></span></span>/MyServlet<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-mapping</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>web-app</span><span class="token punctuation">></span></span>
 </code></pre>
-<h3 id="2、工作原理"><a href="#2、工作原理" class="headerlink" title="2、工作原理"></a>2、工作原理</h3><pre><code class="markdown">1. 用户发送请求，请求Web资源(包括html,jsp,servlet等)
-2. 如果Web资源的地址，是filter要拦截的地址，请求将先经过filter,并执行doFilter()
-3. doFilter()方法中如果调用filterChain.doFilter()，则允许请求访问下一个Web资源。
-4. 访问Web资源，响应回来会再次经过filter,执行过滤器中的代码，到达浏览器端。
+<h3 id="2、工作原理"><a href="#2、工作原理" class="headerlink" title="2、工作原理"></a>2、工作原理</h3><pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">1.</span> 用户发送请求，请求Web资源(包括html,jsp,servlet等)
+<span class="token list punctuation">2.</span> 如果Web资源的地址，是filter要拦截的地址，请求将先经过filter,并执行doFilter()
+<span class="token list punctuation">3.</span> doFilter()方法中如果调用filterChain.doFilter()，则允许请求访问下一个Web资源。
+<span class="token list punctuation">4.</span> 访问Web资源，响应回来会再次经过filter,执行过滤器中的代码，到达浏览器端。
 </code></pre>
-<h3 id="3、生命周期"><a href="#3、生命周期" class="headerlink" title="3、生命周期"></a>3、生命周期</h3><pre><code class="markdown">* 创建（filter启动加载的）
-        服务器启动项目加载，创建filter对象，执行init方法（只执行一次）
-        
-* 运行（过滤拦截）
-        用户访问被拦截目标资源时，执行doFilter方法
+<h3 id="3、生命周期"><a href="#3、生命周期" class="headerlink" title="3、生命周期"></a>3、生命周期</h3><pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">*</span> 创建（filter启动加载的）
+<span class="token code keyword">        服务器启动项目加载，创建filter对象，执行init方法（只执行一次）</span>
+<span class="token code keyword">        </span>
+<span class="token list punctuation">*</span> 运行（过滤拦截）
+<span class="token code keyword">        用户访问被拦截目标资源时，执行doFilter方法</span>
 
-* 销毁
-        服务器关闭项目卸载时，销毁filter对象，执行destroy方法（只执行一次）
-        
-* 补充：
-    过滤器一定是优先于servlet创建的,后于Servlet销毁
+<span class="token list punctuation">*</span> 销毁
+<span class="token code keyword">        服务器关闭项目卸载时，销毁filter对象，执行destroy方法（只执行一次）</span>
+<span class="token code keyword">        </span>
+<span class="token list punctuation">*</span> 补充：
+<span class="token code keyword">    过滤器一定是优先于servlet创建的,后于Servlet销毁</span>
 </code></pre>
 <p><strong>filter接口的API：</strong></p>
-<pre><code class="java">// 初始化方法
-public void init(FilterConfig config);
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 初始化方法</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span>FilterConfig config<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// 执行拦截方法
-public void doFilter(ServletRequest request, ServletResponse response,FilterChain chain);
+<span class="token comment" spellcheck="true">// 执行拦截方法</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">doFilter</span><span class="token punctuation">(</span>ServletRequest request<span class="token punctuation">,</span> ServletResponse response<span class="token punctuation">,</span>FilterChain chain<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// 销毁方法
-public void destroy();
+<span class="token comment" spellcheck="true">// 销毁方法</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<h3 id="4、-拦截路径"><a href="#4、-拦截路径" class="headerlink" title="4、 拦截路径"></a>4、 拦截路径</h3><pre><code class="markdown">* 精准匹配
-        用户访问指定目标资源（/show.jsp）时，过滤器进行拦截
-        
-* 目录匹配
-        用户访问指定目录下（/user/*）所有资源时，过滤器进行拦截
+<h3 id="4、-拦截路径"><a href="#4、-拦截路径" class="headerlink" title="4、 拦截路径"></a>4、 拦截路径</h3><pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">*</span> 精准匹配
+<span class="token code keyword">        用户访问指定目标资源（/show.jsp）时，过滤器进行拦截</span>
+<span class="token code keyword">        </span>
+<span class="token list punctuation">*</span> 目录匹配
+<span class="token code keyword">        用户访问指定目录下（/user/*）所有资源时，过滤器进行拦截</span>
 
-* 后缀匹配
-        用户访问指定后缀名（*.html）的资源时，过滤器进行拦截
+<span class="token list punctuation">*</span> 后缀匹配
+<span class="token code keyword">        用户访问指定后缀名（*.html）的资源时，过滤器进行拦截</span>
 
-* 匹配所有
-        用户访问该网站所有资源（/*）时，过滤器进行拦截
+<span class="token list punctuation">*</span> 匹配所有
+<span class="token code keyword">        用户访问该网站所有资源（/*）时，过滤器进行拦截</span>
 </code></pre>
-<pre><code class="java">@WebFilter(&#123;&quot;/user/*&quot;,&quot;/YourServlet&quot;&#125;)     // 可以设置多个拦截路径
-public class UrlFilter implements Filter &#123;
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@WebFilter</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token string">"/user/*"</span><span class="token punctuation">,</span><span class="token string">"/YourServlet"</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>     <span class="token comment" spellcheck="true">// 可以设置多个拦截路径</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UrlFilter</span> <span class="token keyword">implements</span> <span class="token class-name">Filter</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     。。。
-&#125;
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 </code></pre>
 <h3 id="5、拦截方式"><a href="#5、拦截方式" class="headerlink" title="5、拦截方式"></a>5、拦截方式</h3><blockquote>
 <p>在开发时，我们可以指定过滤器的拦截方式来处理不同的应用场景，比如：只拦截从浏览器直接发送过来的请求，或者拦截内部转发的请求</p>
 </blockquote>
-<pre><code class="markdown">总共有五种不同的拦截方式,我们这里学习常见的两种
+<pre class=" language-markdown"><code class="language-markdown">总共有五种不同的拦截方式,我们这里学习常见的两种
 
-1. request（默认拦截方式）
-        浏览器直接发送请求时，拦截
-2. forward
-        请求转发的时候，拦截
-        比如: 资源A转发到资源B时
-        
+<span class="token list punctuation">1.</span> request（默认拦截方式）
+<span class="token code keyword">        浏览器直接发送请求时，拦截</span>
+<span class="token list punctuation">2.</span> forward
+<span class="token code keyword">        请求转发的时候，拦截</span>
+<span class="token code keyword">        比如: 资源A转发到资源B时</span>
+<span class="token code keyword">        </span>
 我们可以配置 二个同时存在...
 </code></pre>
 <p><strong>web.xml配置：</strong></p>
-<pre><code class="xml">&lt;filter&gt;
-    &lt;filter-name&gt;XFilter&lt;/filter-name&gt;
-    &lt;filter-class&gt;com.itheima04.method.MethodFilter&lt;/filter-class&gt;
+<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">></span></span>XFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-class</span><span class="token punctuation">></span></span>com.itheima04.method.MethodFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-class</span><span class="token punctuation">></span></span>
 
-&lt;/filter&gt;
-&lt;filter-mapping&gt;
-    &lt;filter-name&gt;XFilter&lt;/filter-name&gt;
-    &lt;url-pattern&gt;/BServlet&lt;/url-pattern&gt;
-    &lt;dispatcher&gt;FORWARD&lt;/dispatcher&gt;
-    &lt;dispatcher&gt;REQUEST&lt;/dispatcher&gt;
-&lt;/filter-mapping&gt;
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-mapping</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">></span></span>XFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">></span></span>/BServlet<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dispatcher</span><span class="token punctuation">></span></span>FORWARD<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dispatcher</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dispatcher</span><span class="token punctuation">></span></span>REQUEST<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dispatcher</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-mapping</span><span class="token punctuation">></span></span>
 </code></pre>
 <p><strong>注解版本：</strong></p>
-<pre><code class="java">/*
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/*
     Filter默认只拦截来自浏览器的请求,不拦截转发的请求
     1. dispatcherTypes可以用于设置过滤器拦截的请求类型
     2. 默认取值是request (来自浏览器的请求)
         可以设置 forward (转发的请求)
- */
-@WebFilter(value = &#123;&quot;/AServlet&quot;,&quot;/BServlet&quot;&#125;,
-        dispatcherTypes = &#123;DispatcherType.REQUEST,DispatcherType.FORWARD&#125;)
-public class MethodFilter implements Filter &#123;
+ */</span>
+<span class="token annotation punctuation">@WebFilter</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token string">"/AServlet"</span><span class="token punctuation">,</span><span class="token string">"/BServlet"</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
+        dispatcherTypes <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>DispatcherType<span class="token punctuation">.</span>REQUEST<span class="token punctuation">,</span>DispatcherType<span class="token punctuation">.</span>FORWARD<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MethodFilter</span> <span class="token keyword">implements</span> <span class="token class-name">Filter</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     。。。
-&#125;
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 </code></pre>
 <h3 id="6、过滤器链"><a href="#6、过滤器链" class="headerlink" title="6、过滤器链"></a>6、过滤器链</h3><blockquote>
 <p>在一次请求中,若我们请求匹配到了多个filter,通过请求就相当于把这些filter串起来了，形成了过滤器链。</p>
 <p>即多个filter拦截一个资源，形成了拦截链，使用filter的先后顺序如下。</p>
 </blockquote>
-<pre><code class="markdown">* 过滤器链中执行的先后问题....
-    xml配置文件
-        谁先声明，谁先执行
-            &lt;filter-mapping&gt;
-    注解【不推荐】
-        根据过滤器类名进行排序，值小的先执行
-            FilterA  FilterB  进行比较， FilterA先执行...
+<pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">*</span> 过滤器链中执行的先后问题....
+<span class="token code keyword">    xml配置文件</span>
+<span class="token code keyword">        谁先声明，谁先执行</span>
+<span class="token code keyword">            &lt;filter-mapping></span>
+<span class="token code keyword">    注解【不推荐】</span>
+<span class="token code keyword">        根据过滤器类名进行排序，值小的先执行</span>
+<span class="token code keyword">            FilterA  FilterB  进行比较， FilterA先执行...</span>
 </code></pre>
 <p><img src="https://i.loli.net/2021/09/07/YdI4k7UgQZvCVyT.png" alt="image-20210907174554267"></p>
-<pre><code class="xml">&lt;filter&gt;
-      &lt;filter-name&gt;FilterB&lt;/filter-name&gt;
-      &lt;filter-class&gt;com.itheima05.chain.FilterB&lt;/filter-class&gt;
-   &lt;/filter&gt;
-   &lt;filter-mapping&gt;
-      &lt;filter-name&gt;FilterB&lt;/filter-name&gt;
-      &lt;url-pattern&gt;/SourceServlet&lt;/url-pattern&gt;
-   &lt;/filter-mapping&gt;
+<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">></span></span>FilterB<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-class</span><span class="token punctuation">></span></span>com.itheima05.chain.FilterB<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-class</span><span class="token punctuation">></span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter</span><span class="token punctuation">></span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-mapping</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">></span></span>FilterB<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">></span></span>/SourceServlet<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">></span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-mapping</span><span class="token punctuation">></span></span>
 
-   &lt;filter&gt;
-      &lt;filter-name&gt;FilterA&lt;/filter-name&gt;
-      &lt;filter-class&gt;com.itheima05.chain.FilterA&lt;/filter-class&gt;
-   &lt;/filter&gt;
-   &lt;filter-mapping&gt;
-      &lt;filter-name&gt;FilterA&lt;/filter-name&gt;
-      &lt;url-pattern&gt;/SourceServlet&lt;/url-pattern&gt;
-   &lt;/filter-mapping&gt;
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">></span></span>FilterA<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-class</span><span class="token punctuation">></span></span>com.itheima05.chain.FilterA<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-class</span><span class="token punctuation">></span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter</span><span class="token punctuation">></span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-mapping</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">></span></span>FilterA<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">></span></span>/SourceServlet<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">></span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-mapping</span><span class="token punctuation">></span></span>
 </code></pre>
 <h2 id="3、Listener"><a href="#3、Listener" class="headerlink" title="3、Listener"></a>3、Listener</h2><blockquote>
 <p>在我们的java程序中，有时也需要监视某些事情，一旦被监视的对象发生相应的变化，我们应该采取相应的操作。</p>
 <p>监听web三大域对象：HttpServletRequest、HttpSession、ServletContext  （创建和销毁）</p>
 </blockquote>
 <p>场景：</p>
-<pre><code class="markdown">历史访问次数、统计在线人数、系统启动时初始化配置信息（spring的加载）
+<pre class=" language-markdown"><code class="language-markdown">历史访问次数、统计在线人数、系统启动时初始化配置信息（spring的加载）
 </code></pre>
 <p> <strong>监听器的接口分类</strong></p>
 <table>
@@ -739,61 +739,61 @@ public class MethodFilter implements Filter &#123;
 </tr>
 </tbody></table>
 <h3 id="1、使用：-1"><a href="#1、使用：-1" class="headerlink" title="1、使用："></a>1、使用：</h3><p><strong>步骤分析</strong></p>
-<pre><code class="markdown">1. 创建一个普通类，实现ServletContextListenner
+<pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">1.</span> 创建一个普通类，实现ServletContextListenner
 
-2. 重写抽象方法
-    监听ServletContext创建
-    监听ServletContext销毁
+<span class="token list punctuation">2.</span> 重写抽象方法
+<span class="token code keyword">    监听ServletContext创建</span>
+<span class="token code keyword">    监听ServletContext销毁</span>
     
-3. 配置
-    web.xml
-    注解
+<span class="token list punctuation">3.</span> 配置
+<span class="token code keyword">    web.xml</span>
+<span class="token code keyword">    注解</span>
 </code></pre>
 <p><strong>java代码：</strong></p>
-<pre><code class="java">public class MyServletContextListener implements ServletContextListener &#123;
-    //此方法运行,意味着ServletContext创建了
-    //tomcat启动时,加载项目,ServletContext就会创建
-    @Override
-    public void contextInitialized(ServletContextEvent servletContextEvent) &#123;
-        System.out.println(&quot;ServletContext创建了&quot;);
-    &#125;
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyServletContextListener</span> <span class="token keyword">implements</span> <span class="token class-name">ServletContextListener</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//此方法运行,意味着ServletContext创建了</span>
+    <span class="token comment" spellcheck="true">//tomcat启动时,加载项目,ServletContext就会创建</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">contextInitialized</span><span class="token punctuation">(</span>ServletContextEvent servletContextEvent<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"ServletContext创建了"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-    @Override
-    public void contextDestroyed(ServletContextEvent servletContextEvent) &#123;
-        System.out.println(&quot;ServletContext销毁了&quot;);
-    &#125;
-&#125;
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">contextDestroyed</span><span class="token punctuation">(</span>ServletContextEvent servletContextEvent<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"ServletContext销毁了"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 </code></pre>
 <p><strong>xml:</strong></p>
-<pre><code class="xml">&lt;listener&gt;
-   &lt;listener-class&gt;com.itheima08.listener.MyServletContextListener&lt;/listener-class&gt;
-&lt;/listener&gt;
+<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>listener</span><span class="token punctuation">></span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>listener-class</span><span class="token punctuation">></span></span>com.itheima08.listener.MyServletContextListener<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>listener-class</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>listener</span><span class="token punctuation">></span></span>
 </code></pre>
 <p><strong>注解：</strong></p>
-<pre><code class="java">@WebListener
-public class MyServletContextListener implements ServletContextListener &#123;
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@WebListener</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyServletContextListener</span> <span class="token keyword">implements</span> <span class="token class-name">ServletContextListener</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     。。。
-&#125;
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 </code></pre>
-<h3 id="2、运行原理"><a href="#2、运行原理" class="headerlink" title="2、运行原理"></a>2、运行原理</h3><pre><code class="markdown"> Listener入门
-        1. 编写一个类,实现接口
-        2. 配置
-            1). web.xml
-            2). 注解
+<h3 id="2、运行原理"><a href="#2、运行原理" class="headerlink" title="2、运行原理"></a>2、运行原理</h3><pre class=" language-markdown"><code class="language-markdown"> Listener入门
+<span class="token code keyword">        1. 编写一个类,实现接口</span>
+<span class="token code keyword">        2. 配置</span>
+<span class="token code keyword">            1). web.xml</span>
+<span class="token code keyword">            2). 注解</span>
 
-    Listener原理
-        1. tomcat启动的时候,会读取web.xml中,发现监听器类全名
-        2. tomcat会创建这个监听器对象
-           clazz =  Class.forName(&quot;com.itheima08.listener.MyServletContextListener&quot;);
-           ServletContextListener listener = clazz.newInstance();
+<span class="token code keyword">    Listener原理</span>
+<span class="token code keyword">        1. tomcat启动的时候,会读取web.xml中,发现监听器类全名</span>
+<span class="token code keyword">        2. tomcat会创建这个监听器对象</span>
+<span class="token code keyword">           clazz =  Class.forName("com.itheima08.listener.MyServletContextListener");</span>
+<span class="token code keyword">           ServletContextListener listener = clazz.newInstance();</span>
 
-        3. ServletContextListener就会开始工作 : 监听ServletContext创建和销毁
-            如果ServletContext创建,就调用contextInitialized方法
-             如果ServletContext销毁,就调用contextDestroyed方法
+<span class="token code keyword">        3. ServletContextListener就会开始工作 : 监听ServletContext创建和销毁</span>
+<span class="token code keyword">            如果ServletContext创建,就调用contextInitialized方法</span>
+<span class="token code keyword">             如果ServletContext销毁,就调用contextDestroyed方法</span>
 
    问题:    ServletContextListener ,ServletContext ,Filter, Servlet都能启动加载,先后顺序?
 
-       ServletContextListener &gt; ServletContext  &gt; Filter &gt; Servlet
+<span class="token code keyword">       ServletContextListener > ServletContext  > Filter > Servlet</span>
 </code></pre>
 <h3 id="3、模拟spring框架"><a href="#3、模拟spring框架" class="headerlink" title="3、模拟spring框架"></a>3、模拟spring框架</h3><ul>
 <li>可以在项目启动时读取配置文件</li>
@@ -801,43 +801,43 @@ public class MyServletContextListener implements ServletContextListener &#123;
 <blockquote>
 <p>项目启动时: ServletContextListener &gt; filter init &gt; servlet init</p>
 </blockquote>
-<pre><code class="xml"> &lt;!--
+<pre class=" language-xml"><code class="language-xml"> <span class="token comment" spellcheck="true">&lt;!--
         TODO: ServletContext读取全局配置参数
             spring的使用者编写spring核心配置文件,并且在web.xml配置文件的位置
             接下来spring底层就会在tomcat启动的时候加载此配置文件
             (底层实现用ServletContextListener)
-    --&gt;
-    &lt;context-param&gt;
-        &lt;param-name&gt;springConfiguration&lt;/param-name&gt;
-        &lt;param-value&gt;spring.xml&lt;/param-value&gt;
-    &lt;/context-param&gt;
+    --></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>context-param</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-name</span><span class="token punctuation">></span></span>springConfiguration<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-name</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-value</span><span class="token punctuation">></span></span>spring.xml<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-value</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>context-param</span><span class="token punctuation">></span></span>
 </code></pre>
-<pre><code class="java">package com.itheima08.listener;
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>itheima08<span class="token punctuation">.</span>listener<span class="token punctuation">;</span>
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
-import javax.servlet.annotation.WebListener;
+<span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>ServletContext<span class="token punctuation">;</span>
+<span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>ServletContextEvent<span class="token punctuation">;</span>
+<span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>ServletContextListener<span class="token punctuation">;</span>
+<span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>WebListener<span class="token punctuation">;</span>
 
-@WebListener
-public class SpringListener implements ServletContextListener &#123;
-    //此方法是项目一启动就运行,表示servletContext创建好了, 早于Filter和Servlet
-        // xxEvent可以获取xx对象
-    @Override
-    public void contextInitialized(ServletContextEvent servletContextEvent) &#123;
-        ServletContext context = servletContextEvent.getServletContext();
-        String springConfiguration = context.getInitParameter(&quot;springConfiguration&quot;);
-        System.out.println(springConfiguration);
-        //接下来spring可以使用dom4j解析spring.xml
-    &#125;
+<span class="token annotation punctuation">@WebListener</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SpringListener</span> <span class="token keyword">implements</span> <span class="token class-name">ServletContextListener</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//此方法是项目一启动就运行,表示servletContext创建好了, 早于Filter和Servlet</span>
+        <span class="token comment" spellcheck="true">// xxEvent可以获取xx对象</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">contextInitialized</span><span class="token punctuation">(</span>ServletContextEvent servletContextEvent<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        ServletContext context <span class="token operator">=</span> servletContextEvent<span class="token punctuation">.</span><span class="token function">getServletContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        String springConfiguration <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">getInitParameter</span><span class="token punctuation">(</span><span class="token string">"springConfiguration"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>springConfiguration<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//接下来spring可以使用dom4j解析spring.xml</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-    @Override
-    public void contextDestroyed(ServletContextEvent servletContextEvent) &#123;
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">contextDestroyed</span><span class="token punctuation">(</span>ServletContextEvent servletContextEvent<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
 
-    &#125;
-&#125;
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 </code></pre>
-<h2 id="4、运行顺序"><a href="#4、运行顺序" class="headerlink" title="4、运行顺序"></a>4、运行顺序</h2><pre><code class="markdown"># ServletContextListener &gt; ServletContext  &gt; Filter &gt; Servlet
+<h2 id="4、运行顺序"><a href="#4、运行顺序" class="headerlink" title="4、运行顺序"></a>4、运行顺序</h2><pre class=" language-markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span> ServletContextListener > ServletContext  > Filter > Servlet</span>
 </code></pre>
 
                 
@@ -1080,31 +1080,31 @@ public class SpringListener implements ServletContextListener &#123;
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/04/28/EL%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+                <a href="/2020/09/17/BlogOpen/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="EL表达式">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="LuckyBlog开源搭建教程">
                         
-                        <span class="card-title">EL表达式</span>
+                        <span class="card-title">LuckyBlog开源搭建教程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            EL表达式
+                            之前在B站上发布了个人博客的视频，播放量也破千了，有网友私聊也想要搭建一个这样的博客。经过一段时间的准备，现将博客LuckyBlog的源代码公布出来，大家只需要根据以下的步骤，即可快速搭建一个漂亮且完善的博客。
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-28
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-09-17
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JavaWeb/" class="post-category">
-                                    JavaWeb
+                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E7%AF%87/" class="post-category">
+                                    博客篇
                                 </a>
                             
                             
@@ -1114,8 +1114,12 @@ public class SpringListener implements ServletContextListener &#123;
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JavaWeb/">
-                        <span class="chip bg-color">JavaWeb</span>
+                    <a href="/tags/hexo-blog-lucky/">
+                        <span class="chip bg-color">hexo-blog-lucky</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/">
+                        <span class="chip bg-color">博客搭建教程</span>
                     </a>
                     
                 </div>
@@ -1129,19 +1133,19 @@ public class SpringListener implements ServletContextListener &#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/04/28/Servlet1/">
+                <a href="/2020/04/28/EL%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Srevlet">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="EL表达式">
                         
-                        <span class="card-title">Srevlet</span>
+                        <span class="card-title">EL表达式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Servlet的使用
+                            EL表达式
                         
                     </div>
                     <div class="publish-info">
