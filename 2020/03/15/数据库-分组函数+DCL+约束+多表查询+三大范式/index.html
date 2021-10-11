@@ -29,7 +29,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="龙哥专用笔记" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 
@@ -751,7 +754,7 @@
 </code></pre>
 <h4 id="小结-2"><a href="#小结-2" class="headerlink" title="小结"></a>小结</h4><p>非空约束的格式:</p>
 <p>字段名 数据类型 NOT NULL</p>
-<h3 id="唯一约束与主键约束的区别"><a href="#唯一约束与主键约束的区别" class="headerlink" title="唯一约束与主键约束的区别"></a><font color='red'>唯一约束与主键约束的区别</font></h3><p>主键约束与唯一+非空约束区别？</p>
+<h3 id="唯一约束与主键约束的区别"><a href="#唯一约束与主键约束的区别" class="headerlink" title="唯一约束与主键约束的区别"></a><font color="red">唯一约束与主键约束的区别</font></h3><p>主键约束与唯一+非空约束区别？</p>
 <pre class=" language-sql"><code class="language-sql"><span class="token number">1</span><span class="token punctuation">.</span>主键约束在表中只能存在一个，但是唯一<span class="token operator">+</span>非空可以多个；
 <span class="token number">2</span><span class="token punctuation">.</span>主键约束可以配合主键自增使用，但是唯一<span class="token operator">+</span>非空不行；
 <span class="token number">3</span><span class="token punctuation">.</span>主键约束底层维护了主键索引，但是唯一约束底层维护唯一索引；

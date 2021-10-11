@@ -29,7 +29,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="龙哥专用笔记" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 
@@ -498,7 +501,7 @@
 <pre class=" language-sql"><code class="language-sql"><span class="token number">1</span><span class="token punctuation">)</span>是java连接数据库的桥梁<span class="token punctuation">;</span>
 <span class="token number">2</span><span class="token punctuation">)</span>jdbc是Sun公司抽出出来的一套操纵数据库的接口规范<span class="token punctuation">,</span>规范接口由不同的数据库服务器厂商去实现<span class="token punctuation">;</span>
 </code></pre>
-<hr style="height:10px;background-color:green;border:none;" />
+<hr style="height:10px;background-color:green;border:none;">
 
 <h2 id="2-JDBC核心API的介绍"><a href="#2-JDBC核心API的介绍" class="headerlink" title="2.JDBC核心API的介绍"></a>2.JDBC核心API的介绍</h2><h4 id="2-1-JDBC会用到的包"><a href="#2-1-JDBC会用到的包" class="headerlink" title="2.1 JDBC会用到的包"></a>2.1 JDBC会用到的包</h4><ol>
 <li>java.sql：JDBC访问数据库的基础包，在JavaSE中的包。如：java.sql.Connection</li>
@@ -521,7 +524,7 @@
 <li>在客户端可以从ResultSet中取出数据，处理结果集；</li>
 <li>释放资源，关闭连接对象；</li>
 </ol>
-<hr style="height:10px;background-color:green;border:none;" />
+<hr style="height:10px;background-color:green;border:none;">
 
 <h2 id="3-注册驱动"><a href="#3-注册驱动" class="headerlink" title="3.注册驱动"></a>3.注册驱动</h2><h4 id="3-1注册驱动"><a href="#3-1注册驱动" class="headerlink" title="3.1注册驱动"></a>3.1注册驱动</h4><h5 id="1-DriverManager显式注册-理解"><a href="#1-DriverManager显式注册-理解" class="headerlink" title="1) DriverManager显式注册(理解)"></a>1) DriverManager显式注册(理解)</h5><pre class=" language-java"><code class="language-java"><span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">registerDriver</span><span class="token punctuation">(</span>Driver driver<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//向 DriverManager 注册给定驱动程序。 </span>
 <span class="token comment" spellcheck="true">//获取所有注册的驱动类</span>
@@ -529,49 +532,49 @@
           获取带有当前调用者可以访问的所有当前已加载 JDBC 驱动程序的 Enumeration。 
 </code></pre>
 <pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@Test</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testRegister</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> SQLException <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testRegister</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> SQLException <span class="token punctuation">{</span>
         <span class="token comment" spellcheck="true">//1)显式注册驱动</span>
         DriverManager<span class="token punctuation">.</span><span class="token function">registerDriver</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Driver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment" spellcheck="true">//2)获取注册的驱动</span>
         Enumeration<span class="token operator">&lt;</span>java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>Driver<span class="token operator">></span> drivers <span class="token operator">=</span> DriverManager<span class="token punctuation">.</span><span class="token function">getDrivers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment" spellcheck="true">//3)遍历</span>
-        <span class="token keyword">while</span><span class="token punctuation">(</span>drivers<span class="token punctuation">.</span><span class="token function">hasMoreElements</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>drivers<span class="token punctuation">.</span><span class="token function">hasMoreElements</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
             System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>drivers<span class="token punctuation">.</span><span class="token function">nextElement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
 </code></pre>
 <p>说明:对于mysql不建议使用DriverManger的显式注册方式,会造成驱动2次注册,造成内存浪费;</p>
 <p>注册2次的原因：</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Driver</span>  <span class="token keyword">implements</span> <span class="token class-name">java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>Driver</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token function">Driver</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> SQLException <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Driver</span>  <span class="token keyword">implements</span> <span class="token class-name">java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>Driver</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token function">Driver</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> SQLException <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
 
-    <span class="token keyword">static</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        <span class="token keyword">try</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">static</span> <span class="token punctuation">{</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
             <span class="token comment" spellcheck="true">//在类被加载的时候，静态代码块就注册了一次了</span>
             DriverManager<span class="token punctuation">.</span><span class="token function">registerDriver</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Driver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> var1<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> var1<span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RuntimeException</span><span class="token punctuation">(</span><span class="token string">"Can't register driver!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>说明:使用DriverManager.registerDriver()会导致驱动类注册2次,浪费内存;</p>
 <h4 id="3-2-隐式注册驱动"><a href="#3-2-隐式注册驱动" class="headerlink" title="3.2  隐式注册驱动"></a>3.2  隐式注册驱动</h4><h5 id="1-类加载实现驱动注册"><a href="#1-类加载实现驱动注册" class="headerlink" title="1)类加载实现驱动注册"></a>1)类加载实现驱动注册</h5><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//隐式注册</span>
 Class<span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"com.mysql.jdbc.Driver"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@Test</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> ClassNotFoundException <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> ClassNotFoundException <span class="token punctuation">{</span>
         <span class="token comment" spellcheck="true">//1)隐式注册</span>
         Class<span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"com.mysql.jdbc.Driver"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment" spellcheck="true">//2)获取注册的驱动</span>
         Enumeration<span class="token operator">&lt;</span>java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>Driver<span class="token operator">></span> drivers <span class="token operator">=</span> DriverManager<span class="token punctuation">.</span><span class="token function">getDrivers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment" spellcheck="true">//3)遍历</span>
-        <span class="token keyword">while</span><span class="token punctuation">(</span>drivers<span class="token punctuation">.</span><span class="token function">hasMoreElements</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>drivers<span class="token punctuation">.</span><span class="token function">hasMoreElements</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
             System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>drivers<span class="token punctuation">.</span><span class="token function">nextElement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 </code></pre>
 <h5 id="2-SPI机制自动加载-了解即可"><a href="#2-SPI机制自动加载-了解即可" class="headerlink" title="2)SPI机制自动加载(了解即可)"></a>2)SPI机制自动加载(了解即可)</h5><p>​    java6之后引入了SPI机制,jdbc利用SPI机制会自动加载实现了Driver的接口实现类;</p>
 <p>​    所以导入驱动包后无需配置,直接使用即可;</p>
@@ -581,7 +584,7 @@ Class<span class="token punctuation">.</span><span class="token function">forNam
 <span class="token number">2</span><span class="token punctuation">)</span>隐式注册: Class<span class="token punctuation">.</span>forName<span class="token punctuation">(</span>驱动类的全限定名称<span class="token punctuation">)</span><span class="token comment" spellcheck="true">---->只注册一次</span>
 <span class="token number">3</span><span class="token punctuation">)</span>jdb spi机制<span class="token punctuation">,</span>自动加载services包下接口文件<span class="token punctuation">,</span>自动加载<span class="token punctuation">,</span>无需手动加载<span class="token punctuation">;</span>
 </code></pre>
-<hr style="height:10px;background-color:green;border:none;" />
+<hr style="height:10px;background-color:green;border:none;">
 
 
 
@@ -609,7 +612,7 @@ eg:jdbc:mysql:<span class="token comment" spellcheck="true">///day05</span>
 </code></pre>
 <p>练习1:使用jdbc连接day05_2数据库</p>
 <pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@Test</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test4</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> ClassNotFoundException<span class="token punctuation">,</span> SQLException <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test4</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> ClassNotFoundException<span class="token punctuation">,</span> SQLException <span class="token punctuation">{</span>
         <span class="token comment" spellcheck="true">//1.注册驱动</span>
         Class<span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"com.mysql.jdbc.Driver"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment" spellcheck="true">//2.获取连接对象</span>
@@ -618,7 +621,7 @@ eg:jdbc:mysql:<span class="token comment" spellcheck="true">///day05</span>
         String pwd<span class="token operator">=</span><span class="token string">"1234"</span><span class="token punctuation">;</span>
         Connection conn <span class="token operator">=</span> DriverManager<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> user<span class="token punctuation">,</span> pwd<span class="token punctuation">)</span><span class="token punctuation">;</span>
         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>conn<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 </code></pre>
 <p>小结:</p>
 <p>1.JDBC获取数据库连接使用哪个API？</p>
@@ -627,7 +630,7 @@ eg:jdbc:mysql:<span class="token comment" spellcheck="true">///day05</span>
 <p>2.通过JDBC连接mysql的URL写法？</p>
 <pre class=" language-sql"><code class="language-sql">jdbc:mysql:<span class="token comment" spellcheck="true">//ip地址:端口号/库</span>
 </code></pre>
-<hr style="height:10px;background-color:green;border:none;" />
+<hr style="height:10px;background-color:green;border:none;">
 
 <h2 id="5-JDBC实现对单表数据增-删-改操作"><a href="#5-JDBC实现对单表数据增-删-改操作" class="headerlink" title="5.JDBC实现对单表数据增,删,改操作"></a>5.JDBC实现对单表数据增,删,改操作</h2><h5 id="API介绍-1"><a href="#API介绍-1" class="headerlink" title="API介绍"></a>API介绍</h5><p>获取Statement对象</p>
 <p>在<code>java.sql.Connection</code>接口中有如下方法获取到<code>Statement</code>对象</p>
@@ -654,7 +657,7 @@ eg:jdbc:mysql:<span class="token comment" spellcheck="true">///day05</span>
 </ol>
 <p>练习题:对user表中数据实现增删改操作</p>
 <pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@Test</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test6</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> ClassNotFoundException<span class="token punctuation">,</span> SQLException <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test6</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> ClassNotFoundException<span class="token punctuation">,</span> SQLException <span class="token punctuation">{</span>
         <span class="token comment" spellcheck="true">//1.注册驱动</span>
         Class<span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"com.mysql.jdbc.Driver"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment" spellcheck="true">//2.获取连接</span>
@@ -675,9 +678,9 @@ eg:jdbc:mysql:<span class="token comment" spellcheck="true">///day05</span>
         <span class="token comment" spellcheck="true">//5.释放资源</span>
         stm<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         conn<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 </code></pre>
-<hr style="height:10px;background-color:green;border:none;" />
+<hr style="height:10px;background-color:green;border:none;">
 
 <p>小结:</p>
 <p>jdbc实现增删改流程?</p>
@@ -700,7 +703,7 @@ eg:jdbc:mysql:<span class="token comment" spellcheck="true">///day05</span>
 <p>其实ResultSet获取数据的API是有规律的get后面加数据类型。我们统称<code>getXXX()</code></p>
 <p>练习:完成对user表中所有数据的查询</p>
 <pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@Test</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test7</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> ClassNotFoundException<span class="token punctuation">,</span> SQLException <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test7</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> ClassNotFoundException<span class="token punctuation">,</span> SQLException <span class="token punctuation">{</span>
         <span class="token comment" spellcheck="true">//1.注册驱动</span>
         Class<span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"com.mysql.jdbc.Driver"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment" spellcheck="true">//2.获取连接对象</span>
@@ -714,17 +717,17 @@ eg:jdbc:mysql:<span class="token comment" spellcheck="true">///day05</span>
         String sql<span class="token operator">=</span><span class="token string">"select * from user"</span><span class="token punctuation">;</span>
         ResultSet rs <span class="token operator">=</span> stm<span class="token punctuation">.</span><span class="token function">executeQuery</span><span class="token punctuation">(</span>sql<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment" spellcheck="true">//5.解析结果集</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>rs<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>rs<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
             <span class="token keyword">int</span> id <span class="token operator">=</span> rs<span class="token punctuation">.</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             String username <span class="token operator">=</span> rs<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"username"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             String password <span class="token operator">=</span> rs<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>id<span class="token operator">+</span>username<span class="token operator">+</span>password<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
         <span class="token comment" spellcheck="true">//6.关闭资源,释放连接</span>
         rs<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         stm<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         conn<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 </code></pre>
 <h3 id="6-2-jdbc查询小结"><a href="#6-2-jdbc查询小结" class="headerlink" title="6.2.jdbc查询小结"></a>6.2.jdbc查询小结</h3><p>1.jdbc查询使用步骤?</p>
 <pre class=" language-sql"><code class="language-sql"><span class="token number">1</span><span class="token punctuation">)</span>注册驱动
@@ -738,7 +741,7 @@ eg:jdbc:mysql:<span class="token comment" spellcheck="true">///day05</span>
 <pre class=" language-sql"><code class="language-sql"><span class="token number">1</span><span class="token punctuation">)</span>调用<span class="token keyword">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span>方法获取某一行的记录
 <span class="token number">2</span><span class="token punctuation">)</span>通过getXXX<span class="token punctuation">(</span>字段索引位<span class="token punctuation">)</span><span class="token punctuation">;</span>getXXX<span class="token punctuation">(</span>字段名称<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<hr style="height:10px;background-color:green;border:none;" />
+<hr style="height:10px;background-color:green;border:none;">
 
 
 
@@ -749,7 +752,7 @@ eg:jdbc:mysql:<span class="token comment" spellcheck="true">///day05</span>
 <span class="token attr-name">pwd</span><span class="token punctuation">=</span><span class="token attr-value">1234</span>
 <span class="token attr-name">driverClass</span><span class="token punctuation">=</span><span class="token attr-value">com.mysql.jdbc.Driver</span>
 </code></pre>
-<h3 id="2-封装工具类"><a href="#2-封装工具类" class="headerlink" title="2.封装工具类"></a>2.封装工具类</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JdbcUtil3</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<h3 id="2-封装工具类"><a href="#2-封装工具类" class="headerlink" title="2.封装工具类"></a>2.封装工具类</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JdbcUtil3</span> <span class="token punctuation">{</span>
 
     <span class="token comment" spellcheck="true">/**
      * 参数提取全局,方便修改维护
@@ -760,46 +763,46 @@ eg:jdbc:mysql:<span class="token comment" spellcheck="true">///day05</span>
     <span class="token keyword">private</span> <span class="token keyword">static</span> String driverClass<span class="token punctuation">;</span>
 
     <span class="token comment" spellcheck="true">//驱动类只加载一次</span>
-    <span class="token keyword">static</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">static</span> <span class="token punctuation">{</span>
         <span class="token comment" spellcheck="true">//1.加载配置文件,初始化数据库连接参数</span>
         <span class="token comment" spellcheck="true">//new FileInputStream("src/jdbc.properties");</span>
         InputStream in <span class="token operator">=</span> JdbcUtil3<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getResourceAsStream</span><span class="token punctuation">(</span><span class="token string">"jdbc.properties"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         Properties properties <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Properties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">try</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
             properties<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span>in<span class="token punctuation">)</span><span class="token punctuation">;</span>
             url<span class="token operator">=</span>properties<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"url"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             user<span class="token operator">=</span>properties<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"user"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             pwd<span class="token operator">=</span>properties<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"pwd"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             driverClass<span class="token operator">=</span>properties<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"driverClass"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
             e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
 
         <span class="token comment" spellcheck="true">//1.注册驱动</span>
-        <span class="token keyword">try</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
             Class<span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span>driverClass<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">ClassNotFoundException</span> e<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">ClassNotFoundException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
             e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
 
     <span class="token comment" spellcheck="true">/**
      * 获取连接对象
      * @return
      */</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> Connection <span class="token function">getConnction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> Connection <span class="token function">getConnction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token comment" spellcheck="true">//2.获取连接对象</span>
         Connection conn<span class="token operator">=</span>null<span class="token punctuation">;</span>
-        <span class="token keyword">try</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
             conn <span class="token operator">=</span> DriverManager<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> user<span class="token punctuation">,</span> pwd<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> throwables<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> throwables<span class="token punctuation">)</span> <span class="token punctuation">{</span>
             throwables<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
         <span class="token keyword">return</span> conn<span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <h3 id="3、-关闭资源"><a href="#3、-关闭资源" class="headerlink" title="3、 关闭资源"></a>3、 关闭资源</h3><p>关闭资源的顺序:1.ResultSet结果集 2.Statement 3.Connection</p>
 <pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
@@ -808,32 +811,32 @@ eg:jdbc:mysql:<span class="token comment" spellcheck="true">///day05</span>
      * @param stm
      * @param conn
      */</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">close</span><span class="token punctuation">(</span>ResultSet rs<span class="token punctuation">,</span> Statement stm<span class="token punctuation">,</span>Connection conn<span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>rs<span class="token operator">!=</span>null<span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-            <span class="token keyword">try</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">close</span><span class="token punctuation">(</span>ResultSet rs<span class="token punctuation">,</span> Statement stm<span class="token punctuation">,</span>Connection conn<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>rs<span class="token operator">!=</span>null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">try</span> <span class="token punctuation">{</span>
                 rs<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
                 System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"rs:"</span><span class="token operator">+</span>e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>stm<span class="token operator">!=</span>null<span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-            <span class="token keyword">try</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>stm<span class="token operator">!=</span>null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">try</span> <span class="token punctuation">{</span>
                 stm<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
                 System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"stm:"</span><span class="token operator">+</span>e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>conn<span class="token operator">!=</span>null<span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-            <span class="token keyword">try</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>conn<span class="token operator">!=</span>null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">try</span> <span class="token punctuation">{</span>
                 conn<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
                 System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"conn:"</span><span class="token operator">+</span>e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
 </code></pre>
 <h3 id="7-2工具类优化后代用查询方法"><a href="#7-2工具类优化后代用查询方法" class="headerlink" title="7.2工具类优化后代用查询方法"></a>7.2工具类优化后代用查询方法</h3><pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@Test</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test8</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> SQLException <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test8</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> SQLException <span class="token punctuation">{</span>
         <span class="token comment" spellcheck="true">//1.获取连接对象</span>
         Connection conn <span class="token operator">=</span> JdbcUtil3<span class="token punctuation">.</span><span class="token function">getConnction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment" spellcheck="true">//2.获取发送sql的对象</span>
@@ -842,17 +845,17 @@ eg:jdbc:mysql:<span class="token comment" spellcheck="true">///day05</span>
         String sql<span class="token operator">=</span><span class="token string">"select * from user"</span><span class="token punctuation">;</span>
         ResultSet rs <span class="token operator">=</span> stm<span class="token punctuation">.</span><span class="token function">executeQuery</span><span class="token punctuation">(</span>sql<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment" spellcheck="true">//5.解析结果集</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>rs<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>rs<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
             <span class="token keyword">int</span> id <span class="token operator">=</span> rs<span class="token punctuation">.</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             String username <span class="token operator">=</span> rs<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"username"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             String password <span class="token operator">=</span> rs<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>id<span class="token operator">+</span>username<span class="token operator">+</span>password<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
         <span class="token comment" spellcheck="true">//关闭资源</span>
         JdbcUtil3<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span>rs<span class="token punctuation">,</span>stm<span class="token punctuation">,</span>conn<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 </code></pre>
-<hr style="height:10px;background-color:green;border:none;" />
+<hr style="height:10px;background-color:green;border:none;">
 
 
 
@@ -868,11 +871,11 @@ eg:jdbc:mysql:<span class="token comment" spellcheck="true">///day05</span>
      * 需求：以a给b转账100业务为例；
      */</span>
     <span class="token annotation punctuation">@Test</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test9</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test9</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token punctuation">{</span>
         <span class="token comment" spellcheck="true">//1.获取连接对象</span>
         Connection conn <span class="token operator">=</span> JdbcUtil3<span class="token punctuation">.</span><span class="token function">getConnction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         Statement stm<span class="token operator">=</span>null<span class="token punctuation">;</span>
-        <span class="token keyword">try</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
             <span class="token comment" spellcheck="true">//2.设置事务手动提交</span>
             conn<span class="token punctuation">.</span><span class="token function">setAutoCommit</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token comment" spellcheck="true">//3.获取发送sql对象Statement</span>
@@ -884,23 +887,23 @@ eg:jdbc:mysql:<span class="token comment" spellcheck="true">///day05</span>
             stm<span class="token punctuation">.</span><span class="token function">executeUpdate</span><span class="token punctuation">(</span>in<span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token comment" spellcheck="true">//5.事务提交</span>
             conn<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
             System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token comment" spellcheck="true">//回滚</span>
-            <span class="token keyword">try</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token keyword">try</span> <span class="token punctuation">{</span>
                 conn<span class="token punctuation">.</span><span class="token function">rollback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> throwables<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> throwables<span class="token punctuation">)</span> <span class="token punctuation">{</span>
                 System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>throwables<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token keyword">finally</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token keyword">finally</span> <span class="token punctuation">{</span>
              JdbcUtil3<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span>null<span class="token punctuation">,</span>stm<span class="token punctuation">,</span>conn<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
 </code></pre>
 <h2 id="9、PreparedStatement对象"><a href="#9、PreparedStatement对象" class="headerlink" title="9、PreparedStatement对象"></a>9、PreparedStatement对象</h2><h3 id="1-获取PreparedStatement对象"><a href="#1-获取PreparedStatement对象" class="headerlink" title="1.获取PreparedStatement对象"></a>1.获取PreparedStatement对象</h3><p>PreparedStatement是Statement的子接口，可以防止sql注入问题。可以通过Connection接口中的prepareStatement(sql)方法获得PreparedStatement的对象。</p>
 <p>方法如下所示：</p>
-<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//创建一个 PreparedStatement 对象来将参数化的 SQL 语句发送到数据库 </span>
-PreparedStatement    <span class="token function">prepareStatement</span><span class="token punctuation">(</span>String sql<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//创建一个 PreparedStatement 对象来将参数化的 SQL 语句发送到数据库&amp;nbsp;</span>
+PreparedStatement    <span class="token function">prepareStatement</span><span class="token punctuation">(</span>String<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>sql<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>注意：sql提前创建好的。sql语句中需要参数。使用<strong>？</strong>进行占位。</p>
 <p>举例：</p>
@@ -922,7 +925,7 @@ PreparedStatement    <span class="token function">prepareStatement</span><span c
      * **练习: 预编译实现插入用户名 liuyan ，密码123.**
      */</span>
     <span class="token annotation punctuation">@Test</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test13</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> SQLException <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test13</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> SQLException <span class="token punctuation">{</span>
         Connection conn <span class="token operator">=</span> JdbcUtil3<span class="token punctuation">.</span><span class="token function">getConnction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment" spellcheck="true">//获取预编译对象</span>
         String sql<span class="token operator">=</span><span class="token string">"insert into user values(null,?,?)"</span><span class="token punctuation">;</span>
@@ -935,7 +938,7 @@ PreparedStatement    <span class="token function">prepareStatement</span><span c
         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>count<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment" spellcheck="true">//释放资源</span>
         JdbcUtil3<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span>null<span class="token punctuation">,</span>pstm<span class="token punctuation">,</span>conn<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 </code></pre>
 <p>小结:</p>
 <pre class=" language-tex"><code class="language-tex">1)statement与PreparedStatement区别?
@@ -950,7 +953,7 @@ PreparedStatement sql进行预编译,防止sql注入;
         sql - 可以包含一个或多个 '?' 参数占位符的 SQL 语句。通常此语句是使用 JDBC 调用转义语法指定的。
          说明：参数sql中书写的是存储过程语句，语法是固定的写法：
              1）带参数的存储过程写法：
-             String sql="&#123;call 存储过程名(?,?, ...)&#125;";
+             String sql="{call 存储过程名(?,?, ...)}";
                 IN 参数值是使用继承自 PreparedStatement 的 set 方法设置的.
                     从左向右第一个占位符编号是 1，第二个占位符编号是2，依次递增。
               void setString(int parameterIndex, String x)将指定参数设置为给定Java String 值。 
@@ -967,7 +970,7 @@ PreparedStatement sql进行预编译,防止sql注入;
                      参数：表示获取的值属于第几个占位符，上述占位符中属于第四个，所以这里写4
                 
             2)　不带参数的储存过程的语法：
-            String sql="&#123;call 存储过程名&#125;"; 
+            String sql="{call 存储过程名}"; 
 </code></pre>
 <p>3）使用CallableStatement接口的父接口PreparedStatement的方法执行存储过程的sql语句：</p>
 <pre class=" language-java"><code class="language-java"> <span class="token keyword">boolean</span> <span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 在此 PreparedStatement 对象中执行 SQL 语句，该语句可以是任何种类的 SQL 语句。 
@@ -1023,10 +1026,10 @@ PreparedStatement sql进行预编译,防止sql注入;
      * 练习:JDBC代码调用存储过程实现转账业务;
      */</span>
     <span class="token variable">@Test</span>
-    <span class="token keyword">public</span> void test15<span class="token punctuation">(</span><span class="token punctuation">)</span> throws SQLException <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
+    <span class="token keyword">public</span> void test15<span class="token punctuation">(</span><span class="token punctuation">)</span> throws SQLException {
         Connection conn <span class="token operator">=</span> JdbcUtil3<span class="token punctuation">.</span>getConnction<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment" spellcheck="true">//获取存储过程的预编译对象</span>
-        String sql<span class="token operator">=</span>"<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;call transfer(?,?,?,?)&amp;#125;";</span>
+        String sql<span class="token operator">=</span><span class="token string">"{call transfer(?,?,?,?)}"</span><span class="token punctuation">;</span>
         CallableStatement cstm <span class="token operator">=</span> conn<span class="token punctuation">.</span>prepareCall<span class="token punctuation">(</span>sql<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment" spellcheck="true">//设置入参</span>
         cstm<span class="token punctuation">.</span>setString<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string">"a"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1041,9 +1044,9 @@ PreparedStatement sql进行预编译,防止sql注入;
         System<span class="token punctuation">.</span><span class="token keyword">out</span><span class="token punctuation">.</span>println<span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment" spellcheck="true">//释放资源</span>
         JdbcUtil3<span class="token punctuation">.</span><span class="token keyword">close</span><span class="token punctuation">(</span><span class="token boolean">null</span><span class="token punctuation">,</span>cstm<span class="token punctuation">,</span>conn<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span>
+    }
 </code></pre>
-<hr style="height:10px;background-color:green;border:none;" />
+<hr style="height:10px;background-color:green;border:none;">
 
 
 
@@ -1142,7 +1145,7 @@ PreparedStatement sql进行预编译,防止sql注入;
         ResultSet rs <span class="token operator">=</span> stm<span class="token punctuation">.</span><span class="token function">executeQuery</span><span class="token punctuation">(</span>selectSql<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment" spellcheck="true">//5)解析结果集</span>
         ArrayList<span class="token operator">&lt;</span>User<span class="token operator">></span> users <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>rs<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>rs<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
             <span class="token keyword">int</span> id<span class="token operator">=</span>rs<span class="token punctuation">.</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             String name<span class="token operator">=</span>rs<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"username"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             String password<span class="token operator">=</span>rs<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1151,7 +1154,7 @@ PreparedStatement sql进行预编译,防止sql注入;
             user<span class="token punctuation">.</span><span class="token function">setPassword</span><span class="token punctuation">(</span>password<span class="token punctuation">)</span><span class="token punctuation">;</span>
             user<span class="token punctuation">.</span><span class="token function">setUserName</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
             users<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>users<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>6.关闭资源，归还连接</p>
@@ -1263,7 +1266,7 @@ conn<span class="token punctuation">.</span><span class="token function">close</
 </code></pre>
 <p>步骤2:java代码:</p>
 <pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@Test</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
         <span class="token comment" spellcheck="true">//加载properties文件构建配置对象</span>
         InputStream in <span class="token operator">=</span> DruidTest<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getResourceAsStream</span><span class="token punctuation">(</span><span class="token string">"druid.properties"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         Properties properties <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Properties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1279,7 +1282,7 @@ conn<span class="token punctuation">.</span><span class="token function">close</
         ResultSet rs <span class="token operator">=</span> stm<span class="token punctuation">.</span><span class="token function">executeQuery</span><span class="token punctuation">(</span>sql<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment" spellcheck="true">//5.解析结果集</span>
         ArrayList<span class="token operator">&lt;</span>User<span class="token operator">></span> users <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>rs<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>rs<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
             <span class="token keyword">int</span> id <span class="token operator">=</span> rs<span class="token punctuation">.</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             String username <span class="token operator">=</span> rs<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"username"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             String password <span class="token operator">=</span> rs<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1288,15 +1291,15 @@ conn<span class="token punctuation">.</span><span class="token function">close</
             user<span class="token punctuation">.</span><span class="token function">setUserName</span><span class="token punctuation">(</span>username<span class="token punctuation">)</span><span class="token punctuation">;</span>
             user<span class="token punctuation">.</span><span class="token function">setPassword</span><span class="token punctuation">(</span>password<span class="token punctuation">)</span><span class="token punctuation">;</span>
             users<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>users<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment" spellcheck="true">//调用close归还连接对象</span>
         rs<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         stm<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         conn<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 </code></pre>
-<hr style="height:10px;background-color:green;border:none;" />
+<hr style="height:10px;background-color:green;border:none;">
 
 <p>总结：</p>
 <pre class=" language-tex"><code class="language-tex">1)jdbc开发流程：
@@ -1307,7 +1310,7 @@ conn<span class="token punctuation">.</span><span class="token function">close</
   3.获取发送sql的对象
     pstm= conn.prepareStatement(sql模板);//防止sql注入
     stm=conn.createStatement();//会有sql注入的问题
-    CallableStatement cstm=conn.prepareCall("&#123;call 存储过程名称（？，？，...）&#125;");
+    CallableStatement cstm=conn.prepareCall("{call 存储过程名称（？，？，...）}");
   4.发送参数或者sql
     1）发送sql: executeQuery(sql);// select
                executeUpdate(sql);// insert delete update

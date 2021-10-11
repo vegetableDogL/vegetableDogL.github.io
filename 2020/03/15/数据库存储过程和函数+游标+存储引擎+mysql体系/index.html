@@ -29,7 +29,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="龙哥专用笔记" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 
@@ -550,7 +553,7 @@
 </ul>
 <pre class=" language-sql"><code class="language-sql">  <span class="token keyword">SET</span> 变量名<span class="token number">1</span> <span class="token operator">=</span> 表达式<span class="token number">1</span><span class="token punctuation">,</span>变量名<span class="token number">2</span><span class="token operator">=</span>表达式<span class="token number">2</span><span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> 
 </code></pre>
-<div style='background-color:#42C0A3;'>示例:定义变量num默认值是0，设置num值+10 ，并查询</div>
+<div style="background-color:#42C0A3;">示例:定义变量num默认值是0，设置num值+10 ，并查询</div>
 
 <pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 1.创建存储过程</span>
   <span class="token keyword">create</span> <span class="token keyword">procedure</span> pro_test3<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -587,13 +590,13 @@
     <span class="token number">150</span> <span class="token operator">-</span> <span class="token number">170</span> <span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">></span> 标准身材
     <span class="token number">150</span> 以下 <span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">></span> 身材偏瘦
 </code></pre>
-<div style='background-color:#42C0A3;'>示例: </div>
+<div style="background-color:#42C0A3;">示例: </div>
 
 <pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 创建存储过程</span>
 <span class="token keyword">delimiter</span> $
 <span class="token keyword">create</span> <span class="token keyword">procedure</span> pro_test5<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">begin</span>
-    <span class="token keyword">declare</span> weight <span class="token keyword">int</span> <span class="token keyword">default</span> <span class="token number">175</span><span class="token punctuation">;</span>
+    <span class="token keyword">declare</span> weight<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span><span class="token keyword">int</span> <span class="token keyword">default</span> <span class="token number">175</span><span class="token punctuation">;</span>
     <span class="token keyword">declare</span> description <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token string">''</span><span class="token punctuation">;</span>
     <span class="token keyword">if</span> weight <span class="token operator">>=</span> <span class="token number">170</span> <span class="token keyword">then</span>
       <span class="token keyword">set</span> description <span class="token operator">=</span> <span class="token string">'身材肥胖'</span><span class="token punctuation">;</span>
@@ -608,11 +611,11 @@
 <span class="token comment" spellcheck="true">-- 调用存储过程</span>
 <span class="token keyword">call</span> pro_test5<span class="token punctuation">(</span><span class="token punctuation">)</span>$
 </code></pre>
-<h4 id="3、-传递参数"><a href="#3、-传递参数" class="headerlink" title="3、 传递参数"></a>3、 传递参数</h4><pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">procedure</span> procedure_name<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">in</span><span class="token operator">/</span><span class="token keyword">out</span><span class="token operator">/</span><span class="token keyword">inout</span><span class="token punctuation">]</span>  参数名  参数类型<span class="token punctuation">)</span>
+<h4 id="3、-传递参数"><a href="#3、-传递参数" class="headerlink" title="3、 传递参数"></a>3、 传递参数</h4><pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">procedure</span> procedure_name<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">in</span><span class="token operator">/</span><span class="token keyword">out</span><span class="token operator">/</span><span class="token keyword">inout</span><span class="token punctuation">]</span>  参数名 <span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>参数类型<span class="token punctuation">)</span>
 <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 
-<span class="token operator">IN</span> :  该参数可以作为输入，也就是需要调用方传入值 <span class="token punctuation">,</span> 默认
-<span class="token keyword">OUT</span>:  该参数作为输出，也就是该参数可以作为返回值
+<span class="token operator">IN</span> : <span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>该参数可以作为输入，也就是需要调用方传入值 <span class="token punctuation">,</span> 默认
+<span class="token keyword">OUT</span>: <span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>该参数作为输出，也就是该参数可以作为返回值
 <span class="token keyword">INOUT</span>: 既可以作为输入参数，也可以作为输出参数
 </code></pre>
 <h5 id="IN-输入"><a href="#IN-输入" class="headerlink" title="IN 输入"></a>IN 输入</h5><p>IN :  该参数可以作为输入，也就是需要调用方传入值 , 默认。</p>
@@ -622,7 +625,7 @@
 <p>需求:</p>
 <pre class=" language-java"><code class="language-java">根据传入的体重变量，判定当前体重的所属的身材类型 
 </code></pre>
-<div style='background-color:#42C0A3;'>示例: </div>
+<div style="background-color:#42C0A3;">示例: </div>
 
 <pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 创建存储过程，不用声明weight变量了，已经在小括号中定义了</span>
 <span class="token keyword">delimiter</span> $
@@ -642,7 +645,7 @@
 <span class="token keyword">call</span> pro_test6<span class="token punctuation">(</span><span class="token number">160</span><span class="token punctuation">)</span>$
 </code></pre>
 <h5 id="OUT-输出"><a href="#OUT-输出" class="headerlink" title="OUT 输出"></a>OUT 输出</h5><p>OUT:  该参数作为输出，也就是该参数可以作为返回值</p>
-<div style='background-color:#42C0A3;'>示例: </div>
+<div style="background-color:#42C0A3;">示例: </div>
 
 <p>需求:</p>
 <pre class=" language-sql"><code class="language-sql">根据传入的体重变量，获取当前体重的所属的身材类型
@@ -669,7 +672,7 @@
 <pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 调用存储过程</span>
 <span class="token keyword">call</span> pro_test7<span class="token punctuation">(</span><span class="token number">168</span><span class="token punctuation">,</span><span class="token variable">@desc</span><span class="token punctuation">)</span>$
 </code></pre>
-<p><b><font color='red'>知识小贴士</font></b><br>@desc : 这种变量要在变量名称前面加上“@”符号，叫做用户会话变量，代表整个会话过程他都是有作用的。@后面属于标识符，随便定义。</p>
+<p><b><font color="red">知识小贴士</font></b><br>@desc : 这种变量要在变量名称前面加上“@”符号，叫做用户会话变量，代表整个会话过程他都是有作用的。@后面属于标识符，随便定义。</p>
 <p>作用域：针对当前会话(连接)有效，同于会话变量的作用域。</p>
 <p>【查看返回值变量接收的结果】</p>
 <pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token variable">@desc$</span>
@@ -1061,7 +1064,7 @@ repeat
 </tr>
 <tr>
 <td>事务安全</td>
-<td><span style='background-color:yellow;'>支持</span></td>
+<td><span style="background-color:yellow;">支持</span></td>
 <td></td>
 <td></td>
 <td></td>
@@ -1069,8 +1072,8 @@ repeat
 </tr>
 <tr>
 <td>锁机制</td>
-<td><span style='background-color:yellow;'>行锁(适合高并发)</span></td>
-<td><span style='background-color:yellow;'>表锁</span></td>
+<td><span style="background-color:yellow;">行锁(适合高并发)</span></td>
+<td><span style="background-color:yellow;">表锁</span></td>
 <td>表锁</td>
 <td>表锁</td>
 <td>行锁</td>
@@ -1157,7 +1160,7 @@ repeat
 </tr>
 <tr>
 <td>支持外键</td>
-<td><span style='background-color:yellow;'>支持</span></td>
+<td><span style="background-color:yellow;">支持</span></td>
 <td></td>
 <td></td>
 <td></td>
@@ -1249,7 +1252,7 @@ repeat
 </tbody></table>
 <h3 id="3、MyISAM表锁"><a href="#3、MyISAM表锁" class="headerlink" title="3、MyISAM表锁"></a>3、MyISAM表锁</h3><h4 id="如何加表锁"><a href="#如何加表锁" class="headerlink" title="如何加表锁"></a>如何加表锁</h4><p>MyISAM 在执行查询语句（SELECT）前，会自动给涉及的所有表加读锁，在执行更新操作（UPDATE、DELETE、INSERT 等）前，会自动给涉及的表加写锁，这个过程并不需要用户干预，因此，用户一般不需要直接用</p>
 <p> LOCK    TABLE 命令给 MyISAM 表显式加锁。如果显示加表锁，那么就不会自动加表锁。</p>
-<div style='background-color:orange;'>加表锁语法: </div>
+<div style="background-color:orange;">加表锁语法: </div>
 
 <pre class=" language-sql"><code class="language-sql">加读锁 : <span class="token keyword">lock</span> <span class="token keyword">table</span> 表名 <span class="token keyword">read</span><span class="token punctuation">;</span>
 加写锁 : <span class="token keyword">lock</span> <span class="token keyword">table</span> 表名 <span class="token keyword">write</span>；

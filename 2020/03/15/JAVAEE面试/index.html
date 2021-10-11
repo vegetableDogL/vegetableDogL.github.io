@@ -29,7 +29,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="龙哥专用笔记" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 
@@ -515,7 +518,7 @@
 </code></pre>
 <h2 id="4、final、finally、finalize的区别？"><a href="#4、final、finally、finalize的区别？" class="headerlink" title="4、final、finally、finalize的区别？"></a>4、final、finally、finalize的区别？</h2><pre class=" language-markdown"><code class="language-markdown">区别：
 
-1、final 
+1、final<span class="token entity" title="&nbsp;">&amp;nbsp;</span>
 在java中，final可以用来修饰类不能被继承，
 方法不能被重写和变量变成常量（成员变量或局部变量）；
 
@@ -528,7 +531,7 @@ finally作为异常处理的一部分，它只能用在try/catch语句中，
 　　finalize()是在java.lang.Object里定义的，也就是说每一个对象都有这么个方法。
 　　这个方法在gc启动，该对象被回收的时候被调用。
 　　其实gc可以回收大部分的对象（凡是new出来的对象，gc都能搞定，一般情况下我们又不会用new以外的方式去创建对象）
-　　，所以一般是不需要程序员去实现finalize的。 
+　　，所以一般是不需要程序员去实现finalize的。<span class="token entity" title="&nbsp;">&amp;nbsp;</span>
 特殊情况下，需要程序员实现finalize，当对象被回收的时候释放一些资源，
 比如：一个socket链接，在对象初始化时创建，整个生命周期内有效，那么就需要实现finalize，关闭这个链接。
 </code></pre>
@@ -633,10 +636,10 @@ Stack：栈，也是线程安全的，继承于Vector
 <h2 id="16、什么是反射？能提供哪些功能？"><a href="#16、什么是反射？能提供哪些功能？" class="headerlink" title="16、什么是反射？能提供哪些功能？"></a>16、什么是反射？能提供哪些功能？</h2><pre class=" language-markdown"><code class="language-markdown">要点：
 1，在java运行环境中，对于任意一个类，能否知道这个类有哪些属性和方法，对于任意一个对象，能否调用任意的方法
 2，java反射机制主要提供以下功能：
-         在运行时判断任意一个对象所属的类
-         在运行时构造任意一个类的对象
-         在运行时判断任意一个类所具有的成员变量和方法
-         在运行时调用任意一个对象的方法
+<span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token entity" title="&nbsp;">&amp;nbsp;</span> 在运行时判断任意一个对象所属的类
+<span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token entity" title="&nbsp;">&amp;nbsp;</span> 在运行时构造任意一个类的对象
+<span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token entity" title="&nbsp;">&amp;nbsp;</span> 在运行时判断任意一个类所具有的成员变量和方法
+<span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token entity" title="&nbsp;">&amp;nbsp;</span> 在运行时调用任意一个对象的方法
 </code></pre>
 <h2 id="17、什么是Java序列化？什么情况下需要序列化？"><a href="#17、什么是Java序列化？什么情况下需要序列化？" class="headerlink" title="17、什么是Java序列化？什么情况下需要序列化？"></a>17、什么是Java序列化？什么情况下需要序列化？</h2><pre class=" language-markdown"><code class="language-markdown">要点：
 1，java序列化，就是把java对象变为二进制对象，便于存储和在网络上传输

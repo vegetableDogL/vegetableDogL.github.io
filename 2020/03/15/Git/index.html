@@ -29,7 +29,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="龙哥专用笔记" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 
@@ -498,7 +501,7 @@
         分布式和集中式的最大区别也就是分布式可以【本地提交代码】；
         分布式的提交代码方式：先将代码提交到本地，然后再将代码从本地推送到远程服务器；
 </code></pre>
-<h2 id="2、git操作入门"><a href="#2、git操作入门" class="headerlink" title="2、git操作入门"></a>2、git操作入门</h2><h3 id="1、理解-工作目录、暂存区和本地仓库"><a href="#1、理解-工作目录、暂存区和本地仓库" class="headerlink" title="1、理解**工作目录、暂存区和本地仓库**"></a>1、理解**<font color='red'>工作目录、暂存区和本地仓库</font>**</h3><p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825205304574.png" alt="image-20210825205304574"></p>
+<h2 id="2、git操作入门"><a href="#2、git操作入门" class="headerlink" title="2、git操作入门"></a>2、git操作入门</h2><h3 id="1、理解-工作目录、暂存区和本地仓库"><a href="#1、理解-工作目录、暂存区和本地仓库" class="headerlink" title="1、理解**工作目录、暂存区和本地仓库**"></a>1、理解**<font color="red">工作目录、暂存区和本地仓库</font>**</h3><p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825205304574.png" alt="image-20210825205304574"></p>
 <pre class=" language-java"><code class="language-java"><span class="token number">1</span><span class="token punctuation">.</span>工作区：就是我们的工程代码所存放的磁盘目录（程序员敲代码的磁盘目录位置）；
 <span class="token number">2</span><span class="token punctuation">.</span>本地仓库：在工作区内有个隐藏的目录<span class="token punctuation">.</span>git<span class="token punctuation">,</span>它就是git的本地版本库（本地仓库维护了从工作区提交的所有的代码的操作流水）；
 <span class="token number">3</span><span class="token punctuation">.</span>暂存区：存放在本地版本仓库<span class="token punctuation">.</span>git目录的index文件中（<span class="token punctuation">.</span>git<span class="token operator">/</span>index）（保存临时提交代码的区域，此时提交的代码时可以撤销的）；
@@ -608,7 +611,7 @@ dev：开发分支
 <td>查看分支列表</td>
 </tr>
 </tbody></table>
-<p><strong><font color='red'>不同分支之间的关系是【平行的关系，不会相互影响】</font></strong></p>
+<p><strong><font color="red">不同分支之间的关系是【平行的关系，不会相互影响】</font></strong></p>
 <pre class=" language-bash"><code class="language-bash">合并命令:
     <span class="token function">git</span> merge  分支名
 举例:    
@@ -662,7 +665,7 @@ ssh-keygen -t rsa -C <span class="token string">"你的邮箱"</span>
   实际开发中应该先通过pull命令拉去远程仓库中最新的代码到本地仓库，然后再开发新业务代码,之后再push到远程仓库；
 </code></pre>
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825214718757.png" alt="image-20210825214718757"></p>
-<p>当本地代码与远程代码存在冲突时，push提交会被拒绝，所以<font color='red'>项目提交前要先pull解决冲突问题，然后在push</font>！</p>
+<p>当本地代码与远程代码存在冲突时，push提交会被拒绝，所以<font color="red">项目提交前要先pull解决冲突问题，然后在push</font>！</p>
 <pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 拉去远程代码</span>
 <span class="token function">git</span> pull origin master
 <span class="token comment" spellcheck="true"># 拉去远程代码之前，先将暂存区代码提交到本地仓库，否则可能会需要二次合并</span>
@@ -677,7 +680,7 @@ ssh-keygen -t rsa -C <span class="token string">"你的邮箱"</span>
 <h2 id="5、IDEA继承Git"><a href="#5、IDEA继承Git" class="headerlink" title="5、IDEA继承Git"></a>5、IDEA继承Git</h2><h3 id="1、设置idea"><a href="#1、设置idea" class="headerlink" title="1、设置idea"></a>1、设置idea</h3><p>file–》setting–》version Control–》Git</p>
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825215344791.png" alt="image-20210825215344791"></p>
 <p>找到git.exe路径点击Test  点apply 点OK</p>
-<h3 id="2、创建本地库"><a href="#2、创建本地库" class="headerlink" title="2、创建本地库"></a>2、创建本地库</h3><h4 id="1-VCS-gt-Import-into-Version-Control-gt-Create-Git-Repository"><a href="#1-VCS-gt-Import-into-Version-Control-gt-Create-Git-Repository" class="headerlink" title="1.VCS-&gt;Import into Version Control-&gt;Create Git Repository"></a><strong>1.VCS-&gt;Import into Version Control-&gt;Create Git Repository</strong></h4><p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825215608739.png" alt="image-20210825215608739"></p>
+<h3 id="2、创建本地库"><a href="#2、创建本地库" class="headerlink" title="2、创建本地库"></a>2、创建本地库</h3><h4 id="1-VCS-gt-Import-into-Version-Control-gt-Create-Git-Repository"><a href="#1-VCS-gt-Import-into-Version-Control-gt-Create-Git-Repository" class="headerlink" title="1.VCS->Import into Version Control->Create Git Repository"></a><strong>1.VCS-&gt;Import into Version Control-&gt;Create Git Repository</strong></h4><p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825215608739.png" alt="image-20210825215608739"></p>
 <p>如果没有VCS只有Git则：点git点第一个选项可以创建git仓库</p>
 <h4 id="2、-gitignore忽略文件设置"><a href="#2、-gitignore忽略文件设置" class="headerlink" title="2、.gitignore忽略文件设置"></a>2、.gitignore忽略文件设置</h4><p>.gitignore文件在  .idea的目录下，拉出  .gitignore 到项目根目录下</p>
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210825220052466.png" alt="image-20210825220052466"></p>

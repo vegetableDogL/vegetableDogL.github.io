@@ -29,7 +29,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="龙哥专用笔记" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 
@@ -714,7 +717,7 @@
 </tr>
 <tr>
 <td>lrange 键 开始 结束</td>
-<td>得到键中指定范围的元素的数据<br />每个元素都有一个索引号，从左向右0<del>n<br />从右向左索引号：-1</del>-(n+1)，每个元素有2个索引号<br />如果要取出整个列表中所有的元素，索引号应该是：0~-1</td>
+<td>得到键中指定范围的元素的数据<br>每个元素都有一个索引号，从左向右0<del>n<br>从右向左索引号：-1</del>-(n+1)，每个元素有2个索引号<br>如果要取出整个列表中所有的元素，索引号应该是：0~-1</td>
 </tr>
 <tr>
 <td>llen 键</td>
@@ -726,7 +729,7 @@
 </tr>
 <tr>
 <td>lrem key n value</td>
-<td>删除key对应的value中n个值<br/>（lrem list03 2 3        删除list03中的2个值为3的元素。）</td>
+<td>删除key对应的value中n个值<br>（lrem list03 2 3        删除list03中的2个值为3的元素。）</td>
 </tr>
 </tbody></table>
 <h3 id="4、set"><a href="#4、set" class="headerlink" title="4、set"></a>4、set</h3><p><img src="https://i.loli.net/2021/09/13/olH7nmYhMT49jzP.png" alt="image-20210913185853208"></p>
@@ -1055,7 +1058,7 @@ auto-aof-rewrite-min-size 64mb
 </thead>
 <tbody><tr>
 <td><strong>appendonly   no/yes</strong></td>
-<td>默认是no，关闭。如果要打开，设置成yes。<br />如果打开的AOF，RDB中存储的数据读取不出来。</td>
+<td>默认是no，关闭。如果要打开，设置成yes。<br>如果打开的AOF，RDB中存储的数据读取不出来。</td>
 </tr>
 </tbody></table>
 <p><strong>AOF持久化时机</strong></p>
@@ -1114,7 +1117,7 @@ auto-aof-rewrite-min-size 64mb
 </thead>
 <tbody><tr>
 <td><strong>new Jedis(host,   port)</strong></td>
-<td>创建Jedis连接对象，参数：<br />host: 服务器地址<br />port：端口号6379</td>
+<td>创建Jedis连接对象，参数：<br>host: 服务器地址<br>port：端口号6379</td>
 </tr>
 <tr>
 <td><strong>void close()</strong></td>
@@ -1214,7 +1217,7 @@ auto-aof-rewrite-min-size 64mb
 <li>通过客户端查看数据库中是否有数据</li>
 </ol>
 <pre class=" language-java"><code class="language-java"> <span class="token annotation punctuation">@Test</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">method01</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">method01</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
         <span class="token comment" spellcheck="true">//1. 创建连接</span>
         String host <span class="token operator">=</span> <span class="token string">"127.0.0.1"</span><span class="token punctuation">;</span>
         <span class="token keyword">int</span> port <span class="token operator">=</span> <span class="token number">6379</span><span class="token punctuation">;</span>
@@ -1230,10 +1233,10 @@ auto-aof-rewrite-min-size 64mb
         jedis<span class="token punctuation">.</span><span class="token function">zadd</span><span class="token punctuation">(</span><span class="token string">"exam"</span><span class="token punctuation">,</span> exam<span class="token punctuation">)</span><span class="token punctuation">;</span>
        <span class="token comment" spellcheck="true">//3. 关闭连接</span>
         jedis<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
     <span class="token annotation punctuation">@Test</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">method02</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">method02</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
         <span class="token comment" spellcheck="true">//1. 创建连接</span>
         String host <span class="token operator">=</span> <span class="token string">"127.0.0.1"</span><span class="token punctuation">;</span>
         <span class="token keyword">int</span> port <span class="token operator">=</span> <span class="token number">6379</span><span class="token punctuation">;</span>
@@ -1245,7 +1248,7 @@ auto-aof-rewrite-min-size 64mb
         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>list<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment" spellcheck="true">//3. 关闭连接</span>
         jedis<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 </code></pre>
 <h2 id="5、Jedis连接池的使用"><a href="#5、Jedis连接池的使用" class="headerlink" title="5、Jedis连接池的使用"></a>5、Jedis连接池的使用</h2><pre class=" language-markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span> 连接池的作用</span>
 <span class="token list punctuation">1.</span> 问题: 在服务端,如果频繁的创建和销毁连接, 非常消耗性能
@@ -1283,14 +1286,14 @@ auto-aof-rewrite-min-size 64mb
 </thead>
 <tbody><tr>
 <td><strong>JedisPool(配置对象,服务器名,端口号)</strong></td>
-<td>创建一个连接池，参数：<br />1. 上面的配置对象<br />2. 服务器名<br />3. 端口号</td>
+<td>创建一个连接池，参数：<br>1. 上面的配置对象<br>2. 服务器名<br>3. 端口号</td>
 </tr>
 <tr>
 <td><strong>Jedis getResource()</strong></td>
 <td>从连接池中得到一个连接对象Jedis</td>
 </tr>
 </tbody></table>
-<pre class=" language-java"><code class="language-java"> <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">method01</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class=" language-java"><code class="language-java"> <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">method01</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
         <span class="token comment" spellcheck="true">//1. 创建连接池</span>
         JedisPoolConfig config <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JedisPoolConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         config<span class="token punctuation">.</span><span class="token function">setMaxTotal</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 最大连接数: 5</span>
@@ -1326,12 +1329,12 @@ auto-aof-rewrite-min-size 64mb
 
 <span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>ResourceBundle<span class="token punctuation">;</span>
 
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JedisUtil</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JedisUtil</span> <span class="token punctuation">{</span>
 
     <span class="token keyword">private</span> <span class="token keyword">static</span> JedisPool pool<span class="token punctuation">;</span>
 
 
-    <span class="token keyword">static</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">static</span><span class="token punctuation">{</span>
         ResourceBundle bundle <span class="token operator">=</span> ResourceBundle<span class="token punctuation">.</span><span class="token function">getBundle</span><span class="token punctuation">(</span><span class="token string">"redis"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">int</span> maxTotal <span class="token operator">=</span> Integer<span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span>bundle<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"maxTotal"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">int</span> maxWaitMillis <span class="token operator">=</span> Integer<span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span>bundle<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"maxWaitMillis"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1342,21 +1345,21 @@ auto-aof-rewrite-min-size 64mb
         config<span class="token punctuation">.</span><span class="token function">setMaxTotal</span><span class="token punctuation">(</span>maxTotal<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 最大连接数: 5</span>
         config<span class="token punctuation">.</span><span class="token function">setMaxWaitMillis</span><span class="token punctuation">(</span>maxWaitMillis<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 最长等待时间: 2000ms</span>
         pool <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JedisPool</span><span class="token punctuation">(</span>config<span class="token punctuation">,</span> host<span class="token punctuation">,</span> port<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">static</span> Jedis <span class="token function">getResource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> Jedis <span class="token function">getResource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
         <span class="token keyword">return</span> pool<span class="token punctuation">.</span><span class="token function">getResource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <pre class=" language-java"><code class="language-java"> <span class="token annotation punctuation">@Test</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">method03</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">method03</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
         Jedis jedis <span class="token operator">=</span> JedisUtil<span class="token punctuation">.</span><span class="token function">getResource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         String s <span class="token operator">=</span> jedis<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"gf"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
         jedis<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 </code></pre>
 
                 

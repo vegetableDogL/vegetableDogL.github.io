@@ -29,7 +29,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="龙哥专用笔记" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 
@@ -525,7 +528,7 @@
 <span class="token keyword">select</span> ename<span class="token punctuation">,</span>char_length<span class="token punctuation">(</span>ename<span class="token punctuation">)</span> <span class="token keyword">from</span> emp<span class="token punctuation">;</span>
 <span class="token keyword">select</span> char_length<span class="token punctuation">(</span><span class="token string">'laofang'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- 7</span>
 <span class="token comment" spellcheck="true">-- 字符串拼接</span>
-<span class="token keyword">select</span> concat<span class="token punctuation">(</span>'<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;ename:',ename,',job:',job,',sal:',sal,'&amp;#125;') from emp;</span>
+<span class="token keyword">select</span> concat<span class="token punctuation">(</span><span class="token string">'{ename:'</span><span class="token punctuation">,</span>ename<span class="token punctuation">,</span><span class="token string">',job:'</span><span class="token punctuation">,</span>job<span class="token punctuation">,</span><span class="token string">',sal:'</span><span class="token punctuation">,</span>sal<span class="token punctuation">,</span><span class="token string">'}'</span><span class="token punctuation">)</span> <span class="token keyword">from</span> emp<span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">-- 转小写</span>
 <span class="token keyword">select</span> lower<span class="token punctuation">(</span><span class="token string">'FangJiCai'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- fangjicai</span>
 <span class="token comment" spellcheck="true">-- 转大写</span>
@@ -580,7 +583,7 @@
 <span class="token comment" spellcheck="true">-- 返回列表中的最大值</span>
 <span class="token keyword">select</span> greatest<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">40</span><span class="token punctuation">,</span><span class="token number">60</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- 100</span>
 </code></pre>
-<hr style="height:10px;background-color:green;border:none;" />
+<hr style="height:10px;background-color:green;border:none;">
 
 <h3 id="1-2-日期函数和高级函数"><a href="#1-2-日期函数和高级函数" class="headerlink" title="1.2 日期函数和高级函数"></a>1.2 日期函数和高级函数</h3><h4 id="1-日期函数"><a href="#1-日期函数" class="headerlink" title="1)日期函数"></a>1)日期函数</h4><table>
 <thead>
@@ -677,7 +680,7 @@
 <span class="token comment" spellcheck="true">-- 查询comm为null的用户有哪些</span>
 <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> emp <span class="token keyword">where</span> isnull<span class="token punctuation">(</span>comm<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<hr style="height:10px;background-color:green;border:none;" />
+<hr style="height:10px;background-color:green;border:none;">
 
 <h2 id="第二章-事务-掌握"><a href="#第二章-事务-掌握" class="headerlink" title="第二章 事务(掌握)"></a>第二章 事务(掌握)</h2><h3 id="2-1-事务介绍及操作"><a href="#2-1-事务介绍及操作" class="headerlink" title="2.1 事务介绍及操作"></a>2.1 事务介绍及操作</h3><h4 id="1-事务的概念"><a href="#1-事务的概念" class="headerlink" title="1)事务的概念"></a>1)事务的概念</h4><p>​      在实际的业务开发中，有些业务操作要多次访问数据库。<strong>一个业务要发送多条SQL语句给数据库执行。需要将多次访问数据库的操作视为一个整体来执行，要么所有的SQL语句全部执行成功。</strong>如果其中有一条SQL语句失败，就进行事务的回滚，所有的SQL语句全部执行失败。</p>
 <p>简而言之，<strong>事务指的是逻辑上的一组操作,组成这组操作的各个单元要么全都成功,要么全都失败</strong>。</p>
@@ -762,7 +765,7 @@
 <p>3.如何回滚事务?</p>
 <pre class=" language-sql"><code class="language-sql"><span class="token keyword">rollback</span><span class="token punctuation">;</span>
 </code></pre>
-<hr style="height:10px;background-color:green;border:none;" />
+<hr style="height:10px;background-color:green;border:none;">
 
 <h3 id="2-2-事务的回滚点和执行原理"><a href="#2-2-事务的回滚点和执行原理" class="headerlink" title="2.2 事务的回滚点和执行原理"></a>2.2 事务的回滚点和执行原理</h3><h4 id="1-回滚点介绍"><a href="#1-回滚点介绍" class="headerlink" title="1)回滚点介绍"></a>1)回滚点介绍</h4><p>上面的操作，如果回滚，直接回滚到事务开始前。有时我们只需要<strong>回滚到中间的某个位置</strong>，就可以设置回滚点。</p>
 <p>语法:</p>
@@ -826,7 +829,7 @@
 <span class="token number">4</span><span class="token punctuation">)</span>当用户进行事务的回滚时<span class="token punctuation">,</span>会直接清空这个临时的事务日志文件<span class="token punctuation">(</span>redo<span class="token punctuation">.</span>log<span class="token punctuation">,</span>undo<span class="token punctuation">.</span>log<span class="token punctuation">,</span>binlog<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token number">5</span><span class="token punctuation">)</span>当一个事务尚未提交<span class="token punctuation">,</span>但是连接中断时<span class="token punctuation">,</span>自动清除这个临时的事务文件<span class="token punctuation">;</span>
 </code></pre>
-<hr style="height:10px;background-color:green;border:none;" />
+<hr style="height:10px;background-color:green;border:none;">
 
 <h3 id="2-3-事务的四大特性-ACID-面试"><a href="#2-3-事务的四大特性-ACID-面试" class="headerlink" title="2.3 事务的四大特性(ACID)(面试)"></a>2.3 事务的四大特性(ACID)(面试)</h3><p>  数据库的事务必须具备<strong>ACID</strong>特性，ACID是指 Atomicity（原子性）、Consistensy（一致性）、Isolation（隔离性）和Durability（持久性）的英文缩写。</p>
 <h4 id="1、隔离性（Isolation）"><a href="#1、隔离性（Isolation）" class="headerlink" title="1、隔离性（Isolation）"></a><strong>1、隔离性（Isolation）</strong></h4><p>​    <strong>多个用户并发的访问数据库时，一个用户的事务不能被其他用户的事务干扰，多个并发的事务之间要相互隔离。</strong></p>
@@ -872,7 +875,7 @@
 <td>回滚到回滚点</td>
 </tr>
 </tbody></table>
-<hr style="height:10px;background-color:green;border:none;" />
+<hr style="height:10px;background-color:green;border:none;">
 
 <h3 id="2-4-事务的并发访问引发的三个问题-面试"><a href="#2-4-事务的并发访问引发的三个问题-面试" class="headerlink" title="2.4 事务的并发访问引发的三个问题(面试)"></a>2.4 事务的并发访问引发的三个问题(面试)</h3><p>事务在操作时的理想状态：多个事务之间互不影响，如果隔离级别设置不当就可能引发并发访问问题。</p>
 <table>
@@ -910,7 +913,7 @@
 <span class="token number">2</span><span class="token punctuation">)</span>不可重复读:一个事务在相同条件下前后读取的内容不同<span class="token punctuation">(</span>强调:发生在其他事务进行<span class="token keyword">update</span>操作时<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token number">3</span><span class="token punctuation">)</span>幻读<span class="token punctuation">(</span>虚读<span class="token punctuation">)</span>:一个事务在相同的条件下前后读取的行记录数不一致<span class="token punctuation">(</span>强调:其他事务发生<span class="token keyword">insert</span><span class="token punctuation">,</span>delte操作<span class="token punctuation">,</span>并且事务<span class="token keyword">commit</span><span class="token punctuation">)</span>
 </code></pre>
-<hr style="height:10px;background-color:green;border:none;" />
+<hr style="height:10px;background-color:green;border:none;">
 
 <h3 id="2-5-事务的隔离级别"><a href="#2-5-事务的隔离级别" class="headerlink" title="2.5 事务的隔离级别"></a>2.5 事务的隔离级别</h3><h4 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h4><p>MySQL数据库规范规定了4种隔离级别，用于解决上述出现的事务并发问题;</p>
 <table>
@@ -972,7 +975,7 @@
 <span class="token number">3</span><span class="token punctuation">.</span>可重复读:幻读
 <span class="token number">4</span><span class="token punctuation">.</span>串行化
 </code></pre>
-<hr style="height:10px;background-color:green;border:none;" />
+<hr style="height:10px;background-color:green;border:none;">
 
 
 
@@ -992,7 +995,7 @@
 <p>  3.如何解决脏读?</p>
 <pre class=" language-sql"><code class="language-sql">提高事务隔离级别: <span class="token operator">>=</span>读已提交<span class="token punctuation">;</span>
 </code></pre>
-<hr style="height:10px;background-color:green;border:none;" />
+<hr style="height:10px;background-color:green;border:none;">
 
 <h2 id="第三章-MySQL性能-理解"><a href="#第三章-MySQL性能-理解" class="headerlink" title="第三章 MySQL性能(理解)"></a>第三章 MySQL性能(理解)</h2><h3 id="3-1-分析-数据库查询效率低下"><a href="#3-1-分析-数据库查询效率低下" class="headerlink" title="3.1 分析-数据库查询效率低下"></a>3.1 分析-数据库查询效率低下</h3><p>要提高操作数据库的性能，有如下两种方式：</p>
 <p>1.硬优化：就是软优化之后性能还很低，只能采取硬优化，最后的步骤了，就是公司花钱购买服务器。在硬件上进行优化。</p>
@@ -1031,7 +1034,7 @@
         根据<span class="token keyword">key</span><span class="token operator">-</span><span class="token keyword">value</span> 效率非常高
          等值查询，不适合范围查询        
 </code></pre>
-<hr style="height:10px;background-color:green;border:none;" />
+<hr style="height:10px;background-color:green;border:none;">
 
 <h3 id="4-2-MySQL索引语法"><a href="#4-2-MySQL索引语法" class="headerlink" title="4.2 MySQL索引语法"></a>4.2 MySQL索引语法</h3><h4 id="4-2-1-索引创建"><a href="#4-2-1-索引创建" class="headerlink" title="4.2.1 索引创建"></a>4.2.1 索引创建</h4><h5 id="1-创建索引-【了解】"><a href="#1-创建索引-【了解】" class="headerlink" title="1) 创建索引 【了解】"></a>1) 创建索引 【了解】</h5><pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 创建普通索引</span>
 <span class="token keyword">create</span> <span class="token keyword">index</span> 索引名 <span class="token keyword">on</span> 表名<span class="token punctuation">(</span>字段<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1098,7 +1101,7 @@ alter table student2 add unique(telephone);
  <span class="token keyword">INDEX</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">-- 普通索引</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<hr style="height:10px;background-color:green;border:none;" />
+<hr style="height:10px;background-color:green;border:none;">
 
 <h4 id="4-2-2-查看与删除索引"><a href="#4-2-2-查看与删除索引" class="headerlink" title="4.2.2 查看与删除索引"></a>4.2.2 查看与删除索引</h4><h5 id="1-查看索引"><a href="#1-查看索引" class="headerlink" title="1) 查看索引"></a>1) 查看索引</h5><pre class=" language-sql"><code class="language-sql"><span class="token keyword">show</span> <span class="token keyword">index</span> <span class="token keyword">from</span> 表名<span class="token punctuation">;</span> 
 </code></pre>
@@ -1142,7 +1145,7 @@ alter table student4 drop primary key;
 
 <span class="token operator">*</span> 注意: 索引并不是越多越好<span class="token punctuation">,</span>因为索引的建立和维护都是需要耗时的 创建表时需要通过数据库去维护索引，添加记录、更新、修改时，也需要更新索引，会间接影响数据库的效率。
 </code></pre>
-<hr style="height:10px;background-color:green;border:none;" />
+<hr style="height:10px;background-color:green;border:none;">
 
 <h3 id="4-5-索引的数据结构【了解】"><a href="#4-5-索引的数据结构【了解】" class="headerlink" title="4.5 索引的数据结构【了解】"></a>4.5 索引的数据结构【了解】</h3><h4 id="4-5-1-索引示例介绍"><a href="#4-5-1-索引示例介绍" class="headerlink" title="4.5.1 索引示例介绍"></a>4.5.1 索引示例介绍</h4><p>我们知道<strong>索引</strong>是帮助MySQL高效获取数据的一种<strong>排好序</strong>的<strong>数据结构</strong>。</p>
 <p>以磁盘顺序迭代查询与二叉树查找为例:</p>
@@ -1150,7 +1153,7 @@ alter table student4 drop primary key;
 <p>如果没有使用索引查询数据，比如查询col1=6,需要经过6次io；</p>
 <p>   如何减少磁盘io次数？</p>
 <p>  如果读取col2=89,那么需要2次io；</p>
-<hr style="height:10px;background-color:green;border:none;" />
+<hr style="height:10px;background-color:green;border:none;">
 
 <h4 id="4-5-2-二叉查找树和红黑树"><a href="#4-5-2-二叉查找树和红黑树" class="headerlink" title="4.5.2 二叉查找树和红黑树"></a>4.5.2 二叉查找树和红黑树</h4><p><strong>数据结构学习网站(美国旧金山大学)</strong></p>
 <pre class=" language-http"><code class="language-http"><span class="token header-name keyword">https:</span>//www.cs.usfca.edu/~galles/visualization/Algorithms.html
@@ -1161,7 +1164,7 @@ alter table student4 drop primary key;
 <p>说明:存储千万数据,树高大约<strong>为23</strong>;</p>
 <p><img src="https://i.loli.net/2021/09/02/Ucb8waV4jdoiuD9.png" alt="image-20210902100545976"></p>
 <p><strong>树的高度越高,那么部分数据查询要经过的io的次数就会越多;</strong></p>
-<hr style="height:10px;background-color:green;border:none;" />
+<hr style="height:10px;background-color:green;border:none;">
 
 <h4 id="4-5-3-BTree"><a href="#4-5-3-BTree" class="headerlink" title="4.5.3.BTree"></a>4.5.3.BTree</h4><p>从结构树看,<strong>树的高度就是查询数据时的最多IO次数</strong>,那么如何将树的高度压低？</p>
 <pre><code>      将每个节点存储的数据尽量多一些
@@ -1175,7 +1178,7 @@ alter table student4 drop primary key;
 <pre class=" language-tex"><code class="language-tex">1）数据查询的过程中，有一些数据data的加载时没有意义且浪费磁盘io；
 2）如果要进行范围查询，那么需要反复从根节点读取数据；
 </code></pre>
-<hr style="height:10px;background-color:green;border:none;" />
+<hr style="height:10px;background-color:green;border:none;">
 
 <h4 id="4-5-4-B-Tree"><a href="#4-5-4-B-Tree" class="headerlink" title="4.5.4 B+Tree"></a>4.5.4 B+Tree</h4><h5 id="1-结构介绍"><a href="#1-结构介绍" class="headerlink" title="1.结构介绍"></a>1.结构介绍</h5><p>1）B+tree将树分为叶子节点和非叶子节点，其中非叶子节点只存储索引+指针，不存储数据，而叶子节点存储索引+指针域+数据；</p>
 <p>   如果一个B+tree的树高时3的话，那么非叶子节点2层，叶子节点1层；</p>
@@ -1199,7 +1202,7 @@ alter table student4 drop primary key;
 <span class="token keyword">show</span> <span class="token keyword">global</span> <span class="token keyword">status</span> <span class="token operator">like</span> <span class="token string">'innodb_page_size'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">-- 16kb</span>
 </code></pre>
 <p>MySql索引数据结构对经典的B+Tree进行了优化。在原B+Tree的基础上，增加一个指向相邻叶子节点的链表指针，就形成了带有顺序指针的B+Tree，<strong>提高区间访问的性能</strong>。</p>
-<hr style="height:10px;background-color:green;border:none;" />
+<hr style="height:10px;background-color:green;border:none;">
 
 <h2 id="第五章-视图-掌握"><a href="#第五章-视图-掌握" class="headerlink" title="第五章 视图(掌握)"></a>第五章 视图(掌握)</h2><h3 id="5-1-视图应用与创建"><a href="#5-1-视图应用与创建" class="headerlink" title="5.1 视图应用与创建"></a>5.1 视图应用与创建</h3><h4 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h4><p>​    1.视图（View）是一种虚拟存在的表，行和列的数据来源于定义视图的查询中使用的表，并且是在使用视图时动态生成的。</p>
 <p>​     2.视图和普通表一样使用，但是视图并不存储数据。<strong>通俗的讲，视图就是一条SELECT语句执行后返回的结果集。</strong></p>
@@ -1225,7 +1228,7 @@ alter table student4 drop primary key;
 <h4 id="4-视图的好处"><a href="#4-视图的好处" class="headerlink" title="4.视图的好处"></a>4.视图的好处</h4><pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">*</span> 1、提高sql语句重用性，效率高(避免sql语句多次编译)
 <span class="token list punctuation">*</span> 2、和表实现了分离，提高了安全性，使用视图的用户只能访问他们被允许查询的结果集
 </code></pre>
-<hr style="height:10px;background-color:green;border:none;" />
+<hr style="height:10px;background-color:green;border:none;">
 
 <h3 id="5-2-视图修改-查看与删除"><a href="#5-2-视图修改-查看与删除" class="headerlink" title="5.2 视图修改,查看与删除"></a>5.2 视图修改,查看与删除</h3><h4 id="1-视图修改"><a href="#1-视图修改" class="headerlink" title="1)视图修改"></a>1)视图修改</h4><p>方式1-创建过程覆盖旧的视图,达到修改的操作</p>
 <pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token operator">or</span> replace <span class="token keyword">view</span> 视图名
@@ -1274,7 +1277,7 @@ city<span class="token punctuation">.</span><span class="token operator">*</span
 <p>创建语句格式?</p>
 <pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">view</span> 视图名称 <span class="token keyword">as</span>  <span class="token keyword">select</span>语句<span class="token punctuation">;</span>
 </code></pre>
-<hr style="height:10px;background-color:green;border:none;" />
+<hr style="height:10px;background-color:green;border:none;">
 
 <h2 id="第六章-触发器-了解"><a href="#第六章-触发器-了解" class="headerlink" title="第六章 触发器(了解)"></a>第六章 触发器(了解)</h2><h3 id="6-1触发器概述与创建"><a href="#6-1触发器概述与创建" class="headerlink" title="6.1触发器概述与创建"></a>6.1触发器概述与创建</h3><h4 id="1-触发器概述"><a href="#1-触发器概述" class="headerlink" title="1)触发器概述"></a>1)触发器概述</h4><p>​    1.触发器主要是通过<strong>事件进行触发而被执行</strong>的,我们可以在修改数据的前后绑定事件,触发执行定义的SQL;</p>
 <p>​    2.触发器是与表有关的数据库对象，指在 <strong>insert/update/delete</strong> 之前或之后，触发并执行触发器中定义的SQL语句集合。</p>
@@ -1304,7 +1307,7 @@ city<span class="token punctuation">.</span><span class="token operator">*</span
 <span class="token keyword">create</span> <span class="token keyword">trigger</span> trigger_name
 before<span class="token operator">/</span><span class="token keyword">after</span> <span class="token keyword">insert</span><span class="token operator">/</span><span class="token keyword">update</span><span class="token operator">/</span><span class="token keyword">delete</span>
 <span class="token keyword">on</span> tbl_name
-<span class="token keyword">for each row</span>   <span class="token comment" spellcheck="true">-- 行级触发器</span>
+<span class="token keyword">for each row</span>  <span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- 行级触发器</span>
     trigger_stmt <span class="token punctuation">;</span>
 说明：
     <span class="token number">1</span>）before<span class="token operator">/</span><span class="token keyword">after</span>位置称为触发时机，一个触发器只能选择一个
@@ -1339,7 +1342,7 @@ before<span class="token operator">/</span><span class="token keyword">after</sp
 <span class="token keyword">insert</span> <span class="token keyword">into</span> emp_logs <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token boolean">null</span><span class="token punctuation">,</span><span class="token string">'update'</span><span class="token punctuation">,</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>old<span class="token punctuation">.</span>id<span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token string">'操作之前数据:'</span><span class="token punctuation">,</span>old<span class="token punctuation">.</span>id<span class="token punctuation">,</span>old<span class="token punctuation">.</span>name<span class="token punctuation">,</span>old<span class="token punctuation">.</span>age<span class="token punctuation">,</span>old<span class="token punctuation">.</span>salary<span class="token punctuation">,</span><span class="token string">'操作之后数据:'</span><span class="token punctuation">,</span>new<span class="token punctuation">.</span>id<span class="token punctuation">,</span>new<span class="token punctuation">.</span>name<span class="token punctuation">,</span>new<span class="token punctuation">.</span>age<span class="token punctuation">,</span>new<span class="token punctuation">.</span>salary<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p><strong>需求3:创建delete 行的触发器 , 完成删除数据时的日志记录  old</strong></p>
-<hr style="height:10px;background-color:green;border:none;" />
+<hr style="height:10px;background-color:green;border:none;">
 
 <h3 id="6-2-触发器查看与删除"><a href="#6-2-触发器查看与删除" class="headerlink" title="6.2 触发器查看与删除"></a>6.2 触发器查看与删除</h3><h4 id="1-查看触发器"><a href="#1-查看触发器" class="headerlink" title="1)查看触发器"></a>1)查看触发器</h4><p>可使用指令或者可视化工具查看触发器;</p>
 <pre class=" language-sql"><code class="language-sql"><span class="token keyword">SHOW</span> TRIGGERS<span class="token punctuation">;</span>
