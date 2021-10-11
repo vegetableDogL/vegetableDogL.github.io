@@ -121,18 +121,18 @@
   </entry>
   
   <entry>
-    <title>Srevlet</title>
-    <link href="http://vegetabledogl.github.io/2020/04/28/Servlet1/"/>
-    <id>http://vegetabledogl.github.io/2020/04/28/Servlet1/</id>
+    <title>Session</title>
+    <link href="http://vegetabledogl.github.io/2020/04/28/Session/"/>
+    <id>http://vegetabledogl.github.io/2020/04/28/Session/</id>
     <published>2020-04-27T16:00:00.000Z</published>
-    <updated>2021-09-01T03:29:30.884Z</updated>
+    <updated>2021-09-05T13:45:15.541Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;1、servlet&quot;&gt;&lt;a href=&quot;#1、servlet&quot; class=&quot;headerlink&quot; title=&quot;1、servlet&quot;&gt;&lt;/a&gt;1、servlet&lt;/h1&gt;&lt;h2 id=&quot;1、servlet快速案例&quot;&gt;&lt;a</summary>
+    <summary type="html">&lt;h1 id=&quot;1、session&quot;&gt;&lt;a href=&quot;#1、session&quot; class=&quot;headerlink&quot; title=&quot;1、session&quot;&gt;&lt;/a&gt;1、session&lt;/h1&gt;&lt;h2 id=&quot;1、简述&quot;&gt;&lt;a href=&quot;#1、简述&quot;</summary>
         
       
     
@@ -146,18 +146,18 @@
   </entry>
   
   <entry>
-    <title>Session</title>
-    <link href="http://vegetabledogl.github.io/2020/04/28/Session/"/>
-    <id>http://vegetabledogl.github.io/2020/04/28/Session/</id>
+    <title>Srevlet</title>
+    <link href="http://vegetabledogl.github.io/2020/04/28/Servlet1/"/>
+    <id>http://vegetabledogl.github.io/2020/04/28/Servlet1/</id>
     <published>2020-04-27T16:00:00.000Z</published>
-    <updated>2021-09-05T13:45:15.541Z</updated>
+    <updated>2021-09-01T03:29:30.884Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;1、session&quot;&gt;&lt;a href=&quot;#1、session&quot; class=&quot;headerlink&quot; title=&quot;1、session&quot;&gt;&lt;/a&gt;1、session&lt;/h1&gt;&lt;h2 id=&quot;1、简述&quot;&gt;&lt;a href=&quot;#1、简述&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;1、servlet&quot;&gt;&lt;a href=&quot;#1、servlet&quot; class=&quot;headerlink&quot; title=&quot;1、servlet&quot;&gt;&lt;/a&gt;1、servlet&lt;/h1&gt;&lt;h2 id=&quot;1、servlet快速案例&quot;&gt;&lt;a</summary>
         
       
     
@@ -398,31 +398,6 @@
   </entry>
   
   <entry>
-    <title>Response&amp;ServletContext</title>
-    <link href="http://vegetabledogl.github.io/2020/04/28/Response&amp;ServletContext/"/>
-    <id>http://vegetabledogl.github.io/2020/04/28/Response&amp;ServletContext/</id>
-    <published>2020-04-27T16:00:00.000Z</published>
-    <updated>2021-09-16T13:21:48.254Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;1、Response-amp-ServletContext&quot;&gt;&lt;a href=&quot;#1、Response-amp-ServletContext&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="JavaWeb" scheme="http://vegetabledogl.github.io/categories/JavaWeb/"/>
-    
-    
-    <category term="JavaWeb" scheme="http://vegetabledogl.github.io/tags/JavaWeb/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Spring01</title>
     <link href="http://vegetabledogl.github.io/2020/04/28/Spring01/"/>
     <id>http://vegetabledogl.github.io/2020/04/28/Spring01/</id>
@@ -444,6 +419,31 @@
     
     
     <category term="Spring" scheme="http://vegetabledogl.github.io/tags/Spring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Response&amp;ServletContext</title>
+    <link href="http://vegetabledogl.github.io/2020/04/28/Response&amp;ServletContext/"/>
+    <id>http://vegetabledogl.github.io/2020/04/28/Response&amp;ServletContext/</id>
+    <published>2020-04-27T16:00:00.000Z</published>
+    <updated>2021-09-16T13:21:48.254Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;1、Response-amp-ServletContext&quot;&gt;&lt;a href=&quot;#1、Response-amp-ServletContext&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="JavaWeb" scheme="http://vegetabledogl.github.io/categories/JavaWeb/"/>
+    
+    
+    <category term="JavaWeb" scheme="http://vegetabledogl.github.io/tags/JavaWeb/"/>
     
   </entry>
   
