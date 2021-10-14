@@ -30,9 +30,9 @@
     <script src="/libs/jquery/jquery.min.js"></script>
 
 <meta name="generator" content="Hexo 5.4.0">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="龙哥专用笔记" type="application/atom+xml">
-</head>
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="龙哥专用笔记" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 
@@ -593,7 +593,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="1、springBoot高级原理"><a href="#1、springBoot高级原理" class="headerlink" title="1、springBoot高级原理"></a>1、springBoot高级原理</h1><h2 id="1、两个自动加载机制"><a href="#1、两个自动加载机制" class="headerlink" title="1、两个自动加载机制"></a>1、两个自动加载机制</h2><h3 id="1、SPI机制（Jdk8之后的机制）"><a href="#1、SPI机制（Jdk8之后的机制）" class="headerlink" title="1、SPI机制（Jdk8之后的机制）"></a>1、SPI机制（Jdk8之后的机制）</h3><blockquote>
-<p>当我们在项目中导入一个jar包时,项目启动时,会自动加载jar包下/META-INF/services/xxx接口/xxx实现类.</p>
+<p>当我们在项目中导入一个jar包时,项目启动时,若是调用ServiceLoader.load会自动实例化jar包下/META-INF/services/xxx接口/xxx实现类.</p>
 <p>这也是mysql-jdbc驱动不需要再DriverManager中注册驱动的原因；</p>
 </blockquote>
 <p><img src="https://i.loli.net/2021/10/14/ukVvLNtm2JQBgqR.png" alt="image-20211014112747300"></p>
@@ -611,7 +611,40 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>导入mysql驱动包，com.mysql.cj.jdbc.Driver就会自动加载，再静态代码块中会注册驱动。</p>
+<p>导入mysql驱动包，再DriverManager加载的时候执行静态代码块</p>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">static</span> <span class="token punctuation">{</span>
+        <span class="token function">loadInitialDrivers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 方法中调用ServiceLoader.load(Driver.class)</span>
+        <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"JDBC DriverManager initialized"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">loadInitialDrivers</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        String drivers<span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            drivers <span class="token operator">=</span> AccessController<span class="token punctuation">.</span><span class="token function">doPrivileged</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">PrivilegedAction</span><span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">public</span> String <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">return</span> System<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"jdbc.drivers"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> ex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            drivers <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        AccessController<span class="token punctuation">.</span><span class="token function">doPrivileged</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">PrivilegedAction</span><span class="token operator">&lt;</span>Void<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">public</span> Void <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+                ServiceLoader<span class="token operator">&lt;</span>Driver<span class="token operator">></span> loadedDrivers <span class="token operator">=</span> ServiceLoader<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span>Driver<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                Iterator<span class="token operator">&lt;</span>Driver<span class="token operator">></span> driversIterator <span class="token operator">=</span> loadedDrivers<span class="token punctuation">.</span><span class="token function">iterator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">try</span><span class="token punctuation">{</span>
+                    <span class="token keyword">while</span><span class="token punctuation">(</span>driversIterator<span class="token punctuation">.</span><span class="token function">hasNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        driversIterator<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span> <span class="token keyword">catch</span><span class="token punctuation">(</span>Throwable t<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// Do nothing</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>在调用ServiceLoader.load(Driver.class)时会找jar包下/META-INF/services/java.sql.driver文件中的实现类包名：com.mysql.cj.jdbc.Driver，用反射创建对象，而在再静态代码块中会注册驱动。</p>
 <h3 id="2、Spring-Factories-机制"><a href="#2、Spring-Factories-机制" class="headerlink" title="2、Spring Factories 机制"></a>2、Spring Factories 机制</h3><blockquote>
 <p>Spring Boot 的自动配置是基于 Spring Factories 机制实现的。</p>
 <p>Spring Factories 机制是 Spring Boot 中的一种服务发现机制，这种扩展机制与 Java SPI 机制十分相似。Spring Boot 会自动扫描所有 Jar 包类路径下 META-INF/spring.factories 文件，并读取其中的内容，进行实例化，这种机制也是 Spring Boot Starter 的基础。</p>
@@ -1449,7 +1482,7 @@ com.itheima.redis.MyRedisAutoConfiguration</span>
 <p>​    1.项目运行必须依赖 JDK 环境；</p>
 <p>​    2.启动springboot项目时，默认占用一个终端，如果终端窗口关闭，服务进程结束，如何解决？</p>
 <pre class=" language-shell"><code class="language-shell">nohup java -jar boot_data.jar &
-nohub java -jar boot-data.jar > 1.log
+nohup java -jar boot-data.jar > 1.log &
 # 加了nohup后，即使关掉命令窗口，后台程序boot-data.jar也会一直执行
 </code></pre>
 <h3 id="2、服务部署-war包部署"><a href="#2、服务部署-war包部署" class="headerlink" title="2、服务部署-war包部署"></a>2、服务部署-war包部署</h3><p>1、更改打包方式为 war</p>
