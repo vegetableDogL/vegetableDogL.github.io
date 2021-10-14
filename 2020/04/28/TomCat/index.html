@@ -29,10 +29,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="龙哥专用笔记" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="龙哥专用笔记" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 
@@ -674,14 +674,14 @@
 <h2 id="4、tomcat的3种发布项目的方式"><a href="#4、tomcat的3种发布项目的方式" class="headerlink" title="4、tomcat的3种发布项目的方式"></a>4、tomcat的3种发布项目的方式</h2><h3 id="1、webapps-部署-重点"><a href="#1、webapps-部署-重点" class="headerlink" title="1、webapps 部署(重点)"></a>1、webapps 部署(重点)</h3><pre class=" language-java"><code class="language-java">直接将工程放在webapps下面。
 </code></pre>
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210831211825964.png" alt="image-20210831211825964"></p>
-<h3 id="2、-server-xml部署（了解）"><a href="#2、-server-xml部署（了解）" class="headerlink" title="2、 server.xml部署（了解）"></a>2、 server.xml部署（了解）</h3><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 在 tomcat/conf/server.xml 中找到&lt;Host>标签内，添加&lt;Context>标签</span>
+<h3 id="2、-server-xml部署（了解）"><a href="#2、-server-xml部署（了解）" class="headerlink" title="2、 server.xml部署（了解）"></a>2、 server.xml部署（了解）</h3><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 在 tomcat/conf/server.xml 中找到&lt;Host&gt;标签内，添加&lt;Context&gt;标签</span>
 <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>
     # 路径映射 <span class="token operator">:</span> 虚拟路径和真实路径映射关系
         虚拟路径 <span class="token operator">:</span> mypro
             真实路径 <span class="token operator">:</span> 项目真正的路径
                 String mypro <span class="token operator">=</span> <span class="token string">"C:\Users\spy\Desktop\aaa"</span><span class="token punctuation">;</span>
-<span class="token operator">--</span><span class="token operator">></span> 
-    <span class="token operator">&lt;</span>Context path<span class="token operator">=</span><span class="token string">"mypro"</span> docBase<span class="token operator">=</span><span class="token string">"C:\Users\spy\Desktop\aaa"</span><span class="token operator">/</span><span class="token operator">></span>
+<span class="token operator">--</span><span class="token operator">&gt;</span> 
+    <span class="token operator">&lt;</span>Context path<span class="token operator">=</span><span class="token string">"mypro"</span> docBase<span class="token operator">=</span><span class="token string">"C:\Users\spy\Desktop\aaa"</span><span class="token operator">/</span><span class="token operator">&gt;</span>
 </code></pre>
 <p>缺点：</p>
 <blockquote>
@@ -692,10 +692,10 @@
 <h3 id="3、独立xml部署-重点"><a href="#3、独立xml部署-重点" class="headerlink" title="3、独立xml部署( 重点)"></a>3、独立xml部署( 重点)</h3><p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210831212236656.png" alt="image-20210831212236656"></p>
 <pre class=" language-java"><code class="language-java">虚拟路径部署方式
 
-在tomcat<span class="token operator">/</span>conf<span class="token operator">/</span>Catalina<span class="token operator">/</span>localhost 目录下创建一个xml文件，添加<span class="token operator">&lt;</span>Context<span class="token operator">></span>标签
+在tomcat<span class="token operator">/</span>conf<span class="token operator">/</span>Catalina<span class="token operator">/</span>localhost 目录下创建一个xml文件，添加<span class="token operator">&lt;</span>Context<span class="token operator">&gt;</span>标签
     <span class="token operator">*</span><span class="token operator">*</span>文件名就是虚拟路径<span class="token operator">*</span><span class="token operator">*</span>
 
-    xml文件除了配置啥都不要写  <span class="token operator">:</span>  <span class="token operator">&lt;</span>Context docBase<span class="token operator">=</span><span class="token string">"C:\test\work"</span><span class="token operator">/</span><span class="token operator">></span>
+    xml文件除了配置啥都不要写  <span class="token operator">:</span>  <span class="token operator">&lt;</span>Context docBase<span class="token operator">=</span><span class="token string">"C:\test\work"</span><span class="token operator">/</span><span class="token operator">&gt;</span>
 
     需要重启tomcat
 

@@ -29,10 +29,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="龙哥专用笔记" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="龙哥专用笔记" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 
@@ -627,23 +627,23 @@
 
 
 
-<span class="token keyword">function</span> <span class="token function">method01</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token keyword">function</span> <span class="token function">method01</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
         <span class="token comment" spellcheck="true">//获取当前时间的本地时间格式</span>
     <span class="token keyword">var</span> time <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toLocaleString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>time<span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 <span class="token keyword">let</span> timer<span class="token punctuation">;</span>
-<span class="token keyword">function</span> <span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token keyword">function</span> <span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">//设置一个定时器, 返回自身</span>
     <span class="token comment" spellcheck="true">// timer =setInterval("method01()",1000)</span>
     timer <span class="token operator">=</span><span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token string">"method01()"</span><span class="token punctuation">,</span><span class="token number">1000</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-<span class="token keyword">function</span> <span class="token function">end2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">function</span> <span class="token function">end2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">//清除定时器</span>
     <span class="token comment" spellcheck="true">// clearInterval(timer)</span>
     <span class="token function">clearTimeout</span><span class="token punctuation">(</span>timer<span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 </code></pre>
 <h3 id="2、location对象"><a href="#2、location对象" class="headerlink" title="2、location对象"></a>2、location对象</h3><p>属性：href</p>
 <p>方法：reload（）</p>
@@ -656,55 +656,55 @@
 3. 函数 reload() : 重新加载当前地址
 
 
-<span class="token doctype">&lt;!DOCTYPE html></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>zh-CN<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>03-location对象<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+<span class="token doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>zh-CN<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>03-location对象<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>获取当前浏览器地址<span class="token punctuation">"</span></span> <span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>addr()<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>获取当前浏览器地址<span class="token punctuation">"</span></span> <span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>addr()<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>jump()<span class="token punctuation">"</span></span><span class="token punctuation">></span></span> 跳转页面(重点)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>refresh()<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>刷新当前页面<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>jump()<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span> 跳转页面(重点)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>refresh()<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>刷新当前页面<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>hr</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>hr</span><span class="token punctuation">&gt;</span></span>
 <span class="token comment" spellcheck="true">&lt;!--
     a标签原理:
         实际上就是一个按钮, 底层绑定了一个点击事件:
             点击之后就修改location.href = a.href
---></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.baidu.com<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>百度一下<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+--&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.baidu.com<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>百度一下<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
-    <span class="token keyword">function</span> <span class="token function">addr</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript">
+    <span class="token keyword">function</span> <span class="token function">addr</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>location<span class="token punctuation">.</span>href<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">function</span> <span class="token function">jump</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">function</span> <span class="token function">jump</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
         <span class="token comment" spellcheck="true">//重置地址栏的地址</span>
         location<span class="token punctuation">.</span>href <span class="token operator">=</span> <span class="token string">"http://www.baidu.com"</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">function</span> <span class="token function">refresh</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token keyword">function</span> <span class="token function">refresh</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
         location<span class="token punctuation">.</span><span class="token function">reload</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
     <span class="token keyword">var</span> result <span class="token operator">=</span> <span class="token function">confirm</span><span class="token punctuation">(</span><span class="token string">"你满18岁了?"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
         location<span class="token punctuation">.</span>href <span class="token operator">=</span> <span class="token string">"http://www.baidu.com"</span>
-    <span class="token punctuation">}</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
 </code></pre>
 <h2 id="2、DOM对象"><a href="#2、DOM对象" class="headerlink" title="2、DOM对象"></a>2、DOM对象</h2><p>作用：把所有页面标签抽象成为一个document对象，我们可以使用js动态修改标签及属性等内容。</p>
 <p><img src="https://gitee.com/ergou15154/drawing-bed/raw/master/source/image-20210829113505797.png" alt="image-20210829113505797"></p>
 <h3 id="2、1-DOM获取元素"><a href="#2、1-DOM获取元素" class="headerlink" title="2、1 DOM获取元素"></a>2、1 DOM获取元素</h3><pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">*</span> 第一种：es6之前获取方式
 <span class="token code keyword">    1）获取一个</span>
-<span class="token code keyword">        document.getElementById(id属性值)  -> 推荐</span>
+<span class="token code keyword">        document.getElementById(id属性值)  -&gt; 推荐</span>
 <span class="token code keyword">    2）获取多个（了解）</span>
 <span class="token code keyword">        document.getElementsByTagName(标签名)    根据标签名获取，返回数组对象</span>
 <span class="token code keyword">        document.getElementsByClassName(class属性值)    根据class属性获取，返回数组对象</span>
@@ -714,7 +714,7 @@
 <span class="token code keyword">    1）获取一个</span>
 <span class="token code keyword">        document.querySelector(id选择器)</span>
 <span class="token code keyword">    2）获取多个</span>
-<span class="token code keyword">        document.querySelectorAll(css选择器)   -> 推荐</span>
+<span class="token code keyword">        document.querySelectorAll(css选择器)   -&gt; 推荐</span>
 <span class="token code keyword">            标签</span>
 <span class="token code keyword">            class</span>
 <span class="token code keyword">            属性</span>
@@ -742,7 +742,7 @@
         
         
         
-<span class="token operator">&lt;</span>script<span class="token operator">></span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
     <span class="token comment" spellcheck="true">/*
     *   标签属性
     *   1. 文本属性
@@ -766,7 +766,7 @@
     <span class="token keyword">var</span> smoke <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"smoke"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     smoke<span class="token punctuation">.</span>checked <span class="token operator">=</span> <span class="token boolean">true</span>
 
-<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
 </code></pre>
 <h3 id="1-5-DOM操作样式"><a href="#1-5-DOM操作样式" class="headerlink" title="1.5 DOM操作样式"></a>1.5 DOM操作样式</h3><pre class=" language-js"><code class="language-js"><span class="token number">1</span><span class="token punctuation">.</span> 设置一个css样式【会用】  行内样式<span class="token punctuation">,</span>优先级高
     语法<span class="token punctuation">:</span> 
@@ -800,7 +800,7 @@
     p4<span class="token punctuation">.</span>className <span class="token operator">=</span> <span class="token string">"mp"</span>
 
     注意优先级问题<span class="token punctuation">:</span> api尽量不要混用
-            行内 <span class="token operator">></span> 内部<span class="token operator">/</span>外部
+            行内 <span class="token operator">&gt;</span> 内部<span class="token operator">/</span>外部
 </code></pre>
 <h2 id="3、正则表达式"><a href="#3、正则表达式" class="headerlink" title="3、正则表达式"></a>3、正则表达式</h2><pre class=" language-js"><code class="language-js">和jAVA中的有点不一样，java中的是string字符串
 
@@ -819,7 +819,7 @@
 <pre class=" language-js"><code class="language-js">  正则表达式
        <span class="token number">1</span><span class="token punctuation">.</span> 表达式 <span class="token punctuation">:</span> <span class="token function">用特定的符号来表示复杂内容</span><span class="token punctuation">(</span>作用<span class="token punctuation">:</span> 简化<span class="token punctuation">)</span>
            <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span> lambda表达式
-                <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+                <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
            <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span> xpath 路径表达式
            <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span> 正则表达式
            <span class="token operator">...</span>
@@ -829,7 +829,7 @@
                \t <span class="token punctuation">:</span> 制表符
                <span class="token operator">+</span> <span class="token punctuation">:</span> 一个或多个
                <span class="token punctuation">[</span>a<span class="token operator">-</span>z<span class="token punctuation">]</span> <span class="token punctuation">:</span> 表示a<span class="token operator">~</span>z其中一个
-               <span class="token punctuation">{</span>m<span class="token punctuation">,</span>n<span class="token punctuation">}</span> <span class="token punctuation">:</span> 至少m个<span class="token punctuation">,</span>至多n个
+               <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>m<span class="token punctuation">,</span>n<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token punctuation">:</span> 至少m个<span class="token punctuation">,</span>至多n个
                <span class="token punctuation">(</span>内容<span class="token punctuation">)</span> <span class="token punctuation">:</span> 括号中的内容为一个整体
                \w <span class="token punctuation">:</span> 等价于<span class="token punctuation">[</span>a<span class="token operator">-</span>zA<span class="token operator">-</span>Z0<span class="token operator">-</span>9_<span class="token punctuation">]</span>
                \d <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span>
@@ -861,9 +861,9 @@
 </code></pre>
 <pre class=" language-js"><code class="language-js">
     <span class="token comment" spellcheck="true">// 以邮箱举例</span>
-    <span class="token keyword">let</span> emailReg <span class="token operator">=</span>  <span class="token regex">/^\w+@\w+(.[a-zA-Z]{2,3}){1,2}$/</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> emailReg <span class="token operator">=</span>  <span class="token regex">/^\w+@\w+(.[a-zA-Z]&amp;#123;2,3&amp;#125;)&amp;#123;1,2&amp;#125;$/</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">// 以手机号举例</span>
-    <span class="token keyword">let</span> phoneReg <span class="token operator">=</span> <span class="token regex">/^1[34578]\d{9}$/</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> phoneReg <span class="token operator">=</span> <span class="token regex">/^1[34578]\d&amp;#123;9&amp;#125;$/</span><span class="token punctuation">;</span>
 </code></pre>
 
                 

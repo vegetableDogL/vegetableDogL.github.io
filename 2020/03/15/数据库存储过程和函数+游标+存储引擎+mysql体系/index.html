@@ -29,10 +29,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="龙哥专用笔记" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="龙哥专用笔记" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 
@@ -693,9 +693,9 @@
 <p><strong>注意：1）上述if只能用在begin end中.2）elseif不能分开写，必须在一起，否则报错</strong></p>
 <p>需求：</p>
 <pre class=" language-java"><code class="language-java">根据定义的体重变量，判定当前体重的所属的身材类型
-    <span class="token number">170</span> 及以上 <span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">></span> 身材肥胖
-    <span class="token number">150</span> <span class="token operator">-</span> <span class="token number">170</span> <span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">></span> 标准身材
-    <span class="token number">150</span> 以下 <span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">></span> 身材偏瘦
+    <span class="token number">170</span> 及以上 <span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;</span> 身材肥胖
+    <span class="token number">150</span> <span class="token operator">-</span> <span class="token number">170</span> <span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">&gt;</span> 标准身材
+    <span class="token number">150</span> 以下 <span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;</span> 身材偏瘦
 </code></pre>
 <div style="background-color:#42C0A3;">示例: </div>
 
@@ -703,11 +703,11 @@
 <span class="token keyword">delimiter</span> $
 <span class="token keyword">create</span> <span class="token keyword">procedure</span> pro_test5<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">begin</span>
-    <span class="token keyword">declare</span> weight<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span><span class="token keyword">int</span> <span class="token keyword">default</span> <span class="token number">175</span><span class="token punctuation">;</span>
+    <span class="token keyword">declare</span> weight <span class="token keyword">int</span> <span class="token keyword">default</span> <span class="token number">175</span><span class="token punctuation">;</span>
     <span class="token keyword">declare</span> description <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token string">''</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> weight <span class="token operator">>=</span> <span class="token number">170</span> <span class="token keyword">then</span>
+    <span class="token keyword">if</span> weight <span class="token operator">&gt;=</span> <span class="token number">170</span> <span class="token keyword">then</span>
       <span class="token keyword">set</span> description <span class="token operator">=</span> <span class="token string">'身材肥胖'</span><span class="token punctuation">;</span>
-    elseif weight <span class="token operator">>=</span> <span class="token number">150</span> <span class="token operator">and</span> weight <span class="token operator">&lt;</span> <span class="token number">170</span> <span class="token keyword">then</span>
+    elseif weight <span class="token operator">&gt;=</span> <span class="token number">150</span> <span class="token operator">and</span> weight <span class="token operator">&lt;</span> <span class="token number">170</span> <span class="token keyword">then</span>
       <span class="token keyword">set</span> description <span class="token operator">=</span> <span class="token string">'标准身材'</span><span class="token punctuation">;</span>
     <span class="token keyword">else</span>
       <span class="token keyword">set</span> description <span class="token operator">=</span> <span class="token string">'身材偏瘦'</span><span class="token punctuation">;</span>
@@ -718,11 +718,11 @@
 <span class="token comment" spellcheck="true">-- 调用存储过程</span>
 <span class="token keyword">call</span> pro_test5<span class="token punctuation">(</span><span class="token punctuation">)</span>$
 </code></pre>
-<h4 id="3、-传递参数"><a href="#3、-传递参数" class="headerlink" title="3、 传递参数"></a>3、 传递参数</h4><pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">procedure</span> procedure_name<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">in</span><span class="token operator">/</span><span class="token keyword">out</span><span class="token operator">/</span><span class="token keyword">inout</span><span class="token punctuation">]</span>  参数名 <span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>参数类型<span class="token punctuation">)</span>
+<h4 id="3、-传递参数"><a href="#3、-传递参数" class="headerlink" title="3、 传递参数"></a>3、 传递参数</h4><pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">procedure</span> procedure_name<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">in</span><span class="token operator">/</span><span class="token keyword">out</span><span class="token operator">/</span><span class="token keyword">inout</span><span class="token punctuation">]</span>  参数名  参数类型<span class="token punctuation">)</span>
 <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 
-<span class="token operator">IN</span> : <span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>该参数可以作为输入，也就是需要调用方传入值 <span class="token punctuation">,</span> 默认
-<span class="token keyword">OUT</span>: <span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>该参数作为输出，也就是该参数可以作为返回值
+<span class="token operator">IN</span> :  该参数可以作为输入，也就是需要调用方传入值 <span class="token punctuation">,</span> 默认
+<span class="token keyword">OUT</span>:  该参数作为输出，也就是该参数可以作为返回值
 <span class="token keyword">INOUT</span>: 既可以作为输入参数，也可以作为输出参数
 </code></pre>
 <h5 id="IN-输入"><a href="#IN-输入" class="headerlink" title="IN 输入"></a>IN 输入</h5><p>IN :  该参数可以作为输入，也就是需要调用方传入值 , 默认。</p>
@@ -739,9 +739,9 @@
 <span class="token keyword">create</span> <span class="token keyword">procedure</span> pro_test6<span class="token punctuation">(</span><span class="token operator">in</span> weight <span class="token keyword">int</span><span class="token punctuation">)</span>
 <span class="token keyword">begin</span>
     <span class="token keyword">declare</span> description <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token string">''</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> weight <span class="token operator">>=</span> <span class="token number">170</span> <span class="token keyword">then</span>
+    <span class="token keyword">if</span> weight <span class="token operator">&gt;=</span> <span class="token number">170</span> <span class="token keyword">then</span>
       <span class="token keyword">set</span> description <span class="token operator">=</span> <span class="token string">'身材肥胖'</span><span class="token punctuation">;</span>
-    elseif weight <span class="token operator">>=</span> <span class="token number">150</span> <span class="token operator">and</span> weight <span class="token operator">&lt;</span> <span class="token number">170</span> <span class="token keyword">then</span>
+    elseif weight <span class="token operator">&gt;=</span> <span class="token number">150</span> <span class="token operator">and</span> weight <span class="token operator">&lt;</span> <span class="token number">170</span> <span class="token keyword">then</span>
       <span class="token keyword">set</span> description <span class="token operator">=</span> <span class="token string">'标准身材'</span><span class="token punctuation">;</span>
     <span class="token keyword">else</span>
       <span class="token keyword">set</span> description <span class="token operator">=</span> <span class="token string">'身材偏瘦'</span><span class="token punctuation">;</span>
@@ -763,9 +763,9 @@
 <span class="token comment" spellcheck="true">-- 不用声明weight和description变量了，已经在小括号中定义了,description表示返回，我们在调用存储过程的时候需要使用变量接收</span>
 <span class="token keyword">create</span> <span class="token keyword">procedure</span> pro_test7<span class="token punctuation">(</span><span class="token operator">in</span> weight <span class="token keyword">int</span><span class="token punctuation">,</span><span class="token keyword">out</span> description <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token keyword">begin</span>
-    <span class="token keyword">if</span> weight <span class="token operator">>=</span> <span class="token number">170</span> <span class="token keyword">then</span>
+    <span class="token keyword">if</span> weight <span class="token operator">&gt;=</span> <span class="token number">170</span> <span class="token keyword">then</span>
       <span class="token keyword">set</span> description <span class="token operator">=</span> <span class="token string">'身材肥胖'</span><span class="token punctuation">;</span>
-    elseif weight <span class="token operator">>=</span> <span class="token number">150</span> <span class="token operator">and</span> weight <span class="token operator">&lt;</span> <span class="token number">170</span> <span class="token keyword">then</span>
+    elseif weight <span class="token operator">&gt;=</span> <span class="token number">150</span> <span class="token operator">and</span> weight <span class="token operator">&lt;</span> <span class="token number">170</span> <span class="token keyword">then</span>
       <span class="token keyword">set</span> description <span class="token operator">=</span> <span class="token string">'标准身材'</span><span class="token punctuation">;</span>
     <span class="token keyword">else</span>
       <span class="token keyword">set</span> description <span class="token operator">=</span> <span class="token string">'身材偏瘦'</span><span class="token punctuation">;</span>
@@ -840,11 +840,11 @@
     <span class="token keyword">declare</span> result <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     
     <span class="token keyword">case</span>
-     <span class="token keyword">when</span> month <span class="token operator">>=</span> <span class="token number">1</span> <span class="token operator">and</span> month <span class="token operator">&lt;=</span><span class="token number">3</span> <span class="token keyword">then</span>
+     <span class="token keyword">when</span> month <span class="token operator">&gt;=</span> <span class="token number">1</span> <span class="token operator">and</span> month <span class="token operator">&lt;=</span><span class="token number">3</span> <span class="token keyword">then</span>
        <span class="token keyword">set</span> result <span class="token operator">=</span> <span class="token string">'第一季度'</span><span class="token punctuation">;</span>
-     <span class="token keyword">when</span> month <span class="token operator">>=</span> <span class="token number">4</span> <span class="token operator">and</span> month <span class="token operator">&lt;=</span><span class="token number">6</span> <span class="token keyword">then</span>
+     <span class="token keyword">when</span> month <span class="token operator">&gt;=</span> <span class="token number">4</span> <span class="token operator">and</span> month <span class="token operator">&lt;=</span><span class="token number">6</span> <span class="token keyword">then</span>
        <span class="token keyword">set</span> result <span class="token operator">=</span> <span class="token string">'第二季度'</span><span class="token punctuation">;</span>
-     <span class="token keyword">when</span> month <span class="token operator">>=</span> <span class="token number">7</span> <span class="token operator">and</span> month <span class="token operator">&lt;=</span><span class="token number">9</span> <span class="token keyword">then</span>
+     <span class="token keyword">when</span> month <span class="token operator">&gt;=</span> <span class="token number">7</span> <span class="token operator">and</span> month <span class="token operator">&lt;=</span><span class="token number">9</span> <span class="token keyword">then</span>
        <span class="token keyword">set</span> result <span class="token operator">=</span> <span class="token string">'第三季度'</span><span class="token punctuation">;</span>
      <span class="token keyword">else</span>
        <span class="token keyword">set</span> result <span class="token operator">=</span> <span class="token string">'第四季度'</span><span class="token punctuation">;</span>
@@ -1122,7 +1122,7 @@ repeat
 <span class="token code keyword">        【2】SQL接口：专门接收客户端发送过来的sql语句（接收sql的门户）</span>
 <span class="token code keyword">        【3】Parser:解析器，核心对sql语法进行解析，解析当前发送sql的用户是否对这个sql有执行的权限（access denied）；</span>
 <span class="token code keyword">        【4】Optimizer:查询优化器，决定你的sql是否走索引，以及是否走什么索引，生成sql的执行计划；</span>
-<span class="token code keyword">                select * from t where name like 'zhang%' and age > 38;</span>
+<span class="token code keyword">                select * from t where name like 'zhang%' and age &gt; 38;</span>
 <span class="token code keyword">                前提：name 和age 都创建了索引，应该走哪个索引呢？</span>
 <span class="token code keyword">                    如果走name索引，查询出10w,如果走age，那么查询出1w;[索引查询小结果驱动]</span>
 <span class="token code keyword">                数据库如何知道哪个索引查询结果多或者少呢？</span>

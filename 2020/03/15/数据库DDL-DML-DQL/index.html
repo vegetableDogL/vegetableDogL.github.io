@@ -29,10 +29,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="龙哥专用笔记" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="龙哥专用笔记" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 
@@ -808,7 +808,7 @@ create table student(xx);
 <span class="token keyword">insert</span> <span class="token keyword">into</span> student2 <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3<span class="token punctuation">;</span>
 </code></pre>
 <h3 id="4-比较运算符"><a href="#4-比较运算符" class="headerlink" title="4.比较运算符"></a>4.比较运算符</h3><pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true"># 1.查询数学称呼大于80</span>
-<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> math <span class="token operator">></span> <span class="token number">80</span><span class="token punctuation">;</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> math <span class="token operator">&gt;</span> <span class="token number">80</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true"># 2.查询英语成绩小于或者等于80的学生信息</span>
 <span class="token comment" spellcheck="true"># 说明：在数据库中null表示不存在，无法与存在的值进行比较，所以直接丢弃不显示</span>
 <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> english <span class="token operator">&lt;=</span><span class="token number">80</span><span class="token punctuation">;</span>
@@ -816,14 +816,14 @@ create table student(xx);
 <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> age<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true"># 3.查询年龄不等于20</span>
 <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> age<span class="token operator">!=</span><span class="token number">20</span><span class="token punctuation">;</span>
-<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> age<span class="token operator">&lt;></span><span class="token number">20</span><span class="token punctuation">;</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> age<span class="token operator">&lt;&gt;</span><span class="token number">20</span><span class="token punctuation">;</span>
 </code></pre>
 <h3 id="5-逻辑运算符"><a href="#5-逻辑运算符" class="headerlink" title="5.逻辑运算符"></a>5.逻辑运算符</h3><p>逻辑运算符用于多条件之间的关联关系；</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true"># 2.查询age>35 且sex='男'</span>
-<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> age <span class="token operator">></span> <span class="token number">35</span> <span class="token operator">and</span> sex<span class="token operator">=</span><span class="token string">'男'</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true"># 2.查询age>35 或者sex='男'</span>
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true"># 2.查询age&gt;35 且sex='男'</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> age <span class="token operator">&gt;</span> <span class="token number">35</span> <span class="token operator">and</span> sex<span class="token operator">=</span><span class="token string">'男'</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true"># 2.查询age&gt;35 或者sex='男'</span>
 <span class="token comment" spellcheck="true"># or左右条件满足其一就显示</span>
-<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> age <span class="token operator">></span> <span class="token number">35</span> <span class="token operator">or</span> sex<span class="token operator">=</span><span class="token string">'男'</span><span class="token punctuation">;</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> age <span class="token operator">&gt;</span> <span class="token number">35</span> <span class="token operator">or</span> sex<span class="token operator">=</span><span class="token string">'男'</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true"># 3.查询id等于1 或者3 或者5 或者7</span>
 <span class="token comment" spellcheck="true"># 连续使用or，造成sql关键字冗余，维护性差【不推荐】</span>
 <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> id<span class="token operator">=</span><span class="token number">1</span> <span class="token operator">or</span> id<span class="token operator">=</span><span class="token number">3</span> <span class="token operator">or</span> id<span class="token operator">=</span><span class="token number">5</span> <span class="token operator">or</span> id<span class="token operator">=</span><span class="token number">7</span><span class="token punctuation">;</span>
@@ -837,7 +837,7 @@ create table student(xx);
 <span class="token comment" spellcheck="true"># not in： 反向查询，不在指定的枚举的值内</span>
 <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> id <span class="token operator">not</span> <span class="token operator">in</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true"># 查询英语成绩大于等于75，小于等于90</span>
-<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> english <span class="token operator">>=</span><span class="token number">75</span> <span class="token operator">and</span> english <span class="token operator">&lt;=</span><span class="token number">90</span><span class="token punctuation">;</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> english <span class="token operator">&gt;=</span><span class="token number">75</span> <span class="token operator">and</span> english <span class="token operator">&lt;=</span><span class="token number">90</span><span class="token punctuation">;</span>
 <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> english <span class="token operator">between</span> <span class="token number">75</span> <span class="token operator">and</span> <span class="token number">90</span><span class="token punctuation">;</span>
 </code></pre>
 <h3 id="7-like模糊搜索"><a href="#7-like模糊搜索" class="headerlink" title="7.like模糊搜索"></a>7.like模糊搜索</h3><pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true"># 1.查询姓马的学生</span>
@@ -873,11 +873,11 @@ mysql中<span class="token keyword">limit</span>的用法：返回前几条或�
     1.2 表
         create table 表名(字段名称  字段类型,.....);
         常用数据类型：
-            整数：int bitint-->long
+            整数：int bitint--&gt;long
             日期：date  datetime time
             小数：double float decimal(m,n)---》m数字总长度，n表示小数位数，整数位=m-n
-            字符串：char(n)-->定长，如果不足，则空格填充
-                   varchar(n)->变长
+            字符串：char(n)--&gt;定长，如果不足，则空格填充
+                   varchar(n)-&gt;变长
        show tables;
        show create table 表名；
        desc 表名；（查询表中列的信息）
@@ -906,7 +906,7 @@ mysql中<span class="token keyword">limit</span>的用法：返回前几条或�
               关键字as,可以省略不写
               select 字段1 as 别名 from 别名；
       2.有条件查询
-          2.1 比较运算符 < <= > >= != <> =
+          2.1 比较运算符 &lt; &lt;= &gt; &gt;= != &lt;&gt; =
           2.2 逻辑运算符：作用关联多个条件 
                   and:and左右的条件，都满足，才显示
                 or：or满足其一就显示；

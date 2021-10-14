@@ -29,10 +29,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="龙哥专用笔记" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="龙哥专用笔记" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 
@@ -635,7 +635,7 @@
 <span class="token keyword">select</span> ename<span class="token punctuation">,</span>char_length<span class="token punctuation">(</span>ename<span class="token punctuation">)</span> <span class="token keyword">from</span> emp<span class="token punctuation">;</span>
 <span class="token keyword">select</span> char_length<span class="token punctuation">(</span><span class="token string">'laofang'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- 7</span>
 <span class="token comment" spellcheck="true">-- 字符串拼接</span>
-<span class="token keyword">select</span> concat<span class="token punctuation">(</span><span class="token string">'{ename:'</span><span class="token punctuation">,</span>ename<span class="token punctuation">,</span><span class="token string">',job:'</span><span class="token punctuation">,</span>job<span class="token punctuation">,</span><span class="token string">',sal:'</span><span class="token punctuation">,</span>sal<span class="token punctuation">,</span><span class="token string">'}'</span><span class="token punctuation">)</span> <span class="token keyword">from</span> emp<span class="token punctuation">;</span>
+<span class="token keyword">select</span> concat<span class="token punctuation">(</span>'<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;ename:',ename,',job:',job,',sal:',sal,'&amp;#125;') from emp;</span>
 <span class="token comment" spellcheck="true">-- 转小写</span>
 <span class="token keyword">select</span> lower<span class="token punctuation">(</span><span class="token string">'FangJiCai'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- fangjicai</span>
 <span class="token comment" spellcheck="true">-- 转大写</span>
@@ -1100,7 +1100,7 @@
 <pre class=" language-sql"><code class="language-sql"><span class="token keyword">set</span> <span class="token keyword">global</span> <span class="token keyword">transaction</span> <span class="token keyword">isolation level</span> 隔离界别名称<span class="token punctuation">;</span>
 </code></pre>
 <p>  3.如何解决脏读?</p>
-<pre class=" language-sql"><code class="language-sql">提高事务隔离级别: <span class="token operator">>=</span>读已提交<span class="token punctuation">;</span>
+<pre class=" language-sql"><code class="language-sql">提高事务隔离级别: <span class="token operator">&gt;=</span>读已提交<span class="token punctuation">;</span>
 </code></pre>
 <hr style="height:10px;background-color:green;border:none;">
 
@@ -1414,7 +1414,7 @@ city<span class="token punctuation">.</span><span class="token operator">*</span
 <span class="token keyword">create</span> <span class="token keyword">trigger</span> trigger_name
 before<span class="token operator">/</span><span class="token keyword">after</span> <span class="token keyword">insert</span><span class="token operator">/</span><span class="token keyword">update</span><span class="token operator">/</span><span class="token keyword">delete</span>
 <span class="token keyword">on</span> tbl_name
-<span class="token keyword">for each row</span>  <span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- 行级触发器</span>
+<span class="token keyword">for each row</span>   <span class="token comment" spellcheck="true">-- 行级触发器</span>
     trigger_stmt <span class="token punctuation">;</span>
 说明：
     <span class="token number">1</span>）before<span class="token operator">/</span><span class="token keyword">after</span>位置称为触发时机，一个触发器只能选择一个

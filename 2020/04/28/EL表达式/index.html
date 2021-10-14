@@ -3,7 +3,7 @@
 
 
 <head>
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="EL表达式, 龙哥专用笔记">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,16 +29,16 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="龙哥专用笔记" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="龙哥专用笔记" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 
 
 <body>
-    <header class="navbar-fixed">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
@@ -595,32 +595,32 @@
                 <h1 id="1、EL表达式"><a href="#1、EL表达式" class="headerlink" title="1、EL表达式"></a>1、EL表达式</h1><h2 id="1-2-1-获取域中的值-重要"><a href="#1-2-1-获取域中的值-重要" class="headerlink" title="1.2.1 获取域中的值  (重要!!)"></a>1.2.1 获取域中的值  (重要!!)</h2><p>EL表达式主要简化从域对象（4个域）中获取数据</p>
 <p><strong>语法</strong></p>
 <pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">*</span> 标准（了解）
-<span class="token code keyword">    1. ${pageScope.键名} </span>
+<span class="token code keyword">    1. $&amp;#123;pageScope.键名&amp;#125; </span>
 <span class="token code keyword">            从page域中获取指定键名对应的值</span>
 
-<span class="token code keyword">    2. ${requestScope.键名} </span>
+<span class="token code keyword">    2. $&amp;#123;requestScope.键名&amp;#125; </span>
 <span class="token code keyword">            从request域中获取指定键名对应的值</span>
 
-<span class="token code keyword">    3. ${sessionScope.键名} </span>
+<span class="token code keyword">    3. $&amp;#123;sessionScope.键名&amp;#125; </span>
 <span class="token code keyword">            从session域中获取指定键名对应的值</span>
 
-<span class="token code keyword">    4. ${applicationScope.键名} </span>
+<span class="token code keyword">    4. $&amp;#123;applicationScope.键名&amp;#125; </span>
 <span class="token code keyword">            从servletContext域中获取指定键名对应的值</span>
 <span class="token code keyword">        </span>
 <span class="token list punctuation">*</span> 简化（掌握）
-<span class="token code keyword">    ${键名}</span>
+<span class="token code keyword">    $&amp;#123;键名&amp;#125;</span>
 <span class="token code keyword">        特点：默认从最小域开始找，找到后直接显示，不在继续寻找</span>
 <span class="token code keyword">        小结：要求四个域键名唯一</span>
     
 </code></pre>
-<pre class=" language-jsp"><code class="language-jsp"><%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
+<pre class=" language-jsp"><code class="language-jsp">&lt;%@ page contentType="text/html;charset=UTF-8" language="java" %&gt;
+
+
     <title>Title</title>
-</head>
-<body>
+
+
         <div>
-            <%
+            &lt;%
                 //存值
                 pageContext.setAttribute("name1", "value1");
                 request.setAttribute("name2", "value2");
@@ -631,15 +631,15 @@
                 request.setAttribute("name5", "value22");
                 session.setAttribute("name5", "value33");
                 application.setAttribute("name5", "value44");
-            %>
-            <%
+            %&gt;
+            &lt;%
                 //取值
                 Object name2 = request.getAttribute("name2");
                 out.print(name2);
-            %>
+            %&gt;
             ${name2}
             <hr>
-            <%--
+            &lt;%--
                 EL : 简化java代码书写
                 0. 语法  ${表达式}
                 1. 简化从域对象中取值操作
@@ -649,10 +649,10 @@
                     ${域对象的name属性}
 
                     如果多个域对象的name属性相同,优先级 : 范围越小,优先级越高
-                        pageContext < request < session < servletContext
+                        pageContext &lt; request &lt; session &lt; servletContext
                         当前jsp页面    一次请求    一次会话      应用全局
                                  
-            --%>
+            --%&gt;
             ${pageScope.name1}
             ${requestScope.name2}
             ${sessionScope.name3}
@@ -666,38 +666,38 @@
             ${name5}
         </div>
 
-</body>
-</html>
+
+
 </code></pre>
 <p><strong>练习【作业】</strong></p>
 <pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">1.</span> 获取字符串
-<span class="token code keyword">        ${键名}</span>
+<span class="token code keyword">        $&amp;#123;键名&amp;#125;</span>
 <span class="token code keyword">        </span>
 <span class="token list punctuation">2.</span> 获取对象（User）
-<span class="token code keyword">        ${键名.属性名}</span>
+<span class="token code keyword">        $&amp;#123;键名.属性名&amp;#125;</span>
 
 <span class="token list punctuation">3.</span> 获取List（Array）集合
-<span class="token code keyword">        ${键名[索引]}</span>
+<span class="token code keyword">        $&amp;#123;键名[索引]&amp;#125;</span>
 
 <span class="token list punctuation">4.</span> 获取Map集合
-<span class="token code keyword">        ${键名.key}</span>
-<span class="token code keyword">        ${键名["key"]}</span>
+<span class="token code keyword">        $&amp;#123;键名.key&amp;#125;</span>
+<span class="token code keyword">        $&amp;#123;键名["key"]&amp;#125;</span>
 <span class="token code keyword">        </span>
 <span class="token list punctuation">5.</span> 补充
 <span class="token code keyword">    el不会出现null和索引角标越界问题</span>
 </code></pre>
-<pre class=" language-jsp"><code class="language-jsp"><%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.Collections" %>
-<%@ page import="java.util.HashMap" %>
-<%@ page import="com.itheima.pojo.User" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
+<pre class=" language-jsp"><code class="language-jsp">&lt;%@ page import="java.util.ArrayList" %&gt;
+&lt;%@ page import="java.util.Collections" %&gt;
+&lt;%@ page import="java.util.HashMap" %&gt;
+&lt;%@ page import="com.itheima.pojo.User" %&gt;
+&lt;%@ page contentType="text/html;charset=UTF-8" language="java" %&gt;
+
+
     <title>Title</title>
-</head>
-<body>
+
+
         <div>
-            <%
+            &lt;%
                //当value=string
                 String str = "abc";
                 request.setAttribute("str", str);
@@ -705,78 +705,78 @@
                 User aa = new User("张三", 18);
                 request.setAttribute("user", aa);
                 //当value=list
-                ArrayList<String> list = new ArrayList<>();
+                ArrayList<string> list = new ArrayList&lt;&gt;();
                 Collections.addAll(list, "a","b","c");
                 request.setAttribute("list", list);
                 //当value=map
-                HashMap<String, String> map = new HashMap<>();
+                HashMap<string, string=""> map = new HashMap&lt;&gt;();
                 map.put("name", "高圆圆");
                 map.put("age", "18");
                 map.put("xx.yy", "呵呵");
                 request.setAttribute("map", map);
-            %>
-        </div>
+            %&gt;
+        </string,></string></div>
         <div>
             ${str} <br>
             ${user.name} ,${user.age} <br>
             ${list[2]} <br>
             ${map.name} , ${map.age},${map["xx.yy"]}
         </div>
-</body>
-</html>
+
+
 </code></pre>
 <h2 id="1-2-2-执行运算-重要"><a href="#1-2-2-执行运算-重要" class="headerlink" title="1.2.2 执行运算(重要)"></a>1.2.2 执行运算(重要)</h2><pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">*</span> 算数运算符
 <span class="token code keyword">        语法： +     -     *     /(div)         %(mod)</span>
 <span class="token code keyword">        </span>
 <span class="token list punctuation">*</span> 比较运算符
-<span class="token code keyword">        语法：>     &lt;     >=     &lt;=     ==(eq)         !=(ne)</span>
+<span class="token code keyword">        语法：&gt;     &lt;     &gt;=     &lt;=     ==(eq)         !=(ne)</span>
 <span class="token code keyword">        </span>
 <span class="token list punctuation">*</span> 逻辑运算符
 <span class="token code keyword">        语法：&amp;&amp;(and) ||(or) !(not)</span>
 <span class="token code keyword">        </span>
 <span class="token list punctuation">*</span> 三元运算符
-<span class="token code keyword">        语法：${条件表达式？为真:为假}</span>
+<span class="token code keyword">        语法：$&amp;#123;条件表达式？为真:为假&amp;#125;</span>
 
 <span class="token hr punctuation">------------------------------</span>
 
 <span class="token list punctuation">*</span> 空运算符
-<span class="token code keyword">         语法：${not empty 对象}</span>
+<span class="token code keyword">         语法：$&amp;#123;not empty 对象&amp;#125;</span>
 <span class="token code keyword">         功能：</span>
 <span class="token code keyword">             a. 可以判断对象是否为null</span>
 <span class="token code keyword">             b. 可以判断字符串是否空串 ""</span>
 <span class="token code keyword">             c. 可以判断一个集合的长度是否为0</span>
 </code></pre>
-<pre class=" language-jsp"><code class="language-jsp"><%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
+<pre class=" language-jsp"><code class="language-jsp">&lt;%@ page import="java.util.List" %&gt;
+&lt;%@ page import="java.util.ArrayList" %&gt;
+&lt;%@ page contentType="text/html;charset=UTF-8" language="java" %&gt;
+
+
     <title>Title</title>
-</head>
-<body>
+
+
         <div>
-            <%
+            &lt;%
                 request.setAttribute("n1", 10);
                 request.setAttribute("n2", 4);
-            %>
+            %&gt;
             ${n1} / ${n2} = ${n1/n2} <br>
             ${n1%n2} , ${n1 mod n2} <br>
 
         </div>
 
         <div>
-            <%
+            &lt;%
                 request.setAttribute("sex", "女");
-            %>
+            %&gt;
 
             姓名 : 张三 <br>
             性别 :
-            <input type="radio" name="sex" ${sex=='男'?'checked' : ''}> 男
-            <input type="radio" name="sex" ${sex=='女'?'checked' : ''}> 女
+            <input type="radio" name="sex" $&#123;sex="='男'?'checked'" :="" ''&#125;=""> 男
+            <input type="radio" name="sex" $&#123;sex="='女'?'checked'" :="" ''&#125;=""> 女
         </div>
 
         <div>
-            <%--
+            &lt;%--
           * 空运算符
            语法：${not empty 对象}
                    如果对象是empty,返回false
@@ -784,36 +784,36 @@
                a. 可以判断对象是否为null
                b. 可以判断字符串是否空串 ""
                c. 可以判断一个集合的长度是否为0
-          --%>
-            <%
+          --%&gt;
+            &lt;%
                 Object obj = null;
                 String str = "";
-                List<String> list = new ArrayList<>();
+                List<string> list = new ArrayList&lt;&gt;();
 
                 request.setAttribute("obj", obj);
                 request.setAttribute("str", str);
                 request.setAttribute("list", list);
-            %>
+            %&gt;
             ${not empty obj}
             ${not empty str}
             ${not empty list}
-        </div>
-</body>
-</html>
+        </string></div>
+
+
 </code></pre>
 <h2 id="1-2-3-隐式对象-了解"><a href="#1-2-3-隐式对象-了解" class="headerlink" title="1.2.3 隐式对象(了解)"></a>1.2.3 隐式对象(了解)</h2><pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">*</span> el表达式中有11个隐式对象
 <span class="token code keyword">    掌握:             cookie</span>
 <span class="token code keyword">            可以获取浏览器指定cookie名称的值            </span>
-<span class="token code keyword">              ${cookie.name属性名.value}</span>
+<span class="token code keyword">              $&amp;#123;cookie.name属性名.value&amp;#125;</span>
 </code></pre>
-<pre class=" language-jsp"><code class="language-jsp"><%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
+<pre class=" language-jsp"><code class="language-jsp">&lt;%@ page contentType="text/html;charset=UTF-8" language="java" %&gt;
+
+
     <title>Title</title>
-</head>
-<body>
+
+
     <div>
-        <%
+        &lt;%
             Cookie[] cookies = request.getCookies();
             for (Cookie cookie : cookies) {
                 String name = cookie.getName();
@@ -822,18 +822,18 @@
                 out.print("<br>");
                 out.println(value);
             }
-        %>
+        %&gt;
         <br>
-        <%--
+        &lt;%--
             el表达式可以写在任意地方,but脚本除外
 
             el的隐式对象: cookie
-        --%>
+        --%&gt;
         ${cookie.JSESSIONID.name} <br>
         ${cookie.JSESSIONID.value}
     </div>
-</body>
-</html>
+
+
 </code></pre>
 
                 
@@ -1573,7 +1573,7 @@ $(function () {
     
 
     
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
 
 </body>

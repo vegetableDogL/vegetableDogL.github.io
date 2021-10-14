@@ -29,10 +29,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="龙哥专用笔记" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="龙哥专用笔记" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 
@@ -630,7 +630,7 @@
 </code></pre>
 <h3 id="4-数据库备份与还原"><a href="#4-数据库备份与还原" class="headerlink" title="4.数据库备份与还原"></a>4.数据库备份与还原</h3><pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true"># 1.将数据库db1备份，保存在day02.sql文件下</span>
 <span class="token comment" spellcheck="true"># 注意：备份时，仅仅备份库中表的信息，数据库的创建语句不备份</span>
-<span class="token punctuation">[</span>root<span class="token variable">@localhost</span> <span class="token operator">~</span><span class="token punctuation">]</span><span class="token comment" spellcheck="true"># mysqldump -uroot -proot db1 > ./day02.sql</span>
+<span class="token punctuation">[</span>root<span class="token variable">@localhost</span> <span class="token operator">~</span><span class="token punctuation">]</span><span class="token comment" spellcheck="true"># mysqldump -uroot -proot db1 &gt; ./day02.sql</span>
 <span class="token comment" spellcheck="true"># 2.还原数据到day01</span>
 <span class="token comment" spellcheck="true"># 注意：还原数据时，数据库需要自己创建</span>
 <span class="token punctuation">[</span>root<span class="token variable">@localhost</span> <span class="token operator">~</span><span class="token punctuation">]</span><span class="token comment" spellcheck="true"># mysql -uroot -proot day01 &lt; ./day02.sql </span>
@@ -652,7 +652,7 @@
 
 <span class="token comment" spellcheck="true"># 2.查询年龄大于40的总数</span>
 <span class="token comment" spellcheck="true"># 说明：如果有条件，那么先进行条件的过滤，然后再聚合统计</span>
-<span class="token keyword">select</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> age <span class="token operator">></span> <span class="token number">40</span><span class="token punctuation">;</span>
+<span class="token keyword">select</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">from</span> student3 <span class="token keyword">where</span> age <span class="token operator">&gt;</span> <span class="token number">40</span><span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true"># 3.统计数学成绩总分</span>
 <span class="token keyword">select</span> <span class="token function">sum</span><span class="token punctuation">(</span>math<span class="token punctuation">)</span> <span class="token keyword">from</span> student3<span class="token punctuation">;</span>
@@ -691,20 +691,20 @@
 <span class="token comment" spellcheck="true"># 2.统计每种颜色的车辆中总金额大于30的颜色对应的总金额信息；</span>
 <span class="token comment" spellcheck="true"># 语法错误：You have an error in your SQL syntax;</span>
 <span class="token comment" spellcheck="true"># 结论：where关键字后边不能直接使用聚合函数</span>
-<span class="token keyword">select</span> color<span class="token punctuation">,</span><span class="token function">sum</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span> <span class="token keyword">from</span> car <span class="token keyword">group</span> <span class="token keyword">by</span> color <span class="token keyword">where</span> <span class="token function">sum</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span><span class="token operator">></span><span class="token number">30</span><span class="token punctuation">;</span>
+<span class="token keyword">select</span> color<span class="token punctuation">,</span><span class="token function">sum</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span> <span class="token keyword">from</span> car <span class="token keyword">group</span> <span class="token keyword">by</span> color <span class="token keyword">where</span> <span class="token function">sum</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span><span class="token operator">&gt;</span><span class="token number">30</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true"># Invalid use of group function</span>
-<span class="token keyword">select</span> color<span class="token punctuation">,</span><span class="token function">sum</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span> <span class="token keyword">from</span> car <span class="token keyword">where</span> <span class="token function">sum</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span><span class="token operator">></span><span class="token number">30</span> <span class="token keyword">group</span> <span class="token keyword">by</span> color <span class="token punctuation">;</span>
+<span class="token keyword">select</span> color<span class="token punctuation">,</span><span class="token function">sum</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span> <span class="token keyword">from</span> car <span class="token keyword">where</span> <span class="token function">sum</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span><span class="token operator">&gt;</span><span class="token number">30</span> <span class="token keyword">group</span> <span class="token keyword">by</span> color <span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true"># 如何解决？使用having关键字</span>
-<span class="token keyword">select</span> color<span class="token punctuation">,</span><span class="token function">sum</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span> <span class="token keyword">from</span> car <span class="token keyword">group</span> <span class="token keyword">by</span> color <span class="token keyword">having</span> <span class="token function">sum</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span><span class="token operator">></span><span class="token number">30</span><span class="token punctuation">;</span>
+<span class="token keyword">select</span> color<span class="token punctuation">,</span><span class="token function">sum</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span> <span class="token keyword">from</span> car <span class="token keyword">group</span> <span class="token keyword">by</span> color <span class="token keyword">having</span> <span class="token function">sum</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span><span class="token operator">&gt;</span><span class="token number">30</span><span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true"># 可以查询到</span>
-<span class="token keyword">select</span> id<span class="token punctuation">,</span>color <span class="token keyword">from</span> car <span class="token keyword">where</span> id <span class="token operator">></span> <span class="token number">4</span><span class="token punctuation">;</span>
-<span class="token keyword">select</span> id<span class="token punctuation">,</span>color <span class="token keyword">from</span> car <span class="token keyword">having</span> id <span class="token operator">></span> <span class="token number">4</span><span class="token punctuation">;</span>
+<span class="token keyword">select</span> id<span class="token punctuation">,</span>color <span class="token keyword">from</span> car <span class="token keyword">where</span> id <span class="token operator">&gt;</span> <span class="token number">4</span><span class="token punctuation">;</span>
+<span class="token keyword">select</span> id<span class="token punctuation">,</span>color <span class="token keyword">from</span> car <span class="token keyword">having</span> id <span class="token operator">&gt;</span> <span class="token number">4</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true"># 可以查询到</span>
-<span class="token keyword">select</span> color <span class="token keyword">from</span> car <span class="token keyword">where</span> id <span class="token operator">></span> <span class="token number">4</span><span class="token punctuation">;</span>
+<span class="token keyword">select</span> color <span class="token keyword">from</span> car <span class="token keyword">where</span> id <span class="token operator">&gt;</span> <span class="token number">4</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true"># 出错：Unknown column 'id' in 'having clause' 推断：having查询基于select后边指点的字段，如果</span>
 <span class="token comment" spellcheck="true"># 字段没有指定，查询报错</span>
-<span class="token keyword">select</span> color <span class="token keyword">from</span> car <span class="token keyword">having</span> id <span class="token operator">></span> <span class="token number">4</span><span class="token punctuation">;</span>
+<span class="token keyword">select</span> color <span class="token keyword">from</span> car <span class="token keyword">having</span> id <span class="token operator">&gt;</span> <span class="token number">4</span><span class="token punctuation">;</span>
 </code></pre>
 <pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true"># having与where区别？</span>
 <span class="token comment" spellcheck="true"># 1.where后边不能使用聚合函数，但是having可以</span>
@@ -787,7 +787,7 @@
 <pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true"># 扩展：联合主键（联合索引）</span>
 <span class="token comment" spellcheck="true"># 主键只能有一个，但是可以由多个字段组成一个主键-联合主键（id,name）</span>
 <span class="token comment" spellcheck="true"># 联合主键特点与普通主键一致，也就是有多个字段组成一个主键，所以，多个字段组成的值要唯一</span>
-<span class="token comment" spellcheck="true"># 比如：primary key(id,name)===>1-马云，如果你再次保存1-马云，报错：Duplicate,同时各个字段</span>
+<span class="token comment" spellcheck="true"># 比如：primary key(id,name)===&gt;1-马云，如果你再次保存1-马云，报错：Duplicate,同时各个字段</span>
 <span class="token comment" spellcheck="true"># 不能为null==》null-田七，id不能为null</span>
 </code></pre>
 <h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><ol>
@@ -1017,13 +1017,13 @@
 <h4 id="2-多行单列查询（in-，all，some，any关键字）"><a href="#2-多行单列查询（in-，all，some，any关键字）" class="headerlink" title="2. 多行单列查询（in ，all，some，any关键字）"></a>2. 多行单列查询（in ，all，some，any关键字）</h4><blockquote>
 <p>in ，all，some，any关键字</p>
 </blockquote>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> name <span class="token keyword">from</span> dept <span class="token keyword">where</span> id <span class="token operator">in</span><span class="token punctuation">(</span><span class="token keyword">select</span> dept_id <span class="token keyword">from</span> emp <span class="token keyword">where</span> salary <span class="token operator">></span> <span class="token number">5000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> name <span class="token keyword">from</span> dept <span class="token keyword">where</span> id <span class="token operator">in</span><span class="token punctuation">(</span><span class="token keyword">select</span> dept_id <span class="token keyword">from</span> emp <span class="token keyword">where</span> salary <span class="token operator">&gt;</span> <span class="token number">5000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h4 id="3-多行多列查询（多行多列起别名将结果作为一张表，与其他表联合查询）"><a href="#3-多行多列查询（多行多列起别名将结果作为一张表，与其他表联合查询）" class="headerlink" title="3.多行多列查询（多行多列起别名将结果作为一张表，与其他表联合查询）"></a>3.多行多列查询（多行多列起别名将结果作为一张表，与其他表联合查询）</h4><blockquote>
 <p>多行多列起别名将结果作为一张表，与其他表联合查询</p>
 </blockquote>
 <pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> tmp<span class="token punctuation">.</span><span class="token operator">*</span><span class="token punctuation">,</span>dept<span class="token punctuation">.</span>name 
-<span class="token keyword">from</span> <span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> emp <span class="token keyword">where</span> join_date <span class="token operator">></span> <span class="token string">'2011-01-01'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> tmp<span class="token punctuation">,</span>dept 
+<span class="token keyword">from</span> <span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> emp <span class="token keyword">where</span> join_date <span class="token operator">&gt;</span> <span class="token string">'2011-01-01'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> tmp<span class="token punctuation">,</span>dept 
 <span class="token keyword">where</span> tmp<span class="token punctuation">.</span>dept_id<span class="token operator">=</span>dept<span class="token punctuation">.</span>id<span class="token punctuation">;</span>
 </code></pre>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="1-DQL"><a href="#1-DQL" class="headerlink" title="1.DQL"></a>1.DQL</h3><pre class=" language-sql"><code class="language-sql"><span class="token number">1</span><span class="token punctuation">.</span>聚合函数<span class="token operator">=</span><span class="token operator">=</span>》<span class="token number">5</span>大聚合函数

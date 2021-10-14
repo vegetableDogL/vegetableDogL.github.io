@@ -29,10 +29,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="龙哥专用笔记" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="龙哥专用笔记" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 
@@ -599,7 +599,7 @@
 
 <span class="token list punctuation">2.</span> servlet可以实现动静态结合,写静态很麻烦
 
-   -> jsp : html + java
+   -&gt; jsp : html + java
 </code></pre>
 <h2 id="2、工作原理"><a href="#2、工作原理" class="headerlink" title="2、工作原理"></a>2、工作原理</h2><p><strong>JSP本质上就是一个Servlet</strong></p>
 <pre class=" language-java"><code class="language-java"># JSP运行原理
@@ -631,7 +631,7 @@
 <span class="token number">1</span><span class="token punctuation">.</span> 浏览器访问hello<span class="token punctuation">.</span>jsp<span class="token punctuation">,</span>tomcat会产生java代码<span class="token operator">:</span> hello_jsp<span class="token punctuation">.</span><span class="token function">java</span><span class="token punctuation">(</span>Servlet<span class="token punctuation">)</span>
     并且立即编译出hello_jsp<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span>并调用_jspService方法
 <span class="token number">2</span><span class="token punctuation">.</span> hello_jsp<span class="token punctuation">.</span>java是tomcat根据hello<span class="token punctuation">.</span>jsp翻译成的代码
-    <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span> html   被翻译成 <span class="token operator">-</span><span class="token operator">></span>  out<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"html"</span><span class="token punctuation">)</span> 响应体输出
+    <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span> html   被翻译成 <span class="token operator">-</span><span class="token operator">&gt;</span>  out<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"html"</span><span class="token punctuation">)</span> 响应体输出
     <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span> java   原封不动
 <span class="token number">3</span><span class="token punctuation">.</span> tomcat中的JspServlet
     <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span> 启动加载
@@ -640,18 +640,18 @@
         并且调用此servlet的service方法
 </code></pre>
 <h2 id="3、3种脚本"><a href="#3、3种脚本" class="headerlink" title="3、3种脚本"></a>3、3种脚本</h2><p><strong>JSP通过脚本方式来定义java代码</strong></p>
-<pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">1.</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>%</span> <span class="token attr-name">代码</span> <span class="token attr-name">%</span><span class="token punctuation">></span></span>
+<pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">1.</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>%</span> <span class="token attr-name">代码</span> <span class="token attr-name">%</span><span class="token punctuation">&gt;</span></span>
 <span class="token code keyword">        脚本片段,生成在service方法中,每次请求的时候都会执行</span>
 <span class="token code keyword">        </span>
-<span class="token list punctuation">2.</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>%!</span> <span class="token attr-name">代码</span> <span class="token attr-name">%</span><span class="token punctuation">></span></span>
+<span class="token list punctuation">2.</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>%!</span> <span class="token attr-name">代码</span> <span class="token attr-name">%</span><span class="token punctuation">&gt;</span></span>
 <span class="token code keyword">        声明片段,在java代码中声明成员,放在jsp生成java文件中的成员位置</span>
 
-<span class="token list punctuation">3.</span> &lt;%=代码 %>
+<span class="token list punctuation">3.</span> &lt;%=代码 %&gt;
 <span class="token code keyword">        输出脚本片段,相当于在service方法中使用out.print("代码") 方法，输出到jsp页面</span>
 </code></pre>
 <pre class=" language-markdown"><code class="language-markdown">  jsp有三种脚本语法:
   <span class="token list punctuation">1.</span> 脚本片段
-<span class="token code keyword">      1). &lt;% java代码 %></span>
+<span class="token code keyword">      1). &lt;% java代码 %&gt;</span>
 <span class="token code keyword">      2). 会被翻译到servlet的service方法中</span>
 <span class="token code keyword">      3). 扩展:</span>
 <span class="token code keyword">          JspWriter out/PrintWriter writer : 响应体输出流</span>
@@ -659,19 +659,19 @@
 <span class="token code keyword">          推荐用out (因为html是用out输出的,保证书写顺序和执行顺序的一致性)</span>
 
   <span class="token list punctuation">2.</span> 输出脚本片段
-<span class="token code keyword">      1). &lt;%=输出的内容%></span>
-<span class="token code keyword">      2).  &lt;% out.print("输出的内容"); %> 省略格式</span>
+<span class="token code keyword">      1). &lt;%=输出的内容%&gt;</span>
+<span class="token code keyword">      2).  &lt;% out.print("输出的内容"); %&gt; 省略格式</span>
 
   <span class="token list punctuation">3.</span> 声明片段
-<span class="token code keyword">      1).  &lt;%! java代码  %></span>
+<span class="token code keyword">      1).  &lt;%! java代码  %&gt;</span>
 <span class="token code keyword">      2). 会被翻译到servlet的成员位置(类中方法外)</span>
 <span class="token code keyword">      3). 往往用于方法或成员变量的声明</span>
 </code></pre>
 <h2 id="4、3种注释"><a href="#4、3种注释" class="headerlink" title="4、3种注释"></a>4、3种注释</h2><pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">1.</span> html注释
-<span class="token code keyword">        </span><span class="token comment" spellcheck="true">&lt;!-- 注释静态资源 --></span>
+<span class="token code keyword">        </span><span class="token comment" spellcheck="true">&lt;!-- 注释静态资源 --&gt;</span>
     
 <span class="token list punctuation">2.</span> JSP注释
-<span class="token code keyword">        &lt;%-- 注释所有 --%></span>
+<span class="token code keyword">        &lt;%-- 注释所有 --%&gt;</span>
 
 <span class="token list punctuation">3.</span> java注释（JSP脚本内使用）
 <span class="token code keyword">        // 单行</span>
@@ -683,7 +683,7 @@
 <h2 id="5、3大指令"><a href="#5、3大指令" class="headerlink" title="5、3大指令"></a>5、3大指令</h2><pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">*</span> 作用
 <span class="token code keyword">        JSP指令用来设置整个JSP页面相关的属性    </span>
 <span class="token list punctuation">*</span> 格式
-<span class="token code keyword">        &lt;%@指令名称 属性名1="属性值1" 属性名2="属性值2" ...%></span>
+<span class="token code keyword">        &lt;%@指令名称 属性名1="属性值1" 属性名2="属性值2" ...%&gt;</span>
 <span class="token code keyword">        </span>
 <span class="token list punctuation">*</span> 三大指令
 <span class="token code keyword">    1. page：配置JSP页面</span>
@@ -692,11 +692,11 @@
     
 <span class="token code keyword">    3. taglib:导入资源文件</span>
 </code></pre>
-<h3 id="1、page指令"><a href="#1、page指令" class="headerlink" title="1、page指令"></a>1、page指令</h3><pre class=" language-markdown"><code class="language-markdown"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>%@</span> <span class="token attr-name">page</span> <span class="token attr-name">contentType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text/html;charset<span class="token punctuation">=</span>UTF-8<span class="token punctuation">"</span></span> <span class="token attr-name">language</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>java<span class="token punctuation">"</span></span> <span class="token attr-name">%</span><span class="token punctuation">></span></span>
+<h3 id="1、page指令"><a href="#1、page指令" class="headerlink" title="1、page指令"></a>1、page指令</h3><pre class=" language-markdown"><code class="language-markdown"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>%@</span> <span class="token attr-name">page</span> <span class="token attr-name">contentType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text/html;charset<span class="token punctuation">=</span>UTF-8<span class="token punctuation">"</span></span> <span class="token attr-name">language</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>java<span class="token punctuation">"</span></span> <span class="token attr-name">%</span><span class="token punctuation">&gt;</span></span>
 <span class="token code keyword">    1). contentType 等价于 response.setContentType(); 设置响应体的MIME类型和编码方式</span>
 <span class="token code keyword">    2). language    目前仅支持java语言</span>
 <span class="token code keyword">    3). import      导入jar包</span>
-<span class="token code keyword">        &lt;%@ page import="java.util.Date" %></span>
+<span class="token code keyword">        &lt;%@ page import="java.util.Date" %&gt;</span>
 <span class="token code keyword">     4). errorPage : 发生错误时的跳转页面</span>
 <span class="token code keyword">       5). isErrorPage : 默认false, errorPage才会设置true的话,可以调用exception对象查看异常原因    </span>
 </code></pre>
@@ -707,11 +707,11 @@
 <span class="token code keyword">        b. 把头部抽取出来 top.jsp , 分别A.jsp和B.jsp包含即可, 这样避免了代码冗余</span>
 <span class="token code keyword">        </span>
 <span class="token list punctuation">4.</span> 语法:  
-<span class="token code keyword">    &lt;%@include file="top.jsp"%>     </span>
+<span class="token code keyword">    &lt;%@include file="top.jsp"%&gt;     </span>
 </code></pre>
 <h3 id="3、taglib指令"><a href="#3、taglib指令" class="headerlink" title="3、taglib指令"></a>3、taglib指令</h3><pre class=" language-jsp"><code class="language-jsp">导入apache提供的jstl标准标签库
 
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+&lt;%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %&gt;
 </code></pre>
 <h2 id="6、九大内置对象"><a href="#6、九大内置对象" class="headerlink" title="6、九大内置对象"></a>6、九大内置对象</h2><pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">*</span> 作用
 <span class="token code keyword">        在JSP页面中不需要获取和创建，可以直接使用的对象</span>
@@ -1035,19 +1035,19 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/04/28/%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/">
+                <a href="/2020/04/28/vue/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="中文乱码">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Vue">
                         
-                        <span class="card-title">中文乱码</span>
+                        <span class="card-title">Vue</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            中文乱码
+                            Vue的指令，生命周期，异步请求
                         
                     </div>
                     <div class="publish-info">
@@ -1058,8 +1058,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JavaWeb/" class="post-category">
-                                    JavaWeb
+                            <a href="/categories/Vue/" class="post-category">
+                                    Vue
                                 </a>
                             
                             
@@ -1069,8 +1069,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JavaWeb/">
-                        <span class="chip bg-color">JavaWeb</span>
+                    <a href="/tags/Vue/">
+                        <span class="chip bg-color">Vue</span>
                     </a>
                     
                 </div>

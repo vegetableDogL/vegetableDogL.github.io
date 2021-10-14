@@ -29,10 +29,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="龙哥专用笔记" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="龙哥专用笔记" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 
@@ -651,15 +651,15 @@
 <span class="token code keyword">        session.invalidate();</span>
 <span class="token code keyword">    2). 默认间隔30分钟不访问过期</span>
 <span class="token code keyword">        I. tomcat的设置(tomcat/conf/web.xml)</span>
-<span class="token code keyword">             &lt;session-config></span>
-<span class="token code keyword">                &lt;session-timeout>30&lt;/session-timeout></span>
-<span class="token code keyword">            &lt;/session-config>    </span>
+<span class="token code keyword">             &lt;session-config&gt;</span>
+<span class="token code keyword">                &lt;session-timeout&gt;30&lt;/session-timeout&gt;</span>
+<span class="token code keyword">            &lt;/session-config&gt;    </span>
 <span class="token code keyword">        II. 当前项目进行设置(web.xml)    </span>
-<span class="token code keyword">             &lt;session-config></span>
-<span class="token code keyword">                &lt;session-timeout>5&lt;/session-timeout></span>
-<span class="token code keyword">            &lt;/session-config></span>
+<span class="token code keyword">             &lt;session-config&gt;</span>
+<span class="token code keyword">                &lt;session-timeout&gt;5&lt;/session-timeout&gt;</span>
+<span class="token code keyword">            &lt;/session-config&gt;</span>
 <span class="token code keyword">    3). tomcat非正常关闭   </span>
-<span class="token code keyword">            但是tomcat正常关闭,session会被tomcat保存起来 -> session钝化和活化</span>
+<span class="token code keyword">            但是tomcat正常关闭,session会被tomcat保存起来 -&gt; session钝化和活化</span>
 </code></pre>
 <h2 id="4、session的持久化"><a href="#4、session的持久化" class="headerlink" title="4、session的持久化"></a>4、session的持久化</h2><pre class=" language-markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span> 设置cookie的过期时间,session依然找到的</span>
 <span class="token code keyword">        1. 在Servlet中手动创建name=JESSIONID的cookie；</span>
@@ -668,25 +668,25 @@
 <span class="token code keyword">        </span>
 <span class="token title important"><span class="token punctuation">#</span> 配置session的过期时间</span>
 <span class="token code keyword">        I. tomcat的设置(tomcat/conf/web.xml)</span>
-<span class="token code keyword">             &lt;session-config></span>
-<span class="token code keyword">                &lt;session-timeout>30&lt;/session-timeout></span>
-<span class="token code keyword">            &lt;/session-config>    </span>
+<span class="token code keyword">             &lt;session-config&gt;</span>
+<span class="token code keyword">                &lt;session-timeout&gt;30&lt;/session-timeout&gt;</span>
+<span class="token code keyword">            &lt;/session-config&gt;    </span>
 <span class="token code keyword">        II. 当前项目进行设置(web.xml)    </span>
-<span class="token code keyword">             &lt;session-config></span>
-<span class="token code keyword">                &lt;session-timeout>5&lt;/session-timeout></span>
-<span class="token code keyword">            &lt;/session-config></span>
+<span class="token code keyword">             &lt;session-config&gt;</span>
+<span class="token code keyword">                &lt;session-timeout&gt;5&lt;/session-timeout&gt;</span>
+<span class="token code keyword">            &lt;/session-config&gt;</span>
 </code></pre>
 <h2 id="5、session的钝化和活化"><a href="#5、session的钝化和活化" class="headerlink" title="5、session的钝化和活化"></a>5、session的钝化和活化</h2><pre class=" language-java"><code class="language-java"># 之前提到<span class="token punctuation">,</span> 当服务器正常关闭，重启后，还可以再获取<span class="token function">session</span><span class="token punctuation">(</span>跟之前的一样<span class="token punctuation">)</span>
 这是因为tomcat已实现以下二个功能
 <span class="token number">1</span><span class="token punctuation">.</span> 钝化（序列化<span class="token operator">:</span> ObjectOutputStream） 保存
         当服务器正常关闭时，session中的数据，会序列化到硬盘 <span class="token punctuation">(</span>持久化<span class="token punctuation">)</span>
-            序列化的目的<span class="token operator">:</span> 将内存中对象或数据结构 保存 到硬盘 <span class="token punctuation">(</span>编码<span class="token operator">:</span> 看得懂 <span class="token operator">-</span><span class="token operator">></span> 看不懂<span class="token punctuation">)</span>
+            序列化的目的<span class="token operator">:</span> 将内存中对象或数据结构 保存 到硬盘 <span class="token punctuation">(</span>编码<span class="token operator">:</span> 看得懂 <span class="token operator">-</span><span class="token operator">&gt;</span> 看不懂<span class="token punctuation">)</span>
                 内存<span class="token operator">:</span> 临时性存储设备<span class="token punctuation">,</span> 断电了数据就消失
                 硬盘<span class="token operator">:</span> 持久性存储设备<span class="token punctuation">,</span> 断电了数据依然在
                 
 <span class="token number">2</span><span class="token punctuation">.</span> 活化（反序列化 <span class="token operator">:</span> ObjectInputStream） 读取
         当服务器开启后，从磁盘文件中，将数据反序列化到内存中
-            反序列化的目的<span class="token operator">:</span> 将硬盘上的数据读取到内存<span class="token punctuation">,</span>形成对象或数据结构 <span class="token punctuation">(</span>解码<span class="token operator">:</span> 看不懂 <span class="token operator">-</span><span class="token operator">></span> 看得懂<span class="token punctuation">)</span>
+            反序列化的目的<span class="token operator">:</span> 将硬盘上的数据读取到内存<span class="token punctuation">,</span>形成对象或数据结构 <span class="token punctuation">(</span>解码<span class="token operator">:</span> 看不懂 <span class="token operator">-</span><span class="token operator">&gt;</span> 看得懂<span class="token punctuation">)</span>
 
 备注<span class="token operator">:</span> 钝化和活化的本质是序列化技术<span class="token punctuation">,</span> 所以保存的存储数据类型需要实现serializable接口
 </code></pre>

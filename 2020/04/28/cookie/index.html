@@ -29,10 +29,10 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="龙哥专用笔记" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="龙哥专用笔记" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 
@@ -628,8 +628,8 @@
     response<span class="token punctuation">.</span><span class="token function">addCookie</span><span class="token punctuation">(</span>cookie1<span class="token punctuation">)</span><span class="token punctuation">;</span>
     response<span class="token punctuation">.</span><span class="token function">addCookie</span><span class="token punctuation">(</span>cookie2<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<h3 id="3、Cookie是否可以存储中文和非法字符？"><a href="#3、Cookie是否可以存储中文和非法字符？" class="headerlink" title="3、Cookie是否可以存储中文和非法字符？"></a>3、Cookie是否可以存储中文和非法字符？</h3><pre class=" language-java"><code class="language-java"><span class="token operator">></span> tomcat8之前的版本，不支持中文
-<span class="token operator">></span> tomcat8以后的版本，支持中文<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<h3 id="3、Cookie是否可以存储中文和非法字符？"><a href="#3、Cookie是否可以存储中文和非法字符？" class="headerlink" title="3、Cookie是否可以存储中文和非法字符？"></a>3、Cookie是否可以存储中文和非法字符？</h3><pre class=" language-java"><code class="language-java"><span class="token operator">&gt;</span> tomcat8之前的版本，不支持中文
+<span class="token operator">&gt;</span> tomcat8以后的版本，支持中文<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
     但是按照 Rfc6265Cookie规范，在cookie值中不能使用分号（<span class="token punctuation">;</span>）、逗号（<span class="token punctuation">,</span>）、等号（<span class="token operator">=</span>）以及空格
 
 <span class="token comment" spellcheck="true">// 解决方法：我们可以存储,但是要使用url编码,来避开这个规范限制</span>
@@ -646,9 +646,9 @@
 <pre class=" language-java"><code class="language-java">    String name <span class="token operator">=</span> cookie<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     String value <span class="token operator">=</span> cookie<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">//如果cookie的name为beauty,那么value就进行url解码</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token string">"beauty"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token string">"beauty"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
        value <span class="token operator">=</span>  URLDecoder<span class="token punctuation">.</span><span class="token function">decode</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span> <span class="token string">"utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
     System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>name <span class="token operator">+</span> <span class="token string">"-"</span> <span class="token operator">+</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h3 id="4、Cookie的域名作用-domain"><a href="#4、Cookie的域名作用-domain" class="headerlink" title="4、Cookie的域名作用(domain)"></a>4、Cookie的域名作用(domain)</h3><pre class=" language-markdown"><code class="language-markdown"><span class="token list punctuation">1.</span> cookie信息中的域名作用是标记这个cookie的归属
@@ -656,12 +656,12 @@
 <span class="token code keyword">        那么访问的网站如果是 http://localhost:8080, 浏览器的请求只会携带域名为localhost的cookie</span>
 <span class="token code keyword">        </span>
 <span class="token list punctuation">2.</span> 默认情况下,cookie的域名 和 发送此cookie的服务器域名是一致的
-<span class="token code keyword">    url格式 ->  协议://域名:端口/资源位置</span>
+<span class="token code keyword">    url格式 -&gt;  协议://域名:端口/资源位置</span>
 </code></pre>
 <h3 id="5、Cookie的路径作用-path"><a href="#5、Cookie的路径作用-path" class="headerlink" title="5、Cookie的路径作用(path)"></a>5、Cookie的路径作用(path)</h3><pre class=" language-markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span> url格式</span>
 <span class="token code keyword">     协议://ip:port/资源位置?参数</span>
-<span class="token code keyword">     1). 资源位置 ->  /项目虚拟路径/项目中的资源路径</span>
-<span class="token code keyword">     2). 参数 -> name=value&amp;name=value...</span>
+<span class="token code keyword">     1). 资源位置 -&gt;  /项目虚拟路径/项目中的资源路径</span>
+<span class="token code keyword">     2). 参数 -&gt; name=value&amp;name=value...</span>
 <span class="token code keyword">     http://localhost:3306/day07/demo.html</span>
 <span class="token list punctuation">0.</span> 在我们的项目中,cookie的路径默认为项目的虚拟路径
 <span class="token code keyword">            项目虚拟路径为 /day07    </span>
